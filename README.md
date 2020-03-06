@@ -41,9 +41,9 @@ You can also provide the value via environment variables; either via IC_REGION o
     us-south
     us-east
     eu-de
-In addition you will also need to export the Zone if you are working in a multi-zone region like eu-de 
+If working in a multi-zone region like eu-de, the Zone must also be passed in via IBMCLOUD_ZONE. 
 
     eu-de-1
     eu-de-2    
 
-As more regions support multi-zones we will update it accordingly.
+Multi-Zone support for us-south and us-east is in the IBM Cloud Roadmap. 
