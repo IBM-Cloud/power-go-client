@@ -96,6 +96,7 @@ func (f *IBMPINetworkClient) Delete(id string, powerinstanceid string) error {
 
 // New Function for Ports
 
+//Get all
 func (f *IBMPINetworkClient) GetAllPort(id string, powerinstanceid string) (*models.NetworkPorts, error) {
 	params := p_cloud_networks.NewPcloudNetworksPortsGetallParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
@@ -106,4 +107,30 @@ func (f *IBMPINetworkClient) GetAllPort(id string, powerinstanceid string) (*mod
 	}
 	return resp.Payload, nil
 
+}
+
+//Create
+
+func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string) (*models.NetworkPort, error) {
+	params := p_cloud_networks.NewPcloudNetworksPortsPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
+	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to create the network port")
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+}
+
+// Delete
+
+func (f *IBMPINetworkClient) DeletePort(networkid string, powerinstanceid string, portid string) (*models.Object, error) {
+	params := p_cloud_networks.NewPcloudNetworksPortsDeleteParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(networkid).WithPortID(portid)
+	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to create the network port")
+		return nil, errors.ToError(err)
+	}
+	return &resp.Payload, nil
 }
