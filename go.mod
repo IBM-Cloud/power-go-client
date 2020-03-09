@@ -1,6 +1,6 @@
 module github.com/IBM-Cloud/power-go-client
 
-go 1.12
+go 1.13
 
 require (
 	github.com/go-openapi/errors v0.19.3
