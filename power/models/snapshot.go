@@ -17,6 +17,9 @@ import (
 // swagger:model Snapshot
 type Snapshot struct {
 
+	// Action performed on the instance snapshot
+	Action string `json:"action,omitempty"`
+
 	// Creation Date
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
@@ -32,6 +35,9 @@ type Snapshot struct {
 	// Required: true
 	Name *string `json:"name"`
 
+	// Snapshot completion percentage
+	PercentComplete int64 `json:"percentComplete,omitempty"`
+
 	// PCloud PVM Instance ID
 	// Required: true
 	PvmInstanceID *string `json:"pvmInstanceID"`
@@ -42,9 +48,6 @@ type Snapshot struct {
 
 	// Status of the PVM instancesnapshot
 	Status string `json:"status,omitempty"`
-
-	// URL to call to get latest status of a PVM instance snapshot
-	StatusURL string `json:"statusUrl,omitempty"`
 
 	// A map of volume snapshots included in the PVM instance snapshot
 	// Required: true

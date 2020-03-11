@@ -25,8 +25,8 @@ type PcloudCloudinstancesSnapshotsDeleteReader struct {
 func (o *PcloudCloudinstancesSnapshotsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewPcloudCloudinstancesSnapshotsDeleteOK()
+	case 202:
+		result := NewPcloudCloudinstancesSnapshotsDeleteAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -58,24 +58,24 @@ func (o *PcloudCloudinstancesSnapshotsDeleteReader) ReadResponse(response runtim
 	}
 }
 
-// NewPcloudCloudinstancesSnapshotsDeleteOK creates a PcloudCloudinstancesSnapshotsDeleteOK with default headers values
-func NewPcloudCloudinstancesSnapshotsDeleteOK() *PcloudCloudinstancesSnapshotsDeleteOK {
-	return &PcloudCloudinstancesSnapshotsDeleteOK{}
+// NewPcloudCloudinstancesSnapshotsDeleteAccepted creates a PcloudCloudinstancesSnapshotsDeleteAccepted with default headers values
+func NewPcloudCloudinstancesSnapshotsDeleteAccepted() *PcloudCloudinstancesSnapshotsDeleteAccepted {
+	return &PcloudCloudinstancesSnapshotsDeleteAccepted{}
 }
 
-/*PcloudCloudinstancesSnapshotsDeleteOK handles this case with default header values.
+/*PcloudCloudinstancesSnapshotsDeleteAccepted handles this case with default header values.
 
-OK
+Accepted
 */
-type PcloudCloudinstancesSnapshotsDeleteOK struct {
+type PcloudCloudinstancesSnapshotsDeleteAccepted struct {
 	Payload models.Object
 }
 
-func (o *PcloudCloudinstancesSnapshotsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsDeleteOK  %+v", 200, o.Payload)
+func (o *PcloudCloudinstancesSnapshotsDeleteAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsDeleteAccepted  %+v", 202, o.Payload)
 }
 
-func (o *PcloudCloudinstancesSnapshotsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PcloudCloudinstancesSnapshotsDeleteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
