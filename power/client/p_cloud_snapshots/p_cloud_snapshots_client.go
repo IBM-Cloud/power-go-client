@@ -27,7 +27,7 @@ type Client struct {
 /*
 PcloudCloudinstancesSnapshotsDelete deletes a p VM instance snapshot of a cloud instance
 */
-func (a *Client) PcloudCloudinstancesSnapshotsDelete(params *PcloudCloudinstancesSnapshotsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudinstancesSnapshotsDeleteOK, error) {
+func (a *Client) PcloudCloudinstancesSnapshotsDelete(params *PcloudCloudinstancesSnapshotsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudinstancesSnapshotsDeleteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudCloudinstancesSnapshotsDeleteParams()
@@ -49,7 +49,36 @@ func (a *Client) PcloudCloudinstancesSnapshotsDelete(params *PcloudCloudinstance
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PcloudCloudinstancesSnapshotsDeleteOK), nil
+	return result.(*PcloudCloudinstancesSnapshotsDeleteAccepted), nil
+
+}
+
+/*
+PcloudCloudinstancesSnapshotsGet gets the detail of a snapshot
+*/
+func (a *Client) PcloudCloudinstancesSnapshotsGet(params *PcloudCloudinstancesSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudinstancesSnapshotsGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudCloudinstancesSnapshotsGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.cloudinstances.snapshots.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudCloudinstancesSnapshotsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudCloudinstancesSnapshotsGetOK), nil
 
 }
 

@@ -20,10 +20,6 @@ type SnapshotCreateResponse struct {
 	// ID of the PVM instance snapshot
 	// Required: true
 	SnapshotID *string `json:"snapshotID"`
-
-	// URL to call to get latest status of a PVM instance snapshot
-	// Required: true
-	StatusURL *string `json:"statusUrl"`
 }
 
 // Validate validates this snapshot create response
@@ -31,10 +27,6 @@ func (m *SnapshotCreateResponse) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateSnapshotID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStatusURL(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -47,15 +39,6 @@ func (m *SnapshotCreateResponse) Validate(formats strfmt.Registry) error {
 func (m *SnapshotCreateResponse) validateSnapshotID(formats strfmt.Registry) error {
 
 	if err := validate.Required("snapshotID", "body", m.SnapshotID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SnapshotCreateResponse) validateStatusURL(formats strfmt.Registry) error {
-
-	if err := validate.Required("statusUrl", "body", m.StatusURL); err != nil {
 		return err
 	}
 
