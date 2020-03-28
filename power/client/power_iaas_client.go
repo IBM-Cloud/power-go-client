@@ -17,6 +17,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/hardware_platforms"
 	"github.com/IBM-Cloud/power-go-client/power/client/iaas_service_broker"
 	"github.com/IBM-Cloud/power-go-client/power/client/open_stacks"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_clone_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_events"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_images"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_instances"
@@ -88,6 +89,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaas 
 	cli.IaasServiceBroker = iaas_service_broker.New(transport, formats)
 
 	cli.OpenStacks = open_stacks.New(transport, formats)
+
+	cli.PCloudCloneVolumes = p_cloud_clone_volumes.New(transport, formats)
 
 	cli.PCloudEvents = p_cloud_events.New(transport, formats)
 
@@ -175,6 +178,8 @@ type PowerIaas struct {
 
 	OpenStacks *open_stacks.Client
 
+	PCloudCloneVolumes *p_cloud_clone_volumes.Client
+
 	PCloudEvents *p_cloud_events.Client
 
 	PCloudImages *p_cloud_images.Client
@@ -223,6 +228,8 @@ func (c *PowerIaas) SetTransport(transport runtime.ClientTransport) {
 	c.IaasServiceBroker.SetTransport(transport)
 
 	c.OpenStacks.SetTransport(transport)
+
+	c.PCloudCloneVolumes.SetTransport(transport)
 
 	c.PCloudEvents.SetTransport(transport)
 
