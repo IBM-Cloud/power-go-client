@@ -444,6 +444,35 @@ func (a *Client) PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnaps
 
 }
 
+/*
+PcloudPvminstancesSnapshotsRestorePost restores a p VM instance snapshot
+*/
+func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudPvminstancesSnapshotsRestorePostParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.snapshots.restore.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesSnapshotsRestorePostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudPvminstancesSnapshotsRestorePostAccepted), nil
+
+}
+
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport

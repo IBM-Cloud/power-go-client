@@ -129,3 +129,14 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id, powerinstanceid 
 	return postok.Payload, nil
 
 }
+
+// Create a snapshot of the instance
+
+func (f *IBMPIInstanceClient) CreatePvmSnapShot(id, powerinstanceid string) (*models.SnapshotCreateResponse, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(id).WithCloudInstanceID(powerinstanceid)
+	snapshotpostok, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	if err != nil {
+		return nil, errors.ToError(err)
+	}
+	return snapshotpostok.Payload, nil
+}
