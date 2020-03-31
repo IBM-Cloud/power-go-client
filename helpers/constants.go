@@ -21,6 +21,10 @@ const (
 	PIInstanceMigratable      = "pi_migratable"
 	PICloudInstanceId         = "pi_cloud_instance_id"
 	PICloudInstanceSubnetName = "pi_cloud_instance_subnet_name"
+	PIInstanceMimMem          = "pi_minmem"
+	PIInstanceMaxProc         = "pi_maxproc"
+	PIInstanceMaxMem          = "pi_maxmem"
+	PIInstanceReboot          = "pi_reboot"
 
 	PIInstanceHealthStatus      = "pi_health_status"
 	PIInstanceReplicants        = "pi_replicants"
