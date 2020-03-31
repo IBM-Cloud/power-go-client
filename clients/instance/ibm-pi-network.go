@@ -109,6 +109,20 @@ func (f *IBMPINetworkClient) GetAllPort(id string, powerinstanceid string) (*mod
 
 }
 
+// Get Port
+
+func (f *IBMPINetworkClient) GetPort(id string, powerinstanceid string, network_port_id string) (*models.NetworkPort, error) {
+	params := p_cloud_networks.NewPcloudNetworksPortsGetParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id).WithPortID(network_port_id)
+	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to perform the GetNetworkPort Operation... %v", err)
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+
+}
+
 //Create
 
 func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string) (*models.NetworkPort, error) {
