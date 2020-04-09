@@ -1,6 +1,6 @@
 package power_go_client
 
 //Version is the Power-go-client sdk  version
-const Version = "v1.0.1"
+const Version = "v1.0.2"
 
-// Power client version -  Pull 963
+// Power client version -  Pull 1023
