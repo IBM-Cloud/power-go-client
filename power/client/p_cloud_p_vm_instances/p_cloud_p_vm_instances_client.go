@@ -89,6 +89,35 @@ func (a *Client) PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapture
 }
 
 /*
+PcloudPvminstancesClonePost clones a p VM instance
+*/
+func (a *Client) PcloudPvminstancesClonePost(params *PcloudPvminstancesClonePostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesClonePostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudPvminstancesClonePostParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.clone.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesClonePostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudPvminstancesClonePostAccepted), nil
+
+}
+
+/*
 PcloudPvminstancesConsolePost generates the no v n c console URL
 */
 func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesConsolePostCreated, error) {

@@ -67,9 +67,6 @@ type PVMInstance struct {
 	// The pvm instance networks information
 	Networks []*PVMInstanceNetwork `json:"networks"`
 
-	// Host PVM was originally deployed to
-	OriginalHost string `json:"originalHost,omitempty"`
-
 	// VM pinning policy to use [none, soft, hard]
 	PinPolicy string `json:"pinPolicy,omitempty"`
 

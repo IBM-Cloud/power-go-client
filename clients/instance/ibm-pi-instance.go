@@ -133,10 +133,25 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id, powerinstanceid 
 // Create a snapshot of the instance
 
 func (f *IBMPIInstanceClient) CreatePvmSnapShot(id, powerinstanceid string) (*models.SnapshotCreateResponse, error) {
+	log.Printf("Calling the Power PVM Snaphshot Method")
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(id).WithCloudInstanceID(powerinstanceid)
 	snapshotpostok, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, errors.ToError(err)
 	}
 	return snapshotpostok.Payload, nil
+}
+
+// Create a clone
+
+func (f *IBMPIInstanceClient) CreateClone(id, powerinstanceid string, clonebody p_cloud_p_vm_instances.PcloudPvminstancesClonePostParams) (*models.PVMInstance, error) {
+	log.Printf("Calling the Power PVM Clone Method")
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesClonePostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(id).WithCloudInstanceID(powerinstanceid).WithBody(clonebody.Body)
+	clonePost, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesClonePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	if err != nil {
+
+		return nil, errors.ToError(err)
+	}
+	return clonePost.Payload, nil
+
 }

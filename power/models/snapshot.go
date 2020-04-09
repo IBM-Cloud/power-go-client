@@ -36,7 +36,7 @@ type Snapshot struct {
 	Name *string `json:"name"`
 
 	// Snapshot completion percentage
-	PercentComplete float64 `json:"percentComplete,omitempty"`
+	PercentComplete int64 `json:"percentComplete,omitempty"`
 
 	// PCloud PVM Instance ID
 	// Required: true
