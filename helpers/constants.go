@@ -32,7 +32,7 @@ const (
 	PIInstanceReplicationScheme = "pi_replication_scheme"
 	PIInstanceProgress          = "pi_progress"
 	PIInstanceUserData          = "pi_user_data"
-	PIInstancePinPolicy         = "pi_pinpolicy"
+	PIInstancePinPolicy         = "pi_pin_policy"
 
 	// IBM PI Volume
 	PIVolumeName      = "pi_volume_name"
