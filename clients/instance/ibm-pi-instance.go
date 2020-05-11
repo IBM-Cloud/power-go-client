@@ -51,13 +51,14 @@ func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvmi
 	}
 
 	//if postcreated.Payload
-	//if len(postok.Payload) > 0 && len(postcreated.Payload) > 0 && len(postAccepted.Payload) > 0 {
-	//	log.Printf("Looks like we have an instance created....")
-	//	log.Printf("Checking if the instance name is right ")
-	//	log.Printf("Printing the instanceid %s", *postok.Payload[0].PvmInstanceID)
-	//}
 
-	return &postok.Payload, &postcreated.Payload, &postAccepted.Payload, nil
+	if len(postok.Payload) > 0 && len(postcreated.Payload) > 0 && len(postAccepted.Payload) > 0 {
+		log.Printf("Looks like we have an instance created....")
+		log.Printf("Checking if the instance name is right ")
+		log.Printf("Printing the instanceid %s", *postok.Payload[0].PvmInstanceID)
+	}
+
+	return &postok.Payload, nil, nil, nil
 }
 
 // PVM Instances Delete
