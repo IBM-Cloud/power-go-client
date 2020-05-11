@@ -17,8 +17,15 @@ import (
 // swagger:model VolumesCloneRequest
 type VolumesCloneRequest struct {
 
-	// Prefix to use when naming the new cloned volumes
-	NamingPrefix string `json:"namingPrefix,omitempty"`
+	// Display name for the new cloned volumes.
+	// Cloned Volume names will be prefixed with 'clone-'.
+	// If multiple volumes cloned they will be suffix with a '-' and an incremental number starting with 1.
+	//   Example volume names using displayName="volume-abcdef"
+	//     single volume clone will be named "clone-volume-abcdef"
+	//     multi volume clone will be named "clone-volume-abcdef-1", "clone-volume-abcdef-2", ...
+	//
+	// Required: true
+	DisplayName *string `json:"displayName"`
 
 	// List of volumes to be cloned
 	// Required: true
@@ -29,6 +36,10 @@ type VolumesCloneRequest struct {
 func (m *VolumesCloneRequest) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDisplayName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVolumeIds(formats); err != nil {
 		res = append(res, err)
 	}
@@ -36,6 +47,15 @@ func (m *VolumesCloneRequest) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *VolumesCloneRequest) validateDisplayName(formats strfmt.Registry) error {
+
+	if err := validate.Required("displayName", "body", m.DisplayName); err != nil {
+		return err
+	}
+
 	return nil
 }
 
