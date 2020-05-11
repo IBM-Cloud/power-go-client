@@ -25,7 +25,7 @@ type Client struct {
 }
 
 /*
-PcloudPvminstancesActionPost performs an action start stop reboot on a p VM instance
+PcloudPvminstancesActionPost performs an action start stop reboot immediate shutdown on a p VM instance
 */
 func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesActionPostOK, error) {
 	// TODO: Validate the params before sending
