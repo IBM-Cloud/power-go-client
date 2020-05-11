@@ -50,6 +50,13 @@ func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvmi
 		return nil, nil, nil, errors.ToError(err)
 	}
 
+	log.Printf("Printing the response.. %s", postok.Payload)
+
+	if postAccepted.Payload == nil {
+		log.Printf("The postaccepted failed to return the results")
+		return nil, nil, nil, errors.ToError(err)
+	}
+
 	//if postcreated.Payload
 
 	if len(postok.Payload) > 0 && len(postcreated.Payload) > 0 && len(postAccepted.Payload) > 0 {
