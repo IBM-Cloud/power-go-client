@@ -1,6 +1,7 @@
 package instance
 
 import (
+	"fmt"
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_p_vm_instances"
@@ -36,7 +37,7 @@ func (f *IBMPIInstanceClient) Get(id, powerinstanceid string) (*models.PVMInstan
 
 //Create
 
-func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvminstancesPostParams, powerinstanceid string) (*models.PVMInstanceList, *models.PVMInstanceList, *models.PVMInstanceList, error) {
+func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvminstancesPostParams, powerinstanceid string) (*models.PVMInstanceList, error) {
 
 	log.Printf("Calling the Power PVM Create Method")
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithBody(powerdef.Body)
@@ -47,25 +48,27 @@ func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvmi
 
 	if err != nil {
 		log.Printf("failed to process the request..")
-		return nil, nil, nil, errors.ToError(err)
+		return nil, errors.ToError(err)
 	}
 
-	log.Printf("Printing the response.. %s", postok.Payload)
-
-	if postAccepted.Payload == nil {
-		log.Printf("The postaccepted failed to return the results")
-		return nil, nil, nil, errors.ToError(err)
-	}
-
-	//if postcreated.Payload
-
-	if len(postok.Payload) > 0 && len(postcreated.Payload) > 0 && len(postAccepted.Payload) > 0 {
+	if postok != nil && len(postok.Payload) > 0 {
 		log.Printf("Looks like we have an instance created....")
 		log.Printf("Checking if the instance name is right ")
 		log.Printf("Printing the instanceid %s", *postok.Payload[0].PvmInstanceID)
+		return &postok.Payload, nil
+	}
+	if postcreated != nil && len(postcreated.Payload) > 0 {
+		log.Printf("Printing the instanceid %s", *postcreated.Payload[0].PvmInstanceID)
+		return &postcreated.Payload, nil
+	}
+	if postAccepted != nil && len(postAccepted.Payload) > 0 {
+
+		log.Printf("Printing the instanceid %s", *postAccepted.Payload[0].PvmInstanceID)
+		return &postAccepted.Payload, nil
 	}
 
-	return &postok.Payload, nil, nil, nil
+	//return &postok.Payload, nil
+	return nil, fmt.Errorf("No response Returned ")
 }
 
 // PVM Instances Delete
