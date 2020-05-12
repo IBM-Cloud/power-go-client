@@ -144,9 +144,9 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id, powerinstanceid 
 
 // Create a snapshot of the instance
 
-func (f *IBMPIInstanceClient) CreatePvmSnapShot(id, powerinstanceid string) (*models.SnapshotCreateResponse, error) {
+func (f *IBMPIInstanceClient) CreatePvmSnapShot(pvminstanceid, powerinstanceid string, snapshotdef *p_cloud_p_vm_instances.PcloudPvminstancesSnapshotsPostParams) (*models.SnapshotCreateResponse, error) {
 	log.Printf("Calling the Power PVM Snaphshot Method")
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(id).WithCloudInstanceID(powerinstanceid)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(pvminstanceid).WithCloudInstanceID(powerinstanceid).WithBody(snapshotdef.Body)
 	snapshotpostok, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, errors.ToError(err)
