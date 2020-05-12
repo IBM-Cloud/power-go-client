@@ -150,9 +150,9 @@ func (f *IBMPIInstanceClient) CreatePvmSnapShot(pvminstanceid, powerinstanceid s
 	snapshotpostok, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, fmt.Errorf("Failed to Create the snapshot for the pvminstance [%s]", pvminstanceid)
-	} else {
-		log.Printf("Successfully executed the snapshot for the pvminstance [%s] with status of [%s]", pvminstanceid, snapshotpostok.Payload.SnapshotID)
 	}
+	log.Printf("Successfully executed the snapshot for the pvminstance [%s] with status of [%s]", pvminstanceid, snapshotpostok.Payload.SnapshotID)
+
 	return snapshotpostok.Payload, nil
 }
 
