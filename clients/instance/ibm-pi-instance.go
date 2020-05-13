@@ -148,10 +148,12 @@ func (f *IBMPIInstanceClient) CreatePvmSnapShot(snapshotdef *p_cloud_p_vm_instan
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(pvminstanceid).WithCloudInstanceID(powerinstanceid).WithBody(snapshotdef.Body)
 	snapshotpostaccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	fmt.Errorf("Printing the error from the snapshot calls ", err)
-	log.Printf("printing the error %s", err)
+	log.Printf("*** Printing the error from the snapshot call *** %s", err)
 	if err != nil {
+
+		log.Printf("Printing the snapshot data %s", snapshotpostaccepted.Payload)
 		return nil, fmt.Errorf("Failed to Create the snapshot for the pvminstance [%s]", pvminstanceid)
+
 	}
 	log.Printf("Successfully executed the snapshot for the pvminstance [%s] with status of [%s]", pvminstanceid, snapshotpostaccepted.Payload.SnapshotID)
 
