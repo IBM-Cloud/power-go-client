@@ -143,29 +143,27 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id, powerinstanceid 
 }
 
 // Create a snapshot of the instance
-
-func (f *IBMPIInstanceClient) CreatePvmSnapShot(pvminstanceid, powerinstanceid string, snapshotdef *models.SnapshotCreate) (*models.SnapshotCreateResponse, error) {
-	log.Printf("Calling the Power PVM Snaphshot Method and printing the following data %s - %s - %s", snapshotdef.Description, snapshotdef.Name, snapshotdef.VolumeIds)
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(pvminstanceid).WithCloudInstanceID(powerinstanceid).WithBody(snapshotdef)
-	snapshotpostok, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+func (f *IBMPIInstanceClient) CreatePvmSnapShot(snapshotdef *p_cloud_p_vm_instances.PcloudPvminstancesSnapshotsPostParams, pvminstanceid, powerinstanceid string) (*models.SnapshotCreateResponse, error) {
+	log.Printf("Calling the Power PVM Snaphshot Method and printing the following data %s - %s - %s", snapshotdef.Body.Description, snapshotdef.Body.Name, snapshotdef.Body.VolumeIds)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(pvminstanceid).WithCloudInstanceID(powerinstanceid).WithBody(snapshotdef.Body)
+	snapshotpostaccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, fmt.Errorf("Failed to Create the snapshot for the pvminstance [%s]", pvminstanceid)
 	}
-	log.Printf("Successfully executed the snapshot for the pvminstance [%s] with status of [%s]", pvminstanceid, snapshotpostok.Payload.SnapshotID)
+	log.Printf("Successfully executed the snapshot for the pvminstance [%s] with status of [%s]", pvminstanceid, snapshotpostaccepted.Payload.SnapshotID)
 
-	return snapshotpostok.Payload, nil
+	return snapshotpostaccepted.Payload, nil
 }
 
 // Create a clone
 
-func (f *IBMPIInstanceClient) CreateClone(id, powerinstanceid string, clonebody p_cloud_p_vm_instances.PcloudPvminstancesClonePostParams) (*models.PVMInstance, error) {
+func (f *IBMPIInstanceClient) CreateClone(clonedef *p_cloud_p_vm_instances.PcloudPvminstancesClonePostParams, pvminstanceid, powerinstanceid string) (*models.PVMInstance, error) {
 	log.Printf("Calling the Power PVM Clone Method")
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesClonePostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(id).WithCloudInstanceID(powerinstanceid).WithBody(clonebody.Body)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesClonePostParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(pvminstanceid).WithCloudInstanceID(powerinstanceid).WithBody(clonedef.Body)
 	clonePost, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesClonePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 
-		return nil, errors.ToError(err)
+		return nil, fmt.Errorf("Failed to create the clone of the pvm instance")
 	}
 	return clonePost.Payload, nil
-
 }
