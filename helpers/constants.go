@@ -41,6 +41,14 @@ const (
 	PIVolumeShareable = "pi_volume_shareable"
 	PIVolumeId        = "pi_volume_id"
 
+	// IBM PI Snapshots
+
+	PISnapshot         = "pi_snap_shot_id"
+	PISnapshotName     = "pi_snap_shot_name"
+	PISnapshotStatus   = "pi_snap_shot_status"
+	PISnapshotAction   = "pi_snap_shot_action"
+	PISnapshotComplete = "pi_snap_shot_complete"
+
 	// IBM PI Image
 
 	PIImageName         = "pi_image_name"

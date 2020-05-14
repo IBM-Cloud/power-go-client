@@ -172,3 +172,21 @@ func (f *IBMPIInstanceClient) CreateClone(clonedef *p_cloud_p_vm_instances.Pclou
 	}
 	return clonePost.Payload, nil
 }
+
+// Get information about the snapshots for a vm
+
+func (f *IBMPIInstanceClient) GetSnapShotVM(powerinstanceid, pvminstanceid string) (*models.Snapshots, error) {
+
+	log.Printf("Calling the GetSnapshot for vm Method..")
+	log.Printf("The input pvmid name is %s and  to the cloudinstance id %s", pvminstanceid, powerinstanceid)
+
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsGetallParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to perform the operation... %v", err)
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+
+}
