@@ -206,6 +206,20 @@ func (f *IBMPIInstanceClient) GetSnapShotVM(powerinstanceid, pvminstanceid strin
 
 }
 
+// Restore a snapshot
+
+func (f *IBMPIInstanceClient) RestoreSnapShotVM(powerinstanceid, pvminstanceid, snapshotid, restoreAction string, restoreparams *p_cloud_p_vm_instances.PcloudPvminstancesSnapshotsRestorePostParams) (*models.Snapshot, error) {
+	log.Printf("Performing the snapshot restore for lpar with instanceid [%s] and snapshotid [%s] ", pvminstanceid, snapshotid)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid).WithSnapshotID(snapshotid).WithRestoreFailAction(&restoreAction).WithBody(restoreparams.Body)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload.SnapshotID != nil {
+		log.Printf("Failed to perform the snapshot restore operation")
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+}
+
 // Create SAP Systems
 
 func (f *IBMPIInstanceClient) CreateSAP(powerdef *p_cloud_s_a_p.PcloudSapPostParams, powerinstanceid string) (*models.PVMInstanceList, error) {
