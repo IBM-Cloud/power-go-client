@@ -1,8 +1,10 @@
 package instance
 
 import (
+	"fmt"
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"log"
@@ -31,4 +33,15 @@ func (f *IBMPITenantClient) Get(powerinstanceid string) (*models.Tenant, error) 
 		return nil, errors.ToError(err)
 	}
 	return resp.Payload, nil
+}
+
+func (f *IBMPITenantClient) GetServiceInstanceData(powerinstanceid string) (*models.CloudInstance, error) {
+	params := p_cloud_instances.NewPcloudCloudinstancesGetParams().WithCloudInstanceID(powerinstanceid)
+	serviceinstanceresp, err := f.session.Power.PCloudInstances.PcloudCloudinstancesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || serviceinstanceresp.Payload == nil {
+		fmt.Errorf("Failed to make the call to get the Service Instance operation", err)
+		return nil, errors.ToError(err)
+	}
+	return serviceinstanceresp.Payload, nil
 }
