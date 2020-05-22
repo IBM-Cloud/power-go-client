@@ -5,6 +5,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_p_vm_instances"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_s_a_p"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 
 	"log"
@@ -28,6 +29,19 @@ func (f *IBMPIInstanceClient) Get(id, powerinstanceid string) (*models.PVMInstan
 
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to perform the operation... %v", err)
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+}
+
+// Get Information about all the PVM Instances for a Client
+
+func (f *IBMPIInstanceClient) GetAll(powerinstanceid string) (*models.PVMInstances, error) {
+
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetallParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
 		log.Printf("Failed to perform the operation... %v", err)
 		return nil, errors.ToError(err)
@@ -112,6 +126,7 @@ func (f *IBMPIInstanceClient) Action(poweractionparams *p_cloud_p_vm_instances.P
 	if err != nil {
 		return nil, errors.ToError(err)
 	}
+
 	return postok.Payload, nil
 
 }
@@ -189,4 +204,53 @@ func (f *IBMPIInstanceClient) GetSnapShotVM(powerinstanceid, pvminstanceid strin
 	}
 	return resp.Payload, nil
 
+}
+
+// Create SAP Systems
+
+func (f *IBMPIInstanceClient) CreateSAP(powerdef *p_cloud_s_a_p.PcloudSapPostParams, powerinstanceid string) (*models.PVMInstanceList, error) {
+
+	log.Printf("Calling the Power PVM Create Method For SAP")
+	params := p_cloud_s_a_p.NewPcloudSapPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithBody(powerdef.Body)
+
+	log.Printf("Printing the params to be passed %+v", params)
+
+	postok, postcreated, postAccepted, err := f.session.Power.PCloudSAP.PcloudSapPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil {
+		log.Printf("failed to process the request..")
+		return nil, errors.ToError(err)
+	}
+
+	if postok != nil && len(postok.Payload) > 0 {
+		log.Printf("Looks like we have an instance created....")
+		log.Printf("Checking if the instance name is right ")
+		log.Printf("Printing the instanceid for SAP %s", *postok.Payload[0].PvmInstanceID)
+		return &postok.Payload, nil
+	}
+	if postcreated != nil && len(postcreated.Payload) > 0 {
+		log.Printf("Printing the instanceid %s", *postcreated.Payload[0].PvmInstanceID)
+		return &postcreated.Payload, nil
+	}
+	if postAccepted != nil && len(postAccepted.Payload) > 0 {
+
+		log.Printf("Printing the instanceid %s", *postAccepted.Payload[0].PvmInstanceID)
+		return &postAccepted.Payload, nil
+	}
+
+	//return &postok.Payload, nil
+	return nil, fmt.Errorf("No response Returned ")
+}
+
+// Get All SAP Profiles
+
+func (f *IBMPIInstanceClient) GetSAPProfiles(powerinstanceid string) (*models.SAPProfiles, error) {
+
+	params := p_cloud_s_a_p.NewPcloudSapGetallParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid)
+	resp, err := f.session.Power.PCloudSAP.PcloudSapGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to perform the operation... %v", err)
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
 }
