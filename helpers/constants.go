@@ -25,6 +25,7 @@ const (
 	PIInstanceMaxProc         = "pi_maxproc"
 	PIInstanceMaxMem          = "pi_maxmem"
 	PIInstanceReboot          = "pi_reboot"
+	PITenantId                = "pi_tenant_id"
 
 	PIInstanceHealthStatus      = "pi_health_status"
 	PIInstanceReplicants        = "pi_replicants"
