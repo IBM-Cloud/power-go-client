@@ -129,8 +129,8 @@ func (f *IBMPINetworkClient) GetPort(id string, powerinstanceid string, network_
 
 //Create
 
-func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string) (*models.NetworkPort, error) {
-	params := p_cloud_networks.NewPcloudNetworksPortsPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
+func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string, networportdef *p_cloud_networks.PcloudNetworksPortsPostParams) (*models.NetworkPort, error) {
+	params := p_cloud_networks.NewPcloudNetworksPortsPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id).WithBody(networportdef.Body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
