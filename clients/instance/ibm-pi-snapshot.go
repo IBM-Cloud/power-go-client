@@ -28,7 +28,7 @@ func (f *IBMPISnapshotClient) Get(id, powerinstanceid string) (*models.Snapshot,
 	log.Printf("Calling the Snapshotget Method..")
 	log.Printf("The input snapshot name is %s and  to the cloudinstance id %s", id, powerinstanceid)
 
-	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsGetParams().WithCloudInstanceID(powerinstanceid).WithSnapshotID(id)
+	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsGetParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithSnapshotID(id)
 	resp, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
@@ -41,7 +41,7 @@ func (f *IBMPISnapshotClient) Get(id, powerinstanceid string) (*models.Snapshot,
 // Delete ...
 func (f *IBMPISnapshotClient) Delete(id string, powerinstanceid string) error {
 	//var cloudinstanceid = f.session.PowerServiceInstance
-	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsDeleteParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithSnapshotID(id)
+	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsDeleteParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithSnapshotID(id)
 	_, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return errors.ToError(err)
@@ -52,7 +52,7 @@ func (f *IBMPISnapshotClient) Delete(id string, powerinstanceid string) error {
 // Update..
 func (f *IBMPISnapshotClient) Update(id, powerinstanceid string, snapshotdef *models.SnapshotUpdate) (models.Object, error) {
 
-	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsPutParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithSnapshotID(id).WithBody(snapshotdef)
+	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsPutParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithSnapshotID(id).WithBody(snapshotdef)
 
 	resp, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
@@ -68,7 +68,7 @@ func (f *IBMPISnapshotClient) Update(id, powerinstanceid string, snapshotdef *mo
 func (f *IBMPISnapshotClient) GetAll(id, powerinstanceid string) (*models.Snapshots, error) {
 
 	log.Printf("Calling the Power Snapshots GetAll Method")
-	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsGetallParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid)
+	params := p_cloud_snapshots.NewPcloudCloudinstancesSnapshotsGetallParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, errors.ToError(err)
@@ -81,7 +81,7 @@ func (f *IBMPISnapshotClient) GetAll(id, powerinstanceid string) (*models.Snapsh
 
 func (f *IBMPISnapshotClient) Create(pvminstanceid, powerinstanceid, snapshotid, restorefailAction string) (*models.Snapshot, error) {
 	log.Printf("Calling the Power Snapshots Restore Method")
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithCloudInstanceID(pvminstanceid).WithSnapshotID(snapshotid).WithRestoreFailAction(&restorefailAction)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithCloudInstanceID(pvminstanceid).WithSnapshotID(snapshotid).WithRestoreFailAction(&restorefailAction)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, fmt.Errorf("Failed to create the restore")

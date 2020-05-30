@@ -1,6 +1,7 @@
 package instance
 
 import (
+	"fmt"
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_networks"
@@ -129,15 +130,15 @@ func (f *IBMPINetworkClient) GetPort(id string, powerinstanceid string, network_
 
 //Create
 
-func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string, networportdef *p_cloud_networks.PcloudNetworksPortsPostParams) (*models.NetworkPort, error) {
-	params := p_cloud_networks.NewPcloudNetworksPortsPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id).WithBody(networportdef.Body)
+func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string, networkportdef *p_cloud_networks.PcloudNetworksPortsPostParams) (*models.NetworkPort, error) {
+	params := p_cloud_networks.NewPcloudNetworksPortsPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id).WithBody(networkportdef.Body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-
 	if err != nil || resp.Payload == nil {
 		log.Printf("Failed to create the network port")
+
 		return nil, errors.ToError(err)
 	}
-	return resp.Payload, nil
+	return resp.Payload, fmt.Errorf("Failed to create the network port for cloud instance id [%s] ", powerinstanceid)
 }
 
 // Delete
