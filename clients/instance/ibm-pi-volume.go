@@ -34,7 +34,7 @@ func (f *IBMPIVolumeClient) Get(id, powerinstanceid string) (*models.Volume, err
 		log.Printf("Failed to perform the operation... %v", err)
 		return nil, errors.ToError(err)
 	}
-	return resp.Payload, fmt.Errorf("Failed to get the volume with id [%s] ", id)
+	return resp.Payload, nil
 }
 
 //Create
@@ -57,7 +57,7 @@ func (f *IBMPIVolumeClient) Create(volumename string, volumesize float64, volume
 		return nil, errors.ToError(err)
 	}
 
-	return resp.Payload, fmt.Errorf("Failed to create the volume of size [%f] with name [%s] ", volumesize, volumename)
+	return resp.Payload, nil
 }
 
 // Delete ...
@@ -68,7 +68,7 @@ func (f *IBMPIVolumeClient) Delete(id string, powerinstanceid string) error {
 	if err != nil {
 		return errors.ToError(err)
 	}
-	return fmt.Errorf("Faied to delete the volume [%s] ", id)
+	return nil
 }
 
 // Update..
@@ -102,7 +102,7 @@ func (f *IBMPIVolumeClient) Attach(id, volumename string, powerinstanceid string
 	}
 	log.Printf("Successfully attached the volume to the instance")
 
-	return resp.Payload, fmt.Errorf("Failed to attach the volume [%s] to the pvm instance [%s]", volumename, id)
+	return resp.Payload, nil
 
 }
 
@@ -115,9 +115,10 @@ func (f *IBMPIVolumeClient) Detach(id, volumename string, powerinstanceid string
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
-		return nil, errors.ToError(err)
+		//return nil, errors.ToError(err)
+		return nil, fmt.Errorf("Failed to detach the volume [%s ] for pvm instance with id [%s] ", volumename, id)
 	}
-	return resp.Payload, fmt.Errorf("Failed to detach the volume [%s ] for pvm instance with id [%s] ", volumename, id)
+	return resp.Payload, nil
 
 }
 
@@ -142,7 +143,8 @@ func (f *IBMPIVolumeClient) SetBootVolume(id, volumename, cloud_instance_id stri
 	params := p_cloud_volumes.NewPcloudPvminstancesVolumesSetbootPutParamsWithTimeout(30).WithCloudInstanceID(cloud_instance_id).WithPvmInstanceID(id).WithVolumeID(volumename)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesSetbootPut(params, ibmpisession.NewAuth(f.session, cloud_instance_id))
 	if err != nil {
-		return nil, errors.ToError(err)
+		//return nil, errors.ToError(err)
+		return nil, fmt.Errorf("Failed to set the boot volume for cloud instance id [%s] ", cloud_instance_id)
 	}
-	return resp.Payload, fmt.Errorf("Failed to set the boot volume for cloud instance id [%s] ", cloud_instance_id)
+	return resp.Payload, nil
 }

@@ -135,10 +135,9 @@ func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string, netwo
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
 		log.Printf("Failed to create the network port")
-
-		return nil, errors.ToError(err)
+		return nil, fmt.Errorf("Failed to create the network port for cloudinstance id [%s]", powerinstanceid)
 	}
-	return resp.Payload, fmt.Errorf("Failed to create the network port for cloud instance id [%s] ", powerinstanceid)
+	return resp.Payload, nil
 }
 
 // Delete
