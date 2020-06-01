@@ -3,16 +3,26 @@ package instance
 import (
 	"fmt"
 	"github.com/IBM-Cloud/power-go-client/errors"
+	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"log"
+	"time"
 )
 
 type IBMPIVolumeClient struct {
 	session         *ibmpisession.IBMPISession
 	powerinstanceid string
 }
+
+const (
+
+	// Timeouts for power
+	postTimeOut   = 30 * time.Second
+	getTimeOut    = 60 * time.Second
+	deleteTimeOut = 30 * time.Second
+)
 
 // NewPowerVolumeClient ...
 func NewIBMPIVolumeClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPIVolumeClient {
@@ -27,7 +37,7 @@ func (f *IBMPIVolumeClient) Get(id, powerinstanceid string) (*models.Volume, err
 	log.Printf("Calling the VolumeGet Method..")
 	log.Printf("The input volume name is %s and  to the cloudinstance id %s", id, powerinstanceid)
 
-	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesGetParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithVolumeID(id)
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesGetParamsWithTimeout(getTimeOut).WithCloudInstanceID(powerinstanceid).WithVolumeID(id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
@@ -50,7 +60,7 @@ func (f *IBMPIVolumeClient) Create(volumename string, volumesize float64, volume
 		Shareable: &volumeshareable,
 	}
 
-	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithBody(&body)
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPostParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(&body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
@@ -63,7 +73,7 @@ func (f *IBMPIVolumeClient) Create(volumename string, volumesize float64, volume
 // Delete ...
 func (f *IBMPIVolumeClient) Delete(id string, powerinstanceid string) error {
 	//var cloudinstanceid = f.session.PowerServiceInstance
-	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesDeleteParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithVolumeID(id)
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesDeleteParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithVolumeID(id)
 	_, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return errors.ToError(err)
@@ -78,7 +88,7 @@ func (f *IBMPIVolumeClient) Update(id, volumename string, volumesize float64, vo
 	patchbody.Name = &volumename
 	patchbody.Size = volumesize
 	patchbody.Shareable = &volumeshare
-	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPutParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithVolumeID(id).WithBody(&patchbody)
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPutParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithVolumeID(id).WithBody(&patchbody)
 
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
@@ -95,7 +105,7 @@ func (f *IBMPIVolumeClient) Attach(id, volumename string, powerinstanceid string
 
 	log.Printf("Calling the Power Volume Attach method")
 
-	params := p_cloud_volumes.NewPcloudPvminstancesVolumesPostParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithVolumeID(volumename)
+	params := p_cloud_volumes.NewPcloudPvminstancesVolumesPostParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithVolumeID(volumename)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, errors.ToError(err)
@@ -111,7 +121,7 @@ func (f *IBMPIVolumeClient) Attach(id, volumename string, powerinstanceid string
 func (f *IBMPIVolumeClient) Detach(id, volumename string, powerinstanceid string) (models.Object, error) {
 	log.Printf("Calling the Power Volume Detach method")
 
-	params := p_cloud_volumes.NewPcloudPvminstancesVolumesDeleteParamsWithTimeout(30).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithVolumeID(volumename)
+	params := p_cloud_volumes.NewPcloudPvminstancesVolumesDeleteParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithVolumeID(volumename)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
@@ -127,7 +137,7 @@ func (f *IBMPIVolumeClient) Detach(id, volumename string, powerinstanceid string
 func (f *IBMPIVolumeClient) GetAll(id, cloud_instance_id string) (*models.Volumes, error) {
 
 	log.Printf("Calling the Power Volumes GetAll Method")
-	params := p_cloud_volumes.NewPcloudPvminstancesVolumesGetallParamsWithTimeout(30).WithPvmInstanceID(id).WithCloudInstanceID(cloud_instance_id)
+	params := p_cloud_volumes.NewPcloudPvminstancesVolumesGetallParamsWithTimeout(f.session.Timeout).WithPvmInstanceID(id).WithCloudInstanceID(cloud_instance_id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesGetall(params, ibmpisession.NewAuth(f.session, cloud_instance_id))
 	if err != nil {
 		return nil, errors.ToError(err)
@@ -140,7 +150,7 @@ func (f *IBMPIVolumeClient) GetAll(id, cloud_instance_id string) (*models.Volume
 
 func (f *IBMPIVolumeClient) SetBootVolume(id, volumename, cloud_instance_id string) (models.Object, error) {
 	log.Printf("Setting the Boot Volume for this %s instance as ", cloud_instance_id)
-	params := p_cloud_volumes.NewPcloudPvminstancesVolumesSetbootPutParamsWithTimeout(30).WithCloudInstanceID(cloud_instance_id).WithPvmInstanceID(id).WithVolumeID(volumename)
+	params := p_cloud_volumes.NewPcloudPvminstancesVolumesSetbootPutParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(cloud_instance_id).WithPvmInstanceID(id).WithVolumeID(volumename)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesSetbootPut(params, ibmpisession.NewAuth(f.session, cloud_instance_id))
 	if err != nil {
 		//return nil, errors.ToError(err)
