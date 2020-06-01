@@ -152,3 +152,36 @@ func (f *IBMPINetworkClient) DeletePort(networkid string, powerinstanceid string
 	}
 	return &resp.Payload, nil
 }
+
+//Attach Port to the PVM Instance
+
+func (f *IBMPINetworkClient) AttachPort(powerinstanceid, network_id, port_id string, networkparams *p_cloud_networks.PcloudNetworksPortsPutParams) (*models.NetworkPort, error) {
+
+	params := p_cloud_networks.NewPcloudNetworksPortsPutParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(network_id).WithPortID(port_id).WithBody(networkparams.Body)
+	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil {
+		log.Printf("Failed to attach the port to the pvminstance")
+		return nil, fmt.Errorf("Failed to attach the port [%s] to the pvminstance [%s]", port_id, networkparams.Body.PvmInstanceID)
+	}
+
+	return resp.Payload, nil
+}
+
+// Detach Port from the PVM Instance
+
+func (f *IBMPINetworkClient) DetachPort(powerinstanceid, network_id, port_id string) (*models.NetworkPort, error) {
+	log.Printf("Calling the detach port ")
+	var body = models.NetworkPortUpdate{}
+	body.PvmInstanceID = nil
+
+	params := p_cloud_networks.NewPcloudNetworksPortsPutParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(network_id).WithPortID(port_id).WithBody(&body)
+	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil {
+		log.Printf("Failed to detach the port to the pvminstance")
+		return nil, fmt.Errorf("Failed to detach the port [%s]", port_id)
+	}
+
+	return resp.Payload, nil
+}
