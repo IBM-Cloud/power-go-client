@@ -212,12 +212,28 @@ func (f *IBMPIInstanceClient) RestoreSnapShotVM(powerinstanceid, pvminstanceid, 
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid).WithSnapshotID(snapshotid).WithRestoreFailAction(&restoreAction).WithBody(restoreparams.Body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp.Payload.SnapshotID != nil {
+	if err != nil {
 		log.Printf("Failed to perform the snapshot restore operation")
 		return nil, errors.ToError(err)
 	}
 	return resp.Payload, nil
 }
+
+// Add a network to the instance
+
+func (f *IBMPIInstanceClient) AddNetwork(powerinstanceid, pvminstanceid string, networkdef *p_cloud_p_vm_instances.PcloudPvminstancesNetworksPostParams) (*models.PVMInstanceNetwork, error) {
+	log.Printf("Adding a network to the existing pvm instance with instanceid [%s] ", pvminstanceid)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworksPostParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid).WithBody(networkdef.Body)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesNetworksPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload.NetworkID == "" {
+		return nil, fmt.Errorf("Failed to attach the network to the pvminstanceid ")
+
+	}
+	return resp.Payload, nil
+}
+
+// Delete a network from an instance
 
 // Create SAP Systems
 
