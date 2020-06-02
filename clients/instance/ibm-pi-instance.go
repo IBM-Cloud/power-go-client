@@ -8,6 +8,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_s_a_p"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"log"
+	"time"
 )
 
 type IBMPIInstanceClient struct {
@@ -24,9 +25,9 @@ func NewIBMPIInstanceClient(sess *ibmpisession.IBMPISession, powerinstanceid str
 }
 
 //Get information about a single pvm only
-func (f *IBMPIInstanceClient) Get(id, powerinstanceid string) (*models.PVMInstance, error) {
+func (f *IBMPIInstanceClient) Get(id, powerinstanceid string, timeout time.Duration) (*models.PVMInstance, error) {
 
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
 		log.Printf("Failed to perform the operation... %v", err)
@@ -113,11 +114,11 @@ func (f *IBMPIInstanceClient) Update(id, powerinstanceid string, powerupdatepara
 }
 
 // PVM Instances Operations
-func (f *IBMPIInstanceClient) Action(poweractionparams *p_cloud_p_vm_instances.PcloudPvminstancesActionPostParams, id, powerinstanceid string) (models.Object, error) {
+func (f *IBMPIInstanceClient) Action(poweractionparams *p_cloud_p_vm_instances.PcloudPvminstancesActionPostParams, id, powerinstanceid string, timeout time.Duration) (models.Object, error) {
 
 	log.Printf("Calling the Power PVM Action Method")
 	log.Printf("the params are %s - powerinstance id is %s", id, powerinstanceid)
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesActionPostParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithBody(poweractionparams.Body)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesActionPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithBody(poweractionparams.Body)
 
 	log.Printf("printing the poweraction params %+v", params)
 
