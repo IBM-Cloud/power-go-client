@@ -157,3 +157,17 @@ func (f *IBMPIVolumeClient) SetBootVolume(id, volumename, cloud_instance_id stri
 	}
 	return resp.Payload, nil
 }
+
+// Check if the volume is attached to the instance
+func (f *IBMPIVolumeClient) CheckVolumeAttach(cloud_instance_id, pvm_instance_id, volume_id string, timeout time.Duration) (*models.Volume, error) {
+
+	log.Printf("Checking if the volume [%s] has been attached to the pvm_instance [%s] for cloud instance id [%s]", volume_id, pvm_instance_id, cloud_instance_id)
+	params := p_cloud_volumes.NewPcloudPvminstancesVolumesGetParamsWithTimeout(timeout).WithCloudInstanceID(cloud_instance_id).WithPvmInstanceID(pvm_instance_id).WithVolumeID(volume_id)
+	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesGet(params, ibmpisession.NewAuth(f.session, cloud_instance_id))
+
+	if err != nil {
+		return nil, fmt.Errorf("Failed to validate that the volume [%s] is attached to the pvminstance [%s]", volume_id, pvm_instance_id)
+	}
+
+	return resp.Payload, nil
+}
