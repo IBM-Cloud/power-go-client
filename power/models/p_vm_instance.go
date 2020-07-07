@@ -103,6 +103,9 @@ type PVMInstance struct {
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 
+	// The pvm instance SRC lists
+	Srcs [][]*SRC `json:"srcs"`
+
 	// The status of the instance
 	// Required: true
 	Status *string `json:"status"`
@@ -188,6 +191,10 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSoftwareLicenses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSrcs(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -461,6 +468,35 @@ func (m *PVMInstance) validateSoftwareLicenses(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) validateSrcs(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Srcs) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Srcs); i++ {
+
+		for ii := 0; ii < len(m.Srcs[i]); ii++ {
+			if swag.IsZero(m.Srcs[i][ii]) { // not required
+				continue
+			}
+
+			if m.Srcs[i][ii] != nil {
+				if err := m.Srcs[i][ii].Validate(formats); err != nil {
+					if ve, ok := err.(*errors.Validation); ok {
+						return ve.ValidateName("srcs" + "." + strconv.Itoa(i) + "." + strconv.Itoa(ii))
+					}
+					return err
+				}
+			}
+
+		}
+
 	}
 
 	return nil

@@ -35,6 +35,9 @@ type PVMInstanceUpdate struct {
 	// Number of processors allocated
 	Processors float64 `json:"processors,omitempty"`
 
+	// If an SAP pvm-instance, the SAP profile ID to switch to (only while shutdown)
+	SapProfileID string `json:"sapProfileID,omitempty"`
+
 	// Name of the server to create
 	ServerName string `json:"serverName,omitempty"`
 
