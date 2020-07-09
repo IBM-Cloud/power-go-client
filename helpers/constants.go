@@ -36,11 +36,18 @@ const (
 	PIInstancePinPolicy         = "pi_pin_policy"
 
 	// IBM PI Volume
-	PIVolumeName      = "pi_volume_name"
-	PIVolumeSize      = "pi_volume_size"
-	PIVolumeType      = "pi_volume_type"
-	PIVolumeShareable = "pi_volume_shareable"
-	PIVolumeId        = "pi_volume_id"
+	PIVolumeName              = "pi_volume_name"
+	PIVolumeSize              = "pi_volume_size"
+	PIVolumeType              = "pi_volume_type"
+	PIVolumeShareable         = "pi_volume_shareable"
+	PIVolumeId                = "pi_volume_id"
+	PIVolumeWWN               = "pi_volume_wwn"
+	PIVolumeDeleteOnTerminate = "pi_volume_delete_on_terminate"
+	PIVolumeCreateDate        = "pi_volume_create_date"
+	PIVolumeLastUpdate        = "pi_last_updated_date"
+	PIVolumePool              = "pi_volume_pool"
+	PIAffinityPolicy          = "pi_volume_affinity_policy"
+	PIAffinityVolume          = "pi_volume_affinity"
 
 	// IBM PI Snapshots
 

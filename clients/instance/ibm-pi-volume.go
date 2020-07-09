@@ -61,10 +61,10 @@ func (f *IBMPIVolumeClient) CreateVolume(create_vol_defs *p_cloud_volumes.Pcloud
 
 // UpdateVolume
 
-func (f *IBMPIVolumeClient) UpdateVolume(update_vol_defs *p_cloud_volumes.PcloudCloudinstancesVolumesPutParams, powerinstanceid string, timeout time.Duration) (*models.Volume, error) {
+func (f *IBMPIVolumeClient) UpdateVolume(update_vol_defs *p_cloud_volumes.PcloudCloudinstancesVolumesPutParams, volumeid, powerinstanceid string, timeout time.Duration) (*models.Volume, error) {
 
 	log.Printf("Calling the Create Volume method ")
-	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPutParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(update_vol_defs.Body)
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPutParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(update_vol_defs.Body).WithVolumeID(volumeid)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
