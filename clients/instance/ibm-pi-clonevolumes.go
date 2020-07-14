@@ -24,7 +24,7 @@ func NewIBMPICloneVolumeClient(sess *ibmpisession.IBMPISession, powerinstanceid 
 //Create a clone volume
 func (f *IBMPICloneVolumeClient) Create(clone_params *p_cloud_volumes.PcloudVolumesClonePostParams, id, powerinstanceid string, timeout time.Duration) (*models.VolumesCloneResponse, error) {
 
-	log.Printf("Calling the CloneVolume Create Method..", timeout)
+	log.Printf("Calling the CloneVolume Create Method with provided time out value of [%f]", timeout.Minutes())
 	log.Printf("The input clone name is %s and  to the cloudinstance id %s", id, powerinstanceid)
 	params := p_cloud_volumes.NewPcloudVolumesClonePostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(clone_params.Body)
 
