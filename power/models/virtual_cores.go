@@ -19,15 +19,14 @@ type VirtualCores struct {
 
 	// The active virtual Cores
 	// Required: true
+	// Minimum: 1
 	Assigned *int64 `json:"assigned"`
 
-	// The maximum DLPAR range for virtual Cores
-	// Required: true
-	Max *int64 `json:"max"`
+	// The maximum DLPAR range for virtual Cores (Display only support)
+	Max int64 `json:"max,omitempty"`
 
-	// The minimum DLPAR range for virtual Cores
-	// Required: true
-	Min *int64 `json:"min"`
+	// The minimum DLPAR range for virtual Cores (Display only support)
+	Min int64 `json:"min,omitempty"`
 }
 
 // Validate validates this virtual cores
@@ -35,14 +34,6 @@ func (m *VirtualCores) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAssigned(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateMax(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateMin(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -58,21 +49,7 @@ func (m *VirtualCores) validateAssigned(formats strfmt.Registry) error {
 		return err
 	}
 
-	return nil
-}
-
-func (m *VirtualCores) validateMax(formats strfmt.Registry) error {
-
-	if err := validate.Required("max", "body", m.Max); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VirtualCores) validateMin(formats strfmt.Registry) error {
-
-	if err := validate.Required("min", "body", m.Min); err != nil {
+	if err := validate.MinimumInt("assigned", "body", int64(*m.Assigned), 1, false); err != nil {
 		return err
 	}
 
