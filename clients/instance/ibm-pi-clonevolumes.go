@@ -57,16 +57,32 @@ func (f *IBMPICloneVolumeClient) DeleteClone(cloneParams *p_cloud_volumes.Pcloud
 
 // Get status of a clone request
 
-func (f *IBMPICloneVolumeClient) Get(cloneGetParams *p_cloud_volumes.PcloudV2VolumesClonetasksGetParams, timeout time.Duration) (*models.CloneTaskStatus, error) {
+func (f *IBMPICloneVolumeClient) Get(powerinstanceid, clonetaskid string, timeout time.Duration) (*models.CloneTaskStatus, error) {
 
 	log.Printf("Calling the P2 CloneVolume Get Method with provided time out value of [%f]", timeout.Minutes())
 
-	params := p_cloud_volumes.NewPcloudV2VolumesClonetasksGetParamsWithTimeout(timeout).WithCloudInstanceID(cloneGetParams.CloudInstanceID).WithCloneTaskID(cloneGetParams.CloneTaskID)
+	params := p_cloud_volumes.NewPcloudV2VolumesClonetasksGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithCloneTaskID(clonetaskid)
 
-	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesClonetasksGet(params, ibmpisession.NewAuth(f.session, cloneGetParams.CloudInstanceID))
+	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesClonetasksGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
 		log.Printf("Failed to perform the get operation for clones... %v", err)
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+}
+
+//Start a clone
+func (f *IBMPICloneVolumeClient) StartClone(powerinstanceid, volume_clone_id string, timeout time.Duration) (*models.VolumesClone, error) {
+
+	log.Printf("Calling the P2 CloneVolume Start Method with provided time out value of [%f]", timeout.Minutes())
+
+	params := p_cloud_volumes.NewPcloudV2VolumescloneStartPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithVolumesCloneID(volume_clone_id)
+
+	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumescloneStartPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil || resp.Payload == nil {
+		log.Printf("Failed to perform the start operation for clones... %v", err)
 		return nil, errors.ToError(err)
 	}
 	return resp.Payload, nil

@@ -7,6 +7,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_cloud_connections"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"log"
+	"time"
 )
 
 type IBMPICloudConnectionClient struct {
@@ -65,10 +66,10 @@ func (f *IBMPICloudConnectionClient) Get(pclouddef *p_cloud_cloud_connections.Pc
 /*
  gets a cloud connection s state information
 */
-func (f *IBMPICloudConnectionClient) GetAll(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsGetParams) (*models.CloudConnections, error) {
+func (f *IBMPICloudConnectionClient) GetAll(powerinstanceid string, timeout time.Duration) (*models.CloudConnections, error) {
 
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParams().WithCloudInstanceID(pclouddef.CloudInstanceID)
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGetall(params, ibmpisession.NewAuth(f.session, pclouddef.CloudInstanceID))
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid)
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
 		log.Printf("Failed to perform get information about the cloud connection object... %v", err)
