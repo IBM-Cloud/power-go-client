@@ -108,3 +108,5 @@ func (f *IBMPIImageClient) GetSAPImages(powerinstanceid string, sapimage bool) (
 	}
 	return resp.Payload, nil
 }
+
+// Get a single SAP Image

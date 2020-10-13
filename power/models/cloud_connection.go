@@ -52,8 +52,7 @@ type CloudConnection struct {
 	Name *string `json:"name"`
 
 	// Network References
-	// Required: true
-	Networks []*NetworkReference `json:"networks"`
+	Networks []*NetworkReference `json:"networks,omitempty"`
 
 	// port
 	// Required: true
@@ -220,8 +219,8 @@ func (m *CloudConnection) validateName(formats strfmt.Registry) error {
 
 func (m *CloudConnection) validateNetworks(formats strfmt.Registry) error {
 
-	if err := validate.Required("networks", "body", m.Networks); err != nil {
-		return err
+	if swag.IsZero(m.Networks) { // not required
+		return nil
 	}
 
 	for i := 0; i < len(m.Networks); i++ {
