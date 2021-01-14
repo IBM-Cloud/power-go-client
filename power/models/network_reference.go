@@ -35,9 +35,9 @@ type NetworkReference struct {
 	// Required: true
 	NetworkID *string `json:"networkID"`
 
-	// Type of Network {vlan, vxlan}
+	// Type of Network {vlan, pub-vlan}
 	// Required: true
-	// Enum: [vlan vxlan]
+	// Enum: [vlan pub-vlan]
 	Type *string `json:"type"`
 
 	// VLAN ID
@@ -119,7 +119,7 @@ var networkReferenceTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["vlan","vxlan"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["vlan","pub-vlan"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -132,8 +132,8 @@ const (
 	// NetworkReferenceTypeVlan captures enum value "vlan"
 	NetworkReferenceTypeVlan string = "vlan"
 
-	// NetworkReferenceTypeVxlan captures enum value "vxlan"
-	NetworkReferenceTypeVxlan string = "vxlan"
+	// NetworkReferenceTypePubVlan captures enum value "pub-vlan"
+	NetworkReferenceTypePubVlan string = "pub-vlan"
 )
 
 // prop value enum

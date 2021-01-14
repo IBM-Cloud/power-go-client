@@ -46,6 +46,19 @@ func (f *IBMPIVolumeClient) Get(id, powerinstanceid string, timeout time.Duratio
 	return resp.Payload, nil
 }
 
+//V2 Create Volume
+
+func (f *IBMPIVolumeClient) CreateVolumeV2(create_vol_defs *p_cloud_volumes.PcloudV2VolumesPostParams, powerinstanceid string, timeout time.Duration) (*models.Volumes, error) {
+
+	log.Printf("Calling the Create Volume v2 method")
+	params := p_cloud_volumes.NewPcloudV2VolumesPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(create_vol_defs.Body)
+	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	if err != nil {
+		return nil, errors.ToError(err)
+	}
+	return resp.Payload, nil
+}
+
 // CreateVolume
 func (f *IBMPIVolumeClient) CreateVolume(create_vol_defs *p_cloud_volumes.PcloudCloudinstancesVolumesPostParams, powerinstanceid string, timeout time.Duration) (*models.Volume, error) {
 

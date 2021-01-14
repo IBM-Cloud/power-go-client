@@ -39,6 +39,13 @@ func (o *PcloudCloudconnectionsPostReader) ReadResponse(response runtime.ClientR
 		}
 		return result, nil
 
+	case 202:
+		result := NewPcloudCloudconnectionsPostAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 400:
 		result := NewPcloudCloudconnectionsPostBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -119,6 +126,35 @@ func (o *PcloudCloudconnectionsPostCreated) Error() string {
 }
 
 func (o *PcloudCloudconnectionsPostCreated) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.CloudConnection)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsPostAccepted creates a PcloudCloudconnectionsPostAccepted with default headers values
+func NewPcloudCloudconnectionsPostAccepted() *PcloudCloudconnectionsPostAccepted {
+	return &PcloudCloudconnectionsPostAccepted{}
+}
+
+/*PcloudCloudconnectionsPostAccepted handles this case with default header values.
+
+Accepted
+*/
+type PcloudCloudconnectionsPostAccepted struct {
+	Payload *models.CloudConnection
+}
+
+func (o *PcloudCloudconnectionsPostAccepted) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostAccepted  %+v", 202, o.Payload)
+}
+
+func (o *PcloudCloudconnectionsPostAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.CloudConnection)
 

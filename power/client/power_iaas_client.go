@@ -25,6 +25,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_p_vm_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_s_a_p"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_snapshots"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_storage_capacity"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tasks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants"
@@ -106,6 +107,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaas 
 	cli.PCloudSAP = p_cloud_s_a_p.New(transport, formats)
 
 	cli.PCloudSnapshots = p_cloud_snapshots.New(transport, formats)
+
+	cli.PCloudStorageCapacity = p_cloud_storage_capacity.New(transport, formats)
 
 	cli.PCloudSystemPools = p_cloud_system_pools.New(transport, formats)
 
@@ -197,6 +200,8 @@ type PowerIaas struct {
 
 	PCloudSnapshots *p_cloud_snapshots.Client
 
+	PCloudStorageCapacity *p_cloud_storage_capacity.Client
+
 	PCloudSystemPools *p_cloud_system_pools.Client
 
 	PCloudTasks *p_cloud_tasks.Client
@@ -249,6 +254,8 @@ func (c *PowerIaas) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudSAP.SetTransport(transport)
 
 	c.PCloudSnapshots.SetTransport(transport)
+
+	c.PCloudStorageCapacity.SetTransport(transport)
 
 	c.PCloudSystemPools.SetTransport(transport)
 

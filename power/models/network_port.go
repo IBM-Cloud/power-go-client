@@ -17,7 +17,7 @@ import (
 // swagger:model NetworkPort
 type NetworkPort struct {
 
-	// The escription of the port (not unique or indexable)
+	// Description of the port (not unique or indexable)
 	// Required: true
 	Description *string `json:"description"`
 

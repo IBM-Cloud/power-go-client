@@ -19,17 +19,20 @@ import (
 // swagger:model MultiVolumesCreate
 type MultiVolumesCreate struct {
 
-	// Affinity policy for data volume being created; requires affinityVolume to be specified
+	// PVM Instance (ID or Name)to base volume affinity policy against; required if affinityPolicy is provided and affinityVolume is not provided
+	AffinityPVMInstance *string `json:"affinityPVMInstance,omitempty"`
+
+	// Affinity policy for data volume being created; requires affinityPVMInstance or affinityVolume to be specified; ignored if volumePool provided
 	// Enum: [affinity anti-affinity]
 	AffinityPolicy *string `json:"affinityPolicy,omitempty"`
 
-	// Volume (ID or Name)to base volume affinity policy against; required if affinityPolicy provided
+	// Volume (ID or Name) to base volume affinity policy against; required if affinityPolicy is provided and affinityPVMInstance is not provided
 	AffinityVolume *string `json:"affinityVolume,omitempty"`
 
 	// Number of volumes to create
 	Count int64 `json:"count,omitempty"`
 
-	// Type of Disk, required if affinityPolicy not used
+	// Type of Disk, required if affinityPolicy and volumePool not provided, otherwise ignored
 	DiskType string `json:"diskType,omitempty"`
 
 	// Base name of the volume(s)
@@ -42,6 +45,9 @@ type MultiVolumesCreate struct {
 	// Volume Size (GB)
 	// Required: true
 	Size *int64 `json:"size"`
+
+	// Volume pool where the volume will be created; if provided then diskType and affinityPolicy values will be ignored
+	VolumePool string `json:"volumePool,omitempty"`
 }
 
 // Validate validates this multi volumes create
