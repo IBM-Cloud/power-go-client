@@ -22,6 +22,9 @@ type CloudConnectionUpdate struct {
 	// enable global routing for this cloud connection (default=false)
 	GlobalRouting *bool `json:"globalRouting,omitempty"`
 
+	// enable metered for this cloud connection (default=false)
+	Metered *bool `json:"metered,omitempty"`
+
 	// name of the cloud connection
 	Name *string `json:"name,omitempty"`
 

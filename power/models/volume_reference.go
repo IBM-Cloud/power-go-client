@@ -68,6 +68,9 @@ type VolumeReference struct {
 	// Required: true
 	VolumeID *string `json:"volumeID"`
 
+	// Volume type, name of storage template used to create the volume
+	VolumeType string `json:"volumeType,omitempty"`
+
 	// Volume world wide name
 	// Required: true
 	Wwn *string `json:"wwn"`

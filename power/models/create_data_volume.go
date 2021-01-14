@@ -19,14 +19,17 @@ import (
 // swagger:model CreateDataVolume
 type CreateDataVolume struct {
 
-	// Affinity policy for data volume being created; requires affinityVolume to be specified
+	// PVM Instance (ID or Name) to base volume affinity policy against; required if affinityPolicy is provided and affinityVolume is not provided
+	AffinityPVMInstance *string `json:"affinityPVMInstance,omitempty"`
+
+	// Affinity policy for data volume being created; requires affinityPVMInstance or affinityVolume to be specified; ignored if volumePool provided
 	// Enum: [affinity anti-affinity]
 	AffinityPolicy *string `json:"affinityPolicy,omitempty"`
 
-	// Volume (ID or Name)to base volume affinity policy against; required if affinityPolicy provided
+	// Volume (ID or Name) to base volume affinity policy against; required if affinityPolicy is provided and affinityPVMInstance is not provided
 	AffinityVolume *string `json:"affinityVolume,omitempty"`
 
-	// Type of Disk, required if affinityPolicy not used
+	// Type of Disk, required if affinityPolicy and volumePool not provided, otherwise ignored
 	DiskType string `json:"diskType,omitempty"`
 
 	// Volume Name
@@ -40,7 +43,7 @@ type CreateDataVolume struct {
 	// Required: true
 	Size *float64 `json:"size"`
 
-	// Volume pool where the volume will be located
+	// Volume pool where the volume will be created; if provided then diskType and affinityPolicy values will be ignored
 	VolumePool string `json:"volumePool,omitempty"`
 }
 

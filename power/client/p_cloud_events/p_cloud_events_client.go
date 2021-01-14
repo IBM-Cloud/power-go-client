@@ -54,23 +54,23 @@ func (a *Client) PcloudEventsGet(params *PcloudEventsGetParams, authInfo runtime
 }
 
 /*
-PcloudEventsGetsince gets events from this cloud instance since a specific timestamp
+PcloudEventsGetquery gets events from this cloud instance since a specific timestamp
 */
-func (a *Client) PcloudEventsGetsince(params *PcloudEventsGetsinceParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudEventsGetsinceOK, error) {
+func (a *Client) PcloudEventsGetquery(params *PcloudEventsGetqueryParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudEventsGetqueryOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPcloudEventsGetsinceParams()
+		params = NewPcloudEventsGetqueryParams()
 	}
 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "pcloud.events.getsince",
+		ID:                 "pcloud.events.getquery",
 		Method:             "GET",
 		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/events",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &PcloudEventsGetsinceReader{formats: a.formats},
+		Reader:             &PcloudEventsGetqueryReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -78,7 +78,7 @@ func (a *Client) PcloudEventsGetsince(params *PcloudEventsGetsinceParams, authIn
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PcloudEventsGetsinceOK), nil
+	return result.(*PcloudEventsGetqueryOK), nil
 
 }
 

@@ -32,6 +32,13 @@ func (o *PcloudCloudconnectionsDeleteReader) ReadResponse(response runtime.Clien
 		}
 		return result, nil
 
+	case 202:
+		result := NewPcloudCloudconnectionsDeleteAccepted()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return result, nil
+
 	case 400:
 		result := NewPcloudCloudconnectionsDeleteBadRequest()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -76,6 +83,33 @@ func (o *PcloudCloudconnectionsDeleteOK) Error() string {
 }
 
 func (o *PcloudCloudconnectionsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	// response payload
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsDeleteAccepted creates a PcloudCloudconnectionsDeleteAccepted with default headers values
+func NewPcloudCloudconnectionsDeleteAccepted() *PcloudCloudconnectionsDeleteAccepted {
+	return &PcloudCloudconnectionsDeleteAccepted{}
+}
+
+/*PcloudCloudconnectionsDeleteAccepted handles this case with default header values.
+
+Accepted
+*/
+type PcloudCloudconnectionsDeleteAccepted struct {
+	Payload models.Object
+}
+
+func (o *PcloudCloudconnectionsDeleteAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteAccepted  %+v", 202, o.Payload)
+}
+
+func (o *PcloudCloudconnectionsDeleteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {

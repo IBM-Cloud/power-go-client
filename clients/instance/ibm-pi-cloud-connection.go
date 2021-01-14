@@ -29,7 +29,7 @@ func NewIBMPICloudConnectionClient(sess *ibmpisession.IBMPISession, powerinstanc
 func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsPostParams, powerinstanceid string) (*models.CloudConnection, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(pclouddef.Body)
-	postok, postcreated, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	postok, postcreated, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		log.Printf("failed to process the request..")
 		return nil, nil
@@ -83,7 +83,7 @@ func (f *IBMPICloudConnectionClient) GetAll(powerinstanceid string, timeout time
 func (f *IBMPICloudConnectionClient) Update(updateparams *p_cloud_cloud_connections.PcloudCloudconnectionsPutParams) (*models.CloudConnection, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPutParams().WithCloudInstanceID(updateparams.CloudInstanceID).WithCloudConnectionID(updateparams.CloudConnectionID).WithBody(updateparams.Body)
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, updateparams.CloudInstanceID))
+	resp, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, updateparams.CloudInstanceID))
 
 	if err != nil {
 		log.Printf("Failed to perform the update operations %v", err)
@@ -98,7 +98,7 @@ func (f *IBMPICloudConnectionClient) Update(updateparams *p_cloud_cloud_connecti
 func (f *IBMPICloudConnectionClient) Delete(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsDeleteParams) (models.Object, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParams().WithCloudInstanceID(pclouddef.CloudInstanceID).WithCloudConnectionID(pclouddef.CloudConnectionID)
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, pclouddef.CloudInstanceID))
+	resp, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, pclouddef.CloudInstanceID))
 
 	if err != nil || resp.Payload == nil {
 		log.Printf("Failed to perform the operation... %v", err)

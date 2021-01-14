@@ -53,6 +53,10 @@ type Image struct {
 	// Image State
 	State string `json:"state,omitempty"`
 
+	// Storage pool where the image resides
+	// Required: true
+	StoragePool *string `json:"storagePool"`
+
 	// Storage type for image
 	// Required: true
 	StorageType *string `json:"storageType"`
@@ -89,6 +93,10 @@ func (m *Image) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSpecifications(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStoragePool(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -176,6 +184,15 @@ func (m *Image) validateSpecifications(formats strfmt.Registry) error {
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Image) validateStoragePool(formats strfmt.Registry) error {
+
+	if err := validate.Required("storagePool", "body", m.StoragePool); err != nil {
+		return err
 	}
 
 	return nil

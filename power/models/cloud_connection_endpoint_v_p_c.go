@@ -22,7 +22,7 @@ type CloudConnectionEndpointVPC struct {
 	Enabled bool `json:"enabled"`
 
 	// vpc connections
-	Vpcs []*CloudConnectionVPC `json:"vpcs"`
+	Vpcs []*CloudConnectionVPC `json:"vpcs,omitempty"`
 }
 
 // Validate validates this cloud connection endpoint v p c

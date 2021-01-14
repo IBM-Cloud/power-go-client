@@ -13,10 +13,9 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/swag"
 
 	strfmt "github.com/go-openapi/strfmt"
-
-	models "github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudPvminstancesDeleteParams creates a new PcloudPvminstancesDeleteParams object
@@ -63,16 +62,16 @@ for the pcloud pvminstances delete operation typically these are written to a ht
 */
 type PcloudPvminstancesDeleteParams struct {
 
-	/*Body
-	  Parameters used when deleting a PCloud PVM Instance
-
-	*/
-	Body *models.PVMInstanceDelete
 	/*CloudInstanceID
 	  Cloud Instance ID of a PCloud Instance
 
 	*/
 	CloudInstanceID string
+	/*DeleteDataVolumes
+	  Indicates if all data volumes attached to the PVMInstance should be deleted when deleting the PVMInstance. Shared data volumes will be deleted if there are no other PVMInstances attached.
+
+	*/
+	DeleteDataVolumes *bool
 	/*PvmInstanceID
 	  PCloud PVM Instance ID
 
@@ -117,17 +116,6 @@ func (o *PcloudPvminstancesDeleteParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the pcloud pvminstances delete params
-func (o *PcloudPvminstancesDeleteParams) WithBody(body *models.PVMInstanceDelete) *PcloudPvminstancesDeleteParams {
-	o.SetBody(body)
-	return o
-}
-
-// SetBody adds the body to the pcloud pvminstances delete params
-func (o *PcloudPvminstancesDeleteParams) SetBody(body *models.PVMInstanceDelete) {
-	o.Body = body
-}
-
 // WithCloudInstanceID adds the cloudInstanceID to the pcloud pvminstances delete params
 func (o *PcloudPvminstancesDeleteParams) WithCloudInstanceID(cloudInstanceID string) *PcloudPvminstancesDeleteParams {
 	o.SetCloudInstanceID(cloudInstanceID)
@@ -137,6 +125,17 @@ func (o *PcloudPvminstancesDeleteParams) WithCloudInstanceID(cloudInstanceID str
 // SetCloudInstanceID adds the cloudInstanceId to the pcloud pvminstances delete params
 func (o *PcloudPvminstancesDeleteParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
+}
+
+// WithDeleteDataVolumes adds the deleteDataVolumes to the pcloud pvminstances delete params
+func (o *PcloudPvminstancesDeleteParams) WithDeleteDataVolumes(deleteDataVolumes *bool) *PcloudPvminstancesDeleteParams {
+	o.SetDeleteDataVolumes(deleteDataVolumes)
+	return o
+}
+
+// SetDeleteDataVolumes adds the deleteDataVolumes to the pcloud pvminstances delete params
+func (o *PcloudPvminstancesDeleteParams) SetDeleteDataVolumes(deleteDataVolumes *bool) {
+	o.DeleteDataVolumes = deleteDataVolumes
 }
 
 // WithPvmInstanceID adds the pvmInstanceID to the pcloud pvminstances delete params
@@ -158,15 +157,25 @@ func (o *PcloudPvminstancesDeleteParams) WriteToRequest(r runtime.ClientRequest,
 	}
 	var res []error
 
-	if o.Body != nil {
-		if err := r.SetBodyParam(o.Body); err != nil {
-			return err
-		}
-	}
-
 	// path param cloud_instance_id
 	if err := r.SetPathParam("cloud_instance_id", o.CloudInstanceID); err != nil {
 		return err
+	}
+
+	if o.DeleteDataVolumes != nil {
+
+		// query param delete_data_volumes
+		var qrDeleteDataVolumes bool
+		if o.DeleteDataVolumes != nil {
+			qrDeleteDataVolumes = *o.DeleteDataVolumes
+		}
+		qDeleteDataVolumes := swag.FormatBool(qrDeleteDataVolumes)
+		if qDeleteDataVolumes != "" {
+			if err := r.SetQueryParam("delete_data_volumes", qDeleteDataVolumes); err != nil {
+				return err
+			}
+		}
+
 	}
 
 	// path param pvm_instance_id

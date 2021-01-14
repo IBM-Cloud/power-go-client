@@ -27,7 +27,7 @@ type Client struct {
 /*
 PcloudCloudconnectionsDelete deletes a cloud connection
 */
-func (a *Client) PcloudCloudconnectionsDelete(params *PcloudCloudconnectionsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudconnectionsDeleteOK, error) {
+func (a *Client) PcloudCloudconnectionsDelete(params *PcloudCloudconnectionsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudconnectionsDeleteOK, *PcloudCloudconnectionsDeleteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudCloudconnectionsDeleteParams()
@@ -47,9 +47,15 @@ func (a *Client) PcloudCloudconnectionsDelete(params *PcloudCloudconnectionsDele
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return result.(*PcloudCloudconnectionsDeleteOK), nil
+	switch value := result.(type) {
+	case *PcloudCloudconnectionsDeleteOK:
+		return value, nil, nil
+	case *PcloudCloudconnectionsDeleteAccepted:
+		return nil, value, nil
+	}
+	return nil, nil, nil
 
 }
 
@@ -201,7 +207,7 @@ func (a *Client) PcloudCloudconnectionsNetworksPut(params *PcloudCloudconnection
 /*
 PcloudCloudconnectionsPost creates a new cloud connection
 */
-func (a *Client) PcloudCloudconnectionsPost(params *PcloudCloudconnectionsPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudconnectionsPostOK, *PcloudCloudconnectionsPostCreated, error) {
+func (a *Client) PcloudCloudconnectionsPost(params *PcloudCloudconnectionsPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudconnectionsPostOK, *PcloudCloudconnectionsPostCreated, *PcloudCloudconnectionsPostAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudCloudconnectionsPostParams()
@@ -221,22 +227,24 @@ func (a *Client) PcloudCloudconnectionsPost(params *PcloudCloudconnectionsPostPa
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, nil, err
+		return nil, nil, nil, err
 	}
 	switch value := result.(type) {
 	case *PcloudCloudconnectionsPostOK:
-		return value, nil, nil
+		return value, nil, nil, nil
 	case *PcloudCloudconnectionsPostCreated:
-		return nil, value, nil
+		return nil, value, nil, nil
+	case *PcloudCloudconnectionsPostAccepted:
+		return nil, nil, value, nil
 	}
-	return nil, nil, nil
+	return nil, nil, nil, nil
 
 }
 
 /*
 PcloudCloudconnectionsPut updates a cloud connection
 */
-func (a *Client) PcloudCloudconnectionsPut(params *PcloudCloudconnectionsPutParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudconnectionsPutOK, error) {
+func (a *Client) PcloudCloudconnectionsPut(params *PcloudCloudconnectionsPutParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudconnectionsPutOK, *PcloudCloudconnectionsPutAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudCloudconnectionsPutParams()
@@ -256,9 +264,15 @@ func (a *Client) PcloudCloudconnectionsPut(params *PcloudCloudconnectionsPutPara
 		Client:             params.HTTPClient,
 	})
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	return result.(*PcloudCloudconnectionsPutOK), nil
+	switch value := result.(type) {
+	case *PcloudCloudconnectionsPutOK:
+		return value, nil, nil
+	case *PcloudCloudconnectionsPutAccepted:
+		return nil, value, nil
+	}
+	return nil, nil, nil
 
 }
 

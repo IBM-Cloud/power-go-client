@@ -24,8 +24,8 @@ type Network struct {
 	// Required: true
 	Cidr *string `json:"cidr"`
 
-	// (optional) cloud connections this network is attached
-	CloudConnections []*NetworkCloudConnectionsItems0 `json:"cloudConnections"`
+	// (currently not available) cloud connections this network is attached
+	CloudConnections []*NetworkCloudConnectionsItems0 `json:"cloudConnections,omitempty"`
 
 	// DNS Servers
 	// Required: true
@@ -57,9 +57,9 @@ type Network struct {
 	// Public IP Address Ranges (for pub-vlan networks)
 	PublicIPAddressRanges []*IPAddressRange `json:"publicIPAddressRanges,omitempty"`
 
-	// Type of Network {vlan, vxlan}
+	// Type of Network {vlan, pub-vlan}
 	// Required: true
-	// Enum: [vlan vxlan]
+	// Enum: [vlan pub-vlan]
 	Type *string `json:"type"`
 
 	// VLAN ID
@@ -263,7 +263,7 @@ var networkTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["vlan","vxlan"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["vlan","pub-vlan"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -276,8 +276,8 @@ const (
 	// NetworkTypeVlan captures enum value "vlan"
 	NetworkTypeVlan string = "vlan"
 
-	// NetworkTypeVxlan captures enum value "vxlan"
-	NetworkTypeVxlan string = "vxlan"
+	// NetworkTypePubVlan captures enum value "pub-vlan"
+	NetworkTypePubVlan string = "pub-vlan"
 )
 
 // prop value enum
