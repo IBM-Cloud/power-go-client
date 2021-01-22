@@ -5,17 +5,16 @@ import (
 )
 
 /*
-
-
 Helper methods that will be used by the client classes
 */
 
+// IBMPIHelperClient ...
 type IBMPIHelperClient struct {
 	session         *ibmpisession.IBMPISession
 	powerinstanceid string
 }
 
-// NewPowerImageClient ...
+// NewIBMPIHelperClient ...
 func NewIBMPIHelperClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPIHelperClient {
 	return &IBMPIHelperClient{
 		session:         sess,

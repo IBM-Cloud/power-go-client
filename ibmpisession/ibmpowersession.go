@@ -15,15 +15,14 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
+	"github.com/go-openapi/strfmt"
+
 	"github.com/IBM-Cloud/power-go-client/power/client"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/IBM-Cloud/power-go-client/utils"
-
-	"github.com/go-openapi/runtime"
-	httptransport "github.com/go-openapi/runtime/client"
-
 	//"github.com/IBM-Cloud/bluemix-go/crn"
-	"github.com/go-openapi/strfmt"
 )
 
 const (
@@ -34,11 +33,9 @@ const (
 	serviceType              = "public"
 	serviceInstanceSeparator = "/"
 	separator                = ":"
-
-	//var crn = "crn:v1:bluemix:public:power-iaas:us-east:a/ba6042d7f84a4a318f64003e691bf700:d16705bd-7f1a-48c9-9e0e-1c17b71e7331::"
 )
 
-// Session ...
+// IBMPISession ...
 type IBMPISession struct {
 	IAMToken    string
 	IMSToken    string
@@ -51,20 +48,6 @@ type IBMPISession struct {
 
 func powerJSONConsumer() runtime.Consumer {
 	return runtime.ConsumerFunc(func(reader io.Reader, data interface{}) error {
-		/*t := reflect.TypeOf(data)
-		if data != nil && t.Kind() == reflect.Ptr {
-			v := reflect.Indirect(reflect.ValueOf(data))
-			if t.Elem().Kind() == reflect.String {
-				buf := new(bytes.Buffer)
-				_, err := buf.ReadFrom(reader)
-				if err != nil {
-					return err
-				}
-				b := buf.Bytes()
-				v.SetString(string(b))
-				return nil
-			}
-		}*/
 		buf := new(bytes.Buffer)
 		_, err := buf.ReadFrom(reader)
 		if err != nil {
@@ -78,7 +61,7 @@ func powerJSONConsumer() runtime.Consumer {
 		}
 		if string(b) == "null" || err != nil {
 			errorRecord, _ := data.(*models.Error)
-			log.Printf("The errorrecord is %s ", errorRecord)
+			log.Printf("The errorrecord is %s ", errorRecord.Error)
 			return nil
 		}
 		return err
@@ -103,7 +86,6 @@ func New(iamtoken, region string, debug bool, timeout time.Duration, useraccount
 
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
 	apiEndpointURL := utils.GetPowerEndPoint(region)
-	log.Printf("the apiendpoint url for power is %s", apiEndpointURL)
 	transport := httptransport.New(apiEndpointURL, "/", []string{"https"})
 	if debug {
 		transport.Debug = debug
@@ -114,11 +96,9 @@ func New(iamtoken, region string, debug bool, timeout time.Duration, useraccount
 	return session, nil
 }
 
-func NewAuth(sess *IBMPISession, PowerInstanceId string) runtime.ClientAuthInfoWriter {
-	log.Printf("Calling the New Auth Method in the IBMPower Session Code")
-	//var generatedCRN := crn.New(
-	//var region :=
-	var crndata = crnBuilder(PowerInstanceId, sess.UserAccount, sess.Region, sess.Zone)
+// NewAuth ...
+func NewAuth(sess *IBMPISession, PowerInstanceID string) runtime.ClientAuthInfoWriter {
+	var crndata = crnBuilder(PowerInstanceID, sess.UserAccount, sess.Region, sess.Zone)
 	return runtime.ClientAuthInfoWriterFunc(func(r runtime.ClientRequest, _ strfmt.Registry) error {
 		if err := r.SetHeaderParam("Authorization", sess.IAMToken); err != nil {
 			return err
@@ -128,6 +108,7 @@ func NewAuth(sess *IBMPISession, PowerInstanceId string) runtime.ClientAuthInfoW
 
 }
 
+// BearerTokenAndCRN ...
 func BearerTokenAndCRN(session *IBMPISession, crn string) runtime.ClientAuthInfoWriter {
 	return runtime.ClientAuthInfoWriterFunc(func(r runtime.ClientRequest, _ strfmt.Registry) error {
 		if err := r.SetHeaderParam("Authorization", session.IAMToken); err != nil {
@@ -137,17 +118,13 @@ func BearerTokenAndCRN(session *IBMPISession, crn string) runtime.ClientAuthInfo
 	})
 }
 
+// crnBuilder ...
 func crnBuilder(powerinstance, useraccount, region string, zone string) string {
-	log.Printf("Calling the crn constructor that is to be passed back to the caller  %s", useraccount)
-	log.Printf("the region is %s and the zone is  %s", region, zone)
 	var crnData string
-	//var crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + "us-south" + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
 	if zone == "" {
 		crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + region + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
 	} else {
 		crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + zone + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
 	}
-
-	log.Printf("the crndata is ... %s ", crnData)
 	return crnData
 }
