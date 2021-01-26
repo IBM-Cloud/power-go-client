@@ -2,6 +2,7 @@ package instance
 
 import (
 	"github.com/IBM-Cloud/power-go-client/errors"
+	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
 	"github.com/IBM-Cloud/power-go-client/power/models"
@@ -48,7 +49,7 @@ func (f *IBMPIKeyClient) Create(name string, sshkey, powerinstanceid string) (*m
 		CreationDate: &createDate,
 	}
 
-	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysPostParamsWithTimeout(f.session.Timeout).WithTenantID(f.session.UserAccount).WithBody(&body)
+	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysPostParamsWithTimeout(helpers.PICreateTimeout).WithTenantID(f.session.UserAccount).WithBody(&body)
 	resp, postok, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, nil, errors.ToError(err)

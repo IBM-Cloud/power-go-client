@@ -15,14 +15,6 @@ type IBMPIVolumeClient struct {
 	powerinstanceid string
 }
 
-const (
-
-	// Timeouts for power
-	postTimeOut   = 30 * time.Second
-	getTimeOut    = 60 * time.Second
-	deleteTimeOut = 30 * time.Second
-)
-
 // NewPowerVolumeClient ...
 func NewIBMPIVolumeClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPIVolumeClient {
 	return &IBMPIVolumeClient{

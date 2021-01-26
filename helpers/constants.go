@@ -1,5 +1,7 @@
 package helpers
 
+import "time"
+
 const (
 	// IBM PI Instance
 
@@ -137,4 +139,9 @@ const (
 	PIInstanceNotFound       = "Not Found"
 	PIImageQueStatus         = "queued"
 	PIImageActiveStatus      = "active"
+
+	// Timeouts for power service instance calls - Pretty high timeout since the calls hang / drop most of the time.
+	PICreateTimeout = 5 * time.Minute
+	PIGetTimeout    = 2 * time.Minute
+	PIDeleteTimeout = 1 * time.Minute
 )
