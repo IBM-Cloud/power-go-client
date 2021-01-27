@@ -28,7 +28,7 @@ func (f *IBMPINetworkClient) Get(id, powerinstanceid string, timeout time.Durati
 	params := p_cloud_networks.NewPcloudNetworksGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get PI Network %s :%s", id, err)
 	}
 	return resp.Payload, nil
@@ -60,7 +60,7 @@ func (f *IBMPINetworkClient) Create(name string, networktype string, cidr string
 	params := p_cloud_networks.NewPcloudNetworksPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(&body)
 	_, resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, nil, fmt.Errorf("Failed to Create PI Network %s :%s", name, err)
 	}
 
@@ -74,7 +74,7 @@ func (f *IBMPINetworkClient) GetPublic(powerinstanceid string, timeout time.Dura
 	params := p_cloud_networks.NewPcloudNetworksGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithFilter(&filterQuery)
 
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PI Networks in a power instance %s :%s", powerinstanceid, err)
 	}
 	return resp.Payload, nil
@@ -97,7 +97,7 @@ func (f *IBMPINetworkClient) GetAllPort(id string, powerinstanceid string, timeo
 
 	params := p_cloud_networks.NewPcloudNetworksPortsGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PI Network Ports %s :%s", id, err)
 	}
 	return resp.Payload, nil
@@ -109,7 +109,7 @@ func (f *IBMPINetworkClient) GetPort(id string, powerinstanceid string, networkP
 	params := p_cloud_networks.NewPcloudNetworksPortsGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id).WithPortID(networkPortID)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get PI Network Ports %s :%s", networkPortID, err)
 	}
 	return resp.Payload, nil
@@ -120,7 +120,7 @@ func (f *IBMPINetworkClient) GetPort(id string, powerinstanceid string, networkP
 func (f *IBMPINetworkClient) CreatePort(id string, powerinstanceid string, networkportdef *p_cloud_networks.PcloudNetworksPortsPostParams, timeout time.Duration) (*models.NetworkPort, error) {
 	params := p_cloud_networks.NewPcloudNetworksPortsPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id).WithBody(networkportdef.Body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to create the network port for network %s cloudinstance id [%s]", id, powerinstanceid)
 	}
 	return resp.Payload, nil
@@ -131,7 +131,7 @@ func (f *IBMPINetworkClient) DeletePort(networkid string, powerinstanceid string
 	params := p_cloud_networks.NewPcloudNetworksPortsDeleteParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(networkid).WithPortID(portid)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to create the network port %s for network %s cloudinstance id [%s]", portid, networkid, powerinstanceid)
 	}
 	return &resp.Payload, nil
@@ -150,7 +150,7 @@ func (f *IBMPINetworkClient) AttachPort(powerinstanceid, networkID, portID, desc
 
 	params := p_cloud_networks.NewPcloudNetworksPortsPutParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(networkID).WithPortID(portID).WithBody(&body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to attach the port [%s] to network %s the pvminstance [%s]", portID, networkID, pvminstanceid)
 	}
 	return resp.Payload, nil
@@ -164,7 +164,7 @@ func (f *IBMPINetworkClient) DetachPort(powerinstanceid, networkID, portID strin
 	}
 	params := p_cloud_networks.NewPcloudNetworksPortsPutParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(networkID).WithPortID(portID).WithBody(body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to detach the port [%s] to network %s ", portID, networkID)
 	}
 
