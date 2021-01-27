@@ -28,7 +28,7 @@ func (f *IBMPIImageClient) Get(id, powerinstanceid string) (*models.Image, error
 	params := p_cloud_images.NewPcloudCloudinstancesImagesGetParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithImageID(id)
 	resp, err := f.session.Power.PCloudImages.PcloudCloudinstancesImagesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get PI Image %s :%s", id, err)
 	}
 	return resp.Payload, nil
@@ -39,7 +39,7 @@ func (f *IBMPIImageClient) GetAll(powerinstanceid string) (*models.Images, error
 
 	params := p_cloud_images.NewPcloudCloudinstancesImagesGetallParamsWithTimeout(getTimeOut).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudImages.PcloudCloudinstancesImagesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PI Images of the PVM instance %s : %s", powerinstanceid, err)
 	}
 	return resp.Payload, nil
@@ -57,7 +57,7 @@ func (f *IBMPIImageClient) Create(name, imageid string, powerinstanceid string) 
 	}
 	params := p_cloud_images.NewPcloudCloudinstancesImagesPostParamsWithTimeout(postTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(&body)
 	_, result, err := f.session.Power.PCloudImages.PcloudCloudinstancesImagesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || result == nil {
+	if err != nil || result == nil || result.Payload == nil {
 		return nil, fmt.Errorf("Failed to Create Image of the PVM instance %s : %s", powerinstanceid, err)
 	}
 	return result.Payload, nil
@@ -80,7 +80,7 @@ func (f *IBMPIImageClient) GetStockImages(powerinstanceid string) (*models.Image
 	params := p_cloud_images.NewPcloudImagesGetallParams()
 	resp, err := f.session.Power.PCloudImages.PcloudImagesGetall(params, ibmpisession.NewAuth(f.session, f.powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PI Stock Images of the PVM instance %s : %s", powerinstanceid, err)
 	}
 	return resp.Payload, nil
@@ -93,7 +93,7 @@ func (f *IBMPIImageClient) GetSAPImages(powerinstanceid string, sapimage bool) (
 	params.Sap = &sapimage
 
 	resp, err := f.session.Power.PCloudImages.PcloudImagesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PI Sap Images of the PVM instance %s : %s", powerinstanceid, err)
 	}
 	return resp.Payload, nil

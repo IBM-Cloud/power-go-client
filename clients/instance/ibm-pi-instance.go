@@ -92,7 +92,7 @@ func (f *IBMPIInstanceClient) Update(id, powerinstanceid string, powerupdatepara
 
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPutParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id).WithBody(powerupdateparams.Body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Update PVM Instance %s :%s", id, err)
 	}
 	return resp.Payload, nil
@@ -172,7 +172,7 @@ func (f *IBMPIInstanceClient) GetSnapShotVM(powerinstanceid, pvminstanceid strin
 func (f *IBMPIInstanceClient) RestoreSnapShotVM(powerinstanceid, pvminstanceid, snapshotid, restoreAction string, restoreparams *p_cloud_p_vm_instances.PcloudPvminstancesSnapshotsRestorePostParams, timeout time.Duration) (*models.Snapshot, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid).WithSnapshotID(snapshotid).WithRestoreFailAction(&restoreAction).WithBody(restoreparams.Body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to restrore the snapshot for the pvminstance [%s]: %s", pvminstanceid, err)
 	}
 	return resp.Payload, nil
