@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/models"
@@ -24,7 +25,7 @@ func NewIBMPICloneVolumeClient(sess *ibmpisession.IBMPISession, powerinstanceid 
 
 //Create a clone volume using V2 of the API - This creates a clone
 func (f *IBMPICloneVolumeClient) Create(cloneParams *p_cloud_volumes.PcloudV2VolumesClonePostParams, timeout time.Duration) (*models.CloneTaskReference, error) {
-	params := p_cloud_volumes.NewPcloudV2VolumesClonePostParamsWithTimeout(timeout).WithCloudInstanceID(cloneParams.CloudInstanceID).WithBody(cloneParams.Body)
+	params := p_cloud_volumes.NewPcloudV2VolumesClonePostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(cloneParams.CloudInstanceID).WithBody(cloneParams.Body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesClonePost(params, ibmpisession.NewAuth(f.session, cloneParams.CloudInstanceID))
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to perform Create operation... %s", err)
@@ -34,7 +35,7 @@ func (f *IBMPICloneVolumeClient) Create(cloneParams *p_cloud_volumes.PcloudV2Vol
 
 //DeleteClone Deletes a clone
 func (f *IBMPICloneVolumeClient) DeleteClone(cloneParams *p_cloud_volumes.PcloudV2VolumescloneDeleteParams, id, cloudinstance string, timeout time.Duration) (models.Object, error) {
-	params := p_cloud_volumes.NewPcloudV2VolumescloneDeleteParamsWithTimeout(timeout).WithCloudInstanceID(cloudinstance).WithVolumesCloneID(id)
+	params := p_cloud_volumes.NewPcloudV2VolumescloneDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(cloudinstance).WithVolumesCloneID(id)
 
 	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumescloneDelete(params, ibmpisession.NewAuth(f.session, cloudinstance))
 
@@ -48,7 +49,7 @@ func (f *IBMPICloneVolumeClient) DeleteClone(cloneParams *p_cloud_volumes.Pcloud
 
 // Get status of a clone request
 func (f *IBMPICloneVolumeClient) Get(powerinstanceid, clonetaskid string, timeout time.Duration) (*models.CloneTaskStatus, error) {
-	params := p_cloud_volumes.NewPcloudV2VolumesClonetasksGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithCloneTaskID(clonetaskid)
+	params := p_cloud_volumes.NewPcloudV2VolumesClonetasksGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid).WithCloneTaskID(clonetaskid)
 	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesClonetasksGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to perform the get operation for clones... %s", err)
@@ -58,7 +59,7 @@ func (f *IBMPICloneVolumeClient) Get(powerinstanceid, clonetaskid string, timeou
 
 //StartClone ...
 func (f *IBMPICloneVolumeClient) StartClone(powerinstanceid, volumeCloneID string, timeout time.Duration) (*models.VolumesClone, error) {
-	params := p_cloud_volumes.NewPcloudV2VolumescloneStartPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithVolumesCloneID(volumeCloneID)
+	params := p_cloud_volumes.NewPcloudV2VolumescloneStartPostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithVolumesCloneID(volumeCloneID)
 	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumescloneStartPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {

@@ -1,5 +1,7 @@
 package helpers
 
+import "time"
+
 const (
 	// IBM PI Instance
 
@@ -137,4 +139,10 @@ const (
 	PIInstanceNotFound       = "Not Found"
 	PIImageQueStatus         = "queued"
 	PIImageActiveStatus      = "active"
+
+	//Timeout values for Power VS -
+
+	PICreateTimeOut = 5 * time.Minute
+	PIDeleteTimeOut = 3 * time.Minute
+	PIGetTimeOut    = 2 * time.Minute
 )
