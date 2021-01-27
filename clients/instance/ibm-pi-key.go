@@ -31,7 +31,7 @@ func (f *IBMPIKeyClient) Get(id, powerinstanceid string) (*models.SSHKey, error)
 	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysGetParams().WithTenantID(tenantid).WithSshkeyName(id)
 	resp, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
-	if err != nil || resp == nil {
+	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get PI Key %s :%s", id, err)
 	}
 	return resp.Payload, nil
