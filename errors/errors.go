@@ -8,6 +8,45 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
+// start of System-Pools Messages
+const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %v"
+
+// start of Image Messages
+
+const GetImageOperationFailed = "failed to perform Get Image Operation for image  %s with error %v"
+const CreateImageOperationFailed = "failed to perform Create Image Operation for powerinstanceid %s with error  %v"
+
+// Start of Network Messages
+const GetNetworkOperationFailed = "failed to perform Get Network  Operation for Network id %s with error %v"
+const CreateNetworkOperationFailed = "failed to perform Create Network Operation for Network %s with error %v"
+const CreateNetworkPortOperationFailed = "failed to perform Create Network Port Operation for Network %s with error %v"
+const AttachNetworkPortOperationFailed = "failed to perform Attach Network Port Operation for Port %s to Network %s with error %v"
+
+// start of Volume Messages
+const DeleteVolumeOperationFailed = "failed to perform Delete Volume Operation for volume %s with error %v"
+const UpdateVolumeOperationFailed = "failed to perform Update Volume Operation for volume %s with error %v"
+const GetVolumeOperationFailed = "failed to perform the Get Volume Operation for volume  %s with error %v"
+const CreateVolumeOperationFailed = "failed to perform the Create volume Operation for volume  %s with  error %v"
+const CreateVolumeV2OperationFailed = "failed to perform the Create volume Operation V2 for volume  %s  with error  %v"
+const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume  %s  with error  %v"
+
+// start of Clone Messages
+const StartCloneOperationFailed = "failed to start the clone operation for %v"
+const PrepareCloneOperationFailed = "failed to prepare the clone operation for %v"
+const DeleteCloneOperationFailed = "failed to perform Delete operation %v"
+const GetCloneOperationFailed = "failed to get the volumes-clone for the power instanceid  %s with error %v"
+const CreateCloneOperationFailed = "failed to perform the create clone operation %v"
+
+// start of Cloud Instance Messages
+const GetCloudInstanceOperationFailed = "failed to Get Cloud Instance %s with error %v"
+const UpdateCloudInstanceOperationFailed = "failed to update the Cloud instance %s with error %v"
+const DeleteCloudInstanceOperationFailed = "failed to delete the Cloud instance %s with error %v"
+
+// start of PI Key Messages
+const GetPIKeyOperationFailed = "failed to Get PI Key %s with error %v"
+const CreatePIKeyOperationFailed = "failed to Create PI Key %s with error %v"
+const DeletePIKeyOperationFailed = "failed to Delete PI Key %s with error %v"
+
 // ErrorTarget ...
 type ErrorTarget struct {
 	Name string
