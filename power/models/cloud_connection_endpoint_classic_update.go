@@ -12,19 +12,19 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// CloudConnectionEndpointClassic cloud connection endpoint classic
-// swagger:model CloudConnectionEndpointClassic
-type CloudConnectionEndpointClassic struct {
+// CloudConnectionEndpointClassicUpdate cloud connection endpoint classic update
+// swagger:model CloudConnectionEndpointClassicUpdate
+type CloudConnectionEndpointClassicUpdate struct {
 
 	// enable classic endpoint destination (default=false)
 	Enabled bool `json:"enabled"`
 
 	// gre
-	Gre *CloudConnectionGRETunnel `json:"gre,omitempty"`
+	Gre *CloudConnectionGRETunnelCreate `json:"gre,omitempty"`
 }
 
-// Validate validates this cloud connection endpoint classic
-func (m *CloudConnectionEndpointClassic) Validate(formats strfmt.Registry) error {
+// Validate validates this cloud connection endpoint classic update
+func (m *CloudConnectionEndpointClassicUpdate) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateGre(formats); err != nil {
@@ -37,7 +37,7 @@ func (m *CloudConnectionEndpointClassic) Validate(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *CloudConnectionEndpointClassic) validateGre(formats strfmt.Registry) error {
+func (m *CloudConnectionEndpointClassicUpdate) validateGre(formats strfmt.Registry) error {
 
 	if swag.IsZero(m.Gre) { // not required
 		return nil
@@ -56,7 +56,7 @@ func (m *CloudConnectionEndpointClassic) validateGre(formats strfmt.Registry) er
 }
 
 // MarshalBinary interface implementation
-func (m *CloudConnectionEndpointClassic) MarshalBinary() ([]byte, error) {
+func (m *CloudConnectionEndpointClassicUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -64,8 +64,8 @@ func (m *CloudConnectionEndpointClassic) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *CloudConnectionEndpointClassic) UnmarshalBinary(b []byte) error {
-	var res CloudConnectionEndpointClassic
+func (m *CloudConnectionEndpointClassicUpdate) UnmarshalBinary(b []byte) error {
+	var res CloudConnectionEndpointClassicUpdate
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
