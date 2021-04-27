@@ -110,6 +110,9 @@ type PVMInstanceReference struct {
 	// Storage Pool where server is deployed
 	StoragePool string `json:"storagePool,omitempty"`
 
+	// Indicates if all volumes attached to the server must reside in the same storage pool
+	StoragePoolAffinity *bool `json:"storagePoolAffinity,omitempty"`
+
 	// System type used to host the instance
 	SysType string `json:"sysType,omitempty"`
 

@@ -70,7 +70,13 @@ type PVMInstanceCreate struct {
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 
-	// Storage type for server deployment
+	// Storage Pool for server deployment; if provided then storageType will be ignored
+	StoragePool string `json:"storagePool,omitempty"`
+
+	// Indicates if all volumes attached to the server must reside in the same storage pool
+	StoragePoolAffinity *bool `json:"storagePoolAffinity,omitempty"`
+
+	// Storage type for server deployment; will be ignored if storagePool is provided
 	StorageType string `json:"storageType,omitempty"`
 
 	// System type used to host the instance

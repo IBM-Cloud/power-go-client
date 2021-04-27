@@ -25,7 +25,7 @@ type CreateImage struct {
 	// Cloud Storage bucket name; bucket-name[/optional/folder]; required for import image
 	BucketName string `json:"bucketName,omitempty"`
 
-	// Type of Disk
+	// Type of Disk; will be ignored if storagePool is provided
 	DiskType string `json:"diskType,omitempty"`
 
 	// Cloud Storage image filename; required for import image
@@ -55,7 +55,7 @@ type CreateImage struct {
 	// Enum: [root-project url]
 	Source *string `json:"source"`
 
-	// Storage pool where the image will be loaded, used only when importing an image from cloud storage
+	// Storage pool where the image will be loaded, used only when importing an image from cloud storage; If provided then diskType will be ignored
 	StoragePool string `json:"storagePool,omitempty"`
 }
 
