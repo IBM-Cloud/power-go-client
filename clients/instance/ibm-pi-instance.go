@@ -37,7 +37,7 @@ func (f *IBMPIInstanceClient) Get(id, powerinstanceid string, timeout time.Durat
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get PVM Instance %s :%s", id, err)
+		return nil, fmt.Errorf("Failed to Get PVM Instance %s :%v", id, err)
 	}
 	return resp.Payload, nil
 }
@@ -48,7 +48,7 @@ func (f *IBMPIInstanceClient) GetAll(powerinstanceid string, timeout time.Durati
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get all PVM Instances of Power Instance %s :%s", powerinstanceid, err)
+		return nil, fmt.Errorf("Failed to Get all PVM Instances of Power Instance %s :%v", powerinstanceid, err)
 	}
 	return resp.Payload, nil
 }
@@ -60,7 +60,7 @@ func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvmi
 	postok, postcreated, postAccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to Create PVM Instance :%s", err)
+		return nil, fmt.Errorf("Failed to Create PVM Instance :%v", err)
 	}
 
 	if postok != nil && len(postok.Payload) > 0 {
