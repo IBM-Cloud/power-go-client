@@ -39,6 +39,13 @@ func (o *PcloudTenantsGetReader) ReadResponse(response runtime.ClientResponse, c
 		}
 		return nil, result
 
+	case 401:
+		result := NewPcloudTenantsGetUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 403:
 		result := NewPcloudTenantsGetForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -112,6 +119,35 @@ func (o *PcloudTenantsGetBadRequest) Error() string {
 }
 
 func (o *PcloudTenantsGetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudTenantsGetUnauthorized creates a PcloudTenantsGetUnauthorized with default headers values
+func NewPcloudTenantsGetUnauthorized() *PcloudTenantsGetUnauthorized {
+	return &PcloudTenantsGetUnauthorized{}
+}
+
+/*PcloudTenantsGetUnauthorized handles this case with default header values.
+
+Unauthorized
+*/
+type PcloudTenantsGetUnauthorized struct {
+	Payload *models.Error
+}
+
+func (o *PcloudTenantsGetUnauthorized) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetUnauthorized  %+v", 401, o.Payload)
+}
+
+func (o *PcloudTenantsGetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

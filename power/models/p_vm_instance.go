@@ -41,6 +41,9 @@ type PVMInstance struct {
 	// Required: true
 	ImageID *string `json:"imageID"`
 
+	// The VTL license repository capacity TB value
+	LicenseRepositoryCapacity int64 `json:"licenseRepositoryCapacity,omitempty"`
+
 	// Maximum amount of memory that can be allocated (in GB, for resize)
 	Maxmem float64 `json:"maxmem,omitempty"`
 
@@ -70,12 +73,15 @@ type PVMInstance struct {
 	// OS system information (usually version and build)
 	OperatingSystem string `json:"operatingSystem,omitempty"`
 
-	// Type of the OS [aix, ibmi, redhat, sles]
+	// Type of the OS [aix, ibmi, redhat, sles, vtl]
 	// Required: true
 	OsType *string `json:"osType"`
 
 	// VM pinning policy to use [none, soft, hard]
 	PinPolicy string `json:"pinPolicy,omitempty"`
+
+	// The placement group of the server
+	PlacementGroup *string `json:"placementGroup,omitempty"`
 
 	// Processor type (dedicated, shared, capped)
 	// Required: true
