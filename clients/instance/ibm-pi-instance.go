@@ -163,7 +163,7 @@ func (f *IBMPIInstanceClient) GetSnapShotVM(powerinstanceid, pvminstanceid strin
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsGetallParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get the snapshot for the pvminstance [%s]: %s", pvminstanceid, err)
+		return nil, fmt.Errorf("Failed to Get the snapshot for the pvminstance [%s]: %v", pvminstanceid, err)
 	}
 	return resp.Payload, nil
 
@@ -174,7 +174,7 @@ func (f *IBMPIInstanceClient) RestoreSnapShotVM(powerinstanceid, pvminstanceid, 
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(pvminstanceid).WithSnapshotID(snapshotid).WithRestoreFailAction(&restoreAction).WithBody(restoreparams.Body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to restrore the snapshot for the pvminstance [%s]: %s", pvminstanceid, err)
+		return nil, fmt.Errorf("Failed to restrore the snapshot for the pvminstance [%s]: %v", pvminstanceid, err)
 	}
 	return resp.Payload, nil
 }
@@ -186,7 +186,7 @@ func (f *IBMPIInstanceClient) AddNetwork(powerinstanceid, pvminstanceid string, 
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesNetworksPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload.NetworkID == "" {
-		return nil, fmt.Errorf("Failed to attach the network to the pvminstanceid %s : %s", pvminstanceid, err)
+		return nil, fmt.Errorf("Failed to attach the network to the pvminstanceid %s : %v", pvminstanceid, err)
 	}
 	return resp.Payload, nil
 }

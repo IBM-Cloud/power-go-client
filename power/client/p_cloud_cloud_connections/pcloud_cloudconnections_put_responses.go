@@ -46,6 +46,20 @@ func (o *PcloudCloudconnectionsPutReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 
+	case 401:
+		result := NewPcloudCloudconnectionsPutUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
+	case 404:
+		result := NewPcloudCloudconnectionsPutNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 405:
 		result := NewPcloudCloudconnectionsPutMethodNotAllowed()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -146,6 +160,64 @@ func (o *PcloudCloudconnectionsPutBadRequest) Error() string {
 }
 
 func (o *PcloudCloudconnectionsPutBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsPutUnauthorized creates a PcloudCloudconnectionsPutUnauthorized with default headers values
+func NewPcloudCloudconnectionsPutUnauthorized() *PcloudCloudconnectionsPutUnauthorized {
+	return &PcloudCloudconnectionsPutUnauthorized{}
+}
+
+/*PcloudCloudconnectionsPutUnauthorized handles this case with default header values.
+
+Unauthorized
+*/
+type PcloudCloudconnectionsPutUnauthorized struct {
+	Payload *models.Error
+}
+
+func (o *PcloudCloudconnectionsPutUnauthorized) Error() string {
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsPutUnauthorized  %+v", 401, o.Payload)
+}
+
+func (o *PcloudCloudconnectionsPutUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsPutNotFound creates a PcloudCloudconnectionsPutNotFound with default headers values
+func NewPcloudCloudconnectionsPutNotFound() *PcloudCloudconnectionsPutNotFound {
+	return &PcloudCloudconnectionsPutNotFound{}
+}
+
+/*PcloudCloudconnectionsPutNotFound handles this case with default header values.
+
+Not Found
+*/
+type PcloudCloudconnectionsPutNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudCloudconnectionsPutNotFound) Error() string {
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsPutNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PcloudCloudconnectionsPutNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

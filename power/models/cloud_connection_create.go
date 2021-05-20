@@ -19,6 +19,9 @@ import (
 // swagger:model CloudConnectionCreate
 type CloudConnectionCreate struct {
 
+	// classic
+	Classic *CloudConnectionEndpointClassicUpdate `json:"classic,omitempty"`
+
 	// enable global routing for this cloud connection (default=false)
 	GlobalRouting bool `json:"globalRouting,omitempty"`
 
@@ -33,11 +36,21 @@ type CloudConnectionCreate struct {
 	// Required: true
 	// Enum: [50 100 200 500 1000 2000 5000 10000]
 	Speed *int64 `json:"speed"`
+
+	// list of subnets to attach to cloud connection
+	Subnets []string `json:"subnets"`
+
+	// vpc
+	Vpc *CloudConnectionEndpointVPC `json:"vpc,omitempty"`
 }
 
 // Validate validates this cloud connection create
 func (m *CloudConnectionCreate) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateClassic(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
@@ -47,9 +60,31 @@ func (m *CloudConnectionCreate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateVpc(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CloudConnectionCreate) validateClassic(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Classic) { // not required
+		return nil
+	}
+
+	if m.Classic != nil {
+		if err := m.Classic.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("classic")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -91,6 +126,24 @@ func (m *CloudConnectionCreate) validateSpeed(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateSpeedEnum("speed", "body", *m.Speed); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *CloudConnectionCreate) validateVpc(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Vpc) { // not required
+		return nil
+	}
+
+	if m.Vpc != nil {
+		if err := m.Vpc.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("vpc")
+			}
+			return err
+		}
 	}
 
 	return nil

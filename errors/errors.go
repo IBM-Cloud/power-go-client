@@ -8,6 +8,21 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
+// start of Placementgroup Messages
+
+const GetPlacementGroupOperationFailed = "failed to perform Get Placement Group Operation for placement group  %s with error %v"
+const CreatePlacementGroupOperationFailed = "failed to perform Create Placement Group Operation for powerinstanceid %s with error  %v"
+const DeletePlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for placement group %s with error %v"
+const UpdatePlacementGroupOperationFailed = "failed to perform Update Placement Group Operation for powerinstanceid  %s and placement group %s with error %v"
+const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for powerinstanceid  %s and placement group %s with error %v"
+
+// start of Cloud Connection Messages
+
+const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for powerinstanceid %s with error %v"
+const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %v"
+const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid  %s with error %v"
+const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid  %s with error %v"
+
 // start of System-Pools Messages
 const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %v"
 
