@@ -118,3 +118,16 @@ func (f *IBMPICloudConnectionClient) UpdateNetwork(pcloudnetworkdef *p_cloud_clo
 	}
 	return resp.Payload, nil
 }
+
+// get VPCs
+
+func (f *IBMPICloudConnectionClient) GetVPC(pcloudnetworkdef *p_cloud_cloud_connections.PcloudCloudconnectionsVirtualprivatecloudsGetallParams) (*models.CloudConnectionVirtualPrivateClouds, error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsVirtualprivatecloudsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID)
+
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsVirtualprivatecloudsGetall(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
+	if err != nil || resp.Payload == nil {
+	}
+	return nil, fmt.Errorf("failed to perform the getvpc operation...%v", err)
+
+	return resp.Payload, nil
+}
