@@ -141,6 +141,16 @@ const (
 	PIInstanceCaptureCloudStorageAccessKey = "pi_capture_cloud_storage_access_key"
 	PIInstanceCaptureCloudStorageSecretKey = "pi_capture_cloud_storage_secret_key"
 
+	// IBM PI Cloud Connections
+
+	PICloudConnectionsName         = "pi_cloud_connection_name"
+	PICloudConnectionStatus        = "pi_cloud_connection_status"
+	PICloudConnectionMetered       = "pi_cloud_connection_metered"
+	PICloudConnectionUserIPAddress = "pi_cloud_connection_user_ip_address"
+	PICloudConnectionIBMIPAddress  = "pi_cloud_connection_ibm_ip_address"
+	PICloudConnectionSpeed         = "pi_cloud_connection_speed"
+	PICloudConnectionPort          = "pi_cloud_connection_port"
+
 	// Status For all the resources
 
 	PIVolumeDeleting         = "deleting"
