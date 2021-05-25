@@ -43,10 +43,10 @@ func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections
 }
 
 // Get ...
-func (f *IBMPICloudConnectionClient) Get(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsGetParams) (*models.CloudConnection, error) {
+func (f *IBMPICloudConnectionClient) Get(cloudinstanceid, cloudconnectionid string) (*models.CloudConnection, error) {
 
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(pclouddef.CloudInstanceID).WithCloudConnectionID(pclouddef.CloudConnectionID)
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGet(params, ibmpisession.NewAuth(f.session, pclouddef.CloudInstanceID))
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudinstanceid).WithCloudConnectionID(cloudconnectionid)
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGet(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetCloudConnectionOperationFailed, err)
 	}
@@ -121,13 +121,13 @@ func (f *IBMPICloudConnectionClient) UpdateNetwork(pcloudnetworkdef *p_cloud_clo
 
 // get VPCs
 
-func (f *IBMPICloudConnectionClient) GetVPC(pcloudnetworkdef *p_cloud_cloud_connections.PcloudCloudconnectionsVirtualprivatecloudsGetallParams) (*models.CloudConnectionVirtualPrivateClouds, error) {
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsVirtualprivatecloudsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID)
+func (f *IBMPICloudConnectionClient) GetVPC(cloudinstanceid string) (*models.CloudConnectionVirtualPrivateClouds, error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsVirtualprivatecloudsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudinstanceid)
 
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsVirtualprivatecloudsGetall(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsVirtualprivatecloudsGetall(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
 	if err != nil || resp.Payload == nil {
-	}
-	return nil, fmt.Errorf("failed to perform the getvpc operation...%v", err)
 
+		return nil, fmt.Errorf("failed to perform the getvpc operation...%v", err)
+	}
 	return resp.Payload, nil
 }
