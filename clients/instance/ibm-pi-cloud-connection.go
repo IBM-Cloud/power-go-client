@@ -29,7 +29,7 @@ func NewIBMPICloudConnectionClient(sess *ibmpisession.IBMPISession, powerinstanc
 func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsPostParams, powerinstanceid string) (*models.CloudConnection, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(pclouddef.Body)
-	postok, postcreated, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	postok, postcreated, postAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateCloudConnectionOperationFailed, powerinstanceid, err)
 	}
@@ -38,6 +38,10 @@ func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections
 	}
 	if postcreated != nil {
 		return postcreated.Payload, nil
+	}
+
+	if postAccepted != nil {
+		return postAccepted.Payload, nil
 	}
 	return nil, nil
 }
