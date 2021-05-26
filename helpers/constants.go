@@ -150,7 +150,7 @@ const (
 	PICloudConnectionIBMIPAddress  = "pi_cloud_connection_ibm_ip_address"
 	PICloudConnectionSpeed         = "pi_cloud_connection_speed"
 	PICloudConnectionPort          = "pi_cloud_connection_port"
-
+	PICloudConnectionGlobalRouting = "pi_global_routing"
 	// Status For all the resources
 
 	PIVolumeDeleting         = "deleting"

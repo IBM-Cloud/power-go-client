@@ -80,12 +80,12 @@ func (f *IBMPICloudConnectionClient) Update(updateparams *p_cloud_cloud_connecti
 }
 
 // Delete a Cloud Connection
-func (f *IBMPICloudConnectionClient) Delete(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsDeleteParams) (models.Object, error) {
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(pclouddef.CloudInstanceID).WithCloudConnectionID(pclouddef.CloudConnectionID)
-	respok, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, pclouddef.CloudInstanceID))
+func (f *IBMPICloudConnectionClient) Delete(cloudinstanceid, cloudconnectionid string) (models.Object, error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(cloudinstanceid).WithCloudConnectionID(cloudconnectionid)
+	respok, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
 
 	if err != nil || respok.Payload == nil {
-		return nil, fmt.Errorf(errors.DeleteCloudConnectionOperationFailed, pclouddef.CloudConnectionID, err)
+		return nil, fmt.Errorf(errors.DeleteCloudConnectionOperationFailed, cloudconnectionid, err)
 	}
 	return respok.Payload, nil
 }
