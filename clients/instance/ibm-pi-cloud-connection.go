@@ -72,10 +72,11 @@ func (f *IBMPICloudConnectionClient) GetAll(powerinstanceid string, timeout time
 func (f *IBMPICloudConnectionClient) Update(updateparams *p_cloud_cloud_connections.PcloudCloudconnectionsPutParams) (*models.CloudConnection, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPutParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(updateparams.CloudInstanceID).WithCloudConnectionID(updateparams.CloudConnectionID).WithBody(updateparams.Body)
-	resp, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, updateparams.CloudInstanceID))
+	resp, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, updateparams.CloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.UpdateCloudConnectionOperationFailed, updateparams.CloudConnectionID, err)
 	}
+
 	return resp.Payload, nil
 }
 
@@ -93,7 +94,7 @@ func (f *IBMPICloudConnectionClient) Delete(cloudinstanceid, cloudconnectionid s
 // AddNetwork to a cloud connection
 func (f *IBMPICloudConnectionClient) AddNetwork(pcloudnetworkdef *p_cloud_cloud_connections.PcloudCloudconnectionsNetworksPutParams) (*models.CloudConnection, error) {
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksPutParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID).WithCloudConnectionID(pcloudnetworkdef.CloudConnectionID).WithNetworkID(pcloudnetworkdef.NetworkID)
-	resp, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
+	resp, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to add the network to the cloudconnection %s", err)
 	}
@@ -104,7 +105,7 @@ func (f *IBMPICloudConnectionClient) AddNetwork(pcloudnetworkdef *p_cloud_cloud_
 func (f *IBMPICloudConnectionClient) DeleteNetwork(pcloudnetworkdef *p_cloud_cloud_connections.PcloudCloudconnectionsNetworksDeleteParams) (*models.CloudConnection, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID).WithCloudConnectionID(pcloudnetworkdef.CloudConnectionID).WithNetworkID(pcloudnetworkdef.NetworkID)
-	resp, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksDelete(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
+	resp, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksDelete(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
 
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to perform the delete operation... %s", err)
@@ -115,7 +116,7 @@ func (f *IBMPICloudConnectionClient) DeleteNetwork(pcloudnetworkdef *p_cloud_clo
 // UpdateNetwork Update a network from a cloud connection
 func (f *IBMPICloudConnectionClient) UpdateNetwork(pcloudnetworkdef *p_cloud_cloud_connections.PcloudCloudconnectionsNetworksPutParams) (*models.CloudConnection, error) {
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksPutParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID).WithCloudConnectionID(pcloudnetworkdef.CloudConnectionID).WithNetworkID(pcloudnetworkdef.NetworkID)
-	resp, err, _ := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
+	resp, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
 
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform the update operation...%v", err)
