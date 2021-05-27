@@ -72,12 +72,12 @@ func (f *IBMPICloudConnectionClient) GetAll(powerinstanceid string, timeout time
 func (f *IBMPICloudConnectionClient) Update(updateparams *p_cloud_cloud_connections.PcloudCloudconnectionsPutParams) (*models.CloudConnection, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPutParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(updateparams.CloudInstanceID).WithCloudConnectionID(updateparams.CloudConnectionID).WithBody(updateparams.Body)
-	resp, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, updateparams.CloudInstanceID))
+	_, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, updateparams.CloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.UpdateCloudConnectionOperationFailed, updateparams.CloudConnectionID, err)
 	}
 
-	return resp.Payload, nil
+	return nil, nil
 }
 
 // Delete a Cloud Connection
