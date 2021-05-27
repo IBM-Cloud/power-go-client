@@ -85,7 +85,7 @@ func (f *IBMPICloudConnectionClient) Delete(cloudinstanceid, cloudconnectionid s
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(cloudinstanceid).WithCloudConnectionID(cloudconnectionid)
 	respok, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
 
-	if err != nil || respok.Payload == nil {
+	if err != nil {
 		return nil, fmt.Errorf(errors.DeleteCloudConnectionOperationFailed, cloudconnectionid, err)
 	}
 	return respok.Payload, nil
