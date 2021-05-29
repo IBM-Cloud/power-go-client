@@ -105,6 +105,7 @@ func (f *IBMPICloneVolumeClient) PrepareClone(powerinstanceid, volumeCloneID str
 // Get V2Clone Task Status
 
 func (f *IBMPICloneVolumeClient) GetV2CloneStatus(powerinstanceid, clone_name string) (*models.VolumesCloneDetail, error) {
+	log.Printf("starting the clone status get operation..")
 	params := p_cloud_volumes.NewPcloudV2VolumescloneGetParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithVolumesCloneID(clone_name)
 	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumescloneGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
