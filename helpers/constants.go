@@ -79,6 +79,11 @@ const (
 	PISAPProfileType      = "pi_sap_profile_type"
 	PISAPProfileCores     = "pi_sap_profile_cores"
 
+	// IBM PI Clone Volume
+	PIVolumeCloneStatus  = "pi_volume_clone_status"
+	PIVolumeClonePercent = "pi_volume_clone_percent"
+	PIVolumeCloneFailure = "pi_volume_clone_failure"
+
 	// IBM PI Image
 
 	PIImageName       = "pi_image_name"
@@ -151,6 +156,8 @@ const (
 	PICloudConnectionSpeed         = "pi_cloud_connection_speed"
 	PICloudConnectionPort          = "pi_cloud_connection_port"
 	PICloudConnectionGlobalRouting = "pi_global_routing"
+	PICloudConnectionId            = "pi_cloud_connection_id"
+	PICloudConnectionClassic       = "pi_cloud_connection_classic"
 	// Status For all the resources
 
 	PIVolumeDeleting         = "deleting"
