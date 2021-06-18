@@ -46,6 +46,9 @@ type PVMInstanceCreate struct {
 	// pin policy
 	PinPolicy PinPolicy `json:"pinPolicy,omitempty"`
 
+	// The placement group for the server
+	PlacementGroup string `json:"placementGroup,omitempty"`
+
 	// Processor type (dedicated, shared, capped)
 	// Required: true
 	// Enum: [dedicated shared capped]
@@ -73,13 +76,13 @@ type PVMInstanceCreate struct {
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 
-	// Storage Pool for server deployment; if provided then storageType will be ignored
+	// The storage affinity data
+	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
+
+	// Storage Pool for server deployment; if provided then storageAffinityPolicy and storageType will be ignored
 	StoragePool string `json:"storagePool,omitempty"`
 
-	// Indicates if all volumes attached to the server must reside in the same storage pool
-	StoragePoolAffinity *bool `json:"storagePoolAffinity,omitempty"`
-
-	// Storage type for server deployment; will be ignored if storagePool is provided
+	// Storage type for server deployment; will be ignored if storagePool or storageAffinityPolicy is provided
 	StorageType string `json:"storageType,omitempty"`
 
 	// System type used to host the instance
@@ -136,6 +139,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSoftwareLicenses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageAffinity(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -371,6 +378,24 @@ func (m *PVMInstanceCreate) validateSoftwareLicenses(formats strfmt.Registry) er
 		if err := m.SoftwareLicenses.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("softwareLicenses")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceCreate) validateStorageAffinity(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.StorageAffinity) { // not required
+		return nil
+	}
+
+	if m.StorageAffinity != nil {
+		if err := m.StorageAffinity.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storageAffinity")
 			}
 			return err
 		}

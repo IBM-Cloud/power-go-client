@@ -25,7 +25,7 @@ type CreateImage struct {
 	// Cloud Storage bucket name; bucket-name[/optional/folder]; required for import image
 	BucketName string `json:"bucketName,omitempty"`
 
-	// Type of Disk; will be ignored if storagePool is provided
+	// Type of Disk; will be ignored if storagePool or affinityPolicy is provided
 	DiskType string `json:"diskType,omitempty"`
 
 	// Cloud Storage image filename; required for import image
@@ -55,7 +55,10 @@ type CreateImage struct {
 	// Enum: [root-project url]
 	Source *string `json:"source"`
 
-	// Storage pool where the image will be loaded, used only when importing an image from cloud storage; If provided then diskType will be ignored
+	// The storage affinity data
+	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
+
+	// Storage pool where the image will be loaded, used only when importing an image from cloud storage; If provided then affinityPolicy and diskType will be ignored
 	StoragePool string `json:"storagePool,omitempty"`
 }
 
@@ -68,6 +71,10 @@ func (m *CreateImage) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSource(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageAffinity(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -164,6 +171,24 @@ func (m *CreateImage) validateSource(formats strfmt.Registry) error {
 	// value enum
 	if err := m.validateSourceEnum("source", "body", *m.Source); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *CreateImage) validateStorageAffinity(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.StorageAffinity) { // not required
+		return nil
+	}
+
+	if m.StorageAffinity != nil {
+		if err := m.StorageAffinity.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("storageAffinity")
+			}
+			return err
+		}
 	}
 
 	return nil
