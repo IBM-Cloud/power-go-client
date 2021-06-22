@@ -158,6 +158,13 @@ const (
 	PICloudConnectionGlobalRouting = "pi_global_routing"
 	PICloudConnectionId            = "pi_cloud_connection_id"
 	PICloudConnectionClassic       = "pi_cloud_connection_classic"
+
+	// IBM PI Placement Groups
+
+	PIPlacementGroupName   = "pi_placement_group_name"
+	PIPlacementGroupPolicy = "pi_placement_group_policy"
+	PIPlacementGroupID     = "pi_placement_group_id"
+
 	// Status For all the resources
 
 	PIVolumeDeleting         = "deleting"
