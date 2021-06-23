@@ -27,7 +27,7 @@ func NewIBMPIPlacementGroupClient(sess *ibmpisession.IBMPISession, powerinstance
 // Get PI Placementgroup
 func (f *IBMPIPlacementGroupClient) Get(id, powerinstanceid string) (*models.PlacementGroup, error) {
 
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid)
+	params := p_cloud_placement_groups.NewPcloudPlacementgroupsGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid).WithPlacementGroupID(id)
 	resp, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
