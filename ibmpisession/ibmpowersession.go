@@ -13,6 +13,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 
 	"github.com/go-openapi/runtime"
@@ -29,7 +30,6 @@ const (
 	offering                 = "power-iaas"
 	crnString                = "crn"
 	version                  = "v1"
-	service                  = "bluemix"
 	serviceType              = "public"
 	serviceInstanceSeparator = "/"
 	separator                = ":"
@@ -120,6 +120,12 @@ func BearerTokenAndCRN(session *IBMPISession, crn string) runtime.ClientAuthInfo
 
 // crnBuilder ...
 func crnBuilder(powerinstance, useraccount, region string, zone string) string {
+	var service string
+	if strings.Contains(utils.GetPowerEndPoint(region), ".power-iaas.cloud.ibm.com") {
+		service = "bluemix"
+	} else {
+		service = "staging"
+	}
 	var crnData string
 	if zone == "" {
 		crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + region + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
