@@ -79,6 +79,10 @@ type PVMInstanceCreate struct {
 	// The storage affinity data
 	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
 
+	// The storage connection type
+	// Enum: [vSCSI]
+	StorageConnection string `json:"storageConnection,omitempty"`
+
 	// Storage Pool for server deployment; if provided then storageAffinityPolicy and storageType will be ignored
 	StoragePool string `json:"storagePool,omitempty"`
 
@@ -143,6 +147,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStorageAffinity(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStorageConnection(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -399,6 +407,46 @@ func (m *PVMInstanceCreate) validateStorageAffinity(formats strfmt.Registry) err
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+var pVmInstanceCreateTypeStorageConnectionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["vSCSI"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceCreateTypeStorageConnectionPropEnum = append(pVmInstanceCreateTypeStorageConnectionPropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceCreateStorageConnectionVSCSI captures enum value "vSCSI"
+	PVMInstanceCreateStorageConnectionVSCSI string = "vSCSI"
+)
+
+// prop value enum
+func (m *PVMInstanceCreate) validateStorageConnectionEnum(path, location string, value string) error {
+	if err := validate.Enum(path, location, value, pVmInstanceCreateTypeStorageConnectionPropEnum); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceCreate) validateStorageConnection(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.StorageConnection) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateStorageConnectionEnum("storageConnection", "body", m.StorageConnection); err != nil {
+		return err
 	}
 
 	return nil
