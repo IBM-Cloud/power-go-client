@@ -32,6 +32,8 @@ const (
 	PIVirtualCoresMax             = "pi_virtual_cores_max"
 	PIVirtualCoresMin             = "pi_virtual_cores_min"
 	PIInstancePVMNetwork          = "pi_instance_pvm_network"
+	PIInstanceStorageType         = "pi_storage_type"
+	PIInstanceStorageConnection   = "pi_storage_connection"
 	PIInstanceStoragePool         = "pi_instance_storage_pool"
 	PIInstanceStorageAffinityPool = "pi_instance_storage_affinity_pool"
 
