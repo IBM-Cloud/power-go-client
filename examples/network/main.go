@@ -37,6 +37,7 @@ func main() {
 	dnsServers := make([]string, 1)
 	dnsServers[0] = "127.0.0.1"
 	gateway, startIP, endIP := generateIPData(cidr)
+	jumbo := false
 	timeout := time.Duration(9000000000000000000)
 
 	session, err := ps.New(token, region, true, 9000000000000000000, accountID, region)
@@ -47,7 +48,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	_, createRespOk, err := powerClient.Create(name, netType, cidr, dnsServers, gateway, startIP, endIP, piID, timeout)
+	createRespOk, err := powerClient.Create(name, netType, cidr, dnsServers, gateway, startIP, endIP, jumbo, piID, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}

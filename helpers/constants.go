@@ -119,6 +119,7 @@ const (
 	PINetworkIPAddressRange  = "pi_ipaddress_range"
 	PINetworkVlanId          = "pi_vlan_id"
 	PINetworkProvisioning    = "build"
+	PINetworkJumbo           = "pi_network_jumbo"
 	PINetworkPortDescription = "pi_network_port_description"
 	PINetworkPortIPAddress   = "pi_network_port_ipaddress"
 	PINetworkPortMacAddress  = "pi_network_port_macaddress"
