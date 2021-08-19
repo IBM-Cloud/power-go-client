@@ -2,8 +2,9 @@ package instance
 
 import (
 	"fmt"
-	"github.com/IBM-Cloud/power-go-client/errors"
 	"time"
+
+	"github.com/IBM-Cloud/power-go-client/errors"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_networks"
@@ -36,11 +37,12 @@ func (f *IBMPINetworkClient) Get(id, powerinstanceid string, timeout time.Durati
 }
 
 // Create ...
-func (f *IBMPINetworkClient) Create(name string, networktype string, cidr string, dnsservers []string, gateway string, startip string, endip string, powerinstanceid string, timeout time.Duration) (*models.Network, *models.Network, error) {
+func (f *IBMPINetworkClient) Create(name string, networktype string, cidr string, dnsservers []string, gateway string, startip string, endip string, jumbo bool, powerinstanceid string, timeout time.Duration) (*models.Network, error) {
 
 	var body = models.NetworkCreate{
-		Type: &networktype,
-		Name: name,
+		Type:  &networktype,
+		Name:  name,
+		Jumbo: jumbo,
 	}
 	if networktype == "vlan" {
 		var ipbody = []*models.IPAddressRange{
@@ -62,10 +64,10 @@ func (f *IBMPINetworkClient) Create(name string, networktype string, cidr string
 	_, resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, nil, fmt.Errorf(errors.CreateNetworkOperationFailed, name, err)
+		return nil, fmt.Errorf(errors.CreateNetworkOperationFailed, name, err)
 	}
 
-	return resp.Payload, nil, nil
+	return resp.Payload, nil
 }
 
 // GetPublic ...
