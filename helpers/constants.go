@@ -151,16 +151,33 @@ const (
 
 	// IBM PI Cloud Connections
 
-	PICloudConnectionsName         = "pi_cloud_connection_name"
+	PICloudConnectionName          = "pi_cloud_connection_name"
 	PICloudConnectionStatus        = "pi_cloud_connection_status"
 	PICloudConnectionMetered       = "pi_cloud_connection_metered"
 	PICloudConnectionUserIPAddress = "pi_cloud_connection_user_ip_address"
 	PICloudConnectionIBMIPAddress  = "pi_cloud_connection_ibm_ip_address"
 	PICloudConnectionSpeed         = "pi_cloud_connection_speed"
 	PICloudConnectionPort          = "pi_cloud_connection_port"
-	PICloudConnectionGlobalRouting = "pi_global_routing"
+	PICloudConnectionGlobalRouting = "pi_cloud_connection_global_routing"
 	PICloudConnectionId            = "pi_cloud_connection_id"
-	PICloudConnectionClassic       = "pi_cloud_connection_classic"
+	//PICloudConnectionClassic          = "pi_cloud_connection_classic"
+	PICloudConnectionClassicEnabled   = "pi_cloud_connection_classic_enabled"
+	PICloudConnectionClassicGreCidr   = "pi_cloud_connection_gre_cidr"
+	PICloudConnectionClassicGreDest   = "pi_cloud_connection_gre_destination_address"
+	PICloudConnectionClassicGreSource = "pi_cloud_connection_gre_source_address"
+	PICloudConnectionNetworks         = "pi_cloud_connection_networks"
+	//PICloudConnectionVPC              = "pi_cloud_connection_vpc"
+	PICloudConnectionVPCEnabled = "pi_cloud_connection_vpc_enabled"
+	PICloudConnectionVPCCRNs    = "pi_cloud_connection_vpc_crns"
+	PICloudConnectionVPCName    = "pi_cloud_connection_vpc_name"
+
+	JobStatusQueued             = "queued"
+	JobStatusReadyForProcessing = "readyForProcessing"
+	JobStatusInProgress         = "inProgress"
+	JobStatusCompleted          = "completed"
+	JobStatusFailed             = "failed"
+	JobStatusRunning            = "running"
+	JobStatusWaiting            = "waiting"
 
 	// IBM PI Placement Groups
 
@@ -186,6 +203,7 @@ const (
 	//Timeout values for Power VS -
 
 	PICreateTimeOut = 5 * time.Minute
+	PIUpdateTimeOut = 5 * time.Minute
 	PIDeleteTimeOut = 3 * time.Minute
 	PIGetTimeOut    = 2 * time.Minute
 )

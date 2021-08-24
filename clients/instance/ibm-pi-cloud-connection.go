@@ -1,8 +1,8 @@
 package instance
 
 import (
+	"context"
 	"fmt"
-	"time"
 
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
@@ -27,9 +27,9 @@ func NewIBMPICloudConnectionClient(sess *ibmpisession.IBMPISession, powerinstanc
 }
 
 // Create a Cloud Connection
-func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsPostParams, powerinstanceid string) (*models.CloudConnection, *models.CloudConnectionCreateResponse, error) {
+func (f *IBMPICloudConnectionClient) Create(body *models.CloudConnectionCreate, powerinstanceid string) (*models.CloudConnection, *models.CloudConnectionCreateResponse, error) {
 
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(pclouddef.Body)
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(body)
 	postok, postcreated, postAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
 		return nil, nil, fmt.Errorf(errors.CreateCloudConnectionOperationFailed, powerinstanceid, err)
@@ -40,33 +40,80 @@ func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections
 	if postcreated != nil {
 		return postcreated.Payload, nil, nil
 	}
-
 	if postAccepted != nil {
 		return nil, postAccepted.Payload, nil
 	}
 	return nil, nil, nil
 }
 
-// Get ...
-func (f *IBMPICloudConnectionClient) Get(cloudinstanceid, cloudconnectionid string) (*models.CloudConnection, error) {
+// Create a Cloud Connection with context
+func (f *IBMPICloudConnectionClient) CreateWithContext(ctx context.Context, body *models.CloudConnectionCreate, cloudInstanceID string) (cloudConnection *models.CloudConnection, cloudConnectionJob *models.CloudConnectionCreateResponse, err error) {
 
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudinstanceid).WithCloudConnectionID(cloudconnectionid)
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGet(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParamsWithContext(ctx).
+		WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithBody(body)
+	postok, postcreated, postAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetCloudConnectionOperationFailed, err)
+		return
+	}
+	if postok != nil {
+		cloudConnection = postok.Payload
+	} else if postcreated != nil {
+		cloudConnection = postcreated.Payload
+	} else if postAccepted != nil {
+		cloudConnectionJob = postAccepted.Payload
+	}
+	return
+}
+
+// Get ...
+func (f *IBMPICloudConnectionClient) Get(id, cloudInstanceID string) (*models.CloudConnection, error) {
+
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudInstanceID).WithCloudConnectionID(id)
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return nil, fmt.Errorf(errors.GetCloudConnectionOperationFailed, cloudInstanceID, err)
 	}
 	return resp.Payload, nil
 }
 
-// GetAll ..
-func (f *IBMPICloudConnectionClient) GetAll(powerinstanceid string, timeout time.Duration) (*models.CloudConnections, error) {
+// Get with Context...
+func (f *IBMPICloudConnectionClient) GetWithContext(ctx context.Context, id, cloudInstanceID string) (cloudConnection *models.CloudConnection, err error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParamsWithContext(ctx).
+		WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithCloudConnectionID(id)
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return
+	}
+	cloudConnection = resp.Payload
+	return
+}
 
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid)
+// GetAll ..
+func (f *IBMPICloudConnectionClient) GetAll(powerinstanceid string) (*models.CloudConnections, error) {
+
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
-		return nil, fmt.Errorf("Failed to get all cloud connection %s", err)
+		return nil, fmt.Errorf("failed to get all cloud connection %s", err)
 	}
 	return resp.Payload, nil
+}
+
+// GetAll with Context...
+func (f *IBMPICloudConnectionClient) GetAllWithContext(ctx context.Context, cloudInstanceID string) (cloudConnections *models.CloudConnections, err error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParamsWithContext(ctx).
+		WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(cloudInstanceID)
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return
+	}
+	cloudConnections = resp.Payload
+	return
 }
 
 // Update a cloud Connection
@@ -81,15 +128,59 @@ func (f *IBMPICloudConnectionClient) Update(updateparams *p_cloud_cloud_connecti
 	return nil, nil
 }
 
+// Update a cloud Connection with context
+func (f *IBMPICloudConnectionClient) UpdateWithContext(ctx context.Context, id, cloudInstanceID string, body *models.CloudConnectionUpdate) (cloudConnection *models.CloudConnection, cloudConnectionJob *models.JobReference, err error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPutParamsWithContext(ctx).
+		WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithCloudConnectionID(id).
+		WithBody(body)
+	resp, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return
+	}
+	if resp != nil {
+		cloudConnection = resp.Payload
+	} else if respAccepted != nil {
+		cloudConnectionJob = respAccepted.Payload
+	}
+	return
+}
+
 // Delete a Cloud Connection
-func (f *IBMPICloudConnectionClient) Delete(cloudinstanceid, cloudconnectionid string) (models.Object, error) {
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(cloudinstanceid).WithCloudConnectionID(cloudconnectionid)
-	_, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
+func (f *IBMPICloudConnectionClient) Delete(id, cloudInstanceID string) (models.Object, *models.JobReference, error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(cloudInstanceID).WithCloudConnectionID(id)
+	respOk, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
 
 	if err != nil {
-		return nil, fmt.Errorf(errors.DeleteCloudConnectionOperationFailed, cloudconnectionid, err)
+		return nil, nil, fmt.Errorf(errors.DeleteCloudConnectionOperationFailed, id, err)
 	}
-	return nil, nil
+	if respOk != nil {
+		return respOk.Payload, nil, nil
+	}
+	if respAccepted != nil {
+		return nil, respAccepted.Payload, nil
+	}
+	return nil, nil, nil
+}
+
+// Delete a Cloud Connection
+func (f *IBMPICloudConnectionClient) DeleteWithContext(ctx context.Context, id, cloudInstanceID string) (obj models.Object, deleteJob *models.JobReference, err error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParamsWithContext(ctx).
+		WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithCloudConnectionID(id)
+	respOk, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return
+	}
+	if respOk != nil {
+		obj = respOk.Payload
+	}
+	if respAccepted != nil {
+		deleteJob = respAccepted.Payload
+	}
+	return
 }
 
 // AddNetwork to a cloud connection
@@ -97,7 +188,7 @@ func (f *IBMPICloudConnectionClient) AddNetwork(pcloudnetworkdef *p_cloud_cloud_
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksPutParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID).WithCloudConnectionID(pcloudnetworkdef.CloudConnectionID).WithNetworkID(pcloudnetworkdef.NetworkID)
 	_, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("Failed to add the network to the cloudconnection %s", err)
+		return nil, fmt.Errorf("failed to add the network to the cloudconnection %s", err)
 	}
 	return nil, nil
 }
@@ -109,28 +200,51 @@ func (f *IBMPICloudConnectionClient) DeleteNetwork(pcloudnetworkdef *p_cloud_clo
 	_, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksDelete(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to perform the delete operation... %s", err)
+		return nil, fmt.Errorf("failed to perform the delete operation... %s", err)
 	}
 	return nil, nil
 }
 
-// UpdateNetwork Update a network from a cloud connection
-func (f *IBMPICloudConnectionClient) UpdateNetwork(pcloudnetworkdef *p_cloud_cloud_connections.PcloudCloudconnectionsNetworksPutParams) (*models.CloudConnection, error) {
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksPutParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(pcloudnetworkdef.CloudInstanceID).WithCloudConnectionID(pcloudnetworkdef.CloudConnectionID).WithNetworkID(pcloudnetworkdef.NetworkID)
-	resp, _, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, pcloudnetworkdef.CloudInstanceID))
-
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to perform the update operation...%v", err)
+// AddNetwork to a cloud connection
+func (f *IBMPICloudConnectionClient) AddNetworkWithContext(ctx context.Context, networkID, cloudConnectionID, cloudInstanceID string) (jobReferece *models.JobReference, err error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksPutParamsWithContext(ctx).
+		WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithCloudConnectionID(cloudConnectionID).
+		WithNetworkID(networkID)
+	_, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return
 	}
-	return resp.Payload, nil
+	if respAccepted != nil {
+		jobReferece = respAccepted.Payload
+	}
+	return
+}
+
+// DeleteNetwork Deletes a network from a cloud connection
+func (f *IBMPICloudConnectionClient) DeleteNetworkWithContext(ctx context.Context, networkID, cloudConnectionID, cloudInstanceID string) (jobReferece *models.JobReference, err error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksDeleteParamsWithContext(ctx).
+		WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithCloudConnectionID(cloudConnectionID).
+		WithNetworkID(networkID)
+	_, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksDelete(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return
+	}
+	if respAccepted != nil {
+		jobReferece = respAccepted.Payload
+	}
+	return
 }
 
 // get VPCs
 
-func (f *IBMPICloudConnectionClient) GetVPC(cloudinstanceid string) (*models.CloudConnectionVirtualPrivateClouds, error) {
-	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsVirtualprivatecloudsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudinstanceid)
+func (f *IBMPICloudConnectionClient) GetVPC(cloudInstanceID string) (*models.CloudConnectionVirtualPrivateClouds, error) {
+	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsVirtualprivatecloudsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudInstanceID)
 
-	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsVirtualprivatecloudsGetall(params, ibmpisession.NewAuth(f.session, cloudinstanceid))
+	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsVirtualprivatecloudsGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
 	if err != nil || resp.Payload == nil {
 
 		return nil, fmt.Errorf("failed to perform the getvpc operation...%v", err)
