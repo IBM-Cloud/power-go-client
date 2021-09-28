@@ -47,7 +47,7 @@ type PVMInstanceUpdate struct {
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 
-	// Indicates if all volumes attached to the server must reside in the same storage pool
+	// Indicates if all volumes attached to the server must reside in the same storage pool; If set to false then volumes from any storage type and pool can be attached to the PVMInstance; Impacts PVMInstance snapshot, capture, and clone, for capture and clone - only data volumes that are of the same storage type and in the same storage pool of the PVMInstance's boot volume can be included; for snapshot - all data volumes to be included in the snapshot must reside in the same storage type and pool. Once set to false, cannot be set back to true unless all volumes attached reside in the same storage type and pool.
 	StoragePoolAffinity *bool `json:"storagePoolAffinity,omitempty"`
 
 	// The pvm instance virtual CPU information

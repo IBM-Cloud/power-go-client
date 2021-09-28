@@ -76,17 +76,17 @@ type PVMInstanceCreate struct {
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 
-	// The storage affinity data
+	// The storage affinity data; ignored if storagePool is provided; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in
 	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
 
 	// The storage connection type
 	// Enum: [vSCSI]
 	StorageConnection string `json:"storageConnection,omitempty"`
 
-	// Storage Pool for server deployment; if provided then storageAffinityPolicy and storageType will be ignored
+	// Storage Pool for server deployment; if provided then storageAffinity and storageType will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in
 	StoragePool string `json:"storagePool,omitempty"`
 
-	// Storage type for server deployment; will be ignored if storagePool or storageAffinityPolicy is provided
+	// Storage type for server deployment; will be ignored if storagePool or storageAffinity is provided; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in
 	StorageType string `json:"storageType,omitempty"`
 
 	// System type used to host the instance

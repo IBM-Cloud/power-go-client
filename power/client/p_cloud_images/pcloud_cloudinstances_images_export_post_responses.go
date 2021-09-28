@@ -53,6 +53,13 @@ func (o *PcloudCloudinstancesImagesExportPostReader) ReadResponse(response runti
 		}
 		return nil, result
 
+	case 422:
+		result := NewPcloudCloudinstancesImagesExportPostUnprocessableEntity()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 500:
 		result := NewPcloudCloudinstancesImagesExportPostInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -168,6 +175,35 @@ func (o *PcloudCloudinstancesImagesExportPostNotFound) Error() string {
 }
 
 func (o *PcloudCloudinstancesImagesExportPostNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudinstancesImagesExportPostUnprocessableEntity creates a PcloudCloudinstancesImagesExportPostUnprocessableEntity with default headers values
+func NewPcloudCloudinstancesImagesExportPostUnprocessableEntity() *PcloudCloudinstancesImagesExportPostUnprocessableEntity {
+	return &PcloudCloudinstancesImagesExportPostUnprocessableEntity{}
+}
+
+/*PcloudCloudinstancesImagesExportPostUnprocessableEntity handles this case with default header values.
+
+Unprocessable Entity
+*/
+type PcloudCloudinstancesImagesExportPostUnprocessableEntity struct {
+	Payload *models.Error
+}
+
+func (o *PcloudCloudinstancesImagesExportPostUnprocessableEntity) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}/export][%d] pcloudCloudinstancesImagesExportPostUnprocessableEntity  %+v", 422, o.Payload)
+}
+
+func (o *PcloudCloudinstancesImagesExportPostUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

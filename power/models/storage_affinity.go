@@ -19,20 +19,20 @@ import (
 // swagger:model StorageAffinity
 type StorageAffinity struct {
 
-	// PVM Instance (ID or Name) to base storage affinity policy against; required if requesting storage affinity and storageAffinityVolume is not provided
+	// PVM Instance (ID or Name) to base storage affinity policy against; required if requesting storage affinity and affinityVolume is not provided
 	AffinityPVMInstance *string `json:"affinityPVMInstance,omitempty"`
 
-	// Affinity policy for storage pool selection where server will be deployed; ignored if storagePool provided; for policy affinity requires one of storageAffinityPVMInstance or storageAffinityVolume to be specified; for policy anti-affinity requires one of storageAntiAffinityPVMInstances or storageAntiAffinityVolumes to be specified
+	// Affinity policy for storage pool selection; ignored if storagePool provided; for policy 'affinity' requires one of affinityPVMInstance or affinityVolume to be specified; for policy 'anti-affinity' requires one of antiAffinityPVMInstances or antiAffinityVolumes to be specified
 	// Enum: [affinity anti-affinity]
 	AffinityPolicy *string `json:"affinityPolicy,omitempty"`
 
-	// Volume (ID or Name) to base storage affinity policy against; required if requesting storage affinity and storageAffinityPVMInstance is not provided
+	// Volume (ID or Name) to base storage affinity policy against; required if requesting storage affinity and affinityPVMInstance is not provided
 	AffinityVolume *string `json:"affinityVolume,omitempty"`
 
-	// List of pvmInstances to base storage anti-affinity policy against; required if requesting storage anti-affinity and storageAntiAffinityVolumes is not provided
+	// List of pvmInstances to base storage anti-affinity policy against; required if requesting storage anti-affinity and antiAffinityVolumes is not provided
 	AntiAffinityPVMInstances []string `json:"antiAffinityPVMInstances"`
 
-	// List of volumes to base storage anti-affinity policy against; required if requesting storage anti-affinity and storageAntiAffinityPVMInstances is not provided
+	// List of volumes to base storage anti-affinity policy against; required if requesting storage anti-affinity and antiAffinityPVMInstances is not provided
 	AntiAffinityVolumes []string `json:"antiAffinityVolumes"`
 }
 

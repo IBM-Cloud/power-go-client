@@ -56,7 +56,7 @@ type CloudConnection struct {
 
 	// port
 	// Required: true
-	Port *int64 `json:"port"`
+	Port *string `json:"port"`
 
 	// speed of the cloud connection (speed in megabits per second)
 	// Required: true

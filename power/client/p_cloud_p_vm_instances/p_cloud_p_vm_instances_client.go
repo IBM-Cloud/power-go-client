@@ -118,6 +118,35 @@ func (a *Client) PcloudPvminstancesClonePost(params *PcloudPvminstancesClonePost
 }
 
 /*
+PcloudPvminstancesConsoleGet lists all console languages
+*/
+func (a *Client) PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleGetParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesConsoleGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudPvminstancesConsoleGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.console.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesConsoleGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudPvminstancesConsoleGetOK), nil
+
+}
+
+/*
 PcloudPvminstancesConsolePost generates the no v n c console URL
 */
 func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesConsolePostCreated, error) {
@@ -143,6 +172,35 @@ func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsole
 		return nil, err
 	}
 	return result.(*PcloudPvminstancesConsolePostCreated), nil
+
+}
+
+/*
+PcloudPvminstancesConsolePut updates p VM instance console laguage code
+*/
+func (a *Client) PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsolePutParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudPvminstancesConsolePutOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudPvminstancesConsolePutParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.console.put",
+		Method:             "PUT",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/console",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesConsolePutReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudPvminstancesConsolePutOK), nil
 
 }
 
@@ -528,6 +586,64 @@ func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstanc
 		return nil, err
 	}
 	return result.(*PcloudPvminstancesSnapshotsRestorePostAccepted), nil
+
+}
+
+/*
+PcloudV2PvminstancesCaptureGet gets detail of last capture job
+*/
+func (a *Client) PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudV2PvminstancesCaptureGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV2PvminstancesCaptureGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.v2.pvminstances.capture.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2PvminstancesCaptureGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudV2PvminstancesCaptureGetOK), nil
+
+}
+
+/*
+PcloudV2PvminstancesCapturePost adds a capture pvm instance to the jobs queue
+*/
+func (a *Client) PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudV2PvminstancesCapturePostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV2PvminstancesCapturePostParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.v2.pvminstances.capture.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2PvminstancesCapturePostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudV2PvminstancesCapturePostAccepted), nil
 
 }
 

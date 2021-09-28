@@ -3,6 +3,7 @@ package errors
 import (
 	"encoding/json"
 	"reflect"
+
 	//"strconv"
 
 	"github.com/IBM-Cloud/power-go-client/power/models"
@@ -18,10 +19,15 @@ const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Plac
 
 // start of Cloud Connection Messages
 
-const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for powerinstanceid %s with error %v"
+const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for cloudconnectionid %s with error %v"
 const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %v"
 const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid  %s with error %v"
 const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid  %s with error %v"
+
+// start of Job Messages
+const GetJobOperationFailed = "failed to perform get Job operation for job id %s with error %v"
+const GetAllJobsOperationFailed = "failed to perform get all jobs operation with error %v"
+const DeleteJobsOperationFailed = "failed to perform delete Job operation for job id %s with error %v"
 
 // start of System-Pools Messages
 const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %v"

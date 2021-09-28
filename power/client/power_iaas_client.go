@@ -21,16 +21,20 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_events"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_images"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_instances"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_jobs"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_networks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_p_vm_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_placement_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_s_a_p"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_snapshots"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_storage_capacity"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tasks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_connections"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_policies"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/service_bindings"
 	"github.com/IBM-Cloud/power-go-client/power/client/service_instances"
@@ -101,6 +105,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaas 
 
 	cli.PCloudInstances = p_cloud_instances.New(transport, formats)
 
+	cli.PCloudJobs = p_cloud_jobs.New(transport, formats)
+
 	cli.PCloudNetworks = p_cloud_networks.New(transport, formats)
 
 	cli.PCloudPVMInstances = p_cloud_p_vm_instances.New(transport, formats)
@@ -108,6 +114,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaas 
 	cli.PCloudPlacementGroups = p_cloud_placement_groups.New(transport, formats)
 
 	cli.PCloudSAP = p_cloud_s_a_p.New(transport, formats)
+
+	cli.PCloudServiceDHCP = p_cloud_service_d_h_c_p.New(transport, formats)
 
 	cli.PCloudSnapshots = p_cloud_snapshots.New(transport, formats)
 
@@ -120,6 +128,10 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaas 
 	cli.PCloudTenants = p_cloud_tenants.New(transport, formats)
 
 	cli.PCloudTenantsSSHKeys = p_cloud_tenants_ssh_keys.New(transport, formats)
+
+	cli.PCloudVPNConnections = p_cloud_v_p_n_connections.New(transport, formats)
+
+	cli.PCloudVPNPolicies = p_cloud_v_p_n_policies.New(transport, formats)
 
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
 
@@ -195,6 +207,8 @@ type PowerIaas struct {
 
 	PCloudInstances *p_cloud_instances.Client
 
+	PCloudJobs *p_cloud_jobs.Client
+
 	PCloudNetworks *p_cloud_networks.Client
 
 	PCloudPVMInstances *p_cloud_p_vm_instances.Client
@@ -202,6 +216,8 @@ type PowerIaas struct {
 	PCloudPlacementGroups *p_cloud_placement_groups.Client
 
 	PCloudSAP *p_cloud_s_a_p.Client
+
+	PCloudServiceDHCP *p_cloud_service_d_h_c_p.Client
 
 	PCloudSnapshots *p_cloud_snapshots.Client
 
@@ -214,6 +230,10 @@ type PowerIaas struct {
 	PCloudTenants *p_cloud_tenants.Client
 
 	PCloudTenantsSSHKeys *p_cloud_tenants_ssh_keys.Client
+
+	PCloudVPNConnections *p_cloud_v_p_n_connections.Client
+
+	PCloudVPNPolicies *p_cloud_v_p_n_policies.Client
 
 	PCloudVolumes *p_cloud_volumes.Client
 
@@ -252,6 +272,8 @@ func (c *PowerIaas) SetTransport(transport runtime.ClientTransport) {
 
 	c.PCloudInstances.SetTransport(transport)
 
+	c.PCloudJobs.SetTransport(transport)
+
 	c.PCloudNetworks.SetTransport(transport)
 
 	c.PCloudPVMInstances.SetTransport(transport)
@@ -259,6 +281,8 @@ func (c *PowerIaas) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudPlacementGroups.SetTransport(transport)
 
 	c.PCloudSAP.SetTransport(transport)
+
+	c.PCloudServiceDHCP.SetTransport(transport)
 
 	c.PCloudSnapshots.SetTransport(transport)
 
@@ -271,6 +295,10 @@ func (c *PowerIaas) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudTenants.SetTransport(transport)
 
 	c.PCloudTenantsSSHKeys.SetTransport(transport)
+
+	c.PCloudVPNConnections.SetTransport(transport)
+
+	c.PCloudVPNPolicies.SetTransport(transport)
 
 	c.PCloudVolumes.SetTransport(transport)
 

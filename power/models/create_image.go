@@ -25,7 +25,7 @@ type CreateImage struct {
 	// Cloud Storage bucket name; bucket-name[/optional/folder]; required for import image
 	BucketName string `json:"bucketName,omitempty"`
 
-	// Type of Disk; will be ignored if storagePool or affinityPolicy is provided
+	// Type of Disk; will be ignored if storagePool or affinityPolicy is provided; Used only when importing an image from cloud storage.
 	DiskType string `json:"diskType,omitempty"`
 
 	// Cloud Storage image filename; required for import image
@@ -41,7 +41,7 @@ type CreateImage struct {
 	ImagePath string `json:"imagePath,omitempty"`
 
 	// Image OS Type, required if importing a raw image; raw images can only be imported using the command line interface
-	// Enum: [aix ibmi redhat sles]
+	// Enum: [aix ibmi rhel sles]
 	OsType string `json:"osType,omitempty"`
 
 	// Cloud Storage Region; only required to access IBM Cloud Storage
@@ -55,10 +55,10 @@ type CreateImage struct {
 	// Enum: [root-project url]
 	Source *string `json:"source"`
 
-	// The storage affinity data
+	// The storage affinity data; ignored if storagePool is provided; Used only when importing an image from cloud storage.
 	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
 
-	// Storage pool where the image will be loaded, used only when importing an image from cloud storage; If provided then affinityPolicy and diskType will be ignored
+	// Storage pool where the image will be loaded; if provided then storageAffinity and diskType will be ignored; Used only when importing an image from cloud storage.
 	StoragePool string `json:"storagePool,omitempty"`
 }
 
@@ -88,7 +88,7 @@ var createImageTypeOsTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["aix","ibmi","redhat","sles"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["aix","ibmi","rhel","sles"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -104,8 +104,8 @@ const (
 	// CreateImageOsTypeIbmi captures enum value "ibmi"
 	CreateImageOsTypeIbmi string = "ibmi"
 
-	// CreateImageOsTypeRedhat captures enum value "redhat"
-	CreateImageOsTypeRedhat string = "redhat"
+	// CreateImageOsTypeRhel captures enum value "rhel"
+	CreateImageOsTypeRhel string = "rhel"
 
 	// CreateImageOsTypeSles captures enum value "sles"
 	CreateImageOsTypeSles string = "sles"
