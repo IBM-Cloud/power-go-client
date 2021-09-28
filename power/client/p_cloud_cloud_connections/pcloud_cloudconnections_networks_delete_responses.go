@@ -111,7 +111,7 @@ func NewPcloudCloudconnectionsNetworksDeleteAccepted() *PcloudCloudconnectionsNe
 Accepted
 */
 type PcloudCloudconnectionsNetworksDeleteAccepted struct {
-	Payload models.Object
+	Payload *models.JobReference
 }
 
 func (o *PcloudCloudconnectionsNetworksDeleteAccepted) Error() string {
@@ -120,8 +120,10 @@ func (o *PcloudCloudconnectionsNetworksDeleteAccepted) Error() string {
 
 func (o *PcloudCloudconnectionsNetworksDeleteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.JobReference)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

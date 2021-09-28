@@ -39,8 +39,22 @@ func (o *PcloudPvminstancesCapturePostReader) ReadResponse(response runtime.Clie
 		}
 		return result, nil
 
+	case 400:
+		result := NewPcloudPvminstancesCapturePostBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 401:
 		result := NewPcloudPvminstancesCapturePostUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
+	case 422:
+		result := NewPcloudPvminstancesCapturePostUnprocessableEntity()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -112,6 +126,35 @@ func (o *PcloudPvminstancesCapturePostAccepted) readResponse(response runtime.Cl
 	return nil
 }
 
+// NewPcloudPvminstancesCapturePostBadRequest creates a PcloudPvminstancesCapturePostBadRequest with default headers values
+func NewPcloudPvminstancesCapturePostBadRequest() *PcloudPvminstancesCapturePostBadRequest {
+	return &PcloudPvminstancesCapturePostBadRequest{}
+}
+
+/*PcloudPvminstancesCapturePostBadRequest handles this case with default header values.
+
+Bad Request
+*/
+type PcloudPvminstancesCapturePostBadRequest struct {
+	Payload *models.Error
+}
+
+func (o *PcloudPvminstancesCapturePostBadRequest) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture][%d] pcloudPvminstancesCapturePostBadRequest  %+v", 400, o.Payload)
+}
+
+func (o *PcloudPvminstancesCapturePostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
 // NewPcloudPvminstancesCapturePostUnauthorized creates a PcloudPvminstancesCapturePostUnauthorized with default headers values
 func NewPcloudPvminstancesCapturePostUnauthorized() *PcloudPvminstancesCapturePostUnauthorized {
 	return &PcloudPvminstancesCapturePostUnauthorized{}
@@ -130,6 +173,35 @@ func (o *PcloudPvminstancesCapturePostUnauthorized) Error() string {
 }
 
 func (o *PcloudPvminstancesCapturePostUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudPvminstancesCapturePostUnprocessableEntity creates a PcloudPvminstancesCapturePostUnprocessableEntity with default headers values
+func NewPcloudPvminstancesCapturePostUnprocessableEntity() *PcloudPvminstancesCapturePostUnprocessableEntity {
+	return &PcloudPvminstancesCapturePostUnprocessableEntity{}
+}
+
+/*PcloudPvminstancesCapturePostUnprocessableEntity handles this case with default header values.
+
+Unprocessable Entity
+*/
+type PcloudPvminstancesCapturePostUnprocessableEntity struct {
+	Payload *models.Error
+}
+
+func (o *PcloudPvminstancesCapturePostUnprocessableEntity) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture][%d] pcloudPvminstancesCapturePostUnprocessableEntity  %+v", 422, o.Payload)
+}
+
+func (o *PcloudPvminstancesCapturePostUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

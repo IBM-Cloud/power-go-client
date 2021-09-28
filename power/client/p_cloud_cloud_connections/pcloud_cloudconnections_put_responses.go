@@ -67,6 +67,13 @@ func (o *PcloudCloudconnectionsPutReader) ReadResponse(response runtime.ClientRe
 		}
 		return nil, result
 
+	case 409:
+		result := NewPcloudCloudconnectionsPutConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 422:
 		result := NewPcloudCloudconnectionsPutUnprocessableEntity()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -125,7 +132,7 @@ func NewPcloudCloudconnectionsPutAccepted() *PcloudCloudconnectionsPutAccepted {
 Accepted
 */
 type PcloudCloudconnectionsPutAccepted struct {
-	Payload models.Object
+	Payload *models.JobReference
 }
 
 func (o *PcloudCloudconnectionsPutAccepted) Error() string {
@@ -134,8 +141,10 @@ func (o *PcloudCloudconnectionsPutAccepted) Error() string {
 
 func (o *PcloudCloudconnectionsPutAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.JobReference)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -247,6 +256,35 @@ func (o *PcloudCloudconnectionsPutMethodNotAllowed) Error() string {
 }
 
 func (o *PcloudCloudconnectionsPutMethodNotAllowed) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsPutConflict creates a PcloudCloudconnectionsPutConflict with default headers values
+func NewPcloudCloudconnectionsPutConflict() *PcloudCloudconnectionsPutConflict {
+	return &PcloudCloudconnectionsPutConflict{}
+}
+
+/*PcloudCloudconnectionsPutConflict handles this case with default header values.
+
+Conflict
+*/
+type PcloudCloudconnectionsPutConflict struct {
+	Payload *models.Error
+}
+
+func (o *PcloudCloudconnectionsPutConflict) Error() string {
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsPutConflict  %+v", 409, o.Payload)
+}
+
+func (o *PcloudCloudconnectionsPutConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

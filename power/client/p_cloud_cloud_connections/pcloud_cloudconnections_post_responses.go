@@ -154,7 +154,7 @@ func NewPcloudCloudconnectionsPostAccepted() *PcloudCloudconnectionsPostAccepted
 Accepted
 */
 type PcloudCloudconnectionsPostAccepted struct {
-	Payload *models.CloudConnection
+	Payload *models.CloudConnectionCreateResponse
 }
 
 func (o *PcloudCloudconnectionsPostAccepted) Error() string {
@@ -163,7 +163,7 @@ func (o *PcloudCloudconnectionsPostAccepted) Error() string {
 
 func (o *PcloudCloudconnectionsPostAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.CloudConnection)
+	o.Payload = new(models.CloudConnectionCreateResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

@@ -2,9 +2,10 @@ package instance
 
 import (
 	"fmt"
+	"time"
+
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
-	"time"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_cloud_connections"
@@ -26,24 +27,24 @@ func NewIBMPICloudConnectionClient(sess *ibmpisession.IBMPISession, powerinstanc
 }
 
 // Create a Cloud Connection
-func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsPostParams, powerinstanceid string) (*models.CloudConnection, error) {
+func (f *IBMPICloudConnectionClient) Create(pclouddef *p_cloud_cloud_connections.PcloudCloudconnectionsPostParams, powerinstanceid string) (*models.CloudConnection, *models.CloudConnectionCreateResponse, error) {
 
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(pclouddef.Body)
 	postok, postcreated, postAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
-		return nil, fmt.Errorf(errors.CreateCloudConnectionOperationFailed, powerinstanceid, err)
+		return nil, nil, fmt.Errorf(errors.CreateCloudConnectionOperationFailed, powerinstanceid, err)
 	}
 	if postok != nil {
-		return postok.Payload, nil
+		return postok.Payload, nil, nil
 	}
 	if postcreated != nil {
-		return postcreated.Payload, nil
+		return postcreated.Payload, nil, nil
 	}
 
 	if postAccepted != nil {
-		return postAccepted.Payload, nil
+		return nil, postAccepted.Payload, nil
 	}
-	return nil, nil
+	return nil, nil, nil
 }
 
 // Get ...

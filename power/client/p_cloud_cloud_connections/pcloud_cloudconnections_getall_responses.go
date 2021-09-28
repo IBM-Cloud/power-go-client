@@ -46,6 +46,13 @@ func (o *PcloudCloudconnectionsGetallReader) ReadResponse(response runtime.Clien
 		}
 		return nil, result
 
+	case 408:
+		result := NewPcloudCloudconnectionsGetallRequestTimeout()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 500:
 		result := NewPcloudCloudconnectionsGetallInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -134,6 +141,35 @@ func (o *PcloudCloudconnectionsGetallUnauthorized) Error() string {
 }
 
 func (o *PcloudCloudconnectionsGetallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsGetallRequestTimeout creates a PcloudCloudconnectionsGetallRequestTimeout with default headers values
+func NewPcloudCloudconnectionsGetallRequestTimeout() *PcloudCloudconnectionsGetallRequestTimeout {
+	return &PcloudCloudconnectionsGetallRequestTimeout{}
+}
+
+/*PcloudCloudconnectionsGetallRequestTimeout handles this case with default header values.
+
+Request Timeout
+*/
+type PcloudCloudconnectionsGetallRequestTimeout struct {
+	Payload *models.Error
+}
+
+func (o *PcloudCloudconnectionsGetallRequestTimeout) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsGetallRequestTimeout  %+v", 408, o.Payload)
+}
+
+func (o *PcloudCloudconnectionsGetallRequestTimeout) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

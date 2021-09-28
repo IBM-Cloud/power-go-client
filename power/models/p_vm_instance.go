@@ -23,6 +23,9 @@ type PVMInstance struct {
 	// (deprecated - replaced by networks) The list of addresses and their network information
 	Addresses []*PVMInstanceNetwork `json:"addresses"`
 
+	// Console language and code
+	ConsoleLanguage *ConsoleLanguage `json:"consoleLanguage,omitempty"`
+
 	// Date/Time of PVM creation
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
@@ -36,6 +39,9 @@ type PVMInstance struct {
 
 	// health
 	Health *PVMInstanceHealth `json:"health,omitempty"`
+
+	// The PVM Instance Host ID (Internal Use Only)
+	HostID int64 `json:"hostID,omitempty"`
 
 	// The ImageID used by the server
 	// Required: true
@@ -73,7 +79,7 @@ type PVMInstance struct {
 	// OS system information (usually version and build)
 	OperatingSystem string `json:"operatingSystem,omitempty"`
 
-	// Type of the OS [aix, ibmi, redhat, sles, vtl]
+	// Type of the OS [aix, ibmi, rhel, sles, vtl, rhcos]
 	// Required: true
 	OsType *string `json:"osType"`
 
@@ -119,7 +125,7 @@ type PVMInstance struct {
 	// Storage Pool where server is deployed
 	StoragePool string `json:"storagePool,omitempty"`
 
-	// Indicates if all volumes attached to the server must reside in the same storage pool
+	// Indicates if all volumes attached to the server must reside in the same storage pool; Defaults to true when initially deploying a PVMInstance
 	StoragePoolAffinity *bool `json:"storagePoolAffinity,omitempty"`
 
 	// Storage type where server is deployed
@@ -146,6 +152,10 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAddresses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConsoleLanguage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -259,6 +269,24 @@ func (m *PVMInstance) validateAddresses(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) validateConsoleLanguage(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ConsoleLanguage) { // not required
+		return nil
+	}
+
+	if m.ConsoleLanguage != nil {
+		if err := m.ConsoleLanguage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("consoleLanguage")
+			}
+			return err
+		}
 	}
 
 	return nil

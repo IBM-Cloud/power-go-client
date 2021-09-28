@@ -23,6 +23,9 @@ type PVMInstanceReference struct {
 	// (deprecated - replaced by networks) The list of addresses and their network information
 	Addresses []*PVMInstanceNetwork `json:"addresses"`
 
+	// Console language and code
+	ConsoleLanguage *ConsoleLanguage `json:"consoleLanguage,omitempty"`
+
 	// Date/Time of PVM creation
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
@@ -36,6 +39,9 @@ type PVMInstanceReference struct {
 
 	// health
 	Health *PVMInstanceHealth `json:"health,omitempty"`
+
+	// The PVM Instance Host ID (Internal Use Only)
+	HostID int64 `json:"hostID,omitempty"`
 
 	// Link to Cloud Instance resource
 	// Required: true
@@ -70,12 +76,15 @@ type PVMInstanceReference struct {
 	// OS system information (usually version and build)
 	OperatingSystem string `json:"operatingSystem,omitempty"`
 
-	// Type of the OS [aix, ibmi, redhat, sles, vtl]
+	// Type of the OS [aix, ibmi, rhel, sles, vtl, rhcos]
 	// Required: true
 	OsType *string `json:"osType"`
 
 	// VM pinning policy to use [none, soft, hard]
 	PinPolicy string `json:"pinPolicy,omitempty"`
+
+	// The placement group of the server
+	PlacementGroup *string `json:"placementGroup,omitempty"`
 
 	// Processor type (dedicated, shared, capped)
 	// Required: true
@@ -135,6 +144,10 @@ func (m *PVMInstanceReference) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAddresses(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateConsoleLanguage(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -240,6 +253,24 @@ func (m *PVMInstanceReference) validateAddresses(formats strfmt.Registry) error 
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceReference) validateConsoleLanguage(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.ConsoleLanguage) { // not required
+		return nil
+	}
+
+	if m.ConsoleLanguage != nil {
+		if err := m.ConsoleLanguage.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("consoleLanguage")
+			}
+			return err
+		}
 	}
 
 	return nil

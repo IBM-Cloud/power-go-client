@@ -291,6 +291,122 @@ func (a *Client) PcloudImagesGetall(params *PcloudImagesGetallParams, authInfo r
 
 }
 
+/*
+PcloudV1CloudinstancesCosimagesGet gets detail of last cos image import job
+*/
+func (a *Client) PcloudV1CloudinstancesCosimagesGet(params *PcloudV1CloudinstancesCosimagesGetParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudV1CloudinstancesCosimagesGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV1CloudinstancesCosimagesGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.v1.cloudinstances.cosimages.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV1CloudinstancesCosimagesGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudV1CloudinstancesCosimagesGetOK), nil
+
+}
+
+/*
+PcloudV1CloudinstancesCosimagesPost creates an cos image import job
+*/
+func (a *Client) PcloudV1CloudinstancesCosimagesPost(params *PcloudV1CloudinstancesCosimagesPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudV1CloudinstancesCosimagesPostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV1CloudinstancesCosimagesPostParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.v1.cloudinstances.cosimages.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV1CloudinstancesCosimagesPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudV1CloudinstancesCosimagesPostAccepted), nil
+
+}
+
+/*
+PcloudV2ImagesExportGet gets detail of last image export job
+*/
+func (a *Client) PcloudV2ImagesExportGet(params *PcloudV2ImagesExportGetParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudV2ImagesExportGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV2ImagesExportGetParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.v2.images.export.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2ImagesExportGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudV2ImagesExportGetOK), nil
+
+}
+
+/*
+PcloudV2ImagesExportPost adds image export job to the jobs queue
+*/
+func (a *Client) PcloudV2ImagesExportPost(params *PcloudV2ImagesExportPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudV2ImagesExportPostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV2ImagesExportPostParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.v2.images.export.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2ImagesExportPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudV2ImagesExportPostAccepted), nil
+
+}
+
 // SetTransport changes the transport on the client
 func (a *Client) SetTransport(transport runtime.ClientTransport) {
 	a.transport = transport
