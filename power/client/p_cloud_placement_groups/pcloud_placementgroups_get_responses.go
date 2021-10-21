@@ -39,6 +39,13 @@ func (o *PcloudPlacementgroupsGetReader) ReadResponse(response runtime.ClientRes
 		}
 		return nil, result
 
+	case 404:
+		result := NewPcloudPlacementgroupsGetNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 500:
 		result := NewPcloudPlacementgroupsGetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -98,6 +105,35 @@ func (o *PcloudPlacementgroupsGetBadRequest) Error() string {
 }
 
 func (o *PcloudPlacementgroupsGetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudPlacementgroupsGetNotFound creates a PcloudPlacementgroupsGetNotFound with default headers values
+func NewPcloudPlacementgroupsGetNotFound() *PcloudPlacementgroupsGetNotFound {
+	return &PcloudPlacementgroupsGetNotFound{}
+}
+
+/*PcloudPlacementgroupsGetNotFound handles this case with default header values.
+
+Not Found
+*/
+type PcloudPlacementgroupsGetNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudPlacementgroupsGetNotFound) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id}][%d] pcloudPlacementgroupsGetNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PcloudPlacementgroupsGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

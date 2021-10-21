@@ -18,9 +18,6 @@ import (
 // swagger:model VPNConnectionUpdate
 type VPNConnectionUpdate struct {
 
-	// connection state of the VPN Connection
-	ConnectionState *bool `json:"connectionState,omitempty"`
-
 	// unique identifier of IKEPolicy selected for this VPNConnection
 	IkePolicy string `json:"ikePolicy,omitempty"`
 
@@ -43,9 +40,6 @@ func (m *VPNConnectionUpdate) UnmarshalJSON(data []byte) error {
 	// stage 1, bind the properties
 	var stage1 struct {
 
-		// connection state of the VPN Connection
-		ConnectionState *bool `json:"connectionState,omitempty"`
-
 		// unique identifier of IKEPolicy selected for this VPNConnection
 		IkePolicy string `json:"ikePolicy,omitempty"`
 
@@ -64,8 +58,6 @@ func (m *VPNConnectionUpdate) UnmarshalJSON(data []byte) error {
 	}
 	var rcv VPNConnectionUpdate
 
-	rcv.ConnectionState = stage1.ConnectionState
-
 	rcv.IkePolicy = stage1.IkePolicy
 
 	rcv.IPSecPolicy = stage1.IPSecPolicy
@@ -81,8 +73,6 @@ func (m *VPNConnectionUpdate) UnmarshalJSON(data []byte) error {
 	if err := json.Unmarshal(data, &stage2); err != nil {
 		return err
 	}
-
-	delete(stage2, "connectionState")
 
 	delete(stage2, "ikePolicy")
 
@@ -112,9 +102,6 @@ func (m *VPNConnectionUpdate) UnmarshalJSON(data []byte) error {
 func (m VPNConnectionUpdate) MarshalJSON() ([]byte, error) {
 	var stage1 struct {
 
-		// connection state of the VPN Connection
-		ConnectionState *bool `json:"connectionState,omitempty"`
-
 		// unique identifier of IKEPolicy selected for this VPNConnection
 		IkePolicy string `json:"ikePolicy,omitempty"`
 
@@ -128,8 +115,6 @@ func (m VPNConnectionUpdate) MarshalJSON() ([]byte, error) {
 		// Format: ipv4
 		PeerGatewayAddress PeerGatewayAddress `json:"peerGatewayAddress,omitempty"`
 	}
-
-	stage1.ConnectionState = m.ConnectionState
 
 	stage1.IkePolicy = m.IkePolicy
 

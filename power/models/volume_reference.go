@@ -24,6 +24,9 @@ type VolumeReference struct {
 	// Required: true
 	Bootable *bool `json:"bootable"`
 
+	// Consistency Group Name if volume is a part of volume group
+	ConsistencyGroupName string `json:"consistencyGroupName,omitempty"`
+
 	// Creation Date
 	// Required: true
 	// Format: date-time
@@ -36,6 +39,9 @@ type VolumeReference struct {
 	// Required: true
 	DiskType *string `json:"diskType"`
 
+	// Volume Group ID
+	GroupID string `json:"groupID,omitempty"`
+
 	// Link to Volume resource
 	// Required: true
 	Href *string `json:"href"`
@@ -45,12 +51,18 @@ type VolumeReference struct {
 	// Format: date-time
 	LastUpdateDate *strfmt.DateTime `json:"lastUpdateDate"`
 
+	// mirroring state for replication enabled volume
+	MirroringState string `json:"mirroringState,omitempty"`
+
 	// Volume Name
 	// Required: true
 	Name *string `json:"name"`
 
 	// List of PCloud PVM Instance attached to the volume
 	PvmInstanceIds []string `json:"pvmInstanceIDs"`
+
+	// shows the replication status of a volume
+	ReplicationStatus string `json:"replicationStatus,omitempty"`
 
 	// Indicates if the volume is shareable between VMs
 	// Required: true

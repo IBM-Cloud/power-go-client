@@ -93,7 +93,7 @@ type PcloudIpsecpoliciesPutOK struct {
 }
 
 func (o *PcloudIpsecpoliciesPutOK) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -122,7 +122,7 @@ type PcloudIpsecpoliciesPutBadRequest struct {
 }
 
 func (o *PcloudIpsecpoliciesPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -151,7 +151,7 @@ type PcloudIpsecpoliciesPutUnauthorized struct {
 }
 
 func (o *PcloudIpsecpoliciesPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -180,7 +180,7 @@ type PcloudIpsecpoliciesPutForbidden struct {
 }
 
 func (o *PcloudIpsecpoliciesPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -209,7 +209,7 @@ type PcloudIpsecpoliciesPutConflict struct {
 }
 
 func (o *PcloudIpsecpoliciesPutConflict) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -238,7 +238,7 @@ type PcloudIpsecpoliciesPutUnprocessableEntity struct {
 }
 
 func (o *PcloudIpsecpoliciesPutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutUnprocessableEntity  %+v", 422, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -267,7 +267,7 @@ type PcloudIpsecpoliciesPutInternalServerError struct {
 }
 
 func (o *PcloudIpsecpoliciesPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPutInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

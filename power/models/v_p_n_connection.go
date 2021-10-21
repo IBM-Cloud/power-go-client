@@ -19,10 +19,6 @@ import (
 // swagger:model VPNConnection
 type VPNConnection struct {
 
-	// connection state of the VPN Connection
-	// Required: true
-	ConnectionState *bool `json:"connectionState"`
-
 	// dead peer detection
 	// Required: true
 	DeadPeerDetection *DeadPeerDetection `json:"deadPeerDetection"`
@@ -79,10 +75,6 @@ type VPNConnection struct {
 func (m *VPNConnection) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateConnectionState(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateDeadPeerDetection(formats); err != nil {
 		res = append(res, err)
 	}
@@ -134,15 +126,6 @@ func (m *VPNConnection) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *VPNConnection) validateConnectionState(formats strfmt.Registry) error {
-
-	if err := validate.Required("connectionState", "body", m.ConnectionState); err != nil {
-		return err
-	}
-
 	return nil
 }
 

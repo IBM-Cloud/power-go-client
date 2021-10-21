@@ -86,7 +86,7 @@ type PcloudVpnconnectionsNetworksGetOK struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksGetOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -115,7 +115,7 @@ type PcloudVpnconnectionsNetworksGetBadRequest struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksGetBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +144,7 @@ type PcloudVpnconnectionsNetworksGetUnauthorized struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksGetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -173,7 +173,7 @@ type PcloudVpnconnectionsNetworksGetForbidden struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksGetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -202,7 +202,7 @@ type PcloudVpnconnectionsNetworksGetNotFound struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -231,7 +231,7 @@ type PcloudVpnconnectionsNetworksGetInternalServerError struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksGetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

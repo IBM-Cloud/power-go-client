@@ -93,7 +93,7 @@ type PcloudIkepoliciesPostOK struct {
 }
 
 func (o *PcloudIkepoliciesPostOK) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -122,7 +122,7 @@ type PcloudIkepoliciesPostBadRequest struct {
 }
 
 func (o *PcloudIkepoliciesPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -151,7 +151,7 @@ type PcloudIkepoliciesPostUnauthorized struct {
 }
 
 func (o *PcloudIkepoliciesPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -180,7 +180,7 @@ type PcloudIkepoliciesPostForbidden struct {
 }
 
 func (o *PcloudIkepoliciesPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -209,7 +209,7 @@ type PcloudIkepoliciesPostConflict struct {
 }
 
 func (o *PcloudIkepoliciesPostConflict) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -238,7 +238,7 @@ type PcloudIkepoliciesPostUnprocessableEntity struct {
 }
 
 func (o *PcloudIkepoliciesPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostUnprocessableEntity  %+v", 422, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -267,7 +267,7 @@ type PcloudIkepoliciesPostInternalServerError struct {
 }
 
 func (o *PcloudIkepoliciesPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies][%d] pcloudIkepoliciesPostInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPostInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

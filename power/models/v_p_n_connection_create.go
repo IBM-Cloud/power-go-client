@@ -19,10 +19,6 @@ import (
 // swagger:model VPNConnectionCreate
 type VPNConnectionCreate struct {
 
-	// connection state of the VPN Connection
-	// Required: true
-	ConnectionState *bool `json:"connectionState"`
-
 	// unique identifier of IKEPolicy selected for this VPNConnection
 	// Required: true
 	IkePolicy *string `json:"ikePolicy"`
@@ -58,10 +54,6 @@ type VPNConnectionCreate struct {
 func (m *VPNConnectionCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateConnectionState(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateIkePolicy(formats); err != nil {
 		res = append(res, err)
 	}
@@ -93,15 +85,6 @@ func (m *VPNConnectionCreate) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *VPNConnectionCreate) validateConnectionState(formats strfmt.Registry) error {
-
-	if err := validate.Required("connectionState", "body", m.ConnectionState); err != nil {
-		return err
-	}
-
 	return nil
 }
 

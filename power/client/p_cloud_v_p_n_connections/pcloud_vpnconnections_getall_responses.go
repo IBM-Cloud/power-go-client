@@ -86,7 +86,7 @@ type PcloudVpnconnectionsGetallOK struct {
 }
 
 func (o *PcloudVpnconnectionsGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsGetallOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsGetallOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -115,7 +115,7 @@ type PcloudVpnconnectionsGetallBadRequest struct {
 }
 
 func (o *PcloudVpnconnectionsGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsGetallBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsGetallBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +144,7 @@ type PcloudVpnconnectionsGetallUnauthorized struct {
 }
 
 func (o *PcloudVpnconnectionsGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsGetallUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsGetallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -173,7 +173,7 @@ type PcloudVpnconnectionsGetallForbidden struct {
 }
 
 func (o *PcloudVpnconnectionsGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsGetallForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsGetallForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -202,7 +202,7 @@ type PcloudVpnconnectionsGetallNotFound struct {
 }
 
 func (o *PcloudVpnconnectionsGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsGetallNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsGetallNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -231,7 +231,7 @@ type PcloudVpnconnectionsGetallInternalServerError struct {
 }
 
 func (o *PcloudVpnconnectionsGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsGetallInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsGetallInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

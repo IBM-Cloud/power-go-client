@@ -6,6 +6,8 @@ package models
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"strconv"
+
 	strfmt "github.com/go-openapi/strfmt"
 
 	"github.com/go-openapi/errors"
@@ -13,13 +15,16 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// DHCPServer d h c p server
-// swagger:model DHCPServer
-type DHCPServer struct {
+// DHCPServerDetail d h c p server detail
+// swagger:model DHCPServerDetail
+type DHCPServerDetail struct {
 
 	// The ID of the DHCP Server
 	// Required: true
 	ID *string `json:"id"`
+
+	// The list of DHCP Server PVM Instance leases
+	Leases []*DHCPServerLeases `json:"leases"`
 
 	// The DHCP Server private network
 	// Required: true
@@ -30,11 +35,15 @@ type DHCPServer struct {
 	Status *string `json:"status"`
 }
 
-// Validate validates this d h c p server
-func (m *DHCPServer) Validate(formats strfmt.Registry) error {
+// Validate validates this d h c p server detail
+func (m *DHCPServerDetail) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLeases(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -52,7 +61,7 @@ func (m *DHCPServer) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *DHCPServer) validateID(formats strfmt.Registry) error {
+func (m *DHCPServerDetail) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
@@ -61,7 +70,32 @@ func (m *DHCPServer) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *DHCPServer) validateNetwork(formats strfmt.Registry) error {
+func (m *DHCPServerDetail) validateLeases(formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Leases) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Leases); i++ {
+		if swag.IsZero(m.Leases[i]) { // not required
+			continue
+		}
+
+		if m.Leases[i] != nil {
+			if err := m.Leases[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("leases" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *DHCPServerDetail) validateNetwork(formats strfmt.Registry) error {
 
 	if err := validate.Required("network", "body", m.Network); err != nil {
 		return err
@@ -79,7 +113,7 @@ func (m *DHCPServer) validateNetwork(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *DHCPServer) validateStatus(formats strfmt.Registry) error {
+func (m *DHCPServerDetail) validateStatus(formats strfmt.Registry) error {
 
 	if err := validate.Required("status", "body", m.Status); err != nil {
 		return err
@@ -89,7 +123,7 @@ func (m *DHCPServer) validateStatus(formats strfmt.Registry) error {
 }
 
 // MarshalBinary interface implementation
-func (m *DHCPServer) MarshalBinary() ([]byte, error) {
+func (m *DHCPServerDetail) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -97,8 +131,8 @@ func (m *DHCPServer) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *DHCPServer) UnmarshalBinary(b []byte) error {
-	var res DHCPServer
+func (m *DHCPServerDetail) UnmarshalBinary(b []byte) error {
+	var res DHCPServerDetail
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

@@ -19,6 +19,9 @@ import (
 // swagger:model NetworkReference
 type NetworkReference struct {
 
+	// DHCP Managed Network
+	DhcpManaged bool `json:"dhcpManaged,omitempty"`
+
 	// Link to Network resource
 	// Required: true
 	Href *string `json:"href"`
