@@ -29,7 +29,7 @@ PcloudVpnconnectionsDelete deletes v p n connection
 
 Delete VPN Connection (by its identifier)
 */
-func (a *Client) PcloudVpnconnectionsDelete(params *PcloudVpnconnectionsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsDeleteOK, error) {
+func (a *Client) PcloudVpnconnectionsDelete(params *PcloudVpnconnectionsDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsDeleteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVpnconnectionsDeleteParams()
@@ -38,7 +38,7 @@ func (a *Client) PcloudVpnconnectionsDelete(params *PcloudVpnconnectionsDeletePa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.delete",
 		Method:             "DELETE",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -51,7 +51,7 @@ func (a *Client) PcloudVpnconnectionsDelete(params *PcloudVpnconnectionsDeletePa
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PcloudVpnconnectionsDeleteOK), nil
+	return result.(*PcloudVpnconnectionsDeleteAccepted), nil
 
 }
 
@@ -69,7 +69,7 @@ func (a *Client) PcloudVpnconnectionsGet(params *PcloudVpnconnectionsGetParams, 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.get",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -100,7 +100,7 @@ func (a *Client) PcloudVpnconnectionsGetall(params *PcloudVpnconnectionsGetallPa
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.getall",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -122,7 +122,7 @@ PcloudVpnconnectionsNetworksDelete detaches network
 
 Detach network from a specific VPN Connection
 */
-func (a *Client) PcloudVpnconnectionsNetworksDelete(params *PcloudVpnconnectionsNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsNetworksDeleteOK, error) {
+func (a *Client) PcloudVpnconnectionsNetworksDelete(params *PcloudVpnconnectionsNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsNetworksDeleteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVpnconnectionsNetworksDeleteParams()
@@ -131,7 +131,7 @@ func (a *Client) PcloudVpnconnectionsNetworksDelete(params *PcloudVpnconnections
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.networks.delete",
 		Method:             "DELETE",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -144,7 +144,7 @@ func (a *Client) PcloudVpnconnectionsNetworksDelete(params *PcloudVpnconnections
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PcloudVpnconnectionsNetworksDeleteOK), nil
+	return result.(*PcloudVpnconnectionsNetworksDeleteAccepted), nil
 
 }
 
@@ -162,7 +162,7 @@ func (a *Client) PcloudVpnconnectionsNetworksGet(params *PcloudVpnconnectionsNet
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.networks.get",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -184,7 +184,7 @@ PcloudVpnconnectionsNetworksPut attaches network
 
 Attach a network to a VPN Connection
 */
-func (a *Client) PcloudVpnconnectionsNetworksPut(params *PcloudVpnconnectionsNetworksPutParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsNetworksPutOK, error) {
+func (a *Client) PcloudVpnconnectionsNetworksPut(params *PcloudVpnconnectionsNetworksPutParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsNetworksPutAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVpnconnectionsNetworksPutParams()
@@ -193,7 +193,7 @@ func (a *Client) PcloudVpnconnectionsNetworksPut(params *PcloudVpnconnectionsNet
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.networks.put",
 		Method:             "PUT",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -206,38 +206,7 @@ func (a *Client) PcloudVpnconnectionsNetworksPut(params *PcloudVpnconnectionsNet
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PcloudVpnconnectionsNetworksPutOK), nil
-
-}
-
-/*
-PcloudVpnconnectionsOptionsGet gets options
-
-Get allowable and default values for attributes "authentication", "dhgroup", "encryption", "keyLifetime", and "version" when creating or updating an IKE Policy Get allowable and default values for attributes "authentication", "dhgroup", "encryption", and "keyLifetime" when creating or updating an IPSec Policy
-*/
-func (a *Client) PcloudVpnconnectionsOptionsGet(params *PcloudVpnconnectionsOptionsGetParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsOptionsGetOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPcloudVpnconnectionsOptionsGetParams()
-	}
-
-	result, err := a.transport.Submit(&runtime.ClientOperation{
-		ID:                 "pcloud.vpnconnections.options.get",
-		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/options",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PcloudVpnconnectionsOptionsGetReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	})
-	if err != nil {
-		return nil, err
-	}
-	return result.(*PcloudVpnconnectionsOptionsGetOK), nil
+	return result.(*PcloudVpnconnectionsNetworksPutAccepted), nil
 
 }
 
@@ -255,7 +224,7 @@ func (a *Client) PcloudVpnconnectionsPeersubnetsDelete(params *PcloudVpnconnecti
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.peersubnets.delete",
 		Method:             "DELETE",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/peer-subnets",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -286,7 +255,7 @@ func (a *Client) PcloudVpnconnectionsPeersubnetsGet(params *PcloudVpnconnections
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.peersubnets.get",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/peer-subnets",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -317,7 +286,7 @@ func (a *Client) PcloudVpnconnectionsPeersubnetsPut(params *PcloudVpnconnections
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.peersubnets.put",
 		Method:             "PUT",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/peer-subnets",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/peer-subnets",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -339,7 +308,7 @@ PcloudVpnconnectionsPost creates v p n connection
 
 Create a new VPN Connection
 */
-func (a *Client) PcloudVpnconnectionsPost(params *PcloudVpnconnectionsPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsPostOK, error) {
+func (a *Client) PcloudVpnconnectionsPost(params *PcloudVpnconnectionsPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudVpnconnectionsPostAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVpnconnectionsPostParams()
@@ -348,7 +317,7 @@ func (a *Client) PcloudVpnconnectionsPost(params *PcloudVpnconnectionsPostParams
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.post",
 		Method:             "POST",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
@@ -361,7 +330,7 @@ func (a *Client) PcloudVpnconnectionsPost(params *PcloudVpnconnectionsPostParams
 	if err != nil {
 		return nil, err
 	}
-	return result.(*PcloudVpnconnectionsPostOK), nil
+	return result.(*PcloudVpnconnectionsPostAccepted), nil
 
 }
 
@@ -379,7 +348,7 @@ func (a *Client) PcloudVpnconnectionsPut(params *PcloudVpnconnectionsPutParams, 
 	result, err := a.transport.Submit(&runtime.ClientOperation{
 		ID:                 "pcloud.vpnconnections.put",
 		Method:             "PUT",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

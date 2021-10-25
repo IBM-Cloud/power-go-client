@@ -79,7 +79,7 @@ type PcloudIkepoliciesDeleteOK struct {
 }
 
 func (o *PcloudIkepoliciesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIkepoliciesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -106,7 +106,7 @@ type PcloudIkepoliciesDeleteBadRequest struct {
 }
 
 func (o *PcloudIkepoliciesDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIkepoliciesDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -135,7 +135,7 @@ type PcloudIkepoliciesDeleteUnauthorized struct {
 }
 
 func (o *PcloudIkepoliciesDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIkepoliciesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -164,7 +164,7 @@ type PcloudIkepoliciesDeleteForbidden struct {
 }
 
 func (o *PcloudIkepoliciesDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIkepoliciesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -193,7 +193,7 @@ type PcloudIkepoliciesDeleteInternalServerError struct {
 }
 
 func (o *PcloudIkepoliciesDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIkepoliciesDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

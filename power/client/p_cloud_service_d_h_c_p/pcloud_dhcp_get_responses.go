@@ -75,7 +75,7 @@ func NewPcloudDhcpGetOK() *PcloudDhcpGetOK {
 OK
 */
 type PcloudDhcpGetOK struct {
-	Payload *models.DHCPServer
+	Payload *models.DHCPServerDetail
 }
 
 func (o *PcloudDhcpGetOK) Error() string {
@@ -84,7 +84,7 @@ func (o *PcloudDhcpGetOK) Error() string {
 
 func (o *PcloudDhcpGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.DHCPServer)
+	o.Payload = new(models.DHCPServerDetail)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {

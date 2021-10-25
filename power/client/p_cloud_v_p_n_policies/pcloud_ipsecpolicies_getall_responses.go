@@ -86,7 +86,7 @@ type PcloudIpsecpoliciesGetallOK struct {
 }
 
 func (o *PcloudIpsecpoliciesGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesGetallOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesGetallOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -115,7 +115,7 @@ type PcloudIpsecpoliciesGetallBadRequest struct {
 }
 
 func (o *PcloudIpsecpoliciesGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesGetallBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesGetallBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +144,7 @@ type PcloudIpsecpoliciesGetallUnauthorized struct {
 }
 
 func (o *PcloudIpsecpoliciesGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesGetallUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesGetallUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -173,7 +173,7 @@ type PcloudIpsecpoliciesGetallForbidden struct {
 }
 
 func (o *PcloudIpsecpoliciesGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesGetallForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesGetallForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -202,7 +202,7 @@ type PcloudIpsecpoliciesGetallNotFound struct {
 }
 
 func (o *PcloudIpsecpoliciesGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesGetallNotFound  %+v", 404, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesGetallNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -231,7 +231,7 @@ type PcloudIpsecpoliciesGetallInternalServerError struct {
 }
 
 func (o *PcloudIpsecpoliciesGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesGetallInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesGetallInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

@@ -86,7 +86,7 @@ type PcloudIkepoliciesPutOK struct {
 }
 
 func (o *PcloudIkepoliciesPutOK) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPutOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -115,7 +115,7 @@ type PcloudIkepoliciesPutBadRequest struct {
 }
 
 func (o *PcloudIkepoliciesPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPutBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -144,7 +144,7 @@ type PcloudIkepoliciesPutUnauthorized struct {
 }
 
 func (o *PcloudIkepoliciesPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPutUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -173,7 +173,7 @@ type PcloudIkepoliciesPutForbidden struct {
 }
 
 func (o *PcloudIkepoliciesPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPutForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -202,7 +202,7 @@ type PcloudIkepoliciesPutUnprocessableEntity struct {
 }
 
 func (o *PcloudIkepoliciesPutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutUnprocessableEntity  %+v", 422, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPutUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -231,7 +231,7 @@ type PcloudIkepoliciesPutInternalServerError struct {
 }
 
 func (o *PcloudIkepoliciesPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIkepoliciesPutInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

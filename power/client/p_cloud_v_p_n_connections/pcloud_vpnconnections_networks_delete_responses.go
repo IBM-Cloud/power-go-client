@@ -25,8 +25,8 @@ type PcloudVpnconnectionsNetworksDeleteReader struct {
 func (o *PcloudVpnconnectionsNetworksDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewPcloudVpnconnectionsNetworksDeleteOK()
+	case 202:
+		result := NewPcloudVpnconnectionsNetworksDeleteAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -53,6 +53,13 @@ func (o *PcloudVpnconnectionsNetworksDeleteReader) ReadResponse(response runtime
 		}
 		return nil, result
 
+	case 404:
+		result := NewPcloudVpnconnectionsNetworksDeleteNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+
 	case 422:
 		result := NewPcloudVpnconnectionsNetworksDeleteUnprocessableEntity()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -72,27 +79,29 @@ func (o *PcloudVpnconnectionsNetworksDeleteReader) ReadResponse(response runtime
 	}
 }
 
-// NewPcloudVpnconnectionsNetworksDeleteOK creates a PcloudVpnconnectionsNetworksDeleteOK with default headers values
-func NewPcloudVpnconnectionsNetworksDeleteOK() *PcloudVpnconnectionsNetworksDeleteOK {
-	return &PcloudVpnconnectionsNetworksDeleteOK{}
+// NewPcloudVpnconnectionsNetworksDeleteAccepted creates a PcloudVpnconnectionsNetworksDeleteAccepted with default headers values
+func NewPcloudVpnconnectionsNetworksDeleteAccepted() *PcloudVpnconnectionsNetworksDeleteAccepted {
+	return &PcloudVpnconnectionsNetworksDeleteAccepted{}
 }
 
-/*PcloudVpnconnectionsNetworksDeleteOK handles this case with default header values.
+/*PcloudVpnconnectionsNetworksDeleteAccepted handles this case with default header values.
 
-OK
+Accepted
 */
-type PcloudVpnconnectionsNetworksDeleteOK struct {
-	Payload models.Object
+type PcloudVpnconnectionsNetworksDeleteAccepted struct {
+	Payload *models.JobReference
 }
 
-func (o *PcloudVpnconnectionsNetworksDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteOK  %+v", 200, o.Payload)
+func (o *PcloudVpnconnectionsNetworksDeleteAccepted) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteAccepted  %+v", 202, o.Payload)
 }
 
-func (o *PcloudVpnconnectionsNetworksDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PcloudVpnconnectionsNetworksDeleteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.JobReference)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
@@ -113,7 +122,7 @@ type PcloudVpnconnectionsNetworksDeleteBadRequest struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -142,7 +151,7 @@ type PcloudVpnconnectionsNetworksDeleteUnauthorized struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -171,10 +180,39 @@ type PcloudVpnconnectionsNetworksDeleteForbidden struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudVpnconnectionsNetworksDeleteNotFound creates a PcloudVpnconnectionsNetworksDeleteNotFound with default headers values
+func NewPcloudVpnconnectionsNetworksDeleteNotFound() *PcloudVpnconnectionsNetworksDeleteNotFound {
+	return &PcloudVpnconnectionsNetworksDeleteNotFound{}
+}
+
+/*PcloudVpnconnectionsNetworksDeleteNotFound handles this case with default header values.
+
+Not Found
+*/
+type PcloudVpnconnectionsNetworksDeleteNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudVpnconnectionsNetworksDeleteNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteNotFound  %+v", 404, o.Payload)
+}
+
+func (o *PcloudVpnconnectionsNetworksDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
@@ -200,7 +238,7 @@ type PcloudVpnconnectionsNetworksDeleteUnprocessableEntity struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteUnprocessableEntity  %+v", 422, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -229,7 +267,7 @@ type PcloudVpnconnectionsNetworksDeleteInternalServerError struct {
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

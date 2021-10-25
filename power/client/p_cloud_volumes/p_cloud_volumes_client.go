@@ -25,6 +25,35 @@ type Client struct {
 }
 
 /*
+PcloudCloudinstancesVolumesActionPost performs an action on a volume
+*/
+func (a *Client) PcloudCloudinstancesVolumesActionPost(params *PcloudCloudinstancesVolumesActionPostParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudinstancesVolumesActionPostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudCloudinstancesVolumesActionPostParams()
+	}
+
+	result, err := a.transport.Submit(&runtime.ClientOperation{
+		ID:                 "pcloud.cloudinstances.volumes.action.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/action",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudCloudinstancesVolumesActionPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return result.(*PcloudCloudinstancesVolumesActionPostAccepted), nil
+
+}
+
+/*
 PcloudCloudinstancesVolumesDelete deletes a cloud instance volume
 */
 func (a *Client) PcloudCloudinstancesVolumesDelete(params *PcloudCloudinstancesVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter) (*PcloudCloudinstancesVolumesDeleteOK, error) {

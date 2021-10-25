@@ -93,7 +93,7 @@ type PcloudIpsecpoliciesPostOK struct {
 }
 
 func (o *PcloudIpsecpoliciesPostOK) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -122,7 +122,7 @@ type PcloudIpsecpoliciesPostBadRequest struct {
 }
 
 func (o *PcloudIpsecpoliciesPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -151,7 +151,7 @@ type PcloudIpsecpoliciesPostUnauthorized struct {
 }
 
 func (o *PcloudIpsecpoliciesPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -180,7 +180,7 @@ type PcloudIpsecpoliciesPostForbidden struct {
 }
 
 func (o *PcloudIpsecpoliciesPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -209,7 +209,7 @@ type PcloudIpsecpoliciesPostConflict struct {
 }
 
 func (o *PcloudIpsecpoliciesPostConflict) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -238,7 +238,7 @@ type PcloudIpsecpoliciesPostUnprocessableEntity struct {
 }
 
 func (o *PcloudIpsecpoliciesPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostUnprocessableEntity  %+v", 422, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -267,7 +267,7 @@ type PcloudIpsecpoliciesPostInternalServerError struct {
 }
 
 func (o *PcloudIpsecpoliciesPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies][%d] pcloudIpsecpoliciesPostInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies][%d] pcloudIpsecpoliciesPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesPostInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

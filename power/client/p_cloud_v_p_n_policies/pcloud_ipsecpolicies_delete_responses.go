@@ -79,7 +79,7 @@ type PcloudIpsecpoliciesDeleteOK struct {
 }
 
 func (o *PcloudIpsecpoliciesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -106,7 +106,7 @@ type PcloudIpsecpoliciesDeleteBadRequest struct {
 }
 
 func (o *PcloudIpsecpoliciesDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -135,7 +135,7 @@ type PcloudIpsecpoliciesDeleteUnauthorized struct {
 }
 
 func (o *PcloudIpsecpoliciesDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -164,7 +164,7 @@ type PcloudIpsecpoliciesDeleteForbidden struct {
 }
 
 func (o *PcloudIpsecpoliciesDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -193,7 +193,7 @@ type PcloudIpsecpoliciesDeleteInternalServerError struct {
 }
 
 func (o *PcloudIpsecpoliciesDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

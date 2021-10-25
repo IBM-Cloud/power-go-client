@@ -25,8 +25,8 @@ type PcloudVpnconnectionsPostReader struct {
 func (o *PcloudVpnconnectionsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
 
-	case 200:
-		result := NewPcloudVpnconnectionsPostOK()
+	case 202:
+		result := NewPcloudVpnconnectionsPostAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -79,26 +79,26 @@ func (o *PcloudVpnconnectionsPostReader) ReadResponse(response runtime.ClientRes
 	}
 }
 
-// NewPcloudVpnconnectionsPostOK creates a PcloudVpnconnectionsPostOK with default headers values
-func NewPcloudVpnconnectionsPostOK() *PcloudVpnconnectionsPostOK {
-	return &PcloudVpnconnectionsPostOK{}
+// NewPcloudVpnconnectionsPostAccepted creates a PcloudVpnconnectionsPostAccepted with default headers values
+func NewPcloudVpnconnectionsPostAccepted() *PcloudVpnconnectionsPostAccepted {
+	return &PcloudVpnconnectionsPostAccepted{}
 }
 
-/*PcloudVpnconnectionsPostOK handles this case with default header values.
+/*PcloudVpnconnectionsPostAccepted handles this case with default header values.
 
-OK
+Accepted
 */
-type PcloudVpnconnectionsPostOK struct {
-	Payload *models.VPNConnection
+type PcloudVpnconnectionsPostAccepted struct {
+	Payload *models.VPNConnectionCreateResponse
 }
 
-func (o *PcloudVpnconnectionsPostOK) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostOK  %+v", 200, o.Payload)
+func (o *PcloudVpnconnectionsPostAccepted) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostAccepted  %+v", 202, o.Payload)
 }
 
-func (o *PcloudVpnconnectionsPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PcloudVpnconnectionsPostAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.VPNConnection)
+	o.Payload = new(models.VPNConnectionCreateResponse)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
@@ -122,7 +122,7 @@ type PcloudVpnconnectionsPostBadRequest struct {
 }
 
 func (o *PcloudVpnconnectionsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostBadRequest  %+v", 400, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -151,7 +151,7 @@ type PcloudVpnconnectionsPostUnauthorized struct {
 }
 
 func (o *PcloudVpnconnectionsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostUnauthorized  %+v", 401, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsPostUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -180,7 +180,7 @@ type PcloudVpnconnectionsPostForbidden struct {
 }
 
 func (o *PcloudVpnconnectionsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostForbidden  %+v", 403, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsPostForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -209,7 +209,7 @@ type PcloudVpnconnectionsPostConflict struct {
 }
 
 func (o *PcloudVpnconnectionsPostConflict) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostConflict  %+v", 409, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsPostConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -238,7 +238,7 @@ type PcloudVpnconnectionsPostUnprocessableEntity struct {
 }
 
 func (o *PcloudVpnconnectionsPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostUnprocessableEntity  %+v", 422, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsPostUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -267,7 +267,7 @@ type PcloudVpnconnectionsPostInternalServerError struct {
 }
 
 func (o *PcloudVpnconnectionsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn-connections][%d] pcloudVpnconnectionsPostInternalServerError  %+v", 500, o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVpnconnectionsPostInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {

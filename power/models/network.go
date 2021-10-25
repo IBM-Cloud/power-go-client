@@ -27,6 +27,9 @@ type Network struct {
 	// (currently not available) cloud connections this network is attached
 	CloudConnections []*NetworkCloudConnectionsItems0 `json:"cloudConnections,omitempty"`
 
+	// DHCP Managed Network
+	DhcpManaged bool `json:"dhcpManaged,omitempty"`
+
 	// DNS Servers
 	// Required: true
 	DNSServers []string `json:"dnsServers"`
