@@ -148,12 +148,10 @@ func (f *IBMPIImageClient) GetStockImages(powerinstanceid string) (*models.Image
 	return resp.Payload, nil
 }
 
-//GetSAPImages ...
+// GetSAPImages ...
 func (f *IBMPIImageClient) GetSAPImages(powerinstanceid string, sapimage bool) (*models.Images, error) {
 
-	params := p_cloud_images.NewPcloudImagesGetallParams()
-	params.Sap = &sapimage
-
+	params := p_cloud_images.NewPcloudImagesGetallParams().WithTimeout(helpers.PIGetTimeOut).WithSap(&sapimage)
 	resp, err := f.session.Power.PCloudImages.PcloudImagesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PI Sap Images of the PVM instance %s : %s", powerinstanceid, err)
@@ -162,3 +160,23 @@ func (f *IBMPIImageClient) GetSAPImages(powerinstanceid string, sapimage bool) (
 }
 
 // Get a single SAP Image
+
+// Get single VTL Image ID
+func (f *IBMPIImageClient) GetVTLImageID(cloudInstanceID string) (string, error) {
+
+	yesVTL := true
+	params := p_cloud_images.NewPcloudImagesGetallParams().WithTimeout(helpers.PIGetTimeOut).WithVtl(&yesVTL)
+
+	resp, err := f.session.Power.PCloudImages.PcloudImagesGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil || resp == nil || resp.Payload == nil {
+		return "", fmt.Errorf("Failed to Get VTL ImageID for cloud instance %s : %s", cloudInstanceID, err)
+	}
+
+	// Find VTL image out of all images
+	for _, image := range resp.Payload.Images {
+		if image.Specifications.OperatingSystem == "vtl" {
+			return *image.ImageID, nil
+		}
+	}
+	return "", fmt.Errorf("Failed to Get VTL ImageID for cloud instance %s", cloudInstanceID)
+}
