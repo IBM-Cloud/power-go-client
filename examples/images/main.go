@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
@@ -51,15 +52,33 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	getSapResp, err := powerClient.GetSAPImages(piID, true)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("***************[4]****************** %+v \n\n", *getSapResp)
 
-	getStockResp, err := powerClient.GetStockImages(piID)
+	getStockResp, err := powerClient.GetAllStockImages(piID, true, true)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[5]****************** %+v \n\n", *getStockResp)
+	log.Printf("***************[4]****************** %+v \n\n", *getStockResp)
+
+	getSapResp, err := powerClient.GetAllStockSAPImages(piID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[5]****************** %+v \n\n", *getSapResp)
+
+	getVtlImages, err := powerClient.GetAllStockVTLImages(piID)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[6]****************** %+v \n\n", *getVtlImages)
+
+	if len(getVtlImages.Images) > 0 {
+		testVtlId := *getVtlImages.Images[0].ImageID
+		imageCheck, err := powerClient.IsVTLImage(testVtlId, piID)
+
+		msg := fmt.Sprintf("IsVtlImage returned true for vtl image with ID %s", testVtlId)
+		if imageCheck == false {
+			msg = fmt.Sprintf("IsVtlImage returned false for image with ID %s. Error: %s", testVtlId, err)
+		}
+		log.Printf("***************[7]****************** %s \n\n", msg)
+	}
 }
