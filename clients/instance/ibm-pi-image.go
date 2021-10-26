@@ -159,15 +159,12 @@ func (f *IBMPIImageClient) GetAllStockSAPImages(cloudInstanceID string) (*models
 		return nil, err
 	}
 
-	// Select SAP images
+	// select SAP images
 	sapImages := new(models.Images)
 	for _, image := range images.Images {
 		if image.Specifications.ImageType == "stock-sap" {
 			sapImages.Images = append(sapImages.Images, image)
 		}
-	}
-	if len(sapImages.Images) == 0 {
-		return nil, fmt.Errorf("No SAP images found")
 	}
 	return sapImages, nil
 }
@@ -181,15 +178,12 @@ func (f *IBMPIImageClient) GetAllStockVTLImages(cloudInstanceID string) (*models
 		return nil, err
 	}
 
-	// Select VTL images
+	// select VTL images
 	vtlImages := new(models.Images)
 	for _, image := range images.Images {
 		if image.Specifications.ImageType == "stock-vtl" {
 			vtlImages.Images = append(vtlImages.Images, image)
 		}
-	}
-	if len(vtlImages.Images) == 0 {
-		return nil, fmt.Errorf("No VTL images found")
 	}
 	return vtlImages, nil
 }
