@@ -83,7 +83,11 @@ func (f *IBMPIImageClient) Create(name, imageid string, powerinstanceid string) 
 }
 
 // Import the image
-func (f *IBMPIImageClient) CreateCosImage(ctx context.Context, body *models.CreateCosImageImportJob, cloudInstanceID string) (imageJob *models.JobReference, err error) {
+func (f *IBMPIImageClient) CreateCosImage(body *models.CreateCosImageImportJob, cloudInstanceID string) (imageJob *models.JobReference, err error) {
+	return f.CreateCosImageWithContext(context.Background(), body, cloudInstanceID)
+}
+
+func (f *IBMPIImageClient) CreateCosImageWithContext(ctx context.Context, body *models.CreateCosImageImportJob, cloudInstanceID string) (imageJob *models.JobReference, err error) {
 	params := p_cloud_images.NewPcloudV1CloudinstancesCosimagesPostParamsWithContext(ctx).
 		WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(cloudInstanceID).
