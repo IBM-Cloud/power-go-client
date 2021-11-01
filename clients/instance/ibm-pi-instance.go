@@ -2,6 +2,7 @@ package instance
 
 import (
 	"fmt"
+	"strings"
 	"time"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
@@ -10,6 +11,10 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_s_a_p"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
+
+// temporary fix to OCP 504 error
+// https://github.com/IBM-Cloud/terraform-provider-ibm/issues/3178
+const CreateRetries = 6
 
 /*  ChangeLog
 
@@ -34,7 +39,7 @@ func NewIBMPIInstanceClient(sess *ibmpisession.IBMPISession, powerinstanceid str
 //Get information about a single pvm only
 func (f *IBMPIInstanceClient) Get(id, powerinstanceid string, timeout time.Duration) (*models.PVMInstance, error) {
 
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get PVM Instance %s :%v", id, err)
@@ -45,7 +50,7 @@ func (f *IBMPIInstanceClient) Get(id, powerinstanceid string, timeout time.Durat
 // GetAll Information about all the PVM Instances for a Client
 func (f *IBMPIInstanceClient) GetAll(powerinstanceid string, timeout time.Duration) (*models.PVMInstances, error) {
 
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("Failed to Get all PVM Instances of Power Instance %s :%v", powerinstanceid, err)
@@ -53,14 +58,111 @@ func (f *IBMPIInstanceClient) GetAll(powerinstanceid string, timeout time.Durati
 	return resp.Payload, nil
 }
 
+// GetServerFromName
+// temporary fix to OCP 504 error
+// https://github.com/IBM-Cloud/terraform-provider-ibm/issues/3178
+func (f *IBMPIInstanceClient) GetServerFromName(serverName, powerinstanceid string, timeout time.Duration) (*models.PVMInstanceList, error) {
+
+	// get all
+	servers, err := f.GetAll(powerinstanceid, timeout)
+	if err != nil || servers == nil {
+		return nil, fmt.Errorf("Failed to Get all PVM Instances of Power Instance %s. Searching for server name:%v", powerinstanceid, err)
+	}
+
+	// search all servers for server with name
+	for _, server := range servers.PvmInstances {
+
+		if *server.ServerName == serverName {
+
+			// Need to run a Get call to return PVMInstance not PVMInstanceReference
+			//
+			// Create -> models.PVMInstanceList -> PVMInstance
+			// Get ----> models.PVMInstance
+			// GetAll -> models.PVMInstances ----> PVMInstanceReference
+
+			serverInfo, err := f.Get(*server.PvmInstanceID, powerinstanceid, helpers.PIGetTimeOut)
+			if err != nil {
+				return nil, fmt.Errorf("Failed to Get PVM Instance with name %s :%v", serverName, err)
+			}
+			instanceList := new(models.PVMInstanceList)
+			*instanceList = append(*instanceList, serverInfo)
+			return instanceList, nil
+		}
+	}
+	return nil, fmt.Errorf("Failed to Get PVM Instance with name %s :%v", serverName, err)
+}
+
 //Create ...
 func (f *IBMPIInstanceClient) Create(powerdef *p_cloud_p_vm_instances.PcloudPvminstancesPostParams, powerinstanceid string, timeout time.Duration) (*models.PVMInstanceList, error) {
-
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParamsWithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(powerinstanceid).WithBody(powerdef.Body)
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(powerdef.Body)
 	postok, postcreated, postAccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil {
-		return nil, fmt.Errorf("Failed to Create PVM Instance :%v", err)
+		// temporary fix to OCP 504 error
+		// https://github.com/IBM-Cloud/terraform-provider-ibm/issues/3178
+		if strings.Contains(err.Error(), "504") {
+			// 504 Error
+			// Retry Create Call
+			for retry := 0; retry <= CreateRetries; retry++ {
+				result, err := f.CreateRetry(powerdef, powerinstanceid, timeout)
+				if result != nil {
+					return result, err
+				}
+			}
+			// didn't work after retries
+			return nil, nil
+		} else if strings.Contains(err.Error(), "server name already exists") || strings.Contains(err.Error(), "context deadline exceeded") {
+			// 409 error
+			// Return actual instance. Get instance info using name
+			server, err := f.GetServerFromName(*powerdef.Body.ServerName, powerinstanceid, timeout)
+			if err != nil {
+				return nil, err
+			}
+			return server, nil
+		} else {
+			// normal error handling
+			return nil, fmt.Errorf("Failed to Create PVM Instance: %v", err)
+		}
+	}
+
+	if postok != nil && len(postok.Payload) > 0 {
+		return &postok.Payload, nil
+	}
+	if postcreated != nil && len(postcreated.Payload) > 0 {
+		return &postcreated.Payload, nil
+	}
+	if postAccepted != nil && len(postAccepted.Payload) > 0 {
+		return &postAccepted.Payload, nil
+	}
+	return nil, nil
+}
+
+// Create Retry
+// temporary fix to OCP 504 error
+// https://github.com/IBM-Cloud/terraform-provider-ibm/issues/3178
+func (f *IBMPIInstanceClient) CreateRetry(powerdef *p_cloud_p_vm_instances.PcloudPvminstancesPostParams, powerinstanceid string, timeout time.Duration) (*models.PVMInstanceList, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithBody(powerdef.Body)
+	postok, postcreated, postAccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+
+	if err != nil {
+		// temporary fix to OCP 504 error
+		// https://github.com/IBM-Cloud/terraform-provider-ibm/issues/3178
+		if strings.Contains(err.Error(), "504") {
+			// 504 Error
+			// Will retry in main loop
+			return nil, nil
+		} else if strings.Contains(err.Error(), "server name already exists") || strings.Contains(err.Error(), "context deadline exceeded") {
+			// 409 error
+			// Return actual instance. Get instance info using name
+			server, err := f.GetServerFromName(*powerdef.Body.ServerName, powerinstanceid, timeout)
+			if err != nil {
+				return nil, err
+			}
+			return server, nil
+		} else {
+			// normal error handling
+			return nil, fmt.Errorf("Failed to Create PVM Instance: %v", err)
+		}
 	}
 
 	if postok != nil && len(postok.Payload) > 0 {
