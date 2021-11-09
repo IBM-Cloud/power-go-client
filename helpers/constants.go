@@ -176,6 +176,35 @@ const (
 	PICloudConnectionVPCCRNs    = "pi_cloud_connection_vpc_crns"
 	PICloudConnectionVPCName    = "pi_cloud_connection_vpc_name"
 
+	// IBM PI VPN Connections
+
+	PIVPNConnectionName                       = "pi_vpn_connection_name"
+	PIVPNConnectionId                         = "pi_vpn_connection_id"
+	PIVPNIKEPolicyId                          = "pi_ike_policy_id"
+	PIVPNIPSecPolicyId                        = "pi_ipsec_policy_id"
+	PIVPNConnectionLocalGatewayAddress        = "pi_local_gateway_address"
+	PIVPNConnectionMode                       = "pi_vpn_connection_mode"
+	PIVPNConnectionNetworks                   = "pi_networks"
+	PIVPNConnectionPeerGatewayAddress         = "pi_peer_gateway_address"
+	PIVPNConnectionPeerSubnets                = "pi_peer_subnets"
+	PIVPNConnectionStatus                     = "pi_vpn_connection_status"
+	PIVPNConnectionVpnGatewayAddress          = "pi_gateway_address"
+	PIVPNConnectionDeadPeerDetection          = "pi_dead_peer_detections"
+	PIVPNConnectionDeadPeerDetectionAction    = "pi_dead_peer_detections_action"
+	PIVPNConnectionDeadPeerDetectionInterval  = "pi_dead_peer_detections_interval"
+	PIVPNConnectionDeadPeerDetectionThreshold = "pi_dead_peer_detections_threshold"
+
+	// IBM PI VPN Policy
+	PIVPNPolicyId             = "pi_policy_id"
+	PIVPNPolicyName           = "pi_policy_name"
+	PIVPNPolicyDhGroup        = "pi_policy_dh_group"
+	PIVPNPolicyEncryption     = "pi_policy_encryption"
+	PIVPNPolicyKeyLifetime    = "pi_policy_key_lifetime"
+	PIVPNPolicyPresharedKey   = "pi_policy_preshared_key"
+	PIVPNPolicyVersion        = "pi_policy_version"
+	PIVPNPolicyAuthentication = "pi_policy_authentication"
+	PIVPNPolicyPFS            = "pi_policy_pfs"
+
 	JobStatusQueued             = "queued"
 	JobStatusReadyForProcessing = "readyForProcessing"
 	JobStatusInProgress         = "inProgress"
@@ -183,6 +212,14 @@ const (
 	JobStatusFailed             = "failed"
 	JobStatusRunning            = "running"
 	JobStatusWaiting            = "waiting"
+
+	// IBM PI DHCP
+	PIDhcpId          = "pi_dhcp_id"
+	PIDhcpStatus      = "pi_dhcp_status"
+	PIDhcpNetwork     = "pi_dhcp_network"
+	PIDhcpLeases      = "pi_dhcp_leases"
+	PIDhcpInstanceIp  = "pi_dhcp_instance_ip"
+	PIDhcpInstanceMac = "pi_dhcp_instance_mac"
 
 	// IBM PI Placement Groups
 

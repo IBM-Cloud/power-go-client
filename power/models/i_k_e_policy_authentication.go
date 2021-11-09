@@ -20,9 +20,6 @@ type IKEPolicyAuthentication string
 
 const (
 
-	// IKEPolicyAuthenticationMd5 captures enum value "md5"
-	IKEPolicyAuthenticationMd5 IKEPolicyAuthentication = "md5"
-
 	// IKEPolicyAuthenticationNone captures enum value "none"
 	IKEPolicyAuthenticationNone IKEPolicyAuthentication = "none"
 
@@ -41,7 +38,7 @@ var iKEPolicyAuthenticationEnum []interface{}
 
 func init() {
 	var res []IKEPolicyAuthentication
-	if err := json.Unmarshal([]byte(`["md5","none","sha-256","sha-384","sha1"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["none","sha-256","sha-384","sha1"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

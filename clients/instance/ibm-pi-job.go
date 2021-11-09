@@ -8,7 +8,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/helpers"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_jobs"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
@@ -51,7 +50,7 @@ func (f *IBMPIJobClient) GetWithContext(ctx context.Context, id, cloudInstanceID
 }
 
 // Update a job
-func (f *IBMPIJobClient) GetAll(cloudInstanceID string, updateparams *p_cloud_instances.PcloudCloudinstancesPutParams) (*models.Jobs, error) {
+func (f *IBMPIJobClient) GetAll(cloudInstanceID string) (*models.Jobs, error) {
 	params := p_cloud_jobs.NewPcloudCloudinstancesJobsGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudInstanceID)
 	resp, err := f.session.Power.PCloudJobs.PcloudCloudinstancesJobsGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
 	if err != nil {

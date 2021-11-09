@@ -21,13 +21,32 @@ const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Plac
 
 const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for cloudconnectionid %s with error %v"
 const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %v"
-const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid  %s with error %v"
-const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid  %s with error %v"
+const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid %s with error %v"
+const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid %s with error %v"
+
+// start of VPN Connection Messages
+
+const GetVPNConnectionOperationFailed = "failed to perform Get VPN Connection Operation for id %s with error %v"
+const CreateVPNConnectionOperationFailed = "failed to perform Create VPN Connection Operation for powerinstanceid %s with error %v"
+const UpdateVPNConnectionOperationFailed = "failed to perform Update VPN Connection Operation for id  %s with error %v"
+const DeleteVPNConnectionOperationFailed = "failed to perform Delete VPN Connection Operation for id  %s with error %v"
+
+// start of VPN Policy Messages
+
+const GetVPNPolicyOperationFailed = "failed to perform Get VPN Policy Operation for Policy id %s with error %v"
+const CreateVPNPolicyOperationFailed = "failed to perform Create VPN Policy Operation for powerinstanceid %s with error %v"
+const UpdateVPNPolicyOperationFailed = "failed to perform Update VPN Policy Operation for Policy id  %s with error %v"
+const DeleteVPNPolicyOperationFailed = "failed to perform Delete VPN Policy Operation for Policy id  %s with error %v"
 
 // start of Job Messages
 const GetJobOperationFailed = "failed to perform get Job operation for job id %s with error %v"
 const GetAllJobsOperationFailed = "failed to perform get all jobs operation with error %v"
 const DeleteJobsOperationFailed = "failed to perform delete Job operation for job id %s with error %v"
+
+// start of DHCP Messages
+const GetDhcpOperationFailed = "failed to perform Get DHCP Operation for dhcp id %s with error %v"
+const CreateDchpOperationFailed = "failed to perform Create DHCP Operation for powerinstanceid %s with error %v"
+const DeleteDhcpOperationFailed = "failed to perform Delete DHCP Operation for dhcp id %s with error %v"
 
 // start of System-Pools Messages
 const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %v"
