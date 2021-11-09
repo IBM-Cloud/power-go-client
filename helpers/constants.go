@@ -213,6 +213,14 @@ const (
 	JobStatusRunning            = "running"
 	JobStatusWaiting            = "waiting"
 
+	// IBM PI DHCP
+	PIDhcpId          = "pi_dhcp_id"
+	PIDhcpStatus      = "pi_dhcp_status"
+	PIDhcpNetwork     = "pi_dhcp_network"
+	PIDhcpLeases      = "pi_dhcp_leases"
+	PIDhcpInstanceIp  = "pi_dhcp_instance_ip"
+	PIDhcpInstanceMac = "pi_dhcp_instance_mac"
+
 	// IBM PI Placement Groups
 
 	PIPlacementGroupName   = "pi_placement_group_name"

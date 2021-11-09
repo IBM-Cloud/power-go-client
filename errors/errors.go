@@ -21,8 +21,8 @@ const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Plac
 
 const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for cloudconnectionid %s with error %v"
 const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %v"
-const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid  %s with error %v"
-const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid  %s with error %v"
+const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid %s with error %v"
+const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid %s with error %v"
 
 // start of VPN Connection Messages
 
@@ -42,6 +42,11 @@ const DeleteVPNPolicyOperationFailed = "failed to perform Delete VPN Policy Oper
 const GetJobOperationFailed = "failed to perform get Job operation for job id %s with error %v"
 const GetAllJobsOperationFailed = "failed to perform get all jobs operation with error %v"
 const DeleteJobsOperationFailed = "failed to perform delete Job operation for job id %s with error %v"
+
+// start of DHCP Messages
+const GetDhcpOperationFailed = "failed to perform Get DHCP Operation for dhcp id %s with error %v"
+const CreateDchpOperationFailed = "failed to perform Create DHCP Operation for powerinstanceid %s with error %v"
+const DeleteDhcpOperationFailed = "failed to perform Delete DHCP Operation for dhcp id %s with error %v"
 
 // start of System-Pools Messages
 const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %v"
