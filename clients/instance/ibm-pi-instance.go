@@ -1,6 +1,7 @@
 package instance
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -121,6 +122,39 @@ func (f *IBMPIInstanceClient) PostConsoleURL(id, powerinstanceid string, timeout
 		return nil, fmt.Errorf("Failed to Generate the Console URL PVM Instance:%s", err)
 	}
 	return postok.Payload, nil
+}
+
+// List the available console languages for an instance
+func (f *IBMPIInstanceClient) GetConsoleLanguages(id, cloudInstanceID string) (*models.ConsoleLanguages, error) {
+	return f.GetConsoleLanguagesWithContext(context.Background(), id, cloudInstanceID)
+}
+func (f *IBMPIInstanceClient) GetConsoleLanguagesWithContext(ctx context.Context, id, cloudInstanceID string) (*models.ConsoleLanguages, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsoleGetParamsWithContext(ctx).
+		WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithPvmInstanceID(id)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsoleGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return nil, err
+	}
+	return resp.Payload, nil
+}
+
+// List the available console languages for an instance
+func (f *IBMPIInstanceClient) UpdateConsoleLanguage(body *models.ConsoleLanguage, id, cloudInstanceID string) (*models.ConsoleLanguage, error) {
+	return f.UpdateConsoleLanguageWithContext(context.Background(), body, id, cloudInstanceID)
+}
+func (f *IBMPIInstanceClient) UpdateConsoleLanguageWithContext(ctx context.Context, body *models.ConsoleLanguage, id, cloudInstanceID string) (*models.ConsoleLanguage, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsolePutParamsWithContext(ctx).
+		WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(cloudInstanceID).
+		WithPvmInstanceID(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsolePut(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+	if err != nil {
+		return nil, err
+	}
+	return resp.Payload, nil
 }
 
 // CaptureInstanceToImageCatalog Captures an instance
