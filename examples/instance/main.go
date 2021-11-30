@@ -1,12 +1,11 @@
 package main
 
 import (
+	"context"
 	"log"
-	"time"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_p_vm_instances"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
@@ -20,7 +19,6 @@ func main() {
 	// volume inputs
 	name := " < NAME OF THE volume > "
 	piID := " < POWER INSTANCE ID > "
-	timeout := time.Duration(9000000000000000000)
 	imageID := "c6b32fda-9979-4ce7-abee-ecb54df5237a"
 	volumes := make([]string, 1)
 	volumes[0] = "ef82d430-4cb0-46a5-be11-e61fb129fe18"
@@ -36,26 +34,23 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPIInstanceClient(session, piID)
+	powerClient := v.NewIBMPIInstanceClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	params := p_cloud_p_vm_instances.PcloudPvminstancesPostParams{
-		Body: &models.PVMInstanceCreate{
-			ImageID:     &imageID,
-			KeyPairName: "test-key",
-			NetworkIds:  networks,
-			ServerName:  &name,
-			VolumeIds:   volumes,
-			Memory:      &memory,
-			Processors:  &processors,
-			ProcType:    &procType,
-			SysType:     sysType,
-		},
-		CloudInstanceID: piID,
+	body := &models.PVMInstanceCreate{
+		ImageID:     &imageID,
+		KeyPairName: "test-key",
+		NetworkIds:  networks,
+		ServerName:  &name,
+		VolumeIds:   volumes,
+		Memory:      &memory,
+		Processors:  &processors,
+		ProcType:    &procType,
+		SysType:     sysType,
 	}
-	createRespOk, err := powerClient.Create(&params, piID, timeout)
+	createRespOk, err := powerClient.Create(body)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -67,19 +62,19 @@ func main() {
 		insIDs = append(insIDs, *insID)
 	}
 
-	getResp, err := powerClient.Get(insIDs[0], piID, timeout)
+	getResp, err := powerClient.Get(insIDs[0])
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[2]****************** %+v \n", *getResp)
 
-	getallResp, err := powerClient.GetAll(piID, timeout)
+	getallResp, err := powerClient.GetAll()
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", *getallResp)
 
-	err = powerClient.Delete(insIDs[0], piID, timeout)
+	err = powerClient.Delete(insIDs[0])
 	if err != nil {
 		log.Fatal(err)
 	}
