@@ -1,9 +1,12 @@
 package instance
 
 import (
+	"context"
 	"fmt"
+
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
+	"github.com/go-openapi/runtime"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
@@ -13,52 +16,79 @@ import (
 // IBMPIKeyClient ...
 type IBMPIKeyClient struct {
 	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	cloudInstanceID string
+	authInfo        runtime.ClientAuthInfoWriter
+	ctx             context.Context
 }
 
 // NewIBMPIKeyClient ...
-func NewIBMPIKeyClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPIKeyClient {
-	return &IBMPIKeyClient{sess, powerinstanceid}
+func NewIBMPIKeyClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIKeyClient {
+	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
+	return &IBMPIKeyClient{
+		session:         sess,
+		cloudInstanceID: cloudInstanceID,
+		authInfo:        authInfo,
+		ctx:             ctx,
+	}
 }
 
-/*
-This was a change requested by the IBM cloud Team to move the powerinstanceid out from the provider and pass it in the call
-The Power-IAAS API requires the crn to be passed in the header.
-*/
-
 // Get Key...
-func (f *IBMPIKeyClient) Get(id, powerinstanceid string) (*models.SSHKey, error) {
-
+func (f *IBMPIKeyClient) Get(id string) (*models.SSHKey, error) {
 	var tenantid = f.session.UserAccount
-	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysGetParamsWithTimeout(helpers.PIGetTimeOut).WithTenantID(tenantid).WithSshkeyName(id)
-	resp, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-
-	if err != nil || resp == nil || resp.Payload == nil {
+	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTenantID(tenantid).WithSshkeyName(id)
+	resp, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysGet(params, f.authInfo)
+	if err != nil {
 		return nil, fmt.Errorf(errors.GetPIKeyOperationFailed, id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get PI Key %s", id)
+	}
+	return resp.Payload, nil
+}
+
+// GetAll Information about all the PVM Instances for a Client
+func (f *IBMPIKeyClient) GetAll() (*models.SSHKeys, error) {
+	var tenantid = f.session.UserAccount
+	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTenantID(tenantid)
+	resp, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysGetall(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to Get all PI Keys: %v", err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get all PI Keys")
 	}
 	return resp.Payload, nil
 }
 
 // Create PI Key ...
-func (f *IBMPIKeyClient) Create(name string, sshkey, powerinstanceid string) (*models.SSHKey, *models.SSHKey, error) {
-	var body = models.SSHKey{
-		Name:   &name,
-		SSHKey: &sshkey,
+func (f *IBMPIKeyClient) Create(body *models.SSHKey) (*models.SSHKey, error) {
+	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithTenantID(f.session.UserAccount).WithBody(body)
+	postok, postcreated, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysPost(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to Create PI Key :%v", err)
 	}
-	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysPostParamsWithTimeout(helpers.PICreateTimeOut).WithTenantID(f.session.UserAccount).WithBody(&body)
-	_, postok, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysPost(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || postok == nil {
-		return nil, nil, fmt.Errorf(errors.CreatePIKeyOperationFailed, name, err)
+	if postok != nil && postok.Payload != nil {
+		return postok.Payload, nil
 	}
-	return nil, postok.Payload, nil
-
+	if postcreated != nil && postcreated.Payload != nil {
+		return postcreated.Payload, nil
+	}
+	return nil, nil
 }
 
 // Delete ...
-func (f *IBMPIKeyClient) Delete(id string, powerinstanceid string) error {
+func (f *IBMPIKeyClient) Delete(id string) error {
 	var tenantid = f.session.UserAccount
-	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithTenantID(tenantid).WithSshkeyName(id)
-	_, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithTenantID(tenantid).WithSshkeyName(id)
+	_, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysDelete(params, f.authInfo)
 	if err != nil {
 		return fmt.Errorf(errors.DeletePIKeyOperationFailed, id, err)
 	}
