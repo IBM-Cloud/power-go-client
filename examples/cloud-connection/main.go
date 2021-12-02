@@ -37,7 +37,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	jobClient := v.NewIBMPIJobClient(session, piID)
+	jobClient := v.NewIBMPIJobClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -96,7 +96,7 @@ func waitForJobState(jobClient *v.IBMPIJobClient, jobId, cloudinstanceid string,
 	var status string
 
 	for status != JOBCOMPLETED && status != JOBFAILED {
-		job, err := jobClient.Get(jobId, cloudinstanceid)
+		job, err := jobClient.Get(jobId)
 		if err != nil {
 			return err
 		}

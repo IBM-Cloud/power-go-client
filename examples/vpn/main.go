@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"time"
@@ -22,34 +23,35 @@ func main() {
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
+	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region + ".power-iaas.test.cloud.ibm.com")
 
-	// vpn inputs
+	// VPN inputs
 	name := " < NAME OF THE VPN CONNECTION > "
+	piID := " < POWER INSTANCE ID > "
 	ikePolicyName := " < NAME OF THE IKE POLICY > "
 	ipsecPolicyName := " < NAME OF THE IPSEC POLICY > "
 	networks := []string{" < NAME OF THE NETWORK > "}
-	piID := " < POWER INSTANCE ID > "
 	timeout := time.Duration(9000000000000000000)
 
 	session, err := ps.New(token, region, true, timeout, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}
-	vpnClient := v.NewIBMPIVpnConnectionClient(session, piID)
+	vpnClient := v.NewIBMPIVpnConnectionClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	vpnPolicyClient := v.NewIBMPIVpnPolicyClient(session, piID)
+	vpnPolicyClient := v.NewIBMPIVpnPolicyClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	jobClient := v.NewIBMPIJobClient(session, piID)
+	jobClient := v.NewIBMPIJobClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	// Create and Get IKE Policy
-	var dhGroup, version int64 = 1, 2
+	var dhGroup, version int64 = 1, 1
 	encryption := "3des-cbc"
 	presharedKey := "sample"
 	bodyike := &models.IKEPolicyCreate{
@@ -60,13 +62,13 @@ func main() {
 		PresharedKey: &presharedKey,
 		Version:      &version,
 	}
-	ikePolicy, err := vpnPolicyClient.CreateIKEPolicy(bodyike, piID)
+	ikePolicy, err := vpnPolicyClient.CreateIKEPolicy(bodyike)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[1]****************** %+v\n", ikePolicy)
 
-	ikePolicyRead, err := vpnPolicyClient.GetIKEPolicy(*ikePolicy.ID, piID)
+	ikePolicyRead, err := vpnPolicyClient.GetIKEPolicy(*ikePolicy.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -75,20 +77,20 @@ func main() {
 	// Create and Get IPSec Policy
 	pfs := false
 	bodyipsec := &models.IPSecPolicyCreate{
-		Authentication: models.IPSECPolicyAuthenticationNone,
+		Authentication: models.IPSECPolicyAuthenticationHmacMd596,
 		DhGroup:        &dhGroup,
 		Encryption:     &encryption,
 		KeyLifetime:    models.KeyLifetime(180),
 		Name:           &ipsecPolicyName,
 		Pfs:            &pfs,
 	}
-	ipsecPolicy, err := vpnPolicyClient.CreateIPSecPolicy(bodyipsec, piID)
+	ipsecPolicy, err := vpnPolicyClient.CreateIPSecPolicy(bodyipsec)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[1]****************** %+v\n", ipsecPolicy)
 
-	ipsecPolicyRead, err := vpnPolicyClient.GetIPSecPolicy(*ipsecPolicy.ID, piID)
+	ipsecPolicyRead, err := vpnPolicyClient.GetIPSecPolicy(*ipsecPolicy.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -105,7 +107,7 @@ func main() {
 		PeerGatewayAddress: "1.1.1.1",
 		PeerSubnets:        []string{"128.0.111.0/24"},
 	}
-	createResp, err := vpnClient.Create(body, piID)
+	createResp, err := vpnClient.Create(body)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -115,29 +117,29 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	getResp, err := vpnClient.Get(*createResp.ID, piID)
+	getResp, err := vpnClient.Get(*createResp.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[2]****************** %+v \n", *getResp)
 
-	getallResp, err := vpnClient.GetAll(piID)
+	getallResp, err := vpnClient.GetAll()
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", *getallResp)
-	getallIKEResp, err := vpnPolicyClient.GetAllIKEPolicies(piID)
+	getallIKEResp, err := vpnPolicyClient.GetAllIKEPolicies()
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", *getallIKEResp)
-	getallIPSecResp, err := vpnPolicyClient.GetAllIPSecPolicies(piID)
+	getallIPSecResp, err := vpnPolicyClient.GetAllIPSecPolicies()
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", *getallIPSecResp)
 
-	resp, err := vpnClient.Delete(*createResp.ID, piID)
+	resp, err := vpnClient.Delete(*createResp.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -146,11 +148,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = vpnPolicyClient.DeleteIKEPolicy(*ikePolicy.ID, piID)
+	err = vpnPolicyClient.DeleteIKEPolicy(*ikePolicy.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	err = vpnPolicyClient.DeleteIPSecPolicy(*ipsecPolicy.ID, piID)
+	err = vpnPolicyClient.DeleteIPSecPolicy(*ipsecPolicy.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -160,7 +162,7 @@ func waitForJobState(jobClient *v.IBMPIJobClient, jobId, cloudinstanceid string,
 	var status string
 
 	for status != JOBCOMPLETED && status != JOBFAILED {
-		job, err := jobClient.Get(jobId, cloudinstanceid)
+		job, err := jobClient.Get(jobId)
 		if err != nil {
 			return err
 		}
