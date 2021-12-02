@@ -16,11 +16,13 @@ func main() {
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
+	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
 
 	// ssh inputs
 	name := " < NAME OF THE ssh > "
 	piID := " < POWER INSTANCE ID > "
 	ssh := " <ssh ID> "
+
 	session, err := ps.New(token, region, true, 50000000000, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
@@ -29,6 +31,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	getAllResp, err := powerClient.GetAll()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[0]****************** %+v \n", *getAllResp)
+
 	body := &models.SSHKey{
 		Name:   &name,
 		SSHKey: &ssh,
