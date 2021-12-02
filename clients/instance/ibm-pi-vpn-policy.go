@@ -2,8 +2,11 @@ package instance
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
+	"github.com/go-openapi/runtime"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_policies"
@@ -13,207 +16,168 @@ import (
 // IBMPIVpnPolicyClient ...
 type IBMPIVpnPolicyClient struct {
 	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	cloudInstanceID string
+	authInfo        runtime.ClientAuthInfoWriter
+	ctx             context.Context
 }
 
 // IBMPIVpnPolicyClient ...
-func NewIBMPIVpnPolicyClient(sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIVpnPolicyClient {
+func NewIBMPIVpnPolicyClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIVpnPolicyClient {
+	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPIVpnPolicyClient{
 		session:         sess,
-		powerinstanceid: cloudInstanceID,
+		cloudInstanceID: cloudInstanceID,
+		authInfo:        authInfo,
+		ctx:             ctx,
 	}
 }
 
 // IKE Policies
 
 // Get information about a IKE Policy
-func (f *IBMPIVpnPolicyClient) GetIKEPolicy(id, cloudInstanceID string) (*models.IKEPolicy, error) {
-	return f.GetIKEPolicyWithContext(context.Background(), id, cloudInstanceID)
-}
-
-// Get information about a IKE Policy with Context
-func (f *IBMPIVpnPolicyClient) GetIKEPolicyWithContext(ctx context.Context, id, cloudInstanceID string) (ikePolicy *models.IKEPolicy, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesGetParamsWithContext(ctx).
-		WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithIkePolicyID(id)
-	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) GetIKEPolicy(id string) (*models.IKEPolicy, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithIkePolicyID(id)
+	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesGet(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.GetVPNPolicyOperationFailed, id, err)
 	}
-	ikePolicy = resp.Payload
-	return
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get ike policy for policy id %s", id)
+	}
+	return resp.Payload, nil
 }
 
 // Create a IKE Policy
-func (f *IBMPIVpnPolicyClient) CreateIKEPolicy(body *models.IKEPolicyCreate, cloudInstanceID string) (ikePolicy *models.IKEPolicy, err error) {
-	return f.CreateIKEPolicyWithContext(context.Background(), body, cloudInstanceID)
-}
-
-// Create a IKE Policy with context
-func (f *IBMPIVpnPolicyClient) CreateIKEPolicyWithContext(ctx context.Context, body *models.IKEPolicyCreate, cloudInstanceID string) (ikePolicy *models.IKEPolicy, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesPostParamsWithContext(ctx).
-		WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithBody(body)
-	postok, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesPost(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) CreateIKEPolicy(body *models.IKEPolicyCreate) (*models.IKEPolicy, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
+	postok, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesPost(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.CreateVPNPolicyOperationFailed, f.cloudInstanceID, err)
 	}
-	if postok != nil {
-		ikePolicy = postok.Payload
+	if postok != nil && postok.Payload != nil {
+		return postok.Payload, nil
 	}
-	return
+	return nil, nil
 }
 
 // Update a IKE Policy
-func (f *IBMPIVpnPolicyClient) UpdateIKEPolicy(body *models.IKEPolicyUpdate, id, cloudInstanceID string) (ikePolicy *models.IKEPolicy, err error) {
-	return f.UpdateIKEPolicyWithContext(context.Background(), body, id, cloudInstanceID)
-}
-
-// Update a IKE Policy with context
-func (f *IBMPIVpnPolicyClient) UpdateIKEPolicyWithContext(ctx context.Context, body *models.IKEPolicyUpdate, id, cloudInstanceID string) (ikePolicy *models.IKEPolicy, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesPutParamsWithContext(ctx).
-		WithTimeout(helpers.PIUpdateTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithBody(body).
-		WithIkePolicyID(id)
-	putok, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesPut(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) UpdateIKEPolicy(id string, body *models.IKEPolicyUpdate) (*models.IKEPolicy, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithIkePolicyID(id).
+		WithBody(body)
+	putok, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesPut(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.UpdateVPNPolicyOperationFailed, id, err)
 	}
-	if putok != nil {
-		ikePolicy = putok.Payload
+	if putok != nil && putok.Payload != nil {
+		return putok.Payload, nil
 	}
-	return
+	return nil, nil
 }
 
 // Get all IKE Policies
-func (f *IBMPIVpnPolicyClient) GetAllIKEPolicies(cloudInstanceID string) (ikePolicies *models.IKEPolicies, err error) {
-	return f.GetAllIKEPoliciesWithContext(context.Background(), cloudInstanceID)
-}
-
-// Get all IKE Policies with context
-func (f *IBMPIVpnPolicyClient) GetAllIKEPoliciesWithContext(ctx context.Context, cloudInstanceID string) (ikePolicies *models.IKEPolicies, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesGetallParamsWithContext(ctx).
-		WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(cloudInstanceID)
-	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) GetAllIKEPolicies() (*models.IKEPolicies, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesGetall(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf("failed to get all ike policies: %v", err)
 	}
-	ikePolicies = resp.Payload
-	return
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get all ike policies")
+	}
+	return resp.Payload, nil
 }
 
 // Delete a IKE Policy
-func (f *IBMPIVpnPolicyClient) DeleteIKEPolicy(id, cloudInstanceID string) (err error) {
-	return f.DeleteIKEPolicyWithContext(context.Background(), id, cloudInstanceID)
-}
-
-// Delete a IKE Policy with context
-func (f *IBMPIVpnPolicyClient) DeleteIKEPolicyWithContext(ctx context.Context, id, cloudInstanceID string) (err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesDeleteParamsWithContext(ctx).
-		WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithIkePolicyID(id)
-	_, err = f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesDelete(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
-	return
+func (f *IBMPIVpnPolicyClient) DeleteIKEPolicy(id string) error {
+	params := p_cloud_v_p_n_policies.NewPcloudIkepoliciesDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithIkePolicyID(id)
+	_, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesDelete(params, f.authInfo)
+	if err != nil {
+		return fmt.Errorf(errors.DeleteVPNPolicyOperationFailed, id, err)
+	}
+	return nil
 }
 
 // IPSec Policies
 
 // Get information about a IPSec Policy
-func (f *IBMPIVpnPolicyClient) GetIPSecPolicy(id, cloudInstanceID string) (*models.IPSecPolicy, error) {
-	return f.GetIPSecPolicyWithContext(context.Background(), id, cloudInstanceID)
-}
-
-// Get information about a IPSec Policy with Context
-func (f *IBMPIVpnPolicyClient) GetIPSecPolicyWithContext(ctx context.Context, id, cloudInstanceID string) (ipsecPolicy *models.IPSecPolicy, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesGetParamsWithContext(ctx).
-		WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithIpsecPolicyID(id)
-	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) GetIPSecPolicy(id string) (*models.IPSecPolicy, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithIpsecPolicyID(id)
+	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesGet(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.GetVPNPolicyOperationFailed, id, err)
 	}
-	ipsecPolicy = resp.Payload
-	return
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get ipsec policy for policy id %s", id)
+	}
+	return resp.Payload, nil
 }
 
 // Create a IPSec Policy
-func (f *IBMPIVpnPolicyClient) CreateIPSecPolicy(body *models.IPSecPolicyCreate, cloudInstanceID string) (ipsecPolicy *models.IPSecPolicy, err error) {
-	return f.CreateIPSecPolicyWithContext(context.Background(), body, cloudInstanceID)
-}
-
-// Create a IPSec Policy with context
-func (f *IBMPIVpnPolicyClient) CreateIPSecPolicyWithContext(ctx context.Context, body *models.IPSecPolicyCreate, cloudInstanceID string) (ipsecPolicy *models.IPSecPolicy, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesPostParamsWithContext(ctx).
-		WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithBody(body)
-	postok, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesPost(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) CreateIPSecPolicy(body *models.IPSecPolicyCreate) (*models.IPSecPolicy, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
+	postok, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesPost(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.CreateVPNPolicyOperationFailed, f.cloudInstanceID, err)
 	}
-	if postok != nil {
-		ipsecPolicy = postok.Payload
+	if postok != nil && postok.Payload != nil {
+		return postok.Payload, nil
 	}
-	return
+	return nil, nil
 }
 
 // Update a IPSec Policy
-func (f *IBMPIVpnPolicyClient) UpdateIPSecPolicy(body *models.IPSecPolicyUpdate, id, cloudInstanceID string) (ipsecPolicy *models.IPSecPolicy, err error) {
-	return f.UpdateIPSecPolicyWithContext(context.Background(), body, id, cloudInstanceID)
-}
-
-// Update a IPSec Policy with context
-func (f *IBMPIVpnPolicyClient) UpdateIPSecPolicyWithContext(ctx context.Context, body *models.IPSecPolicyUpdate, id, cloudInstanceID string) (ipsecPolicy *models.IPSecPolicy, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesPutParamsWithContext(ctx).
-		WithTimeout(helpers.PIUpdateTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithBody(body).
-		WithIpsecPolicyID(id)
-	putok, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesPut(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) UpdateIPSecPolicy(id string, body *models.IPSecPolicyUpdate) (*models.IPSecPolicy, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithIpsecPolicyID(id).
+		WithBody(body)
+	putok, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesPut(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.UpdateVPNPolicyOperationFailed, id, err)
 	}
-	if putok != nil {
-		ipsecPolicy = putok.Payload
+	if putok != nil && putok.Payload != nil {
+		return putok.Payload, nil
 	}
-	return
+	return nil, nil
 }
 
 // Get all IPSec Policies
-func (f *IBMPIVpnPolicyClient) GetAllIPSecPolicies(cloudInstanceID string) (IPSecPolicies *models.IPSecPolicies, err error) {
-	return f.GetAllIPSecPoliciesWithContext(context.Background(), cloudInstanceID)
-}
-
-// Get all IPSec Policies with context
-func (f *IBMPIVpnPolicyClient) GetAllIPSecPoliciesWithContext(ctx context.Context, cloudInstanceID string) (ipsecPolicies *models.IPSecPolicies, err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesGetallParamsWithContext(ctx).
-		WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(cloudInstanceID)
-	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIVpnPolicyClient) GetAllIPSecPolicies() (*models.IPSecPolicies, error) {
+	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesGetall(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf("failed to get all ipsec policies: %v", err)
 	}
-	ipsecPolicies = resp.Payload
-	return
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get all ipsec policies")
+	}
+	return resp.Payload, nil
 }
 
 // Delete a IPSec Policy
-func (f *IBMPIVpnPolicyClient) DeleteIPSecPolicy(id, cloudInstanceID string) (err error) {
-	return f.DeleteIPSecPolicyWithContext(context.Background(), id, cloudInstanceID)
-}
-
-// Delete a IPSec Policy with context
-func (f *IBMPIVpnPolicyClient) DeleteIPSecPolicyWithContext(ctx context.Context, id, cloudInstanceID string) (err error) {
-	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesDeleteParamsWithContext(ctx).
-		WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithIpsecPolicyID(id)
-	_, err = f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesDelete(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
-	return
+func (f *IBMPIVpnPolicyClient) DeleteIPSecPolicy(id string) error {
+	params := p_cloud_v_p_n_policies.NewPcloudIpsecpoliciesDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithIpsecPolicyID(id)
+	_, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesDelete(params, f.authInfo)
+	if err != nil {
+		return fmt.Errorf(errors.DeleteVPNPolicyOperationFailed, id, err)
+	}
+	return nil
 }

@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"log"
 	"time"
@@ -16,26 +17,27 @@ const (
 )
 
 func main() {
-
 	//session Inputs
 	token := " < IAM TOKEN > "
 	region := " < REGION > "
+	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
+	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
 
-	// Image inputs
+	// Cloud connection inputs
 	name := " < NAME OF THE CONNECTION > "
 	piID := " < POWER INSTANCE ID > "
 	var speed int64 = 5000
 
-	session, err := ps.New(token, region, true, 50000000, accountID, region)
+	session, err := ps.New(token, region, true, 50000000, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}
-	ccClient := v.NewIBMPICloudConnectionClient(session, piID)
+	ccClient := v.NewIBMPICloudConnectionClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	jobClient := v.NewIBMPIJobClient(session, piID)
+	jobClient := v.NewIBMPIJobClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -44,7 +46,7 @@ func main() {
 		Name:  &name,
 		Speed: &speed,
 	}
-	createRespOk, createRespAccepted, err := ccClient.Create(body, piID)
+	createRespOk, createRespAccepted, err := ccClient.Create(body)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -63,7 +65,7 @@ func main() {
 		}
 	}
 
-	getResp, err := ccClient.Get(ccId, piID)
+	getResp, err := ccClient.Get(ccId)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -75,15 +77,14 @@ func main() {
 	}
 	log.Printf("***************[3]****************** %+v \n\n", *getAllResp)
 
-	delok, delAccepted, err := ccClient.Delete(piID, ccId)
+	delResp, err := ccClient.Delete(ccId)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[4]****************** %+v\n", delok)
-	log.Printf("***************[4]****************** %+v\n\n", delAccepted)
+	log.Printf("***************[4]****************** %+v\n", delResp)
 
-	if delAccepted != nil {
-		jobId = *delAccepted.ID
+	if delResp != nil {
+		jobId = *delResp.ID
 		waitForJobState(jobClient, jobId, piID, 2000)
 		if err != nil {
 			log.Fatal(err)
@@ -95,7 +96,7 @@ func waitForJobState(jobClient *v.IBMPIJobClient, jobId, cloudinstanceid string,
 	var status string
 
 	for status != JOBCOMPLETED && status != JOBFAILED {
-		job, err := jobClient.Get(jobId, cloudinstanceid)
+		job, err := jobClient.Get(jobId)
 		if err != nil {
 			return err
 		}
