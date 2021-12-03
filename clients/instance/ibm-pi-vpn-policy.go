@@ -61,7 +61,7 @@ func (f *IBMPIVpnPolicyClient) CreateIKEPolicy(body *models.IKEPolicyCreate) (*m
 	if postok != nil && postok.Payload != nil {
 		return postok.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Create VPN Policy")
 }
 
 // Update a IKE Policy
@@ -77,7 +77,7 @@ func (f *IBMPIVpnPolicyClient) UpdateIKEPolicy(id string, body *models.IKEPolicy
 	if putok != nil && putok.Payload != nil {
 		return putok.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Update VPN Policy")
 }
 
 // Get all IKE Policies
@@ -136,7 +136,7 @@ func (f *IBMPIVpnPolicyClient) CreateIPSecPolicy(body *models.IPSecPolicyCreate)
 	if postok != nil && postok.Payload != nil {
 		return postok.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Create VPN Policy")
 }
 
 // Update a IPSec Policy
@@ -152,7 +152,7 @@ func (f *IBMPIVpnPolicyClient) UpdateIPSecPolicy(id string, body *models.IPSecPo
 	if putok != nil && putok.Payload != nil {
 		return putok.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Update VPN Policy")
 }
 
 // Get all IPSec Policies

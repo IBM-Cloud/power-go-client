@@ -46,7 +46,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[1]****************** %+v\n", createRespOk)
+	log.Printf("***************[1]****************** %+v\n", *createRespOk)
 
 	sshID := *createRespOk.Name
 	getResp, err := powerClient.Get(sshID)

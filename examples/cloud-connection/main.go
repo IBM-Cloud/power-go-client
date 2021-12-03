@@ -71,7 +71,7 @@ func main() {
 	}
 	log.Printf("***************[2]****************** %+v \n\n", *getResp)
 
-	getAllResp, err := ccClient.GetAll(piID)
+	getAllResp, err := ccClient.GetAll()
 	if err != nil {
 		log.Fatal(err)
 	}

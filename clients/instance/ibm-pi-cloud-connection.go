@@ -50,7 +50,7 @@ func (f *IBMPICloudConnectionClient) Create(body *models.CloudConnectionCreate) 
 	if postaccepted != nil && postaccepted.Payload != nil {
 		return nil, postaccepted.Payload, nil
 	}
-	return nil, nil, nil
+	return nil, nil, fmt.Errorf("failed to Create Cloud Connection")
 }
 
 // Get ...
@@ -69,7 +69,7 @@ func (f *IBMPICloudConnectionClient) Get(id string) (*models.CloudConnection, er
 }
 
 // GetAll ..
-func (f *IBMPICloudConnectionClient) GetAll(cloudInstanceID string) (*models.CloudConnections, error) {
+func (f *IBMPICloudConnectionClient) GetAll() (*models.CloudConnections, error) {
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID)
@@ -99,7 +99,7 @@ func (f *IBMPICloudConnectionClient) Update(id string, body *models.CloudConnect
 	if putaccepted != nil && putaccepted.Payload != nil {
 		return nil, putaccepted.Payload, nil
 	}
-	return nil, nil, nil
+	return nil, nil, fmt.Errorf("failed to Update Cloud Connection %s", id)
 }
 
 // Delete a Cloud Connection
