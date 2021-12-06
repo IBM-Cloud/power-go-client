@@ -1,3 +1,9 @@
 /.idea/misc.xml
 /.idea/vcs.xml
 /.idea/
+.DS_Store
+
+# .env files
+*.env
+.env.*
+!/.vscode/example.env

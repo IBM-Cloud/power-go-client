@@ -24,10 +24,10 @@ func (IBMPILogger) Debugf(format string, args ...interface{}) {
 	if len(format) == 0 || format[len(format)-1] != '\n' {
 		format += "\n"
 	}
-	fmt.Fprintf(os.Stderr, format, sanatizeArgs(args)...)
+	fmt.Fprintf(os.Stderr, format, SanatizeArgs(args)...)
 }
 
-func sanatizeArgs(args []interface{}) (out []interface{}) {
+func SanatizeArgs(args []interface{}) (out []interface{}) {
 	for _, arg := range args {
 		if reflect.TypeOf(arg).String() == "string" {
 			arg = sanitize(fmt.Sprintf("%s", arg))

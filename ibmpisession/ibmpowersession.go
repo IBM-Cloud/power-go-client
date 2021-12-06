@@ -1,7 +1,5 @@
 /*
 Code to call the IBM IAM Services and get a session object that will be used by the Power Colo Code.
-
-
 */
 
 package ibmpisession
@@ -14,6 +12,7 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 	"strings"
 
 	"github.com/go-openapi/runtime"
@@ -22,7 +21,6 @@ import (
 
 	"github.com/IBM-Cloud/power-go-client/power/client"
 	"github.com/IBM-Cloud/power-go-client/power/models"
-	"github.com/IBM-Cloud/power-go-client/utils"
 	"github.com/IBM/go-sdk-core/v5/core"
 )
 
@@ -39,8 +37,12 @@ type IBMPISession struct {
 
 // PIOptions
 type PIOptions struct {
+	// The authenticator used to configure the appropriate type of authentication
+	// Required
+	Authenticator core.Authenticator
+
 	// Enable/Disable http transport debugging log
-	Debug bool
+	Debug bool `default:true`
 
 	// Account id of the Power Cloud Service Instance
 	// Required
@@ -52,10 +54,6 @@ type PIOptions struct {
 
 	// Zone of the Power Cloud Service Instance; Use Region if not set
 	Zone string
-
-	// The authenticator used to configure the appropriate type of authentication
-	// Required
-	Authenticator core.Authenticator
 }
 
 func powerJSONConsumer() runtime.Consumer {
@@ -80,34 +78,30 @@ func powerJSONConsumer() runtime.Consumer {
 	})
 }
 
-// Create a IBMPISession
-func NewSession(options *PIOptions) (*IBMPISession, error) {
+// Create a IBMPISession using an API Key
+func NewSessionApiKey(options *PIOptions) (*IBMPISession, error) {
 	newSession := &IBMPISession{
 		UserAccount:   options.UserAccount,
 		Region:        options.Region,
 		Zone:          options.Zone,
 		Authenticator: options.Authenticator,
 	}
-
 	session, err := process(newSession, options.Debug)
 	if err != nil {
 		return nil, err
 	}
-
 	return session, nil
 }
 
-// New ...
-// - deprecated: New function can be used, but is slated to become `obsolete`, Instead try using NewSession function.
+// Create a IBMPISession
+// - deprecated: use NewSessionApiKey
 func New(iamtoken, region string, debug bool, useraccount string, zone string) (*IBMPISession, error) {
-	//fmt.Println("Warning - New function is slated to become `obsolete`, Instead try using NewSession function.")
 	session := &IBMPISession{
 		IAMToken:    iamtoken,
 		UserAccount: useraccount,
 		Region:      region,
 		Zone:        zone,
 	}
-
 	session, err := process(session, debug)
 	if err != nil {
 		return nil, err
@@ -118,11 +112,9 @@ func New(iamtoken, region string, debug bool, useraccount string, zone string) (
 // Assign appropriate PowerIaas client to the session after appropriate evaluation
 func process(session *IBMPISession, debug bool) (*IBMPISession, error) {
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
-	apiEndpointURL := utils.GetPowerEndPoint(session.Region)
+	apiEndpointURL := GetPowerEndPoint(session.Region)
 	transport := httptransport.New(apiEndpointURL, "/", []string{"https"})
-	if debug {
-		transport.Debug = debug
-	}
+	transport.Debug = debug
 	transport.SetLogger(IBMPILogger{})
 	transport.Consumers[runtime.JSONMime] = powerJSONConsumer()
 	session.Power = client.New(transport, nil)
@@ -178,7 +170,7 @@ func BearerTokenAndCRN(session *IBMPISession, crn string) runtime.ClientAuthInfo
 // crnBuilder ...
 func crnBuilder(cloudInstanceID, useraccount, region, zone string) string {
 	var service string
-	if strings.Contains(utils.GetPowerEndPoint(region), ".power-iaas.cloud.ibm.com") {
+	if strings.Contains(GetPowerEndPoint(region), ".power-iaas.cloud.ibm.com") {
 		service = "bluemix"
 	} else {
 		service = "staging"
@@ -187,4 +179,14 @@ func crnBuilder(cloudInstanceID, useraccount, region, zone string) string {
 		zone = region
 	}
 	return fmt.Sprintf("crn:v1:%s:public:power-iaas:%s:a/%s:%s::", service, zone, useraccount, cloudInstanceID)
+}
+
+func GetPowerEndPoint(regionName string) string {
+	if url := os.Getenv("IBMCLOUD_POWER_API_ENDPOINT"); url != "" {
+		if url[0] == '.' {
+			return regionName + url
+		}
+		return url
+	}
+	return regionName + ".power-iaas.cloud.ibm.com"
 }
