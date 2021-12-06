@@ -48,7 +48,7 @@ func (f *IBMPISAPInstanceClient) Create(body *models.SAPCreate) (*models.PVMInst
 	if postAccepted != nil && len(postAccepted.Payload) > 0 {
 		return &postAccepted.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Create SAP Instance")
 }
 
 // Get SAP Profile

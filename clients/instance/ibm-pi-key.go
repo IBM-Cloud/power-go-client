@@ -79,7 +79,7 @@ func (f *IBMPIKeyClient) Create(body *models.SSHKey) (*models.SSHKey, error) {
 	if postcreated != nil && postcreated.Payload != nil {
 		return postcreated.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Create PI Key")
 }
 
 // Delete ...

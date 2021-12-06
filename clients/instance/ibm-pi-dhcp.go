@@ -2,8 +2,11 @@ package instance
 
 import (
 	"context"
+	"fmt"
 
+	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
+	"github.com/go-openapi/runtime"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
@@ -13,95 +16,75 @@ import (
 // NewIBMPIDhcpClient ...
 type IBMPIDhcpClient struct {
 	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	cloudInstanceID string
+	authInfo        runtime.ClientAuthInfoWriter
+	ctx             context.Context
 }
 
 // NewIBMPIDhcpClient ...
-func NewIBMPIDhcpClient(sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIDhcpClient {
+func NewIBMPIDhcpClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIDhcpClient {
+	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPIDhcpClient{
 		session:         sess,
-		powerinstanceid: cloudInstanceID,
+		cloudInstanceID: cloudInstanceID,
+		authInfo:        authInfo,
+		ctx:             ctx,
 	}
 }
 
 // Create
-func (f *IBMPIDhcpClient) Create(cloudInstanceID string) (dhcpServer *models.DHCPServer, err error) {
-	return f.CreateWithContext(context.Background(), cloudInstanceID)
-}
-
-// Create a DHCP with context
-func (f *IBMPIDhcpClient) CreateWithContext(ctx context.Context, cloudInstanceID string) (dhcpServer *models.DHCPServer, err error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpPostParamsWithContext(ctx).
-		WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(cloudInstanceID)
-	postAccepted, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpPost(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIDhcpClient) Create() (*models.DHCPServer, error) {
+	params := p_cloud_service_d_h_c_p.NewPcloudDhcpPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	postaccepted, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpPost(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.CreateDchpOperationFailed, f.cloudInstanceID, err)
 	}
-	if postAccepted != nil {
-		dhcpServer = postAccepted.Payload
+	if postaccepted != nil && postaccepted.Payload != nil {
+		return postaccepted.Payload, nil
 	}
-	return
+	return nil, fmt.Errorf("failed to Create DHCP")
 }
 
 // Get
-func (f *IBMPIDhcpClient) Get(id, cloudInstanceID string) (dhcpServer *models.DHCPServerDetail, err error) {
-	return f.GetWithContext(context.Background(), id, cloudInstanceID)
-}
-
-// Get with Context...
-func (f *IBMPIDhcpClient) GetWithContext(ctx context.Context, id, cloudInstanceID string) (dhcpServer *models.DHCPServerDetail, err error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetParamsWithContext(ctx).
-		WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithDhcpID(id)
-	resp, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIDhcpClient) Get(id string) (*models.DHCPServerDetail, error) {
+	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithDhcpID(id)
+	resp, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpGet(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf(errors.GetDhcpOperationFailed, id, err)
 	}
-	if resp != nil {
-		dhcpServer = resp.Payload
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get DHCP %s", id)
 	}
-	return
+	return resp.Payload, nil
 }
 
 // GetAll
-func (f *IBMPIDhcpClient) GetAll(cloudInstanceID string) (dhcpServers models.DHCPServers, err error) {
-	return f.GetAllWithContext(context.Background(), cloudInstanceID)
-}
-
-// GetAll with Context...
-func (f *IBMPIDhcpClient) GetAllWithContext(ctx context.Context, cloudInstanceID string) (dhcpServers models.DHCPServers, err error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetallParamsWithContext(ctx).
-		WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(cloudInstanceID)
-	resp, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
+	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpGetall(params, f.authInfo)
 	if err != nil {
-		return
+		return nil, fmt.Errorf("failed to Get all DHCP servers: %v", err)
 	}
-	if resp != nil {
-		dhcpServers = resp.Payload
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get all DHCP servers")
 	}
-	return
+	return resp.Payload, nil
 }
 
 // Delete
-func (f *IBMPIDhcpClient) Delete(id, cloudInstanceID string) (obj models.Object, err error) {
-	return f.DeleteWithContext(context.Background(), id, cloudInstanceID)
-}
-
-// Delete with Context...
-func (f *IBMPIDhcpClient) DeleteWithContext(ctx context.Context, id, cloudInstanceID string) (obj models.Object, err error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpDeleteParamsWithContext(ctx).
-		WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(cloudInstanceID).
-		WithDhcpID(id)
-	respAccepted, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpDelete(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
+func (f *IBMPIDhcpClient) Delete(id string) error {
+	params := p_cloud_service_d_h_c_p.NewPcloudDhcpDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithDhcpID(id)
+	_, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpDelete(params, f.authInfo)
 	if err != nil {
-		return
+		return fmt.Errorf(errors.DeleteDhcpOperationFailed, id, err)
 	}
-	if respAccepted != nil {
-		obj = respAccepted.Payload
-	}
-	return
+	return nil
 }

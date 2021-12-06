@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"log"
 	"time"
 
@@ -24,31 +25,31 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPIDhcpClient(session, piID)
+	powerClient := v.NewIBMPIDhcpClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	dhcpServer, err := powerClient.Create(piID)
+	dhcpServer, err := powerClient.Create()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[1]****************** %+v\n", dhcpServer)
+	log.Printf("***************[1]****************** %+v\n", *dhcpServer)
 
 	dhcpId := *dhcpServer.ID
-	getResp, err := powerClient.Get(dhcpId, piID)
+	getResp, err := powerClient.Get(dhcpId)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[2]****************** %+v \n", *getResp)
 
-	getAllResp, err := powerClient.GetAll(piID)
+	getAllResp, err := powerClient.GetAll()
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", getAllResp)
 
-	_, err = powerClient.Delete(dhcpId, piID)
+	err = powerClient.Delete(dhcpId)
 	if err != nil {
 		log.Fatal(err)
 	}

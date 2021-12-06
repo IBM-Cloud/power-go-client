@@ -84,7 +84,7 @@ func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PV
 	if postAccepted != nil && len(postAccepted.Payload) > 0 {
 		return &postAccepted.Payload, nil
 	}
-	return nil, nil
+	return nil, fmt.Errorf("failed to Create PVM Instance")
 }
 
 // Delete PVM Instances
@@ -150,23 +150,26 @@ func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLan
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsoleGet(params, f.authInfo)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to Get Console Languages for PVM Instance %s :%v", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get the Console Languages for PVM Instance %s", id)
+		return nil, fmt.Errorf("failed to Get Console Languages for PVM Instance %s", id)
 	}
 	return resp.Payload, nil
 }
 
 // List the available console languages for an instance
-func (f *IBMPIInstanceClient) UpdateConsoleLanguage(body *models.ConsoleLanguage, id string) (*models.ConsoleLanguage, error) {
+func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.ConsoleLanguage) (*models.ConsoleLanguage, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsolePutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
 		WithBody(body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsolePut(params, f.authInfo)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to Update Console Language for PVM Instance %s :%v", id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Update Console Language for PVM Instance %s", id)
 	}
 	return resp.Payload, nil
 }
