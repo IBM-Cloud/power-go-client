@@ -1,12 +1,15 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net"
+	"os"
 	"strconv"
 	"time"
 
 	"github.com/apparentlymart/go-cidr/cidr"
+	"github.com/joho/godotenv"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
@@ -16,22 +19,22 @@ import (
 
 func main() {
 
-	//session Inputs
-	token := " < IAM TOKEN > "
-	region := " < REGION > "
-	accountID := " < ACCOUNT ID > "
+	// set to staging or production
+	environment := "staging"
+	if environment == "staging" {
+		godotenv.Load("../../.env.staging")
+	} else {
+		godotenv.Load("../../.env.production")
+	}
 
-	// network public vlan inputs
-	// name := " < NAME OF THE network > "
-	// piID := " < POWER INSTANCE ID > "
-	// netType := "pub-vlan"
-	// dnsServers := make([]string, 0)
-	// cidr, gateway, startIP, endIP := "", "", "", ""
-	// timeout := time.Duration(9000000000000000000)
+	// load cloud instance id
+	cloudInstanceId := os.Getenv("CLOUD_INSTANCE_ID")
+	if cloudInstanceId == "" {
+		log.Fatal(fmt.Errorf("CLOUD_INSTANCE_ID is empty: define in .env.%v", environment))
+	}
 
 	// network private VLANinputs
 	name := " < NAME OF THE network > "
-	piID := " < POWER INSTANCE ID > "
 	netType := "vlan"
 	cidr := "10.243.65.0/24"
 	dnsServers := make([]string, 1)
@@ -40,65 +43,65 @@ func main() {
 	jumbo := false
 	timeout := time.Duration(9000000000000000000)
 
-	session, err := ps.New(token, region, true, 9000000000000000000, accountID, region)
+	session, err := ps.New()
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPINetworkClient(session, piID)
+	powerClient := v.NewIBMPINetworkClient(session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
-	createRespOk, err := powerClient.Create(name, netType, cidr, dnsServers, gateway, startIP, endIP, jumbo, piID, timeout)
+	createRespOk, err := powerClient.Create(name, netType, cidr, dnsServers, gateway, startIP, endIP, jumbo, cloudInstanceId, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[1]****************** %+v\n", createRespOk)
 
 	networkID := *createRespOk.NetworkID
-	getResp, err := powerClient.Get(networkID, piID, timeout)
+	getResp, err := powerClient.Get(networkID, cloudInstanceId, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[2]****************** %+v \n", *getResp)
 
-	getpubResp, err := powerClient.GetPublic(piID, timeout)
+	getpubResp, err := powerClient.GetPublic(cloudInstanceId, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", *getpubResp)
 
 	params := p_cloud_networks.PcloudNetworksPortsPostParams{
-		CloudInstanceID: piID,
+		CloudInstanceID: cloudInstanceId,
 	}
 	body := models.NetworkPortCreate{
 		Description: "Network Port",
 	}
 	params.Body = &body
 	log.Println(params)
-	createPortResp, err := powerClient.CreatePort(networkID, piID, &params, timeout)
+	createPortResp, err := powerClient.CreatePort(networkID, cloudInstanceId, &params, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[4]****************** %+v \n", *createPortResp)
 
-	getPortResp, err := powerClient.GetPort(networkID, piID, *createPortResp.PortID, timeout)
+	getPortResp, err := powerClient.GetPort(networkID, cloudInstanceId, *createPortResp.PortID, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[5]****************** %+v \n", *getPortResp)
 
-	getallPortResp, err := powerClient.GetAllPort(networkID, piID, timeout)
+	getallPortResp, err := powerClient.GetAllPort(networkID, cloudInstanceId, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[6]****************** %+v \n", *getallPortResp)
 
-	_, err = powerClient.DeletePort(networkID, piID, *createPortResp.PortID, timeout)
+	_, err = powerClient.DeletePort(networkID, cloudInstanceId, *createPortResp.PortID, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = powerClient.Delete(networkID, piID, timeout)
+	err = powerClient.Delete(networkID, cloudInstanceId, timeout)
 	if err != nil {
 		log.Fatal(err)
 	}

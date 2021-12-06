@@ -3,69 +3,79 @@ package main
 import (
 	"fmt"
 	"log"
+	"os"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	//session Inputs
-	token := " < IAM TOKEN > "
-	region := " < REGION > "
-	accountID := " < ACCOUNT ID > "
+	// set to staging or production
+	environment := "staging"
+	if environment == "staging" {
+		godotenv.Load("../../.env.staging")
+	} else {
+		godotenv.Load("../../.env.production")
+	}
+
+	// load cloud instance id
+	cloudInstanceId := os.Getenv("CLOUD_INSTANCE_ID")
+	if cloudInstanceId == "" {
+		log.Fatal(fmt.Errorf("CLOUD_INSTANCE_ID is empty: define in .env.%v", environment))
+	}
 
 	// Image inputs
 	name := " < NAME OF THE IMAGE > "
-	piID := " < POWER INSTANCE ID > "
 	image := " <IMAGE ID> "
 
-	session, err := ps.New(token, region, true, 50000000, accountID, region)
+	session, err := ps.New()
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPIImageClient(session, piID)
+	powerClient := v.NewIBMPIImageClient(session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	createResp, err := powerClient.Create(name, image, piID)
+	createResp, err := powerClient.Create(name, image, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[1]****************** %+v \n\n", *createResp)
 
 	imageID := *createResp.ImageID
-	getResp, err := powerClient.Get(imageID, piID)
+	getResp, err := powerClient.Get(imageID, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[2]****************** %+v \n\n", *getResp)
 
-	getAllResp, err := powerClient.GetAll(piID)
+	getAllResp, err := powerClient.GetAll(cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n\n", *getAllResp)
 
-	err = powerClient.Delete(imageID, piID)
+	err = powerClient.Delete(imageID, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	getStockResp, err := powerClient.GetAllStockImages(piID, true, true)
+	getStockResp, err := powerClient.GetAllStockImages(cloudInstanceId, true, true)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[4]****************** %+v \n\n", *getStockResp)
 
-	getSapResp, err := powerClient.GetAllStockSAPImages(piID)
+	getSapResp, err := powerClient.GetAllStockSAPImages(cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[5]****************** %+v \n\n", *getSapResp)
 
-	getVtlImages, err := powerClient.GetAllStockVTLImages(piID)
+	getVtlImages, err := powerClient.GetAllStockVTLImages(cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -73,7 +83,7 @@ func main() {
 
 	if len(getVtlImages.Images) > 0 {
 		testVtlId := *getVtlImages.Images[0].ImageID
-		imageCheck, err := powerClient.IsVTLImage(testVtlId, piID)
+		imageCheck, err := powerClient.IsVTLImage(testVtlId, cloudInstanceId)
 
 		msg := fmt.Sprintf("IsVtlImage returned true for vtl image with ID %s", testVtlId)
 		if imageCheck == false {

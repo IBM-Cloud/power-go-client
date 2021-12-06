@@ -2,23 +2,34 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"os"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	//session Inputs
-	token := " < IAM TOKEN > "
-	region := " < REGION > "
-	accountID := " < ACCOUNT ID > "
+	// set to staging or production
+	environment := "staging"
+	if environment == "staging" {
+		godotenv.Load("../../.env.staging")
+	} else {
+		godotenv.Load("../../.env.production")
+	}
+
+	// load cloud instance id
+	cloudInstanceId := os.Getenv("CLOUD_INSTANCE_ID")
+	if cloudInstanceId == "" {
+		log.Fatal(fmt.Errorf("CLOUD_INSTANCE_ID is empty: define in .env.%v", environment))
+	}
 
 	// volume inputs
 	name := " < NAME OF THE volume > "
-	piID := " < POWER INSTANCE ID > "
 	imageID := "c6b32fda-9979-4ce7-abee-ecb54df5237a"
 	volumes := make([]string, 1)
 	volumes[0] = "ef82d430-4cb0-46a5-be11-e61fb129fe18"
@@ -30,11 +41,11 @@ func main() {
 	procType := "shared"
 	sysType := "s922"
 
-	session, err := ps.New(token, region, true, 9000000000000000000, accountID, region)
+	session, err := ps.New()
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPIInstanceClient(context.Background(), session, piID)
+	powerClient := v.NewIBMPIInstanceClient(context.Background(), session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}

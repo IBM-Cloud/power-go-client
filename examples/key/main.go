@@ -2,32 +2,41 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
+	"os"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	//session Inputs
-	token := " < IAM TOKEN > "
-	region := " < REGION > "
-	zone := " < ZONE > "
-	accountID := " < ACCOUNT ID > "
-	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
+	// set to staging or production
+	environment := "staging"
+	if environment == "staging" {
+		godotenv.Load("../../.env.staging")
+	} else {
+		godotenv.Load("../../.env.production")
+	}
+
+	// load cloud instance id
+	cloudInstanceId := os.Getenv("CLOUD_INSTANCE_ID")
+	if cloudInstanceId == "" {
+		log.Fatal(fmt.Errorf("CLOUD_INSTANCE_ID is empty: define in .env.%v", environment))
+	}
 
 	// ssh inputs
 	name := " < NAME OF THE ssh > "
-	piID := " < POWER INSTANCE ID > "
 	ssh := " <ssh ID> "
 
-	session, err := ps.New(token, region, true, 50000000000, accountID, zone)
+	session, err := ps.New()
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPIKeyClient(context.Background(), session, piID)
+	powerClient := v.NewIBMPIKeyClient(context.Background(), session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}

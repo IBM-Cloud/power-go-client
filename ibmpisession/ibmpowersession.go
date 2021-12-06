@@ -10,9 +10,12 @@ import (
 	"bytes"
 	"crypto/tls"
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
+	"os"
+	"strconv"
 	"strings"
 	"time"
 
@@ -76,23 +79,28 @@ region : Obtained from the terraform template. Every template /resource will be 
 timeout:
 useraccount:
 */
-func New(iamtoken, region string, debug bool, timeout time.Duration, useraccount string, zone string) (*IBMPISession, error) {
+//func New(bearerToken, region string, debug bool, timeout time.Duration, accountID string, zone string, endpoint string) (*IBMPISession, error) {
+func New() (*IBMPISession, error) {
+	// get variables
+	powerEndpoint, bearerToken, accountID, region, zone, debug, timeout, err := getEnvVariables()
+	if err != nil {
+		return nil, err
+	}
+
+	// create session
 	session := &IBMPISession{
-		IAMToken:    iamtoken,
-		UserAccount: useraccount,
+		IAMToken:    bearerToken,
+		UserAccount: accountID,
 		Region:      region,
 		Zone:        zone,
 	}
 
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
-	apiEndpointURL := utils.GetPowerEndPoint(region)
-	transport := httptransport.New(apiEndpointURL, "/", []string{"https"})
-	if debug {
-		transport.Debug = debug
-	}
+	transport := httptransport.New(powerEndpoint, "/", []string{"https"})
+	transport.Debug = debug
 	transport.Consumers[runtime.JSONMime] = powerJSONConsumer()
 	session.Power = client.New(transport, nil)
-	session.Timeout = timeout
+	session.Timeout = time.Duration(timeout)
 	return session, nil
 }
 
@@ -133,4 +141,57 @@ func crnBuilder(powerinstance, useraccount, region string, zone string) string {
 		crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + zone + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
 	}
 	return crnData
+}
+
+func getEnvVariables() (string, string, string, string, string, bool, time.Duration, error) {
+
+	// session variables
+	powerEndpoint := ""
+	bearerToken := ""
+	accountID := ""
+	region := ""
+	zone := ""
+	// default values
+	debug := true
+	timeout := 9000000000000000000
+
+	// error vars
+	err := ""
+	envFile := ""
+
+	// get environment
+	if env := os.Getenv("ENVIRONMENT"); env == "" {
+		envFile = ".env." + env
+	}
+
+	// required variables
+	if bearerToken = os.Getenv("BEARER_TOKEN"); bearerToken == "" {
+		err += fmt.Sprintf("BEARER_TOKEN is empty: define in %v\n", envFile)
+	}
+	if accountID = os.Getenv("ACCOUNT_ID"); accountID == "" {
+		err += fmt.Sprintf("ACCOUNT_ID is empty: define in %v\n", envFile)
+	}
+	if region = os.Getenv("REGION"); region == "" {
+		err += fmt.Sprintf("REGION is empty: define in %v\n", envFile)
+	}
+	if zone = os.Getenv("ZONE"); zone == "" {
+		err += fmt.Sprintf("ZONE is empty: define in %v\n", envFile)
+	}
+	if powerEndpoint = os.Getenv("ENDPOINT"); powerEndpoint == "" {
+		err += fmt.Sprintf("ENDPOINT is empty: define in %v\n", envFile)
+	}
+	powerEndpoint = region + powerEndpoint
+
+	// optional variables
+	if debugStr := os.Getenv("DEBUG"); debugStr != "" {
+		debug, _ = strconv.ParseBool(debugStr)
+	}
+	if timeoutStr := os.Getenv("TIMEOUT"); timeoutStr == "" {
+		timeout, _ = strconv.Atoi(timeoutStr)
+	}
+
+	if err != "" {
+		return "", "", "", "", "", false, 0, fmt.Errorf(err)
+	}
+	return powerEndpoint, bearerToken, accountID, region, zone, debug, time.Duration(timeout), nil
 }

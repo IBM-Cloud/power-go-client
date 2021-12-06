@@ -4,11 +4,13 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/joho/godotenv"
 )
 
 const (
@@ -18,34 +20,39 @@ const (
 
 func main() {
 
-	//session Inputs
-	token := " < IAM TOKEN > "
-	region := " < REGION > "
-	zone := " < ZONE > "
-	accountID := " < ACCOUNT ID > "
-	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region + ".power-iaas.test.cloud.ibm.com")
+	// set to staging or production
+	environment := "staging"
+	if environment == "staging" {
+		godotenv.Load("../../.env.staging")
+	} else {
+		godotenv.Load("../../.env.production")
+	}
+
+	// load cloud instance id
+	cloudInstanceId := os.Getenv("CLOUD_INSTANCE_ID")
+	if cloudInstanceId == "" {
+		log.Fatal(fmt.Errorf("CLOUD_INSTANCE_ID is empty: define in .env.%v", environment))
+	}
 
 	// VPN inputs
 	name := " < NAME OF THE VPN CONNECTION > "
-	piID := " < POWER INSTANCE ID > "
 	ikePolicyName := " < NAME OF THE IKE POLICY > "
 	ipsecPolicyName := " < NAME OF THE IPSEC POLICY > "
 	networks := []string{" < NAME OF THE NETWORK > "}
-	timeout := time.Duration(9000000000000000000)
 
-	session, err := ps.New(token, region, true, timeout, accountID, zone)
+	session, err := ps.New()
 	if err != nil {
 		log.Fatal(err)
 	}
-	vpnClient := v.NewIBMPIVpnConnectionClient(context.Background(), session, piID)
+	vpnClient := v.NewIBMPIVpnConnectionClient(context.Background(), session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
-	vpnPolicyClient := v.NewIBMPIVpnPolicyClient(context.Background(), session, piID)
+	vpnPolicyClient := v.NewIBMPIVpnPolicyClient(context.Background(), session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
-	jobClient := v.NewIBMPIJobClient(context.Background(), session, piID)
+	jobClient := v.NewIBMPIJobClient(context.Background(), session, cloudInstanceId)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -113,7 +120,7 @@ func main() {
 	}
 	log.Printf("***************[1]****************** %+v\n", createResp)
 
-	waitForJobState(jobClient, *createResp.JobRef.ID, piID, 2000)
+	waitForJobState(jobClient, *createResp.JobRef.ID, cloudInstanceId, 2000)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -143,7 +150,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	waitForJobState(jobClient, *resp.ID, piID, 2000)
+	waitForJobState(jobClient, *resp.ID, cloudInstanceId, 2000)
 	if err != nil {
 		log.Fatal(err)
 	}

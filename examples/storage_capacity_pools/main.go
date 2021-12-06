@@ -2,13 +2,14 @@ package main
 
 import (
 	"fmt"
-	v "github.com/IBM-Cloud/power-go-client/clients/instance"
-	"github.com/IBM-Cloud/power-go-client/examples/clientutils"
-	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"log"
 	"os"
 	"strings"
 	"time"
+
+	v "github.com/IBM-Cloud/power-go-client/clients/instance"
+	"github.com/IBM-Cloud/power-go-client/examples/clientutils"
+	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 )
 
 func main() {
