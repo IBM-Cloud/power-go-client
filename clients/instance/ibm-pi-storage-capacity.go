@@ -27,7 +27,7 @@ func (f *IBMPIStorageCapacityClient) GetAllStoragePools(powerinstanceid string, 
 	params := p_cloud_storage_capacity.NewPcloudStoragecapacityPoolsGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityPoolsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get all storage pools %v", err)
+		return nil, fmt.Errorf("failed to get all storage pools %w", err)
 	}
 	return resp.Payload, nil
 }
@@ -38,7 +38,7 @@ func (f *IBMPIStorageCapacityClient) GetAvailableStoragePool(powerinstanceid, st
 	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityPoolsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
-		fmt.Errorf("failed to get the capacity for storage pool %v", err)
+		return nil, fmt.Errorf("failed to get the capacity for storage pool %w", err)
 	}
 	return resp.Payload, nil
 }
@@ -48,7 +48,7 @@ func (f *IBMPIStorageCapacityClient) GetAvailableStorageCapacity(powerinstanceid
 	params := p_cloud_storage_capacity.NewPcloudStoragecapacityTypesGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithStorageTypeName(storage_tier)
 	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityTypesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
-		fmt.Errorf("failed to get the capacity for storage pool %v", err)
+		return nil, fmt.Errorf("failed to get the capacity for storage pool %w", err)
 	}
 	return resp.Payload, nil
 }
@@ -58,7 +58,7 @@ func (f *IBMPIStorageCapacityClient) GetAvailableStorageType(powerinstanceid str
 	params := p_cloud_storage_capacity.NewPcloudStoragecapacityTypesGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityTypesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp.Payload == nil {
-		fmt.Errorf("failed to get the capacity for storage tiers %v", err)
+		return nil, fmt.Errorf("failed to get the capacity for storage tiers %w", err)
 	}
 	return resp.Payload, nil
 }

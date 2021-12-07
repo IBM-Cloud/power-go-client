@@ -2,8 +2,9 @@ package instance
 
 import (
 	"fmt"
-	"github.com/IBM-Cloud/power-go-client/errors"
 	"time"
+
+	"github.com/IBM-Cloud/power-go-client/errors"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
@@ -145,7 +146,7 @@ func (f *IBMPIVolumeClient) Detach(id, volumename string, powerinstanceid string
 
 	if err != nil || resp == nil || resp.Payload == nil {
 		//return nil, errors.ToError(err)
-		return nil, fmt.Errorf("Failed to detach the volume [%s ] for pvm instance with id [%s]: %s", volumename, id, err)
+		return nil, fmt.Errorf("failed to detach the volume [%s] for pvm instance with id [%s]: %w", volumename, id, err)
 	}
 	return resp.Payload, nil
 
@@ -156,7 +157,7 @@ func (f *IBMPIVolumeClient) GetAll(id, cloudInstanceID string, timeout time.Dura
 	params := p_cloud_volumes.NewPcloudPvminstancesVolumesGetallParamsWithTimeout(helpers.PIGetTimeOut).WithPvmInstanceID(id).WithCloudInstanceID(cloudInstanceID)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesGetall(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get all PI Instance Volumes %s :%s", id, err)
+		return nil, fmt.Errorf("failed to Get all PI Instance Volumes %s :%w", id, err)
 	}
 	return resp.Payload, nil
 
@@ -178,7 +179,7 @@ func (f *IBMPIVolumeClient) CheckVolumeAttach(cloudInstanceID, pvmInstanceID, vo
 	params := p_cloud_volumes.NewPcloudPvminstancesVolumesGetParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(cloudInstanceID).WithPvmInstanceID(pvmInstanceID).WithVolumeID(volumeID)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesGet(params, ibmpisession.NewAuth(f.session, cloudInstanceID))
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to validate that the volume [%s] is attached to the pvminstance [%s]: %s", volumeID, pvmInstanceID, err)
+		return nil, fmt.Errorf("failed to validate that the volume [%s] is attached to the pvminstance [%s]: %w", volumeID, pvmInstanceID, err)
 	}
 	return resp.Payload, nil
 }

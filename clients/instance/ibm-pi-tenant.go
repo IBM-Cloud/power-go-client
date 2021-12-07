@@ -28,7 +28,7 @@ func (f *IBMPITenantClient) Get(tenantid string) (*models.Tenant, error) {
 	resp, err := f.session.Power.PCloudTenants.PcloudTenantsGet(params, ibmpisession.NewAuth(f.session, tenantid))
 
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to perform get operation... %s", err)
+		return nil, fmt.Errorf("failed to perform get operation... %w", err)
 	}
 	return resp.Payload, nil
 }

@@ -29,7 +29,7 @@ func (f *IBMPITaskClient) Get(id, powerinstanceid string) (*models.Task, error) 
 	resp, err := f.session.Power.PCloudTasks.PcloudTasksGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to get the task id ... %s", err)
+		return nil, fmt.Errorf("failed to get the task id ... %w", err)
 	}
 	return resp.Payload, nil
 }
@@ -41,7 +41,7 @@ func (f *IBMPITaskClient) Delete(id, powerinstanceid string) (models.Object, err
 	resp, err := f.session.Power.PCloudTasks.PcloudTasksDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to delete the task id ... %s", err)
+		return nil, fmt.Errorf("failed to delete the task id ... %w", err)
 	}
 	return resp.Payload, nil
 }
