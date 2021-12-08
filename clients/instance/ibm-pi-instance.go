@@ -43,7 +43,7 @@ func (f *IBMPIInstanceClient) Get(id string) (*models.PVMInstance, error) {
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGet(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get PVM Instance %s :%v", id, err)
+		return nil, fmt.Errorf("failed to Get PVM Instance %s :%w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get PVM Instance %s", id)
@@ -58,7 +58,7 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesGetall(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all PVM Instances of Power Instance %s :%v", f.cloudInstanceID, err)
+		return nil, fmt.Errorf("failed to Get all PVM Instances of Power Instance %s :%w", f.cloudInstanceID, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all PVM Instances of Power Instance %s", f.cloudInstanceID)
@@ -73,7 +73,7 @@ func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PV
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postok, postcreated, postAccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesPost(params, ibmpisession.NewAuth(f.session, f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Create PVM Instance :%v", err)
+		return nil, fmt.Errorf("failed to Create PVM Instance :%w", err)
 	}
 	if postok != nil && len(postok.Payload) > 0 {
 		return &postok.Payload, nil
@@ -94,7 +94,7 @@ func (f *IBMPIInstanceClient) Delete(id string) error {
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	_, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesDelete(params, f.authInfo)
 	if err != nil {
-		return fmt.Errorf("failed to Delete PVM Instance %s :%s", id, err)
+		return fmt.Errorf("failed to Delete PVM Instance %s :%w", id, err)
 	}
 	return nil
 }
@@ -106,7 +106,7 @@ func (f *IBMPIInstanceClient) Update(id string, body *models.PVMInstanceUpdate) 
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithBody(body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesPut(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Update PVM Instance %s :%v", id, err)
+		return nil, fmt.Errorf("failed to Update PVM Instance %s :%w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Update PVM Instance %s", id)
@@ -122,7 +122,7 @@ func (f *IBMPIInstanceClient) Action(id string, body *models.PVMInstanceAction) 
 		WithBody(body)
 	_, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesActionPost(params, f.authInfo)
 	if err != nil {
-		return fmt.Errorf("failed to perform Action on PVM Instance %s :%v", id, err)
+		return fmt.Errorf("failed to perform Action on PVM Instance %s :%w", id, err)
 	}
 	return nil
 
@@ -135,7 +135,7 @@ func (f *IBMPIInstanceClient) PostConsoleURL(id string) (*models.PVMInstanceCons
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	postok, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsolePost(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Generate the Console URL PVM Instance %s :%v", id, err)
+		return nil, fmt.Errorf("failed to Generate the Console URL PVM Instance %s :%w", id, err)
 	}
 	if postok == nil || postok.Payload == nil {
 		return nil, fmt.Errorf("failed to Generate the Console URL PVM Instance %s", id)
@@ -150,7 +150,7 @@ func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLan
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsoleGet(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get Console Languages for PVM Instance %s :%v", id, err)
+		return nil, fmt.Errorf("failed to Get Console Languages for PVM Instance %s :%w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Console Languages for PVM Instance %s", id)
@@ -166,7 +166,7 @@ func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.Cons
 		WithBody(body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesConsolePut(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Update Console Language for PVM Instance %s :%v", id, err)
+		return nil, fmt.Errorf("failed to Update Console Language for PVM Instance %s :%w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Update Console Language for PVM Instance %s", id)
@@ -182,7 +182,7 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id string, body *mod
 		WithBody(body)
 	_, _, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesCapturePost(params, f.authInfo)
 	if err != nil {
-		return fmt.Errorf("failed to Capture the PVM Instance %s: %v", id, err)
+		return fmt.Errorf("failed to Capture the PVM Instance %s: %w", id, err)
 	}
 	return nil
 
@@ -196,7 +196,7 @@ func (f *IBMPIInstanceClient) CreatePvmSnapShot(id string, body *models.Snapshot
 		WithBody(body)
 	snapshotpostaccepted, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsPost(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Create the snapshot for the pvminstance %s: %s", id, err)
+		return nil, fmt.Errorf("failed to Create the snapshot for the pvminstance %s: %w", id, err)
 	}
 	if snapshotpostaccepted == nil || snapshotpostaccepted.Payload == nil {
 		return nil, fmt.Errorf("failed to Create the snapshot for the pvminstance %s", id)
@@ -212,7 +212,7 @@ func (f *IBMPIInstanceClient) CreateClone(id string, body *models.PVMInstanceClo
 		WithBody(body)
 	clonePost, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesClonePost(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to create the clone of the pvm instance %s: %v", id, err)
+		return nil, fmt.Errorf("failed to create the clone of the pvm instance %s: %w", id, err)
 	}
 	if clonePost == nil || clonePost.Payload == nil {
 		return nil, fmt.Errorf("failed to create the clone of the pvm instance %s", id)
@@ -227,7 +227,7 @@ func (f *IBMPIInstanceClient) GetSnapShotVM(id string) (*models.Snapshots, error
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsGetall(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get the snapshot for the pvminstance %s: %v", id, err)
+		return nil, fmt.Errorf("failed to Get the snapshot for the pvminstance %s: %w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get the snapshot for the pvminstance %s", id)
@@ -245,7 +245,7 @@ func (f *IBMPIInstanceClient) RestoreSnapShotVM(id, snapshotid, restoreAction st
 		WithBody(body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.authInfo)
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to restrore the snapshot for the pvminstance %s: %v", id, err)
+		return nil, fmt.Errorf("failed to restrore the snapshot for the pvminstance %s: %w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to restrore the snapshot for the pvminstance %s", id)
@@ -261,7 +261,7 @@ func (f *IBMPIInstanceClient) AddNetwork(id string, body *models.PVMInstanceAddN
 		WithBody(body)
 	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesNetworksPost(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to attach the network to the pvminstanceid %s: %v", id, err)
+		return nil, fmt.Errorf("failed to attach the network to the pvminstanceid %s: %w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to attach the network to the pvminstanceid %s", id)
@@ -277,7 +277,7 @@ func (f *IBMPIInstanceClient) DeleteNetwork(id string, body *models.PVMInstanceR
 		WithBody(body)
 	_, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesNetworksDelete(params, f.authInfo)
 	if err != nil {
-		return fmt.Errorf("failed to delete the network to the pvminstanceid %s: %v", id, err)
+		return fmt.Errorf("failed to delete the network to the pvminstanceid %s: %w", id, err)
 	}
 	return nil
 }

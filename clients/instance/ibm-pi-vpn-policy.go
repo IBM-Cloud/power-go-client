@@ -87,7 +87,7 @@ func (f *IBMPIVpnPolicyClient) GetAllIKEPolicies() (*models.IKEPolicies, error) 
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIkepoliciesGetall(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get all ike policies: %v", err)
+		return nil, fmt.Errorf("failed to get all ike policies: %w", err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to get all ike policies")
@@ -162,7 +162,7 @@ func (f *IBMPIVpnPolicyClient) GetAllIPSecPolicies() (*models.IPSecPolicies, err
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudVPNPolicies.PcloudIpsecpoliciesGetall(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to get all ipsec policies: %v", err)
+		return nil, fmt.Errorf("failed to get all ipsec policies: %w", err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to get all ipsec policies")

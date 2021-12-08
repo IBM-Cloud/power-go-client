@@ -58,7 +58,7 @@ func (f *IBMPIImageClient) GetAll(powerinstanceid string) (*models.Images, error
 	params := p_cloud_images.NewPcloudCloudinstancesImagesGetallParamsWithTimeout(helpers.PIGetTimeOut).WithCloudInstanceID(powerinstanceid)
 	resp, err := f.session.Power.PCloudImages.PcloudCloudinstancesImagesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get all PI Images of the PVM instance %s : %s", powerinstanceid, err)
+		return nil, fmt.Errorf("failed to Get all PI Images of the PVM instance %s : %w", powerinstanceid, err)
 	}
 	return resp.Payload, nil
 }
@@ -105,7 +105,7 @@ func (f *IBMPIImageClient) Delete(id string, powerinstanceid string) error {
 	params := p_cloud_images.NewPcloudCloudinstancesImagesDeleteParamsWithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(powerinstanceid).WithImageID(id)
 	_, err := f.session.Power.PCloudImages.PcloudCloudinstancesImagesDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
-		return fmt.Errorf("Failed to Delete PI Image %s :%s", id, err)
+		return fmt.Errorf("failed to Delete PI Image %s :%w", id, err)
 	}
 	return nil
 }
@@ -133,7 +133,7 @@ func (f *IBMPIImageClient) GetStockImage(id, powerinstanceid string) (*models.Im
 	resp, err := f.session.Power.PCloudImages.PcloudCloudinstancesStockimagesGet(params, ibmpisession.NewAuth(f.session, f.powerinstanceid))
 
 	if err != nil || resp == nil {
-		return nil, fmt.Errorf("Failed to Get PI Stock Image with id: %s of the cloud instance  %s : %s", id, powerinstanceid, err)
+		return nil, fmt.Errorf("failed to Get PI Stock Image with id: %s of the cloud instance  %s : %w", id, powerinstanceid, err)
 	}
 	return resp.Payload, nil
 }

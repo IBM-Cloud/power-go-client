@@ -78,7 +78,7 @@ func (f *IBMPINetworkClient) GetPublic(powerinstanceid string, timeout time.Dura
 
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get all PI Networks in a power instance %s :%s", powerinstanceid, err)
+		return nil, fmt.Errorf("failed to Get all PI Networks in a power instance %s: %w", powerinstanceid, err)
 	}
 	return resp.Payload, nil
 }
@@ -88,7 +88,7 @@ func (f *IBMPINetworkClient) Delete(id string, powerinstanceid string, timeout t
 	params := p_cloud_networks.NewPcloudNetworksDeleteParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
 	_, err := f.session.Power.PCloudNetworks.PcloudNetworksDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil {
-		return fmt.Errorf("Failed to Delete PI Network %s :%s", id, err)
+		return fmt.Errorf("failed to Delete PI Network %s: %w", id, err)
 	}
 	return nil
 }
@@ -101,7 +101,7 @@ func (f *IBMPINetworkClient) GetAllPort(id string, powerinstanceid string, timeo
 	params := p_cloud_networks.NewPcloudNetworksPortsGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithNetworkID(id)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get all PI Network Ports %s :%s", id, err)
+		return nil, fmt.Errorf("failed to Get all PI Network Ports for Network %s: %w", id, err)
 	}
 	return resp.Payload, nil
 
@@ -113,7 +113,7 @@ func (f *IBMPINetworkClient) GetPort(id string, powerinstanceid string, networkP
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
 
 	if err != nil || resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("Failed to Get PI Network Ports %s :%s", networkPortID, err)
+		return nil, fmt.Errorf("failed to Get PI Network Port %s: %w", networkPortID, err)
 	}
 	return resp.Payload, nil
 

@@ -69,7 +69,7 @@ func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudServiceDHCP.PcloudDhcpGetall(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all DHCP servers: %v", err)
+		return nil, fmt.Errorf("failed to Get all DHCP servers: %w", err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all DHCP servers")

@@ -2,90 +2,89 @@ package errors
 
 import (
 	"encoding/json"
+	"errors"
 	"reflect"
-
-	//"strconv"
 
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // start of Placementgroup Messages
 
-const GetPlacementGroupOperationFailed = "failed to perform Get Placement Group Operation for placement group  %s with error %v"
-const CreatePlacementGroupOperationFailed = "failed to perform Create Placement Group Operation for powerinstanceid %s with error  %v"
-const DeletePlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for placement group %s with error %v"
-const UpdatePlacementGroupOperationFailed = "failed to perform Update Placement Group Operation for powerinstanceid  %s and placement group %s with error %v"
-const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for powerinstanceid  %s and placement group %s with error %v"
+const GetPlacementGroupOperationFailed = "failed to perform Get Placement Group Operation for placement group  %s with error %w"
+const CreatePlacementGroupOperationFailed = "failed to perform Create Placement Group Operation for powerinstanceid %s with error  %w"
+const DeletePlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for placement group %s with error %w"
+const UpdatePlacementGroupOperationFailed = "failed to perform Update Placement Group Operation for powerinstanceid  %s and placement group %s with error %w"
+const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for powerinstanceid  %s and placement group %s with error %w"
 
 // start of Cloud Connection Messages
 
-const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for cloudconnectionid %s with error %v"
-const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %v"
-const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid %s with error %v"
-const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid %s with error %v"
+const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for cloudconnectionid %s with error %w"
+const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %w"
+const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid %s with error %w"
+const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid %s with error %w"
 
 // start of VPN Connection Messages
 
-const GetVPNConnectionOperationFailed = "failed to perform Get VPN Connection Operation for id %s with error %v"
-const CreateVPNConnectionOperationFailed = "failed to perform Create VPN Connection Operation for powerinstanceid %s with error %v"
-const UpdateVPNConnectionOperationFailed = "failed to perform Update VPN Connection Operation for id  %s with error %v"
-const DeleteVPNConnectionOperationFailed = "failed to perform Delete VPN Connection Operation for id  %s with error %v"
+const GetVPNConnectionOperationFailed = "failed to perform Get VPN Connection Operation for id %s with error %w"
+const CreateVPNConnectionOperationFailed = "failed to perform Create VPN Connection Operation for powerinstanceid %s with error %w"
+const UpdateVPNConnectionOperationFailed = "failed to perform Update VPN Connection Operation for id  %s with error %w"
+const DeleteVPNConnectionOperationFailed = "failed to perform Delete VPN Connection Operation for id  %s with error %w"
 
 // start of VPN Policy Messages
 
-const GetVPNPolicyOperationFailed = "failed to perform Get VPN Policy Operation for Policy id %s with error %v"
-const CreateVPNPolicyOperationFailed = "failed to perform Create VPN Policy Operation for powerinstanceid %s with error %v"
-const UpdateVPNPolicyOperationFailed = "failed to perform Update VPN Policy Operation for Policy id  %s with error %v"
-const DeleteVPNPolicyOperationFailed = "failed to perform Delete VPN Policy Operation for Policy id  %s with error %v"
+const GetVPNPolicyOperationFailed = "failed to perform Get VPN Policy Operation for Policy id %s with error %w"
+const CreateVPNPolicyOperationFailed = "failed to perform Create VPN Policy Operation for powerinstanceid %s with error %w"
+const UpdateVPNPolicyOperationFailed = "failed to perform Update VPN Policy Operation for Policy id  %s with error %w"
+const DeleteVPNPolicyOperationFailed = "failed to perform Delete VPN Policy Operation for Policy id  %s with error %w"
 
 // start of Job Messages
-const GetJobOperationFailed = "failed to perform get Job operation for job id %s with error %v"
-const GetAllJobsOperationFailed = "failed to perform get all jobs operation with error %v"
-const DeleteJobsOperationFailed = "failed to perform delete Job operation for job id %s with error %v"
+const GetJobOperationFailed = "failed to perform get Job operation for job id %s with error %w"
+const GetAllJobsOperationFailed = "failed to perform get all jobs operation with error %w"
+const DeleteJobsOperationFailed = "failed to perform delete Job operation for job id %s with error %w"
 
 // start of DHCP Messages
-const GetDhcpOperationFailed = "failed to perform Get DHCP Operation for dhcp id %s with error %v"
-const CreateDchpOperationFailed = "failed to perform Create DHCP Operation for powerinstanceid %s with error %v"
-const DeleteDhcpOperationFailed = "failed to perform Delete DHCP Operation for dhcp id %s with error %v"
+const GetDhcpOperationFailed = "failed to perform Get DHCP Operation for dhcp id %s with error %w"
+const CreateDchpOperationFailed = "failed to perform Create DHCP Operation for powerinstanceid %s with error %w"
+const DeleteDhcpOperationFailed = "failed to perform Delete DHCP Operation for dhcp id %s with error %w"
 
 // start of System-Pools Messages
-const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %v"
+const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %w"
 
 // start of Image Messages
 
-const GetImageOperationFailed = "failed to perform Get Image Operation for image  %s with error %v"
-const CreateImageOperationFailed = "failed to perform Create Image Operation for powerinstanceid %s with error  %v"
+const GetImageOperationFailed = "failed to perform Get Image Operation for image  %s with error %w"
+const CreateImageOperationFailed = "failed to perform Create Image Operation for powerinstanceid %s with error  %w"
 
 // Start of Network Messages
-const GetNetworkOperationFailed = "failed to perform Get Network  Operation for Network id %s with error %v"
-const CreateNetworkOperationFailed = "failed to perform Create Network Operation for Network %s with error %v"
-const CreateNetworkPortOperationFailed = "failed to perform Create Network Port Operation for Network %s with error %v"
-const AttachNetworkPortOperationFailed = "failed to perform Attach Network Port Operation for Port %s to Network %s with error %v"
+const GetNetworkOperationFailed = "failed to perform Get Network  Operation for Network id %s with error %w"
+const CreateNetworkOperationFailed = "failed to perform Create Network Operation for Network %s with error %w"
+const CreateNetworkPortOperationFailed = "failed to perform Create Network Port Operation for Network %s with error %w"
+const AttachNetworkPortOperationFailed = "failed to perform Attach Network Port Operation for Port %s to Network %s with error %w"
 
 // start of Volume Messages
-const DeleteVolumeOperationFailed = "failed to perform Delete Volume Operation for volume %s with error %v"
-const UpdateVolumeOperationFailed = "failed to perform Update Volume Operation for volume %s with error %v"
-const GetVolumeOperationFailed = "failed to perform the Get Volume Operation for volume  %s with error %v"
-const CreateVolumeOperationFailed = "failed to perform the Create volume Operation for volume  %s with  error %v"
-const CreateVolumeV2OperationFailed = "failed to perform the Create volume Operation V2 for volume  %s  with error  %v"
-const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume  %s  with error  %v"
+const DeleteVolumeOperationFailed = "failed to perform Delete Volume Operation for volume %s with error %w"
+const UpdateVolumeOperationFailed = "failed to perform Update Volume Operation for volume %s with error %w"
+const GetVolumeOperationFailed = "failed to perform the Get Volume Operation for volume  %s with error %w"
+const CreateVolumeOperationFailed = "failed to perform the Create volume Operation for volume  %s with  error %w"
+const CreateVolumeV2OperationFailed = "failed to perform the Create volume Operation V2 for volume  %s  with error  %w"
+const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume  %s  with error  %w"
 
 // start of Clone Messages
-const StartCloneOperationFailed = "failed to start the clone operation for %v"
-const PrepareCloneOperationFailed = "failed to prepare the clone operation for %v"
-const DeleteCloneOperationFailed = "failed to perform Delete operation %v"
-const GetCloneOperationFailed = "failed to get the volumes-clone for the power instanceid  %s with error %v"
-const CreateCloneOperationFailed = "failed to perform the create clone operation %v"
+const StartCloneOperationFailed = "failed to start the clone operation for %w"
+const PrepareCloneOperationFailed = "failed to prepare the clone operation for %w"
+const DeleteCloneOperationFailed = "failed to perform Delete operation %w"
+const GetCloneOperationFailed = "failed to get the volumes-clone for the power instanceid  %s with error %w"
+const CreateCloneOperationFailed = "failed to perform the create clone operation %w"
 
 // start of Cloud Instance Messages
-const GetCloudInstanceOperationFailed = "failed to Get Cloud Instance %s with error %v"
-const UpdateCloudInstanceOperationFailed = "failed to update the Cloud instance %s with error %v"
-const DeleteCloudInstanceOperationFailed = "failed to delete the Cloud instance %s with error %v"
+const GetCloudInstanceOperationFailed = "failed to Get Cloud Instance %s with error %w"
+const UpdateCloudInstanceOperationFailed = "failed to update the Cloud instance %s with error %w"
+const DeleteCloudInstanceOperationFailed = "failed to delete the Cloud instance %s with error %w"
 
 // start of PI Key Messages
-const GetPIKeyOperationFailed = "failed to Get PI Key %s with error %v"
-const CreatePIKeyOperationFailed = "failed to Create PI Key %s with error %v"
-const DeletePIKeyOperationFailed = "failed to Delete PI Key %s with error %v"
+const GetPIKeyOperationFailed = "failed to Get PI Key %s with error %w"
+const CreatePIKeyOperationFailed = "failed to Create PI Key with error %w"
+const DeletePIKeyOperationFailed = "failed to Delete PI Key %s with error %w"
 
 // ErrorTarget ...
 type ErrorTarget struct {
@@ -159,4 +158,10 @@ func ToError(err error) error {
 	}
 
 	return reterr
+}
+
+// Retrieve wrapped error from err.
+// When does not contain wrapped error returns nil.
+func Unwrap(err error) error {
+	return errors.Unwrap(err)
 }
