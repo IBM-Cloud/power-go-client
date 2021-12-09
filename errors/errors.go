@@ -10,11 +10,11 @@ import (
 
 // start of Placementgroup Messages
 
-const GetPlacementGroupOperationFailed = "failed to perform Get Placement Group Operation for placement group %s with error %w"
+const GetPlacementGroupOperationFailed = "failed to perform Get Placement Group Operation for placement group  %s with error %w"
 const CreatePlacementGroupOperationFailed = "failed to perform Create Placement Group Operation for powerinstanceid %s with error  %w"
 const DeletePlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for placement group %s with error %w"
-const AddMemberPlacementGroupOperationFailed = "failed to perform Add Member Operation for instance %s and placement group %s with error %w"
-const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Member Operation for instance %s and placement group %s with error %w"
+const UpdatePlacementGroupOperationFailed = "failed to perform Update Placement Group Operation for powerinstanceid  %s and placement group %s with error %w"
+const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for powerinstanceid  %s and placement group %s with error %w"
 
 // start of Cloud Connection Messages
 
