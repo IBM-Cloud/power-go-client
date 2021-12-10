@@ -64,10 +64,11 @@ const AttachNetworkPortOperationFailed = "failed to perform Attach Network Port 
 // start of Volume Messages
 const DeleteVolumeOperationFailed = "failed to perform Delete Volume Operation for volume %s with error %w"
 const UpdateVolumeOperationFailed = "failed to perform Update Volume Operation for volume %s with error %w"
-const GetVolumeOperationFailed = "failed to perform the Get Volume Operation for volume  %s with error %w"
-const CreateVolumeOperationFailed = "failed to perform the Create volume Operation for volume  %s with  error %w"
-const CreateVolumeV2OperationFailed = "failed to perform the Create volume Operation V2 for volume  %s  with error  %w"
-const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume  %s  with error  %w"
+const GetVolumeOperationFailed = "failed to perform the Get Volume Operation for volume %s with error %w"
+const CreateVolumeOperationFailed = "failed to perform the Create volume Operation for volume %s with error %w"
+const CreateVolumeV2OperationFailed = "failed to perform the Create volume Operation V2 for volume %s with error %w"
+const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume %s with error %w"
+const DetachVolumeOperationFailed = "failed to perform the Detach volume Operation for volume %s with error %w"
 
 // start of Clone Messages
 const StartCloneOperationFailed = "failed to start the clone operation for %w"
