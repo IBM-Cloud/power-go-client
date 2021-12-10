@@ -1,16 +1,15 @@
 package main
 
 import (
+	"context"
 	"log"
 	"net"
 	"strconv"
-	"time"
 
 	"github.com/apparentlymart/go-cidr/cidr"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_networks"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
@@ -19,7 +18,9 @@ func main() {
 	//session Inputs
 	token := " < IAM TOKEN > "
 	region := " < REGION > "
+	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
+	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
 
 	// network public vlan inputs
 	// name := " < NAME OF THE network > "
@@ -27,78 +28,86 @@ func main() {
 	// netType := "pub-vlan"
 	// dnsServers := make([]string, 0)
 	// cidr, gateway, startIP, endIP := "", "", "", ""
-	// timeout := time.Duration(9000000000000000000)
 
 	// network private VLANinputs
-	name := " < NAME OF THE network > "
 	piID := " < POWER INSTANCE ID > "
+	name := " < NAME OF THE network > "
 	netType := "vlan"
 	cidr := "10.243.65.0/24"
 	dnsServers := make([]string, 1)
 	dnsServers[0] = "127.0.0.1"
 	gateway, startIP, endIP := generateIPData(cidr)
 	jumbo := false
-	timeout := time.Duration(9000000000000000000)
 
-	session, err := ps.New(token, region, true, 9000000000000000000, accountID, region)
+	session, err := ps.New(token, region, true, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPINetworkClient(session, piID)
+	powerClient := v.NewIBMPINetworkClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	createRespOk, err := powerClient.Create(name, netType, cidr, dnsServers, gateway, startIP, endIP, jumbo, piID, timeout)
+	body := &models.NetworkCreate{
+		Type:  &netType,
+		Name:  name,
+		Jumbo: jumbo,
+	}
+	if netType == "vlan" {
+		ipbody := []*models.IPAddressRange{
+			{EndingIPAddress: &endIP, StartingIPAddress: &startIP}}
+		body.IPAddressRanges = ipbody
+		body.Gateway = gateway
+		body.Cidr = cidr
+	}
+	if dnsServers != nil {
+		body.DNSServers = dnsServers
+	}
+	createRespOk, err := powerClient.Create(body)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[1]****************** %+v\n", createRespOk)
 
 	networkID := *createRespOk.NetworkID
-	getResp, err := powerClient.Get(networkID, piID, timeout)
+	getResp, err := powerClient.Get(networkID)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[2]****************** %+v \n", *getResp)
 
-	getpubResp, err := powerClient.GetPublic(piID, timeout)
+	getpubResp, err := powerClient.GetAllPublic()
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[3]****************** %+v \n", *getpubResp)
 
-	params := p_cloud_networks.PcloudNetworksPortsPostParams{
-		CloudInstanceID: piID,
-	}
-	body := models.NetworkPortCreate{
+	portBody := &models.NetworkPortCreate{
 		Description: "Network Port",
 	}
-	params.Body = &body
-	log.Println(params)
-	createPortResp, err := powerClient.CreatePort(networkID, piID, &params, timeout)
+	createPortResp, err := powerClient.CreatePort(networkID, portBody)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[4]****************** %+v \n", *createPortResp)
 
-	getPortResp, err := powerClient.GetPort(networkID, piID, *createPortResp.PortID, timeout)
+	getPortResp, err := powerClient.GetPort(networkID, *createPortResp.PortID)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[5]****************** %+v \n", *getPortResp)
 
-	getallPortResp, err := powerClient.GetAllPort(networkID, piID, timeout)
+	getallPortResp, err := powerClient.GetAllPorts(networkID)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.Printf("***************[6]****************** %+v \n", *getallPortResp)
 
-	_, err = powerClient.DeletePort(networkID, piID, *createPortResp.PortID, timeout)
+	err = powerClient.DeletePort(networkID, *createPortResp.PortID)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	err = powerClient.Delete(networkID, piID, timeout)
+	err = powerClient.Delete(networkID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -133,7 +142,13 @@ func generateIPData(cdir string) (gway, firstip, lastip string) {
 	convertedad := strconv.FormatUint(ad, 10)
 	// Powervc in wdc04 has to reserve 3 ip address hence we start from the 4th. This will be the default behaviour
 	firstusable, err := cidr.Host(ipv4Net, 4)
+	if err != nil {
+		log.Fatal(err)
+	}
 	lastusable, err := cidr.Host(ipv4Net, subnetToSize[convertedad]-2)
+	if err != nil {
+		log.Fatal(err)
+	}
 	log.Printf("The gateway  value is %s and the count is %s and first ip is %s last one is  %s", gateway, convertedad, firstusable, lastusable)
 
 	return gateway.String(), firstusable.String(), lastusable.String()

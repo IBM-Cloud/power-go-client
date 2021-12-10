@@ -6,7 +6,6 @@ import (
 
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
-	"github.com/go-openapi/runtime"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
@@ -15,20 +14,13 @@ import (
 
 // IBMPISystemPoolClient ...
 type IBMPISystemPoolClient struct {
-	session         *ibmpisession.IBMPISession
-	cloudInstanceID string
-	authInfo        runtime.ClientAuthInfoWriter
-	ctx             context.Context
+	IBMPIClient
 }
 
 // NewIBMPISystemPoolClient ...
 func NewIBMPISystemPoolClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISystemPoolClient {
-	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPISystemPoolClient{
-		sess,
-		cloudInstanceID,
-		authInfo,
-		ctx,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 

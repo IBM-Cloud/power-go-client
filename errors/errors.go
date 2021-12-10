@@ -11,7 +11,7 @@ import (
 // start of Placementgroup Messages
 
 const GetPlacementGroupOperationFailed = "failed to perform Get Placement Group Operation for placement group %s with error %w"
-const CreatePlacementGroupOperationFailed = "failed to perform Create Placement Group Operation for powerinstanceid %s with error  %w"
+const CreatePlacementGroupOperationFailed = "failed to perform Create Placement Group Operation for cloud instance %s with error  %w"
 const DeletePlacementGroupOperationFailed = "failed to perform Delete Placement Group Operation for placement group %s with error %w"
 const AddMemberPlacementGroupOperationFailed = "failed to perform Add Member Operation for instance %s and placement group %s with error %w"
 const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Member Operation for instance %s and placement group %s with error %w"
@@ -19,21 +19,21 @@ const DeleteMemberPlacementGroupOperationFailed = "failed to perform Delete Memb
 // start of Cloud Connection Messages
 
 const GetCloudConnectionOperationFailed = "failed to perform Get Cloud Connections Operation for cloudconnectionid %s with error %w"
-const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for powerinstanceid %s with error %w"
+const CreateCloudConnectionOperationFailed = "failed to perform Create Cloud Connection Operation for cloud instance %s with error %w"
 const UpdateCloudConnectionOperationFailed = "failed to perform Update Cloud Connection Operation for cloudconnectionid %s with error %w"
 const DeleteCloudConnectionOperationFailed = "failed to perform Delete Cloud Connection Operation for cloudconnectionid %s with error %w"
 
 // start of VPN Connection Messages
 
 const GetVPNConnectionOperationFailed = "failed to perform Get VPN Connection Operation for id %s with error %w"
-const CreateVPNConnectionOperationFailed = "failed to perform Create VPN Connection Operation for powerinstanceid %s with error %w"
+const CreateVPNConnectionOperationFailed = "failed to perform Create VPN Connection Operation for cloud instance %s with error %w"
 const UpdateVPNConnectionOperationFailed = "failed to perform Update VPN Connection Operation for id  %s with error %w"
 const DeleteVPNConnectionOperationFailed = "failed to perform Delete VPN Connection Operation for id  %s with error %w"
 
 // start of VPN Policy Messages
 
 const GetVPNPolicyOperationFailed = "failed to perform Get VPN Policy Operation for Policy id %s with error %w"
-const CreateVPNPolicyOperationFailed = "failed to perform Create VPN Policy Operation for powerinstanceid %s with error %w"
+const CreateVPNPolicyOperationFailed = "failed to perform Create VPN Policy Operation for cloud instance %s with error %w"
 const UpdateVPNPolicyOperationFailed = "failed to perform Update VPN Policy Operation for Policy id  %s with error %w"
 const DeleteVPNPolicyOperationFailed = "failed to perform Delete VPN Policy Operation for Policy id  %s with error %w"
 
@@ -44,22 +44,21 @@ const DeleteJobsOperationFailed = "failed to perform delete Job operation for jo
 
 // start of DHCP Messages
 const GetDhcpOperationFailed = "failed to perform Get DHCP Operation for dhcp id %s with error %w"
-const CreateDchpOperationFailed = "failed to perform Create DHCP Operation for powerinstanceid %s with error %w"
+const CreateDchpOperationFailed = "failed to perform Create DHCP Operation for cloud instance %s with error %w"
 const DeleteDhcpOperationFailed = "failed to perform Delete DHCP Operation for dhcp id %s with error %w"
 
 // start of System-Pools Messages
-const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for powerinstanceid %s with error %w"
+const GetSystemPoolsOperationFailed = "failed to perform Get System Pools Operation for cloud instance %s with error %w"
 
 // start of Image Messages
 
-const GetImageOperationFailed = "failed to perform Get Image Operation for image  %s with error %w"
-const CreateImageOperationFailed = "failed to perform Create Image Operation for powerinstanceid %s with error  %w"
+const GetImageOperationFailed = "failed to perform Get Image Operation for image %s with error %w"
+const CreateImageOperationFailed = "failed to perform Create Image Operation for cloud instance %s with error  %w"
 
 // Start of Network Messages
-const GetNetworkOperationFailed = "failed to perform Get Network  Operation for Network id %s with error %w"
+const GetNetworkOperationFailed = "failed to perform Get Network Operation for Network id %s with error %w"
 const CreateNetworkOperationFailed = "failed to perform Create Network Operation for Network %s with error %w"
 const CreateNetworkPortOperationFailed = "failed to perform Create Network Port Operation for Network %s with error %w"
-const AttachNetworkPortOperationFailed = "failed to perform Attach Network Port Operation for Port %s to Network %s with error %w"
 
 // start of Volume Messages
 const DeleteVolumeOperationFailed = "failed to perform Delete Volume Operation for volume %s with error %w"
@@ -71,10 +70,10 @@ const AttachVolumeOperationFailed = "failed to perform the Attach volume Operati
 const DetachVolumeOperationFailed = "failed to perform the Detach volume Operation for volume %s with error %w"
 
 // start of Clone Messages
-const StartCloneOperationFailed = "failed to start the clone operation for %w"
-const PrepareCloneOperationFailed = "failed to prepare the clone operation for %w"
-const DeleteCloneOperationFailed = "failed to perform Delete operation %w"
-const GetCloneOperationFailed = "failed to get the volumes-clone for the power instanceid  %s with error %w"
+const StartCloneOperationFailed = "failed to start the clone operation for volumes-clone %s with error %w"
+const PrepareCloneOperationFailed = "failed to prepare the clone operation for volumes-clone %s with error %w"
+const DeleteCloneOperationFailed = "failed to perform delete clone operation %w"
+const GetCloneOperationFailed = "failed to get the volumes-clone %s for the cloud instance %s with error %w"
 const CreateCloneOperationFailed = "failed to perform the create clone operation %w"
 
 // start of Cloud Instance Messages
