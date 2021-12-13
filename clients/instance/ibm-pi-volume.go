@@ -196,3 +196,19 @@ func (f *IBMPIVolumeClient) CheckVolumeAttach(id, volumeID string) (*models.Volu
 	}
 	return resp.Payload, nil
 }
+
+// UpdateVolumeAttach if the volume is attached to the instance
+func (f *IBMPIVolumeClient) UpdateVolumeAttach(id, volumeID string, body *models.PVMInstanceVolumeUpdate) error {
+	params := p_cloud_volumes.NewPcloudPvminstancesVolumesPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
+		WithVolumeID(volumeID).WithBody(body)
+	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesPut(params, f.authInfo)
+	if err != nil {
+		return fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s: %w", volumeID, id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s", volumeID, id)
+	}
+	return nil
+}
