@@ -23,7 +23,7 @@ func main() {
 	piID := " < POWER INSTANCE ID > "
 	ssh := " <ssh ID> "
 
-	session, err := ps.New(token, region, true, 50000000000, accountID, zone)
+	session, err := ps.New(token, region, true, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}

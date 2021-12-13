@@ -15,7 +15,6 @@ import (
 	"log"
 	"net/http"
 	"strings"
-	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -25,18 +24,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/IBM-Cloud/power-go-client/utils"
 	"github.com/IBM/go-sdk-core/v5/core"
-	//"github.com/IBM-Cloud/bluemix-go/crn"
-)
-
-const (
-	offering                 = "power-iaas"
-	crnString                = "crn"
-	version                  = "v1"
-	serviceType              = "public"
-	serviceInstanceSeparator = "/"
-	separator                = ":"
-	//The connection to the server timed out after exceeding timeout duration.
-	timeout time.Duration = 9000000000000000000
 )
 
 // IBMPISession ...
@@ -44,7 +31,6 @@ type IBMPISession struct {
 	IAMToken      string
 	IMSToken      string
 	Power         *client.PowerIaas
-	Timeout       time.Duration
 	UserAccount   string
 	Region        string
 	Zone          string
@@ -52,20 +38,23 @@ type IBMPISession struct {
 }
 
 // PIOptions
-/*
-Debug : Enable/Disable http transport debugging log, By default false.
-Timeout: This is the duration exceeding which the connection awaiting response from the server will be timed out.
-UserAccount: This is the accountID to which the targeted Power Cloud Service instance belongs.
-Region: This is the region in which the targeted Power Cloud Service Instance resides.
-Zone: This is the zone in which the targeted Power Cloud Service Instance resides.
-Authenticator: The authenticator used to configure the appropriate type of authentication for use with service instances.
-*/
 type PIOptions struct {
-	Debug         bool
-	Timeout       time.Duration
-	UserAccount   string
-	Region        string
-	Zone          string
+	// Enable/Disable http transport debugging log
+	Debug bool
+
+	// Account id of the Power Cloud Service Instance
+	// Required
+	UserAccount string
+
+	// Region of the Power Cloud Service Instance
+	// Required
+	Region string
+
+	// Zone of the Power Cloud Service Instance; Use Region if not set
+	Zone string
+
+	// The authenticator used to configure the appropriate type of authentication
+	// Required
 	Authenticator core.Authenticator
 }
 
@@ -91,18 +80,8 @@ func powerJSONConsumer() runtime.Consumer {
 	})
 }
 
-/*
-The method takes in the following params
-options : This is the PIOptions param passed by clients.
-This method will create a IBMPISession based on the options passed by client.
-It will pass the newly created IBMPISession to newSubProcess method which will evaluate and set rest of the required options from session.
-*/
+// Create a IBMPISession
 func NewSession(options *PIOptions) (*IBMPISession, error) {
-	t := timeout
-	if options.Timeout.Seconds() != 0 {
-		t = options.Timeout
-	}
-
 	newSession := &IBMPISession{
 		UserAccount:   options.UserAccount,
 		Region:        options.Region,
@@ -110,7 +89,7 @@ func NewSession(options *PIOptions) (*IBMPISession, error) {
 		Authenticator: options.Authenticator,
 	}
 
-	session, err := process(newSession, options.Debug, t)
+	session, err := process(newSession, options.Debug)
 	if err != nil {
 		return nil, err
 	}
@@ -119,16 +98,9 @@ func NewSession(options *PIOptions) (*IBMPISession, error) {
 }
 
 // New ...
-/*
-The method takes in the following params
-iamtoken : this is the token that is passed from the client
-region : Obtained from the terraform template. Every template /resource will be required to have this information
-timeout:
-useraccount:
-*/
 // - deprecated: New function can be used, but is slated to become `obsolete`, Instead try using NewSession function.
-func New(iamtoken, region string, debug bool, timeout time.Duration, useraccount string, zone string) (*IBMPISession, error) {
-	fmt.Println("Warning - New function is slated to become `obsolete`, Instead try using NewSession function.")
+func New(iamtoken, region string, debug bool, useraccount string, zone string) (*IBMPISession, error) {
+	//fmt.Println("Warning - New function is slated to become `obsolete`, Instead try using NewSession function.")
 	session := &IBMPISession{
 		IAMToken:    iamtoken,
 		UserAccount: useraccount,
@@ -136,21 +108,15 @@ func New(iamtoken, region string, debug bool, timeout time.Duration, useraccount
 		Zone:        zone,
 	}
 
-	session, err := process(session, debug, timeout)
+	session, err := process(session, debug)
 	if err != nil {
 		return nil, err
 	}
 	return session, nil
 }
 
-/*
-The method takes in the following params
-session : This is the session passed via New OR NewSession method, created using params or PIOptions passed by clients.
-debug : Enable/Disable http transport debugging log, By default false.
-timeout: This is the duration exceeding which the connection awaiting response from the server will be timed out.
-The method will assign appropriate PowerIaas client to session.Power option after appropriate evaluation.
-*/
-func process(session *IBMPISession, debug bool, timeout time.Duration) (*IBMPISession, error) {
+// Assign appropriate PowerIaas client to the session after appropriate evaluation
+func process(session *IBMPISession, debug bool) (*IBMPISession, error) {
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
 	apiEndpointURL := utils.GetPowerEndPoint(session.Region)
 	transport := httptransport.New(apiEndpointURL, "/", []string{"https"})
@@ -159,14 +125,12 @@ func process(session *IBMPISession, debug bool, timeout time.Duration) (*IBMPISe
 	}
 	transport.Consumers[runtime.JSONMime] = powerJSONConsumer()
 	session.Power = client.New(transport, nil)
-	session.Timeout = timeout
 	return session, nil
 }
 
-/*
-Check if authenticator option is set
-If yes, authenticate using it and fetch authorization header data required for the request.
-*/
+// Fetch Authorization token
+// Authenticate using Authenticator if set in the session
+// Otherwise return IAMToken set in the session
 func fetchAuthorizationData(s *IBMPISession) (string, error) {
 	var authdata = s.IAMToken
 	if s.Authenticator != nil {
@@ -185,8 +149,8 @@ func fetchAuthorizationData(s *IBMPISession) (string, error) {
 }
 
 // NewAuth ...
-func NewAuth(sess *IBMPISession, PowerInstanceID string) runtime.ClientAuthInfoWriter {
-	var crndata = crnBuilder(PowerInstanceID, sess.UserAccount, sess.Region, sess.Zone)
+func NewAuth(sess *IBMPISession, cloudInstanceID string) runtime.ClientAuthInfoWriter {
+	var crndata = crnBuilder(cloudInstanceID, sess.UserAccount, sess.Region, sess.Zone)
 	return runtime.ClientAuthInfoWriterFunc(func(r runtime.ClientRequest, _ strfmt.Registry) error {
 		authdata, err := fetchAuthorizationData(sess)
 		if err != nil {
@@ -214,18 +178,15 @@ func BearerTokenAndCRN(session *IBMPISession, crn string) runtime.ClientAuthInfo
 }
 
 // crnBuilder ...
-func crnBuilder(powerinstance, useraccount, region string, zone string) string {
+func crnBuilder(cloudInstanceID, useraccount, region, zone string) string {
 	var service string
 	if strings.Contains(utils.GetPowerEndPoint(region), ".power-iaas.cloud.ibm.com") {
 		service = "bluemix"
 	} else {
 		service = "staging"
 	}
-	var crnData string
 	if zone == "" {
-		crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + region + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
-	} else {
-		crnData = crnString + separator + version + separator + service + separator + serviceType + separator + offering + separator + zone + separator + "a" + serviceInstanceSeparator + useraccount + separator + powerinstance + separator + separator
+		zone = region
 	}
-	return crnData
+	return fmt.Sprintf("crn:v1:%s:public:power-iaas:%s:a/%s:%s::", service, zone, useraccount, cloudInstanceID)
 }

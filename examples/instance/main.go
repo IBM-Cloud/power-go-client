@@ -14,7 +14,9 @@ func main() {
 	//session Inputs
 	token := " < IAM TOKEN > "
 	region := " < REGION > "
+	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
+	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
 
 	// volume inputs
 	name := " < NAME OF THE volume > "
@@ -30,7 +32,7 @@ func main() {
 	procType := "shared"
 	sysType := "s922"
 
-	session, err := ps.New(token, region, true, 9000000000000000000, accountID, region)
+	session, err := ps.New(token, region, true, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}

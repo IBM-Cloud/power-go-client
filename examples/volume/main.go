@@ -11,6 +11,7 @@ import (
 
 func main() {
 	//session Inputs
+	//session Inputs
 	token := " < IAM TOKEN > "
 	region := " < REGION > "
 	zone := " < ZONE > "
@@ -18,13 +19,13 @@ func main() {
 	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region + ".power-iaas.test.cloud.ibm.com")
 
 	// volume inputs
-	name := " < NAME OF THE volume > "
 	piID := " < POWER INSTANCE ID > "
+	name := " < NAME OF THE volume > "
 	size := 20.0
 	vtype := "tier1"
 	sharable := true
 
-	session, err := ps.New(token, region, true, 9000000000000000000, accountID, zone)
+	session, err := ps.New(token, region, true, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}

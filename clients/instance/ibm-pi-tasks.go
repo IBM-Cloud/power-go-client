@@ -1,6 +1,7 @@
 package instance
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
@@ -11,37 +12,36 @@ import (
 
 // IBMPITaskClient ...
 type IBMPITaskClient struct {
-	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	IBMPIClient
 }
 
 // NewIBMPITaskClient ...
-func NewIBMPITaskClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPITaskClient {
+func NewIBMPITaskClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPITaskClient {
 	return &IBMPITaskClient{
-		session:         sess,
-		powerinstanceid: powerinstanceid,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
 // Get ...
-func (f *IBMPITaskClient) Get(id, powerinstanceid string) (*models.Task, error) {
-	params := p_cloud_tasks.NewPcloudTasksGetParamsWithTimeout(helpers.PIGetTimeOut).WithTaskID(id)
-	resp, err := f.session.Power.PCloudTasks.PcloudTasksGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-
+func (f *IBMPITaskClient) Get(id string) (*models.Task, error) {
+	params := p_cloud_tasks.NewPcloudTasksGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTaskID(id)
+	resp, err := f.session.Power.PCloudTasks.PcloudTasksGet(params, f.authInfo)
 	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get the task id ... %w", err)
+		return nil, fmt.Errorf("failed to get the task %s: %w", id, err)
 	}
 	return resp.Payload, nil
 }
 
 // Delete ...
-func (f *IBMPITaskClient) Delete(id, powerinstanceid string) (models.Object, error) {
-
-	params := p_cloud_tasks.NewPcloudTasksDeleteParamsWithTimeout(helpers.PICreateTimeOut).WithTaskID(id)
-	resp, err := f.session.Power.PCloudTasks.PcloudTasksDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to delete the task id ... %w", err)
+func (f *IBMPITaskClient) Delete(id string) error {
+	params := p_cloud_tasks.NewPcloudTasksDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithTaskID(id)
+	_, err := f.session.Power.PCloudTasks.PcloudTasksDelete(params, f.authInfo)
+	if err != nil {
+		return fmt.Errorf("failed to delete the task id ... %w", err)
 	}
-	return resp.Payload, nil
+	return nil
 }

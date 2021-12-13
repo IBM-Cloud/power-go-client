@@ -1,8 +1,10 @@
 package instance
 
 import (
+	"context"
 	"fmt"
 
+	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants"
 	"github.com/IBM-Cloud/power-go-client/power/models"
@@ -10,25 +12,42 @@ import (
 
 // IBMPITenantClient ...
 type IBMPITenantClient struct {
-	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	IBMPIClient
 }
 
 // NewIBMPITenantClient ...
-func NewIBMPITenantClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPITenantClient {
+func NewIBMPITenantClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPITenantClient {
 	return &IBMPITenantClient{
-		session:         sess,
-		powerinstanceid: powerinstanceid,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
 // Get ..
 func (f *IBMPITenantClient) Get(tenantid string) (*models.Tenant, error) {
-	params := p_cloud_tenants.NewPcloudTenantsGetParams().WithTenantID(f.session.UserAccount).WithTenantID(tenantid)
-	resp, err := f.session.Power.PCloudTenants.PcloudTenantsGet(params, ibmpisession.NewAuth(f.session, tenantid))
+	params := p_cloud_tenants.NewPcloudTenantsGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTenantID(tenantid)
+	resp, err := f.session.Power.PCloudTenants.PcloudTenantsGet(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get tenant %s with error %w", tenantid, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get tenant %s", tenantid)
+	}
+	return resp.Payload, nil
+}
 
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to perform get operation... %w", err)
+// Get ..
+func (f *IBMPITenantClient) GetSelfTenant() (*models.Tenant, error) {
+	params := p_cloud_tenants.NewPcloudTenantsGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTenantID(f.session.UserAccount)
+	resp, err := f.session.Power.PCloudTenants.PcloudTenantsGet(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get self tenant with error %w", err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get self tenant")
 	}
 	return resp.Payload, nil
 }
