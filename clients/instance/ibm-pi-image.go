@@ -67,10 +67,10 @@ func (f *IBMPIImageClient) Create(body *models.CreateImage) (*models.Image, erro
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateImageOperationFailed, f.cloudInstanceID, err)
 	}
-	if respok == nil && respok.Payload == nil {
+	if respok != nil && respok.Payload != nil {
 		return respok.Payload, nil
 	}
-	if respcreated == nil && respcreated.Payload == nil {
+	if respcreated != nil && respcreated.Payload != nil {
 		return respcreated.Payload, nil
 	}
 	return nil, fmt.Errorf("failed to perform Create Image Operation for cloud instance %s", f.cloudInstanceID)
