@@ -3,14 +3,17 @@ To be updated
 power-go-client provides the Go implementation for operating the IBM Power Cloud platform to build LPARS .
 Installing
 
-    Install the SDK using the following command
+Install the SDK using the following command
 
+```shell
 go get github.com/IBM-Cloud/power-go-client
+```
 
-    Update the SDK to the latest version using the following command
+Update the SDK to the latest version using the following command
 
+```shell
 go get -u github.com/IBM-Cloud/power-go-client
-
+```
 
 Using the SDK
 
@@ -18,6 +21,7 @@ You must have a working IBM Cloud account to use the APIs. Sign up if you don't 
 
 The SDK has examples folder which cites few examples on how to use the SDK. First you need to create a session.
 
+```golang
 import "github.com/IBM-Cloud/power-go-client/ibmpisession"
 
 func main(){
@@ -25,6 +29,7 @@ func main(){
     s := ibmpowersession.New()
     .....
 }
+```
 
 Creating session in this way creates a default configuration which reads the value from the environment variables. You must export the following environment variables.
 
