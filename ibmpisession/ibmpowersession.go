@@ -123,6 +123,7 @@ func process(session *IBMPISession, debug bool) (*IBMPISession, error) {
 	if debug {
 		transport.Debug = debug
 	}
+	transport.SetLogger(IBMPILogger{})
 	transport.Consumers[runtime.JSONMime] = powerJSONConsumer()
 	session.Power = client.New(transport, nil)
 	return session, nil
