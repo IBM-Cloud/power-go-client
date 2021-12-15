@@ -30,8 +30,9 @@ func (IBMPILogger) Debugf(format string, args ...interface{}) {
 func sanatizeArgs(args []interface{}) (out []interface{}) {
 	for _, arg := range args {
 		if reflect.TypeOf(arg).String() == "string" {
-			out = append(out, sanitize(fmt.Sprintf("%s", arg)))
+			arg = sanitize(fmt.Sprintf("%s", arg))
 		}
+		out = append(out, arg)
 	}
 	return
 }
