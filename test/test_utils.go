@@ -519,10 +519,16 @@ func getSessionAPIKey(t *testing.T) *ps.IBMPISession {
 	if strings.Contains(powerEndpoint, "test") {
 		authenticatonUrl = "https://iam.test.cloud.ibm.com"
 	}
-	authenticator := &core.IamAuthenticator{
-		ApiKey: apiKey,
-		URL:    authenticatonUrl,
+
+	// Create the authenticator.
+	authenticator, err := core.NewIamAuthenticatorBuilder().
+		SetApiKey(apiKey).
+		SetURL(authenticatonUrl).
+		Build()
+	if err != nil {
+		panic(err)
 	}
+
 	sessionOptions := &ps.PIOptions{
 		Authenticator: authenticator,
 		Debug:         debug,
