@@ -174,6 +174,22 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id string, body *mod
 
 }
 
+//CaptureInstanceToImageCatalog Captures V2
+func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalogV2(id string, body *models.PVMInstanceCapture) (*models.JobReference, error) {
+	params := p_cloud_p_vm_instances.NewPcloudV2PvminstancesCapturePostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudV2PvminstancesCapturePost(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to Capture the PVM Instance %s: %w", id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Capture the PVM Instance %s", id)
+	}
+	return resp.Payload, nil
+}
+
 // CreatePvmSnapShot Create a snapshot of the instance
 func (f *IBMPIInstanceClient) CreatePvmSnapShot(id string, body *models.SnapshotCreate) (*models.SnapshotCreateResponse, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsPostParams().
