@@ -37,6 +37,7 @@ const (
 	PIInstanceStoragePool               = "pi_instance_storage_pool"
 	PIInstanceStorageAffinityPool       = "pi_instance_storage_affinity_pool"
 	PIInstanceLicenseRepositoryCapacity = "pi_license_repository_capacity"
+	PIInstancePlacementGroupID          = "pi_instance_placement_group_id"
 
 	PIInstanceHealthStatus      = "pi_health_status"
 	PIInstanceReplicants        = "pi_replicants"
@@ -223,10 +224,10 @@ const (
 
 	// IBM PI Placement Groups
 
-	PIPlacementGroupName   = "pi_placement_group_name"
-	PIPlacementGroupPolicy = "pi_placement_group_policy"
-	PIPlacementGroupID     = "pi_placement_group_id"
-
+	PIPlacementGroupName    = "pi_placement_group_name"
+	PIPlacementGroupPolicy  = "pi_placement_group_policy"
+	PIPlacementGroupID      = "pi_placement_group_id"
+	PIPlacementGroupMembers = "pi_placement_group_members"
 	// Status For all the resources
 
 	PIVolumeDeleting         = "deleting"
