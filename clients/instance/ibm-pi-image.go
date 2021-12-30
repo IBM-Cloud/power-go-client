@@ -67,10 +67,10 @@ func (f *IBMPIImageClient) Create(body *models.CreateImage) (*models.Image, erro
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateImageOperationFailed, f.cloudInstanceID, err)
 	}
-	if respok == nil && respok.Payload == nil {
+	if respok != nil && respok.Payload != nil {
 		return respok.Payload, nil
 	}
-	if respcreated == nil && respcreated.Payload == nil {
+	if respcreated != nil && respcreated.Payload != nil {
 		return respcreated.Payload, nil
 	}
 	return nil, fmt.Errorf("failed to perform Create Image Operation for cloud instance %s", f.cloudInstanceID)
@@ -87,6 +87,21 @@ func (f *IBMPIImageClient) CreateCosImage(body *models.CreateCosImageImportJob) 
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform Create COS Image Operation for cloud instance %s", f.cloudInstanceID)
+	}
+	return resp.Payload, nil
+}
+
+// Export an image
+func (f *IBMPIImageClient) ExportImage(id string, body *models.ExportImage) (*models.JobReference, error) {
+	params := p_cloud_images.NewPcloudV2ImagesExportPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithImageID(id).WithBody(body)
+	resp, err := f.session.Power.PCloudImages.PcloudV2ImagesExportPost(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to Export COS Image for image id %s with error %w", id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Export COS Image for image %s", id)
 	}
 	return resp.Payload, nil
 }
