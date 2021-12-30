@@ -8,25 +8,17 @@ import (
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_s_a_p"
 	"github.com/IBM-Cloud/power-go-client/power/models"
-	"github.com/go-openapi/runtime"
 )
 
 // IBMPISAPInstanceClient ...
 type IBMPISAPInstanceClient struct {
-	session         *ibmpisession.IBMPISession
-	cloudInstanceID string
-	authInfo        runtime.ClientAuthInfoWriter
-	ctx             context.Context
+	IBMPIClient
 }
 
 // NewIBMPISAPInstanceClient ...
 func NewIBMPISAPInstanceClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISAPInstanceClient {
-	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPISAPInstanceClient{
-		session:         sess,
-		cloudInstanceID: cloudInstanceID,
-		authInfo:        authInfo,
-		ctx:             ctx,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 

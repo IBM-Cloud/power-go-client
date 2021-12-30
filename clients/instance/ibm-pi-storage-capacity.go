@@ -1,9 +1,10 @@
 package instance
 
 import (
+	"context"
 	"fmt"
-	"time"
 
+	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_storage_capacity"
 	"github.com/IBM-Cloud/power-go-client/power/models"
@@ -11,54 +12,72 @@ import (
 
 // IBMPIStorageCapacityClient ..
 type IBMPIStorageCapacityClient struct {
-	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	IBMPIClient
 }
 
 // NewIBMPIStorageCapacityClient ...
-func NewIBMPIStorageCapacityClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPIStorageCapacityClient {
+func NewIBMPIStorageCapacityClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIStorageCapacityClient {
 	return &IBMPIStorageCapacityClient{
-		sess, powerinstanceid,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
 //Storage capacity for all available storage pools in a region
-func (f *IBMPIStorageCapacityClient) GetAllStoragePools(powerinstanceid string, timeout time.Duration) (*models.StoragePoolsCapacity, error) {
-	params := p_cloud_storage_capacity.NewPcloudStoragecapacityPoolsGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid)
-	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityPoolsGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get all storage pools %w", err)
+func (f *IBMPIStorageCapacityClient) GetAllStoragePoolsCapacity() (*models.StoragePoolsCapacity, error) {
+	params := p_cloud_storage_capacity.NewPcloudStoragecapacityPoolsGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityPoolsGetall(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get the capacity for all storage pools: %w", err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get the capacity for all storage pools")
 	}
 	return resp.Payload, nil
 }
 
 // Storage capacity for a storage pool in a region
-func (f *IBMPIStorageCapacityClient) GetAvailableStoragePool(powerinstanceid, storagepool string, timeout time.Duration) (*models.StoragePoolCapacity, error) {
-	params := p_cloud_storage_capacity.NewPcloudStoragecapacityPoolsGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithStoragePoolName(storagepool)
-	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityPoolsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get the capacity for storage pool %w", err)
+func (f *IBMPIStorageCapacityClient) GetStoragePoolCapacity(storagePool string) (*models.StoragePoolCapacity, error) {
+	params := p_cloud_storage_capacity.NewPcloudStoragecapacityPoolsGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithStoragePoolName(storagePool)
+	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityPoolsGet(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get the capacity for storage pool %s: %w", storagePool, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get the capacity for storage pool %s", storagePool)
 	}
 	return resp.Payload, nil
 }
 
 // Storage capacity for a storage type in a region
-func (f *IBMPIStorageCapacityClient) GetAvailableStorageCapacity(powerinstanceid, storage_tier string, timeout time.Duration) (*models.StorageTypeCapacity, error) {
-	params := p_cloud_storage_capacity.NewPcloudStoragecapacityTypesGetParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid).WithStorageTypeName(storage_tier)
-	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityTypesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get the capacity for storage pool %w", err)
+func (f *IBMPIStorageCapacityClient) GetStorageTypeCapacity(storageType string) (*models.StorageTypeCapacity, error) {
+	params := p_cloud_storage_capacity.NewPcloudStoragecapacityTypesGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithStorageTypeName(storageType)
+	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityTypesGet(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get the capacity for storage type %s: %w", storageType, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get the capacity for storage type %s", storageType)
 	}
 	return resp.Payload, nil
 }
 
 // Storage capacity for all available storage types in a region
-func (f *IBMPIStorageCapacityClient) GetAvailableStorageType(powerinstanceid string, timeout time.Duration) (*models.StorageTypesCapacity, error) {
-	params := p_cloud_storage_capacity.NewPcloudStoragecapacityTypesGetallParamsWithTimeout(timeout).WithCloudInstanceID(powerinstanceid)
-	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityTypesGetall(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get the capacity for storage tiers %w", err)
+func (f *IBMPIStorageCapacityClient) GetAllStorageTypesCapacity() (*models.StorageTypesCapacity, error) {
+	params := p_cloud_storage_capacity.NewPcloudStoragecapacityTypesGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudStorageCapacity.PcloudStoragecapacityTypesGetall(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get the capacity for all storage types %w", err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get the capacity for all storage types")
 	}
 	return resp.Payload, nil
 }

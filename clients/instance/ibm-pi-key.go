@@ -6,7 +6,6 @@ import (
 
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
-	"github.com/go-openapi/runtime"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
@@ -15,20 +14,13 @@ import (
 
 // IBMPIKeyClient ...
 type IBMPIKeyClient struct {
-	session         *ibmpisession.IBMPISession
-	cloudInstanceID string
-	authInfo        runtime.ClientAuthInfoWriter
-	ctx             context.Context
+	IBMPIClient
 }
 
 // NewIBMPIKeyClient ...
 func NewIBMPIKeyClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIKeyClient {
-	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPIKeyClient{
-		session:         sess,
-		cloudInstanceID: cloudInstanceID,
-		authInfo:        authInfo,
-		ctx:             ctx,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 

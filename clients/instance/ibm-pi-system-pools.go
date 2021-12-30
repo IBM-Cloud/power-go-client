@@ -1,8 +1,11 @@
 package instance
 
 import (
+	"context"
 	"fmt"
+
 	"github.com/IBM-Cloud/power-go-client/errors"
+	"github.com/IBM-Cloud/power-go-client/helpers"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
@@ -11,24 +14,27 @@ import (
 
 // IBMPISystemPoolClient ...
 type IBMPISystemPoolClient struct {
-	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	IBMPIClient
 }
 
 // NewIBMPISystemPoolClient ...
-func NewIBMPISystemPoolClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPISystemPoolClient {
+func NewIBMPISystemPoolClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISystemPoolClient {
 	return &IBMPISystemPoolClient{
-		sess, powerinstanceid,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
 //Get the System Pools
-func (f *IBMPISystemPoolClient) Get(powerinstanceid string) (models.SystemPools, error) {
-	params := p_cloud_system_pools.NewPcloudSystempoolsGetParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid)
-	resp, err := f.session.Power.PCloudSystemPools.PcloudSystempoolsGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf(errors.GetSystemPoolsOperationFailed, powerinstanceid, err)
+func (f *IBMPISystemPoolClient) Get(id string) (models.SystemPools, error) {
+	params := p_cloud_system_pools.NewPcloudSystempoolsGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(id)
+	resp, err := f.session.Power.PCloudSystemPools.PcloudSystempoolsGet(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf(errors.GetSystemPoolsOperationFailed, id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to perform Get System Pools Operation for cloud instance id %s", id)
 	}
 	return resp.Payload, nil
 }

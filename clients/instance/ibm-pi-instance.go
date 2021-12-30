@@ -8,31 +8,17 @@ import (
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_p_vm_instances"
 	"github.com/IBM-Cloud/power-go-client/power/models"
-	"github.com/go-openapi/runtime"
 )
-
-/*  ChangeLog
-
-2020-June-05 : Added the timeout variable to the clients since a lot of the SB / Powervc calls are timing out.
-
-*/
 
 // IBMPIInstanceClient ...
 type IBMPIInstanceClient struct {
-	session         *ibmpisession.IBMPISession
-	cloudInstanceID string
-	authInfo        runtime.ClientAuthInfoWriter
-	ctx             context.Context
+	IBMPIClient
 }
 
 // NewIBMPIInstanceClient ...
 func NewIBMPIInstanceClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIInstanceClient {
-	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPIInstanceClient{
-		session:         sess,
-		cloudInstanceID: cloudInstanceID,
-		authInfo:        authInfo,
-		ctx:             ctx,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
@@ -186,6 +172,22 @@ func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id string, body *mod
 	}
 	return nil
 
+}
+
+//CaptureInstanceToImageCatalog Captures V2
+func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalogV2(id string, body *models.PVMInstanceCapture) (*models.JobReference, error) {
+	params := p_cloud_p_vm_instances.NewPcloudV2PvminstancesCapturePostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudPVMInstances.PcloudV2PvminstancesCapturePost(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to Capture the PVM Instance %s: %w", id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Capture the PVM Instance %s", id)
+	}
+	return resp.Payload, nil
 }
 
 // CreatePvmSnapShot Create a snapshot of the instance

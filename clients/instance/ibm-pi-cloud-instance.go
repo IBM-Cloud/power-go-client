@@ -1,8 +1,11 @@
 package instance
 
 import (
+	"context"
 	"fmt"
+
 	"github.com/IBM-Cloud/power-go-client/errors"
+	"github.com/IBM-Cloud/power-go-client/helpers"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_instances"
@@ -11,45 +14,54 @@ import (
 
 // IBMPICloudInstanceClient ...
 type IBMPICloudInstanceClient struct {
-	session         *ibmpisession.IBMPISession
-	powerinstanceid string
+	IBMPIClient
 }
 
 // NewIBMPICloudInstanceClient ...
-func NewIBMPICloudInstanceClient(sess *ibmpisession.IBMPISession, powerinstanceid string) *IBMPICloudInstanceClient {
+func NewIBMPICloudInstanceClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPICloudInstanceClient {
 	return &IBMPICloudInstanceClient{
-		session:         sess,
-		powerinstanceid: powerinstanceid,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
 // Get information about a cloud instance
-func (f *IBMPICloudInstanceClient) Get(powerinstanceid string) (*models.CloudInstance, error) {
-	params := p_cloud_instances.NewPcloudCloudinstancesGetParams().WithCloudInstanceID(powerinstanceid)
-	resp, err := f.session.Power.PCloudInstances.PcloudCloudinstancesGet(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+func (f *IBMPICloudInstanceClient) Get(id string) (*models.CloudInstance, error) {
+	params := p_cloud_instances.NewPcloudCloudinstancesGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(id)
+	resp, err := f.session.Power.PCloudInstances.PcloudCloudinstancesGet(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetCloudInstanceOperationFailed, powerinstanceid, err)
+		return nil, fmt.Errorf(errors.GetCloudInstanceOperationFailed, id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get Cloud Instance %s", id)
 	}
 	return resp.Payload, nil
 }
 
 // Update a cloud instance
-func (f *IBMPICloudInstanceClient) Update(powerinstanceid string, updateparams *p_cloud_instances.PcloudCloudinstancesPutParams) (*models.CloudInstance, error) {
-	params := p_cloud_instances.NewPcloudCloudinstancesPutParamsWithTimeout(f.session.Timeout).WithCloudInstanceID(powerinstanceid).WithBody(updateparams.Body)
-	resp, err := f.session.Power.PCloudInstances.PcloudCloudinstancesPut(params, ibmpisession.NewAuth(f.session, powerinstanceid))
+func (f *IBMPICloudInstanceClient) Update(id string, body *models.CloudInstanceUpdate) (*models.CloudInstance, error) {
+	params := p_cloud_instances.NewPcloudCloudinstancesPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(id).WithBody(body)
+	resp, err := f.session.Power.PCloudInstances.PcloudCloudinstancesPut(params, f.authInfo)
 	if err != nil {
-		return nil, fmt.Errorf(errors.UpdateCloudInstanceOperationFailed, powerinstanceid, err)
-
+		return nil, fmt.Errorf(errors.UpdateCloudInstanceOperationFailed, id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to update the Cloud instance %s", id)
 	}
 	return resp.Payload, nil
 }
 
 // Delete a Cloud instance
-func (f *IBMPICloudInstanceClient) Delete(powerinstanceid string) (models.Object, error) {
-	params := p_cloud_instances.NewPcloudCloudinstancesDeleteParams().WithCloudInstanceID(powerinstanceid)
-	resp, err := f.session.Power.PCloudInstances.PcloudCloudinstancesDelete(params, ibmpisession.NewAuth(f.session, powerinstanceid))
-	if err != nil || resp.Payload == nil {
-		return nil, fmt.Errorf(errors.DeleteCloudInstanceOperationFailed, powerinstanceid, err)
+func (f *IBMPICloudInstanceClient) Delete(id string) error {
+	params := p_cloud_instances.NewPcloudCloudinstancesDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(id)
+	_, err := f.session.Power.PCloudInstances.PcloudCloudinstancesDelete(params, f.authInfo)
+	if err != nil {
+		return fmt.Errorf(errors.DeleteCloudInstanceOperationFailed, id, err)
 	}
-	return resp.Payload, nil
+	return nil
 }

@@ -29,7 +29,7 @@ func main() {
 	piID := " < POWER INSTANCE ID > "
 	var speed int64 = 5000
 
-	session, err := ps.New(token, region, true, 50000000, accountID, zone)
+	session, err := ps.New(token, region, true, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"log"
-	"time"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
@@ -16,12 +15,12 @@ func main() {
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
+	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
 
 	// dhcp inputs
 	piID := " < POWER INSTANCE ID > "
-	timeout := time.Duration(9000000000000000000)
 
-	session, err := ps.New(token, region, true, timeout, accountID, zone)
+	session, err := ps.New(token, region, true, accountID, zone)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -6,7 +6,6 @@ import (
 
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
-	"github.com/go-openapi/runtime"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_connections"
@@ -15,20 +14,13 @@ import (
 
 // IBMPIVpnConnectionClient ...
 type IBMPIVpnConnectionClient struct {
-	session         *ibmpisession.IBMPISession
-	cloudInstanceID string
-	authInfo        runtime.ClientAuthInfoWriter
-	ctx             context.Context
+	IBMPIClient
 }
 
 // NewIBMPIVpnConnectionClient ...
 func NewIBMPIVpnConnectionClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIVpnConnectionClient {
-	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPIVpnConnectionClient{
-		session:         sess,
-		cloudInstanceID: cloudInstanceID,
-		authInfo:        authInfo,
-		ctx:             ctx,
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
