@@ -91,6 +91,21 @@ func (f *IBMPIImageClient) CreateCosImage(body *models.CreateCosImageImportJob) 
 	return resp.Payload, nil
 }
 
+// Export an image
+func (f *IBMPIImageClient) ExportImage(id string, body *models.ExportImage) (*models.JobReference, error) {
+	params := p_cloud_images.NewPcloudV2ImagesExportPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithImageID(id).WithBody(body)
+	resp, err := f.session.Power.PCloudImages.PcloudV2ImagesExportPost(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to Export COS Image for image id %s with error %w", id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Export COS Image for image %s", id)
+	}
+	return resp.Payload, nil
+}
+
 // Delete ...
 func (f *IBMPIImageClient) Delete(id string) error {
 	params := p_cloud_images.NewPcloudCloudinstancesImagesDeleteParams().
