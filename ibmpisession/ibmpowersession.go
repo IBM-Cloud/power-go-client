@@ -30,7 +30,7 @@ import (
 type IBMPISession struct {
 	IAMToken      string
 	IMSToken      string
-	Power         *client.PowerIaas
+	Power         *client.PowerIaasAPI
 	UserAccount   string
 	Region        string
 	Zone          string

@@ -44,9 +44,9 @@ func main() {
 	body := &models.PVMInstanceCreate{
 		ImageID:     &imageID,
 		KeyPairName: "test-key",
-		NetworkIds:  networks,
+		NetworkIDs:  networks,
 		ServerName:  &name,
-		VolumeIds:   volumes,
+		VolumeIDs:   volumes,
 		Memory:      &memory,
 		Processors:  &processors,
 		ProcType:    &procType,

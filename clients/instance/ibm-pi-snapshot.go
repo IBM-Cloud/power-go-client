@@ -87,7 +87,7 @@ func (f *IBMPISnapshotClient) Create(instanceID, snapshotID, restoreFailAction s
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(instanceID).
 		WithSnapshotID(snapshotID).WithRestoreFailAction(&restoreFailAction)
-	resp, err := f.session.Power.PCloudPVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.authInfo)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.authInfo)
 	if err != nil {
 		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, instanceID, err)
 	}

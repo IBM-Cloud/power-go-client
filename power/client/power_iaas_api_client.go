@@ -8,8 +8,7 @@ package client
 import (
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
-
-	strfmt "github.com/go-openapi/strfmt"
+	"github.com/go-openapi/strfmt"
 
 	"github.com/IBM-Cloud/power-go-client/power/client/authentication"
 	"github.com/IBM-Cloud/power-go-client/power/client/bluemix_service_instances"
@@ -43,7 +42,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/swagger_spec"
 )
 
-// Default power iaas HTTP client.
+// Default power iaas API HTTP client.
 var Default = NewHTTPClient(nil)
 
 const (
@@ -58,14 +57,14 @@ const (
 // DefaultSchemes are the default schemes found in Meta (info) section of spec file
 var DefaultSchemes = []string{"http"}
 
-// NewHTTPClient creates a new power iaas HTTP client.
-func NewHTTPClient(formats strfmt.Registry) *PowerIaas {
+// NewHTTPClient creates a new power iaas API HTTP client.
+func NewHTTPClient(formats strfmt.Registry) *PowerIaasAPI {
 	return NewHTTPClientWithConfig(formats, nil)
 }
 
-// NewHTTPClientWithConfig creates a new power iaas HTTP client,
+// NewHTTPClientWithConfig creates a new power iaas API HTTP client,
 // using a customizable transport config.
-func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *PowerIaas {
+func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *PowerIaasAPI {
 	// ensure nullable parameters have default
 	if cfg == nil {
 		cfg = DefaultTransportConfig()
@@ -76,76 +75,45 @@ func NewHTTPClientWithConfig(formats strfmt.Registry, cfg *TransportConfig) *Pow
 	return New(transport, formats)
 }
 
-// New creates a new power iaas client
-func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaas {
+// New creates a new power iaas API client
+func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasAPI {
 	// ensure nullable parameters have default
 	if formats == nil {
 		formats = strfmt.Default
 	}
 
-	cli := new(PowerIaas)
+	cli := new(PowerIaasAPI)
 	cli.Transport = transport
-
 	cli.Authentication = authentication.New(transport, formats)
-
 	cli.BluemixServiceInstances = bluemix_service_instances.New(transport, formats)
-
 	cli.Catalog = catalog.New(transport, formats)
-
 	cli.HardwarePlatforms = hardware_platforms.New(transport, formats)
-
 	cli.IaasServiceBroker = iaas_service_broker.New(transport, formats)
-
 	cli.InternalStorageRegions = internal_storage_regions.New(transport, formats)
-
 	cli.OpenStacks = open_stacks.New(transport, formats)
-
 	cli.PCloudCloudConnections = p_cloud_cloud_connections.New(transport, formats)
-
 	cli.PCloudEvents = p_cloud_events.New(transport, formats)
-
 	cli.PCloudImages = p_cloud_images.New(transport, formats)
-
 	cli.PCloudInstances = p_cloud_instances.New(transport, formats)
-
 	cli.PCloudJobs = p_cloud_jobs.New(transport, formats)
-
 	cli.PCloudNetworks = p_cloud_networks.New(transport, formats)
-
-	cli.PCloudPVMInstances = p_cloud_p_vm_instances.New(transport, formats)
-
+	cli.PCloudpVMInstances = p_cloud_p_vm_instances.New(transport, formats)
 	cli.PCloudPlacementGroups = p_cloud_placement_groups.New(transport, formats)
-
-	cli.PCloudSAP = p_cloud_s_a_p.New(transport, formats)
-
-	cli.PCloudServiceDHCP = p_cloud_service_d_h_c_p.New(transport, formats)
-
+	cli.PCloudsap = p_cloud_s_a_p.New(transport, formats)
+	cli.PCloudServicedhcp = p_cloud_service_d_h_c_p.New(transport, formats)
 	cli.PCloudSnapshots = p_cloud_snapshots.New(transport, formats)
-
 	cli.PCloudStorageCapacity = p_cloud_storage_capacity.New(transport, formats)
-
 	cli.PCloudSystemPools = p_cloud_system_pools.New(transport, formats)
-
 	cli.PCloudTasks = p_cloud_tasks.New(transport, formats)
-
 	cli.PCloudTenants = p_cloud_tenants.New(transport, formats)
-
 	cli.PCloudTenantsSSHKeys = p_cloud_tenants_ssh_keys.New(transport, formats)
-
-	cli.PCloudVPNConnections = p_cloud_v_p_n_connections.New(transport, formats)
-
-	cli.PCloudVPNPolicies = p_cloud_v_p_n_policies.New(transport, formats)
-
+	cli.PCloudvpnConnections = p_cloud_v_p_n_connections.New(transport, formats)
+	cli.PCloudvpnPolicies = p_cloud_v_p_n_policies.New(transport, formats)
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
-
 	cli.ServiceBindings = service_bindings.New(transport, formats)
-
 	cli.ServiceInstances = service_instances.New(transport, formats)
-
 	cli.StorageTypes = storage_types.New(transport, formats)
-
 	cli.SwaggerSpec = swagger_spec.New(transport, formats)
-
 	return cli
 }
 
@@ -188,133 +156,102 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 	return cfg
 }
 
-// PowerIaas is a client for power iaas
-type PowerIaas struct {
-	Authentication *authentication.Client
+// PowerIaasAPI is a client for power iaas API
+type PowerIaasAPI struct {
+	Authentication authentication.ClientService
 
-	BluemixServiceInstances *bluemix_service_instances.Client
+	BluemixServiceInstances bluemix_service_instances.ClientService
 
-	Catalog *catalog.Client
+	Catalog catalog.ClientService
 
-	HardwarePlatforms *hardware_platforms.Client
+	HardwarePlatforms hardware_platforms.ClientService
 
-	IaasServiceBroker *iaas_service_broker.Client
+	IaasServiceBroker iaas_service_broker.ClientService
 
-	InternalStorageRegions *internal_storage_regions.Client
+	InternalStorageRegions internal_storage_regions.ClientService
 
-	OpenStacks *open_stacks.Client
+	OpenStacks open_stacks.ClientService
 
-	PCloudCloudConnections *p_cloud_cloud_connections.Client
+	PCloudCloudConnections p_cloud_cloud_connections.ClientService
 
-	PCloudEvents *p_cloud_events.Client
+	PCloudEvents p_cloud_events.ClientService
 
-	PCloudImages *p_cloud_images.Client
+	PCloudImages p_cloud_images.ClientService
 
-	PCloudInstances *p_cloud_instances.Client
+	PCloudInstances p_cloud_instances.ClientService
 
-	PCloudJobs *p_cloud_jobs.Client
+	PCloudJobs p_cloud_jobs.ClientService
 
-	PCloudNetworks *p_cloud_networks.Client
+	PCloudNetworks p_cloud_networks.ClientService
 
-	PCloudPVMInstances *p_cloud_p_vm_instances.Client
+	PCloudpVMInstances p_cloud_p_vm_instances.ClientService
 
-	PCloudPlacementGroups *p_cloud_placement_groups.Client
+	PCloudPlacementGroups p_cloud_placement_groups.ClientService
 
-	PCloudSAP *p_cloud_s_a_p.Client
+	PCloudsap p_cloud_s_a_p.ClientService
 
-	PCloudServiceDHCP *p_cloud_service_d_h_c_p.Client
+	PCloudServicedhcp p_cloud_service_d_h_c_p.ClientService
 
-	PCloudSnapshots *p_cloud_snapshots.Client
+	PCloudSnapshots p_cloud_snapshots.ClientService
 
-	PCloudStorageCapacity *p_cloud_storage_capacity.Client
+	PCloudStorageCapacity p_cloud_storage_capacity.ClientService
 
-	PCloudSystemPools *p_cloud_system_pools.Client
+	PCloudSystemPools p_cloud_system_pools.ClientService
 
-	PCloudTasks *p_cloud_tasks.Client
+	PCloudTasks p_cloud_tasks.ClientService
 
-	PCloudTenants *p_cloud_tenants.Client
+	PCloudTenants p_cloud_tenants.ClientService
 
-	PCloudTenantsSSHKeys *p_cloud_tenants_ssh_keys.Client
+	PCloudTenantsSSHKeys p_cloud_tenants_ssh_keys.ClientService
 
-	PCloudVPNConnections *p_cloud_v_p_n_connections.Client
+	PCloudvpnConnections p_cloud_v_p_n_connections.ClientService
 
-	PCloudVPNPolicies *p_cloud_v_p_n_policies.Client
+	PCloudvpnPolicies p_cloud_v_p_n_policies.ClientService
 
-	PCloudVolumes *p_cloud_volumes.Client
+	PCloudVolumes p_cloud_volumes.ClientService
 
-	ServiceBindings *service_bindings.Client
+	ServiceBindings service_bindings.ClientService
 
-	ServiceInstances *service_instances.Client
+	ServiceInstances service_instances.ClientService
 
-	StorageTypes *storage_types.Client
+	StorageTypes storage_types.ClientService
 
-	SwaggerSpec *swagger_spec.Client
+	SwaggerSpec swagger_spec.ClientService
 
 	Transport runtime.ClientTransport
 }
 
 // SetTransport changes the transport on the client and all its subresources
-func (c *PowerIaas) SetTransport(transport runtime.ClientTransport) {
+func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-
 	c.Authentication.SetTransport(transport)
-
 	c.BluemixServiceInstances.SetTransport(transport)
-
 	c.Catalog.SetTransport(transport)
-
 	c.HardwarePlatforms.SetTransport(transport)
-
 	c.IaasServiceBroker.SetTransport(transport)
-
 	c.InternalStorageRegions.SetTransport(transport)
-
 	c.OpenStacks.SetTransport(transport)
-
 	c.PCloudCloudConnections.SetTransport(transport)
-
 	c.PCloudEvents.SetTransport(transport)
-
 	c.PCloudImages.SetTransport(transport)
-
 	c.PCloudInstances.SetTransport(transport)
-
 	c.PCloudJobs.SetTransport(transport)
-
 	c.PCloudNetworks.SetTransport(transport)
-
-	c.PCloudPVMInstances.SetTransport(transport)
-
+	c.PCloudpVMInstances.SetTransport(transport)
 	c.PCloudPlacementGroups.SetTransport(transport)
-
-	c.PCloudSAP.SetTransport(transport)
-
-	c.PCloudServiceDHCP.SetTransport(transport)
-
+	c.PCloudsap.SetTransport(transport)
+	c.PCloudServicedhcp.SetTransport(transport)
 	c.PCloudSnapshots.SetTransport(transport)
-
 	c.PCloudStorageCapacity.SetTransport(transport)
-
 	c.PCloudSystemPools.SetTransport(transport)
-
 	c.PCloudTasks.SetTransport(transport)
-
 	c.PCloudTenants.SetTransport(transport)
-
 	c.PCloudTenantsSSHKeys.SetTransport(transport)
-
-	c.PCloudVPNConnections.SetTransport(transport)
-
-	c.PCloudVPNPolicies.SetTransport(transport)
-
+	c.PCloudvpnConnections.SetTransport(transport)
+	c.PCloudvpnPolicies.SetTransport(transport)
 	c.PCloudVolumes.SetTransport(transport)
-
 	c.ServiceBindings.SetTransport(transport)
-
 	c.ServiceInstances.SetTransport(transport)
-
 	c.StorageTypes.SetTransport(transport)
-
 	c.SwaggerSpec.SetTransport(transport)
-
 }
