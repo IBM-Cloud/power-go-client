@@ -138,9 +138,6 @@ func fetchAuthorizationData(s *IBMPISession) (string, error) {
 		req := &http.Request{
 			Header: make(http.Header),
 		}
-		if err := s.Authenticator.Validate(); err != nil {
-			return "", err
-		}
 		if err := s.Authenticator.Authenticate(req); err != nil {
 			return "", err
 		}
