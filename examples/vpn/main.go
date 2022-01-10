@@ -9,6 +9,7 @@ import (
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/IBM/go-sdk-core/v5/core"
 )
 
 const (
@@ -23,7 +24,7 @@ func main() {
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
-	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region + ".power-iaas.test.cloud.ibm.com")
+	url := region + ".power-iaas.test.cloud.ibm.com"
 
 	// VPN inputs
 	name := " < NAME OF THE VPN CONNECTION > "
@@ -32,7 +33,23 @@ func main() {
 	ipsecPolicyName := " < NAME OF THE IPSEC POLICY > "
 	networks := []string{" < NAME OF THE NETWORK > "}
 
-	session, err := ps.New(token, region, true, accountID, zone)
+	authenticator := &core.BearerTokenAuthenticator{
+		BearerToken: token,
+	}
+	// authenticator := &core.IamAuthenticator{
+	// 	ApiKey: "< API KEY >",
+	// 	// Uncomment for test environment
+	// 	URL: "https://iam.test.cloud.ibm.com",
+	// }
+	// Create the session
+	options := &ps.IBMPIOptions{
+		Authenticator: authenticator,
+		UserAccount:   accountID,
+		Zone:          zone,
+		URL:           url,
+		Debug:         true,
+	}
+	session, err := ps.NewIBMPISession(options)
 	if err != nil {
 		log.Fatal(err)
 	}

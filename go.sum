@@ -1,6 +1,6 @@
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
-github.com/IBM/go-sdk-core/v5 v5.8.0 h1:Bn9BxTaKYKWpd+BDpVsL6XOOJl4QDgxux4gSdWi31vE=
-github.com/IBM/go-sdk-core/v5 v5.8.0/go.mod h1:+YbdhrjCHC84ls4MeBp+Hj4NZCni+tDAc0XQUqRO9Jc=
+github.com/IBM/go-sdk-core/v5 v5.9.1 h1:06pXbD9Rgmqqe2HA5YAeQbB4eYRRFgIoOT+Kh3cp1zo=
+github.com/IBM/go-sdk-core/v5 v5.9.1/go.mod h1:axE2JrRq79gIJTjKPBwV6gWHswvVptBjbcvvCPIxARM=
 github.com/PuerkitoBio/purell v1.1.0/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
 github.com/PuerkitoBio/purell v1.1.1 h1:WEQqlqaGbrPkxLJWfBwQmfEAE1Z7ONdDLqrN38tNFfI=
 github.com/PuerkitoBio/purell v1.1.1/go.mod h1:c11w/QuzBsJSee3cPx9rAFu61PvFxuPbtSwDGJws/X0=
@@ -104,8 +104,9 @@ github.com/go-openapi/strfmt v0.19.5/go.mod h1:eftuHTlB/dI8Uq8JJOyRlieZf+WkkxUuk
 github.com/go-openapi/strfmt v0.19.11/go.mod h1:UukAYgTaQfqJuAFlNxxMWNvMYiwiXtLsF2VwmoFtbtc=
 github.com/go-openapi/strfmt v0.20.0/go.mod h1:UukAYgTaQfqJuAFlNxxMWNvMYiwiXtLsF2VwmoFtbtc=
 github.com/go-openapi/strfmt v0.20.2/go.mod h1:43urheQI9dNtE5lTZQfuFJvjYJKPrxicATpEfZwHUNk=
-github.com/go-openapi/strfmt v0.21.0 h1:hX2qEZKmYks+t0hKeb4VTJpUm2UYsdL3+DCid5swxIs=
 github.com/go-openapi/strfmt v0.21.0/go.mod h1:ZRQ409bWMj+SOgXofQAGTIo2Ebu72Gs+WaRADcS5iNg=
+github.com/go-openapi/strfmt v0.21.1 h1:G6s2t5V5kGCHLVbSdZ/6lI8Wm4OzoPFkc3/cjAsKQrM=
+github.com/go-openapi/strfmt v0.21.1/go.mod h1:I/XVKeLc5+MM5oPNN7P6urMOpuLXEcNrCX/rPGuWb0k=
 github.com/go-openapi/swag v0.17.0/go.mod h1:AByQ+nYG6gQg71GINrmuDXCPWdL640yX49/kXLo40Tg=
 github.com/go-openapi/swag v0.18.0/go.mod h1:AByQ+nYG6gQg71GINrmuDXCPWdL640yX49/kXLo40Tg=
 github.com/go-openapi/swag v0.19.2/go.mod h1:POnQmlKehdgb5mhVOsnJFsivZCEZ/vjK9gh66Z9tfKk=
@@ -279,8 +280,9 @@ go.mongodb.org/mongo-driver v1.4.3/go.mod h1:WcMNYLx/IlOxLe6JRJiv2uXuCz6zBLndR4S
 go.mongodb.org/mongo-driver v1.4.4/go.mod h1:WcMNYLx/IlOxLe6JRJiv2uXuCz6zBLndR4SoGjYphSc=
 go.mongodb.org/mongo-driver v1.4.6/go.mod h1:WcMNYLx/IlOxLe6JRJiv2uXuCz6zBLndR4SoGjYphSc=
 go.mongodb.org/mongo-driver v1.5.1/go.mod h1:gRXCHX4Jo7J0IJ1oDQyUxF7jfy19UfxniMS4xxMmUqw=
-go.mongodb.org/mongo-driver v1.7.3 h1:G4l/eYY9VrQAK/AUgkV0koQKzQnyddnWxrd/Etf0jIs=
 go.mongodb.org/mongo-driver v1.7.3/go.mod h1:NqaYOwnXWr5Pm7AOpO5QFxKJ503nbMse/R79oO62zWg=
+go.mongodb.org/mongo-driver v1.7.5 h1:ny3p0reEpgsR2cfA5cjgwFZg3Cv/ofFh/8jbhGtz9VI=
+go.mongodb.org/mongo-driver v1.7.5/go.mod h1:VXEWRZ6URJIkUq2SCAyapmhH0ZLRBP+FT4xhp5Zvxng=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
 golang.org/x/crypto v0.0.0-20190320223903-b7391e95e576/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
