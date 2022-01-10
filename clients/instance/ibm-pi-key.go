@@ -26,7 +26,7 @@ func NewIBMPIKeyClient(ctx context.Context, sess *ibmpisession.IBMPISession, clo
 
 // Get Key...
 func (f *IBMPIKeyClient) Get(id string) (*models.SSHKey, error) {
-	var tenantid = f.session.UserAccount
+	var tenantid = f.session.Options.UserAccount
 	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithTenantID(tenantid).WithSshkeyName(id)
@@ -42,7 +42,7 @@ func (f *IBMPIKeyClient) Get(id string) (*models.SSHKey, error) {
 
 // GetAll Information about all the PVM Instances for a Client
 func (f *IBMPIKeyClient) GetAll() (*models.SSHKeys, error) {
-	var tenantid = f.session.UserAccount
+	var tenantid = f.session.Options.UserAccount
 	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithTenantID(tenantid)
@@ -58,9 +58,10 @@ func (f *IBMPIKeyClient) GetAll() (*models.SSHKeys, error) {
 
 // Create PI Key ...
 func (f *IBMPIKeyClient) Create(body *models.SSHKey) (*models.SSHKey, error) {
+	var tenantid = f.session.Options.UserAccount
 	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithTenantID(f.session.UserAccount).WithBody(body)
+		WithTenantID(tenantid).WithBody(body)
 	postok, postcreated, err := f.session.Power.PCloudTenantsSSHKeys.PcloudTenantsSshkeysPost(params, f.authInfo)
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreatePIKeyOperationFailed, err)
@@ -76,7 +77,7 @@ func (f *IBMPIKeyClient) Create(body *models.SSHKey) (*models.SSHKey, error) {
 
 // Delete ...
 func (f *IBMPIKeyClient) Delete(id string) error {
-	var tenantid = f.session.UserAccount
+	var tenantid = f.session.Options.UserAccount
 	params := p_cloud_tenants_ssh_keys.NewPcloudTenantsSshkeysDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
 		WithTenantID(tenantid).WithSshkeyName(id)
