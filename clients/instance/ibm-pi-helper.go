@@ -21,11 +21,10 @@ type IBMPIClient struct {
 
 // NewIBMPIClient ...
 func NewIBMPIClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIClient {
-	authInfo := ibmpisession.NewAuth(sess, cloudInstanceID)
 	return &IBMPIClient{
 		session:         sess,
 		cloudInstanceID: cloudInstanceID,
-		authInfo:        authInfo,
+		authInfo:        sess.AuthInfo(cloudInstanceID),
 		ctx:             ctx,
 	}
 }

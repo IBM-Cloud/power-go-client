@@ -57,7 +57,7 @@ func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PV
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
-	postok, postcreated, postAccepted, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesPost(params, ibmpisession.NewAuth(f.session, f.cloudInstanceID))
+	postok, postcreated, postAccepted, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesPost(params, f.authInfo)
 	if err != nil {
 		return nil, fmt.Errorf("failed to Create PVM Instance :%w", err)
 	}

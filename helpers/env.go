@@ -11,3 +11,9 @@ func EnvFallBack(envs []string, defaultValue string) string {
 	}
 	return defaultValue
 }
+
+// GetPowerEndPoint
+func GetPowerEndPoint(region string) string {
+	defaultURL := region + ".power-iaas.cloud.ibm.com"
+	return EnvFallBack([]string{"IBMCLOUD_POWER_API_ENDPOINT"}, defaultURL)
+}

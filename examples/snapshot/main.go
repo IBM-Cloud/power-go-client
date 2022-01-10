@@ -7,6 +7,7 @@ import (
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/IBM/go-sdk-core/v5/core"
 )
 
 func main() {
@@ -16,16 +17,30 @@ func main() {
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
-	//os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", region+".power-iaas.test.cloud.ibm.com")
+	url := region + ".power-iaas.test.cloud.ibm.com"
 
 	piID := " < POWER INSTANCE ID > "
 	instance_id := " < INSTANCE ID > "
 	snap_name := " < SNAPSHOT NAME > "
 	description := " < DESCRIPTION > "
 
-	snapshotBody := &models.SnapshotCreate{Name: &snap_name, Description: description}
-
-	session, err := ps.New(token, region, true, accountID, zone)
+	authenticator := &core.BearerTokenAuthenticator{
+		BearerToken: token,
+	}
+	// authenticator := &core.IamAuthenticator{
+	// 	ApiKey: "< API KEY >",
+	// 	// Uncomment for test environment
+	// 	URL: "https://iam.test.cloud.ibm.com",
+	// }
+	// Create the session
+	options := &ps.IBMPIOptions{
+		Authenticator: authenticator,
+		UserAccount:   accountID,
+		Zone:          zone,
+		URL:           url,
+		Debug:         true,
+	}
+	session, err := ps.NewIBMPISession(options)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -35,6 +50,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	snapshotBody := &models.SnapshotCreate{Name: &snap_name, Description: description}
 	createRespSnapOk, err := powerClient.CreatePvmSnapShot(instance_id, snapshotBody)
 	if err != nil {
 		log.Fatal(err)
