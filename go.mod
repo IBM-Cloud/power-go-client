@@ -15,5 +15,6 @@ require (
 	github.com/go-stack/stack v1.8.1 // indirect
 	github.com/leodido/go-urn v1.2.1 // indirect
 	github.com/mitchellh/mapstructure v1.4.3 // indirect
+	github.com/stretchr/testify v1.7.0
 	go.mongodb.org/mongo-driver v1.8.1 // indirect
 )

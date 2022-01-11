@@ -28,7 +28,7 @@ import (
 type IBMPISession struct {
 	IAMToken      string
 	IMSToken      string
-	Power         *client.PowerIaas
+	Power         *client.PowerIaasAPI
 	UserAccount   string
 	Region        string
 	Zone          string
@@ -41,8 +41,9 @@ type PIOptions struct {
 	// Required
 	Authenticator core.Authenticator
 
+	//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
 	// Enable/Disable http transport debugging log
-	Debug bool `default:true`
+	Debug bool
 
 	// Account id of the Power Cloud Service Instance
 	// Required
@@ -78,8 +79,8 @@ func powerJSONConsumer() runtime.Consumer {
 	})
 }
 
-// Create a IBMPISession using an API Key
-func NewSessionApiKey(options *PIOptions) (*IBMPISession, error) {
+// Create a IBMPISession
+func NewSession(options *PIOptions) (*IBMPISession, error) {
 	newSession := &IBMPISession{
 		UserAccount:   options.UserAccount,
 		Region:        options.Region,
@@ -94,7 +95,7 @@ func NewSessionApiKey(options *PIOptions) (*IBMPISession, error) {
 }
 
 // Create a IBMPISession
-// - deprecated: use NewSessionApiKey
+// - deprecated: use NewSession
 func New(iamtoken, region string, debug bool, useraccount string, zone string) (*IBMPISession, error) {
 	session := &IBMPISession{
 		IAMToken:    iamtoken,

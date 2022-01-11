@@ -4,6 +4,5 @@
 .DS_Store
 
 # .env files
-*.env
-.env.*
-!/.vscode/example.env
+/.vscode
+/vendor
