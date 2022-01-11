@@ -41,7 +41,6 @@ type PIOptions struct {
 	// Required
 	Authenticator core.Authenticator
 
-	//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
 	// Enable/Disable http transport debugging log
 	Debug bool
 
