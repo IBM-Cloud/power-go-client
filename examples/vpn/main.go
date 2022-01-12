@@ -53,10 +53,11 @@ func main() {
 	var dhGroup, version int64 = 1, 1
 	encryption := "3des-cbc"
 	presharedKey := "sample"
+	keyLifetime := models.KeyLifetime(180)
 	bodyike := &models.IKEPolicyCreate{
 		DhGroup:      &dhGroup,
 		Encryption:   &encryption,
-		KeyLifetime:  models.KeyLifetime(180),
+		KeyLifetime:  &keyLifetime,
 		Name:         &ikePolicyName,
 		PresharedKey: &presharedKey,
 		Version:      &version,
@@ -76,10 +77,10 @@ func main() {
 	// Create and Get IPSec Policy
 	pfs := false
 	bodyipsec := &models.IPSecPolicyCreate{
-		Authentication: models.IPSECPolicyAuthenticationHmacMd596,
+		Authentication: models.IPSECPolicyAuthenticationHmacDashShaDash256Dash128,
 		DhGroup:        &dhGroup,
 		Encryption:     &encryption,
-		KeyLifetime:    models.KeyLifetime(180),
+		KeyLifetime:    &keyLifetime,
 		Name:           &ipsecPolicyName,
 		Pfs:            &pfs,
 	}
@@ -97,13 +98,14 @@ func main() {
 
 	// Create and Get VPN Connection
 	mode := "policy"
+	gateway := models.PeerGatewayAddress("1.1.1.1")
 	body := &models.VPNConnectionCreate{
 		IkePolicy:          ikePolicy.ID,
 		IPSecPolicy:        ipsecPolicy.ID,
 		Mode:               &mode,
 		Name:               &name,
 		Networks:           networks,
-		PeerGatewayAddress: "1.1.1.1",
+		PeerGatewayAddress: &gateway,
 		PeerSubnets:        []string{"128.0.111.0/24"},
 	}
 	createResp, err := vpnClient.Create(body)
