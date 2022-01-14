@@ -123,3 +123,35 @@ func Test_powerJSONConsumer(t *testing.T) {
 		})
 	}
 }
+
+func Test_getPIClient(t *testing.T) {
+	type args struct {
+		debug  bool
+		host   string
+		scheme string
+	}
+	tests := []struct {
+		name string
+		args args
+	}{
+		{
+			name: "Scheme HTTTP",
+			args: args{debug: true, host: "", scheme: "http"},
+		},
+		{
+			name: "Scheme HTTTPS",
+			args: args{debug: true, host: "", scheme: "https"},
+		},
+		{
+			name: "Scheme Empty",
+			args: args{debug: true, host: "", scheme: ""},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := getPIClient(tt.args.debug, tt.args.host, tt.args.scheme); got == nil {
+				t.Errorf("getPIClient() = %v", got)
+			}
+		})
+	}
+}

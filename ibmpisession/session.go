@@ -86,13 +86,23 @@ func NewIBMPISession(o *IBMPIOptions) (*IBMPISession, error) {
 	}
 
 	// We need just the server host from the URL
-	serviceURL = strings.TrimPrefix(serviceURL, "https://")
-	serviceURL = strings.TrimPrefix(serviceURL, "http://")
+	var host, scheme string
+	if strings.HasPrefix(serviceURL, "https://") {
+		scheme = SCHEME_HTTPS
+		host = strings.TrimPrefix(serviceURL, "https://")
+	} else if strings.HasPrefix(serviceURL, "http://") {
+		scheme = SCHEME_HTTP
+		host = strings.TrimPrefix(serviceURL, "http://")
+	} else {
+		// by default we use "https"
+		scheme = SCHEME_HTTPS
+		host = serviceURL
+	}
 
 	return &IBMPISession{
-		CRNFormat: crnBuilder(o.UserAccount, o.Zone, serviceURL),
+		CRNFormat: crnBuilder(o.UserAccount, o.Zone, host),
 		Options:   o,
-		Power:     getPIClient(o.Debug, serviceURL),
+		Power:     getPIClient(o.Debug, host, scheme),
 	}, nil
 }
 
