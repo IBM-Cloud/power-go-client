@@ -15,6 +15,11 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 )
 
+const (
+	SCHEME_HTTPS = "https"
+	SCHEME_HTTP  = "http"
+)
+
 // fetchAuthorizationData Fetch Authorization token using the Authenticator
 func fetchAuthorizationData(a core.Authenticator) (string, error) {
 	req := &http.Request{
@@ -56,9 +61,12 @@ func powerJSONConsumer() runtime.Consumer {
 }
 
 // getPIClient generates a PowerIaas client
-func getPIClient(debug bool, host string) *client.PowerIaasAPI {
+func getPIClient(debug bool, host string, scheme string) *client.PowerIaasAPI {
 	http.DefaultTransport.(*http.Transport).TLSClientConfig = &tls.Config{InsecureSkipVerify: false}
-	transport := httptransport.New(host, "/", []string{"https"})
+	if scheme == "" {
+		scheme = SCHEME_HTTPS
+	}
+	transport := httptransport.New(host, "/", []string{scheme})
 	transport.Debug = debug
 	transport.SetLogger(IBMPILogger{})
 	transport.Consumers[runtime.JSONMime] = powerJSONConsumer()

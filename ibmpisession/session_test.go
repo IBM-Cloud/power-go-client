@@ -111,6 +111,42 @@ func TestNewIBMPISession(t *testing.T) {
 				CRNFormat: "crn:v1:bluemix:public:power-iaas:dal12:a/1234:%s::",
 			},
 		},
+		{
+			name: "Simple URL with https",
+			args: args{
+				o: &IBMPIOptions{
+					Authenticator: &core.NoAuthAuthenticator{},
+					UserAccount:   "1234",
+					Region:        "dal",
+					Zone:          "dal12",
+					URL:           "https://dal.power-iaas.test.cloud.ibm.com",
+				},
+			},
+			want: &IBMPISession{
+				Options: &IBMPIOptions{
+					Authenticator: &core.NoAuthAuthenticator{},
+				},
+				CRNFormat: "crn:v1:staging:public:power-iaas:dal12:a/1234:%s::",
+			},
+		},
+		{
+			name: "Simple URL with http",
+			args: args{
+				o: &IBMPIOptions{
+					Authenticator: &core.NoAuthAuthenticator{},
+					UserAccount:   "1234",
+					Region:        "dal",
+					Zone:          "dal12",
+					URL:           "http://dal.power-iaas.test.cloud.ibm.com",
+				},
+			},
+			want: &IBMPISession{
+				Options: &IBMPIOptions{
+					Authenticator: &core.NoAuthAuthenticator{},
+				},
+				CRNFormat: "crn:v1:staging:public:power-iaas:dal12:a/1234:%s::",
+			},
+		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
