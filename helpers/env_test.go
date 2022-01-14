@@ -37,23 +37,18 @@ func TestEnvFallBack(t *testing.T) {
 }
 
 func TestGetPowerEndPoint(t *testing.T) {
-	type args struct {
-		region string
-	}
 	tests := []struct {
 		name string
-		args args
 		want string
 	}{
 		{
-			name: "Get Value from Environment Variable",
-			args: args{"dal"},
-			want: "dal.power-iaas.cloud.ibm.com",
+			name: "Get No Endpoint from Environment Variable",
+			want: "",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := GetPowerEndPoint(tt.args.region); got != tt.want {
+			if got := GetPowerEndPoint(); got != tt.want {
 				t.Errorf("GetPowerEndPoint() = %v, want %v", got, tt.want)
 			}
 		})
@@ -61,7 +56,7 @@ func TestGetPowerEndPoint(t *testing.T) {
 }
 
 func TestGetPowerEndPointFromEnv(t *testing.T) {
-	os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "test.cloud.ibm.com")
+	os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "dal.power-iaas.cloud.ibm.com")
 	type args struct {
 		region string
 	}
@@ -71,14 +66,14 @@ func TestGetPowerEndPointFromEnv(t *testing.T) {
 		want string
 	}{
 		{
-			name: "Get Value from Environment Variable",
+			name: "Get Endpoint from Environment Variable",
 			args: args{"dal"},
-			want: "test.cloud.ibm.com",
+			want: "dal.power-iaas.cloud.ibm.com",
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := GetPowerEndPoint(tt.args.region); got != tt.want {
+			if got := GetPowerEndPoint(); got != tt.want {
 				t.Errorf("GetPowerEndPoint() = %v, want %v", got, tt.want)
 			}
 		})
