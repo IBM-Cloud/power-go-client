@@ -1,54 +1,85 @@
 # IBM Cloud SDK for Power Cloud
-To be updated
-power-go-client provides the Go implementation for operating the IBM Power Cloud platform to build LPARS .
-Installing
 
-Install the SDK using the following command
+The power-go-client project provides the Go SDK for IBM® Power Systems™ Virtual Server.
 
-```shell
-go get github.com/IBM-Cloud/power-go-client
+## Prerequisites
+
+- An [IBM Cloud Account](https://cloud.ibm.com/registration)
+- An IBM Cloud [IAM API key](https://cloud.ibm.com/docs/account?topic=account-userapikey) or [Token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey) allow the SDK to access your account.
+- Go version 1.17 or above.
+
+## Install
+
+Install the SDK using the following methods.
+
+### `go get` command
+
+Use this command to download and install the SDK to allow your Go application to use it:
 ```
-
-Update the SDK to the latest version using the following command
-
-```shell
 go get -u github.com/IBM-Cloud/power-go-client
 ```
 
-Using the SDK
+### Go modules
 
-You must have a working IBM Cloud account to use the APIs. Sign up if you don't have one.
+If your application is using Go modules, you can add a suitable import to your Go application, like this:
+```go
+import (
+  "github.com/IBM-Cloud/power-go-client"
+)
+```
+then run `go mod tidy` to download and install the new dependency and update your Go application's
+`go.mod` file.
 
-The SDK has examples folder which cites few examples on how to use the SDK. First you need to create a session.
+### `dep` dependency manager
+
+If your application is using the `dep` dependency management tool, you can add a dependency
+to your `Gopkg.toml` file. Here is an example:
+```
+[[constraint]]
+  name = "github.com/IBM-Cloud/power-go-client"
+  version = "1.1.0"
+
+```
+then run `dep ensure`.
+
+## Usage
+
+First you need to create a session and use it for creating the client.
 
 ```golang
 import "github.com/IBM-Cloud/power-go-client/ibmpisession"
 
 func main(){
-
-    s := ibmpowersession.New()
+    o := &ibmpisession.IBMPIOptions{
+		Authenticator: authenticator,
+		UserAccount:   accountID,
+		Zone:          zone,
+		URL:           url,
+	}
+    s, err := ibmpisession.NewIBMPISession(o)
     .....
 }
 ```
+- `authenticator`: Please check https://github.com/IBM/go-sdk-core/blob/main/Authentication.md for different options available for authenticating API calls.
+- `accountID`: Account id of the Power Cloud Service Instance
+- `zone`: Zone of the Power Cloud Service Instance
+- `url`: Power Virtual Server host or URL endpoint. You can also set env variable `IBMCLOUD_POWER_API_ENDPOINT`.
 
-Creating session in this way creates a default configuration which reads the value from the environment variables. You must export the following environment variables.
+Also you can refer to the [examples](examples) directory for some resources that shows how to use the SDK.
 
-    IBMID - This is the IBM ID
-    IBMID_PASSWORD - This is the password for the above ID
 
-OR
+## Issues
 
-    IC_API_KEY/IBMCLOUD_API_KEY - This is the Bluemix API Key. Login to IBMCloud to create one if you don't already have one. See instructions below for creating an API Key.
+If you encounter an issue with the project please [report here.](https://github.com/IBM-Cloud/power-go-client/issues).
 
-The default region is us_south. You can override it in the Config struct. 
-You can also provide the value via environment variables; either via IC_REGION or IBMCLOUD_REGION. Valid regions for Power Cloud are -
+## Development
 
-    us-south
-    us-east
-    eu-de
-If working in a multi-zone region like eu-de, the Zone must also be passed in via IBMCLOUD_ZONE. 
+This section contains some steps required by the dev for contributing changes to the SDK.
 
-    eu-de-1
-    eu-de-2    
+### Update the power directory
 
-Multi-Zone support for us-south and us-east is in the IBM Cloud Roadmap. 
+1. Install the latest [go-swagger](https://github.com/go-swagger/go-swagger/releases) version on your machine.
+1. Download the last released version of the service broker API definitions (`swagger.yaml`).
+1. Remove existing files under `power` directory `rm -r ./power/models/ && rm -rf ./power/client/`.
+1. Generate the client `swagger generate client -f swagger.yaml -t ./power/`
+1. Remove the unused files `rm ./power/models/user_access.go && rm ./power/models/principal.go`
