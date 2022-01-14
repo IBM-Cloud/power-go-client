@@ -23,3 +23,6 @@ jobs:
 
     - name: Test
       run: go test -v `go list ./... | grep -v '/power/' | grep -v examples`
+
+    - name: Coverage
+      run: go test `go list ./... | grep -v '/power/' | grep -v examples` -coverprofile=profile.cov && go tool cover -func profile.cov
