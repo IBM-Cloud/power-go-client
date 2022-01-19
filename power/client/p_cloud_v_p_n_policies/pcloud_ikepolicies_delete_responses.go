@@ -47,6 +47,12 @@ func (o *PcloudIkepoliciesDeleteReader) ReadResponse(response runtime.ClientResp
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPcloudIkepoliciesDeleteNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudIkepoliciesDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -173,6 +179,38 @@ func (o *PcloudIkepoliciesDeleteForbidden) GetPayload() *models.Error {
 }
 
 func (o *PcloudIkepoliciesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudIkepoliciesDeleteNotFound creates a PcloudIkepoliciesDeleteNotFound with default headers values
+func NewPcloudIkepoliciesDeleteNotFound() *PcloudIkepoliciesDeleteNotFound {
+	return &PcloudIkepoliciesDeleteNotFound{}
+}
+
+/* PcloudIkepoliciesDeleteNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PcloudIkepoliciesDeleteNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudIkepoliciesDeleteNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesDeleteNotFound  %+v", 404, o.Payload)
+}
+func (o *PcloudIkepoliciesDeleteNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudIkepoliciesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

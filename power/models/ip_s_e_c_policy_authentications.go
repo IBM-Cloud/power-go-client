@@ -12,7 +12,7 @@ import (
 )
 
 // IPSECPolicyAuthentications IP s e c policy authentications
-// Example: ["hmac-md5-96","hmac-sha-256-128","hmac-sha1-96","none"]
+// Example: ["hmac-sha-256-128","hmac-sha1-96","none"]
 //
 // swagger:model IPSECPolicyAuthentications
 type IPSECPolicyAuthentications []string

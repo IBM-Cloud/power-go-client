@@ -47,6 +47,12 @@ func (o *PcloudIpsecpoliciesDeleteReader) ReadResponse(response runtime.ClientRe
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPcloudIpsecpoliciesDeleteNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudIpsecpoliciesDeleteInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -173,6 +179,38 @@ func (o *PcloudIpsecpoliciesDeleteForbidden) GetPayload() *models.Error {
 }
 
 func (o *PcloudIpsecpoliciesDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudIpsecpoliciesDeleteNotFound creates a PcloudIpsecpoliciesDeleteNotFound with default headers values
+func NewPcloudIpsecpoliciesDeleteNotFound() *PcloudIpsecpoliciesDeleteNotFound {
+	return &PcloudIpsecpoliciesDeleteNotFound{}
+}
+
+/* PcloudIpsecpoliciesDeleteNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PcloudIpsecpoliciesDeleteNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudIpsecpoliciesDeleteNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteNotFound  %+v", 404, o.Payload)
+}
+func (o *PcloudIpsecpoliciesDeleteNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudIpsecpoliciesDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -54,6 +54,9 @@ type SAPCreate struct {
 	// Storage type for server deployment; will be ignored if storagePool or storageAffinity is provided; Only valid when you deploy one of the IBM supplied stock images. Storage type and pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage type and pool the image was created in
 	StorageType string `json:"storageType,omitempty"`
 
+	// System type used to host the instance. Only e880, e980, e1080 are supported
+	SysType string `json:"sysType,omitempty"`
+
 	// Cloud init user defined data
 	UserData string `json:"userData,omitempty"`
 

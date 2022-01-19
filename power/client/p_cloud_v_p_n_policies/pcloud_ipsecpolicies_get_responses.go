@@ -47,6 +47,12 @@ func (o *PcloudIpsecpoliciesGetReader) ReadResponse(response runtime.ClientRespo
 			return nil, err
 		}
 		return nil, result
+	case 404:
+		result := NewPcloudIpsecpoliciesGetNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 422:
 		result := NewPcloudIpsecpoliciesGetUnprocessableEntity()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -181,6 +187,38 @@ func (o *PcloudIpsecpoliciesGetForbidden) GetPayload() *models.Error {
 }
 
 func (o *PcloudIpsecpoliciesGetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudIpsecpoliciesGetNotFound creates a PcloudIpsecpoliciesGetNotFound with default headers values
+func NewPcloudIpsecpoliciesGetNotFound() *PcloudIpsecpoliciesGetNotFound {
+	return &PcloudIpsecpoliciesGetNotFound{}
+}
+
+/* PcloudIpsecpoliciesGetNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PcloudIpsecpoliciesGetNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudIpsecpoliciesGetNotFound) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesGetNotFound  %+v", 404, o.Payload)
+}
+func (o *PcloudIpsecpoliciesGetNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudIpsecpoliciesGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
