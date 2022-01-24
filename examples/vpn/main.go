@@ -94,7 +94,7 @@ func main() {
 	// Create and Get IPSec Policy
 	pfs := false
 	bodyipsec := &models.IPSecPolicyCreate{
-		Authentication: models.IPSECPolicyAuthenticationHmacDashMd5Dash96,
+		Authentication: models.IPSECPolicyAuthenticationHmacDashShaDash256Dash128,
 		DhGroup:        &dhGroup,
 		Encryption:     &encryption,
 		KeyLifetime:    &keyLifeTime,

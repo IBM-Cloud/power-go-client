@@ -15,7 +15,7 @@ import (
 )
 
 // IPSECPolicyAuthentication authentication for IPSec policy
-// Example: hmac-md5-96
+// Example: hmac-sha-256-128
 //
 // swagger:model IPSECPolicyAuthentication
 type IPSECPolicyAuthentication string
@@ -26,9 +26,6 @@ func NewIPSECPolicyAuthentication(value IPSECPolicyAuthentication) *IPSECPolicyA
 }
 
 const (
-
-	// IPSECPolicyAuthenticationHmacDashMd5Dash96 captures enum value "hmac-md5-96"
-	IPSECPolicyAuthenticationHmacDashMd5Dash96 IPSECPolicyAuthentication = "hmac-md5-96"
 
 	// IPSECPolicyAuthenticationHmacDashShaDash256Dash128 captures enum value "hmac-sha-256-128"
 	IPSECPolicyAuthenticationHmacDashShaDash256Dash128 IPSECPolicyAuthentication = "hmac-sha-256-128"
@@ -45,7 +42,7 @@ var ipSECPolicyAuthenticationEnum []interface{}
 
 func init() {
 	var res []IPSECPolicyAuthentication
-	if err := json.Unmarshal([]byte(`["hmac-md5-96","hmac-sha-256-128","hmac-sha1-96","none"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["hmac-sha-256-128","hmac-sha1-96","none"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
