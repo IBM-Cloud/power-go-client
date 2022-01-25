@@ -15,20 +15,21 @@ import (
 )
 
 // IKEPolicyAuthentication authentication of the IKE policy
-// Example: sha1
+// Example: sha-256
 //
 // swagger:model IKEPolicyAuthentication
 type IKEPolicyAuthentication string
 
 func NewIKEPolicyAuthentication(value IKEPolicyAuthentication) *IKEPolicyAuthentication {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated IKEPolicyAuthentication.
+func (m IKEPolicyAuthentication) Pointer() *IKEPolicyAuthentication {
+	return &m
 }
 
 const (
-
-	// IKEPolicyAuthenticationNone captures enum value "none"
-	IKEPolicyAuthenticationNone IKEPolicyAuthentication = "none"
 
 	// IKEPolicyAuthenticationShaDash256 captures enum value "sha-256"
 	IKEPolicyAuthenticationShaDash256 IKEPolicyAuthentication = "sha-256"
@@ -38,6 +39,9 @@ const (
 
 	// IKEPolicyAuthenticationSha1 captures enum value "sha1"
 	IKEPolicyAuthenticationSha1 IKEPolicyAuthentication = "sha1"
+
+	// IKEPolicyAuthenticationNone captures enum value "none"
+	IKEPolicyAuthenticationNone IKEPolicyAuthentication = "none"
 )
 
 // for schema
@@ -45,7 +49,7 @@ var iKEPolicyAuthenticationEnum []interface{}
 
 func init() {
 	var res []IKEPolicyAuthentication
-	if err := json.Unmarshal([]byte(`["none","sha-256","sha-384","sha1"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["sha-256","sha-384","sha1","none"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {

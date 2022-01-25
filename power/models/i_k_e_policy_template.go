@@ -30,7 +30,7 @@ type IKEPolicyTemplate struct {
 	DhGroup *int64 `json:"dhGroup"`
 
 	// ikePolicy Encryption default value
-	// Example: 3des-cbc
+	// Example: aes-256-cbc
 	// Required: true
 	Encryption *string `json:"encryption"`
 
@@ -39,7 +39,7 @@ type IKEPolicyTemplate struct {
 	KeyLifetime *KeyLifetime `json:"keyLifetime"`
 
 	// ikePolicy Version default value
-	// Example: 1
+	// Example: 2
 	// Required: true
 	Version *float64 `json:"version"`
 }

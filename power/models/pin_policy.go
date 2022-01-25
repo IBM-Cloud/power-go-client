@@ -20,8 +20,12 @@ import (
 type PinPolicy string
 
 func NewPinPolicy(value PinPolicy) *PinPolicy {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated PinPolicy.
+func (m PinPolicy) Pointer() *PinPolicy {
+	return &m
 }
 
 const (

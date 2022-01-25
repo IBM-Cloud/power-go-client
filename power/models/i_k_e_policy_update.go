@@ -26,13 +26,13 @@ type IKEPolicyUpdate struct {
 	Authentication IKEPolicyAuthentication `json:"authentication,omitempty"`
 
 	// DH group of the IKE Policy
-	// Example: 19
+	// Example: 2
 	// Enum: [1 2 5 14 19 20 24]
 	DhGroup int64 `json:"dhGroup,omitempty"`
 
 	// encryption of the IKE Policy
-	// Example: 3des-cbc
-	// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-256-cbc aes-256-gcm des-cbc]
+	// Example: aes-256-cbc
+	// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-128-gcm 3des-cbc]
 	Encryption string `json:"encryption,omitempty"`
 
 	// key lifetime
@@ -65,13 +65,13 @@ func (m *IKEPolicyUpdate) UnmarshalJSON(data []byte) error {
 		Authentication IKEPolicyAuthentication `json:"authentication,omitempty"`
 
 		// DH group of the IKE Policy
-		// Example: 19
+		// Example: 2
 		// Enum: [1 2 5 14 19 20 24]
 		DhGroup int64 `json:"dhGroup,omitempty"`
 
 		// encryption of the IKE Policy
-		// Example: 3des-cbc
-		// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-256-cbc aes-256-gcm des-cbc]
+		// Example: aes-256-cbc
+		// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-128-gcm 3des-cbc]
 		Encryption string `json:"encryption,omitempty"`
 
 		// key lifetime
@@ -142,13 +142,13 @@ func (m IKEPolicyUpdate) MarshalJSON() ([]byte, error) {
 		Authentication IKEPolicyAuthentication `json:"authentication,omitempty"`
 
 		// DH group of the IKE Policy
-		// Example: 19
+		// Example: 2
 		// Enum: [1 2 5 14 19 20 24]
 		DhGroup int64 `json:"dhGroup,omitempty"`
 
 		// encryption of the IKE Policy
-		// Example: 3des-cbc
-		// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-256-cbc aes-256-gcm des-cbc]
+		// Example: aes-256-cbc
+		// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-128-gcm 3des-cbc]
 		Encryption string `json:"encryption,omitempty"`
 
 		// key lifetime
@@ -311,7 +311,7 @@ var iKEPolicyUpdateTypeEncryptionPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["3des-cbc","aes-128-cbc","aes-128-gcm","aes-192-cbc","aes-256-cbc","aes-256-gcm","des-cbc"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["aes-256-cbc","aes-192-cbc","aes-128-cbc","aes-256-gcm","aes-128-gcm","3des-cbc"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -321,26 +321,23 @@ func init() {
 
 const (
 
-	// IKEPolicyUpdateEncryptionNr3desDashCbc captures enum value "3des-cbc"
-	IKEPolicyUpdateEncryptionNr3desDashCbc string = "3des-cbc"
-
-	// IKEPolicyUpdateEncryptionAesDash128DashCbc captures enum value "aes-128-cbc"
-	IKEPolicyUpdateEncryptionAesDash128DashCbc string = "aes-128-cbc"
-
-	// IKEPolicyUpdateEncryptionAesDash128DashGcm captures enum value "aes-128-gcm"
-	IKEPolicyUpdateEncryptionAesDash128DashGcm string = "aes-128-gcm"
+	// IKEPolicyUpdateEncryptionAesDash256DashCbc captures enum value "aes-256-cbc"
+	IKEPolicyUpdateEncryptionAesDash256DashCbc string = "aes-256-cbc"
 
 	// IKEPolicyUpdateEncryptionAesDash192DashCbc captures enum value "aes-192-cbc"
 	IKEPolicyUpdateEncryptionAesDash192DashCbc string = "aes-192-cbc"
 
-	// IKEPolicyUpdateEncryptionAesDash256DashCbc captures enum value "aes-256-cbc"
-	IKEPolicyUpdateEncryptionAesDash256DashCbc string = "aes-256-cbc"
+	// IKEPolicyUpdateEncryptionAesDash128DashCbc captures enum value "aes-128-cbc"
+	IKEPolicyUpdateEncryptionAesDash128DashCbc string = "aes-128-cbc"
 
 	// IKEPolicyUpdateEncryptionAesDash256DashGcm captures enum value "aes-256-gcm"
 	IKEPolicyUpdateEncryptionAesDash256DashGcm string = "aes-256-gcm"
 
-	// IKEPolicyUpdateEncryptionDesDashCbc captures enum value "des-cbc"
-	IKEPolicyUpdateEncryptionDesDashCbc string = "des-cbc"
+	// IKEPolicyUpdateEncryptionAesDash128DashGcm captures enum value "aes-128-gcm"
+	IKEPolicyUpdateEncryptionAesDash128DashGcm string = "aes-128-gcm"
+
+	// IKEPolicyUpdateEncryptionNr3desDashCbc captures enum value "3des-cbc"
+	IKEPolicyUpdateEncryptionNr3desDashCbc string = "3des-cbc"
 )
 
 // prop value enum

@@ -12,7 +12,7 @@ import (
 )
 
 // IKEPolicyAuthentications i k e policy authentications
-// Example: ["none","sha-256","sha-384","sha1"]
+// Example: ["sha-256","sha-384","sha1","none"]
 //
 // swagger:model IKEPolicyAuthentications
 type IKEPolicyAuthentications []string

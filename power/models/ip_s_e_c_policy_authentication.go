@@ -21,8 +21,12 @@ import (
 type IPSECPolicyAuthentication string
 
 func NewIPSECPolicyAuthentication(value IPSECPolicyAuthentication) *IPSECPolicyAuthentication {
-	v := value
-	return &v
+	return &value
+}
+
+// Pointer returns a pointer to a freshly-allocated IPSECPolicyAuthentication.
+func (m IPSECPolicyAuthentication) Pointer() *IPSECPolicyAuthentication {
+	return &m
 }
 
 const (
