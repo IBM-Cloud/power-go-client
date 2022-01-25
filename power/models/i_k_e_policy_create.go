@@ -24,15 +24,15 @@ type IKEPolicyCreate struct {
 	Authentication IKEPolicyAuthentication `json:"authentication,omitempty"`
 
 	// DH group of the IKE Policy
-	// Example: 19
+	// Example: 2
 	// Required: true
 	// Enum: [1 2 5 14 19 20 24]
 	DhGroup *int64 `json:"dhGroup"`
 
 	// encryption of the IKE Policy
-	// Example: 3des-cbc
+	// Example: aes-256-cbc
 	// Required: true
-	// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-256-cbc aes-256-gcm des-cbc]
+	// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-128-gcm 3des-cbc]
 	Encryption *string `json:"encryption"`
 
 	// key lifetime
@@ -150,7 +150,7 @@ var iKEPolicyCreateTypeEncryptionPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["3des-cbc","aes-128-cbc","aes-128-gcm","aes-192-cbc","aes-256-cbc","aes-256-gcm","des-cbc"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["aes-256-cbc","aes-192-cbc","aes-128-cbc","aes-256-gcm","aes-128-gcm","3des-cbc"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -160,26 +160,23 @@ func init() {
 
 const (
 
-	// IKEPolicyCreateEncryptionNr3desDashCbc captures enum value "3des-cbc"
-	IKEPolicyCreateEncryptionNr3desDashCbc string = "3des-cbc"
-
-	// IKEPolicyCreateEncryptionAesDash128DashCbc captures enum value "aes-128-cbc"
-	IKEPolicyCreateEncryptionAesDash128DashCbc string = "aes-128-cbc"
-
-	// IKEPolicyCreateEncryptionAesDash128DashGcm captures enum value "aes-128-gcm"
-	IKEPolicyCreateEncryptionAesDash128DashGcm string = "aes-128-gcm"
+	// IKEPolicyCreateEncryptionAesDash256DashCbc captures enum value "aes-256-cbc"
+	IKEPolicyCreateEncryptionAesDash256DashCbc string = "aes-256-cbc"
 
 	// IKEPolicyCreateEncryptionAesDash192DashCbc captures enum value "aes-192-cbc"
 	IKEPolicyCreateEncryptionAesDash192DashCbc string = "aes-192-cbc"
 
-	// IKEPolicyCreateEncryptionAesDash256DashCbc captures enum value "aes-256-cbc"
-	IKEPolicyCreateEncryptionAesDash256DashCbc string = "aes-256-cbc"
+	// IKEPolicyCreateEncryptionAesDash128DashCbc captures enum value "aes-128-cbc"
+	IKEPolicyCreateEncryptionAesDash128DashCbc string = "aes-128-cbc"
 
 	// IKEPolicyCreateEncryptionAesDash256DashGcm captures enum value "aes-256-gcm"
 	IKEPolicyCreateEncryptionAesDash256DashGcm string = "aes-256-gcm"
 
-	// IKEPolicyCreateEncryptionDesDashCbc captures enum value "des-cbc"
-	IKEPolicyCreateEncryptionDesDashCbc string = "des-cbc"
+	// IKEPolicyCreateEncryptionAesDash128DashGcm captures enum value "aes-128-gcm"
+	IKEPolicyCreateEncryptionAesDash128DashGcm string = "aes-128-gcm"
+
+	// IKEPolicyCreateEncryptionNr3desDashCbc captures enum value "3des-cbc"
+	IKEPolicyCreateEncryptionNr3desDashCbc string = "3des-cbc"
 )
 
 // prop value enum

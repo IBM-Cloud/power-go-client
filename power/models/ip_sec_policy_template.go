@@ -30,7 +30,7 @@ type IPSecPolicyTemplate struct {
 	DhGroup *int64 `json:"dhGroup"`
 
 	// ipSecPolicy Encryption default value
-	// Example: 3des-cbc
+	// Example: aes-256-cbc
 	// Required: true
 	Encryption *string `json:"encryption"`
 

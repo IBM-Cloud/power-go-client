@@ -12,7 +12,7 @@ import (
 )
 
 // IPSECPolicyEncryptions IP s e c policy encryptions
-// Example: ["3des-cbc","aes-128-cbc","aes-128-gcm","aes-256-cbc","aes-256-gcm","des-cbc"]
+// Example: ["aes-256-cbc","aes-192-cbc","aes-128-cbc","aes-256-gcm","aes-128-gcm","3des-cbc"]
 //
 // swagger:model IPSECPolicyEncryptions
 type IPSECPolicyEncryptions []string

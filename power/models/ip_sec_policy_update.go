@@ -31,8 +31,8 @@ type IPSecPolicyUpdate struct {
 	DhGroup int64 `json:"dhGroup,omitempty"`
 
 	// connection encryption policy
-	// Example: 3des-cbc
-	// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-192-gcm aes-256-cbc aes-256-gcm des-cbc]
+	// Example: aes-256-cbc
+	// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-192-gcm aes-128-gcm 3des-cbc]
 	Encryption string `json:"encryption,omitempty"`
 
 	// key lifetime
@@ -66,8 +66,8 @@ func (m *IPSecPolicyUpdate) UnmarshalJSON(data []byte) error {
 		DhGroup int64 `json:"dhGroup,omitempty"`
 
 		// connection encryption policy
-		// Example: 3des-cbc
-		// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-192-gcm aes-256-cbc aes-256-gcm des-cbc]
+		// Example: aes-256-cbc
+		// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-192-gcm aes-128-gcm 3des-cbc]
 		Encryption string `json:"encryption,omitempty"`
 
 		// key lifetime
@@ -137,8 +137,8 @@ func (m IPSecPolicyUpdate) MarshalJSON() ([]byte, error) {
 		DhGroup int64 `json:"dhGroup,omitempty"`
 
 		// connection encryption policy
-		// Example: 3des-cbc
-		// Enum: [3des-cbc aes-128-cbc aes-128-gcm aes-192-cbc aes-192-gcm aes-256-cbc aes-256-gcm des-cbc]
+		// Example: aes-256-cbc
+		// Enum: [aes-256-cbc aes-192-cbc aes-128-cbc aes-256-gcm aes-192-gcm aes-128-gcm 3des-cbc]
 		Encryption string `json:"encryption,omitempty"`
 
 		// key lifetime
@@ -292,7 +292,7 @@ var ipSecPolicyUpdateTypeEncryptionPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["3des-cbc","aes-128-cbc","aes-128-gcm","aes-192-cbc","aes-192-gcm","aes-256-cbc","aes-256-gcm","des-cbc"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["aes-256-cbc","aes-192-cbc","aes-128-cbc","aes-256-gcm","aes-192-gcm","aes-128-gcm","3des-cbc"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -302,29 +302,26 @@ func init() {
 
 const (
 
-	// IPSecPolicyUpdateEncryptionNr3desDashCbc captures enum value "3des-cbc"
-	IPSecPolicyUpdateEncryptionNr3desDashCbc string = "3des-cbc"
-
-	// IPSecPolicyUpdateEncryptionAesDash128DashCbc captures enum value "aes-128-cbc"
-	IPSecPolicyUpdateEncryptionAesDash128DashCbc string = "aes-128-cbc"
-
-	// IPSecPolicyUpdateEncryptionAesDash128DashGcm captures enum value "aes-128-gcm"
-	IPSecPolicyUpdateEncryptionAesDash128DashGcm string = "aes-128-gcm"
+	// IPSecPolicyUpdateEncryptionAesDash256DashCbc captures enum value "aes-256-cbc"
+	IPSecPolicyUpdateEncryptionAesDash256DashCbc string = "aes-256-cbc"
 
 	// IPSecPolicyUpdateEncryptionAesDash192DashCbc captures enum value "aes-192-cbc"
 	IPSecPolicyUpdateEncryptionAesDash192DashCbc string = "aes-192-cbc"
 
-	// IPSecPolicyUpdateEncryptionAesDash192DashGcm captures enum value "aes-192-gcm"
-	IPSecPolicyUpdateEncryptionAesDash192DashGcm string = "aes-192-gcm"
-
-	// IPSecPolicyUpdateEncryptionAesDash256DashCbc captures enum value "aes-256-cbc"
-	IPSecPolicyUpdateEncryptionAesDash256DashCbc string = "aes-256-cbc"
+	// IPSecPolicyUpdateEncryptionAesDash128DashCbc captures enum value "aes-128-cbc"
+	IPSecPolicyUpdateEncryptionAesDash128DashCbc string = "aes-128-cbc"
 
 	// IPSecPolicyUpdateEncryptionAesDash256DashGcm captures enum value "aes-256-gcm"
 	IPSecPolicyUpdateEncryptionAesDash256DashGcm string = "aes-256-gcm"
 
-	// IPSecPolicyUpdateEncryptionDesDashCbc captures enum value "des-cbc"
-	IPSecPolicyUpdateEncryptionDesDashCbc string = "des-cbc"
+	// IPSecPolicyUpdateEncryptionAesDash192DashGcm captures enum value "aes-192-gcm"
+	IPSecPolicyUpdateEncryptionAesDash192DashGcm string = "aes-192-gcm"
+
+	// IPSecPolicyUpdateEncryptionAesDash128DashGcm captures enum value "aes-128-gcm"
+	IPSecPolicyUpdateEncryptionAesDash128DashGcm string = "aes-128-gcm"
+
+	// IPSecPolicyUpdateEncryptionNr3desDashCbc captures enum value "3des-cbc"
+	IPSecPolicyUpdateEncryptionNr3desDashCbc string = "3des-cbc"
 )
 
 // prop value enum

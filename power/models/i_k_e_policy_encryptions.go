@@ -12,7 +12,7 @@ import (
 )
 
 // IKEPolicyEncryptions i k e policy encryptions
-// Example: ["3des-cbc","aes-128-cbc","aes-128-gcm","aes-192-cbc","aes-256-cbc","aes-256-gcm","des-cbc"]
+// Example: ["aes-256-cbc","aes-192-cbc","aes-128-cbc","aes-256-gcm","aes-128-gcm","3des-cbc"]
 //
 // swagger:model IKEPolicyEncryptions
 type IKEPolicyEncryptions []string
