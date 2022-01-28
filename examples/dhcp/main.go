@@ -6,6 +6,7 @@ import (
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/IBM/go-sdk-core/v5/core"
 )
 
@@ -46,7 +47,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	dhcpServer, err := powerClient.Create()
+	dhcpServer, err := powerClient.Create(&models.DHCPServerCreate{})
 	if err != nil {
 		log.Fatal(err)
 	}

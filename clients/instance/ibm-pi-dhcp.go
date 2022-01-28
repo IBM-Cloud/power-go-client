@@ -25,10 +25,10 @@ func NewIBMPIDhcpClient(ctx context.Context, sess *ibmpisession.IBMPISession, cl
 }
 
 // Create
-func (f *IBMPIDhcpClient) Create() (*models.DHCPServer, error) {
+func (f *IBMPIDhcpClient) Create(body *models.DHCPServerCreate) (*models.DHCPServer, error) {
 	params := p_cloud_service_d_h_c_p.NewPcloudDhcpPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID)
+		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postaccepted, err := f.session.Power.PCloudServicedhcp.PcloudDhcpPost(params, f.authInfo)
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateDchpOperationFailed, f.cloudInstanceID, err)
