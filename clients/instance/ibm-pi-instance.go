@@ -246,7 +246,7 @@ func (f *IBMPIInstanceClient) RestoreSnapShotVM(id, snapshotid, restoreAction st
 		WithSnapshotID(snapshotid).WithRestoreFailAction(&restoreAction).
 		WithBody(body)
 	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.authInfo)
-	if err != nil || resp == nil || resp.Payload == nil {
+	if err != nil {
 		return nil, fmt.Errorf("failed to restrore the snapshot for the pvminstance %s: %w", id, err)
 	}
 	if resp == nil || resp.Payload == nil {

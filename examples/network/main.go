@@ -84,20 +84,31 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[1]****************** %+v\n", createRespOk)
+	log.Printf("***************[1]****************** %+v\n", *createRespOk)
 
 	networkID := *createRespOk.NetworkID
+
+	newName := "updated_name"
+	updateBody := &models.NetworkUpdate{
+		Name: &newName,
+	}
+	updateRespOk, err := powerClient.Update(networkID, updateBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[2]****************** %+v\n", *updateRespOk)
+
 	getResp, err := powerClient.Get(networkID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[2]****************** %+v \n", *getResp)
+	log.Printf("***************[3]****************** %+v \n", *getResp)
 
 	getpubResp, err := powerClient.GetAllPublic()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[3]****************** %+v \n", *getpubResp)
+	log.Printf("***************[4]****************** %+v \n", *getpubResp)
 
 	portBody := &models.NetworkPortCreate{
 		Description: "Network Port",
@@ -106,19 +117,19 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[4]****************** %+v \n", *createPortResp)
+	log.Printf("***************[5]****************** %+v \n", *createPortResp)
 
 	getPortResp, err := powerClient.GetPort(networkID, *createPortResp.PortID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[5]****************** %+v \n", *getPortResp)
+	log.Printf("***************[6]****************** %+v \n", *getPortResp)
 
 	getallPortResp, err := powerClient.GetAllPorts(networkID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[6]****************** %+v \n", *getallPortResp)
+	log.Printf("***************[7]****************** %+v \n", *getallPortResp)
 
 	err = powerClient.DeletePort(networkID, *createPortResp.PortID)
 	if err != nil {

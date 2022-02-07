@@ -33,7 +33,7 @@ func (f *IBMPIVolumeClient) Get(id string) (*models.Volume, error) {
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetVolumeOperationFailed, id, err)
 	}
-	if err != nil || resp.Payload == nil {
+	if resp != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Volume %s", id)
 	}
 	return resp.Payload, nil
@@ -78,7 +78,7 @@ func (f *IBMPIVolumeClient) CreateVolumeV2(body *models.MultiVolumesCreate) (*mo
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateVolumeV2OperationFailed, *body.Name, err)
 	}
-	if err != nil || resp.Payload == nil {
+	if resp != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Create Volume v2")
 	}
 	return resp.Payload, nil
@@ -93,7 +93,7 @@ func (f *IBMPIVolumeClient) CreateVolume(body *models.CreateDataVolume) (*models
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateVolumeOperationFailed, *body.Name, err)
 	}
-	if err != nil || resp.Payload == nil {
+	if resp != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Create Volume")
 	}
 	return resp.Payload, nil
@@ -106,10 +106,10 @@ func (f *IBMPIVolumeClient) UpdateVolume(id string, body *models.UpdateVolume) (
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id).
 		WithBody(body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesPut(params, f.authInfo)
-	if err != nil || resp == nil || resp.Payload == nil {
+	if err != nil {
 		return nil, fmt.Errorf(errors.UpdateVolumeOperationFailed, id, err)
 	}
-	if err != nil || resp.Payload == nil {
+	if resp != nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Update Volume %s", id)
 	}
 	return resp.Payload, nil

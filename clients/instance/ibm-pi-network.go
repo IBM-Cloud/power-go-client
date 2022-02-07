@@ -72,6 +72,22 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 	return nil, fmt.Errorf("failed to perform Create Network Operation for Network %s", body.Name)
 }
 
+// Update ...
+func (f *IBMPINetworkClient) Update(id string, body *models.NetworkUpdate) (*models.Network, error) {
+	params := p_cloud_networks.NewPcloudNetworksPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithNetworkID(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPut(params, f.authInfo)
+	if err != nil {
+		return nil, fmt.Errorf("failed to perform Update Network Operation for Network %s with error %w", id, err)
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to perform Update Network Operation for Network %s", id)
+	}
+	return resp.Payload, nil
+}
+
 // GetPublic ...
 func (f *IBMPINetworkClient) GetAllPublic() (*models.Networks, error) {
 	filterQuery := "type=\"pub-vlan\""
