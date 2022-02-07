@@ -80,4 +80,4 @@ This section contains some steps required by the dev for contributing changes to
 
 1. Install the latest [go-swagger](https://github.com/go-swagger/go-swagger/releases) version on your machine.
 1. Download the last released version of the service broker API definitions (`swagger.yaml`).
-1. Run `./bin/generate-swagger.sh` from the project root.
+1. Run `./bin/update-swagger.sh` from the project root.
