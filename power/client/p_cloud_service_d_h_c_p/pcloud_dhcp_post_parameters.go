@@ -14,6 +14,8 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudDhcpPostParams creates a new PcloudDhcpPostParams object,
@@ -58,6 +60,12 @@ func NewPcloudDhcpPostParamsWithHTTPClient(client *http.Client) *PcloudDhcpPostP
    Typically these are written to a http.Request.
 */
 type PcloudDhcpPostParams struct {
+
+	/* Body.
+
+	   Parameters used during creation of DHCP service
+	*/
+	Body *models.DHCPServerCreate
 
 	/* CloudInstanceID.
 
@@ -118,6 +126,17 @@ func (o *PcloudDhcpPostParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
+// WithBody adds the body to the pcloud dhcp post params
+func (o *PcloudDhcpPostParams) WithBody(body *models.DHCPServerCreate) *PcloudDhcpPostParams {
+	o.SetBody(body)
+	return o
+}
+
+// SetBody adds the body to the pcloud dhcp post params
+func (o *PcloudDhcpPostParams) SetBody(body *models.DHCPServerCreate) {
+	o.Body = body
+}
+
 // WithCloudInstanceID adds the cloudInstanceID to the pcloud dhcp post params
 func (o *PcloudDhcpPostParams) WithCloudInstanceID(cloudInstanceID string) *PcloudDhcpPostParams {
 	o.SetCloudInstanceID(cloudInstanceID)
@@ -136,6 +155,11 @@ func (o *PcloudDhcpPostParams) WriteToRequest(r runtime.ClientRequest, reg strfm
 		return err
 	}
 	var res []error
+	if o.Body != nil {
+		if err := r.SetBodyParam(o.Body); err != nil {
+			return err
+		}
+	}
 
 	// path param cloud_instance_id
 	if err := r.SetPathParam("cloud_instance_id", o.CloudInstanceID); err != nil {
