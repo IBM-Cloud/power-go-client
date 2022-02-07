@@ -80,6 +80,4 @@ This section contains some steps required by the dev for contributing changes to
 
 1. Install the latest [go-swagger](https://github.com/go-swagger/go-swagger/releases) version on your machine.
 1. Download the last released version of the service broker API definitions (`swagger.yaml`).
-1. Remove existing files under `power` directory `rm -r ./power/models/ && rm -rf ./power/client/`.
-1. Generate the client `swagger generate client -f swagger.yaml -t ./power/`
-1. Remove the unused files `rm ./power/models/user_access.go && rm ./power/models/principal.go`
+1. Run `./bin/generate-swagger.sh` from the project root.
