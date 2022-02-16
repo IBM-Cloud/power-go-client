@@ -38,6 +38,9 @@ type SAPCreate struct {
 	// pin policy
 	PinPolicy PinPolicy `json:"pinPolicy,omitempty"`
 
+	// The placement group for the server
+	PlacementGroup string `json:"placementGroup,omitempty"`
+
 	// SAP Profile ID for the amount of cores and memory
 	// Required: true
 	ProfileID *string `json:"profileID"`
