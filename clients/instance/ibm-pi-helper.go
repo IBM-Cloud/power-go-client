@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/go-openapi/runtime"
 )
 
 /*
@@ -15,7 +14,6 @@ Helper methods that will be used by the client classes
 type IBMPIClient struct {
 	session         *ibmpisession.IBMPISession
 	cloudInstanceID string
-	authInfo        runtime.ClientAuthInfoWriter
 	ctx             context.Context
 }
 
@@ -24,7 +22,6 @@ func NewIBMPIClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudI
 	return &IBMPIClient{
 		session:         sess,
 		cloudInstanceID: cloudInstanceID,
-		authInfo:        sess.AuthInfo(cloudInstanceID),
 		ctx:             ctx,
 	}
 }
