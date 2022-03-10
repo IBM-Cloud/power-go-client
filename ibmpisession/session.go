@@ -2,6 +2,7 @@ package ibmpisession
 
 import (
 	"fmt"
+	"regexp"
 	"strings"
 
 	"github.com/go-openapi/runtime"
@@ -31,13 +32,12 @@ type IBMPIOptions struct {
 
 	// Region of the Power Cloud Service Instance
 	// For generating the default endpoint
-	// Required when URL or env `IBMCLOUD_POWER_API_ENDPOINT` is not set
+	// Deprecated: Region is deprecated, the URL is auto generated based on Zone when not provided.
 	Region string
 
 	// Power Virtual Server host or URL endpoint
 	// This will be used instead of generating the default host
 	// eg: dal.power-iaas.cloud.ibm.com
-	// Required when Region is not provided
 	URL string
 
 	// Account id of the Power Cloud Service Instance
@@ -80,7 +80,9 @@ func NewIBMPISession(o *IBMPIOptions) (*IBMPISession, error) {
 			if o.Region != "" {
 				serviceURL = o.Region + ".power-iaas.cloud.ibm.com"
 			} else {
-				return nil, fmt.Errorf("atleast one of Region or URL is required")
+				region := costructRegionFromZone(o.Zone)
+				serviceURL = region + ".power-iaas.cloud.ibm.com"
+
 			}
 		}
 	}
@@ -118,4 +120,18 @@ func (s *IBMPISession) AuthInfo(cloudInstanceID string) runtime.ClientAuthInfoWr
 		}
 		return r.SetHeaderParam("CRN", fmt.Sprintf(s.CRNFormat, cloudInstanceID))
 	})
+}
+
+func costructRegionFromZone(zone string) string {
+	var regex string
+	if strings.Contains(zone, "-") {
+		// it's a region or AZ
+		regex = "-[0-9]+$"
+	} else {
+		// it's a datacenter
+		regex = "[0-9]+$"
+	}
+
+	reg, _ := regexp.Compile(regex)
+	return reg.ReplaceAllString(zone, "")
 }

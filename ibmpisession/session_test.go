@@ -94,7 +94,10 @@ func TestNewIBMPISession(t *testing.T) {
 					Zone:          "dal12",
 				},
 			},
-			wantErr: true,
+			want: &IBMPISession{
+				Options:   o1,
+				CRNFormat: "crn:v1:bluemix:public:power-iaas:dal12:a/1234:%s::",
+			},
 		},
 		{
 			name: "Without URL but with region",
@@ -249,6 +252,46 @@ func TestIBMPISession_AuthInfo(t *testing.T) {
 			crn := r.Headers.Get("CRN")
 			if crn != tt.wantHeaders.crn {
 				t.Errorf("AuthInfo().AuthenticateRequest() CRN = %v, want %v", crn, tt.wantHeaders.crn)
+			}
+		})
+	}
+}
+
+func Test_costructRegionFromZone(t *testing.T) {
+	type args struct {
+		zone string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "DC Zone",
+			args: args{
+				zone: "dal12",
+			},
+			want: "dal",
+		},
+		{
+			name: "AZ Zone",
+			args: args{
+				zone: "eu-de-1",
+			},
+			want: "eu-de",
+		},
+		{
+			name: "Region Zone",
+			args: args{
+				zone: "us-south",
+			},
+			want: "us-south",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := costructRegionFromZone(tt.args.zone); got != tt.want {
+				t.Errorf("costructRegionFromZone() = %v, want %v", got, tt.want)
 			}
 		})
 	}
