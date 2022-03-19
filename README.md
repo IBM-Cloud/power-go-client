@@ -54,16 +54,20 @@ func main(){
 		Authenticator: authenticator,
 		UserAccount:   accountID,
 		Zone:          zone,
-		URL:           url,
 	}
     s, err := ibmpisession.NewIBMPISession(o)
     .....
 }
 ```
-- `authenticator`: Please check https://github.com/IBM/go-sdk-core/blob/main/Authentication.md for different options available for authenticating API calls.
-- `accountID`: Account id of the Power Cloud Service Instance
-- `zone`: Zone of the Power Cloud Service Instance
-- `url`: Power Virtual Server host or URL endpoint. You can also set env variable `IBMCLOUD_POWER_API_ENDPOINT`.
+Type `IBMPIOptions` required fields:
+- `Authenticator`: Please check https://github.com/IBM/go-sdk-core/blob/main/Authentication.md for different options available for authenticating API calls.
+- `UserAccount`: Account ID of the Power Cloud Service Instance.
+- `Zone`: Location of the Power Cloud Service Instance.
+
+Other optional fields:
+-	`Debug`: Enable/Disable http transport debugging log.
+- `Region`: Region of the Power Cloud Service Instance. This is used for generating the default service URL. *Deprecated*: The region and endpoint is auto generated based on `Zone`.
+- `URL`: Power Virtual Server host or URL endpoint. By default it uses `power-iaas.cloud.ibm.com`. In case of test environment you can set the value to `power-iaas.test.cloud.ibm.com`. You can also use env variable `IBMCLOUD_POWER_API_ENDPOINT`. Note that the region value is prepended to the host string if not present eg: `<region>.power-iaas.cloud.ibm.com`.
 
 Also you can refer to the [examples](examples) directory for some resources that shows how to use the SDK.
 

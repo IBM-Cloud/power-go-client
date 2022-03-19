@@ -2,7 +2,6 @@ package ibmpisession
 
 import (
 	"fmt"
-	"regexp"
 	"strings"
 
 	"github.com/go-openapi/runtime"
@@ -69,22 +68,26 @@ func NewIBMPISession(o *IBMPIOptions) (*IBMPISession, error) {
 		return nil, fmt.Errorf("option Zone is required")
 	}
 
+	region := o.Region
+	if region == "" {
+		region = costructRegionFromZone(o.Zone)
+	}
+
 	var serviceURL string
 	if o.URL != "" {
 		serviceURL = o.URL
 	} else {
-		// If URL is not set check in env
+		// Check in env
 		serviceURL = helpers.GetPowerEndPoint()
+		// If not set in env use prod endpoint
 		if serviceURL == "" {
-			// Generate default endpoint with Region
-			if o.Region != "" {
-				serviceURL = o.Region + ".power-iaas.cloud.ibm.com"
-			} else {
-				region := costructRegionFromZone(o.Zone)
-				serviceURL = region + ".power-iaas.cloud.ibm.com"
-
-			}
+			serviceURL = "power-iaas.cloud.ibm.com"
 		}
+	}
+
+	// Prepend region to endpoint if not present
+	if strings.HasPrefix(serviceURL, "power-iaas.") {
+		serviceURL = region + "." + serviceURL
 	}
 
 	// We need just the server host from the URL
@@ -120,18 +123,4 @@ func (s *IBMPISession) AuthInfo(cloudInstanceID string) runtime.ClientAuthInfoWr
 		}
 		return r.SetHeaderParam("CRN", fmt.Sprintf(s.CRNFormat, cloudInstanceID))
 	})
-}
-
-func costructRegionFromZone(zone string) string {
-	var regex string
-	if strings.Contains(zone, "-") {
-		// it's a region or AZ
-		regex = "-[0-9]+$"
-	} else {
-		// it's a datacenter
-		regex = "[0-9]+$"
-	}
-
-	reg, _ := regexp.Compile(regex)
-	return reg.ReplaceAllString(zone, "")
 }

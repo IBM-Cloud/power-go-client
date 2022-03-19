@@ -155,3 +155,43 @@ func Test_getPIClient(t *testing.T) {
 		})
 	}
 }
+
+func Test_costructRegionFromZone(t *testing.T) {
+	type args struct {
+		zone string
+	}
+	tests := []struct {
+		name string
+		args args
+		want string
+	}{
+		{
+			name: "DC Zone",
+			args: args{
+				zone: "dal12",
+			},
+			want: "dal",
+		},
+		{
+			name: "AZ Zone",
+			args: args{
+				zone: "eu-de-1",
+			},
+			want: "eu-de",
+		},
+		{
+			name: "Region Zone",
+			args: args{
+				zone: "us-south",
+			},
+			want: "us-south",
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := costructRegionFromZone(tt.args.zone); got != tt.want {
+				t.Errorf("costructRegionFromZone() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
