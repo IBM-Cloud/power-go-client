@@ -2,6 +2,7 @@ package ibmpisession
 
 import (
 	"fmt"
+	"os"
 	"testing"
 
 	"github.com/IBM/go-sdk-core/v5/core"
@@ -165,6 +166,48 @@ func TestNewIBMPISession(t *testing.T) {
 	}
 }
 
+func TestNewIBMPISessionViaEnv(t *testing.T) {
+	os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "power-iaas.test.cloud.ibm.com")
+	type args struct {
+		o *IBMPIOptions
+	}
+	tests := []struct {
+		name    string
+		args    args
+		want    *IBMPISession
+		wantErr bool
+	}{
+		{
+			name: "URL from Env Without Region",
+			args: args{
+				o: &IBMPIOptions{
+					Authenticator: &core.NoAuthAuthenticator{},
+					UserAccount:   "1234",
+					Zone:          "dal12",
+				},
+			},
+			want: &IBMPISession{
+				Options: &IBMPIOptions{
+					Authenticator: &core.NoAuthAuthenticator{},
+				},
+				CRNFormat: "crn:v1:staging:public:power-iaas:dal12:a/1234:%s::",
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			got, err := NewIBMPISession(tt.args.o)
+			if (err != nil) != tt.wantErr {
+				t.Errorf("NewIBMPISession() error = %v, wantErr %v", err, tt.wantErr)
+				return
+			}
+			if same, msg := isIBMPISessionEqual(got, tt.want); !same {
+				t.Error(msg)
+			}
+		})
+	}
+}
+
 func isIBMPISessionEqual(x *IBMPISession, y *IBMPISession) (bool, string) {
 	if x == nil && y == nil {
 		return true, ""
@@ -252,46 +295,6 @@ func TestIBMPISession_AuthInfo(t *testing.T) {
 			crn := r.Headers.Get("CRN")
 			if crn != tt.wantHeaders.crn {
 				t.Errorf("AuthInfo().AuthenticateRequest() CRN = %v, want %v", crn, tt.wantHeaders.crn)
-			}
-		})
-	}
-}
-
-func Test_costructRegionFromZone(t *testing.T) {
-	type args struct {
-		zone string
-	}
-	tests := []struct {
-		name string
-		args args
-		want string
-	}{
-		{
-			name: "DC Zone",
-			args: args{
-				zone: "dal12",
-			},
-			want: "dal",
-		},
-		{
-			name: "AZ Zone",
-			args: args{
-				zone: "eu-de-1",
-			},
-			want: "eu-de",
-		},
-		{
-			name: "Region Zone",
-			args: args{
-				zone: "us-south",
-			},
-			want: "us-south",
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := costructRegionFromZone(tt.args.zone); got != tt.want {
-				t.Errorf("costructRegionFromZone() = %v, want %v", got, tt.want)
 			}
 		})
 	}
