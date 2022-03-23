@@ -35,7 +35,7 @@ type PVMInstanceCreate struct {
 	// Required: true
 	Memory *float64 `json:"memory"`
 
-	// Indicates if the server is allowed to migrate between hosts
+	// (deprecated - replaced by pinPolicy) Indicates if the server is allowed to migrate between hosts
 	Migratable *bool `json:"migratable,omitempty"`
 
 	// (deprecated - replaced by networks) List of Network IDs
