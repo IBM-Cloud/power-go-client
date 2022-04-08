@@ -14,10 +14,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SharedProcPoolCreate shared proc pool create
+// SharedProcessorPoolCreate shared processor pool create
 //
-// swagger:model SharedProcPoolCreate
-type SharedProcPoolCreate struct {
+// swagger:model SharedProcessorPoolCreate
+type SharedProcessorPoolCreate struct {
 
 	// The host group where the host will be chosen if not provided
 	// Required: true
@@ -27,7 +27,7 @@ type SharedProcPoolCreate struct {
 	// Required: true
 	MaxProcUnits *float64 `json:"maxProcUnits"`
 
-	// The name of the Processor Pool
+	// The name of the Shared Processor Pool
 	// Required: true
 	Name *string `json:"name"`
 
@@ -35,8 +35,8 @@ type SharedProcPoolCreate struct {
 	PlacementGroupID string `json:"placementGroupID,omitempty"`
 }
 
-// Validate validates this shared proc pool create
-func (m *SharedProcPoolCreate) Validate(formats strfmt.Registry) error {
+// Validate validates this shared processor pool create
+func (m *SharedProcessorPoolCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateHostGroup(formats); err != nil {
@@ -57,7 +57,7 @@ func (m *SharedProcPoolCreate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SharedProcPoolCreate) validateHostGroup(formats strfmt.Registry) error {
+func (m *SharedProcessorPoolCreate) validateHostGroup(formats strfmt.Registry) error {
 
 	if err := validate.Required("hostGroup", "body", m.HostGroup); err != nil {
 		return err
@@ -66,7 +66,7 @@ func (m *SharedProcPoolCreate) validateHostGroup(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *SharedProcPoolCreate) validateMaxProcUnits(formats strfmt.Registry) error {
+func (m *SharedProcessorPoolCreate) validateMaxProcUnits(formats strfmt.Registry) error {
 
 	if err := validate.Required("maxProcUnits", "body", m.MaxProcUnits); err != nil {
 		return err
@@ -75,7 +75,7 @@ func (m *SharedProcPoolCreate) validateMaxProcUnits(formats strfmt.Registry) err
 	return nil
 }
 
-func (m *SharedProcPoolCreate) validateName(formats strfmt.Registry) error {
+func (m *SharedProcessorPoolCreate) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
@@ -84,13 +84,13 @@ func (m *SharedProcPoolCreate) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this shared proc pool create based on context it is used
-func (m *SharedProcPoolCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this shared processor pool create based on context it is used
+func (m *SharedProcessorPoolCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *SharedProcPoolCreate) MarshalBinary() ([]byte, error) {
+func (m *SharedProcessorPoolCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -98,8 +98,8 @@ func (m *SharedProcPoolCreate) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *SharedProcPoolCreate) UnmarshalBinary(b []byte) error {
-	var res SharedProcPoolCreate
+func (m *SharedProcessorPoolCreate) UnmarshalBinary(b []byte) error {
+	var res SharedProcessorPoolCreate
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
