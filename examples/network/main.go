@@ -8,7 +8,7 @@ import (
 
 	"github.com/apparentlymart/go-cidr/cidr"
 
-	v "github.com/IBM-Cloud/power-go-client/clients/instance"
+	v "github.com/IBM-Cloud/power-go-client/clients"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/IBM/go-sdk-core/v5/core"

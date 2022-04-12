@@ -4,7 +4,7 @@ import (
 	"context"
 	"log"
 
-	v "github.com/IBM-Cloud/power-go-client/clients/instance"
+	v "github.com/IBM-Cloud/power-go-client/clients"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM/go-sdk-core/v5/core"
 )

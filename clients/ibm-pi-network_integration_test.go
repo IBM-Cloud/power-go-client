@@ -12,7 +12,7 @@ import (
 	"github.com/apparentlymart/go-cidr/cidr"
 	"github.com/stretchr/testify/require"
 
-	client "github.com/IBM-Cloud/power-go-client/clients/instance"
+	client "github.com/IBM-Cloud/power-go-client/clients"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 

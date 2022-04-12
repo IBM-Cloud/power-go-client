@@ -31,7 +31,7 @@ import (
 	"testing"
 	"time"
 
-	client "github.com/IBM-Cloud/power-go-client/clients/instance"
+	client "github.com/IBM-Cloud/power-go-client/clients"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	core "github.com/IBM/go-sdk-core/v5/core"
 	"github.com/stretchr/testify/require"

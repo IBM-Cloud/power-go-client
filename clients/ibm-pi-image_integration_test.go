@@ -6,7 +6,7 @@ import (
 
 	utl "internal/testutils"
 
-	client "github.com/IBM-Cloud/power-go-client/clients/instance"
+	client "github.com/IBM-Cloud/power-go-client/clients"
 	"github.com/stretchr/testify/require"
 )
 
