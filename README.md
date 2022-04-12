@@ -1,6 +1,8 @@
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/IBM-Cloud/power-go-client)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/IBM-Cloud/power-go-client)
 ![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IBM-Cloud/power-go-client/Go)
+![GitHub contributors](https://img.shields.io/github/contributors/IBM-Cloud/power-go-client?color=blueviolet)
+![GitHub](https://img.shields.io/github/license/IBM-Cloud/power-go-client)
 
 # IBM Cloud SDK for Power Cloud
 
@@ -9,8 +11,10 @@ The power-go-client project provides the Go SDK for IBM® Power Systems™ Virtu
 ## Prerequisites
 
 - An [IBM Cloud Account](https://cloud.ibm.com/registration)
-- An IBM Cloud [IAM API key](https://cloud.ibm.com/docs/account?topic=account-userapikey) or [Token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey) allow the SDK to access your account.
-- Go version 1.17 or above.
+- An IBM Cloud [IAM API key](https://cloud.ibm.com/docs/account?topic=account-userapikey) or [Token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey) allow the SDK to access your account
+- Go 1.17+
+  - [Homebrew](https://formulae.brew.sh/formula/go)
+  - [Source](https://go.dev/doc/install)
 
 ## Install
 
