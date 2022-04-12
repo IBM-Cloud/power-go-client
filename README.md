@@ -1,3 +1,7 @@
+![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/IBM-Cloud/power-go-client)
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/IBM-Cloud/power-go-client)
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IBM-Cloud/power-go-client/Go)
+
 # IBM Cloud SDK for Power Cloud
 
 The power-go-client project provides the Go SDK for IBM® Power Systems™ Virtual Server.
