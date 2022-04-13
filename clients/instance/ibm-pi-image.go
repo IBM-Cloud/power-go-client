@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/IBM/go-sdk-core/v5/core"
+
 	"github.com/IBM-Cloud/power-go-client/errors"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
@@ -56,9 +58,8 @@ func (f *IBMPIImageClient) GetAll() (*models.Images, error) {
 
 // Create the stock image
 func (f *IBMPIImageClient) Create(body *models.CreateImage) (*models.Image, error) {
-	if len(*body.Source) == 0 {
-		defaultSource := "root-project"
-		body.Source = &defaultSource
+	if body.Source == nil || len(*body.Source) == 0 {
+		body.Source = core.StringPtr("root-project")
 	}
 	params := p_cloud_images.NewPcloudCloudinstancesImagesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
