@@ -7,7 +7,7 @@ import (
 	"strconv"
 	"testing"
 
-	utl "internal/testutils"
+	utl "github.com/IBM-Cloud/power-go-client/internal/testutils"
 
 	"github.com/apparentlymart/go-cidr/cidr"
 	"github.com/stretchr/testify/require"
