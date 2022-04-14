@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	utl "internal/testutils"
+	utl "github.com/IBM-Cloud/power-go-client/internal/testutils"
 
 	client "github.com/IBM-Cloud/power-go-client/clients/instance"
 	"github.com/IBM-Cloud/power-go-client/power/models"
