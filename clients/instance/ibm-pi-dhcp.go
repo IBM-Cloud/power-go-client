@@ -5,61 +5,86 @@ import (
 	"fmt"
 
 	"github.com/IBM-Cloud/power-go-client/errors"
-	"github.com/IBM-Cloud/power-go-client/helpers"
-
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
+	params "github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/go-openapi/runtime"
 )
 
 // NewIBMPIDhcpClient ...
 type IBMPIDhcpClient struct {
-	IBMPIClient
+	auth            runtime.ClientAuthInfoWriter
+	cloudInstanceID string
+	context         context.Context
+	request         params.ClientService
 }
 
 // NewIBMPIDhcpClient ...
 func NewIBMPIDhcpClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIDhcpClient {
 	return &IBMPIDhcpClient{
-		*NewIBMPIClient(ctx, sess, cloudInstanceID),
+		auth:            sess.AuthInfo(cloudInstanceID),
+		cloudInstanceID: cloudInstanceID,
+		context:         ctx,
+		request:         sess.Power.PCloudServicedhcp,
 	}
 }
 
-// Create
-func (f *IBMPIDhcpClient) Create(body *models.DHCPServerCreate) (*models.DHCPServer, error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpPostParams().
-		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
-	postaccepted, err := f.session.Power.PCloudServicedhcp.PcloudDhcpPost(params, f.session.AuthInfo(f.cloudInstanceID))
+// Create a DHCP
+func (f *IBMPIDhcpClient) Create(createBody *models.DHCPServerCreate) (*models.DHCPServer, error) {
+
+	// Create params and send request
+	params := &params.PcloudDhcpPostParams{
+		Body:            createBody,
+		CloudInstanceID: f.cloudInstanceID,
+		Context:         f.context,
+	}
+	//params.SetTimeout(helpers.PICreateTimeOut)
+	resp, err := f.request.PcloudDhcpPost(params, f.auth)
+
+	// Handle errors
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateDchpOperationFailed, f.cloudInstanceID, err)
 	}
-	if postaccepted != nil && postaccepted.Payload != nil {
-		return postaccepted.Payload, nil
+	if resp != nil && resp.Payload != nil {
+		return resp.Payload, nil
 	}
 	return nil, fmt.Errorf("failed to Create DHCP")
 }
 
-// Get
-func (f *IBMPIDhcpClient) Get(id string) (*models.DHCPServerDetail, error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithDhcpID(id)
-	resp, err := f.session.Power.PCloudServicedhcp.PcloudDhcpGet(params, f.session.AuthInfo(f.cloudInstanceID))
+// Get a DHCP
+func (f *IBMPIDhcpClient) Get(dhcpID string) (*models.DHCPServerDetail, error) {
+
+	// Create params and send request
+	params := &params.PcloudDhcpGetParams{
+		CloudInstanceID: f.cloudInstanceID,
+		Context:         f.context,
+		DhcpID:          dhcpID,
+	}
+	//params.SetTimeout(helpers.PIGetTimeOut)
+	resp, err := f.request.PcloudDhcpGet(params, f.auth)
+
+	// Handle errors
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetDhcpOperationFailed, id, err)
+		return nil, fmt.Errorf(errors.GetDhcpOperationFailed, dhcpID, err)
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to Get DHCP %s", id)
+		return nil, fmt.Errorf("failed to Get DHCP %s", dhcpID)
 	}
 	return resp.Payload, nil
 }
 
-// GetAll
+// Get All DHCP's
 func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetallParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudServicedhcp.PcloudDhcpGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+
+	// Create params and send request
+	params := &params.PcloudDhcpGetallParams{
+		CloudInstanceID: f.cloudInstanceID,
+		Context:         f.context,
+	}
+	//params.SetTimeout(helpers.PIGetTimeOut)
+	resp, err := f.request.PcloudDhcpGetall(params, f.auth)
+
+	// Handle errors
 	if err != nil {
 		return nil, fmt.Errorf("failed to Get all DHCP servers: %w", err)
 	}
@@ -69,14 +94,21 @@ func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
 	return resp.Payload, nil
 }
 
-// Delete
-func (f *IBMPIDhcpClient) Delete(id string) error {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpDeleteParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithDhcpID(id)
-	_, err := f.session.Power.PCloudServicedhcp.PcloudDhcpDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+// Delete a DHCP
+func (f *IBMPIDhcpClient) Delete(dhcpID string) error {
+
+	// Create params and send request
+	params := &params.PcloudDhcpDeleteParams{
+		CloudInstanceID: f.cloudInstanceID,
+		DhcpID:          dhcpID,
+		Context:         f.context,
+	}
+	//params.SetTimeout(helpers.PIDeleteTimeOut)
+	_, err := f.request.PcloudDhcpDelete(params, f.auth)
+
+	// Handle errors
 	if err != nil {
-		return fmt.Errorf(errors.DeleteDhcpOperationFailed, id, err)
+		return fmt.Errorf(errors.DeleteDhcpOperationFailed, dhcpID, err)
 	}
 	return nil
 }
