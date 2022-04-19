@@ -5,46 +5,64 @@ import (
 	"fmt"
 
 	"github.com/IBM-Cloud/power-go-client/errors"
-	"github.com/IBM-Cloud/power-go-client/helpers"
-
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_jobs"
+	params "github.com/IBM-Cloud/power-go-client/power/client/p_cloud_jobs"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/go-openapi/runtime"
 )
 
 // IBMPIJobClient ...
 type IBMPIJobClient struct {
-	IBMPIClient
+	auth            runtime.ClientAuthInfoWriter
+	cloudInstanceID string
+	context         context.Context
+	request         params.ClientService
 }
 
 // NewIBMPIJobClient ...
 func NewIBMPIJobClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIJobClient {
 	return &IBMPIJobClient{
-		*NewIBMPIClient(ctx, sess, cloudInstanceID),
+		auth:            sess.AuthInfo(cloudInstanceID),
+		cloudInstanceID: cloudInstanceID,
+		context:         ctx,
+		request:         sess.Power.PCloudJobs,
 	}
 }
 
-// Get information about a job
-func (f *IBMPIJobClient) Get(id string) (*models.Job, error) {
-	params := p_cloud_jobs.NewPcloudCloudinstancesJobsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithJobID(id)
-	resp, err := f.session.Power.PCloudJobs.PcloudCloudinstancesJobsGet(params, f.session.AuthInfo(f.cloudInstanceID))
+// Get a Job
+func (f *IBMPIJobClient) Get(jobId string) (*models.Job, error) {
+
+	// Create params and send request
+	params := &params.PcloudCloudinstancesJobsGetParams{
+		CloudInstanceID: f.cloudInstanceID,
+		Context:         f.context,
+		JobID:           jobId,
+	}
+	//params.SetTimeout(helpers.PIGetTimeOut)
+	resp, err := f.request.PcloudCloudinstancesJobsGet(params, f.auth)
+
+	// Handle errors
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetJobOperationFailed, id, err)
+		return nil, fmt.Errorf(errors.GetJobOperationFailed, jobId, err)
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to perform get Job operation for job id %s", id)
+		return nil, fmt.Errorf("failed to perform get Job operation for job id %s", jobId)
 	}
 	return resp.Payload, nil
 }
 
-// Gell all jobs
+// Get All Jobs
 func (f *IBMPIJobClient) GetAll() (*models.Jobs, error) {
-	params := p_cloud_jobs.NewPcloudCloudinstancesJobsGetallParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudJobs.PcloudCloudinstancesJobsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+
+	// Create params and send request
+	params := &params.PcloudCloudinstancesJobsGetallParams{
+		CloudInstanceID: f.cloudInstanceID,
+		Context:         f.context,
+	}
+	//params.SetTimeout(helpers.PIGetTimeOut)
+	resp, err := f.request.PcloudCloudinstancesJobsGetall(params, f.auth)
+
+	// Handle errors
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetAllJobsOperationFailed, err)
 	}
@@ -54,14 +72,21 @@ func (f *IBMPIJobClient) GetAll() (*models.Jobs, error) {
 	return resp.Payload, nil
 }
 
-// Delete a job
-func (f *IBMPIJobClient) Delete(id string) error {
-	params := p_cloud_jobs.NewPcloudCloudinstancesJobsDeleteParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithJobID(id)
-	_, err := f.session.Power.PCloudJobs.PcloudCloudinstancesJobsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+// Delete a Job
+func (f *IBMPIJobClient) Delete(jobId string) error {
+
+	// Create params and send request
+	params := &params.PcloudCloudinstancesJobsDeleteParams{
+		CloudInstanceID: f.cloudInstanceID,
+		Context:         f.context,
+		JobID:           jobId,
+	}
+	//params.SetTimeout(helpers.PIGetTimeOut)
+	_, err := f.request.PcloudCloudinstancesJobsDelete(params, f.auth)
+
+	// Handle errors
 	if err != nil {
-		return fmt.Errorf(errors.DeleteJobsOperationFailed, id, err)
+		return fmt.Errorf(errors.DeleteJobsOperationFailed, jobId, err)
 	}
 	return nil
 }
