@@ -19,24 +19,24 @@ import (
 // swagger:model VolumeGroupDetails
 type VolumeGroupDetails struct {
 
-	// storage volume group name
+	// The name of volume group at storage host level
 	ConsistencyGroupName string `json:"consistencyGroupName,omitempty"`
 
 	// The ID of the volume group
 	// Required: true
 	ID *string `json:"id"`
 
-	// name of the volume group
+	// The name of the volume group
 	// Required: true
 	Name *string `json:"name"`
 
-	// replication status of volume group
+	// Replication status of volume group
 	ReplicationStatus string `json:"replicationStatus,omitempty"`
 
-	// status of the volume group
+	// Status of the volume group
 	Status string `json:"status,omitempty"`
 
-	// status details of the volume group
+	// Status details of the volume group
 	StatusDescription string `json:"statusDescription,omitempty"`
 
 	// List of volume IDs,member of VolumeGroup

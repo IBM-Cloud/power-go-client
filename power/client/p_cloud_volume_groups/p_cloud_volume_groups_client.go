@@ -42,6 +42,12 @@ type ClientService interface {
 
 	PcloudVolumegroupsPost(params *PcloudVolumegroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsPostAccepted, error)
 
+	PcloudVolumegroupsPut(params *PcloudVolumegroupsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsPutAccepted, error)
+
+	PcloudVolumegroupsRemoteCopyRelationshipsGet(params *PcloudVolumegroupsRemoteCopyRelationshipsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsRemoteCopyRelationshipsGetOK, error)
+
+	PcloudVolumegroupsStorageDetailsGet(params *PcloudVolumegroupsStorageDetailsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsStorageDetailsGetOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -276,6 +282,123 @@ func (a *Client) PcloudVolumegroupsPost(params *PcloudVolumegroupsPostParams, au
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.volumegroups.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PcloudVolumegroupsPut updates the volume group
+*/
+func (a *Client) PcloudVolumegroupsPut(params *PcloudVolumegroupsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsPutAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVolumegroupsPutParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.volumegroups.put",
+		Method:             "PUT",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVolumegroupsPutReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVolumegroupsPutAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.volumegroups.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PcloudVolumegroupsRemoteCopyRelationshipsGet gets remote copy relationships of the volume belonging to volume group
+*/
+func (a *Client) PcloudVolumegroupsRemoteCopyRelationshipsGet(params *PcloudVolumegroupsRemoteCopyRelationshipsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsRemoteCopyRelationshipsGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVolumegroupsRemoteCopyRelationshipsGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.volumegroups.remoteCopyRelationships.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/remoteCopyRelationships",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVolumegroupsRemoteCopyRelationshipsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVolumegroupsRemoteCopyRelationshipsGetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.volumegroups.remoteCopyRelationships.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PcloudVolumegroupsStorageDetailsGet gets storage details of volume group
+*/
+func (a *Client) PcloudVolumegroupsStorageDetailsGet(params *PcloudVolumegroupsStorageDetailsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsStorageDetailsGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVolumegroupsStorageDetailsGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.volumegroups.storageDetails.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/storage-details",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVolumegroupsStorageDetailsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVolumegroupsStorageDetailsGetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.volumegroups.storageDetails.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

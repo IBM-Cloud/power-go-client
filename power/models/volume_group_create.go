@@ -19,13 +19,13 @@ import (
 // swagger:model VolumeGroupCreate
 type VolumeGroupCreate struct {
 
-	// storage volume group name. This is required to onboard existing voluem group on the target site for DR set up.
+	// The name of consistencyGroup at storage controller level. This is required to onboard existing volume group on the target site for DR set up; name and consistencyGroupName are mutually exclusive.
 	ConsistencyGroupName string `json:"consistencyGroupName,omitempty"`
 
-	// name of the volume group. This field is required for creation of new volume group.
+	// The name of the volume group. This field is required for creation of new volume group; name and consistencyGroupName are mutually exclusive.
 	Name string `json:"name,omitempty"`
 
-	// List of volume IDs,member of VolumeGroup
+	// List of volume IDs,members of VolumeGroup
 	// Required: true
 	VolumeIDs []string `json:"volumeIDs"`
 }
