@@ -23,7 +23,7 @@ type VolumeGroupCreateResponse struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// name of the volume group
+	// The name of the volume group
 	// Required: true
 	Name *string `json:"name"`
 }
