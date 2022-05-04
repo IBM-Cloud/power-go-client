@@ -19,43 +19,49 @@ import (
 // swagger:model SharedProcessorPool
 type SharedProcessorPool struct {
 
-	// The available processor units for the Shared Processor Pool
-	Available float64 `json:"available,omitempty"`
+	// The amount of allocated processor cores for the Shared Processor Pool
+	// Required: true
+	AllocatedCores *float64 `json:"allocatedCores"`
 
-	// The failure reason
-	FailureReason string `json:"failureReason,omitempty"`
+	// The amount of available processor cores for the Shared Processor Pool
+	// Required: true
+	AvailableCores *float64 `json:"availableCores"`
 
-	// The host where the Shared Processor Pool resides
-	Host string `json:"host,omitempty"`
+	// The host ID where the Shared Processor Pool resides
+	HostID string `json:"hostID,omitempty"`
 
 	// The id of the Shared Processor Pool
 	// Required: true
 	ID *string `json:"id"`
 
-	// The maximum number of processors defined for the Shared Processor Pool
-	// Required: true
-	MaxProcUnits *float64 `json:"maxProcUnits"`
-
 	// The name of the Shared Processor Pool
 	// Required: true
 	Name *string `json:"name"`
 
-	// Current status for the Shared Processor Pool
+	// The amount of reserved processor cores for the Shared Processor Pool
+	// Required: true
+	ReservedCores *float64 `json:"reservedCores"`
+
+	// The status of the Shared Processor Pool
 	Status string `json:"status,omitempty"`
 
-	// The processor units utilization for the Shared Processor Pool
-	Utilization float64 `json:"utilization,omitempty"`
+	// The status details of the Shared Processor Pool
+	StatusDetail string `json:"statusDetail,omitempty"`
 }
 
 // Validate validates this shared processor pool
 func (m *SharedProcessorPool) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateID(formats); err != nil {
+	if err := m.validateAllocatedCores(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateMaxProcUnits(formats); err != nil {
+	if err := m.validateAvailableCores(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -63,9 +69,31 @@ func (m *SharedProcessorPool) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateReservedCores(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SharedProcessorPool) validateAllocatedCores(formats strfmt.Registry) error {
+
+	if err := validate.Required("allocatedCores", "body", m.AllocatedCores); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SharedProcessorPool) validateAvailableCores(formats strfmt.Registry) error {
+
+	if err := validate.Required("availableCores", "body", m.AvailableCores); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -78,18 +106,18 @@ func (m *SharedProcessorPool) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SharedProcessorPool) validateMaxProcUnits(formats strfmt.Registry) error {
+func (m *SharedProcessorPool) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("maxProcUnits", "body", m.MaxProcUnits); err != nil {
+	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *SharedProcessorPool) validateName(formats strfmt.Registry) error {
+func (m *SharedProcessorPool) validateReservedCores(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", m.Name); err != nil {
+	if err := validate.Required("reservedCores", "body", m.ReservedCores); err != nil {
 		return err
 	}
 

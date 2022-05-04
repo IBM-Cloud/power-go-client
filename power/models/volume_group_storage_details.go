@@ -32,8 +32,8 @@ type VolumeGroupStorageDetails struct {
 	// Indicates whether master/aux volume is playing the primary role
 	PrimaryRole string `json:"primaryRole,omitempty"`
 
-	// List of remote-copy relationship name in a volume group
-	RcRrelName []string `json:"rcRrelName"`
+	// List of remote-copy relationship names in a volume group
+	RemoteCopyRelationshipNames []string `json:"remoteCopyRelationshipNames"`
 
 	// Type of replication(metro,global)
 	ReplicationType string `json:"replicationType,omitempty"`

@@ -28,8 +28,7 @@ type CloudConnection struct {
 	CloudConnectionID *string `json:"cloudConnectionID"`
 
 	// type of service the gateway is attached to
-	// Required: true
-	ConnectionMode *string `json:"connectionMode"`
+	ConnectionMode string `json:"connectionMode,omitempty"`
 
 	// creation date
 	// Required: true
@@ -84,10 +83,6 @@ func (m *CloudConnection) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCloudConnectionID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateConnectionMode(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -163,15 +158,6 @@ func (m *CloudConnection) validateClassic(formats strfmt.Registry) error {
 func (m *CloudConnection) validateCloudConnectionID(formats strfmt.Registry) error {
 
 	if err := validate.Required("cloudConnectionID", "body", m.CloudConnectionID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *CloudConnection) validateConnectionMode(formats strfmt.Registry) error {
-
-	if err := validate.Required("connectionMode", "body", m.ConnectionMode); err != nil {
 		return err
 	}
 

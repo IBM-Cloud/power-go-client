@@ -32,7 +32,11 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	PcloudSharedprocessorpoolsDelete(params *PcloudSharedprocessorpoolsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsDeleteOK, error)
 
-	PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPostOK, error)
+	PcloudSharedprocessorpoolsGet(params *PcloudSharedprocessorpoolsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetOK, error)
+
+	PcloudSharedprocessorpoolsGetall(params *PcloudSharedprocessorpoolsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetallOK, error)
+
+	PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPostAccepted, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -77,9 +81,87 @@ func (a *Client) PcloudSharedprocessorpoolsDelete(params *PcloudSharedprocessorp
 }
 
 /*
+  PcloudSharedprocessorpoolsGet gets the detail of a shared processor pool for a cloud instance
+*/
+func (a *Client) PcloudSharedprocessorpoolsGet(params *PcloudSharedprocessorpoolsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudSharedprocessorpoolsGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.sharedprocessorpools.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudSharedprocessorpoolsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudSharedprocessorpoolsGetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.sharedprocessorpools.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+  PcloudSharedprocessorpoolsGetall gets the list of shared processor pools for a cloud instance
+*/
+func (a *Client) PcloudSharedprocessorpoolsGetall(params *PcloudSharedprocessorpoolsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetallOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudSharedprocessorpoolsGetallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.sharedprocessorpools.getall",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudSharedprocessorpoolsGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudSharedprocessorpoolsGetallOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.sharedprocessorpools.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
   PcloudSharedprocessorpoolsPost creates a new shared processor pool
 */
-func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPostOK, error) {
+func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPostAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudSharedprocessorpoolsPostParams()
@@ -105,7 +187,7 @@ func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PcloudSharedprocessorpoolsPostOK)
+	success, ok := result.(*PcloudSharedprocessorpoolsPostAccepted)
 	if ok {
 		return success, nil
 	}

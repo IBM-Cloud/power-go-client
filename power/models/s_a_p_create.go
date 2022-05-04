@@ -20,6 +20,9 @@ import (
 // swagger:model SAPCreate
 type SAPCreate struct {
 
+	// Custom SAP Deployment Type Information (For Internal Use Only)
+	DeploymentType string `json:"deploymentType,omitempty"`
+
 	// Image ID of the sap image to use for the server
 	// Required: true
 	ImageID *string `json:"imageID"`

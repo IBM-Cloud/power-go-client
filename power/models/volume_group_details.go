@@ -37,7 +37,7 @@ type VolumeGroupDetails struct {
 	Status string `json:"status,omitempty"`
 
 	// Status details of the volume group
-	StatusDescription string `json:"statusDescription,omitempty"`
+	StatusDescription *StatusDescription `json:"statusDescription,omitempty"`
 
 	// List of volume IDs,member of VolumeGroup
 	VolumeIDs []string `json:"volumeIDs"`
@@ -52,6 +52,10 @@ func (m *VolumeGroupDetails) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateStatusDescription(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -79,8 +83,52 @@ func (m *VolumeGroupDetails) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this volume group details based on context it is used
+func (m *VolumeGroupDetails) validateStatusDescription(formats strfmt.Registry) error {
+	if swag.IsZero(m.StatusDescription) { // not required
+		return nil
+	}
+
+	if m.StatusDescription != nil {
+		if err := m.StatusDescription.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("statusDescription")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("statusDescription")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this volume group details based on the context it is used
 func (m *VolumeGroupDetails) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateStatusDescription(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VolumeGroupDetails) contextValidateStatusDescription(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.StatusDescription != nil {
+		if err := m.StatusDescription.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("statusDescription")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("statusDescription")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
