@@ -41,6 +41,18 @@ func (o *PcloudSharedprocessorpoolsDeleteReader) ReadResponse(response runtime.C
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewPcloudSharedprocessorpoolsDeleteForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 404:
+		result := NewPcloudSharedprocessorpoolsDeleteNotFound()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 409:
 		result := NewPcloudSharedprocessorpoolsDeleteConflict()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -141,6 +153,70 @@ func (o *PcloudSharedprocessorpoolsDeleteUnauthorized) GetPayload() *models.Erro
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudSharedprocessorpoolsDeleteForbidden creates a PcloudSharedprocessorpoolsDeleteForbidden with default headers values
+func NewPcloudSharedprocessorpoolsDeleteForbidden() *PcloudSharedprocessorpoolsDeleteForbidden {
+	return &PcloudSharedprocessorpoolsDeleteForbidden{}
+}
+
+/* PcloudSharedprocessorpoolsDeleteForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type PcloudSharedprocessorpoolsDeleteForbidden struct {
+	Payload *models.Error
+}
+
+func (o *PcloudSharedprocessorpoolsDeleteForbidden) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteForbidden  %+v", 403, o.Payload)
+}
+func (o *PcloudSharedprocessorpoolsDeleteForbidden) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudSharedprocessorpoolsDeleteForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudSharedprocessorpoolsDeleteNotFound creates a PcloudSharedprocessorpoolsDeleteNotFound with default headers values
+func NewPcloudSharedprocessorpoolsDeleteNotFound() *PcloudSharedprocessorpoolsDeleteNotFound {
+	return &PcloudSharedprocessorpoolsDeleteNotFound{}
+}
+
+/* PcloudSharedprocessorpoolsDeleteNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
+type PcloudSharedprocessorpoolsDeleteNotFound struct {
+	Payload *models.Error
+}
+
+func (o *PcloudSharedprocessorpoolsDeleteNotFound) Error() string {
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteNotFound  %+v", 404, o.Payload)
+}
+func (o *PcloudSharedprocessorpoolsDeleteNotFound) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudSharedprocessorpoolsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

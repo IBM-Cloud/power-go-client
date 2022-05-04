@@ -23,16 +23,16 @@ type SharedProcessorPoolCreate struct {
 	// Required: true
 	HostGroup *string `json:"hostGroup"`
 
-	// The maximum number of processors defined for the pool
-	// Required: true
-	MaxProcUnits *float64 `json:"maxProcUnits"`
-
 	// The name of the Shared Processor Pool
 	// Required: true
 	Name *string `json:"name"`
 
 	// The ID of the placement group
 	PlacementGroupID string `json:"placementGroupID,omitempty"`
+
+	// The amount of reserved processor cores for the Shared Processor Pool
+	// Required: true
+	ReservedCores *float64 `json:"reservedCores"`
 }
 
 // Validate validates this shared processor pool create
@@ -43,11 +43,11 @@ func (m *SharedProcessorPoolCreate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateMaxProcUnits(formats); err != nil {
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateName(formats); err != nil {
+	if err := m.validateReservedCores(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -66,18 +66,18 @@ func (m *SharedProcessorPoolCreate) validateHostGroup(formats strfmt.Registry) e
 	return nil
 }
 
-func (m *SharedProcessorPoolCreate) validateMaxProcUnits(formats strfmt.Registry) error {
+func (m *SharedProcessorPoolCreate) validateName(formats strfmt.Registry) error {
 
-	if err := validate.Required("maxProcUnits", "body", m.MaxProcUnits); err != nil {
+	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *SharedProcessorPoolCreate) validateName(formats strfmt.Registry) error {
+func (m *SharedProcessorPoolCreate) validateReservedCores(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", m.Name); err != nil {
+	if err := validate.Required("reservedCores", "body", m.ReservedCores); err != nil {
 		return err
 	}
 

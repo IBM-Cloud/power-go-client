@@ -23,14 +23,26 @@ type PcloudSharedprocessorpoolsPostReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PcloudSharedprocessorpoolsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewPcloudSharedprocessorpoolsPostOK()
+	case 202:
+		result := NewPcloudSharedprocessorpoolsPostAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
 		return result, nil
 	case 400:
 		result := NewPcloudSharedprocessorpoolsPostBadRequest()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 401:
+		result := NewPcloudSharedprocessorpoolsPostUnauthorized()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
+	case 403:
+		result := NewPcloudSharedprocessorpoolsPostForbidden()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -58,27 +70,27 @@ func (o *PcloudSharedprocessorpoolsPostReader) ReadResponse(response runtime.Cli
 	}
 }
 
-// NewPcloudSharedprocessorpoolsPostOK creates a PcloudSharedprocessorpoolsPostOK with default headers values
-func NewPcloudSharedprocessorpoolsPostOK() *PcloudSharedprocessorpoolsPostOK {
-	return &PcloudSharedprocessorpoolsPostOK{}
+// NewPcloudSharedprocessorpoolsPostAccepted creates a PcloudSharedprocessorpoolsPostAccepted with default headers values
+func NewPcloudSharedprocessorpoolsPostAccepted() *PcloudSharedprocessorpoolsPostAccepted {
+	return &PcloudSharedprocessorpoolsPostAccepted{}
 }
 
-/* PcloudSharedprocessorpoolsPostOK describes a response with status code 200, with default header values.
+/* PcloudSharedprocessorpoolsPostAccepted describes a response with status code 202, with default header values.
 
-OK
+Accepted
 */
-type PcloudSharedprocessorpoolsPostOK struct {
+type PcloudSharedprocessorpoolsPostAccepted struct {
 	Payload *models.SharedProcessorPool
 }
 
-func (o *PcloudSharedprocessorpoolsPostOK) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostOK  %+v", 200, o.Payload)
+func (o *PcloudSharedprocessorpoolsPostAccepted) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostAccepted  %+v", 202, o.Payload)
 }
-func (o *PcloudSharedprocessorpoolsPostOK) GetPayload() *models.SharedProcessorPool {
+func (o *PcloudSharedprocessorpoolsPostAccepted) GetPayload() *models.SharedProcessorPool {
 	return o.Payload
 }
 
-func (o *PcloudSharedprocessorpoolsPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PcloudSharedprocessorpoolsPostAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.SharedProcessorPool)
 
@@ -111,6 +123,70 @@ func (o *PcloudSharedprocessorpoolsPostBadRequest) GetPayload() *models.Error {
 }
 
 func (o *PcloudSharedprocessorpoolsPostBadRequest) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudSharedprocessorpoolsPostUnauthorized creates a PcloudSharedprocessorpoolsPostUnauthorized with default headers values
+func NewPcloudSharedprocessorpoolsPostUnauthorized() *PcloudSharedprocessorpoolsPostUnauthorized {
+	return &PcloudSharedprocessorpoolsPostUnauthorized{}
+}
+
+/* PcloudSharedprocessorpoolsPostUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
+type PcloudSharedprocessorpoolsPostUnauthorized struct {
+	Payload *models.Error
+}
+
+func (o *PcloudSharedprocessorpoolsPostUnauthorized) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostUnauthorized  %+v", 401, o.Payload)
+}
+func (o *PcloudSharedprocessorpoolsPostUnauthorized) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudSharedprocessorpoolsPostUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudSharedprocessorpoolsPostForbidden creates a PcloudSharedprocessorpoolsPostForbidden with default headers values
+func NewPcloudSharedprocessorpoolsPostForbidden() *PcloudSharedprocessorpoolsPostForbidden {
+	return &PcloudSharedprocessorpoolsPostForbidden{}
+}
+
+/* PcloudSharedprocessorpoolsPostForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type PcloudSharedprocessorpoolsPostForbidden struct {
+	Payload *models.Error
+}
+
+func (o *PcloudSharedprocessorpoolsPostForbidden) Error() string {
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostForbidden  %+v", 403, o.Payload)
+}
+func (o *PcloudSharedprocessorpoolsPostForbidden) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudSharedprocessorpoolsPostForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

@@ -30,6 +30,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	PcloudVolumegroupsActionPost(params *PcloudVolumegroupsActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsActionPostAccepted, error)
+
 	PcloudVolumegroupsDelete(params *PcloudVolumegroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsDeleteAccepted, error)
 
 	PcloudVolumegroupsGet(params *PcloudVolumegroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsGetOK, error)
@@ -49,6 +51,45 @@ type ClientService interface {
 	PcloudVolumegroupsStorageDetailsGet(params *PcloudVolumegroupsStorageDetailsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsStorageDetailsGetOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+  PcloudVolumegroupsActionPost performs an action start stop reset on a volume group
+*/
+func (a *Client) PcloudVolumegroupsActionPost(params *PcloudVolumegroupsActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsActionPostAccepted, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVolumegroupsActionPostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.volumegroups.action.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/action",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVolumegroupsActionPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVolumegroupsActionPostAccepted)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.volumegroups.action.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -335,7 +376,7 @@ func (a *Client) PcloudVolumegroupsRemoteCopyRelationshipsGet(params *PcloudVolu
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.volumegroups.remoteCopyRelationships.get",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/remoteCopyRelationships",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/remote-copy",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
