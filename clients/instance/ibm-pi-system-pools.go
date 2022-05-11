@@ -8,29 +8,29 @@ import (
 	"github.com/IBM-Cloud/power-go-client/helpers"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
+	p "github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
-// IBMPISystemPoolClient
+// IBMPISystemPoolClient.
 type IBMPISystemPoolClient struct {
 	IBMPIClient
 }
 
-// NewIBMPISystemPoolClient
+// NewIBMPISystemPoolClient.
 func NewIBMPISystemPoolClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISystemPoolClient {
 	return &IBMPISystemPoolClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
-//Get the System Pools
-// Deprecated: Use GetSystemPools()
+//Get the System Pools.
 func (f *IBMPISystemPoolClient) Get(id string) (models.SystemPools, error) {
-	params := p_cloud_system_pools.NewPcloudSystempoolsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(id)
-	resp, err := f.session.Power.PCloudSystemPools.PcloudSystempoolsGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudSystempoolsGetParams().
+		WithCloudInstanceID(id).
+		WithContext(f.ctx).
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.systemPoolRequest.PcloudSystempoolsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetSystemPoolsOperationFailed, id, err)
 	}
@@ -40,12 +40,13 @@ func (f *IBMPISystemPoolClient) Get(id string) (models.SystemPools, error) {
 	return resp.Payload, nil
 }
 
-// Get the System Pools
+// Deprecated: Get the System Pools.
 func (f *IBMPISystemPoolClient) GetSystemPools() (models.SystemPools, error) {
-	params := p_cloud_system_pools.NewPcloudSystempoolsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudSystemPools.PcloudSystempoolsGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudSystempoolsGetParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.systemPoolRequest.PcloudSystempoolsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetSystemPoolsOperationFailed, f.cloudInstanceID, err)
 	}
