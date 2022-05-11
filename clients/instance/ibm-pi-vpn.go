@@ -115,7 +115,7 @@ func (f *IBMPIVpnConnectionClient) GetNetwork(id string) (*models.NetworkIDs, er
 	return resp.Payload, nil
 }
 
-// Add a Network to a VPN Connection
+// Attach a Network to a VPN Connection
 func (f *IBMPIVpnConnectionClient) AddNetwork(id, networkID string) (*models.JobReference, error) {
 	params := p_cloud_v_p_n_connections.NewPcloudVpnconnectionsNetworksPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).

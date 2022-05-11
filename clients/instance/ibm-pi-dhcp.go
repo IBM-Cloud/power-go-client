@@ -24,7 +24,7 @@ func NewIBMPIDhcpClient(ctx context.Context, sess *ibmpisession.IBMPISession, cl
 	}
 }
 
-// Create a DHCP
+// Create a DHCP server
 func (f *IBMPIDhcpClient) Create(body *models.DHCPServerCreate) (*models.DHCPServer, error) {
 	params := p_cloud_service_d_h_c_p.NewPcloudDhcpPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
@@ -39,7 +39,7 @@ func (f *IBMPIDhcpClient) Create(body *models.DHCPServerCreate) (*models.DHCPSer
 	return nil, fmt.Errorf("failed to Create DHCP")
 }
 
-// Get a DHCP
+// Get a DHCP server
 func (f *IBMPIDhcpClient) Get(id string) (*models.DHCPServerDetail, error) {
 	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -54,7 +54,7 @@ func (f *IBMPIDhcpClient) Get(id string) (*models.DHCPServerDetail, error) {
 	return resp.Payload, nil
 }
 
-// Get All DHCPs
+// Get All DHCP servers
 func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
 	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -69,7 +69,7 @@ func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
 	return resp.Payload, nil
 }
 
-// Delete a DHCP
+// Delete a DHCP server
 func (f *IBMPIDhcpClient) Delete(id string) error {
 	params := p_cloud_service_d_h_c_p.NewPcloudDhcpDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).

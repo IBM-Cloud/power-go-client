@@ -24,7 +24,7 @@ func NewIBMPIPlacementGroupClient(ctx context.Context, sess *ibmpisession.IBMPIS
 	}
 }
 
-// Get a Placement Group
+// Get a PI Placement Group
 func (f *IBMPIPlacementGroupClient) Get(id string) (*models.PlacementGroup, error) {
 	params := p_cloud_placement_groups.NewPcloudPlacementgroupsGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).

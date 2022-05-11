@@ -45,7 +45,7 @@ func (f *IBMPICloudConnectionClient) Create(body *models.CloudConnectionCreate) 
 	return nil, nil, fmt.Errorf("failed to Create Cloud Connection")
 }
 
-// Create a Cloud Connection
+// Get a Cloud Connection
 func (f *IBMPICloudConnectionClient) Get(id string) (*models.CloudConnection, error) {
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -128,7 +128,7 @@ func (f *IBMPICloudConnectionClient) AddNetwork(id, networkID string) (*models.C
 	return nil, nil, nil
 }
 
-// Remove a Network from a Cloud Connection
+// Delete a Network from a Cloud Connection
 func (f *IBMPICloudConnectionClient) DeleteNetwork(id, networkID string) (*models.CloudConnection, *models.JobReference, error) {
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
