@@ -12,12 +12,12 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
-// IBMPISystemPoolClient ...
+// IBMPISystemPoolClient
 type IBMPISystemPoolClient struct {
 	IBMPIClient
 }
 
-// NewIBMPISystemPoolClient ...
+// NewIBMPISystemPoolClient
 func NewIBMPISystemPoolClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISystemPoolClient {
 	return &IBMPISystemPoolClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
