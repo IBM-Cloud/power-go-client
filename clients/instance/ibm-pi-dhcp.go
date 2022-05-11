@@ -8,28 +8,30 @@ import (
 	"github.com/IBM-Cloud/power-go-client/helpers"
 
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
+	p "github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
-// NewIBMPIDhcpClient
+// NewIBMPIDhcpClient.
 type IBMPIDhcpClient struct {
 	IBMPIClient
 }
 
-// NewIBMPIDhcpClient
+// NewIBMPIDhcpClient.
 func NewIBMPIDhcpClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIDhcpClient {
 	return &IBMPIDhcpClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
-// Create a DHCP server
+// Create a DHCP server.
 func (f *IBMPIDhcpClient) Create(body *models.DHCPServerCreate) (*models.DHCPServer, error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpPostParams().
-		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
-	postaccepted, err := f.session.Power.PCloudServicedhcp.PcloudDhcpPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudDhcpPostParams().
+		WithBody(body).
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithTimeout(helpers.PICreateTimeOut)
+	postaccepted, err := f.dhcpRequest.PcloudDhcpPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreateDchpOperationFailed, f.cloudInstanceID, err)
 	}
@@ -39,12 +41,14 @@ func (f *IBMPIDhcpClient) Create(body *models.DHCPServerCreate) (*models.DHCPSer
 	return nil, fmt.Errorf("failed to Create DHCP")
 }
 
-// Get a DHCP server
+// Get a DHCP server.
 func (f *IBMPIDhcpClient) Get(id string) (*models.DHCPServerDetail, error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithDhcpID(id)
-	resp, err := f.session.Power.PCloudServicedhcp.PcloudDhcpGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudDhcpGetParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithDhcpID(id).
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.dhcpRequest.PcloudDhcpGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetDhcpOperationFailed, id, err)
 	}
@@ -54,12 +58,13 @@ func (f *IBMPIDhcpClient) Get(id string) (*models.DHCPServerDetail, error) {
 	return resp.Payload, nil
 }
 
-// Get All DHCP servers
+// Get All DHCP servers.
 func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpGetallParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudServicedhcp.PcloudDhcpGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudDhcpGetallParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.dhcpRequest.PcloudDhcpGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf("failed to Get all DHCP servers: %w", err)
 	}
@@ -69,12 +74,14 @@ func (f *IBMPIDhcpClient) GetAll() (models.DHCPServers, error) {
 	return resp.Payload, nil
 }
 
-// Delete a DHCP server
+// Delete a DHCP server.
 func (f *IBMPIDhcpClient) Delete(id string) error {
-	params := p_cloud_service_d_h_c_p.NewPcloudDhcpDeleteParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithDhcpID(id)
-	_, err := f.session.Power.PCloudServicedhcp.PcloudDhcpDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudDhcpDeleteParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithDhcpID(id).
+		WithTimeout(helpers.PIDeleteTimeOut)
+	_, err := f.dhcpRequest.PcloudDhcpDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return fmt.Errorf(errors.DeleteDhcpOperationFailed, id, err)
 	}

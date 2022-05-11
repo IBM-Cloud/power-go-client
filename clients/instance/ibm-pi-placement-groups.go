@@ -5,31 +5,33 @@ import (
 	"fmt"
 
 	"github.com/IBM-Cloud/power-go-client/errors"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_placement_groups"
+	p "github.com/IBM-Cloud/power-go-client/power/client/p_cloud_placement_groups"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
-//IBMPIPlacementGroupClient
+//IBMPIPlacementGroupClient.
 type IBMPIPlacementGroupClient struct {
 	IBMPIClient
 }
 
-// NewIBMPIPlacementGroupClient
+// NewIBMPIPlacementGroupClient.
 func NewIBMPIPlacementGroupClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIPlacementGroupClient {
 	return &IBMPIPlacementGroupClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
 }
 
-// Get a PI Placement Group
+// Get a PI Placement Group.
 func (f *IBMPIPlacementGroupClient) Get(id string) (*models.PlacementGroup, error) {
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPlacementGroupID(id)
-	resp, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudPlacementgroupsGetParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithPlacementGroupID(id).
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.placementGroupRequest.PcloudPlacementgroupsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.GetPlacementGroupOperationFailed, id, err)
 	}
@@ -39,12 +41,13 @@ func (f *IBMPIPlacementGroupClient) Get(id string) (*models.PlacementGroup, erro
 	return resp.Payload, nil
 }
 
-// Get All Placement Groups
+// Get All Placement Groups.
 func (f *IBMPIPlacementGroupClient) GetAll() (*models.PlacementGroups, error) {
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsGetallParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudPlacementgroupsGetallParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.placementGroupRequest.PcloudPlacementgroupsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf("failed to Get All Placement Groups: %w", err)
 	}
@@ -54,12 +57,14 @@ func (f *IBMPIPlacementGroupClient) GetAll() (*models.PlacementGroups, error) {
 	return resp.Payload, nil
 }
 
-// Create a Placement Group
+// Create a Placement Group.
 func (f *IBMPIPlacementGroupClient) Create(body *models.PlacementGroupCreate) (*models.PlacementGroup, error) {
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsPostParams().
-		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
-	postok, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudPlacementgroupsPostParams().
+		WithBody(body).
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithTimeout(helpers.PICreateTimeOut)
+	postok, err := f.placementGroupRequest.PcloudPlacementgroupsPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.CreatePlacementGroupOperationFailed, f.cloudInstanceID, err)
 	}
@@ -69,25 +74,29 @@ func (f *IBMPIPlacementGroupClient) Create(body *models.PlacementGroupCreate) (*
 	return postok.Payload, nil
 }
 
-// Delete a Placement Group
+// Delete a Placement Group.
 func (f *IBMPIPlacementGroupClient) Delete(id string) error {
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsDeleteParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPlacementGroupID(id)
-	_, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudPlacementgroupsDeleteParams().
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithPlacementGroupID(id).
+		WithTimeout(helpers.PIDeleteTimeOut)
+	_, err := f.placementGroupRequest.PcloudPlacementgroupsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return fmt.Errorf(errors.DeletePlacementGroupOperationFailed, id, err)
 	}
 	return nil
 }
 
-// Add an Instance to a Placement Group
+// Add an Instance to a Placement Group.
 func (f *IBMPIPlacementGroupClient) AddMember(id string, body *models.PlacementGroupServer) (*models.PlacementGroup, error) {
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsMembersPostParams().
-		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPlacementGroupID(id).
-		WithBody(body)
-	postok, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsMembersPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudPlacementgroupsMembersPostParams().
+		WithBody(body).
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithPlacementGroupID(id).
+		WithTimeout(helpers.PICreateTimeOut)
+	postok, err := f.placementGroupRequest.PcloudPlacementgroupsMembersPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.AddMemberPlacementGroupOperationFailed, *body.ID, id, err)
 	}
@@ -97,13 +106,15 @@ func (f *IBMPIPlacementGroupClient) AddMember(id string, body *models.PlacementG
 	return postok.Payload, nil
 }
 
-// Remove an Instance to a Placement Group
+// Remove an Instance to a Placement Group.
 func (f *IBMPIPlacementGroupClient) DeleteMember(id string, body *models.PlacementGroupServer) (*models.PlacementGroup, error) {
-	params := p_cloud_placement_groups.NewPcloudPlacementgroupsMembersDeleteParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPlacementGroupID(id).
-		WithBody(body)
-	delok, err := f.session.Power.PCloudPlacementGroups.PcloudPlacementgroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	params := p.NewPcloudPlacementgroupsMembersDeleteParams().
+		WithBody(body).
+		WithCloudInstanceID(f.cloudInstanceID).
+		WithContext(f.ctx).
+		WithPlacementGroupID(id).
+		WithTimeout(helpers.PIDeleteTimeOut)
+	delok, err := f.placementGroupRequest.PcloudPlacementgroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf(errors.DeleteMemberPlacementGroupOperationFailed, *body.ID, id, err)
 	}
