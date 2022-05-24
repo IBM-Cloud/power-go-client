@@ -47,6 +47,12 @@ func (o *PcloudVolumegroupsStorageDetailsGetReader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPcloudVolumegroupsStorageDetailsGetTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudVolumegroupsStorageDetailsGetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -175,6 +181,38 @@ func (o *PcloudVolumegroupsStorageDetailsGetNotFound) GetPayload() *models.Error
 }
 
 func (o *PcloudVolumegroupsStorageDetailsGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudVolumegroupsStorageDetailsGetTooManyRequests creates a PcloudVolumegroupsStorageDetailsGetTooManyRequests with default headers values
+func NewPcloudVolumegroupsStorageDetailsGetTooManyRequests() *PcloudVolumegroupsStorageDetailsGetTooManyRequests {
+	return &PcloudVolumegroupsStorageDetailsGetTooManyRequests{}
+}
+
+/* PcloudVolumegroupsStorageDetailsGetTooManyRequests describes a response with status code 429, with default header values.
+
+Too Many Requests
+*/
+type PcloudVolumegroupsStorageDetailsGetTooManyRequests struct {
+	Payload *models.Error
+}
+
+func (o *PcloudVolumegroupsStorageDetailsGetTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/storage-details][%d] pcloudVolumegroupsStorageDetailsGetTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PcloudVolumegroupsStorageDetailsGetTooManyRequests) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudVolumegroupsStorageDetailsGetTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

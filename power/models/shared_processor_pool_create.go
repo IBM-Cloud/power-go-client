@@ -32,7 +32,7 @@ type SharedProcessorPoolCreate struct {
 
 	// The amount of reserved processor cores for the Shared Processor Pool
 	// Required: true
-	ReservedCores *float64 `json:"reservedCores"`
+	ReservedCores *int64 `json:"reservedCores"`
 }
 
 // Validate validates this shared processor pool create

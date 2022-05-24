@@ -376,7 +376,7 @@ func (a *Client) PcloudVolumegroupsRemoteCopyRelationshipsGet(params *PcloudVolu
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.volumegroups.remoteCopyRelationships.get",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/remote-copy",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/remote-copy-relationships",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},

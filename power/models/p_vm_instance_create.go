@@ -74,6 +74,9 @@ type PVMInstanceCreate struct {
 	// Required: true
 	ServerName *string `json:"serverName"`
 
+	// The shared processor pool for server deployment
+	SharedProcessorPool string `json:"sharedProcessorPool,omitempty"`
+
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 

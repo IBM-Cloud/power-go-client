@@ -37,6 +37,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_policies"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_groups"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_onboarding"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/service_bindings"
 	"github.com/IBM-Cloud/power-go-client/power/client/service_instances"
@@ -113,6 +114,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudvpnConnections = p_cloud_v_p_n_connections.New(transport, formats)
 	cli.PCloudvpnPolicies = p_cloud_v_p_n_policies.New(transport, formats)
 	cli.PCloudVolumeGroups = p_cloud_volume_groups.New(transport, formats)
+	cli.PCloudVolumeOnboarding = p_cloud_volume_onboarding.New(transport, formats)
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
 	cli.ServiceBindings = service_bindings.New(transport, formats)
 	cli.ServiceInstances = service_instances.New(transport, formats)
@@ -216,6 +218,8 @@ type PowerIaasAPI struct {
 
 	PCloudVolumeGroups p_cloud_volume_groups.ClientService
 
+	PCloudVolumeOnboarding p_cloud_volume_onboarding.ClientService
+
 	PCloudVolumes p_cloud_volumes.ClientService
 
 	ServiceBindings service_bindings.ClientService
@@ -259,6 +263,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudvpnConnections.SetTransport(transport)
 	c.PCloudvpnPolicies.SetTransport(transport)
 	c.PCloudVolumeGroups.SetTransport(transport)
+	c.PCloudVolumeOnboarding.SetTransport(transport)
 	c.PCloudVolumes.SetTransport(transport)
 	c.ServiceBindings.SetTransport(transport)
 	c.ServiceInstances.SetTransport(transport)
