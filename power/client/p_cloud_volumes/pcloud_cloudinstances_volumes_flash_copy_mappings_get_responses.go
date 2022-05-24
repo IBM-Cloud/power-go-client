@@ -53,6 +53,12 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetReader) ReadResponse(res
 			return nil, err
 		}
 		return nil, result
+	case 429:
+		result := NewPcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -211,6 +217,38 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) GetPayload() *
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests creates a PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests with default headers values
+func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests() *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests {
+	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests{}
+}
+
+/* PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests describes a response with status code 429, with default header values.
+
+Too Many Requests
+*/
+type PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests struct {
+	Payload *models.Error
+}
+
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests  %+v", 429, o.Payload)
+}
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
