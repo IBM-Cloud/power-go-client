@@ -25,9 +25,12 @@ type SharedProcessorPool struct {
 
 	// The amount of available processor cores for the Shared Processor Pool
 	// Required: true
-	AvailableCores *int64 `json:"availableCores"`
+	AvailableCores *float64 `json:"availableCores"`
 
-	// The host ID where the Shared Processor Pool resides
+	// The host group the host belongs to
+	HostGroup string `json:"hostGroup,omitempty"`
+
+	// The ID of the host where the Shared Processor Pool resides
 	HostID int64 `json:"hostID,omitempty"`
 
 	// The id of the Shared Processor Pool

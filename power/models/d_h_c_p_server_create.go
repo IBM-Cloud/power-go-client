@@ -19,6 +19,12 @@ type DHCPServerCreate struct {
 
 	// Optional cloud connection uuid to connect with DHCP private network
 	CloudConnectionID *string `json:"cloudConnectionID,omitempty"`
+
+	// Optional DNS Server for DHCP service
+	DNSServer *string `json:"dnsServer,omitempty"`
+
+	// Optional name of DHCP Service (will be prefixed by DHCP identifier)
+	Name *string `json:"name,omitempty"`
 }
 
 // Validate validates this d h c p server create

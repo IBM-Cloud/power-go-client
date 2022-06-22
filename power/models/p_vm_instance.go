@@ -116,6 +116,9 @@ type PVMInstance struct {
 	// The shared processor pool of the server
 	SharedProcessorPool string `json:"sharedProcessorPool,omitempty"`
 
+	// The shared processor pool id
+	SharedProcessorPoolID string `json:"sharedProcessorPoolID,omitempty"`
+
 	// The pvm instance Software Licenses
 	SoftwareLicenses *SoftwareLicenses `json:"softwareLicenses,omitempty"`
 
