@@ -17,6 +17,9 @@ import (
 // swagger:model DHCPServerCreate
 type DHCPServerCreate struct {
 
+	// Optional cidr for DHCP private network
+	Cidr *string `json:"cidr,omitempty"`
+
 	// Optional cloud connection uuid to connect with DHCP private network
 	CloudConnectionID *string `json:"cloudConnectionID,omitempty"`
 
