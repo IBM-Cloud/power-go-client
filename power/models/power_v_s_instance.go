@@ -49,6 +49,10 @@ type PowerVSInstance struct {
 	// Example: Test Name
 	Name string `json:"name,omitempty"`
 
+	// Defines if the user has administrator privileges
+	// Example: true
+	PrivilegedUser bool `json:"privilegedUser,omitempty"`
+
 	// IBM Resource Group ID associated with the PowerVS Service Instance (This field will be empty for old accounts as PowerVS did not previously saved the Resource Group ID)
 	// Example: 2bf1887bf5c947b1966de2bd88220489
 	ResourceGroupID string `json:"resourceGroupId,omitempty"`
