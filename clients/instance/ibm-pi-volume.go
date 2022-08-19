@@ -212,3 +212,15 @@ func (f *IBMPIVolumeClient) UpdateVolumeAttach(id, volumeID string, body *models
 	}
 	return nil
 }
+
+// Performs action on volume
+func (f *IBMPIVolumeClient) VolumeAction(id string, body *models.VolumeAction) error {
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesActionPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id).WithBody(body)
+	_, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesActionPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf("failed to perform action on volume %s with error %w", id, err)
+	}
+	return nil
+}
