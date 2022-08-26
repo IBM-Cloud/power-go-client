@@ -86,6 +86,15 @@ const GetPIKeyOperationFailed = "failed to Get PI Key %s with error %w"
 const CreatePIKeyOperationFailed = "failed to Create PI Key with error %w"
 const DeletePIKeyOperationFailed = "failed to Delete PI Key %s with error %w"
 
+// start of Volume Groups
+const GetVolumeGroupOperationFailed = "failed to Get volume-group %s for the cloud instance %s with error %w"
+const GetVolumeGroupDetailsOperationFailed = "failed to Get volume-group %s details for the cloud instance %s with error %w"
+const CreateVolumeGroupOperationFailed = "failed to perform the Create volume-group Operation for the cloud instance %s with error %w"
+const DeleteVolumeGroupOperationFailed = "failed to perform Delete volume-group Operation for volume-group %s with error %w"
+const GetLiveVolumeGroupDetailsOperationFailed = "failed to Get live details of volume-group %s for the cloud instance %s with error %w"
+const VolumeGroupActionOperationFailed = "failed to perform action on volume-group %s for the cloud instance %s with error %w"
+const GetVolumeGroupRemoteCopyRelationshipsOperationFailed = "failed to Get remote copy relationships of the volumes belonging to volume group %s for the cloud instance %s with error %w"
+
 // ErrorTarget ...
 type ErrorTarget struct {
 	Name string
