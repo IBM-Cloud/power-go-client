@@ -68,6 +68,17 @@ const CreateVolumeOperationFailed = "failed to perform the Create volume Operati
 const CreateVolumeV2OperationFailed = "failed to perform the Create volume Operation V2 for volume %s with error %w"
 const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume %s with error %w"
 const DetachVolumeOperationFailed = "failed to perform the Detach volume Operation for volume %s with error %w"
+const GetVolumeRemoteCopyRelationshipsOperationFailed = "failed to Get remote copy relationships of a volume %s for the cloud instance %s with error %w"
+const GetVolumeFalshCopyMappingOperationFailed = "failed to Get flash copy mapping of a volume %s for the cloud instance %s with error %w"
+
+// start of volume onboarding
+const GetVolumeOnboardingOperationFailed = "failed to perform the Get Volume Onboarding Operation for volume-onboarding ID:%s for the cloud instance %s with error %w"
+const GetAllVolumeOnboardingsOperationFailed = "failed to perform the Get All Volume Onboardings Operation for the cloud instance %s with error %w"
+const CreateVolumeOnboardingsOperationFailed = "failed to perform the Create Volume Onboarding Operation for the cloud instance %s with error %w"
+
+// start of disaster recovery
+const GetDisasterRecoveryLocationOperationFailed = "failed to perform the Get Disaster Recovery Location Operation for the cloud instance %s with error %w"
+const GetAllDisasterRecoveryLocationOperationFailed = "failed to perform the Get All Disaster Recovery Location Operation of power virtual server with error %w"
 
 // start of Clone Messages
 const StartCloneOperationFailed = "failed to start the clone operation for volumes-clone %s with error %w"
