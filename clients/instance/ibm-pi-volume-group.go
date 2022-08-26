@@ -63,7 +63,7 @@ func (f *IBMPIVolumeGroupClient) GetDetails(id string) (*models.VolumeGroupDetai
 		return nil, fmt.Errorf(errors.GetVolumeGroupDetailsOperationFailed, id, f.cloudInstanceID, err)
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get volume-group %s", id)
+		return nil, fmt.Errorf("failed to get volume-group %s details", id)
 	}
 	return resp.Payload, nil
 }
@@ -96,7 +96,7 @@ func (f *IBMPIVolumeGroupClient) CreateVolumeGroup(body *models.VolumeGroupCreat
 		return respOk.Payload, nil
 	}
 	if respPartial != nil && respPartial.Payload != nil {
-		return respOk.Payload, nil
+		return respPartial.Payload, nil
 	}
 	return nil, fmt.Errorf("failed to create volume-group")
 }
@@ -104,7 +104,7 @@ func (f *IBMPIVolumeGroupClient) CreateVolumeGroup(body *models.VolumeGroupCreat
 // Update a Volume Group
 func (f *IBMPIVolumeGroupClient) UpdateVolumeGroup(id string, body *models.VolumeGroupUpdate) error {
 	params := p_cloud_volume_groups.NewPcloudVolumegroupsPutParams().
-		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeGroupID(id).WithBody(body)
 	resp, err := f.session.Power.PCloudVolumeGroups.PcloudVolumegroupsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -131,7 +131,7 @@ func (f *IBMPIVolumeGroupClient) DeleteVolumeGroup(id string) error {
 // Get live details of a Volume Group
 func (f *IBMPIVolumeGroupClient) GetVolumeGroupLiveDetails(id string) (*models.VolumeGroupStorageDetails, error) {
 	params := p_cloud_volume_groups.NewPcloudVolumegroupsStorageDetailsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeGroupID(id)
 	resp, err := f.session.Power.PCloudVolumeGroups.PcloudVolumegroupsStorageDetailsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -144,21 +144,24 @@ func (f *IBMPIVolumeGroupClient) GetVolumeGroupLiveDetails(id string) (*models.V
 }
 
 // Performs action on Volume Group
-func (f *IBMPIVolumeGroupClient) VolumeGroupAction(id string, body *models.VolumeGroupAction) error {
+func (f *IBMPIVolumeGroupClient) VolumeGroupAction(id string, body *models.VolumeGroupAction) (models.Object, error) {
 	params := p_cloud_volume_groups.NewPcloudVolumegroupsActionPostParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeGroupID(id).WithBody(body)
-	_, err := f.session.Power.PCloudVolumeGroups.PcloudVolumegroupsActionPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.PCloudVolumeGroups.PcloudVolumegroupsActionPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return fmt.Errorf(errors.VolumeGroupActionOperationFailed, id, f.cloudInstanceID, err)
+		return nil, fmt.Errorf(errors.VolumeGroupActionOperationFailed, id, f.cloudInstanceID, err)
 	}
-	return nil
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to perform action on volume-group %s", id)
+	}
+	return resp.Payload, nil
 }
 
 // Get remote copy relationships of the volume belonging to volume group
 func (f *IBMPIVolumeGroupClient) GetVolumeGroupRemoteCopyRelationships(id string) (*models.VolumeGroupRemoteCopyRelationships, error) {
 	params := p_cloud_volume_groups.NewPcloudVolumegroupsRemoteCopyRelationshipsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeGroupID(id)
 	resp, err := f.session.Power.PCloudVolumeGroups.PcloudVolumegroupsRemoteCopyRelationshipsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {

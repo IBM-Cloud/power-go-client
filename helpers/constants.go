@@ -66,11 +66,6 @@ const (
 	PIStoragePoolName         = "pi_storage_pool_name"
 	PIReplicationEnabled      = "pi_replication_enabled"
 
-	// IBM PI Volume Group
-	PIVolumeGroupName                 = "pi_volume_group_name"
-	PIVolumeGroupsVolumeIds           = "pi_volume_ids"
-	PIVolumeGroupConsistencyGroupName = "pi_consistency_group_name"
-
 	// IBM PI Snapshots
 
 	PISnapshot         = "pi_snap_shot_id"
