@@ -225,6 +225,7 @@ func (f *IBMPIVolumeClient) VolumeAction(id string, body *models.VolumeAction) e
 	return nil
 }
 
+// Get remote copy relationship of a volume
 func (f *IBMPIVolumeClient) GetVolumeRemoteCopyRelationships(id string) (*models.VolumeRemoteCopyRelationship, error) {
 	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesRemoteCopyRelationshipGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -239,13 +240,14 @@ func (f *IBMPIVolumeClient) GetVolumeRemoteCopyRelationships(id string) (*models
 	return resp.Payload, nil
 }
 
+// Get a list of flashcopy mappings of a given volume
 func (f *IBMPIVolumeClient) GetVolumeFlashCopyMappings(id string) (models.FlashCopyMappings, error) {
 	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesFlashCopyMappingsGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesFlashCopyMappingsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetVolumeFalshCopyMappingOperationFailed, id, f.cloudInstanceID, err)
+		return nil, fmt.Errorf(errors.GetVolumeFlashCopyMappingOperationFailed, id, f.cloudInstanceID, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get flash copy mapping of a volume %s", id)

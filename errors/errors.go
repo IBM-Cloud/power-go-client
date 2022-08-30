@@ -69,7 +69,7 @@ const CreateVolumeV2OperationFailed = "failed to perform the Create volume Opera
 const AttachVolumeOperationFailed = "failed to perform the Attach volume Operation for volume %s with error %w"
 const DetachVolumeOperationFailed = "failed to perform the Detach volume Operation for volume %s with error %w"
 const GetVolumeRemoteCopyRelationshipsOperationFailed = "failed to Get remote copy relationships of a volume %s for the cloud instance %s with error %w"
-const GetVolumeFalshCopyMappingOperationFailed = "failed to Get flash copy mapping of a volume %s for the cloud instance %s with error %w"
+const GetVolumeFlashCopyMappingOperationFailed = "failed to Get flash copy mapping of a volume %s for the cloud instance %s with error %w"
 
 // start of volume onboarding
 const GetVolumeOnboardingOperationFailed = "failed to perform the Get Volume Onboarding Operation for volume-onboarding ID:%s for the cloud instance %s with error %w"

@@ -23,6 +23,7 @@ func NewIBMPIDisasterRecoveryLocationClient(ctx context.Context, sess *ibmpisess
 	}
 }
 
+// Get the disaster recovery site details for the current location
 func (f *IBMPIDisasterRecoveryLocationClient) Get() (*models.DisasterRecoveryLocation, error) {
 	params := p_cloud_disaster_recovery.NewPcloudLocationsDisasterrecoveryGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -37,6 +38,7 @@ func (f *IBMPIDisasterRecoveryLocationClient) Get() (*models.DisasterRecoveryLoc
 	return resp.Payload, nil
 }
 
+// Get all disaster recovery locations supported by Power Virtual Server
 func (f *IBMPIDisasterRecoveryLocationClient) GetAll() (*models.DisasterRecoveryLocations, error) {
 	params := p_cloud_disaster_recovery.NewPcloudLocationsDisasterrecoveryGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
