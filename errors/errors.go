@@ -106,6 +106,19 @@ const GetLiveVolumeGroupDetailsOperationFailed = "failed to Get live details of 
 const VolumeGroupActionOperationFailed = "failed to perform action on volume-group %s for the cloud instance %s with error %w"
 const GetVolumeGroupRemoteCopyRelationshipsOperationFailed = "failed to Get remote copy relationships of the volumes belonging to volume group %s for the cloud instance %s with error %w"
 
+// start of Shared processor pool Messages
+const GetSharedProcessorPoolOperationFailed = "failed to perform Get Shared Processor Pool Operation for pool %s with error %w"
+const CreateSharedProcessorPoolOperationFailed = "failed to perform Create Shared Processor Pool Operation for cloud instance %s with error  %w"
+const DeleteSharedProcessorPoolOperationFailed = "failed to perform Delete Shared Processor Pool Operation for pool %s with error %w"
+const UpdateSharedProcessorPoolOperationFailed = "failed to perform Update Shared Processor Pool Operation for pool %s with error %w"
+
+// start of Shared processor pool placement group Messages
+const GetSPPPlacementGroupOperationFailed = "failed to perform Get Shared Processor Pool Placement Group Operation for placement group %s with error %w"
+const CreateSPPPlacementGroupOperationFailed = "failed to perform Create Shared Processor Pool Placement Group Operation for cloud instance %s with error  %w"
+const DeleteSPPPlacementGroupOperationFailed = "failed to perform Delete Shared Processor Pool Placement Group Operation for placement group %s with error %w"
+const AddMemberSPPPlacementGroupOperationFailed = "failed to perform Add Member Operation for pool %s and shared processor pool placement group %s with error %w"
+const DeleteMemberSPPPlacementGroupOperationFailed = "failed to perform Delete Member Operation for pool %s and shared processor pool placement group %s with error %w"
+
 // ErrorTarget ...
 type ErrorTarget struct {
 	Name string
