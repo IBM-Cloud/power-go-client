@@ -109,6 +109,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) IsCode(code int) boo
 	return code == 200
 }
 
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get o k response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetOK  %+v", 200, o.Payload)
 }
@@ -168,6 +173,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) IsServerErro
 // IsCode returns true when this pcloud cloudinstances volumes flash copy mappings get bad request response a status code equal to that given
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get bad request response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) Error() string {
@@ -233,6 +243,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) IsCode(cod
 	return code == 401
 }
 
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get unauthorized response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -294,6 +309,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) IsServerError
 // IsCode returns true when this pcloud cloudinstances volumes flash copy mappings get forbidden response a status code equal to that given
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get forbidden response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) Error() string {
@@ -359,6 +379,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) IsCode(code in
 	return code == 404
 }
 
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get not found response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound  %+v", 404, o.Payload)
 }
@@ -422,6 +447,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) IsCode(
 	return code == 429
 }
 
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get too many requests response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) Code() int {
+	return 429
+}
+
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests  %+v", 429, o.Payload)
 }
@@ -483,6 +513,11 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) IsS
 // IsCode returns true when this pcloud cloudinstances volumes flash copy mappings get internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud cloudinstances volumes flash copy mappings get internal server error response
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) Error() string {

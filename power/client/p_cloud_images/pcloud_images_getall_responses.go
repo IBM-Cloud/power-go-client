@@ -103,6 +103,11 @@ func (o *PcloudImagesGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud images getall o k response
+func (o *PcloudImagesGetallOK) Code() int {
+	return 200
+}
+
 func (o *PcloudImagesGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PcloudImagesGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud images getall bad request response a status code equal to that given
 func (o *PcloudImagesGetallBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud images getall bad request response
+func (o *PcloudImagesGetallBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudImagesGetallBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PcloudImagesGetallUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud images getall unauthorized response
+func (o *PcloudImagesGetallUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudImagesGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PcloudImagesGetallForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud images getall forbidden response a status code equal to that given
 func (o *PcloudImagesGetallForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud images getall forbidden response
+func (o *PcloudImagesGetallForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudImagesGetallForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PcloudImagesGetallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud images getall not found response
+func (o *PcloudImagesGetallNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudImagesGetallNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound  %+v", 404, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *PcloudImagesGetallInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud images getall internal server error response a status code equal to that given
 func (o *PcloudImagesGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud images getall internal server error response
+func (o *PcloudImagesGetallInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudImagesGetallInternalServerError) Error() string {

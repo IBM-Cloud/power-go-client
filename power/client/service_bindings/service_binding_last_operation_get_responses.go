@@ -85,6 +85,11 @@ func (o *ServiceBindingLastOperationGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the service binding last operation get o k response
+func (o *ServiceBindingLastOperationGetOK) Code() int {
+	return 200
+}
+
 func (o *ServiceBindingLastOperationGetOK) Error() string {
 	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetOK  %+v", 200, o.Payload)
 }
@@ -148,6 +153,11 @@ func (o *ServiceBindingLastOperationGetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the service binding last operation get bad request response
+func (o *ServiceBindingLastOperationGetBadRequest) Code() int {
+	return 400
+}
+
 func (o *ServiceBindingLastOperationGetBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetBadRequest  %+v", 400, o.Payload)
 }
@@ -209,6 +219,11 @@ func (o *ServiceBindingLastOperationGetGone) IsServerError() bool {
 // IsCode returns true when this service binding last operation get gone response a status code equal to that given
 func (o *ServiceBindingLastOperationGetGone) IsCode(code int) bool {
 	return code == 410
+}
+
+// Code gets the status code for the service binding last operation get gone response
+func (o *ServiceBindingLastOperationGetGone) Code() int {
+	return 410
 }
 
 func (o *ServiceBindingLastOperationGetGone) Error() string {

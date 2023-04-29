@@ -97,6 +97,11 @@ func (o *InternalV1StorageRegionsStoragePoolsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the internal v1 storage regions storage pools get o k response
+func (o *InternalV1StorageRegionsStoragePoolsGetOK) Code() int {
+	return 200
+}
+
 func (o *InternalV1StorageRegionsStoragePoolsGetOK) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools/{storage_pool_name}][%d] internalV1StorageRegionsStoragePoolsGetOK  %+v", 200, o.Payload)
 }
@@ -156,6 +161,11 @@ func (o *InternalV1StorageRegionsStoragePoolsGetUnauthorized) IsServerError() bo
 // IsCode returns true when this internal v1 storage regions storage pools get unauthorized response a status code equal to that given
 func (o *InternalV1StorageRegionsStoragePoolsGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the internal v1 storage regions storage pools get unauthorized response
+func (o *InternalV1StorageRegionsStoragePoolsGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetUnauthorized) Error() string {
@@ -221,6 +231,11 @@ func (o *InternalV1StorageRegionsStoragePoolsGetForbidden) IsCode(code int) bool
 	return code == 403
 }
 
+// Code gets the status code for the internal v1 storage regions storage pools get forbidden response
+func (o *InternalV1StorageRegionsStoragePoolsGetForbidden) Code() int {
+	return 403
+}
+
 func (o *InternalV1StorageRegionsStoragePoolsGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools/{storage_pool_name}][%d] internalV1StorageRegionsStoragePoolsGetForbidden  %+v", 403, o.Payload)
 }
@@ -284,6 +299,11 @@ func (o *InternalV1StorageRegionsStoragePoolsGetNotFound) IsCode(code int) bool 
 	return code == 404
 }
 
+// Code gets the status code for the internal v1 storage regions storage pools get not found response
+func (o *InternalV1StorageRegionsStoragePoolsGetNotFound) Code() int {
+	return 404
+}
+
 func (o *InternalV1StorageRegionsStoragePoolsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools/{storage_pool_name}][%d] internalV1StorageRegionsStoragePoolsGetNotFound  %+v", 404, o.Payload)
 }
@@ -345,6 +365,11 @@ func (o *InternalV1StorageRegionsStoragePoolsGetInternalServerError) IsServerErr
 // IsCode returns true when this internal v1 storage regions storage pools get internal server error response a status code equal to that given
 func (o *InternalV1StorageRegionsStoragePoolsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the internal v1 storage regions storage pools get internal server error response
+func (o *InternalV1StorageRegionsStoragePoolsGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetInternalServerError) Error() string {

@@ -97,6 +97,11 @@ func (o *InternalV1StorageRegionsThresholdsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds get o k response
+func (o *InternalV1StorageRegionsThresholdsGetOK) Code() int {
+	return 200
+}
+
 func (o *InternalV1StorageRegionsThresholdsGetOK) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsGetOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *InternalV1StorageRegionsThresholdsGetUnauthorized) IsServerError() bool
 // IsCode returns true when this internal v1 storage regions thresholds get unauthorized response a status code equal to that given
 func (o *InternalV1StorageRegionsThresholdsGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the internal v1 storage regions thresholds get unauthorized response
+func (o *InternalV1StorageRegionsThresholdsGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *InternalV1StorageRegionsThresholdsGetUnauthorized) Error() string {
@@ -223,6 +233,11 @@ func (o *InternalV1StorageRegionsThresholdsGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds get forbidden response
+func (o *InternalV1StorageRegionsThresholdsGetForbidden) Code() int {
+	return 403
+}
+
 func (o *InternalV1StorageRegionsThresholdsGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsGetForbidden  %+v", 403, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *InternalV1StorageRegionsThresholdsGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds get not found response
+func (o *InternalV1StorageRegionsThresholdsGetNotFound) Code() int {
+	return 404
+}
+
 func (o *InternalV1StorageRegionsThresholdsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *InternalV1StorageRegionsThresholdsGetInternalServerError) IsServerError
 // IsCode returns true when this internal v1 storage regions thresholds get internal server error response a status code equal to that given
 func (o *InternalV1StorageRegionsThresholdsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the internal v1 storage regions thresholds get internal server error response
+func (o *InternalV1StorageRegionsThresholdsGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *InternalV1StorageRegionsThresholdsGetInternalServerError) Error() string {

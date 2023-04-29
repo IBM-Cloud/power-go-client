@@ -103,6 +103,11 @@ func (o *PcloudPvminstancesVolumesGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud pvminstances volumes getall o k response
+func (o *PcloudPvminstancesVolumesGetallOK) Code() int {
+	return 200
+}
+
 func (o *PcloudPvminstancesVolumesGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/volumes][%d] pcloudPvminstancesVolumesGetallOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PcloudPvminstancesVolumesGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances volumes getall bad request response a status code equal to that given
 func (o *PcloudPvminstancesVolumesGetallBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud pvminstances volumes getall bad request response
+func (o *PcloudPvminstancesVolumesGetallBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudPvminstancesVolumesGetallBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PcloudPvminstancesVolumesGetallUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud pvminstances volumes getall unauthorized response
+func (o *PcloudPvminstancesVolumesGetallUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudPvminstancesVolumesGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/volumes][%d] pcloudPvminstancesVolumesGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PcloudPvminstancesVolumesGetallForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances volumes getall forbidden response a status code equal to that given
 func (o *PcloudPvminstancesVolumesGetallForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud pvminstances volumes getall forbidden response
+func (o *PcloudPvminstancesVolumesGetallForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudPvminstancesVolumesGetallForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PcloudPvminstancesVolumesGetallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud pvminstances volumes getall not found response
+func (o *PcloudPvminstancesVolumesGetallNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudPvminstancesVolumesGetallNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/volumes][%d] pcloudPvminstancesVolumesGetallNotFound  %+v", 404, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *PcloudPvminstancesVolumesGetallInternalServerError) IsServerError() boo
 // IsCode returns true when this pcloud pvminstances volumes getall internal server error response a status code equal to that given
 func (o *PcloudPvminstancesVolumesGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud pvminstances volumes getall internal server error response
+func (o *PcloudPvminstancesVolumesGetallInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudPvminstancesVolumesGetallInternalServerError) Error() string {

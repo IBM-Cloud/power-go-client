@@ -97,6 +97,11 @@ func (o *PcloudLocationsDisasterrecoveryGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud locations disasterrecovery getall o k response
+func (o *PcloudLocationsDisasterrecoveryGetallOK) Code() int {
+	return 200
+}
+
 func (o *PcloudLocationsDisasterrecoveryGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/locations/disaster-recovery][%d] pcloudLocationsDisasterrecoveryGetallOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudLocationsDisasterrecoveryGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud locations disasterrecovery getall bad request response a status code equal to that given
 func (o *PcloudLocationsDisasterrecoveryGetallBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud locations disasterrecovery getall bad request response
+func (o *PcloudLocationsDisasterrecoveryGetallBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudLocationsDisasterrecoveryGetallBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudLocationsDisasterrecoveryGetallUnauthorized) IsCode(code int) boo
 	return code == 401
 }
 
+// Code gets the status code for the pcloud locations disasterrecovery getall unauthorized response
+func (o *PcloudLocationsDisasterrecoveryGetallUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudLocationsDisasterrecoveryGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/locations/disaster-recovery][%d] pcloudLocationsDisasterrecoveryGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudLocationsDisasterrecoveryGetallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud locations disasterrecovery getall not found response
+func (o *PcloudLocationsDisasterrecoveryGetallNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudLocationsDisasterrecoveryGetallNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/locations/disaster-recovery][%d] pcloudLocationsDisasterrecoveryGetallNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudLocationsDisasterrecoveryGetallInternalServerError) IsServerError
 // IsCode returns true when this pcloud locations disasterrecovery getall internal server error response a status code equal to that given
 func (o *PcloudLocationsDisasterrecoveryGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud locations disasterrecovery getall internal server error response
+func (o *PcloudLocationsDisasterrecoveryGetallInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudLocationsDisasterrecoveryGetallInternalServerError) Error() string {

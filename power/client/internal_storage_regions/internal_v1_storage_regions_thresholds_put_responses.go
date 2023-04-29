@@ -109,6 +109,11 @@ func (o *InternalV1StorageRegionsThresholdsPutAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds put accepted response
+func (o *InternalV1StorageRegionsThresholdsPutAccepted) Code() int {
+	return 202
+}
+
 func (o *InternalV1StorageRegionsThresholdsPutAccepted) Error() string {
 	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutAccepted  %+v", 202, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *InternalV1StorageRegionsThresholdsPutBadRequest) IsServerError() bool {
 // IsCode returns true when this internal v1 storage regions thresholds put bad request response a status code equal to that given
 func (o *InternalV1StorageRegionsThresholdsPutBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the internal v1 storage regions thresholds put bad request response
+func (o *InternalV1StorageRegionsThresholdsPutBadRequest) Code() int {
+	return 400
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) IsCode(code int) boo
 	return code == 401
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds put unauthorized response
+func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) Code() int {
+	return 401
+}
+
 func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnauthorized  %+v", 401, o.Payload)
 }
@@ -296,6 +311,11 @@ func (o *InternalV1StorageRegionsThresholdsPutForbidden) IsServerError() bool {
 // IsCode returns true when this internal v1 storage regions thresholds put forbidden response a status code equal to that given
 func (o *InternalV1StorageRegionsThresholdsPutForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the internal v1 storage regions thresholds put forbidden response
+func (o *InternalV1StorageRegionsThresholdsPutForbidden) Code() int {
+	return 403
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutForbidden) Error() string {
@@ -361,6 +381,11 @@ func (o *InternalV1StorageRegionsThresholdsPutConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds put conflict response
+func (o *InternalV1StorageRegionsThresholdsPutConflict) Code() int {
+	return 409
+}
+
 func (o *InternalV1StorageRegionsThresholdsPutConflict) Error() string {
 	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutConflict  %+v", 409, o.Payload)
 }
@@ -424,6 +449,11 @@ func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) IsCode(code i
 	return code == 422
 }
 
+// Code gets the status code for the internal v1 storage regions thresholds put unprocessable entity response
+func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) Code() int {
+	return 422
+}
+
 func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -485,6 +515,11 @@ func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) IsServerError
 // IsCode returns true when this internal v1 storage regions thresholds put internal server error response a status code equal to that given
 func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the internal v1 storage regions thresholds put internal server error response
+func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) Code() int {
+	return 500
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) Error() string {

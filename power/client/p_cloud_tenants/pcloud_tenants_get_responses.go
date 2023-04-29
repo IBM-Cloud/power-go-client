@@ -103,6 +103,11 @@ func (o *PcloudTenantsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud tenants get o k response
+func (o *PcloudTenantsGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudTenantsGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PcloudTenantsGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud tenants get bad request response a status code equal to that given
 func (o *PcloudTenantsGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud tenants get bad request response
+func (o *PcloudTenantsGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudTenantsGetBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PcloudTenantsGetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud tenants get unauthorized response
+func (o *PcloudTenantsGetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudTenantsGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PcloudTenantsGetForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud tenants get forbidden response a status code equal to that given
 func (o *PcloudTenantsGetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud tenants get forbidden response
+func (o *PcloudTenantsGetForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudTenantsGetForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PcloudTenantsGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud tenants get not found response
+func (o *PcloudTenantsGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudTenantsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetNotFound  %+v", 404, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *PcloudTenantsGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud tenants get internal server error response a status code equal to that given
 func (o *PcloudTenantsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud tenants get internal server error response
+func (o *PcloudTenantsGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudTenantsGetInternalServerError) Error() string {

@@ -97,6 +97,11 @@ func (o *ServiceBrokerAuthTokenPostOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the service broker auth token post o k response
+func (o *ServiceBrokerAuthTokenPostOK) Code() int {
+	return 200
+}
+
 func (o *ServiceBrokerAuthTokenPostOK) Error() string {
 	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *ServiceBrokerAuthTokenPostBadRequest) IsServerError() bool {
 // IsCode returns true when this service broker auth token post bad request response a status code equal to that given
 func (o *ServiceBrokerAuthTokenPostBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the service broker auth token post bad request response
+func (o *ServiceBrokerAuthTokenPostBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServiceBrokerAuthTokenPostBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *ServiceBrokerAuthTokenPostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the service broker auth token post forbidden response
+func (o *ServiceBrokerAuthTokenPostForbidden) Code() int {
+	return 403
+}
+
 func (o *ServiceBrokerAuthTokenPostForbidden) Error() string {
 	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostForbidden  %+v", 403, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *ServiceBrokerAuthTokenPostTooManyRequests) IsCode(code int) bool {
 	return code == 429
 }
 
+// Code gets the status code for the service broker auth token post too many requests response
+func (o *ServiceBrokerAuthTokenPostTooManyRequests) Code() int {
+	return 429
+}
+
 func (o *ServiceBrokerAuthTokenPostTooManyRequests) Error() string {
 	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostTooManyRequests  %+v", 429, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *ServiceBrokerAuthTokenPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this service broker auth token post internal server error response a status code equal to that given
 func (o *ServiceBrokerAuthTokenPostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the service broker auth token post internal server error response
+func (o *ServiceBrokerAuthTokenPostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServiceBrokerAuthTokenPostInternalServerError) Error() string {

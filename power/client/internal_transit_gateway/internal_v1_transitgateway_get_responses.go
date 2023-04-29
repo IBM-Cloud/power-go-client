@@ -79,6 +79,11 @@ func (o *InternalV1TransitgatewayGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the internal v1 transitgateway get o k response
+func (o *InternalV1TransitgatewayGetOK) Code() int {
+	return 200
+}
+
 func (o *InternalV1TransitgatewayGetOK) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetOK  %+v", 200, o.Payload)
 }
@@ -140,6 +145,11 @@ func (o *InternalV1TransitgatewayGetForbidden) IsServerError() bool {
 // IsCode returns true when this internal v1 transitgateway get forbidden response a status code equal to that given
 func (o *InternalV1TransitgatewayGetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the internal v1 transitgateway get forbidden response
+func (o *InternalV1TransitgatewayGetForbidden) Code() int {
+	return 403
 }
 
 func (o *InternalV1TransitgatewayGetForbidden) Error() string {

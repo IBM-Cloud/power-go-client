@@ -97,6 +97,11 @@ func (o *PcloudDhcpGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud dhcp get o k response
+func (o *PcloudDhcpGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudDhcpGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/services/dhcp/{dhcp_id}][%d] pcloudDhcpGetOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudDhcpGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud dhcp get bad request response a status code equal to that given
 func (o *PcloudDhcpGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud dhcp get bad request response
+func (o *PcloudDhcpGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudDhcpGetBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudDhcpGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the pcloud dhcp get forbidden response
+func (o *PcloudDhcpGetForbidden) Code() int {
+	return 403
+}
+
 func (o *PcloudDhcpGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/services/dhcp/{dhcp_id}][%d] pcloudDhcpGetForbidden  %+v", 403, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudDhcpGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud dhcp get not found response
+func (o *PcloudDhcpGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudDhcpGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/services/dhcp/{dhcp_id}][%d] pcloudDhcpGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudDhcpGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud dhcp get internal server error response a status code equal to that given
 func (o *PcloudDhcpGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud dhcp get internal server error response
+func (o *PcloudDhcpGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudDhcpGetInternalServerError) Error() string {

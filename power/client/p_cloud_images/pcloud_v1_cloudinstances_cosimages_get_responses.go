@@ -97,6 +97,11 @@ func (o *PcloudV1CloudinstancesCosimagesGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud v1 cloudinstances cosimages get o k response
+func (o *PcloudV1CloudinstancesCosimagesGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudV1CloudinstancesCosimagesGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images][%d] pcloudV1CloudinstancesCosimagesGetOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudV1CloudinstancesCosimagesGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud v1 cloudinstances cosimages get unauthorized response a status code equal to that given
 func (o *PcloudV1CloudinstancesCosimagesGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the pcloud v1 cloudinstances cosimages get unauthorized response
+func (o *PcloudV1CloudinstancesCosimagesGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PcloudV1CloudinstancesCosimagesGetUnauthorized) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudV1CloudinstancesCosimagesGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the pcloud v1 cloudinstances cosimages get forbidden response
+func (o *PcloudV1CloudinstancesCosimagesGetForbidden) Code() int {
+	return 403
+}
+
 func (o *PcloudV1CloudinstancesCosimagesGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images][%d] pcloudV1CloudinstancesCosimagesGetForbidden  %+v", 403, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudV1CloudinstancesCosimagesGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud v1 cloudinstances cosimages get not found response
+func (o *PcloudV1CloudinstancesCosimagesGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudV1CloudinstancesCosimagesGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cos-images][%d] pcloudV1CloudinstancesCosimagesGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudV1CloudinstancesCosimagesGetInternalServerError) IsServerError() 
 // IsCode returns true when this pcloud v1 cloudinstances cosimages get internal server error response a status code equal to that given
 func (o *PcloudV1CloudinstancesCosimagesGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud v1 cloudinstances cosimages get internal server error response
+func (o *PcloudV1CloudinstancesCosimagesGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudV1CloudinstancesCosimagesGetInternalServerError) Error() string {

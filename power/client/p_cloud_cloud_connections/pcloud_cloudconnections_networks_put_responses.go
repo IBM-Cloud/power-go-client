@@ -115,6 +115,11 @@ func (o *PcloudCloudconnectionsNetworksPutOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud cloudconnections networks put o k response
+func (o *PcloudCloudconnectionsNetworksPutOK) Code() int {
+	return 200
+}
+
 func (o *PcloudCloudconnectionsNetworksPutOK) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id}][%d] pcloudCloudconnectionsNetworksPutOK  %+v", 200, o.Payload)
 }
@@ -174,6 +179,11 @@ func (o *PcloudCloudconnectionsNetworksPutAccepted) IsServerError() bool {
 // IsCode returns true when this pcloud cloudconnections networks put accepted response a status code equal to that given
 func (o *PcloudCloudconnectionsNetworksPutAccepted) IsCode(code int) bool {
 	return code == 202
+}
+
+// Code gets the status code for the pcloud cloudconnections networks put accepted response
+func (o *PcloudCloudconnectionsNetworksPutAccepted) Code() int {
+	return 202
 }
 
 func (o *PcloudCloudconnectionsNetworksPutAccepted) Error() string {
@@ -239,6 +249,11 @@ func (o *PcloudCloudconnectionsNetworksPutBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the pcloud cloudconnections networks put bad request response
+func (o *PcloudCloudconnectionsNetworksPutBadRequest) Code() int {
+	return 400
+}
+
 func (o *PcloudCloudconnectionsNetworksPutBadRequest) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id}][%d] pcloudCloudconnectionsNetworksPutBadRequest  %+v", 400, o.Payload)
 }
@@ -300,6 +315,11 @@ func (o *PcloudCloudconnectionsNetworksPutUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud cloudconnections networks put unauthorized response a status code equal to that given
 func (o *PcloudCloudconnectionsNetworksPutUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the pcloud cloudconnections networks put unauthorized response
+func (o *PcloudCloudconnectionsNetworksPutUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PcloudCloudconnectionsNetworksPutUnauthorized) Error() string {
@@ -365,6 +385,11 @@ func (o *PcloudCloudconnectionsNetworksPutNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud cloudconnections networks put not found response
+func (o *PcloudCloudconnectionsNetworksPutNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudCloudconnectionsNetworksPutNotFound) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id}][%d] pcloudCloudconnectionsNetworksPutNotFound  %+v", 404, o.Payload)
 }
@@ -426,6 +451,11 @@ func (o *PcloudCloudconnectionsNetworksPutRequestTimeout) IsServerError() bool {
 // IsCode returns true when this pcloud cloudconnections networks put request timeout response a status code equal to that given
 func (o *PcloudCloudconnectionsNetworksPutRequestTimeout) IsCode(code int) bool {
 	return code == 408
+}
+
+// Code gets the status code for the pcloud cloudconnections networks put request timeout response
+func (o *PcloudCloudconnectionsNetworksPutRequestTimeout) Code() int {
+	return 408
 }
 
 func (o *PcloudCloudconnectionsNetworksPutRequestTimeout) Error() string {
@@ -491,6 +521,11 @@ func (o *PcloudCloudconnectionsNetworksPutUnprocessableEntity) IsCode(code int) 
 	return code == 422
 }
 
+// Code gets the status code for the pcloud cloudconnections networks put unprocessable entity response
+func (o *PcloudCloudconnectionsNetworksPutUnprocessableEntity) Code() int {
+	return 422
+}
+
 func (o *PcloudCloudconnectionsNetworksPutUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}/networks/{network_id}][%d] pcloudCloudconnectionsNetworksPutUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -552,6 +587,11 @@ func (o *PcloudCloudconnectionsNetworksPutInternalServerError) IsServerError() b
 // IsCode returns true when this pcloud cloudconnections networks put internal server error response a status code equal to that given
 func (o *PcloudCloudconnectionsNetworksPutInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud cloudconnections networks put internal server error response
+func (o *PcloudCloudconnectionsNetworksPutInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudCloudconnectionsNetworksPutInternalServerError) Error() string {

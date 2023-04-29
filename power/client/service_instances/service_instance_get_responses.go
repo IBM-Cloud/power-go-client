@@ -79,6 +79,11 @@ func (o *ServiceInstanceGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the service instance get o k response
+func (o *ServiceInstanceGetOK) Code() int {
+	return 200
+}
+
 func (o *ServiceInstanceGetOK) Error() string {
 	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetOK  %+v", 200, o.Payload)
 }
@@ -140,6 +145,11 @@ func (o *ServiceInstanceGetNotFound) IsServerError() bool {
 // IsCode returns true when this service instance get not found response a status code equal to that given
 func (o *ServiceInstanceGetNotFound) IsCode(code int) bool {
 	return code == 404
+}
+
+// Code gets the status code for the service instance get not found response
+func (o *ServiceInstanceGetNotFound) Code() int {
+	return 404
 }
 
 func (o *ServiceInstanceGetNotFound) Error() string {
