@@ -85,6 +85,11 @@ func (o *ServiceInstanceLastOperationGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the service instance last operation get o k response
+func (o *ServiceInstanceLastOperationGetOK) Code() int {
+	return 200
+}
+
 func (o *ServiceInstanceLastOperationGetOK) Error() string {
 	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/last_operation][%d] serviceInstanceLastOperationGetOK  %+v", 200, o.Payload)
 }
@@ -148,6 +153,11 @@ func (o *ServiceInstanceLastOperationGetBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
+// Code gets the status code for the service instance last operation get bad request response
+func (o *ServiceInstanceLastOperationGetBadRequest) Code() int {
+	return 400
+}
+
 func (o *ServiceInstanceLastOperationGetBadRequest) Error() string {
 	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/last_operation][%d] serviceInstanceLastOperationGetBadRequest  %+v", 400, o.Payload)
 }
@@ -209,6 +219,11 @@ func (o *ServiceInstanceLastOperationGetGone) IsServerError() bool {
 // IsCode returns true when this service instance last operation get gone response a status code equal to that given
 func (o *ServiceInstanceLastOperationGetGone) IsCode(code int) bool {
 	return code == 410
+}
+
+// Code gets the status code for the service instance last operation get gone response
+func (o *ServiceInstanceLastOperationGetGone) Code() int {
+	return 410
 }
 
 func (o *ServiceInstanceLastOperationGetGone) Error() string {

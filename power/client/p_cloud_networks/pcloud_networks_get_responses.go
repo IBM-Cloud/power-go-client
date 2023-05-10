@@ -103,6 +103,11 @@ func (o *PcloudNetworksGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud networks get o k response
+func (o *PcloudNetworksGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudNetworksGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksGetOK  %+v", 200, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PcloudNetworksGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud networks get bad request response a status code equal to that given
 func (o *PcloudNetworksGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud networks get bad request response
+func (o *PcloudNetworksGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudNetworksGetBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PcloudNetworksGetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud networks get unauthorized response
+func (o *PcloudNetworksGetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudNetworksGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PcloudNetworksGetForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud networks get forbidden response a status code equal to that given
 func (o *PcloudNetworksGetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud networks get forbidden response
+func (o *PcloudNetworksGetForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudNetworksGetForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PcloudNetworksGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud networks get not found response
+func (o *PcloudNetworksGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudNetworksGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksGetNotFound  %+v", 404, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *PcloudNetworksGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud networks get internal server error response a status code equal to that given
 func (o *PcloudNetworksGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud networks get internal server error response
+func (o *PcloudNetworksGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudNetworksGetInternalServerError) Error() string {

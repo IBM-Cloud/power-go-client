@@ -109,6 +109,11 @@ func (o *PcloudIkepoliciesGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud ikepolicies get o k response
+func (o *PcloudIkepoliciesGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudIkepoliciesGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesGetOK  %+v", 200, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *PcloudIkepoliciesGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud ikepolicies get bad request response a status code equal to that given
 func (o *PcloudIkepoliciesGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud ikepolicies get bad request response
+func (o *PcloudIkepoliciesGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudIkepoliciesGetBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *PcloudIkepoliciesGetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud ikepolicies get unauthorized response
+func (o *PcloudIkepoliciesGetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudIkepoliciesGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -296,6 +311,11 @@ func (o *PcloudIkepoliciesGetForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud ikepolicies get forbidden response a status code equal to that given
 func (o *PcloudIkepoliciesGetForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud ikepolicies get forbidden response
+func (o *PcloudIkepoliciesGetForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudIkepoliciesGetForbidden) Error() string {
@@ -361,6 +381,11 @@ func (o *PcloudIkepoliciesGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud ikepolicies get not found response
+func (o *PcloudIkepoliciesGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudIkepoliciesGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesGetNotFound  %+v", 404, o.Payload)
 }
@@ -424,6 +449,11 @@ func (o *PcloudIkepoliciesGetUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
+// Code gets the status code for the pcloud ikepolicies get unprocessable entity response
+func (o *PcloudIkepoliciesGetUnprocessableEntity) Code() int {
+	return 422
+}
+
 func (o *PcloudIkepoliciesGetUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies/{ike_policy_id}][%d] pcloudIkepoliciesGetUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -485,6 +515,11 @@ func (o *PcloudIkepoliciesGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud ikepolicies get internal server error response a status code equal to that given
 func (o *PcloudIkepoliciesGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud ikepolicies get internal server error response
+func (o *PcloudIkepoliciesGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudIkepoliciesGetInternalServerError) Error() string {

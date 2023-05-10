@@ -97,6 +97,11 @@ func (o *PcloudSharedprocessorpoolsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud sharedprocessorpools get o k response
+func (o *PcloudSharedprocessorpoolsGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudSharedprocessorpoolsGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsGetOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudSharedprocessorpoolsGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud sharedprocessorpools get bad request response a status code equal to that given
 func (o *PcloudSharedprocessorpoolsGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud sharedprocessorpools get bad request response
+func (o *PcloudSharedprocessorpoolsGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudSharedprocessorpoolsGetBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudSharedprocessorpoolsGetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud sharedprocessorpools get unauthorized response
+func (o *PcloudSharedprocessorpoolsGetUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudSharedprocessorpoolsGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudSharedprocessorpoolsGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud sharedprocessorpools get not found response
+func (o *PcloudSharedprocessorpoolsGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudSharedprocessorpoolsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudSharedprocessorpoolsGetInternalServerError) IsServerError() bool 
 // IsCode returns true when this pcloud sharedprocessorpools get internal server error response a status code equal to that given
 func (o *PcloudSharedprocessorpoolsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud sharedprocessorpools get internal server error response
+func (o *PcloudSharedprocessorpoolsGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudSharedprocessorpoolsGetInternalServerError) Error() string {

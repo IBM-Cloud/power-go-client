@@ -97,6 +97,11 @@ func (o *PcloudCloudinstancesSnapshotsGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud cloudinstances snapshots getall o k response
+func (o *PcloudCloudinstancesSnapshotsGetallOK) Code() int {
+	return 200
+}
+
 func (o *PcloudCloudinstancesSnapshotsGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots][%d] pcloudCloudinstancesSnapshotsGetallOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudCloudinstancesSnapshotsGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances snapshots getall bad request response a status code equal to that given
 func (o *PcloudCloudinstancesSnapshotsGetallBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud cloudinstances snapshots getall bad request response
+func (o *PcloudCloudinstancesSnapshotsGetallBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudCloudinstancesSnapshotsGetallBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudCloudinstancesSnapshotsGetallUnauthorized) IsCode(code int) bool 
 	return code == 401
 }
 
+// Code gets the status code for the pcloud cloudinstances snapshots getall unauthorized response
+func (o *PcloudCloudinstancesSnapshotsGetallUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudCloudinstancesSnapshotsGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots][%d] pcloudCloudinstancesSnapshotsGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudCloudinstancesSnapshotsGetallForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the pcloud cloudinstances snapshots getall forbidden response
+func (o *PcloudCloudinstancesSnapshotsGetallForbidden) Code() int {
+	return 403
+}
+
 func (o *PcloudCloudinstancesSnapshotsGetallForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots][%d] pcloudCloudinstancesSnapshotsGetallForbidden  %+v", 403, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudCloudinstancesSnapshotsGetallInternalServerError) IsServerError()
 // IsCode returns true when this pcloud cloudinstances snapshots getall internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesSnapshotsGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud cloudinstances snapshots getall internal server error response
+func (o *PcloudCloudinstancesSnapshotsGetallInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudCloudinstancesSnapshotsGetallInternalServerError) Error() string {

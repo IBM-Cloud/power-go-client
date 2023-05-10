@@ -97,6 +97,11 @@ func (o *PcloudNetworksPortsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud networks ports get o k response
+func (o *PcloudNetworksPortsGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudNetworksPortsGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsGetOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudNetworksPortsGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud networks ports get unauthorized response a status code equal to that given
 func (o *PcloudNetworksPortsGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the pcloud networks ports get unauthorized response
+func (o *PcloudNetworksPortsGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PcloudNetworksPortsGetUnauthorized) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudNetworksPortsGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the pcloud networks ports get forbidden response
+func (o *PcloudNetworksPortsGetForbidden) Code() int {
+	return 403
+}
+
 func (o *PcloudNetworksPortsGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsGetForbidden  %+v", 403, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudNetworksPortsGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud networks ports get not found response
+func (o *PcloudNetworksPortsGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudNetworksPortsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsGetNotFound  %+v", 404, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudNetworksPortsGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud networks ports get internal server error response a status code equal to that given
 func (o *PcloudNetworksPortsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud networks ports get internal server error response
+func (o *PcloudNetworksPortsGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudNetworksPortsGetInternalServerError) Error() string {

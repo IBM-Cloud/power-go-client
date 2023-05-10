@@ -91,6 +91,11 @@ func (o *PcloudDhcpPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the pcloud dhcp post accepted response
+func (o *PcloudDhcpPostAccepted) Code() int {
+	return 202
+}
+
 func (o *PcloudDhcpPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/services/dhcp][%d] pcloudDhcpPostAccepted  %+v", 202, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *PcloudDhcpPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud dhcp post bad request response a status code equal to that given
 func (o *PcloudDhcpPostBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud dhcp post bad request response
+func (o *PcloudDhcpPostBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudDhcpPostBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *PcloudDhcpPostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the pcloud dhcp post forbidden response
+func (o *PcloudDhcpPostForbidden) Code() int {
+	return 403
+}
+
 func (o *PcloudDhcpPostForbidden) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/services/dhcp][%d] pcloudDhcpPostForbidden  %+v", 403, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *PcloudDhcpPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud dhcp post internal server error response a status code equal to that given
 func (o *PcloudDhcpPostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud dhcp post internal server error response
+func (o *PcloudDhcpPostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudDhcpPostInternalServerError) Error() string {

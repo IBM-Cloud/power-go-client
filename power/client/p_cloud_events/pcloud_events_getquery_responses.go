@@ -97,6 +97,11 @@ func (o *PcloudEventsGetqueryOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud events getquery o k response
+func (o *PcloudEventsGetqueryOK) Code() int {
+	return 200
+}
+
 func (o *PcloudEventsGetqueryOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/events][%d] pcloudEventsGetqueryOK  %+v", 200, o.Payload)
 }
@@ -158,6 +163,11 @@ func (o *PcloudEventsGetqueryBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud events getquery bad request response a status code equal to that given
 func (o *PcloudEventsGetqueryBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud events getquery bad request response
+func (o *PcloudEventsGetqueryBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudEventsGetqueryBadRequest) Error() string {
@@ -223,6 +233,11 @@ func (o *PcloudEventsGetqueryUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud events getquery unauthorized response
+func (o *PcloudEventsGetqueryUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudEventsGetqueryUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/events][%d] pcloudEventsGetqueryUnauthorized  %+v", 401, o.Payload)
 }
@@ -286,6 +301,11 @@ func (o *PcloudEventsGetqueryForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the pcloud events getquery forbidden response
+func (o *PcloudEventsGetqueryForbidden) Code() int {
+	return 403
+}
+
 func (o *PcloudEventsGetqueryForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/events][%d] pcloudEventsGetqueryForbidden  %+v", 403, o.Payload)
 }
@@ -347,6 +367,11 @@ func (o *PcloudEventsGetqueryInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud events getquery internal server error response a status code equal to that given
 func (o *PcloudEventsGetqueryInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud events getquery internal server error response
+func (o *PcloudEventsGetqueryInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudEventsGetqueryInternalServerError) Error() string {

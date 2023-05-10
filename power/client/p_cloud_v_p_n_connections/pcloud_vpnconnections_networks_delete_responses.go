@@ -109,6 +109,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the pcloud vpnconnections networks delete accepted response
+func (o *PcloudVpnconnectionsNetworksDeleteAccepted) Code() int {
+	return 202
+}
+
 func (o *PcloudVpnconnectionsNetworksDeleteAccepted) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteAccepted  %+v", 202, o.Payload)
 }
@@ -170,6 +175,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud vpnconnections networks delete bad request response a status code equal to that given
 func (o *PcloudVpnconnectionsNetworksDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud vpnconnections networks delete bad request response
+func (o *PcloudVpnconnectionsNetworksDeleteBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteBadRequest) Error() string {
@@ -235,6 +245,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud vpnconnections networks delete unauthorized response
+func (o *PcloudVpnconnectionsNetworksDeleteUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudVpnconnectionsNetworksDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -296,6 +311,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud vpnconnections networks delete forbidden response a status code equal to that given
 func (o *PcloudVpnconnectionsNetworksDeleteForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud vpnconnections networks delete forbidden response
+func (o *PcloudVpnconnectionsNetworksDeleteForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteForbidden) Error() string {
@@ -361,6 +381,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud vpnconnections networks delete not found response
+func (o *PcloudVpnconnectionsNetworksDeleteNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudVpnconnectionsNetworksDeleteNotFound) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteNotFound  %+v", 404, o.Payload)
 }
@@ -424,6 +449,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteUnprocessableEntity) IsCode(code int)
 	return code == 422
 }
 
+// Code gets the status code for the pcloud vpnconnections networks delete unprocessable entity response
+func (o *PcloudVpnconnectionsNetworksDeleteUnprocessableEntity) Code() int {
+	return 422
+}
+
 func (o *PcloudVpnconnectionsNetworksDeleteUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections/{vpn_connection_id}/networks][%d] pcloudVpnconnectionsNetworksDeleteUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -485,6 +515,11 @@ func (o *PcloudVpnconnectionsNetworksDeleteInternalServerError) IsServerError() 
 // IsCode returns true when this pcloud vpnconnections networks delete internal server error response a status code equal to that given
 func (o *PcloudVpnconnectionsNetworksDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud vpnconnections networks delete internal server error response
+func (o *PcloudVpnconnectionsNetworksDeleteInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudVpnconnectionsNetworksDeleteInternalServerError) Error() string {

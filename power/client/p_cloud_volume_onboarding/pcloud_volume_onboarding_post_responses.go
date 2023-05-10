@@ -103,6 +103,11 @@ func (o *PcloudVolumeOnboardingPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the pcloud volume onboarding post accepted response
+func (o *PcloudVolumeOnboardingPostAccepted) Code() int {
+	return 202
+}
+
 func (o *PcloudVolumeOnboardingPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding][%d] pcloudVolumeOnboardingPostAccepted  %+v", 202, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PcloudVolumeOnboardingPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud volume onboarding post bad request response a status code equal to that given
 func (o *PcloudVolumeOnboardingPostBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud volume onboarding post bad request response
+func (o *PcloudVolumeOnboardingPostBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudVolumeOnboardingPostBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PcloudVolumeOnboardingPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud volume onboarding post unauthorized response
+func (o *PcloudVolumeOnboardingPostUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudVolumeOnboardingPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding][%d] pcloudVolumeOnboardingPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PcloudVolumeOnboardingPostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud volume onboarding post forbidden response a status code equal to that given
 func (o *PcloudVolumeOnboardingPostForbidden) IsCode(code int) bool {
 	return code == 403
+}
+
+// Code gets the status code for the pcloud volume onboarding post forbidden response
+func (o *PcloudVolumeOnboardingPostForbidden) Code() int {
+	return 403
 }
 
 func (o *PcloudVolumeOnboardingPostForbidden) Error() string {
@@ -355,6 +375,11 @@ func (o *PcloudVolumeOnboardingPostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
+// Code gets the status code for the pcloud volume onboarding post conflict response
+func (o *PcloudVolumeOnboardingPostConflict) Code() int {
+	return 409
+}
+
 func (o *PcloudVolumeOnboardingPostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding][%d] pcloudVolumeOnboardingPostConflict  %+v", 409, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *PcloudVolumeOnboardingPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud volume onboarding post internal server error response a status code equal to that given
 func (o *PcloudVolumeOnboardingPostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud volume onboarding post internal server error response
+func (o *PcloudVolumeOnboardingPostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudVolumeOnboardingPostInternalServerError) Error() string {

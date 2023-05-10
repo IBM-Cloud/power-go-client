@@ -79,6 +79,11 @@ func (o *ServiceBrokerStoragetypesGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the service broker storagetypes get o k response
+func (o *ServiceBrokerStoragetypesGetOK) Code() int {
+	return 200
+}
+
 func (o *ServiceBrokerStoragetypesGetOK) Error() string {
 	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetOK  %+v", 200, o.Payload)
 }
@@ -138,6 +143,11 @@ func (o *ServiceBrokerStoragetypesGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this service broker storagetypes get internal server error response a status code equal to that given
 func (o *ServiceBrokerStoragetypesGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the service broker storagetypes get internal server error response
+func (o *ServiceBrokerStoragetypesGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServiceBrokerStoragetypesGetInternalServerError) Error() string {

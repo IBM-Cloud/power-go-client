@@ -91,6 +91,11 @@ func (o *ServiceBrokerOpenstacksGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the service broker openstacks get o k response
+func (o *ServiceBrokerOpenstacksGetOK) Code() int {
+	return 200
+}
+
 func (o *ServiceBrokerOpenstacksGetOK) Error() string {
 	return fmt.Sprintf("[GET /broker/v1/openstacks][%d] serviceBrokerOpenstacksGetOK  %+v", 200, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *ServiceBrokerOpenstacksGetBadRequest) IsServerError() bool {
 // IsCode returns true when this service broker openstacks get bad request response a status code equal to that given
 func (o *ServiceBrokerOpenstacksGetBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the service broker openstacks get bad request response
+func (o *ServiceBrokerOpenstacksGetBadRequest) Code() int {
+	return 400
 }
 
 func (o *ServiceBrokerOpenstacksGetBadRequest) Error() string {
@@ -217,6 +227,11 @@ func (o *ServiceBrokerOpenstacksGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
+// Code gets the status code for the service broker openstacks get forbidden response
+func (o *ServiceBrokerOpenstacksGetForbidden) Code() int {
+	return 403
+}
+
 func (o *ServiceBrokerOpenstacksGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /broker/v1/openstacks][%d] serviceBrokerOpenstacksGetForbidden  %+v", 403, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *ServiceBrokerOpenstacksGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this service broker openstacks get internal server error response a status code equal to that given
 func (o *ServiceBrokerOpenstacksGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the service broker openstacks get internal server error response
+func (o *ServiceBrokerOpenstacksGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *ServiceBrokerOpenstacksGetInternalServerError) Error() string {

@@ -91,6 +91,11 @@ func (o *PcloudPvminstancesNetworksGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
+// Code gets the status code for the pcloud pvminstances networks get o k response
+func (o *PcloudPvminstancesNetworksGetOK) Code() int {
+	return 200
+}
+
 func (o *PcloudPvminstancesNetworksGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks/{network_id}][%d] pcloudPvminstancesNetworksGetOK  %+v", 200, o.Payload)
 }
@@ -152,6 +157,11 @@ func (o *PcloudPvminstancesNetworksGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances networks get unauthorized response a status code equal to that given
 func (o *PcloudPvminstancesNetworksGetUnauthorized) IsCode(code int) bool {
 	return code == 401
+}
+
+// Code gets the status code for the pcloud pvminstances networks get unauthorized response
+func (o *PcloudPvminstancesNetworksGetUnauthorized) Code() int {
+	return 401
 }
 
 func (o *PcloudPvminstancesNetworksGetUnauthorized) Error() string {
@@ -217,6 +227,11 @@ func (o *PcloudPvminstancesNetworksGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
+// Code gets the status code for the pcloud pvminstances networks get not found response
+func (o *PcloudPvminstancesNetworksGetNotFound) Code() int {
+	return 404
+}
+
 func (o *PcloudPvminstancesNetworksGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks/{network_id}][%d] pcloudPvminstancesNetworksGetNotFound  %+v", 404, o.Payload)
 }
@@ -278,6 +293,11 @@ func (o *PcloudPvminstancesNetworksGetInternalServerError) IsServerError() bool 
 // IsCode returns true when this pcloud pvminstances networks get internal server error response a status code equal to that given
 func (o *PcloudPvminstancesNetworksGetInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud pvminstances networks get internal server error response
+func (o *PcloudPvminstancesNetworksGetInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudPvminstancesNetworksGetInternalServerError) Error() string {

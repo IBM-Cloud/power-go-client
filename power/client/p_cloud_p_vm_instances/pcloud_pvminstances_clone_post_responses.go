@@ -103,6 +103,11 @@ func (o *PcloudPvminstancesClonePostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
+// Code gets the status code for the pcloud pvminstances clone post accepted response
+func (o *PcloudPvminstancesClonePostAccepted) Code() int {
+	return 202
+}
+
 func (o *PcloudPvminstancesClonePostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone][%d] pcloudPvminstancesClonePostAccepted  %+v", 202, o.Payload)
 }
@@ -164,6 +169,11 @@ func (o *PcloudPvminstancesClonePostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances clone post bad request response a status code equal to that given
 func (o *PcloudPvminstancesClonePostBadRequest) IsCode(code int) bool {
 	return code == 400
+}
+
+// Code gets the status code for the pcloud pvminstances clone post bad request response
+func (o *PcloudPvminstancesClonePostBadRequest) Code() int {
+	return 400
 }
 
 func (o *PcloudPvminstancesClonePostBadRequest) Error() string {
@@ -229,6 +239,11 @@ func (o *PcloudPvminstancesClonePostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
+// Code gets the status code for the pcloud pvminstances clone post unauthorized response
+func (o *PcloudPvminstancesClonePostUnauthorized) Code() int {
+	return 401
+}
+
 func (o *PcloudPvminstancesClonePostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone][%d] pcloudPvminstancesClonePostUnauthorized  %+v", 401, o.Payload)
 }
@@ -290,6 +305,11 @@ func (o *PcloudPvminstancesClonePostConflict) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances clone post conflict response a status code equal to that given
 func (o *PcloudPvminstancesClonePostConflict) IsCode(code int) bool {
 	return code == 409
+}
+
+// Code gets the status code for the pcloud pvminstances clone post conflict response
+func (o *PcloudPvminstancesClonePostConflict) Code() int {
+	return 409
 }
 
 func (o *PcloudPvminstancesClonePostConflict) Error() string {
@@ -355,6 +375,11 @@ func (o *PcloudPvminstancesClonePostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
+// Code gets the status code for the pcloud pvminstances clone post unprocessable entity response
+func (o *PcloudPvminstancesClonePostUnprocessableEntity) Code() int {
+	return 422
+}
+
 func (o *PcloudPvminstancesClonePostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/clone][%d] pcloudPvminstancesClonePostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -416,6 +441,11 @@ func (o *PcloudPvminstancesClonePostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances clone post internal server error response a status code equal to that given
 func (o *PcloudPvminstancesClonePostInternalServerError) IsCode(code int) bool {
 	return code == 500
+}
+
+// Code gets the status code for the pcloud pvminstances clone post internal server error response
+func (o *PcloudPvminstancesClonePostInternalServerError) Code() int {
+	return 500
 }
 
 func (o *PcloudPvminstancesClonePostInternalServerError) Error() string {
