@@ -79,11 +79,6 @@ func (o *ServiceBrokerHealthHeadOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker health head o k response
-func (o *ServiceBrokerHealthHeadOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerHealthHeadOK) Error() string {
 	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadOK  %+v", 200, o.Payload)
 }
@@ -145,11 +140,6 @@ func (o *ServiceBrokerHealthHeadBadRequest) IsServerError() bool {
 // IsCode returns true when this service broker health head bad request response a status code equal to that given
 func (o *ServiceBrokerHealthHeadBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the service broker health head bad request response
-func (o *ServiceBrokerHealthHeadBadRequest) Code() int {
-	return 400
 }
 
 func (o *ServiceBrokerHealthHeadBadRequest) Error() string {

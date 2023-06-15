@@ -115,11 +115,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallOK) IsCode(code int) bo
 	return code == 200
 }
 
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall o k response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallOK) Code() int {
-	return 200
-}
-
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds][%d] pcloudCloudconnectionsVirtualprivatecloudsGetallOK  %+v", 200, o.Payload)
 }
@@ -181,11 +176,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallBadRequest) IsServerErr
 // IsCode returns true when this pcloud cloudconnections virtualprivateclouds getall bad request response a status code equal to that given
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall bad request response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallBadRequest) Error() string {
@@ -251,11 +241,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallUnauthorized) IsCode(co
 	return code == 401
 }
 
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall unauthorized response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds][%d] pcloudCloudconnectionsVirtualprivatecloudsGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -317,11 +302,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallForbidden) IsServerErro
 // IsCode returns true when this pcloud cloudconnections virtualprivateclouds getall forbidden response a status code equal to that given
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall forbidden response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallForbidden) Error() string {
@@ -387,11 +367,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallRequestTimeout) IsCode(
 	return code == 408
 }
 
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall request timeout response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallRequestTimeout) Code() int {
-	return 408
-}
-
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallRequestTimeout) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds][%d] pcloudCloudconnectionsVirtualprivatecloudsGetallRequestTimeout  %+v", 408, o.Payload)
 }
@@ -453,11 +428,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallInternalServerError) Is
 // IsCode returns true when this pcloud cloudconnections virtualprivateclouds getall internal server error response a status code equal to that given
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall internal server error response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallInternalServerError) Error() string {
@@ -523,11 +493,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallServiceUnavailable) IsC
 	return code == 503
 }
 
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall service unavailable response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallServiceUnavailable) Code() int {
-	return 503
-}
-
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallServiceUnavailable) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections-virtual-private-clouds][%d] pcloudCloudconnectionsVirtualprivatecloudsGetallServiceUnavailable  %+v", 503, o.Payload)
 }
@@ -589,11 +554,6 @@ func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallGatewayTimeout) IsServe
 // IsCode returns true when this pcloud cloudconnections virtualprivateclouds getall gateway timeout response a status code equal to that given
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallGatewayTimeout) IsCode(code int) bool {
 	return code == 504
-}
-
-// Code gets the status code for the pcloud cloudconnections virtualprivateclouds getall gateway timeout response
-func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallGatewayTimeout) Code() int {
-	return 504
 }
 
 func (o *PcloudCloudconnectionsVirtualprivatecloudsGetallGatewayTimeout) Error() string {

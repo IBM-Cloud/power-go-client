@@ -103,11 +103,6 @@ func (o *ServiceInstanceProvisionOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service instance provision o k response
-func (o *ServiceInstanceProvisionOK) Code() int {
-	return 200
-}
-
 func (o *ServiceInstanceProvisionOK) Error() string {
 	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionOK  %+v", 200, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *ServiceInstanceProvisionCreated) IsServerError() bool {
 // IsCode returns true when this service instance provision created response a status code equal to that given
 func (o *ServiceInstanceProvisionCreated) IsCode(code int) bool {
 	return code == 201
-}
-
-// Code gets the status code for the service instance provision created response
-func (o *ServiceInstanceProvisionCreated) Code() int {
-	return 201
 }
 
 func (o *ServiceInstanceProvisionCreated) Error() string {
@@ -239,11 +229,6 @@ func (o *ServiceInstanceProvisionAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the service instance provision accepted response
-func (o *ServiceInstanceProvisionAccepted) Code() int {
-	return 202
-}
-
 func (o *ServiceInstanceProvisionAccepted) Error() string {
 	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionAccepted  %+v", 202, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *ServiceInstanceProvisionBadRequest) IsServerError() bool {
 // IsCode returns true when this service instance provision bad request response a status code equal to that given
 func (o *ServiceInstanceProvisionBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the service instance provision bad request response
-func (o *ServiceInstanceProvisionBadRequest) Code() int {
-	return 400
 }
 
 func (o *ServiceInstanceProvisionBadRequest) Error() string {
@@ -375,11 +355,6 @@ func (o *ServiceInstanceProvisionConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the service instance provision conflict response
-func (o *ServiceInstanceProvisionConflict) Code() int {
-	return 409
-}
-
 func (o *ServiceInstanceProvisionConflict) Error() string {
 	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionConflict  %+v", 409, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *ServiceInstanceProvisionUnprocessableEntity) IsServerError() bool {
 // IsCode returns true when this service instance provision unprocessable entity response a status code equal to that given
 func (o *ServiceInstanceProvisionUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
-}
-
-// Code gets the status code for the service instance provision unprocessable entity response
-func (o *ServiceInstanceProvisionUnprocessableEntity) Code() int {
-	return 422
 }
 
 func (o *ServiceInstanceProvisionUnprocessableEntity) Error() string {

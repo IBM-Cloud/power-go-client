@@ -109,11 +109,6 @@ func (o *PcloudPlacementgroupsMembersDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud placementgroups members delete o k response
-func (o *PcloudPlacementgroupsMembersDeleteOK) Code() int {
-	return 200
-}
-
 func (o *PcloudPlacementgroupsMembersDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id}/members][%d] pcloudPlacementgroupsMembersDeleteOK  %+v", 200, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudPlacementgroupsMembersDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud placementgroups members delete bad request response a status code equal to that given
 func (o *PcloudPlacementgroupsMembersDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud placementgroups members delete bad request response
-func (o *PcloudPlacementgroupsMembersDeleteBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudPlacementgroupsMembersDeleteBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudPlacementgroupsMembersDeleteForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud placementgroups members delete forbidden response
-func (o *PcloudPlacementgroupsMembersDeleteForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudPlacementgroupsMembersDeleteForbidden) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id}/members][%d] pcloudPlacementgroupsMembersDeleteForbidden  %+v", 403, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudPlacementgroupsMembersDeleteNotFound) IsServerError() bool {
 // IsCode returns true when this pcloud placementgroups members delete not found response a status code equal to that given
 func (o *PcloudPlacementgroupsMembersDeleteNotFound) IsCode(code int) bool {
 	return code == 404
-}
-
-// Code gets the status code for the pcloud placementgroups members delete not found response
-func (o *PcloudPlacementgroupsMembersDeleteNotFound) Code() int {
-	return 404
 }
 
 func (o *PcloudPlacementgroupsMembersDeleteNotFound) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudPlacementgroupsMembersDeleteConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud placementgroups members delete conflict response
-func (o *PcloudPlacementgroupsMembersDeleteConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudPlacementgroupsMembersDeleteConflict) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id}/members][%d] pcloudPlacementgroupsMembersDeleteConflict  %+v", 409, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudPlacementgroupsMembersDeleteUnprocessableEntity) IsCode(code int)
 	return code == 422
 }
 
-// Code gets the status code for the pcloud placementgroups members delete unprocessable entity response
-func (o *PcloudPlacementgroupsMembersDeleteUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudPlacementgroupsMembersDeleteUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups/{placement_group_id}/members][%d] pcloudPlacementgroupsMembersDeleteUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudPlacementgroupsMembersDeleteInternalServerError) IsServerError() 
 // IsCode returns true when this pcloud placementgroups members delete internal server error response a status code equal to that given
 func (o *PcloudPlacementgroupsMembersDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud placementgroups members delete internal server error response
-func (o *PcloudPlacementgroupsMembersDeleteInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudPlacementgroupsMembersDeleteInternalServerError) Error() string {

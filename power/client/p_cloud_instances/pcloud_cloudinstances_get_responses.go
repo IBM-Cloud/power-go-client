@@ -97,11 +97,6 @@ func (o *PcloudCloudinstancesGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud cloudinstances get o k response
-func (o *PcloudCloudinstancesGetOK) Code() int {
-	return 200
-}
-
 func (o *PcloudCloudinstancesGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}][%d] pcloudCloudinstancesGetOK  %+v", 200, o.Payload)
 }
@@ -163,11 +158,6 @@ func (o *PcloudCloudinstancesGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances get bad request response a status code equal to that given
 func (o *PcloudCloudinstancesGetBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud cloudinstances get bad request response
-func (o *PcloudCloudinstancesGetBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudCloudinstancesGetBadRequest) Error() string {
@@ -233,11 +223,6 @@ func (o *PcloudCloudinstancesGetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud cloudinstances get unauthorized response
-func (o *PcloudCloudinstancesGetUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudCloudinstancesGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}][%d] pcloudCloudinstancesGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -301,11 +286,6 @@ func (o *PcloudCloudinstancesGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud cloudinstances get not found response
-func (o *PcloudCloudinstancesGetNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudCloudinstancesGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}][%d] pcloudCloudinstancesGetNotFound  %+v", 404, o.Payload)
 }
@@ -367,11 +347,6 @@ func (o *PcloudCloudinstancesGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances get internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesGetInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudinstances get internal server error response
-func (o *PcloudCloudinstancesGetInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudinstancesGetInternalServerError) Error() string {

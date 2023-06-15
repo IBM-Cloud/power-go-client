@@ -103,11 +103,6 @@ func (o *PcloudPvminstancesSnapshotsGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots getall o k response
-func (o *PcloudPvminstancesSnapshotsGetallOK) Code() int {
-	return 200
-}
-
 func (o *PcloudPvminstancesSnapshotsGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsGetallOK  %+v", 200, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *PcloudPvminstancesSnapshotsGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots getall bad request response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsGetallBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots getall bad request response
-func (o *PcloudPvminstancesSnapshotsGetallBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudPvminstancesSnapshotsGetallBadRequest) Error() string {
@@ -239,11 +229,6 @@ func (o *PcloudPvminstancesSnapshotsGetallUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots getall unauthorized response
-func (o *PcloudPvminstancesSnapshotsGetallUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudPvminstancesSnapshotsGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *PcloudPvminstancesSnapshotsGetallForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots getall forbidden response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsGetallForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots getall forbidden response
-func (o *PcloudPvminstancesSnapshotsGetallForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudPvminstancesSnapshotsGetallForbidden) Error() string {
@@ -375,11 +355,6 @@ func (o *PcloudPvminstancesSnapshotsGetallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots getall not found response
-func (o *PcloudPvminstancesSnapshotsGetallNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudPvminstancesSnapshotsGetallNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsGetallNotFound  %+v", 404, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *PcloudPvminstancesSnapshotsGetallInternalServerError) IsServerError() b
 // IsCode returns true when this pcloud pvminstances snapshots getall internal server error response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots getall internal server error response
-func (o *PcloudPvminstancesSnapshotsGetallInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudPvminstancesSnapshotsGetallInternalServerError) Error() string {

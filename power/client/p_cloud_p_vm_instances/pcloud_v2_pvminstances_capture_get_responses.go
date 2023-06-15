@@ -91,11 +91,6 @@ func (o *PcloudV2PvminstancesCaptureGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud v2 pvminstances capture get o k response
-func (o *PcloudV2PvminstancesCaptureGetOK) Code() int {
-	return 200
-}
-
 func (o *PcloudV2PvminstancesCaptureGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture][%d] pcloudV2PvminstancesCaptureGetOK  %+v", 200, o.Payload)
 }
@@ -157,11 +152,6 @@ func (o *PcloudV2PvminstancesCaptureGetUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud v2 pvminstances capture get unauthorized response a status code equal to that given
 func (o *PcloudV2PvminstancesCaptureGetUnauthorized) IsCode(code int) bool {
 	return code == 401
-}
-
-// Code gets the status code for the pcloud v2 pvminstances capture get unauthorized response
-func (o *PcloudV2PvminstancesCaptureGetUnauthorized) Code() int {
-	return 401
 }
 
 func (o *PcloudV2PvminstancesCaptureGetUnauthorized) Error() string {
@@ -227,11 +217,6 @@ func (o *PcloudV2PvminstancesCaptureGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud v2 pvminstances capture get not found response
-func (o *PcloudV2PvminstancesCaptureGetNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudV2PvminstancesCaptureGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture][%d] pcloudV2PvminstancesCaptureGetNotFound  %+v", 404, o.Payload)
 }
@@ -293,11 +278,6 @@ func (o *PcloudV2PvminstancesCaptureGetInternalServerError) IsServerError() bool
 // IsCode returns true when this pcloud v2 pvminstances capture get internal server error response a status code equal to that given
 func (o *PcloudV2PvminstancesCaptureGetInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud v2 pvminstances capture get internal server error response
-func (o *PcloudV2PvminstancesCaptureGetInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudV2PvminstancesCaptureGetInternalServerError) Error() string {

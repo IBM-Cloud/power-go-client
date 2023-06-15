@@ -115,11 +115,6 @@ func (o *PcloudCloudinstancesImagesPostOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud cloudinstances images post o k response
-func (o *PcloudCloudinstancesImagesPostOK) Code() int {
-	return 200
-}
-
 func (o *PcloudCloudinstancesImagesPostOK) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/images][%d] pcloudCloudinstancesImagesPostOK  %+v", 200, o.Payload)
 }
@@ -181,11 +176,6 @@ func (o *PcloudCloudinstancesImagesPostCreated) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances images post created response a status code equal to that given
 func (o *PcloudCloudinstancesImagesPostCreated) IsCode(code int) bool {
 	return code == 201
-}
-
-// Code gets the status code for the pcloud cloudinstances images post created response
-func (o *PcloudCloudinstancesImagesPostCreated) Code() int {
-	return 201
 }
 
 func (o *PcloudCloudinstancesImagesPostCreated) Error() string {
@@ -251,11 +241,6 @@ func (o *PcloudCloudinstancesImagesPostBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-// Code gets the status code for the pcloud cloudinstances images post bad request response
-func (o *PcloudCloudinstancesImagesPostBadRequest) Code() int {
-	return 400
-}
-
 func (o *PcloudCloudinstancesImagesPostBadRequest) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/images][%d] pcloudCloudinstancesImagesPostBadRequest  %+v", 400, o.Payload)
 }
@@ -317,11 +302,6 @@ func (o *PcloudCloudinstancesImagesPostUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances images post unauthorized response a status code equal to that given
 func (o *PcloudCloudinstancesImagesPostUnauthorized) IsCode(code int) bool {
 	return code == 401
-}
-
-// Code gets the status code for the pcloud cloudinstances images post unauthorized response
-func (o *PcloudCloudinstancesImagesPostUnauthorized) Code() int {
-	return 401
 }
 
 func (o *PcloudCloudinstancesImagesPostUnauthorized) Error() string {
@@ -387,11 +367,6 @@ func (o *PcloudCloudinstancesImagesPostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud cloudinstances images post forbidden response
-func (o *PcloudCloudinstancesImagesPostForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudCloudinstancesImagesPostForbidden) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/images][%d] pcloudCloudinstancesImagesPostForbidden  %+v", 403, o.Payload)
 }
@@ -453,11 +428,6 @@ func (o *PcloudCloudinstancesImagesPostConflict) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances images post conflict response a status code equal to that given
 func (o *PcloudCloudinstancesImagesPostConflict) IsCode(code int) bool {
 	return code == 409
-}
-
-// Code gets the status code for the pcloud cloudinstances images post conflict response
-func (o *PcloudCloudinstancesImagesPostConflict) Code() int {
-	return 409
 }
 
 func (o *PcloudCloudinstancesImagesPostConflict) Error() string {
@@ -523,11 +493,6 @@ func (o *PcloudCloudinstancesImagesPostUnprocessableEntity) IsCode(code int) boo
 	return code == 422
 }
 
-// Code gets the status code for the pcloud cloudinstances images post unprocessable entity response
-func (o *PcloudCloudinstancesImagesPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudCloudinstancesImagesPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/images][%d] pcloudCloudinstancesImagesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -589,11 +554,6 @@ func (o *PcloudCloudinstancesImagesPostInternalServerError) IsServerError() bool
 // IsCode returns true when this pcloud cloudinstances images post internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesImagesPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudinstances images post internal server error response
-func (o *PcloudCloudinstancesImagesPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudinstancesImagesPostInternalServerError) Error() string {

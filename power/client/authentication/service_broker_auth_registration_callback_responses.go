@@ -85,11 +85,6 @@ func (o *ServiceBrokerAuthRegistrationCallbackOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker auth registration callback o k response
-func (o *ServiceBrokerAuthRegistrationCallbackOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerAuthRegistrationCallbackOK) Error() string {
 	return fmt.Sprintf("[GET /auth/v1/callback-registration][%d] serviceBrokerAuthRegistrationCallbackOK  %+v", 200, o.Payload)
 }
@@ -153,11 +148,6 @@ func (o *ServiceBrokerAuthRegistrationCallbackUnauthorized) IsCode(code int) boo
 	return code == 401
 }
 
-// Code gets the status code for the service broker auth registration callback unauthorized response
-func (o *ServiceBrokerAuthRegistrationCallbackUnauthorized) Code() int {
-	return 401
-}
-
 func (o *ServiceBrokerAuthRegistrationCallbackUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /auth/v1/callback-registration][%d] serviceBrokerAuthRegistrationCallbackUnauthorized  %+v", 401, o.Payload)
 }
@@ -219,11 +209,6 @@ func (o *ServiceBrokerAuthRegistrationCallbackInternalServerError) IsServerError
 // IsCode returns true when this service broker auth registration callback internal server error response a status code equal to that given
 func (o *ServiceBrokerAuthRegistrationCallbackInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the service broker auth registration callback internal server error response
-func (o *ServiceBrokerAuthRegistrationCallbackInternalServerError) Code() int {
-	return 500
 }
 
 func (o *ServiceBrokerAuthRegistrationCallbackInternalServerError) Error() string {

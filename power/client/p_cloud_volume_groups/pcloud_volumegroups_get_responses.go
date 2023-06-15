@@ -97,11 +97,6 @@ func (o *PcloudVolumegroupsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud volumegroups get o k response
-func (o *PcloudVolumegroupsGetOK) Code() int {
-	return 200
-}
-
 func (o *PcloudVolumegroupsGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsGetOK  %+v", 200, o.Payload)
 }
@@ -163,11 +158,6 @@ func (o *PcloudVolumegroupsGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups get bad request response a status code equal to that given
 func (o *PcloudVolumegroupsGetBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud volumegroups get bad request response
-func (o *PcloudVolumegroupsGetBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudVolumegroupsGetBadRequest) Error() string {
@@ -233,11 +223,6 @@ func (o *PcloudVolumegroupsGetForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud volumegroups get forbidden response
-func (o *PcloudVolumegroupsGetForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudVolumegroupsGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsGetForbidden  %+v", 403, o.Payload)
 }
@@ -301,11 +286,6 @@ func (o *PcloudVolumegroupsGetNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud volumegroups get not found response
-func (o *PcloudVolumegroupsGetNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudVolumegroupsGetNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsGetNotFound  %+v", 404, o.Payload)
 }
@@ -367,11 +347,6 @@ func (o *PcloudVolumegroupsGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups get internal server error response a status code equal to that given
 func (o *PcloudVolumegroupsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud volumegroups get internal server error response
-func (o *PcloudVolumegroupsGetInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudVolumegroupsGetInternalServerError) Error() string {

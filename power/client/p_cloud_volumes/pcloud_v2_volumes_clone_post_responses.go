@@ -103,11 +103,6 @@ func (o *PcloudV2VolumesClonePostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud v2 volumes clone post accepted response
-func (o *PcloudV2VolumesClonePostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudV2VolumesClonePostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes/clone][%d] pcloudV2VolumesClonePostAccepted  %+v", 202, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *PcloudV2VolumesClonePostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud v2 volumes clone post bad request response a status code equal to that given
 func (o *PcloudV2VolumesClonePostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud v2 volumes clone post bad request response
-func (o *PcloudV2VolumesClonePostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudV2VolumesClonePostBadRequest) Error() string {
@@ -239,11 +229,6 @@ func (o *PcloudV2VolumesClonePostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud v2 volumes clone post unauthorized response
-func (o *PcloudV2VolumesClonePostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudV2VolumesClonePostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes/clone][%d] pcloudV2VolumesClonePostUnauthorized  %+v", 401, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *PcloudV2VolumesClonePostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud v2 volumes clone post forbidden response a status code equal to that given
 func (o *PcloudV2VolumesClonePostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud v2 volumes clone post forbidden response
-func (o *PcloudV2VolumesClonePostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudV2VolumesClonePostForbidden) Error() string {
@@ -375,11 +355,6 @@ func (o *PcloudV2VolumesClonePostNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud v2 volumes clone post not found response
-func (o *PcloudV2VolumesClonePostNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudV2VolumesClonePostNotFound) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes/clone][%d] pcloudV2VolumesClonePostNotFound  %+v", 404, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *PcloudV2VolumesClonePostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud v2 volumes clone post internal server error response a status code equal to that given
 func (o *PcloudV2VolumesClonePostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud v2 volumes clone post internal server error response
-func (o *PcloudV2VolumesClonePostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudV2VolumesClonePostInternalServerError) Error() string {

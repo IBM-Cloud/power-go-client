@@ -85,11 +85,6 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the internal v1 powervs locations transitgateway get o k response
-func (o *InternalV1PowervsLocationsTransitgatewayGetOK) Code() int {
-	return 200
-}
-
 func (o *InternalV1PowervsLocationsTransitgatewayGetOK) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetOK  %+v", 200, o.Payload)
 }
@@ -153,11 +148,6 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) IsCode(code int) 
 	return code == 403
 }
 
-// Code gets the status code for the internal v1 powervs locations transitgateway get forbidden response
-func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) Code() int {
-	return 403
-}
-
 func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) Error() string {
 	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetForbidden  %+v", 403, o.Payload)
 }
@@ -219,11 +209,6 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) IsServe
 // IsCode returns true when this internal v1 powervs locations transitgateway get internal server error response a status code equal to that given
 func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the internal v1 powervs locations transitgateway get internal server error response
-func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) Code() int {
-	return 500
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) Error() string {

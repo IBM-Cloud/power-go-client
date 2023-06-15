@@ -121,11 +121,6 @@ func (o *PcloudVolumegroupsPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud volumegroups post accepted response
-func (o *PcloudVolumegroupsPostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudVolumegroupsPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostAccepted  %+v", 202, o.Payload)
 }
@@ -187,11 +182,6 @@ func (o *PcloudVolumegroupsPostPartialContent) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups post partial content response a status code equal to that given
 func (o *PcloudVolumegroupsPostPartialContent) IsCode(code int) bool {
 	return code == 206
-}
-
-// Code gets the status code for the pcloud volumegroups post partial content response
-func (o *PcloudVolumegroupsPostPartialContent) Code() int {
-	return 206
 }
 
 func (o *PcloudVolumegroupsPostPartialContent) Error() string {
@@ -257,11 +247,6 @@ func (o *PcloudVolumegroupsPostBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-// Code gets the status code for the pcloud volumegroups post bad request response
-func (o *PcloudVolumegroupsPostBadRequest) Code() int {
-	return 400
-}
-
 func (o *PcloudVolumegroupsPostBadRequest) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostBadRequest  %+v", 400, o.Payload)
 }
@@ -323,11 +308,6 @@ func (o *PcloudVolumegroupsPostUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups post unauthorized response a status code equal to that given
 func (o *PcloudVolumegroupsPostUnauthorized) IsCode(code int) bool {
 	return code == 401
-}
-
-// Code gets the status code for the pcloud volumegroups post unauthorized response
-func (o *PcloudVolumegroupsPostUnauthorized) Code() int {
-	return 401
 }
 
 func (o *PcloudVolumegroupsPostUnauthorized) Error() string {
@@ -393,11 +373,6 @@ func (o *PcloudVolumegroupsPostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud volumegroups post forbidden response
-func (o *PcloudVolumegroupsPostForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudVolumegroupsPostForbidden) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostForbidden  %+v", 403, o.Payload)
 }
@@ -459,11 +434,6 @@ func (o *PcloudVolumegroupsPostConflict) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups post conflict response a status code equal to that given
 func (o *PcloudVolumegroupsPostConflict) IsCode(code int) bool {
 	return code == 409
-}
-
-// Code gets the status code for the pcloud volumegroups post conflict response
-func (o *PcloudVolumegroupsPostConflict) Code() int {
-	return 409
 }
 
 func (o *PcloudVolumegroupsPostConflict) Error() string {
@@ -529,11 +499,6 @@ func (o *PcloudVolumegroupsPostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the pcloud volumegroups post unprocessable entity response
-func (o *PcloudVolumegroupsPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudVolumegroupsPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -597,11 +562,6 @@ func (o *PcloudVolumegroupsPostInternalServerError) IsCode(code int) bool {
 	return code == 500
 }
 
-// Code gets the status code for the pcloud volumegroups post internal server error response
-func (o *PcloudVolumegroupsPostInternalServerError) Code() int {
-	return 500
-}
-
 func (o *PcloudVolumegroupsPostInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostInternalServerError  %+v", 500, o.Payload)
 }
@@ -663,11 +623,6 @@ func (o *PcloudVolumegroupsPostGatewayTimeout) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups post gateway timeout response a status code equal to that given
 func (o *PcloudVolumegroupsPostGatewayTimeout) IsCode(code int) bool {
 	return code == 504
-}
-
-// Code gets the status code for the pcloud volumegroups post gateway timeout response
-func (o *PcloudVolumegroupsPostGatewayTimeout) Code() int {
-	return 504
 }
 
 func (o *PcloudVolumegroupsPostGatewayTimeout) Error() string {

@@ -109,11 +109,6 @@ func (o *PcloudSharedprocessorpoolsPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud sharedprocessorpools post accepted response
-func (o *PcloudSharedprocessorpoolsPostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudSharedprocessorpoolsPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostAccepted  %+v", 202, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudSharedprocessorpoolsPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud sharedprocessorpools post bad request response a status code equal to that given
 func (o *PcloudSharedprocessorpoolsPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud sharedprocessorpools post bad request response
-func (o *PcloudSharedprocessorpoolsPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudSharedprocessorpoolsPostBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudSharedprocessorpoolsPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud sharedprocessorpools post unauthorized response
-func (o *PcloudSharedprocessorpoolsPostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudSharedprocessorpoolsPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudSharedprocessorpoolsPostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud sharedprocessorpools post forbidden response a status code equal to that given
 func (o *PcloudSharedprocessorpoolsPostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud sharedprocessorpools post forbidden response
-func (o *PcloudSharedprocessorpoolsPostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudSharedprocessorpoolsPostForbidden) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudSharedprocessorpoolsPostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud sharedprocessorpools post conflict response
-func (o *PcloudSharedprocessorpoolsPostConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudSharedprocessorpoolsPostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostConflict  %+v", 409, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudSharedprocessorpoolsPostUnprocessableEntity) IsCode(code int) boo
 	return code == 422
 }
 
-// Code gets the status code for the pcloud sharedprocessorpools post unprocessable entity response
-func (o *PcloudSharedprocessorpoolsPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudSharedprocessorpoolsPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudSharedprocessorpoolsPostInternalServerError) IsServerError() bool
 // IsCode returns true when this pcloud sharedprocessorpools post internal server error response a status code equal to that given
 func (o *PcloudSharedprocessorpoolsPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud sharedprocessorpools post internal server error response
-func (o *PcloudSharedprocessorpoolsPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudSharedprocessorpoolsPostInternalServerError) Error() string {

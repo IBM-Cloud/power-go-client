@@ -103,11 +103,6 @@ func (o *PcloudPlacementgroupsPostOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud placementgroups post o k response
-func (o *PcloudPlacementgroupsPostOK) Code() int {
-	return 200
-}
-
 func (o *PcloudPlacementgroupsPostOK) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsPostOK  %+v", 200, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *PcloudPlacementgroupsPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud placementgroups post bad request response a status code equal to that given
 func (o *PcloudPlacementgroupsPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud placementgroups post bad request response
-func (o *PcloudPlacementgroupsPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudPlacementgroupsPostBadRequest) Error() string {
@@ -239,11 +229,6 @@ func (o *PcloudPlacementgroupsPostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud placementgroups post forbidden response
-func (o *PcloudPlacementgroupsPostForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudPlacementgroupsPostForbidden) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsPostForbidden  %+v", 403, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *PcloudPlacementgroupsPostConflict) IsServerError() bool {
 // IsCode returns true when this pcloud placementgroups post conflict response a status code equal to that given
 func (o *PcloudPlacementgroupsPostConflict) IsCode(code int) bool {
 	return code == 409
-}
-
-// Code gets the status code for the pcloud placementgroups post conflict response
-func (o *PcloudPlacementgroupsPostConflict) Code() int {
-	return 409
 }
 
 func (o *PcloudPlacementgroupsPostConflict) Error() string {
@@ -375,11 +355,6 @@ func (o *PcloudPlacementgroupsPostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the pcloud placementgroups post unprocessable entity response
-func (o *PcloudPlacementgroupsPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudPlacementgroupsPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *PcloudPlacementgroupsPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud placementgroups post internal server error response a status code equal to that given
 func (o *PcloudPlacementgroupsPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud placementgroups post internal server error response
-func (o *PcloudPlacementgroupsPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudPlacementgroupsPostInternalServerError) Error() string {

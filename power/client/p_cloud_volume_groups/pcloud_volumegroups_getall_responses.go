@@ -97,11 +97,6 @@ func (o *PcloudVolumegroupsGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud volumegroups getall o k response
-func (o *PcloudVolumegroupsGetallOK) Code() int {
-	return 200
-}
-
 func (o *PcloudVolumegroupsGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsGetallOK  %+v", 200, o.Payload)
 }
@@ -163,11 +158,6 @@ func (o *PcloudVolumegroupsGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups getall bad request response a status code equal to that given
 func (o *PcloudVolumegroupsGetallBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud volumegroups getall bad request response
-func (o *PcloudVolumegroupsGetallBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudVolumegroupsGetallBadRequest) Error() string {
@@ -233,11 +223,6 @@ func (o *PcloudVolumegroupsGetallUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud volumegroups getall unauthorized response
-func (o *PcloudVolumegroupsGetallUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudVolumegroupsGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -301,11 +286,6 @@ func (o *PcloudVolumegroupsGetallForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud volumegroups getall forbidden response
-func (o *PcloudVolumegroupsGetallForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudVolumegroupsGetallForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsGetallForbidden  %+v", 403, o.Payload)
 }
@@ -367,11 +347,6 @@ func (o *PcloudVolumegroupsGetallInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud volumegroups getall internal server error response a status code equal to that given
 func (o *PcloudVolumegroupsGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud volumegroups getall internal server error response
-func (o *PcloudVolumegroupsGetallInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudVolumegroupsGetallInternalServerError) Error() string {

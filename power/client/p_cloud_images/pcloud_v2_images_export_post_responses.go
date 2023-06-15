@@ -109,11 +109,6 @@ func (o *PcloudV2ImagesExportPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud v2 images export post accepted response
-func (o *PcloudV2ImagesExportPostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudV2ImagesExportPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export][%d] pcloudV2ImagesExportPostAccepted  %+v", 202, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudV2ImagesExportPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud v2 images export post bad request response a status code equal to that given
 func (o *PcloudV2ImagesExportPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud v2 images export post bad request response
-func (o *PcloudV2ImagesExportPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudV2ImagesExportPostBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudV2ImagesExportPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud v2 images export post unauthorized response
-func (o *PcloudV2ImagesExportPostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudV2ImagesExportPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export][%d] pcloudV2ImagesExportPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudV2ImagesExportPostNotFound) IsServerError() bool {
 // IsCode returns true when this pcloud v2 images export post not found response a status code equal to that given
 func (o *PcloudV2ImagesExportPostNotFound) IsCode(code int) bool {
 	return code == 404
-}
-
-// Code gets the status code for the pcloud v2 images export post not found response
-func (o *PcloudV2ImagesExportPostNotFound) Code() int {
-	return 404
 }
 
 func (o *PcloudV2ImagesExportPostNotFound) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudV2ImagesExportPostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud v2 images export post conflict response
-func (o *PcloudV2ImagesExportPostConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudV2ImagesExportPostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export][%d] pcloudV2ImagesExportPostConflict  %+v", 409, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudV2ImagesExportPostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the pcloud v2 images export post unprocessable entity response
-func (o *PcloudV2ImagesExportPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudV2ImagesExportPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export][%d] pcloudV2ImagesExportPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudV2ImagesExportPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud v2 images export post internal server error response a status code equal to that given
 func (o *PcloudV2ImagesExportPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud v2 images export post internal server error response
-func (o *PcloudV2ImagesExportPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudV2ImagesExportPostInternalServerError) Error() string {

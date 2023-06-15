@@ -115,11 +115,6 @@ func (o *PcloudPvminstancesSnapshotsPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots post accepted response
-func (o *PcloudPvminstancesSnapshotsPostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudPvminstancesSnapshotsPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsPostAccepted  %+v", 202, o.Payload)
 }
@@ -181,11 +176,6 @@ func (o *PcloudPvminstancesSnapshotsPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots post bad request response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots post bad request response
-func (o *PcloudPvminstancesSnapshotsPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudPvminstancesSnapshotsPostBadRequest) Error() string {
@@ -251,11 +241,6 @@ func (o *PcloudPvminstancesSnapshotsPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots post unauthorized response
-func (o *PcloudPvminstancesSnapshotsPostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudPvminstancesSnapshotsPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -317,11 +302,6 @@ func (o *PcloudPvminstancesSnapshotsPostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots post forbidden response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsPostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots post forbidden response
-func (o *PcloudPvminstancesSnapshotsPostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudPvminstancesSnapshotsPostForbidden) Error() string {
@@ -387,11 +367,6 @@ func (o *PcloudPvminstancesSnapshotsPostNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots post not found response
-func (o *PcloudPvminstancesSnapshotsPostNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudPvminstancesSnapshotsPostNotFound) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsPostNotFound  %+v", 404, o.Payload)
 }
@@ -453,11 +428,6 @@ func (o *PcloudPvminstancesSnapshotsPostConflict) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots post conflict response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsPostConflict) IsCode(code int) bool {
 	return code == 409
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots post conflict response
-func (o *PcloudPvminstancesSnapshotsPostConflict) Code() int {
-	return 409
 }
 
 func (o *PcloudPvminstancesSnapshotsPostConflict) Error() string {
@@ -523,11 +493,6 @@ func (o *PcloudPvminstancesSnapshotsPostInternalServerError) IsCode(code int) bo
 	return code == 500
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots post internal server error response
-func (o *PcloudPvminstancesSnapshotsPostInternalServerError) Code() int {
-	return 500
-}
-
 func (o *PcloudPvminstancesSnapshotsPostInternalServerError) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots][%d] pcloudPvminstancesSnapshotsPostInternalServerError  %+v", 500, o.Payload)
 }
@@ -589,11 +554,6 @@ func (o *PcloudPvminstancesSnapshotsPostGatewayTimeout) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots post gateway timeout response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsPostGatewayTimeout) IsCode(code int) bool {
 	return code == 504
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots post gateway timeout response
-func (o *PcloudPvminstancesSnapshotsPostGatewayTimeout) Code() int {
-	return 504
 }
 
 func (o *PcloudPvminstancesSnapshotsPostGatewayTimeout) Error() string {

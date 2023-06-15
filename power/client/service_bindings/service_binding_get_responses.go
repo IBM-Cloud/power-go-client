@@ -79,11 +79,6 @@ func (o *ServiceBindingGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service binding get o k response
-func (o *ServiceBindingGetOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBindingGetOK) Error() string {
 	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetOK  %+v", 200, o.Payload)
 }
@@ -145,11 +140,6 @@ func (o *ServiceBindingGetNotFound) IsServerError() bool {
 // IsCode returns true when this service binding get not found response a status code equal to that given
 func (o *ServiceBindingGetNotFound) IsCode(code int) bool {
 	return code == 404
-}
-
-// Code gets the status code for the service binding get not found response
-func (o *ServiceBindingGetNotFound) Code() int {
-	return 404
 }
 
 func (o *ServiceBindingGetNotFound) Error() string {

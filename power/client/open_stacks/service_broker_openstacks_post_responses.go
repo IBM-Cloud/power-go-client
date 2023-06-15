@@ -103,11 +103,6 @@ func (o *ServiceBrokerOpenstacksPostOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker openstacks post o k response
-func (o *ServiceBrokerOpenstacksPostOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerOpenstacksPostOK) Error() string {
 	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK  %+v", 200, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *ServiceBrokerOpenstacksPostCreated) IsServerError() bool {
 // IsCode returns true when this service broker openstacks post created response a status code equal to that given
 func (o *ServiceBrokerOpenstacksPostCreated) IsCode(code int) bool {
 	return code == 201
-}
-
-// Code gets the status code for the service broker openstacks post created response
-func (o *ServiceBrokerOpenstacksPostCreated) Code() int {
-	return 201
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) Error() string {
@@ -239,11 +229,6 @@ func (o *ServiceBrokerOpenstacksPostBadRequest) IsCode(code int) bool {
 	return code == 400
 }
 
-// Code gets the status code for the service broker openstacks post bad request response
-func (o *ServiceBrokerOpenstacksPostBadRequest) Code() int {
-	return 400
-}
-
 func (o *ServiceBrokerOpenstacksPostBadRequest) Error() string {
 	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest  %+v", 400, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *ServiceBrokerOpenstacksPostConflict) IsServerError() bool {
 // IsCode returns true when this service broker openstacks post conflict response a status code equal to that given
 func (o *ServiceBrokerOpenstacksPostConflict) IsCode(code int) bool {
 	return code == 409
-}
-
-// Code gets the status code for the service broker openstacks post conflict response
-func (o *ServiceBrokerOpenstacksPostConflict) Code() int {
-	return 409
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) Error() string {
@@ -375,11 +355,6 @@ func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the service broker openstacks post unprocessable entity response
-func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *ServiceBrokerOpenstacksPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this service broker openstacks post internal server error response a status code equal to that given
 func (o *ServiceBrokerOpenstacksPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the service broker openstacks post internal server error response
-func (o *ServiceBrokerOpenstacksPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) Error() string {

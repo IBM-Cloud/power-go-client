@@ -79,11 +79,6 @@ func (o *ServiceBrokerAuthInfoUserOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker auth info user o k response
-func (o *ServiceBrokerAuthInfoUserOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerAuthInfoUserOK) Error() string {
 	return fmt.Sprintf("[GET /auth/v1/info/user][%d] serviceBrokerAuthInfoUserOK  %+v", 200, o.Payload)
 }
@@ -145,11 +140,6 @@ func (o *ServiceBrokerAuthInfoUserInternalServerError) IsServerError() bool {
 // IsCode returns true when this service broker auth info user internal server error response a status code equal to that given
 func (o *ServiceBrokerAuthInfoUserInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the service broker auth info user internal server error response
-func (o *ServiceBrokerAuthInfoUserInternalServerError) Code() int {
-	return 500
 }
 
 func (o *ServiceBrokerAuthInfoUserInternalServerError) Error() string {

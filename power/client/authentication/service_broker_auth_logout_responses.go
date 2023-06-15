@@ -79,11 +79,6 @@ func (o *ServiceBrokerAuthLogoutOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker auth logout o k response
-func (o *ServiceBrokerAuthLogoutOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerAuthLogoutOK) Error() string {
 	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutOK  %+v", 200, o.Payload)
 }
@@ -143,11 +138,6 @@ func (o *ServiceBrokerAuthLogoutInternalServerError) IsServerError() bool {
 // IsCode returns true when this service broker auth logout internal server error response a status code equal to that given
 func (o *ServiceBrokerAuthLogoutInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the service broker auth logout internal server error response
-func (o *ServiceBrokerAuthLogoutInternalServerError) Code() int {
-	return 500
 }
 
 func (o *ServiceBrokerAuthLogoutInternalServerError) Error() string {

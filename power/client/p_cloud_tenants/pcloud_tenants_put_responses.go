@@ -97,11 +97,6 @@ func (o *PcloudTenantsPutOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud tenants put o k response
-func (o *PcloudTenantsPutOK) Code() int {
-	return 200
-}
-
 func (o *PcloudTenantsPutOK) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsPutOK  %+v", 200, o.Payload)
 }
@@ -163,11 +158,6 @@ func (o *PcloudTenantsPutBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud tenants put bad request response a status code equal to that given
 func (o *PcloudTenantsPutBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud tenants put bad request response
-func (o *PcloudTenantsPutBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudTenantsPutBadRequest) Error() string {
@@ -233,11 +223,6 @@ func (o *PcloudTenantsPutUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud tenants put unauthorized response
-func (o *PcloudTenantsPutUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudTenantsPutUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsPutUnauthorized  %+v", 401, o.Payload)
 }
@@ -301,11 +286,6 @@ func (o *PcloudTenantsPutUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the pcloud tenants put unprocessable entity response
-func (o *PcloudTenantsPutUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudTenantsPutUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsPutUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -367,11 +347,6 @@ func (o *PcloudTenantsPutInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud tenants put internal server error response a status code equal to that given
 func (o *PcloudTenantsPutInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud tenants put internal server error response
-func (o *PcloudTenantsPutInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudTenantsPutInternalServerError) Error() string {

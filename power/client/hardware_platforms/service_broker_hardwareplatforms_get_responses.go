@@ -79,11 +79,6 @@ func (o *ServiceBrokerHardwareplatformsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker hardwareplatforms get o k response
-func (o *ServiceBrokerHardwareplatformsGetOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerHardwareplatformsGetOK) Error() string {
 	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetOK  %+v", 200, o.Payload)
 }
@@ -143,11 +138,6 @@ func (o *ServiceBrokerHardwareplatformsGetInternalServerError) IsServerError() b
 // IsCode returns true when this service broker hardwareplatforms get internal server error response a status code equal to that given
 func (o *ServiceBrokerHardwareplatformsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the service broker hardwareplatforms get internal server error response
-func (o *ServiceBrokerHardwareplatformsGetInternalServerError) Code() int {
-	return 500
 }
 
 func (o *ServiceBrokerHardwareplatformsGetInternalServerError) Error() string {

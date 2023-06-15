@@ -103,11 +103,6 @@ func (o *PcloudCloudconnectionsGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud cloudconnections get o k response
-func (o *PcloudCloudconnectionsGetOK) Code() int {
-	return 200
-}
-
 func (o *PcloudCloudconnectionsGetOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsGetOK  %+v", 200, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *PcloudCloudconnectionsGetBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud cloudconnections get bad request response a status code equal to that given
 func (o *PcloudCloudconnectionsGetBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud cloudconnections get bad request response
-func (o *PcloudCloudconnectionsGetBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudCloudconnectionsGetBadRequest) Error() string {
@@ -239,11 +229,6 @@ func (o *PcloudCloudconnectionsGetUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud cloudconnections get unauthorized response
-func (o *PcloudCloudconnectionsGetUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudCloudconnectionsGetUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsGetUnauthorized  %+v", 401, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *PcloudCloudconnectionsGetNotFound) IsServerError() bool {
 // IsCode returns true when this pcloud cloudconnections get not found response a status code equal to that given
 func (o *PcloudCloudconnectionsGetNotFound) IsCode(code int) bool {
 	return code == 404
-}
-
-// Code gets the status code for the pcloud cloudconnections get not found response
-func (o *PcloudCloudconnectionsGetNotFound) Code() int {
-	return 404
 }
 
 func (o *PcloudCloudconnectionsGetNotFound) Error() string {
@@ -375,11 +355,6 @@ func (o *PcloudCloudconnectionsGetRequestTimeout) IsCode(code int) bool {
 	return code == 408
 }
 
-// Code gets the status code for the pcloud cloudconnections get request timeout response
-func (o *PcloudCloudconnectionsGetRequestTimeout) Code() int {
-	return 408
-}
-
 func (o *PcloudCloudconnectionsGetRequestTimeout) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsGetRequestTimeout  %+v", 408, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *PcloudCloudconnectionsGetInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud cloudconnections get internal server error response a status code equal to that given
 func (o *PcloudCloudconnectionsGetInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudconnections get internal server error response
-func (o *PcloudCloudconnectionsGetInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudconnectionsGetInternalServerError) Error() string {

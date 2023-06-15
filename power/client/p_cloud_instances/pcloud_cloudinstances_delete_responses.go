@@ -97,11 +97,6 @@ func (o *PcloudCloudinstancesDeleteOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud cloudinstances delete o k response
-func (o *PcloudCloudinstancesDeleteOK) Code() int {
-	return 200
-}
-
 func (o *PcloudCloudinstancesDeleteOK) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}][%d] pcloudCloudinstancesDeleteOK  %+v", 200, o.Payload)
 }
@@ -161,11 +156,6 @@ func (o *PcloudCloudinstancesDeleteBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances delete bad request response a status code equal to that given
 func (o *PcloudCloudinstancesDeleteBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud cloudinstances delete bad request response
-func (o *PcloudCloudinstancesDeleteBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudCloudinstancesDeleteBadRequest) Error() string {
@@ -231,11 +221,6 @@ func (o *PcloudCloudinstancesDeleteUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud cloudinstances delete unauthorized response
-func (o *PcloudCloudinstancesDeleteUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudCloudinstancesDeleteUnauthorized) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}][%d] pcloudCloudinstancesDeleteUnauthorized  %+v", 401, o.Payload)
 }
@@ -299,11 +284,6 @@ func (o *PcloudCloudinstancesDeleteGone) IsCode(code int) bool {
 	return code == 410
 }
 
-// Code gets the status code for the pcloud cloudinstances delete gone response
-func (o *PcloudCloudinstancesDeleteGone) Code() int {
-	return 410
-}
-
 func (o *PcloudCloudinstancesDeleteGone) Error() string {
 	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}][%d] pcloudCloudinstancesDeleteGone  %+v", 410, o.Payload)
 }
@@ -365,11 +345,6 @@ func (o *PcloudCloudinstancesDeleteInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances delete internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesDeleteInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudinstances delete internal server error response
-func (o *PcloudCloudinstancesDeleteInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudinstancesDeleteInternalServerError) Error() string {

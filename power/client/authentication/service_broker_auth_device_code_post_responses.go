@@ -85,11 +85,6 @@ func (o *ServiceBrokerAuthDeviceCodePostOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker auth device code post o k response
-func (o *ServiceBrokerAuthDeviceCodePostOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerAuthDeviceCodePostOK) Error() string {
 	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostOK  %+v", 200, o.Payload)
 }
@@ -153,11 +148,6 @@ func (o *ServiceBrokerAuthDeviceCodePostForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the service broker auth device code post forbidden response
-func (o *ServiceBrokerAuthDeviceCodePostForbidden) Code() int {
-	return 403
-}
-
 func (o *ServiceBrokerAuthDeviceCodePostForbidden) Error() string {
 	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostForbidden  %+v", 403, o.Payload)
 }
@@ -219,11 +209,6 @@ func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) IsServerError() boo
 // IsCode returns true when this service broker auth device code post internal server error response a status code equal to that given
 func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the service broker auth device code post internal server error response
-func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) Error() string {

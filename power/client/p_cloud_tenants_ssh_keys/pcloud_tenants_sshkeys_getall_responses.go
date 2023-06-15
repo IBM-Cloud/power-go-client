@@ -103,11 +103,6 @@ func (o *PcloudTenantsSshkeysGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud tenants sshkeys getall o k response
-func (o *PcloudTenantsSshkeysGetallOK) Code() int {
-	return 200
-}
-
 func (o *PcloudTenantsSshkeysGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallOK  %+v", 200, o.Payload)
 }
@@ -169,11 +164,6 @@ func (o *PcloudTenantsSshkeysGetallBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud tenants sshkeys getall bad request response a status code equal to that given
 func (o *PcloudTenantsSshkeysGetallBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud tenants sshkeys getall bad request response
-func (o *PcloudTenantsSshkeysGetallBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudTenantsSshkeysGetallBadRequest) Error() string {
@@ -239,11 +229,6 @@ func (o *PcloudTenantsSshkeysGetallUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud tenants sshkeys getall unauthorized response
-func (o *PcloudTenantsSshkeysGetallUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudTenantsSshkeysGetallUnauthorized) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallUnauthorized  %+v", 401, o.Payload)
 }
@@ -305,11 +290,6 @@ func (o *PcloudTenantsSshkeysGetallForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud tenants sshkeys getall forbidden response a status code equal to that given
 func (o *PcloudTenantsSshkeysGetallForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud tenants sshkeys getall forbidden response
-func (o *PcloudTenantsSshkeysGetallForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudTenantsSshkeysGetallForbidden) Error() string {
@@ -375,11 +355,6 @@ func (o *PcloudTenantsSshkeysGetallNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud tenants sshkeys getall not found response
-func (o *PcloudTenantsSshkeysGetallNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudTenantsSshkeysGetallNotFound) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallNotFound  %+v", 404, o.Payload)
 }
@@ -441,11 +416,6 @@ func (o *PcloudTenantsSshkeysGetallInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud tenants sshkeys getall internal server error response a status code equal to that given
 func (o *PcloudTenantsSshkeysGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud tenants sshkeys getall internal server error response
-func (o *PcloudTenantsSshkeysGetallInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudTenantsSshkeysGetallInternalServerError) Error() string {

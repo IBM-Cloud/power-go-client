@@ -103,11 +103,6 @@ func (o *PcloudCloudinstancesSnapshotsPutOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud cloudinstances snapshots put o k response
-func (o *PcloudCloudinstancesSnapshotsPutOK) Code() int {
-	return 200
-}
-
 func (o *PcloudCloudinstancesSnapshotsPutOK) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsPutOK  %+v", 200, o.Payload)
 }
@@ -167,11 +162,6 @@ func (o *PcloudCloudinstancesSnapshotsPutBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances snapshots put bad request response a status code equal to that given
 func (o *PcloudCloudinstancesSnapshotsPutBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud cloudinstances snapshots put bad request response
-func (o *PcloudCloudinstancesSnapshotsPutBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudCloudinstancesSnapshotsPutBadRequest) Error() string {
@@ -237,11 +227,6 @@ func (o *PcloudCloudinstancesSnapshotsPutUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud cloudinstances snapshots put unauthorized response
-func (o *PcloudCloudinstancesSnapshotsPutUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudCloudinstancesSnapshotsPutUnauthorized) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsPutUnauthorized  %+v", 401, o.Payload)
 }
@@ -303,11 +288,6 @@ func (o *PcloudCloudinstancesSnapshotsPutForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances snapshots put forbidden response a status code equal to that given
 func (o *PcloudCloudinstancesSnapshotsPutForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud cloudinstances snapshots put forbidden response
-func (o *PcloudCloudinstancesSnapshotsPutForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudCloudinstancesSnapshotsPutForbidden) Error() string {
@@ -373,11 +353,6 @@ func (o *PcloudCloudinstancesSnapshotsPutNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud cloudinstances snapshots put not found response
-func (o *PcloudCloudinstancesSnapshotsPutNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudCloudinstancesSnapshotsPutNotFound) Error() string {
 	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsPutNotFound  %+v", 404, o.Payload)
 }
@@ -439,11 +414,6 @@ func (o *PcloudCloudinstancesSnapshotsPutInternalServerError) IsServerError() bo
 // IsCode returns true when this pcloud cloudinstances snapshots put internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesSnapshotsPutInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudinstances snapshots put internal server error response
-func (o *PcloudCloudinstancesSnapshotsPutInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudinstancesSnapshotsPutInternalServerError) Error() string {

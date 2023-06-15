@@ -73,11 +73,6 @@ func (o *ServiceBrokerSwaggerspecOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker swaggerspec o k response
-func (o *ServiceBrokerSwaggerspecOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerSwaggerspecOK) Error() string {
 	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecOK  %+v", 200, o.Payload)
 }

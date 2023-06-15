@@ -109,11 +109,6 @@ func (o *PcloudV2VolumesPostCreated) IsCode(code int) bool {
 	return code == 201
 }
 
-// Code gets the status code for the pcloud v2 volumes post created response
-func (o *PcloudV2VolumesPostCreated) Code() int {
-	return 201
-}
-
 func (o *PcloudV2VolumesPostCreated) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesPostCreated  %+v", 201, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudV2VolumesPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud v2 volumes post bad request response a status code equal to that given
 func (o *PcloudV2VolumesPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud v2 volumes post bad request response
-func (o *PcloudV2VolumesPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudV2VolumesPostBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudV2VolumesPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud v2 volumes post unauthorized response
-func (o *PcloudV2VolumesPostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudV2VolumesPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudV2VolumesPostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud v2 volumes post forbidden response a status code equal to that given
 func (o *PcloudV2VolumesPostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud v2 volumes post forbidden response
-func (o *PcloudV2VolumesPostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudV2VolumesPostForbidden) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudV2VolumesPostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud v2 volumes post conflict response
-func (o *PcloudV2VolumesPostConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudV2VolumesPostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesPostConflict  %+v", 409, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudV2VolumesPostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the pcloud v2 volumes post unprocessable entity response
-func (o *PcloudV2VolumesPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudV2VolumesPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudV2VolumesPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud v2 volumes post internal server error response a status code equal to that given
 func (o *PcloudV2VolumesPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud v2 volumes post internal server error response
-func (o *PcloudV2VolumesPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudV2VolumesPostInternalServerError) Error() string {

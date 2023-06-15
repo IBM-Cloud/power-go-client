@@ -91,11 +91,6 @@ func (o *PcloudStoragecapacityTypesGetallOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the pcloud storagecapacity types getall o k response
-func (o *PcloudStoragecapacityTypesGetallOK) Code() int {
-	return 200
-}
-
 func (o *PcloudStoragecapacityTypesGetallOK) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types][%d] pcloudStoragecapacityTypesGetallOK  %+v", 200, o.Payload)
 }
@@ -157,11 +152,6 @@ func (o *PcloudStoragecapacityTypesGetallUnauthorized) IsServerError() bool {
 // IsCode returns true when this pcloud storagecapacity types getall unauthorized response a status code equal to that given
 func (o *PcloudStoragecapacityTypesGetallUnauthorized) IsCode(code int) bool {
 	return code == 401
-}
-
-// Code gets the status code for the pcloud storagecapacity types getall unauthorized response
-func (o *PcloudStoragecapacityTypesGetallUnauthorized) Code() int {
-	return 401
 }
 
 func (o *PcloudStoragecapacityTypesGetallUnauthorized) Error() string {
@@ -227,11 +217,6 @@ func (o *PcloudStoragecapacityTypesGetallForbidden) IsCode(code int) bool {
 	return code == 403
 }
 
-// Code gets the status code for the pcloud storagecapacity types getall forbidden response
-func (o *PcloudStoragecapacityTypesGetallForbidden) Code() int {
-	return 403
-}
-
 func (o *PcloudStoragecapacityTypesGetallForbidden) Error() string {
 	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types][%d] pcloudStoragecapacityTypesGetallForbidden  %+v", 403, o.Payload)
 }
@@ -293,11 +278,6 @@ func (o *PcloudStoragecapacityTypesGetallInternalServerError) IsServerError() bo
 // IsCode returns true when this pcloud storagecapacity types getall internal server error response a status code equal to that given
 func (o *PcloudStoragecapacityTypesGetallInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud storagecapacity types getall internal server error response
-func (o *PcloudStoragecapacityTypesGetallInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudStoragecapacityTypesGetallInternalServerError) Error() string {

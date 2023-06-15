@@ -73,11 +73,6 @@ func (o *CatalogGetOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the catalog get o k response
-func (o *CatalogGetOK) Code() int {
-	return 200
-}
-
 func (o *CatalogGetOK) Error() string {
 	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetOK  %+v", 200, o.Payload)
 }

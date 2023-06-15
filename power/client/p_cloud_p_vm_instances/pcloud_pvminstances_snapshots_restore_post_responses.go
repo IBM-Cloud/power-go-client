@@ -109,11 +109,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots restore post accepted response
-func (o *PcloudPvminstancesSnapshotsRestorePostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudPvminstancesSnapshotsRestorePostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore][%d] pcloudPvminstancesSnapshotsRestorePostAccepted  %+v", 202, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostBadRequest) IsServerError() bool 
 // IsCode returns true when this pcloud pvminstances snapshots restore post bad request response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsRestorePostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots restore post bad request response
-func (o *PcloudPvminstancesSnapshotsRestorePostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudPvminstancesSnapshotsRestorePostBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostUnauthorized) IsCode(code int) bo
 	return code == 401
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots restore post unauthorized response
-func (o *PcloudPvminstancesSnapshotsRestorePostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudPvminstancesSnapshotsRestorePostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore][%d] pcloudPvminstancesSnapshotsRestorePostUnauthorized  %+v", 401, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud pvminstances snapshots restore post forbidden response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsRestorePostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots restore post forbidden response
-func (o *PcloudPvminstancesSnapshotsRestorePostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudPvminstancesSnapshotsRestorePostForbidden) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostNotFound) IsCode(code int) bool {
 	return code == 404
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots restore post not found response
-func (o *PcloudPvminstancesSnapshotsRestorePostNotFound) Code() int {
-	return 404
-}
-
 func (o *PcloudPvminstancesSnapshotsRestorePostNotFound) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore][%d] pcloudPvminstancesSnapshotsRestorePostNotFound  %+v", 404, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud pvminstances snapshots restore post conflict response
-func (o *PcloudPvminstancesSnapshotsRestorePostConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudPvminstancesSnapshotsRestorePostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots/{snapshot_id}/restore][%d] pcloudPvminstancesSnapshotsRestorePostConflict  %+v", 409, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudPvminstancesSnapshotsRestorePostInternalServerError) IsServerErro
 // IsCode returns true when this pcloud pvminstances snapshots restore post internal server error response a status code equal to that given
 func (o *PcloudPvminstancesSnapshotsRestorePostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud pvminstances snapshots restore post internal server error response
-func (o *PcloudPvminstancesSnapshotsRestorePostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudPvminstancesSnapshotsRestorePostInternalServerError) Error() string {

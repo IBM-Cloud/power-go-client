@@ -109,11 +109,6 @@ func (o *PcloudVpnconnectionsPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud vpnconnections post accepted response
-func (o *PcloudVpnconnectionsPostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudVpnconnectionsPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostAccepted  %+v", 202, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudVpnconnectionsPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud vpnconnections post bad request response a status code equal to that given
 func (o *PcloudVpnconnectionsPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud vpnconnections post bad request response
-func (o *PcloudVpnconnectionsPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudVpnconnectionsPostBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudVpnconnectionsPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud vpnconnections post unauthorized response
-func (o *PcloudVpnconnectionsPostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudVpnconnectionsPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudVpnconnectionsPostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud vpnconnections post forbidden response a status code equal to that given
 func (o *PcloudVpnconnectionsPostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud vpnconnections post forbidden response
-func (o *PcloudVpnconnectionsPostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudVpnconnectionsPostForbidden) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudVpnconnectionsPostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud vpnconnections post conflict response
-func (o *PcloudVpnconnectionsPostConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudVpnconnectionsPostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostConflict  %+v", 409, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudVpnconnectionsPostUnprocessableEntity) IsCode(code int) bool {
 	return code == 422
 }
 
-// Code gets the status code for the pcloud vpnconnections post unprocessable entity response
-func (o *PcloudVpnconnectionsPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudVpnconnectionsPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudVpnconnectionsPostInternalServerError) IsServerError() bool {
 // IsCode returns true when this pcloud vpnconnections post internal server error response a status code equal to that given
 func (o *PcloudVpnconnectionsPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud vpnconnections post internal server error response
-func (o *PcloudVpnconnectionsPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudVpnconnectionsPostInternalServerError) Error() string {

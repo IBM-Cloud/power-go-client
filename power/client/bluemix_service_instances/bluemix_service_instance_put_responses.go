@@ -79,11 +79,6 @@ func (o *BluemixServiceInstancePutOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the bluemix service instance put o k response
-func (o *BluemixServiceInstancePutOK) Code() int {
-	return 200
-}
-
 func (o *BluemixServiceInstancePutOK) Error() string {
 	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutOK  %+v", 200, o.Payload)
 }
@@ -145,11 +140,6 @@ func (o *BluemixServiceInstancePutBadRequest) IsServerError() bool {
 // IsCode returns true when this bluemix service instance put bad request response a status code equal to that given
 func (o *BluemixServiceInstancePutBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the bluemix service instance put bad request response
-func (o *BluemixServiceInstancePutBadRequest) Code() int {
-	return 400
 }
 
 func (o *BluemixServiceInstancePutBadRequest) Error() string {

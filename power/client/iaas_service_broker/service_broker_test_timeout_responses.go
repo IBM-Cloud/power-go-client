@@ -73,11 +73,6 @@ func (o *ServiceBrokerTestTimeoutOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker test timeout o k response
-func (o *ServiceBrokerTestTimeoutOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerTestTimeoutOK) Error() string {
 	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK  %+v", 200, o.Payload)
 }

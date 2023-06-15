@@ -109,11 +109,6 @@ func (o *PcloudCloudinstancesVolumesPostAccepted) IsCode(code int) bool {
 	return code == 202
 }
 
-// Code gets the status code for the pcloud cloudinstances volumes post accepted response
-func (o *PcloudCloudinstancesVolumesPostAccepted) Code() int {
-	return 202
-}
-
 func (o *PcloudCloudinstancesVolumesPostAccepted) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudCloudinstancesVolumesPostAccepted  %+v", 202, o.Payload)
 }
@@ -175,11 +170,6 @@ func (o *PcloudCloudinstancesVolumesPostBadRequest) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances volumes post bad request response a status code equal to that given
 func (o *PcloudCloudinstancesVolumesPostBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the pcloud cloudinstances volumes post bad request response
-func (o *PcloudCloudinstancesVolumesPostBadRequest) Code() int {
-	return 400
 }
 
 func (o *PcloudCloudinstancesVolumesPostBadRequest) Error() string {
@@ -245,11 +235,6 @@ func (o *PcloudCloudinstancesVolumesPostUnauthorized) IsCode(code int) bool {
 	return code == 401
 }
 
-// Code gets the status code for the pcloud cloudinstances volumes post unauthorized response
-func (o *PcloudCloudinstancesVolumesPostUnauthorized) Code() int {
-	return 401
-}
-
 func (o *PcloudCloudinstancesVolumesPostUnauthorized) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudCloudinstancesVolumesPostUnauthorized  %+v", 401, o.Payload)
 }
@@ -311,11 +296,6 @@ func (o *PcloudCloudinstancesVolumesPostForbidden) IsServerError() bool {
 // IsCode returns true when this pcloud cloudinstances volumes post forbidden response a status code equal to that given
 func (o *PcloudCloudinstancesVolumesPostForbidden) IsCode(code int) bool {
 	return code == 403
-}
-
-// Code gets the status code for the pcloud cloudinstances volumes post forbidden response
-func (o *PcloudCloudinstancesVolumesPostForbidden) Code() int {
-	return 403
 }
 
 func (o *PcloudCloudinstancesVolumesPostForbidden) Error() string {
@@ -381,11 +361,6 @@ func (o *PcloudCloudinstancesVolumesPostConflict) IsCode(code int) bool {
 	return code == 409
 }
 
-// Code gets the status code for the pcloud cloudinstances volumes post conflict response
-func (o *PcloudCloudinstancesVolumesPostConflict) Code() int {
-	return 409
-}
-
 func (o *PcloudCloudinstancesVolumesPostConflict) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudCloudinstancesVolumesPostConflict  %+v", 409, o.Payload)
 }
@@ -449,11 +424,6 @@ func (o *PcloudCloudinstancesVolumesPostUnprocessableEntity) IsCode(code int) bo
 	return code == 422
 }
 
-// Code gets the status code for the pcloud cloudinstances volumes post unprocessable entity response
-func (o *PcloudCloudinstancesVolumesPostUnprocessableEntity) Code() int {
-	return 422
-}
-
 func (o *PcloudCloudinstancesVolumesPostUnprocessableEntity) Error() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudCloudinstancesVolumesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
@@ -515,11 +485,6 @@ func (o *PcloudCloudinstancesVolumesPostInternalServerError) IsServerError() boo
 // IsCode returns true when this pcloud cloudinstances volumes post internal server error response a status code equal to that given
 func (o *PcloudCloudinstancesVolumesPostInternalServerError) IsCode(code int) bool {
 	return code == 500
-}
-
-// Code gets the status code for the pcloud cloudinstances volumes post internal server error response
-func (o *PcloudCloudinstancesVolumesPostInternalServerError) Code() int {
-	return 500
 }
 
 func (o *PcloudCloudinstancesVolumesPostInternalServerError) Error() string {

@@ -79,11 +79,6 @@ func (o *ServiceBrokerVersionOK) IsCode(code int) bool {
 	return code == 200
 }
 
-// Code gets the status code for the service broker version o k response
-func (o *ServiceBrokerVersionOK) Code() int {
-	return 200
-}
-
 func (o *ServiceBrokerVersionOK) Error() string {
 	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionOK  %+v", 200, o.Payload)
 }
@@ -145,11 +140,6 @@ func (o *ServiceBrokerVersionBadRequest) IsServerError() bool {
 // IsCode returns true when this service broker version bad request response a status code equal to that given
 func (o *ServiceBrokerVersionBadRequest) IsCode(code int) bool {
 	return code == 400
-}
-
-// Code gets the status code for the service broker version bad request response
-func (o *ServiceBrokerVersionBadRequest) Code() int {
-	return 400
 }
 
 func (o *ServiceBrokerVersionBadRequest) Error() string {
