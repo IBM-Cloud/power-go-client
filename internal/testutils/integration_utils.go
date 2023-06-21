@@ -2,22 +2,22 @@
 Package testutils implements tests for the Power-Go-Client:
 
 Files
-	- integration_utils.go:			Defines commonly used test functions
-	- integration_variables.go:		Lists default values for all test variables
-	- example.env:					An example .env which is used when overriding default test variables
-	- launch.json:					An example test configuration
-	- client/instance/*_test.go:	Defines tests for an individual resource type
+  - integration_utils.go:			Defines commonly used test functions
+  - integration_variables.go:		Lists default values for all test variables
+  - example.env:					An example .env which is used when overriding default test variables
+  - launch.json:					An example test configuration
+  - client/instance/*_test.go:	Defines tests for an individual resource type
 
 To run a test:
-	- Set DisableTesting = False in integration_variables.go
-	- Create a .vscode folder in the project
-	- Copy and rename launch.json and .env into .vscode
-	- Either
-		- Use default variables in integration_variables.go
-		- Define variables in .env
-	- Double click the test function name to select the text. launch.json uses this text
-	- Click "Run and Debug" on the VScode sidebar, and then click "Run a test"
-		- Output will be visible in the VScode Debug Console
+  - Set DisableTesting = False in integration_variables.go
+  - Create a .vscode folder in the project
+  - Copy and rename launch.json and .env into .vscode
+  - Either
+  - Use default variables in integration_variables.go
+  - Define variables in .env
+  - Double click the test function name to select the text. launch.json uses this text
+  - Click "Run and Debug" on the VScode sidebar, and then click "Run a test"
+  - Output will be visible in the VScode Debug Console
 */
 package testutils
 
@@ -137,7 +137,7 @@ func init() {
 // AccountPreCheck verifies that all cloud / account variables are defined.
 func AccountPreCheck(t *testing.T) {
 	// First look for API_KEY. If no API_KEY, try BEARER_TOKEN
-	if &apiKey == nil {
+	if apiKey == "" {
 		ifNil(t, bearerToken, "apiKey or bearerToken", "all")
 	}
 	ifNil(t, accountID, "accountID", "all")
@@ -470,5 +470,5 @@ func TestMessage(msg string, id string, response interface{}) {
 		msg += fmt.Sprintf("\n   %+v", response)
 	}
 	msg += "\n\n"
-	log.Printf(msg)
+	log.Print(msg)
 }

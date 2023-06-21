@@ -2,22 +2,22 @@
 Package testutils implements tests for the Power-Go-Client:
 
 Files
-	- integration_utils.go:			Defines commonly used test functions
-	- integration_variables.go:		Lists default values for all test variables
-	- example.env:					An example .env which is used when overriding default test variables
-	- launch.json:					An example test configuration
-	- client/instance/*_test.go:	Defines tests for an individual resource type
+  - integration_utils.go:			Defines commonly used test functions
+  - integration_variables.go:		Lists default values for all test variables
+  - example.env:					An example .env which is used when overriding default test variables
+  - launch.json:					An example test configuration
+  - client/instance/*_test.go:	Defines tests for an individual resource type
 
 To run a test:
-	- Set DisableTesting = False in this file
-	- Create a .vscode folder in the project
-	- Copy and rename launch.json and .env into .vscode
-	- Either
-		- Use default variables in integration_variables.go
-		- Define variables in .env
-	- Double click the test function name to select the text. launch.json uses this text
-	- Click "Run and Debug" on the VScode sidebar, and then click "Run a test"
-		- Output will be visible in the VScode Debug Console
+  - Set DisableTesting = False in this file
+  - Create a .vscode folder in the project
+  - Copy and rename launch.json and .env into .vscode
+  - Either
+  - Use default variables in integration_variables.go
+  - Define variables in .env
+  - Double click the test function name to select the text. launch.json uses this text
+  - Click "Run and Debug" on the VScode sidebar, and then click "Run a test"
+  - Output will be visible in the VScode Debug Console
 */
 package testutils
 
@@ -26,7 +26,9 @@ package testutils
 var DisableTesting bool = true
 
 // =====================================
-//   Cloud / Account Variables
+//
+//	Cloud / Account Variables
+//
 // =====================================
 var apiKey string = ""      // API_KEY
 var bearerToken string = "" // BEARER_TOKEN (deprecated)
@@ -41,7 +43,9 @@ var powerEndpoint string = ""
 var zone string = ""
 
 // =====================================
-//   Testing Variables
+//
+//	Testing Variables
+//
 // =====================================
 var debug bool = false                    // DEBUG
 var timeout int = 9000000000000000000     // TIMEOUT
@@ -54,7 +58,9 @@ const NIL_ERROR = "[ERROR] %s must be set for %s integration tests"
 const JOB_ERROR = "Cannot find job status for job id %s with cloud instance %s\n"
 
 // =====================================
-//   Resource Variables
+//
+//	Resource Variables
+//
 // =====================================
 // Cloud Connection
 var CloudConnectionID string = ""                            // CLOUD_CONNECTION_ID
