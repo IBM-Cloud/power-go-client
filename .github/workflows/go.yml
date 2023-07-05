@@ -2,32 +2,39 @@ name: Go
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   build:
     runs-on: ubuntu-latest
+    env:
+      GO111MODULE: on
+
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+      
+      - name: Run go Security Scanner
+        uses: securego/gosec@master
+        with:
+          args: ./...
 
-    - name: Set up Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: 1.17
+      - name: Set up Go
+        uses: actions/setup-go@v2
+        with:
+          go-version: 1.17
 
-    - name: Build
-      run: go build -v ./...
+      - name: Build
+        run: go build -v ./...
 
-    - name: Lint
-      uses: golangci/golangci-lint-action@v3
-      with:
-       version: latest
+      - name: Lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: latest
 
-    - name: Test
-      run: go test -v `go list ./... | grep -v '/power/' | grep -v examples`
+      - name: Test
+        run: go test -v `go list ./... | grep -v '/power/' | grep -v examples`
 
-    - name: Coverage
-      run: go test `go list ./... | grep -v '/power/' | grep -v examples` -coverprofile=profile.cov && go tool cover -func profile.cov
+      - name: Coverage
+        run: go test `go list ./... | grep -v '/power/' | grep -v examples` -coverprofile=profile.cov && go tool cover -func profile.cov
