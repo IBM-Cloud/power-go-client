@@ -15,6 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: Lint
+        uses: golangci/golangci-lint-action@v3
+        with:
+          version: v1.53.3
+
       - name: Run go Security Scanner
         uses: securego/gosec@master
         with:
@@ -27,12 +32,6 @@ jobs:
 
       - name: Build
         run: go build -v ./...
-
-      - name: Lint
-        uses: golangci/golangci-lint-action@v3
-        with:
-          version: v1.53.3
-          skip-cache: true
 
       - name: Test
         run: go test -v `go list ./... | grep -v '/power/' | grep -v examples`
