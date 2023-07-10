@@ -13,7 +13,8 @@ import (
 func main() {
 
 	// session Inputs
-	token := " < IAM TOKEN > "
+	//  < IAM TOKEN >
+	token := ""
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "

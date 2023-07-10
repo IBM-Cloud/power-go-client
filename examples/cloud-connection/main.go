@@ -19,7 +19,8 @@ const (
 
 func main() {
 	//session Inputs
-	token := " < IAM TOKEN > "
+	//  < IAM TOKEN >
+	token := ""
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
@@ -76,7 +77,7 @@ func main() {
 	} else {
 		ccId = *createRespAccepted.CloudConnectionID
 		jobId = *createRespAccepted.JobRef.ID
-		waitForJobState(jobClient, jobId, piID, 2000)
+		err = waitForJobState(jobClient, jobId, piID, 2000)
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -102,7 +103,7 @@ func main() {
 
 	if delResp != nil {
 		jobId = *delResp.ID
-		waitForJobState(jobClient, jobId, piID, 2000)
+		err = waitForJobState(jobClient, jobId, piID, 2000)
 		if err != nil {
 			log.Fatal(err)
 		}

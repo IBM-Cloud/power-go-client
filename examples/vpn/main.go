@@ -20,7 +20,8 @@ const (
 func main() {
 
 	//session Inputs
-	token := " < IAM TOKEN > "
+	//  < IAM TOKEN >
+	token := ""
 	region := " < REGION > "
 	zone := " < ZONE > "
 	accountID := " < ACCOUNT ID > "
@@ -131,7 +132,7 @@ func main() {
 	}
 	log.Printf("***************[1]****************** %+v\n", createResp)
 
-	waitForJobState(jobClient, *createResp.JobRef.ID, piID, 2000)
+	err = waitForJobState(jobClient, *createResp.JobRef.ID, piID, 2000)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -161,7 +162,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	waitForJobState(jobClient, *resp.ID, piID, 2000)
+	err = waitForJobState(jobClient, *resp.ID, piID, 2000)
 	if err != nil {
 		log.Fatal(err)
 	}
