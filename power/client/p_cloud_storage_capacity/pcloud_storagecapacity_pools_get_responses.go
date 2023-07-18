@@ -54,7 +54,7 @@ func (o *PcloudStoragecapacityPoolsGetReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-pools/{storage_pool_name}] pcloud.storagecapacity.pools.get", response, response.Code())
 	}
 }
 

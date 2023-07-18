@@ -60,7 +60,7 @@ func (o *PcloudVolumegroupsStorageDetailsGetReader) ReadResponse(response runtim
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}/storage-details] pcloud.volumegroups.storageDetails.get", response, response.Code())
 	}
 }
 

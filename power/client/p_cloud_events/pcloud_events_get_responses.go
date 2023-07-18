@@ -54,7 +54,7 @@ func (o *PcloudEventsGetReader) ReadResponse(response runtime.ClientResponse, co
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/events/{event_id}] pcloud.events.get", response, response.Code())
 	}
 }
 
