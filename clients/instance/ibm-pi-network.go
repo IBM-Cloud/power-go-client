@@ -3,6 +3,7 @@ package instance
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
@@ -56,6 +57,17 @@ func (f *IBMPINetworkClient) GetAll() (*models.Networks, error) {
 
 // Create a Network
 func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network, error) {
+	if strings.Contains(f.session.Options.Region, helpers.PIStratos) {
+		if !body.Jumbo {
+			return nil, fmt.Errorf("jumbo parameter not supported for satellite location, use mtu instead")
+		}
+		if body.Mtu == nil {
+			body.Mtu = &NetworkMtu
+		}
+		if body.AccessConfig == nil {
+			body.AccessConfig = NetworkAccessConfig
+		}
+	}
 	params := p_cloud_networks.NewPcloudNetworksPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)

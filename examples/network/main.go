@@ -73,7 +73,7 @@ func main() {
 		Name:         name,
 		Jumbo:        jumbo,
 		Mtu:          &mtu,
-		AccessConfig: &accessConfig,
+		AccessConfig: accessConfig,
 	}
 	if netType == "vlan" {
 		ipbody := []*models.IPAddressRange{

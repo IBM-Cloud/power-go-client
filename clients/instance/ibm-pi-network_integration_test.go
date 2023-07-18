@@ -36,7 +36,7 @@ func TestNetwork(t *testing.T) {
 		Gateway:      gateway,
 		Jumbo:        utl.NetworkJumbo,
 		Mtu:          &util.NetworkMtu,
-		AccessConfig: &util.NetworkAccessConfig,
+		AccessConfig: util.NetworkAccessConfig,
 	}
 	createNetResp, err := networkClient.Create(networkBody)
 	require.Nil(t, err)
