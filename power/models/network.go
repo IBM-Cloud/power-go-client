@@ -352,6 +352,11 @@ func (m *Network) contextValidateCloudConnections(ctx context.Context, formats s
 	for i := 0; i < len(m.CloudConnections); i++ {
 
 		if m.CloudConnections[i] != nil {
+
+			if swag.IsZero(m.CloudConnections[i]) { // not required
+				return nil
+			}
+
 			if err := m.CloudConnections[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("cloudConnections" + "." + strconv.Itoa(i))
@@ -370,6 +375,7 @@ func (m *Network) contextValidateCloudConnections(ctx context.Context, formats s
 func (m *Network) contextValidateIPAddressMetrics(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.IPAddressMetrics != nil {
+
 		if err := m.IPAddressMetrics.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
 				return ve.ValidateName("ipAddressMetrics")
@@ -388,6 +394,11 @@ func (m *Network) contextValidateIPAddressRanges(ctx context.Context, formats st
 	for i := 0; i < len(m.IPAddressRanges); i++ {
 
 		if m.IPAddressRanges[i] != nil {
+
+			if swag.IsZero(m.IPAddressRanges[i]) { // not required
+				return nil
+			}
+
 			if err := m.IPAddressRanges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("ipAddressRanges" + "." + strconv.Itoa(i))
@@ -408,6 +419,11 @@ func (m *Network) contextValidatePublicIPAddressRanges(ctx context.Context, form
 	for i := 0; i < len(m.PublicIPAddressRanges); i++ {
 
 		if m.PublicIPAddressRanges[i] != nil {
+
+			if swag.IsZero(m.PublicIPAddressRanges[i]) { // not required
+				return nil
+			}
+
 			if err := m.PublicIPAddressRanges[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
 					return ve.ValidateName("publicIPAddressRanges" + "." + strconv.Itoa(i))
