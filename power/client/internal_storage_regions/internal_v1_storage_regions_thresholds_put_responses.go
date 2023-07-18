@@ -66,7 +66,7 @@ func (o *InternalV1StorageRegionsThresholdsPutReader) ReadResponse(response runt
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds] internal.v1.storage.regions.thresholds.put", response, response.Code())
 	}
 }
 

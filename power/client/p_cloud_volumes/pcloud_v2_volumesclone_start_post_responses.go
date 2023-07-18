@@ -54,7 +54,7 @@ func (o *PcloudV2VolumescloneStartPostReader) ReadResponse(response runtime.Clie
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes-clone/{volumes_clone_id}/start] pcloud.v2.volumesclone.start.post", response, response.Code())
 	}
 }
 
