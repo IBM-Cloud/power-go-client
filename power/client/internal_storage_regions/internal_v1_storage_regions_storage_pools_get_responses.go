@@ -54,7 +54,7 @@ func (o *InternalV1StorageRegionsStoragePoolsGetReader) ReadResponse(response ru
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools/{storage_pool_name}] internal.v1.storage.regions.storage-pools.get", response, response.Code())
 	}
 }
 

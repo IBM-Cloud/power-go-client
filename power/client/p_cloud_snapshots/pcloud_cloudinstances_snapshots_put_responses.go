@@ -60,7 +60,7 @@ func (o *PcloudCloudinstancesSnapshotsPutReader) ReadResponse(response runtime.C
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}] pcloud.cloudinstances.snapshots.put", response, response.Code())
 	}
 }
 

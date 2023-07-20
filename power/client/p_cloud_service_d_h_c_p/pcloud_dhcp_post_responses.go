@@ -48,7 +48,7 @@ func (o *PcloudDhcpPostReader) ReadResponse(response runtime.ClientResponse, con
 		}
 		return nil, result
 	default:
-		return nil, runtime.NewAPIError("response status code does not match any response statuses defined for this endpoint in the swagger spec", response, response.Code())
+		return nil, runtime.NewAPIError("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/services/dhcp] pcloud.dhcp.post", response, response.Code())
 	}
 }
 
