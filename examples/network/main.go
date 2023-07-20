@@ -70,7 +70,7 @@ func main() {
 	}
 	body := &models.NetworkCreate{
 		Type:         &netType,
-		Name:         name,
+		Name:         &name,
 		Jumbo:        jumbo,
 		Mtu:          &mtu,
 		AccessConfig: accessConfig,

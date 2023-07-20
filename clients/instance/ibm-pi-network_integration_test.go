@@ -29,14 +29,14 @@ func TestNetwork(t *testing.T) {
 	// CREATE Network
 	gateway, _, _ := generateIPData(t, utl.NetworkCidr)
 	networkBody := &models.NetworkCreate{
-		Name:         utl.NetworkName,
+		Name:         &utl.NetworkName,
 		Type:         &utl.NetworkType,
 		Cidr:         utl.NetworkCidr,
 		DNSServers:   []string{utl.NetworkDNSServer},
 		Gateway:      gateway,
 		Jumbo:        utl.NetworkJumbo,
-		Mtu:          &util.NetworkMtu,
-		AccessConfig: util.NetworkAccessConfig,
+		Mtu:          &utl.NetworkMtu,
+		AccessConfig: utl.NetworkAccessConfig,
 	}
 	createNetResp, err := networkClient.Create(networkBody)
 	require.Nil(t, err)
@@ -61,8 +61,8 @@ func TestNetwork(t *testing.T) {
 	require.Equal(t, createNetResp.DNSServers, []string{utl.NetworkDNSServer})
 	require.Equal(t, createNetResp.Gateway, gateway)
 	require.Equal(t, *createNetResp.Jumbo, utl.NetworkJumbo)
-	require.Equal(t, *createNetResp.Mtu, utl.NetworkMtu)
-	require.Equal(t, *createNetResp.AccessConfig, utl.NetworkAccessConfig)
+	require.Equal(t, createNetResp.Mtu, utl.NetworkMtu)
+	require.Equal(t, createNetResp.AccessConfig, utl.NetworkAccessConfig)
 
 	// CREATE Port
 	portBody := &models.NetworkPortCreate{

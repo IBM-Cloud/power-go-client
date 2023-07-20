@@ -62,10 +62,12 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 			return nil, fmt.Errorf("jumbo parameter not supported for satellite location, use mtu instead")
 		}
 		if body.Mtu == nil {
-			body.Mtu = &NetworkMtu
+			var defaultMTU int64 = 1450
+			body.Mtu = &defaultMTU
 		}
-		if body.AccessConfig == nil {
-			body.AccessConfig = NetworkAccessConfig
+		if body.AccessConfig == "" {
+			var defaultAccessConfig string = "internal-only"
+			body.AccessConfig = defaultAccessConfig
 		}
 	}
 	params := p_cloud_networks.NewPcloudNetworksPostParams().
@@ -73,7 +75,7 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postok, postcreated, err := f.session.Power.PCloudNetworks.PcloudNetworksPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.CreateNetworkOperationFailed, body.Name, err)
+		return nil, fmt.Errorf(errors.CreateNetworkOperationFailed, *body.Name, err)
 	}
 	if postok != nil && postok.Payload != nil {
 		return postok.Payload, nil
@@ -81,7 +83,7 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 	if postcreated != nil && postcreated.Payload != nil {
 		return postcreated.Payload, nil
 	}
-	return nil, fmt.Errorf("failed to perform Create Network Operation for Network %s", body.Name)
+	return nil, fmt.Errorf("failed to perform Create Network Operation for Network %s", *body.Name)
 }
 
 // Update a Network
