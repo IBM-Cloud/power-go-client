@@ -240,6 +240,6 @@ const (
 	PIDeleteTimeOut = 3 * time.Minute
 	PIGetTimeOut    = 2 * time.Minute
 
-	// Stratos CRN
-	PIStratos = "satloc"
+	// Stratos region prefix
+	PIStratosRegionPrefix = "satloc"
 )
