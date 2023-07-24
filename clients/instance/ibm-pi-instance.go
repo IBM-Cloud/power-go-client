@@ -3,6 +3,7 @@ package instance
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
@@ -131,6 +132,9 @@ func (f *IBMPIInstanceClient) PostConsoleURL(id string) (*models.PVMInstanceCons
 
 // List the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLanguages, error) {
+	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsoleGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
@@ -146,6 +150,9 @@ func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLan
 
 // Update the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.ConsoleLanguage) (*models.ConsoleLanguage, error) {
+	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsolePutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
