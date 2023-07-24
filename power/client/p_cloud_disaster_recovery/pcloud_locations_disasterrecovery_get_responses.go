@@ -41,6 +41,12 @@ func (o *PcloudLocationsDisasterrecoveryGetReader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
+	case 403:
+		result := NewPcloudLocationsDisasterrecoveryGetForbidden()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 404:
 		result := NewPcloudLocationsDisasterrecoveryGetNotFound()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -251,6 +257,74 @@ func (o *PcloudLocationsDisasterrecoveryGetUnauthorized) GetPayload() *models.Er
 }
 
 func (o *PcloudLocationsDisasterrecoveryGetUnauthorized) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudLocationsDisasterrecoveryGetForbidden creates a PcloudLocationsDisasterrecoveryGetForbidden with default headers values
+func NewPcloudLocationsDisasterrecoveryGetForbidden() *PcloudLocationsDisasterrecoveryGetForbidden {
+	return &PcloudLocationsDisasterrecoveryGetForbidden{}
+}
+
+/*
+PcloudLocationsDisasterrecoveryGetForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
+type PcloudLocationsDisasterrecoveryGetForbidden struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud locations disasterrecovery get forbidden response has a 2xx status code
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud locations disasterrecovery get forbidden response has a 3xx status code
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud locations disasterrecovery get forbidden response has a 4xx status code
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud locations disasterrecovery get forbidden response has a 5xx status code
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud locations disasterrecovery get forbidden response a status code equal to that given
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) IsCode(code int) bool {
+	return code == 403
+}
+
+// Code gets the status code for the pcloud locations disasterrecovery get forbidden response
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) Code() int {
+	return 403
+}
+
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) Error() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/locations/disaster-recovery][%d] pcloudLocationsDisasterrecoveryGetForbidden  %+v", 403, o.Payload)
+}
+
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) String() string {
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/locations/disaster-recovery][%d] pcloudLocationsDisasterrecoveryGetForbidden  %+v", 403, o.Payload)
+}
+
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudLocationsDisasterrecoveryGetForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
