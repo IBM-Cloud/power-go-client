@@ -20,7 +20,7 @@ import (
 // swagger:model NetworkReference
 type NetworkReference struct {
 
-	// Network communication configuration
+	// Network communication configuration (for satellite locations only)
 	//   * `internal-only` - network is only used for internal host communication
 	//   * `outbound-only` - network will be capable of egress traffic
 	//   * `bidirectional-static-route` - network will be capable of ingress and egress traffic via static routes
@@ -37,10 +37,10 @@ type NetworkReference struct {
 	// Required: true
 	Href *string `json:"href"`
 
-	// MTU Jumbo Network enabled (for multi-zone locations only)
+	// Enable MTU Jumbo Network (for multi-zone locations only)
 	Jumbo bool `json:"jumbo,omitempty"`
 
-	// Maximum transmission unit
+	// Maximum transmission unit (for satellite locations only)
 	Mtu int64 `json:"mtu,omitempty"`
 
 	// Network Name

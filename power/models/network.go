@@ -56,7 +56,7 @@ type Network struct {
 	// Required: true
 	IPAddressRanges []*IPAddressRange `json:"ipAddressRanges"`
 
-	// MTU Jumbo Network enabled
+	// Enable MTU Jumbo Network (for multi-zone locations only)
 	Jumbo bool `json:"jumbo,omitempty"`
 
 	// Maximum transmission unit (for satellite locations only)
