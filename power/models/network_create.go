@@ -22,7 +22,7 @@ import (
 // swagger:model NetworkCreate
 type NetworkCreate struct {
 
-	// Network communication configuration
+	// Network communication configuration (for satellite locations only)
 	//   * `internal-only` - network is only used for internal host communication
 	//   * `outbound-only` - network will be capable of egress traffic
 	//   * `bidirectional-static-route` - network will be capable of ingress and egress traffic via static routes
@@ -44,10 +44,10 @@ type NetworkCreate struct {
 	// IP Address Ranges
 	IPAddressRanges []*IPAddressRange `json:"ipAddressRanges"`
 
-	// Enable MTU Jumbo Network
+	// Enable MTU Jumbo Network (for multi-zone locations only)
 	Jumbo bool `json:"jumbo,omitempty"`
 
-	// Maximum transmission unit
+	// Maximum transmission unit (for satellite locations only)
 	// Maximum: 9000
 	// Minimum: 1450
 	Mtu *int64 `json:"mtu,omitempty"`

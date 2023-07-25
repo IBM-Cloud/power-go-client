@@ -21,7 +21,7 @@ import (
 // swagger:model Network
 type Network struct {
 
-	// Network communication configuration
+	// Network communication configuration (for satellite locations only)
 	//   * `internal-only` - network is only used for internal host communication
 	//   * `outbound-only` - network will be capable of egress traffic
 	//   * `bidirectional-static-route` - network will be capable of ingress and egress traffic via static routes
@@ -57,10 +57,9 @@ type Network struct {
 	IPAddressRanges []*IPAddressRange `json:"ipAddressRanges"`
 
 	// MTU Jumbo Network enabled
-	// Required: true
-	Jumbo *bool `json:"jumbo"`
+	Jumbo bool `json:"jumbo,omitempty"`
 
-	// Maximum transmission unit
+	// Maximum transmission unit (for satellite locations only)
 	Mtu int64 `json:"mtu,omitempty"`
 
 	// Network Name
@@ -109,10 +108,6 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIPAddressRanges(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateJumbo(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -279,15 +274,6 @@ func (m *Network) validateIPAddressRanges(formats strfmt.Registry) error {
 			}
 		}
 
-	}
-
-	return nil
-}
-
-func (m *Network) validateJumbo(formats strfmt.Registry) error {
-
-	if err := validate.Required("jumbo", "body", m.Jumbo); err != nil {
-		return err
 	}
 
 	return nil
