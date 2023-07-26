@@ -73,7 +73,7 @@ type Network struct {
 	// Public IP Address Ranges (for pub-vlan networks)
 	PublicIPAddressRanges []*IPAddressRange `json:"publicIPAddressRanges,omitempty"`
 
-	// Type of Network {vlan, pub-vlan}
+	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
 	// Required: true
 	// Enum: [vlan pub-vlan dhcp-vlan]
 	Type *string `json:"type"`
