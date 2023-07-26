@@ -20,6 +20,16 @@ import (
 // swagger:model NetworkReference
 type NetworkReference struct {
 
+	// Network communication configuration (for satellite locations only)
+	//   * `internal-only` - network is only used for internal host communication
+	//   * `outbound-only` - network will be capable of egress traffic
+	//   * `bidirectional-static-route` - network will be capable of ingress and egress traffic via static routes
+	//   * `bidirectional-bgp` - network will be capable of ingress and egress traffic via bgp configuration
+	//   * `bidirectional-l2out` - network will be capable of ingress and egress traffic via l2out ACI configuration
+	//
+	// Enum: [internal-only outbound-only bidirectional-static-route bidirectional-bgp bidirectional-l2out]
+	AccessConfig string `json:"accessConfig,omitempty"`
+
 	// DHCP Managed Network
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
 
@@ -27,9 +37,11 @@ type NetworkReference struct {
 	// Required: true
 	Href *string `json:"href"`
 
-	// MTU Jumbo Network enabled
-	// Required: true
-	Jumbo *bool `json:"jumbo"`
+	// Enable MTU Jumbo Network (for multi-zone locations only)
+	Jumbo bool `json:"jumbo,omitempty"`
+
+	// Maximum transmission unit (for satellite locations only)
+	Mtu int64 `json:"mtu,omitempty"`
 
 	// Network Name
 	// Required: true
@@ -39,9 +51,9 @@ type NetworkReference struct {
 	// Required: true
 	NetworkID *string `json:"networkID"`
 
-	// Type of Network {vlan, pub-vlan}
+	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
 	// Required: true
-	// Enum: [vlan pub-vlan]
+	// Enum: [vlan pub-vlan dhcp-vlan]
 	Type *string `json:"type"`
 
 	// VLAN ID
@@ -53,11 +65,11 @@ type NetworkReference struct {
 func (m *NetworkReference) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateHref(formats); err != nil {
+	if err := m.validateAccessConfig(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateJumbo(formats); err != nil {
+	if err := m.validateHref(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,18 +95,60 @@ func (m *NetworkReference) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NetworkReference) validateHref(formats strfmt.Registry) error {
+var networkReferenceTypeAccessConfigPropEnum []interface{}
 
-	if err := validate.Required("href", "body", m.Href); err != nil {
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["internal-only","outbound-only","bidirectional-static-route","bidirectional-bgp","bidirectional-l2out"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		networkReferenceTypeAccessConfigPropEnum = append(networkReferenceTypeAccessConfigPropEnum, v)
+	}
+}
+
+const (
+
+	// NetworkReferenceAccessConfigInternalDashOnly captures enum value "internal-only"
+	NetworkReferenceAccessConfigInternalDashOnly string = "internal-only"
+
+	// NetworkReferenceAccessConfigOutboundDashOnly captures enum value "outbound-only"
+	NetworkReferenceAccessConfigOutboundDashOnly string = "outbound-only"
+
+	// NetworkReferenceAccessConfigBidirectionalDashStaticDashRoute captures enum value "bidirectional-static-route"
+	NetworkReferenceAccessConfigBidirectionalDashStaticDashRoute string = "bidirectional-static-route"
+
+	// NetworkReferenceAccessConfigBidirectionalDashBgp captures enum value "bidirectional-bgp"
+	NetworkReferenceAccessConfigBidirectionalDashBgp string = "bidirectional-bgp"
+
+	// NetworkReferenceAccessConfigBidirectionalDashL2out captures enum value "bidirectional-l2out"
+	NetworkReferenceAccessConfigBidirectionalDashL2out string = "bidirectional-l2out"
+)
+
+// prop value enum
+func (m *NetworkReference) validateAccessConfigEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, networkReferenceTypeAccessConfigPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *NetworkReference) validateAccessConfig(formats strfmt.Registry) error {
+	if swag.IsZero(m.AccessConfig) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAccessConfigEnum("accessConfig", "body", m.AccessConfig); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *NetworkReference) validateJumbo(formats strfmt.Registry) error {
+func (m *NetworkReference) validateHref(formats strfmt.Registry) error {
 
-	if err := validate.Required("jumbo", "body", m.Jumbo); err != nil {
+	if err := validate.Required("href", "body", m.Href); err != nil {
 		return err
 	}
 
@@ -123,7 +177,7 @@ var networkReferenceTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["vlan","pub-vlan"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["vlan","pub-vlan","dhcp-vlan"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -138,6 +192,9 @@ const (
 
 	// NetworkReferenceTypePubDashVlan captures enum value "pub-vlan"
 	NetworkReferenceTypePubDashVlan string = "pub-vlan"
+
+	// NetworkReferenceTypeDhcpDashVlan captures enum value "dhcp-vlan"
+	NetworkReferenceTypeDhcpDashVlan string = "dhcp-vlan"
 )
 
 // prop value enum
