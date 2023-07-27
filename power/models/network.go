@@ -60,6 +60,8 @@ type Network struct {
 	Jumbo bool `json:"jumbo,omitempty"`
 
 	// Maximum transmission unit (for satellite locations only)
+	// Maximum: 9000
+	// Minimum: 1450
 	Mtu int64 `json:"mtu,omitempty"`
 
 	// Network Name
@@ -108,6 +110,10 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateIPAddressRanges(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMtu(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -274,6 +280,22 @@ func (m *Network) validateIPAddressRanges(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Network) validateMtu(formats strfmt.Registry) error {
+	if swag.IsZero(m.Mtu) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("mtu", "body", m.Mtu, 1450, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("mtu", "body", m.Mtu, 9000, false); err != nil {
+		return err
 	}
 
 	return nil
