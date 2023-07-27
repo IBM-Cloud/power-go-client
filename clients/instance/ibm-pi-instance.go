@@ -55,6 +55,10 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 
 // Create an Instance
 func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PVMInstanceList, error) {
+	// Check for satellite differences in this endpoint
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && (body.SoftwareLicenses != nil || body.SharedProcessorPool != "") {
+		return nil, fmt.Errorf("parameter not supported for satellite location, check documentation")
+	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
