@@ -57,7 +57,7 @@ func (f *IBMPINetworkClient) GetAll() (*models.Networks, error) {
 
 // Create a Network
 func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network, error) {
-	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
 		if !body.Jumbo {
 			return nil, fmt.Errorf("jumbo parameter not supported for satellite location, use mtu instead")
 		}

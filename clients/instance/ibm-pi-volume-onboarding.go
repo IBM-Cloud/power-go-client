@@ -26,7 +26,7 @@ func NewIBMPIVolumeOnboardingClient(ctx context.Context, sess *ibmpisession.IBMP
 
 // Get the information of volume onboarding operation
 func (f *IBMPIVolumeOnboardingClient) Get(id string) (*models.VolumeOnboarding, error) {
-	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
 		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
 	}
 	params := p_cloud_volume_onboarding.NewPcloudVolumeOnboardingGetParams().
@@ -44,7 +44,7 @@ func (f *IBMPIVolumeOnboardingClient) Get(id string) (*models.VolumeOnboarding, 
 
 // Get All volume onboardings for this cloud instance
 func (f *IBMPIVolumeOnboardingClient) GetAll() (*models.VolumeOnboardings, error) {
-	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
 		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
 	}
 	params := p_cloud_volume_onboarding.NewPcloudVolumeOnboardingGetallParams().
@@ -62,7 +62,7 @@ func (f *IBMPIVolumeOnboardingClient) GetAll() (*models.VolumeOnboardings, error
 
 // Onboard auxiliary volumes to target site
 func (f *IBMPIVolumeOnboardingClient) CreateVolumeOnboarding(body *models.VolumeOnboardingCreate) (*models.VolumeOnboardingCreateResponse, error) {
-	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
 		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
 	}
 	params := p_cloud_volume_onboarding.NewPcloudVolumeOnboardingPostParams().

@@ -132,7 +132,7 @@ func (f *IBMPIInstanceClient) PostConsoleURL(id string) (*models.PVMInstanceCons
 
 // List the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLanguages, error) {
-	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
 		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsoleGetParams().
@@ -150,7 +150,7 @@ func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLan
 
 // Update the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.ConsoleLanguage) (*models.ConsoleLanguage, error) {
-	if strings.Contains(f.session.Options.Region, helpers.PIStratosRegionPrefix) {
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
 		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsolePutParams().
