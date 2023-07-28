@@ -28,7 +28,7 @@ func NewIBMPICloudConnectionClient(ctx context.Context, sess *ibmpisession.IBMPI
 // Create a Cloud Connection
 func (f *IBMPICloudConnectionClient) Create(body *models.CloudConnectionCreate) (*models.CloudConnection, *models.CloudConnectionCreateResponse, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
@@ -52,7 +52,7 @@ func (f *IBMPICloudConnectionClient) Create(body *models.CloudConnectionCreate) 
 // Get a Cloud Connection
 func (f *IBMPICloudConnectionClient) Get(id string) (*models.CloudConnection, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -70,7 +70,7 @@ func (f *IBMPICloudConnectionClient) Get(id string) (*models.CloudConnection, er
 // Get All Cloud Connections
 func (f *IBMPICloudConnectionClient) GetAll() (*models.CloudConnections, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -88,7 +88,7 @@ func (f *IBMPICloudConnectionClient) GetAll() (*models.CloudConnections, error) 
 // Update a Cloud Connection
 func (f *IBMPICloudConnectionClient) Update(id string, body *models.CloudConnectionUpdate) (*models.CloudConnection, *models.JobReference, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
@@ -110,7 +110,7 @@ func (f *IBMPICloudConnectionClient) Update(id string, body *models.CloudConnect
 // Delete a Cloud Connection
 func (f *IBMPICloudConnectionClient) Delete(id string) (*models.JobReference, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
@@ -128,7 +128,7 @@ func (f *IBMPICloudConnectionClient) Delete(id string) (*models.JobReference, er
 // Add a Network to a Cloud Connection
 func (f *IBMPICloudConnectionClient) AddNetwork(id, networkID string) (models.Object, *models.JobReference, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
@@ -150,7 +150,7 @@ func (f *IBMPICloudConnectionClient) AddNetwork(id, networkID string) (models.Ob
 // Delete a Network from a Cloud Connection
 func (f *IBMPICloudConnectionClient) DeleteNetwork(id, networkID string) (models.Object, *models.JobReference, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsNetworksDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
@@ -172,7 +172,7 @@ func (f *IBMPICloudConnectionClient) DeleteNetwork(id, networkID string) (models
 // Get all VPCs for a Cloud Instance
 func (f *IBMPICloudConnectionClient) GetVPC() (*models.CloudConnectionVirtualPrivateClouds, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_cloud_connections.NewPcloudCloudconnectionsVirtualprivatecloudsGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).

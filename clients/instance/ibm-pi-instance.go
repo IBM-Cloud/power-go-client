@@ -57,7 +57,7 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PVMInstanceList, error) {
 	// Check for satellite differences in this endpoint
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && (body.SoftwareLicenses != nil || body.SharedProcessorPool != "") {
-		return nil, fmt.Errorf("parameter not supported for satellite location, check documentation")
+		return nil, fmt.Errorf("softwareLicenses and sharedProcessorPool parameters are not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
@@ -137,7 +137,7 @@ func (f *IBMPIInstanceClient) PostConsoleURL(id string) (*models.PVMInstanceCons
 // List the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLanguages, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsoleGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -155,7 +155,7 @@ func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLan
 // Update the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.ConsoleLanguage) (*models.ConsoleLanguage, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsolePutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).

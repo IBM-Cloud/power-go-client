@@ -68,9 +68,9 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 	}
 	// Check for satellite differences in this endpoint
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && body.Jumbo {
-		return nil, fmt.Errorf("jumbo parameter not supported for satellite location, use mtu instead")
+		return nil, fmt.Errorf("jumbo parameter not supported in satellite location, use mtu instead")
 	} else if !strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && ((body.Mtu != nil && *body.Mtu != 1450) || body.AccessConfig != "internal-only") {
-		return nil, fmt.Errorf("parameter not supported for multi-zone location, check documentation")
+		return nil, fmt.Errorf("mtu and accessConfig parameters are not supported in multi-zone location, check documentation")
 	}
 	params := p_cloud_networks.NewPcloudNetworksPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).

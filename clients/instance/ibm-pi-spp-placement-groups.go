@@ -28,7 +28,7 @@ func NewIBMPISPPPlacementGroupClient(ctx context.Context, sess *ibmpisession.IBM
 // Get a PI SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) Get(id string) (*models.SPPPlacementGroup, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsGetParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -46,7 +46,7 @@ func (f *IBMPISPPPlacementGroupClient) Get(id string) (*models.SPPPlacementGroup
 // Get All SPP Placement Groups
 func (f *IBMPISPPPlacementGroupClient) GetAll() (*models.SPPPlacementGroups, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
@@ -64,7 +64,7 @@ func (f *IBMPISPPPlacementGroupClient) GetAll() (*models.SPPPlacementGroups, err
 // Create a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) Create(body *models.SPPPlacementGroupCreate) (*models.SPPPlacementGroup, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
@@ -82,7 +82,7 @@ func (f *IBMPISPPPlacementGroupClient) Create(body *models.SPPPlacementGroupCrea
 // Delete a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) Delete(id string) error {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return fmt.Errorf("operation not supported for satellite location, see documentation")
+		return fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
@@ -97,7 +97,7 @@ func (f *IBMPISPPPlacementGroupClient) Delete(id string) error {
 // Add an Instance to a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) AddMember(id string, sppID string) (*models.SPPPlacementGroup, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsMembersPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
@@ -116,7 +116,7 @@ func (f *IBMPISPPPlacementGroupClient) AddMember(id string, sppID string) (*mode
 // Remove an Instance to a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) DeleteMember(id string, sppID string) (*models.SPPPlacementGroup, error) {
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
-		return nil, fmt.Errorf("operation not supported for satellite location, see documentation")
+		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsMembersDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
