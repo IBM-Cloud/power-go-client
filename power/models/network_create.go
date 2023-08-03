@@ -53,7 +53,7 @@ type NetworkCreate struct {
 	Mtu *int64 `json:"mtu,omitempty"`
 
 	// Network Name
-	Name *string `json:"name,omitempty"`
+	Name string `json:"name,omitempty"`
 
 	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
 	// Required: true

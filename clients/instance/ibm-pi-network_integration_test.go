@@ -29,7 +29,7 @@ func TestNetwork(t *testing.T) {
 	// CREATE Network
 	gateway, _, _ := generateIPData(t, utl.NetworkCidr)
 	networkBody := &models.NetworkCreate{
-		Name:         &utl.NetworkName,
+		Name:         utl.NetworkName,
 		Type:         &utl.NetworkType,
 		Cidr:         utl.NetworkCidr,
 		DNSServers:   []string{utl.NetworkDNSServer},

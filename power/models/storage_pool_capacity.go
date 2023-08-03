@@ -29,6 +29,9 @@ type StoragePoolCapacity struct {
 	// Pool name
 	PoolName string `json:"poolName,omitempty"`
 
+	// true if storage-pool is replication enabled and can be used to manage replication enabled volumes
+	ReplicationEnabled bool `json:"replicationEnabled,omitempty"`
+
 	// Storage host/controller for this storage pool
 	StorageHost string `json:"storageHost,omitempty"`
 
