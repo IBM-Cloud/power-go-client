@@ -63,7 +63,7 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 		body.Mtu = &defaultMTU
 	}
 	if body.AccessConfig == "" {
-		var defaultAccessConfig string = "internal-only"
+		var defaultAccessConfig models.AccessConfig = "internal-only"
 		body.AccessConfig = defaultAccessConfig
 	}
 	// Check for satellite differences in this endpoint

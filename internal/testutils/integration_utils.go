@@ -34,6 +34,7 @@ import (
 	client "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	core "github.com/IBM/go-sdk-core/v5/core"
+	"github.com/go-openapi/swag"
 	"github.com/stretchr/testify/require"
 )
 
@@ -90,7 +91,7 @@ func init() {
 	loadString(&NetworkDNSServer, "NetworkDNSServer", "NETWORK_DNS_SERVER", "network")
 	loadBool(&NetworkJumbo, "NetworkJumbo", "NetworkJumbo", "network")
 	loadInt64(&NetworkMtu, "NetworkMtu", "NetworkMtu", "network")
-	loadString(&NetworkAccessConfig, "NetworkAccessConfig", "NetworkAccessConfig", "network")
+	loadString(swag.String(string(NetworkAccessConfig)), "NetworkAccessConfig", "NetworkAccessConfig", "network")
 	loadString(&NetworkType, "NetworkType", "NETWORK_TYPE", "network")
 
 	// Snapshot

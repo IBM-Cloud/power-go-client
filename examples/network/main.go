@@ -41,7 +41,7 @@ func main() {
 	gateway, startIP, endIP := generateIPData(cidr)
 	jumbo := false
 	var mtu int64 = 1450
-	accessConfig := "internal-only"
+	var accessConfig models.AccessConfig = "internal-only"
 
 	authenticator := &core.BearerTokenAuthenticator{
 		BearerToken: token,
