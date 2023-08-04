@@ -20,15 +20,8 @@ import (
 // swagger:model NetworkReference
 type NetworkReference struct {
 
-	// Network communication configuration (for satellite locations only)
-	//   * `internal-only` - network is only used for internal host communication
-	//   * `outbound-only` - network will be capable of egress traffic
-	//   * `bidirectional-static-route` - network will be capable of ingress and egress traffic via static routes
-	//   * `bidirectional-bgp` - network will be capable of ingress and egress traffic via bgp configuration
-	//   * `bidirectional-l2out` - network will be capable of ingress and egress traffic via l2out ACI configuration
-	//
-	// Enum: [internal-only outbound-only bidirectional-static-route bidirectional-bgp bidirectional-l2out]
-	AccessConfig string `json:"accessConfig,omitempty"`
+	// access config
+	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
 	// DHCP Managed Network
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
@@ -101,51 +94,17 @@ func (m *NetworkReference) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkReferenceTypeAccessConfigPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["internal-only","outbound-only","bidirectional-static-route","bidirectional-bgp","bidirectional-l2out"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		networkReferenceTypeAccessConfigPropEnum = append(networkReferenceTypeAccessConfigPropEnum, v)
-	}
-}
-
-const (
-
-	// NetworkReferenceAccessConfigInternalDashOnly captures enum value "internal-only"
-	NetworkReferenceAccessConfigInternalDashOnly string = "internal-only"
-
-	// NetworkReferenceAccessConfigOutboundDashOnly captures enum value "outbound-only"
-	NetworkReferenceAccessConfigOutboundDashOnly string = "outbound-only"
-
-	// NetworkReferenceAccessConfigBidirectionalDashStaticDashRoute captures enum value "bidirectional-static-route"
-	NetworkReferenceAccessConfigBidirectionalDashStaticDashRoute string = "bidirectional-static-route"
-
-	// NetworkReferenceAccessConfigBidirectionalDashBgp captures enum value "bidirectional-bgp"
-	NetworkReferenceAccessConfigBidirectionalDashBgp string = "bidirectional-bgp"
-
-	// NetworkReferenceAccessConfigBidirectionalDashL2out captures enum value "bidirectional-l2out"
-	NetworkReferenceAccessConfigBidirectionalDashL2out string = "bidirectional-l2out"
-)
-
-// prop value enum
-func (m *NetworkReference) validateAccessConfigEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, networkReferenceTypeAccessConfigPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
 func (m *NetworkReference) validateAccessConfig(formats strfmt.Registry) error {
 	if swag.IsZero(m.AccessConfig) { // not required
 		return nil
 	}
 
-	// value enum
-	if err := m.validateAccessConfigEnum("accessConfig", "body", m.AccessConfig); err != nil {
+	if err := m.AccessConfig.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accessConfig")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("accessConfig")
+		}
 		return err
 	}
 
@@ -250,8 +209,35 @@ func (m *NetworkReference) validateVlanID(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this network reference based on context it is used
+// ContextValidate validate this network reference based on the context it is used
 func (m *NetworkReference) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateAccessConfig(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NetworkReference) contextValidateAccessConfig(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.AccessConfig) { // not required
+		return nil
+	}
+
+	if err := m.AccessConfig.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("accessConfig")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("accessConfig")
+		}
+		return err
+	}
+
 	return nil
 }
 
