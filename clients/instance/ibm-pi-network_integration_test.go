@@ -58,7 +58,7 @@ func TestNetwork(t *testing.T) {
 	require.Equal(t, *createNetResp.Cidr, utl.NetworkCidr)
 	require.Equal(t, createNetResp.DNSServers, []string{utl.NetworkDNSServer})
 	require.Equal(t, createNetResp.Gateway, gateway)
-	require.Equal(t, *createNetResp.Jumbo, utl.NetworkJumbo)
+	require.Equal(t, createNetResp.Jumbo, utl.NetworkJumbo)
 
 	// CREATE Port
 	portBody := &models.NetworkPortCreate{
