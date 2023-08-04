@@ -56,7 +56,7 @@ type CreateCosImageImportJob struct {
 	// Storage pool where the image will be loaded, if provided then storageType and storageAffinity will be ignored
 	StoragePool string `json:"storagePool,omitempty"`
 
-	// Type of storage; If only using storageType for storage selection then the storage pool with the most available space will be selected
+	// Type of storage; will be ignored if storagePool and or storageAffinity is provided. If only using storageType for storage selection then the storage pool with the most available space will be selected
 	StorageType string `json:"storageType,omitempty"`
 }
 
