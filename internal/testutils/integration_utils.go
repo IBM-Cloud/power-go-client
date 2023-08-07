@@ -34,6 +34,7 @@ import (
 	client "github.com/IBM-Cloud/power-go-client/clients/instance"
 	ps "github.com/IBM-Cloud/power-go-client/ibmpisession"
 	core "github.com/IBM/go-sdk-core/v5/core"
+	"github.com/go-openapi/swag"
 	"github.com/stretchr/testify/require"
 )
 
@@ -89,6 +90,8 @@ func init() {
 	loadString(&NetworkCidr, "NetworkCidr", "NETWORK_CIDR", "network")
 	loadString(&NetworkDNSServer, "NetworkDNSServer", "NETWORK_DNS_SERVER", "network")
 	loadBool(&NetworkJumbo, "NetworkJumbo", "NetworkJumbo", "network")
+	loadInt64(&NetworkMtu, "NetworkMtu", "NetworkMtu", "network")
+	loadString(swag.String(string(NetworkAccessConfig)), "NetworkAccessConfig", "NetworkAccessConfig", "network")
 	loadString(&NetworkType, "NetworkType", "NETWORK_TYPE", "network")
 
 	// Snapshot
@@ -218,6 +221,8 @@ func NetworkPreCheck(t *testing.T) {
 	ifNil(t, NetworkCidr, "NetworkCidr", "network")
 	ifNil(t, NetworkDNSServer, "NetworkDNSServer", "network")
 	ifNil(t, NetworkJumbo, "NetworkJumbo", "network")
+	ifNil(t, NetworkMtu, "NetworkMtu", "network")
+	ifNil(t, NetworkAccessConfig, "NetworkAccessConfig", "network")
 	ifNil(t, NetworkType, "NetworkType", "network")
 }
 

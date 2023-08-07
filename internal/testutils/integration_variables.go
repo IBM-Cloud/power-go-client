@@ -21,6 +21,8 @@ To run a test:
 */
 package testutils
 
+import "github.com/IBM-Cloud/power-go-client/power/models"
+
 // set to "true" / "false" to run or not run testing.
 // set to false when pushing changes.
 var DisableTesting bool = true
@@ -87,12 +89,14 @@ var InstanceStorageType string = "tier1"                              // INSTANC
 var InstanceVolumeID string = ""                                      // INSTANCE_VOLUME_ID
 
 // Network
-var NetworkID string = ""                            // NETWORK_ID
-var NetworkName string = "Power-Go-Integration-Test" // NETWORK_NAME
-var NetworkCidr string = "192.168.0.0/24"            // NETWORK_CIDR
-var NetworkDNSServer string = "127.0.0.1"            // NETWORK_DNS_SERVER
-var NetworkJumbo bool = true                         // NETWORK_JUMBO
-var NetworkType string = "vlan"                      // NETWORK_TYPE
+var NetworkID string = ""                                     // NETWORK_ID
+var NetworkName string = "Power-Go-Integration-Test"          // NETWORK_NAME
+var NetworkCidr string = "192.168.0.0/24"                     // NETWORK_CIDR
+var NetworkDNSServer string = "127.0.0.1"                     // NETWORK_DNS_SERVER
+var NetworkJumbo bool = true                                  // NETWORK_JUMBO
+var NetworkMtu int64 = 1450                                   // NETWORK_MTU
+var NetworkAccessConfig models.AccessConfig = "internal-only" // NETWORK_ACCESS_CONFIG
+var NetworkType string = "vlan"                               // NETWORK_TYPE
 
 // Snapshot
 var SnapshotName string = "Power-Go-Integration-Test"                  // SNAPSHOT_NAME
