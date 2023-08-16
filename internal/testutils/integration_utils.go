@@ -393,9 +393,9 @@ func extractCrn() {
 		apiURL = "https://iam.cloud.ibm.com"
 	}
 	// set powerEndpoint for NewIBMPISession to use
-	err := os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", powerEndpoint)
+	err := os.Setenv("IBMCLOUD_PI_API_ENDPOINT", powerEndpoint)
 	if err != nil {
-		fmt.Printf(NIL_ERROR, "IBMCLOUD_POWER_API_ENDPOINT", "NewIBMPISession")
+		fmt.Printf(NIL_ERROR, "IBMCLOUD_PI_API_ENDPOINT", "NewIBMPISession")
 	}
 }
 
