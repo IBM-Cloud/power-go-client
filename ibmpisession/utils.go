@@ -37,14 +37,19 @@ func fetchAuthorizationData(a core.Authenticator) (string, error) {
 // Usage:
 // `crn := fmt.Sprintf(crnBuilder(useraccount, regionZone, host), <cloudInstanceID>)`
 func crnBuilder(useraccount, zone, host string) string {
+	// TODO: after combined services, review this code to remove ppc-aas references
 	var service string
-	if strings.Contains(host, ".power-iaas.cloud.ibm.com") {
+	if strings.Contains(host, ".power-iaas.cloud.ibm.com") || strings.Contains(host, ".ppc-aas.cloud.ibm.com") {
 		service = "bluemix"
 	} else {
 		service = "staging"
 	}
-	crn := fmt.Sprintf("crn:v1:%s:public:power-iaas:%s:a/%s:", service, zone, useraccount)
-	return crn + "%s::"
+
+	// Return crn
+	if strings.Contains(host, "power-iaas") {
+		return fmt.Sprintf("crn:v1:%s:public:power-iaas:%s:a/%s:", service, zone, useraccount) + "%s::"
+	}
+	return fmt.Sprintf("crn:v1:%s:public:ppc-aas:%s:a/%s:", service, zone, useraccount) + "%s::"
 }
 
 func powerJSONConsumer() runtime.Consumer {
