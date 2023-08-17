@@ -12,7 +12,7 @@ The power-go-client project provides the Go SDK for IBM® Power Systems™ Virtu
 
 - An [IBM Cloud Account](https://cloud.ibm.com/registration)
 - An IBM Cloud [IAM API key](https://cloud.ibm.com/docs/account?topic=account-userapikey) or [Token](https://cloud.ibm.com/docs/account?topic=account-iamtoken_from_apikey) allow the SDK to access your account
-- Go 1.17+
+- Go 1.20+
   - [Homebrew](https://formulae.brew.sh/formula/go)
   - [Source](https://go.dev/doc/install)
 
