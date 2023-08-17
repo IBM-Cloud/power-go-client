@@ -46,10 +46,10 @@ func crnBuilder(useraccount, zone, host string) string {
 	}
 
 	// Return crn
-	if strings.Contains(host, "power-iaas") {
-		return fmt.Sprintf("crn:v1:%s:public:power-iaas:%s:a/%s:", service, zone, useraccount) + "%s::"
+	if strings.Contains(host, "ppc-aas") {
+		return fmt.Sprintf("crn:v1:%s:public:ppc-aas:%s:a/%s:", service, zone, useraccount) + "%s::"
 	}
-	return fmt.Sprintf("crn:v1:%s:public:ppc-aas:%s:a/%s:", service, zone, useraccount) + "%s::"
+	return fmt.Sprintf("crn:v1:%s:public:power-iaas:%s:a/%s:", service, zone, useraccount) + "%s::"
 }
 
 func powerJSONConsumer() runtime.Consumer {
