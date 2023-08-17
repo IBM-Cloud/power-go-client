@@ -56,7 +56,7 @@ func TestGetPowerEndPoint(t *testing.T) {
 }
 
 func TestGetPowerEndPointFromEnv(t *testing.T) {
-	os.Setenv("IBMCLOUD_PI_API_ENDPOINT", "dal.power-iaas.cloud.ibm.com")
+	os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "dal.power-iaas.cloud.ibm.com")
 	type args struct {
 		region string
 	}
