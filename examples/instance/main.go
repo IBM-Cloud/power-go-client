@@ -74,15 +74,20 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	if len(*createRespOk) == 0 {
+		log.Fatal("create response is empty")
+	}
 	log.Printf("***************[1]****************** %+v\n", *createRespOk)
 
-	insIDs := make([]string, 0)
+	insID := ""
 	for _, in := range *createRespOk {
-		insID := in.PvmInstanceID
-		insIDs = append(insIDs, *insID)
+		insID = *in.PvmInstanceID
+	}
+	if insID == "" {
+		log.Fatal("instance ID is empty")
 	}
 
-	getResp, err := powerClient.Get(insIDs[0])
+	getResp, err := powerClient.Get(insID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -94,7 +99,7 @@ func main() {
 	}
 	log.Printf("***************[3]****************** %+v \n", *getallResp)
 
-	err = powerClient.Delete(insIDs[0])
+	err = powerClient.Delete(insID)
 	if err != nil {
 		log.Fatal(err)
 	}
