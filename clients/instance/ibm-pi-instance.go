@@ -57,7 +57,7 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PVMInstanceList, error) {
 	// Check for satellite differences in this endpoint
 	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && (body.SoftwareLicenses != nil || body.SharedProcessorPool != "") {
-		return nil, fmt.Errorf("softwareLicenses and sharedProcessorPool parameters are not supported in satellite location, check documentation")
+		return nil, fmt.Errorf("software licenses and shared processor pool parameters are not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
@@ -92,6 +92,10 @@ func (f *IBMPIInstanceClient) Delete(id string) error {
 
 // Update an Instance
 func (f *IBMPIInstanceClient) Update(id string, body *models.PVMInstanceUpdate) (*models.PVMInstanceUpdateResponse, error) {
+	// Check for satellite differences in this endpoint
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && body.SapProfileID != "" {
+		return nil, fmt.Errorf("sap profile id parameter is not supported in satellite location, check documentation")
+	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithBody(body)

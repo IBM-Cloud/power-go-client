@@ -3,6 +3,7 @@ package instance
 import (
 	"context"
 	"fmt"
+	"strings"
 
 	"github.com/IBM-Cloud/power-go-client/errors"
 
@@ -44,6 +45,10 @@ func (f *IBMPIVolumeClient) GetAll() (*models.Volumes, error) {
 	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID)
+	// Check for satellite differences in this endpoint
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && (params.Auxiliary != nil && params.ReplicationEnabled != nil) {
+		return nil, fmt.Errorf("replication enabled parameter is not supported in satellite location, check documentation")
+	}
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, fmt.Errorf("failed to Get all Volumes for Cloud Instance %s: %w", f.cloudInstanceID, err)
@@ -71,6 +76,10 @@ func (f *IBMPIVolumeClient) GetAllAffinityVolumes(affinity string) (*models.Volu
 
 // Create a VolumeV2
 func (f *IBMPIVolumeClient) CreateVolumeV2(body *models.MultiVolumesCreate) (*models.Volumes, error) {
+	// Check for satellite differences in this endpoint
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && body.ReplicationEnabled != nil {
+		return nil, fmt.Errorf("replication enabled parameter is not supported in satellite location, check documentation")
+	}
 	params := p_cloud_volumes.NewPcloudV2VolumesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
@@ -86,6 +95,10 @@ func (f *IBMPIVolumeClient) CreateVolumeV2(body *models.MultiVolumesCreate) (*mo
 
 // Create a Volume
 func (f *IBMPIVolumeClient) CreateVolume(body *models.CreateDataVolume) (*models.Volume, error) {
+	// Check for satellite differences in this endpoint
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && body.ReplicationEnabled != nil {
+		return nil, fmt.Errorf("replication enabled parameter is not supported in satellite location, check documentation")
+	}
 	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
@@ -215,6 +228,10 @@ func (f *IBMPIVolumeClient) UpdateVolumeAttach(id, volumeID string, body *models
 
 // Performs action on volume
 func (f *IBMPIVolumeClient) VolumeAction(id string, body *models.VolumeAction) error {
+	// Check for satellite differences in this endpoint
+	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && body.ReplicationEnabled != nil {
+		return fmt.Errorf("replication enabled parameter is not supported in satellite location, check documentation")
+	}
 	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesActionPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id).WithBody(body)
