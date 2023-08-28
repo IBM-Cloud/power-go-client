@@ -25,7 +25,7 @@ func NewIBMPIDisasterRecoveryLocationClient(ctx context.Context, sess *ibmpisess
 
 // Get the disaster recovery site details for the current location
 func (f *IBMPIDisasterRecoveryLocationClient) Get() (*models.DisasterRecoveryLocation, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_disaster_recovery.NewPcloudLocationsDisasterrecoveryGetParams().
@@ -43,7 +43,7 @@ func (f *IBMPIDisasterRecoveryLocationClient) Get() (*models.DisasterRecoveryLoc
 
 // Get all disaster recovery locations supported by Power Virtual Server
 func (f *IBMPIDisasterRecoveryLocationClient) GetAll() (*models.DisasterRecoveryLocations, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_disaster_recovery.NewPcloudLocationsDisasterrecoveryGetallParams().

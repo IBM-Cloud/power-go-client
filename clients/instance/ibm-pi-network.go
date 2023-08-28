@@ -66,9 +66,9 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 		body.AccessConfig = defaultAccessConfig
 	}
 	// Check for satellite differences in this endpoint
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) && body.Jumbo {
+	if f.session.IsOnPrem() && body.Jumbo {
 		return nil, fmt.Errorf("jumbo parameter is not supported in satellite location, use mtu instead")
-	} else if !ibmpisession.IsOnPrem(f.session.Options.Zone) && ((body.Mtu != nil && *body.Mtu != 1450) || body.AccessConfig != "internal-only") {
+	} else if !f.session.IsOnPrem() && ((body.Mtu != nil && *body.Mtu != 1450) || body.AccessConfig != "internal-only") {
 		return nil, fmt.Errorf("mtu and accessConfig parameters are not supported in multi-zone location, check documentation")
 	}
 	params := p_cloud_networks.NewPcloudNetworksPostParams().

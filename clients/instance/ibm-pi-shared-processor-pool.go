@@ -26,7 +26,7 @@ func NewIBMPISharedProcessorPoolClient(ctx context.Context, sess *ibmpisession.I
 
 // Get a PI Shared Processor Pool
 func (f *IBMPISharedProcessorPoolClient) Get(id string) (*models.SharedProcessorPoolDetail, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_shared_processor_pools.NewPcloudSharedprocessorpoolsGetParams().
@@ -44,7 +44,7 @@ func (f *IBMPISharedProcessorPoolClient) Get(id string) (*models.SharedProcessor
 
 // Get All Shared Processor Pools
 func (f *IBMPISharedProcessorPoolClient) GetAll() (*models.SharedProcessorPools, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_shared_processor_pools.NewPcloudSharedprocessorpoolsGetallParams().
@@ -62,7 +62,7 @@ func (f *IBMPISharedProcessorPoolClient) GetAll() (*models.SharedProcessorPools,
 
 // Create a Shared Processor Pool
 func (f *IBMPISharedProcessorPoolClient) Create(body *models.SharedProcessorPoolCreate) (*models.SharedProcessorPool, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_shared_processor_pools.NewPcloudSharedprocessorpoolsPostParams().
@@ -80,7 +80,7 @@ func (f *IBMPISharedProcessorPoolClient) Create(body *models.SharedProcessorPool
 
 // Delete a Shared Processor Pool
 func (f *IBMPISharedProcessorPoolClient) Delete(id string) error {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_shared_processor_pools.NewPcloudSharedprocessorpoolsDeleteParams().
@@ -95,7 +95,7 @@ func (f *IBMPISharedProcessorPoolClient) Delete(id string) error {
 
 // Update a PI Shared Processor Pool
 func (f *IBMPISharedProcessorPoolClient) Update(id string, body *models.SharedProcessorPoolUpdate) (*models.SharedProcessorPool, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_shared_processor_pools.NewPcloudSharedprocessorpoolsPutParams().

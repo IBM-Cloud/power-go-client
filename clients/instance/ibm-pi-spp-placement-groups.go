@@ -26,7 +26,7 @@ func NewIBMPISPPPlacementGroupClient(ctx context.Context, sess *ibmpisession.IBM
 
 // Get a PI SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) Get(id string) (*models.SPPPlacementGroup, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsGetParams().
@@ -44,7 +44,7 @@ func (f *IBMPISPPPlacementGroupClient) Get(id string) (*models.SPPPlacementGroup
 
 // Get All SPP Placement Groups
 func (f *IBMPISPPPlacementGroupClient) GetAll() (*models.SPPPlacementGroups, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsGetallParams().
@@ -62,7 +62,7 @@ func (f *IBMPISPPPlacementGroupClient) GetAll() (*models.SPPPlacementGroups, err
 
 // Create a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) Create(body *models.SPPPlacementGroupCreate) (*models.SPPPlacementGroup, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsPostParams().
@@ -80,7 +80,7 @@ func (f *IBMPISPPPlacementGroupClient) Create(body *models.SPPPlacementGroupCrea
 
 // Delete a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) Delete(id string) error {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsDeleteParams().
@@ -95,7 +95,7 @@ func (f *IBMPISPPPlacementGroupClient) Delete(id string) error {
 
 // Add an Instance to a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) AddMember(id string, sppID string) (*models.SPPPlacementGroup, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsMembersPostParams().
@@ -114,7 +114,7 @@ func (f *IBMPISPPPlacementGroupClient) AddMember(id string, sppID string) (*mode
 
 // Remove an Instance to a SPP Placement Group
 func (f *IBMPISPPPlacementGroupClient) DeleteMember(id string, sppID string) (*models.SPPPlacementGroup, error) {
-	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
+	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_s_p_p_placement_groups.NewPcloudSppplacementgroupsMembersDeleteParams().
