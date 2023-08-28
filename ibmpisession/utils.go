@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"strings"
 
+	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/power/client"
 	"github.com/IBM/go-sdk-core/v5/core"
 	"github.com/go-openapi/runtime"
@@ -90,4 +91,9 @@ func costructRegionFromZone(zone string) string {
 
 	reg, _ := regexp.Compile(regex)
 	return reg.ReplaceAllString(zone, "")
+}
+
+// IsOnPrem returns true if the operation is being done on premise (at a satellite region)
+func IsOnPrem(zone string) bool {
+	return strings.Contains(zone, helpers.PIStratosRegionPrefix)
 }

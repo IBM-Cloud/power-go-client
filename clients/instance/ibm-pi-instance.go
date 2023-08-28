@@ -3,7 +3,6 @@ package instance
 import (
 	"context"
 	"fmt"
-	"strings"
 
 	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
@@ -56,7 +55,7 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 // Create an Instance
 func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PVMInstanceList, error) {
 	// Check for satellite differences in this endpoint
-	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && (body.SoftwareLicenses != nil || body.SharedProcessorPool != "") {
+	if ibmpisession.IsOnPrem(f.session.Options.Zone) && (body.SoftwareLicenses != nil || body.SharedProcessorPool != "") {
 		return nil, fmt.Errorf("software licenses and shared processor pool parameters are not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParams().
@@ -93,7 +92,7 @@ func (f *IBMPIInstanceClient) Delete(id string) error {
 // Update an Instance
 func (f *IBMPIInstanceClient) Update(id string, body *models.PVMInstanceUpdate) (*models.PVMInstanceUpdateResponse, error) {
 	// Check for satellite differences in this endpoint
-	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) && body.SapProfileID != "" {
+	if ibmpisession.IsOnPrem(f.session.Options.Zone) && body.SapProfileID != "" {
 		return nil, fmt.Errorf("sap profile id parameter is not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPutParams().
@@ -140,7 +139,7 @@ func (f *IBMPIInstanceClient) PostConsoleURL(id string) (*models.PVMInstanceCons
 
 // List the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLanguages, error) {
-	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
+	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsoleGetParams().
@@ -158,7 +157,7 @@ func (f *IBMPIInstanceClient) GetConsoleLanguages(id string) (*models.ConsoleLan
 
 // Update the available Console Languages for an Instance
 func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.ConsoleLanguage) (*models.ConsoleLanguage, error) {
-	if strings.Contains(f.session.Options.Zone, helpers.PIStratosRegionPrefix) {
+	if ibmpisession.IsOnPrem(f.session.Options.Zone) {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesConsolePutParams().
