@@ -46,6 +46,7 @@ type NetworkCreate struct {
 	Mtu *int64 `json:"mtu,omitempty"`
 
 	// Network Name
+	// Max Length: 255
 	Name string `json:"name,omitempty"`
 
 	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
@@ -80,6 +81,10 @@ func (m *NetworkCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMtu(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -146,6 +151,18 @@ func (m *NetworkCreate) validateMtu(formats strfmt.Registry) error {
 	}
 
 	if err := validate.MaximumInt("mtu", "body", *m.Mtu, 9000, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkCreate) validateName(formats strfmt.Registry) error {
+	if swag.IsZero(m.Name) { // not required
+		return nil
+	}
+
+	if err := validate.MaxLength("name", "body", m.Name, 255); err != nil {
 		return err
 	}
 
