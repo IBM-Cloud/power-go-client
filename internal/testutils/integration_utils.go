@@ -47,10 +47,15 @@ func init() {
 	}
 
 	// Cloud / Account Variables
-	loadString(&apiKey, "apiKey", "API_KEY", "all")
-	if apiKey != " " {
-		loadString(&bearerToken, "bearerToken", "BEARER_TOKEN", "all")
+	// do not call loadString as these vars have sebsitive values
+	if env := os.Getenv("API_KEY"); env != "" {
+		apiKey = env
 	}
+
+	if env := os.Getenv("BEARER_TOKEN"); env != "" {
+		bearerToken = env
+	}
+
 	loadString(&crn, "crn", "CRN", "all")
 
 	// Testing Variables
@@ -143,10 +148,8 @@ func AccountPreCheck(t *testing.T) {
 	if apiKey == "" {
 		ifNil(t, bearerToken, "apiKey or bearerToken", "all")
 	}
-	ifNil(t, accountID, "accountID", "all")
-	ifNil(t, CloudInstanceID, "CloudInstanceID", "all")
-	ifNil(t, zone, "zone", "all")
-	ifNil(t, powerEndpoint, "powerEndpoint", "all")
+	// Cloud details are fetched from CRN
+	ifNil(t, crn, "CRN", "all")
 }
 
 // CloudConnectionPreCheck verifies that all Cloud Connection variables are defined.
@@ -399,9 +402,9 @@ func extractCrn() {
 	}
 }
 
-// ifNil stops stops its execution if variable is not set.
+// ifNil stops its execution if variable is not set.
 func ifNil(t *testing.T, variable interface{}, varName, varTest string) {
-	require.NotNilf(t, &variable, fmt.Sprintf(NIL_ERROR, varName, varTest))
+	require.NotEmptyf(t, variable, fmt.Sprintf(NIL_ERROR, varName, varTest))
 }
 
 // loadBool loads the env variable verson of testVar if it exists, otherwise the default value is used.
