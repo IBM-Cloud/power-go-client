@@ -1,6 +1,6 @@
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/IBM-Cloud/power-go-client)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/IBM-Cloud/power-go-client)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/IBM-Cloud/power-go-client/Go)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/IBM-Cloud/power-go-client/go.yml)
 ![GitHub contributors](https://img.shields.io/github/contributors/IBM-Cloud/power-go-client?color=blueviolet)
 ![GitHub](https://img.shields.io/github/license/IBM-Cloud/power-go-client)
 
