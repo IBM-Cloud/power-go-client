@@ -34,7 +34,7 @@ func (f *IBMPICloudConnectionClient) Create(body *models.CloudConnectionCreate) 
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postok, postcreated, postaccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, nil, fmt.Errorf(errors.CreateCloudConnectionOperationFailed, f.cloudInstanceID, err)
+		return nil, nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateCloudConnectionOperationFailed, f.cloudInstanceID, err))
 	}
 	if postok != nil && postok.Payload != nil {
 		return postok.Payload, nil, nil
@@ -58,7 +58,7 @@ func (f *IBMPICloudConnectionClient) Get(id string) (*models.CloudConnection, er
 		WithCloudInstanceID(f.cloudInstanceID).WithCloudConnectionID(id)
 	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetCloudConnectionOperationFailed, id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetCloudConnectionOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform Get Cloud Connections Operation for cloudconnectionid %s", id)
@@ -76,7 +76,7 @@ func (f *IBMPICloudConnectionClient) GetAll() (*models.CloudConnections, error) 
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all Cloud Connections: %w", err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all Cloud Connections: %v", err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Cloud Connections")
@@ -95,7 +95,7 @@ func (f *IBMPICloudConnectionClient) Update(id string, body *models.CloudConnect
 		WithBody(body)
 	putok, putaccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, nil, fmt.Errorf(errors.UpdateCloudConnectionOperationFailed, id, err)
+		return nil, nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.UpdateCloudConnectionOperationFailed, id, err))
 	}
 	if putok != nil && putok.Payload != nil {
 		return putok.Payload, nil, nil
@@ -116,7 +116,7 @@ func (f *IBMPICloudConnectionClient) Delete(id string) (*models.JobReference, er
 		WithCloudInstanceID(f.cloudInstanceID).WithCloudConnectionID(id)
 	_, delaccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.DeleteCloudConnectionOperationFailed, id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.DeleteCloudConnectionOperationFailed, id, err))
 	}
 	if delaccepted != nil && delaccepted.Payload != nil {
 		return delaccepted.Payload, nil
@@ -135,7 +135,7 @@ func (f *IBMPICloudConnectionClient) AddNetwork(id, networkID string) (models.Ob
 		WithNetworkID(networkID)
 	respok, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, nil, fmt.Errorf("failed to Add Network %s to Cloud Connection %s: %w", networkID, id, err)
+		return nil, nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Add Network %s to Cloud Connection %s: %v", networkID, id, err))
 	}
 	if respok != nil && respok.Payload != nil {
 		return respok.Payload, nil, nil
@@ -157,7 +157,7 @@ func (f *IBMPICloudConnectionClient) DeleteNetwork(id, networkID string) (models
 		WithNetworkID(networkID)
 	respok, respAccepted, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsNetworksDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, nil, fmt.Errorf("failed to Delete Network %s from Cloud Connection %s: %w", networkID, id, err)
+		return nil, nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Delete Network %s from Cloud Connection %s: %v", networkID, id, err))
 	}
 	if respok != nil && respok.Payload != nil {
 		return respok.Payload, nil, nil
@@ -179,7 +179,7 @@ func (f *IBMPICloudConnectionClient) GetVPC() (*models.CloudConnectionVirtualPri
 
 	resp, err := f.session.Power.PCloudCloudConnections.PcloudCloudconnectionsVirtualprivatecloudsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to perform the get vpc operation: %w", err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to perform the get vpc operation: %v", err))
 	}
 	if resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform the get vpc operation")

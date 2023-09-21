@@ -30,7 +30,7 @@ func (f *IBMPISnapshotClient) Get(id string) (*models.Snapshot, error) {
 		WithCloudInstanceID(f.cloudInstanceID).WithSnapshotID(id)
 	resp, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get PI Snapshot %s: %w", id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get PI Snapshot %s: %v", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get PI Snapshot %s", id)
@@ -45,7 +45,7 @@ func (f *IBMPISnapshotClient) Delete(id string) error {
 		WithCloudInstanceID(f.cloudInstanceID).WithSnapshotID(id)
 	_, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return fmt.Errorf("failed to Delete PI Snapshot %s: %w", id, err)
+		return fmt.Errorf("failed to Delete PI Snapshot %s: %v", id, err)
 	}
 	return nil
 }
@@ -58,7 +58,7 @@ func (f *IBMPISnapshotClient) Update(id string, body *models.SnapshotUpdate) (mo
 		WithBody(body)
 	resp, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Update PI Snapshot %s: %w", id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Update PI Snapshot %s: %v", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Update PI Snapshot %s", id)
@@ -73,7 +73,7 @@ func (f *IBMPISnapshotClient) GetAll() (*models.Snapshots, error) {
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudSnapshots.PcloudCloudinstancesSnapshotsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all PI Snapshots: %w", err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all PI Snapshots: %v", err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all PI Snapshots")
@@ -89,7 +89,7 @@ func (f *IBMPISnapshotClient) Create(instanceID, snapshotID, restoreFailAction s
 		WithSnapshotID(snapshotID).WithRestoreFailAction(&restoreFailAction)
 	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, instanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to restore PI Snapshot %s of the instance %s: %v", snapshotID, instanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s", snapshotID, instanceID)
