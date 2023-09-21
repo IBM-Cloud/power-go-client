@@ -31,7 +31,7 @@ func (f *IBMPIVolumeClient) Get(id string) (*models.Volume, error) {
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetVolumeOperationFailed, id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetVolumeOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Volume %s", id)
@@ -46,7 +46,7 @@ func (f *IBMPIVolumeClient) GetAll() (*models.Volumes, error) {
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all Volumes for Cloud Instance %s: %w", f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all Volumes for Cloud Instance %s: %v", f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Volumes for Cloud Instance %s", f.cloudInstanceID)
@@ -61,7 +61,7 @@ func (f *IBMPIVolumeClient) GetAllAffinityVolumes(affinity string) (*models.Volu
 		WithCloudInstanceID(f.cloudInstanceID).WithAffinity(&affinity)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all Volumes with affinity %s for Cloud Instance %s: %w", affinity, f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all Volumes with affinity %s for Cloud Instance %s: %v", affinity, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Volumes with affinity %s for Cloud Instance %s", affinity, f.cloudInstanceID)
@@ -76,7 +76,7 @@ func (f *IBMPIVolumeClient) CreateVolumeV2(body *models.MultiVolumesCreate) (*mo
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.CreateVolumeV2OperationFailed, *body.Name, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateVolumeV2OperationFailed, *body.Name, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Create Volume v2")
@@ -91,7 +91,7 @@ func (f *IBMPIVolumeClient) CreateVolume(body *models.CreateDataVolume) (*models
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.CreateVolumeOperationFailed, *body.Name, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateVolumeOperationFailed, *body.Name, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Create Volume")
@@ -107,7 +107,7 @@ func (f *IBMPIVolumeClient) UpdateVolume(id string, body *models.UpdateVolume) (
 		WithBody(body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.UpdateVolumeOperationFailed, id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.UpdateVolumeOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Update Volume %s", id)
@@ -160,7 +160,7 @@ func (f *IBMPIVolumeClient) GetAllInstanceVolumes(id string) (*models.Volumes, e
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to Get all Volumes for PI Instance %s: %w", id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all Volumes for PI Instance %s: %v", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Volumes for PI Instance %s", id)
@@ -189,7 +189,7 @@ func (f *IBMPIVolumeClient) CheckVolumeAttach(id, volumeID string) (*models.Volu
 		WithVolumeID(volumeID)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s: %w", volumeID, id, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to validate that the volume %s is attached to the pvminstance %s: %v", volumeID, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s", volumeID, id)
@@ -205,7 +205,7 @@ func (f *IBMPIVolumeClient) UpdateVolumeAttach(id, volumeID string, body *models
 		WithVolumeID(volumeID).WithBody(body)
 	resp, err := f.session.Power.PCloudVolumes.PcloudPvminstancesVolumesPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s: %w", volumeID, id, err)
+		return fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s: %v", volumeID, id, err)
 	}
 	if resp == nil || resp.Payload == nil {
 		return fmt.Errorf("failed to validate that the volume %s is attached to the pvminstance %s", volumeID, id)
@@ -220,7 +220,7 @@ func (f *IBMPIVolumeClient) VolumeAction(id string, body *models.VolumeAction) e
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id).WithBody(body)
 	_, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesActionPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return fmt.Errorf("failed to perform action on volume %s with error %w", id, err)
+		return fmt.Errorf("failed to perform action on volume %s with error %v", id, err)
 	}
 	return nil
 }
@@ -232,7 +232,7 @@ func (f *IBMPIVolumeClient) GetVolumeRemoteCopyRelationships(id string) (*models
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesRemoteCopyRelationshipGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetVolumeRemoteCopyRelationshipsOperationFailed, id, f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetVolumeRemoteCopyRelationshipsOperationFailed, id, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get remote copy relationships of a volume %s", id)
@@ -247,7 +247,7 @@ func (f *IBMPIVolumeClient) GetVolumeFlashCopyMappings(id string) (models.FlashC
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id)
 	resp, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesFlashCopyMappingsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetVolumeFlashCopyMappingOperationFailed, id, f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetVolumeFlashCopyMappingOperationFailed, id, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get flash copy mapping of a volume %s", id)

@@ -33,7 +33,7 @@ func (f *IBMPIVolumeOnboardingClient) Get(id string) (*models.VolumeOnboarding, 
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeOnboardingID(id)
 	resp, err := f.session.Power.PCloudVolumeOnboarding.PcloudVolumeOnboardingGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetVolumeOnboardingOperationFailed, id, f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetVolumeOnboardingOperationFailed, id, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Volume Onboarding for volume-onboarding ID:%s", id)
@@ -51,7 +51,7 @@ func (f *IBMPIVolumeOnboardingClient) GetAll() (*models.VolumeOnboardings, error
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudVolumeOnboarding.PcloudVolumeOnboardingGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.GetAllVolumeOnboardingsOperationFailed, f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetAllVolumeOnboardingsOperationFailed, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get All Volume Onboardings for the cloud instance %s", f.cloudInstanceID)
@@ -69,7 +69,7 @@ func (f *IBMPIVolumeOnboardingClient) CreateVolumeOnboarding(body *models.Volume
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	resp, err := f.session.Power.PCloudVolumeOnboarding.PcloudVolumeOnboardingPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, fmt.Errorf(errors.CreateVolumeOnboardingsOperationFailed, f.cloudInstanceID, err)
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateVolumeOnboardingsOperationFailed, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Create Volume Onboarding")
