@@ -98,11 +98,11 @@ func costructRegionFromZone(zone string) string {
 }
 
 // SDKFailWithAPIError returns a custom error message if a HTTP error response 500 or greater is found
-func SDKFailWithAPIError(err error, errMessage string) error {
+func SDKFailWithAPIError(err error, origErr error) error {
 	if apierr, ok := err.(*runtime.APIError); ok {
 		if apierr.Code >= 500 {
 			return fmt.Errorf("error: %v The server has encountered an unexpected error and is unable to fulfill the request", err)
 		}
 	}
-	return fmt.Errorf(errMessage)
+	return origErr
 }
