@@ -34,7 +34,7 @@ func (f *IBMPIVpnConnectionClient) Get(id string) (*models.VPNConnection, error)
 		WithCloudInstanceID(f.cloudInstanceID).WithVpnConnectionID(id)
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetVPNConnectionOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetVPNConnectionOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get VPN Connection %s", id)
@@ -52,7 +52,7 @@ func (f *IBMPIVpnConnectionClient) Create(body *models.VPNConnectionCreate) (*mo
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postaccepted, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateVPNConnectionOperationFailed, f.cloudInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreateVPNConnectionOperationFailed, f.cloudInstanceID, err))
 	}
 	if postaccepted != nil && postaccepted.Payload != nil {
 		return postaccepted.Payload, nil
@@ -71,7 +71,7 @@ func (f *IBMPIVpnConnectionClient) Update(id string, body *models.VPNConnectionU
 		WithBody(body)
 	putok, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.UpdateVPNConnectionOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.UpdateVPNConnectionOperationFailed, id, err))
 	}
 	if putok != nil && putok.Payload != nil {
 		return putok.Payload, nil
@@ -89,7 +89,7 @@ func (f *IBMPIVpnConnectionClient) GetAll() (*models.VPNConnections, error) {
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all VPN Connections: %v", err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all VPN Connections: %w", err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all VPN Connections")
@@ -107,7 +107,7 @@ func (f *IBMPIVpnConnectionClient) Delete(id string) (*models.JobReference, erro
 		WithCloudInstanceID(f.cloudInstanceID).WithVpnConnectionID(id)
 	delaccepted, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.DeleteVPNConnectionOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.DeleteVPNConnectionOperationFailed, id, err))
 	}
 	if delaccepted != nil && delaccepted.Payload != nil {
 		return delaccepted.Payload, nil
@@ -125,7 +125,7 @@ func (f *IBMPIVpnConnectionClient) GetNetwork(id string) (*models.NetworkIDs, er
 		WithCloudInstanceID(f.cloudInstanceID).WithVpnConnectionID(id)
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsNetworksGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get Networks for VPN Connection %s: %v", id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get Networks for VPN Connection %s: %w", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Networks for VPN Connection %s", id)
@@ -144,7 +144,7 @@ func (f *IBMPIVpnConnectionClient) AddNetwork(id, networkID string) (*models.Job
 		WithBody(&models.NetworkID{NetworkID: &networkID})
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsNetworksPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Add Network %s to VPN Connection %s: %v", networkID, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Add Network %s to VPN Connection %s: %w", networkID, id, err))
 	}
 	if resp != nil && resp.Payload != nil {
 		return resp.Payload, nil
@@ -163,7 +163,7 @@ func (f *IBMPIVpnConnectionClient) DeleteNetwork(id, networkID string) (*models.
 		WithBody(&models.NetworkID{NetworkID: &networkID})
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsNetworksDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Delete Network %s from VPN Connection %s: %v", networkID, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Delete Network %s from VPN Connection %s: %w", networkID, id, err))
 	}
 	if resp != nil && resp.Payload != nil {
 		return resp.Payload, nil
@@ -181,7 +181,7 @@ func (f *IBMPIVpnConnectionClient) GetSubnet(id string) (*models.PeerSubnets, er
 		WithCloudInstanceID(f.cloudInstanceID).WithVpnConnectionID(id)
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsPeersubnetsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get Subnets from VPN Connection %s: %v", id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get Subnets from VPN Connection %s: %w", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Subnets from VPN Connection %s", id)
@@ -200,7 +200,7 @@ func (f *IBMPIVpnConnectionClient) AddSubnet(id, subnet string) (*models.PeerSub
 		WithBody(&models.PeerSubnetUpdate{Cidr: &subnet})
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsPeersubnetsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Add Subnets to VPN Connection %s: %v", id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Add Subnets to VPN Connection %s: %w", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Add Subnets to VPN Connection %s", id)
@@ -219,7 +219,7 @@ func (f *IBMPIVpnConnectionClient) DeleteSubnet(id, subnet string) (*models.Peer
 		WithBody(&models.PeerSubnetUpdate{Cidr: &subnet})
 	resp, err := f.session.Power.PCloudvpnConnections.PcloudVpnconnectionsPeersubnetsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Delete Subnet from VPN Connection %s: %v", id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Delete Subnet from VPN Connection %s: %w", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Delete Subnet from VPN Connection %s", id)

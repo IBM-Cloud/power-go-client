@@ -34,7 +34,7 @@ func (f *IBMPISharedProcessorPoolClient) Get(id string) (*models.SharedProcessor
 		WithCloudInstanceID(f.cloudInstanceID).WithSharedProcessorPoolID(id)
 	resp, err := f.session.Power.PCloudSharedProcessorPools.PcloudSharedprocessorpoolsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetSharedProcessorPoolOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetSharedProcessorPoolOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Shared Processor Pool %s", id)
@@ -52,7 +52,7 @@ func (f *IBMPISharedProcessorPoolClient) GetAll() (*models.SharedProcessorPools,
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudSharedProcessorPools.PcloudSharedprocessorpoolsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get All Shared Processor Pools: %v", err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get All Shared Processor Pools: %w", err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Shared Processor Pools")
@@ -70,7 +70,7 @@ func (f *IBMPISharedProcessorPoolClient) Create(body *models.SharedProcessorPool
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postok, err := f.session.Power.PCloudSharedProcessorPools.PcloudSharedprocessorpoolsPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateSharedProcessorPoolOperationFailed, f.cloudInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreateSharedProcessorPoolOperationFailed, f.cloudInstanceID, err))
 	}
 	if postok == nil || postok.Payload == nil {
 		return nil, fmt.Errorf("failed to Create a Shared Processor Pool")
@@ -103,7 +103,7 @@ func (f *IBMPISharedProcessorPoolClient) Update(id string, body *models.SharedPr
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body).WithSharedProcessorPoolID(id)
 	resp, err := f.session.Power.PCloudSharedProcessorPools.PcloudSharedprocessorpoolsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.UpdateSharedProcessorPoolOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.UpdateSharedProcessorPoolOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Update Shared Processor Pool %s", id)

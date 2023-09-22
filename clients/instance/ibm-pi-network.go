@@ -31,7 +31,7 @@ func (f *IBMPINetworkClient) Get(id string) (*models.Network, error) {
 		WithCloudInstanceID(f.cloudInstanceID).WithNetworkID(id)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetNetworkOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetNetworkOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Network %s", id)
@@ -46,7 +46,7 @@ func (f *IBMPINetworkClient) GetAll() (*models.Networks, error) {
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get Network for cloud instance %s with error %v", f.cloudInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get Network for cloud instance %s with error %w", f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get Network for cloud instance %s", f.cloudInstanceID)
@@ -76,7 +76,7 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
 	postok, postcreated, err := f.session.Power.PCloudNetworks.PcloudNetworksPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateNetworkOperationFailed, body.Name, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreateNetworkOperationFailed, body.Name, err))
 	}
 	if postok != nil && postok.Payload != nil {
 		return postok.Payload, nil
@@ -95,7 +95,7 @@ func (f *IBMPINetworkClient) Update(id string, body *models.NetworkUpdate) (*mod
 		WithBody(body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to perform Update Network Operation for Network %s with error %v", id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to perform Update Network Operation for Network %s with error %w", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform Update Network Operation for Network %s", id)
@@ -111,7 +111,7 @@ func (f *IBMPINetworkClient) GetAllPublic() (*models.Networks, error) {
 		WithCloudInstanceID(f.cloudInstanceID).WithFilter(&filterQuery)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all Public Networks for cloud instance %s: %v", f.cloudInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all Public Networks for cloud instance %s: %w", f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Public Networks for cloud instance %s", f.cloudInstanceID)
@@ -126,7 +126,7 @@ func (f *IBMPINetworkClient) Delete(id string) error {
 		WithCloudInstanceID(f.cloudInstanceID).WithNetworkID(id)
 	_, err := f.session.Power.PCloudNetworks.PcloudNetworksDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return fmt.Errorf("failed to Delete PI Network %s: %v", id, err)
+		return fmt.Errorf("failed to Delete PI Network %s: %w", id, err)
 	}
 	return nil
 }
@@ -138,7 +138,7 @@ func (f *IBMPINetworkClient) GetAllPorts(id string) (*models.NetworkPorts, error
 		WithCloudInstanceID(f.cloudInstanceID).WithNetworkID(id)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get all Network Ports for Network %s: %v", id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all Network Ports for Network %s: %w", id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get all Network Ports for Network %s", id)
@@ -155,7 +155,7 @@ func (f *IBMPINetworkClient) GetPort(id string, networkPortID string) (*models.N
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsGet(params, f.session.AuthInfo(f.cloudInstanceID))
 
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to Get PI Network Port %s for Network %s: %v", networkPortID, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get PI Network Port %s for Network %s: %w", networkPortID, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get PI Network Port %s for Network %s", networkPortID, id)
@@ -171,7 +171,7 @@ func (f *IBMPINetworkClient) CreatePort(id string, body *models.NetworkPortCreat
 		WithBody(body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.CreateNetworkPortOperationFailed, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreateNetworkPortOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform Create Network Port Operation for Network %s", id)
@@ -187,7 +187,7 @@ func (f *IBMPINetworkClient) DeletePort(id string, networkPortID string) error {
 		WithPortID(networkPortID)
 	_, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return fmt.Errorf("failed to delete the network port %s for network %s with error %v", networkPortID, id, err)
+		return fmt.Errorf("failed to delete the network port %s for network %s with error %w", networkPortID, id, err)
 	}
 	return nil
 }
@@ -200,7 +200,7 @@ func (f *IBMPINetworkClient) UpdatePort(id, networkPortID string, body *models.N
 		WithPortID(networkPortID).WithBody(body)
 	resp, err := f.session.Power.PCloudNetworks.PcloudNetworksPortsPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf("failed to update the port %s and Network %s with error %v", networkPortID, id, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update the port %s and Network %s with error %w", networkPortID, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to update the port %s and Network %s", networkPortID, id)

@@ -33,7 +33,7 @@ func (f *IBMPIDisasterRecoveryLocationClient) Get() (*models.DisasterRecoveryLoc
 		WithCloudInstanceID(f.cloudInstanceID)
 	resp, err := f.session.Power.PCloudDisasterRecovery.PcloudLocationsDisasterrecoveryGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetDisasterRecoveryLocationOperationFailed, f.cloudInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetDisasterRecoveryLocationOperationFailed, f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to perform the Get Disaster Recovery Location for the cloud instance %s", f.cloudInstanceID)
@@ -50,7 +50,7 @@ func (f *IBMPIDisasterRecoveryLocationClient) GetAll() (*models.DisasterRecovery
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
 	resp, err := f.session.Power.PCloudDisasterRecovery.PcloudLocationsDisasterrecoveryGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Sprintf(errors.GetAllDisasterRecoveryLocationOperationFailed, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetAllDisasterRecoveryLocationOperationFailed, err))
 	}
 	if resp == nil || resp.Payload == nil {
 		return nil, fmt.Errorf("failed to Get All Disaster Recovery Location of Power Virtual Server")
