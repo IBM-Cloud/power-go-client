@@ -101,7 +101,7 @@ func costructRegionFromZone(zone string) string {
 func SDKFailWithAPIError(err error, origErr error) error {
 	if apierr, ok := err.(*runtime.APIError); ok {
 		if apierr.Code >= 500 {
-			return fmt.Errorf("error: %v The server has encountered an unexpected error and is unable to fulfill the request", err)
+			return fmt.Errorf("error: %w The server has encountered an unexpected error and is unable to fulfill the request", err)
 		}
 	}
 	return origErr
