@@ -119,6 +119,9 @@ const DeleteSPPPlacementGroupOperationFailed = "failed to perform Delete Shared 
 const AddMemberSPPPlacementGroupOperationFailed = "failed to perform Add Member Operation for pool %s and shared processor pool placement group %s with error %w"
 const DeleteMemberSPPPlacementGroupOperationFailed = "failed to perform Delete Member Operation for pool %s and shared processor pool placement group %s with error %w"
 
+// start of workspaces
+const GetWorkspaceOperationFailed = "failed to perform Get Workspace Operation for id %s with error %w"
+
 // ErrorTarget ...
 type ErrorTarget struct {
 	Name string
