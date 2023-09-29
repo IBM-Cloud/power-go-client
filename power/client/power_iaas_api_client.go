@@ -50,7 +50,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/service_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/storage_types"
 	"github.com/IBM-Cloud/power-go-client/power/client/swagger_spec"
-	"github.com/IBM-Cloud/power-go-client/power/client/workspaces"
 )
 
 // Default power iaas API HTTP client.
@@ -135,7 +134,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.ServiceInstances = service_instances.New(transport, formats)
 	cli.StorageTypes = storage_types.New(transport, formats)
 	cli.SwaggerSpec = swagger_spec.New(transport, formats)
-	cli.Workspaces = workspaces.New(transport, formats)
 	return cli
 }
 
@@ -260,8 +258,6 @@ type PowerIaasAPI struct {
 
 	SwaggerSpec swagger_spec.ClientService
 
-	Workspaces workspaces.ClientService
-
 	Transport runtime.ClientTransport
 }
 
@@ -308,5 +304,4 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.ServiceInstances.SetTransport(transport)
 	c.StorageTypes.SetTransport(transport)
 	c.SwaggerSpec.SetTransport(transport)
-	c.Workspaces.SetTransport(transport)
 }

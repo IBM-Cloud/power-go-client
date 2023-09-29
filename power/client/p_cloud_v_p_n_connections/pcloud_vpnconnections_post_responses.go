@@ -47,12 +47,6 @@ func (o *PcloudVpnconnectionsPostReader) ReadResponse(response runtime.ClientRes
 			return nil, err
 		}
 		return nil, result
-	case 404:
-		result := NewPcloudVpnconnectionsPostNotFound()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return nil, result
 	case 409:
 		result := NewPcloudVpnconnectionsPostConflict()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -337,74 +331,6 @@ func (o *PcloudVpnconnectionsPostForbidden) GetPayload() *models.Error {
 }
 
 func (o *PcloudVpnconnectionsPostForbidden) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.Error)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
-}
-
-// NewPcloudVpnconnectionsPostNotFound creates a PcloudVpnconnectionsPostNotFound with default headers values
-func NewPcloudVpnconnectionsPostNotFound() *PcloudVpnconnectionsPostNotFound {
-	return &PcloudVpnconnectionsPostNotFound{}
-}
-
-/*
-PcloudVpnconnectionsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
-type PcloudVpnconnectionsPostNotFound struct {
-	Payload *models.Error
-}
-
-// IsSuccess returns true when this pcloud vpnconnections post not found response has a 2xx status code
-func (o *PcloudVpnconnectionsPostNotFound) IsSuccess() bool {
-	return false
-}
-
-// IsRedirect returns true when this pcloud vpnconnections post not found response has a 3xx status code
-func (o *PcloudVpnconnectionsPostNotFound) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this pcloud vpnconnections post not found response has a 4xx status code
-func (o *PcloudVpnconnectionsPostNotFound) IsClientError() bool {
-	return true
-}
-
-// IsServerError returns true when this pcloud vpnconnections post not found response has a 5xx status code
-func (o *PcloudVpnconnectionsPostNotFound) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this pcloud vpnconnections post not found response a status code equal to that given
-func (o *PcloudVpnconnectionsPostNotFound) IsCode(code int) bool {
-	return code == 404
-}
-
-// Code gets the status code for the pcloud vpnconnections post not found response
-func (o *PcloudVpnconnectionsPostNotFound) Code() int {
-	return 404
-}
-
-func (o *PcloudVpnconnectionsPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostNotFound  %+v", 404, o.Payload)
-}
-
-func (o *PcloudVpnconnectionsPostNotFound) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/vpn-connections][%d] pcloudVpnconnectionsPostNotFound  %+v", 404, o.Payload)
-}
-
-func (o *PcloudVpnconnectionsPostNotFound) GetPayload() *models.Error {
-	return o.Payload
-}
-
-func (o *PcloudVpnconnectionsPostNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
