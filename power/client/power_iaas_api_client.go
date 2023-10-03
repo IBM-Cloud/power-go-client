@@ -13,6 +13,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/authentication"
 	"github.com/IBM-Cloud/power-go-client/power/client/bluemix_service_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/catalog"
+	"github.com/IBM-Cloud/power-go-client/power/client/datacenters"
 	"github.com/IBM-Cloud/power-go-client/power/client/hardware_platforms"
 	"github.com/IBM-Cloud/power-go-client/power/client/iaas_service_broker"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_instances"
@@ -98,6 +99,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.Authentication = authentication.New(transport, formats)
 	cli.BluemixServiceInstances = bluemix_service_instances.New(transport, formats)
 	cli.Catalog = catalog.New(transport, formats)
+	cli.Datacenters = datacenters.New(transport, formats)
 	cli.HardwarePlatforms = hardware_platforms.New(transport, formats)
 	cli.IaasServiceBroker = iaas_service_broker.New(transport, formats)
 	cli.InternalPowervsInstances = internal_power_v_s_instances.New(transport, formats)
@@ -186,6 +188,8 @@ type PowerIaasAPI struct {
 
 	Catalog catalog.ClientService
 
+	Datacenters datacenters.ClientService
+
 	HardwarePlatforms hardware_platforms.ClientService
 
 	IaasServiceBroker iaas_service_broker.ClientService
@@ -271,6 +275,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Authentication.SetTransport(transport)
 	c.BluemixServiceInstances.SetTransport(transport)
 	c.Catalog.SetTransport(transport)
+	c.Datacenters.SetTransport(transport)
 	c.HardwarePlatforms.SetTransport(transport)
 	c.IaasServiceBroker.SetTransport(transport)
 	c.InternalPowervsInstances.SetTransport(transport)
