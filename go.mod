@@ -11,6 +11,7 @@ require (
 	github.com/go-openapi/swag v0.22.4
 	github.com/go-openapi/validate v0.22.1
 	github.com/stretchr/testify v1.8.4
+	golang.org/x/net v0.8.0
 )
 
 require (

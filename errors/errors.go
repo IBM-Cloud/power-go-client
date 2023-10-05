@@ -122,6 +122,9 @@ const DeleteMemberSPPPlacementGroupOperationFailed = "failed to perform Delete M
 // start of workspaces
 const GetWorkspaceOperationFailed = "failed to perform Get Workspace Operation for id %s with error %w"
 
+// Datacenter
+const GetDatacenterOperationFailed = "failed to perform Get Datacenter Operation for id %s with error %w"
+
 // ErrorTarget ...
 type ErrorTarget struct {
 	Name string
