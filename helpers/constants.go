@@ -245,4 +245,7 @@ const (
 
 	// Stratos region prefix
 	PIStratosRegionPrefix = "satloc"
+
+	// Datacenter
+	PIDatacenterRegion = "pi_datacenter_zone"
 )
