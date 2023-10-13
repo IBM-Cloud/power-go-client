@@ -27,7 +27,7 @@ func (f *IBMPIDatacentersClient) Get(datacenterRegion string) (*models.Datacente
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := datacenters.NewV1DatacentersGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithDatacenterRegion(datacenterRegion)
-	resp, err := f.session.Power.Datacenters.V1DatacentersGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.Datacenters.V1DatacentersGet(params)
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetDatacenterOperationFailed, f.cloudInstanceID, err))
 	}
@@ -42,7 +42,7 @@ func (f *IBMPIDatacentersClient) GetAll() (*models.Datacenters, error) {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
 	params := datacenters.NewV1DatacentersGetallParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut)
-	resp, err := f.session.Power.Datacenters.V1DatacentersGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.Datacenters.V1DatacentersGetall(params)
 
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all Datacenters: %w", err))
