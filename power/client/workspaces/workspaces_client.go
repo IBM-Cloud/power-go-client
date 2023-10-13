@@ -32,6 +32,8 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	V1WorkspacesGet(params *V1WorkspacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetOK, error)
 
+	V1WorkspacesGetall(params *V1WorkspacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetallOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -71,6 +73,45 @@ func (a *Client) V1WorkspacesGet(params *V1WorkspacesGetParams, authInfo runtime
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.workspaces.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1WorkspacesGetall gets all workspaces information and capabilities for a tenant
+*/
+func (a *Client) V1WorkspacesGetall(params *V1WorkspacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetallOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewV1WorkspacesGetallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.workspaces.getall",
+		Method:             "GET",
+		PathPattern:        "/v1/workspaces",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1WorkspacesGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*V1WorkspacesGetallOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.workspaces.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
+	// Indicates if cloudInit should be configured or not
+	ConfigureCloudInit *bool `json:"configureCloudInit,omitempty"`
+
 	// The custom deployment type
 	DeploymentType string `json:"deploymentType,omitempty"`
 
@@ -46,6 +49,10 @@ type PVMInstanceCreate struct {
 
 	// The pvm instance networks information
 	Networks []*PVMInstanceAddNetwork `json:"networks"`
+
+	// The type of OS. iamgeID and osType are mutually exclusive. If OStype is provided then VM will be created without any volume and user later can attach primary boot volume.
+	// Enum: [aix ibmi rhel sles]
+	OsType string `json:"osType,omitempty"`
 
 	// pin policy
 	PinPolicy PinPolicy `json:"pinPolicy,omitempty"`
@@ -122,6 +129,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNetworks(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateOsType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -210,6 +221,54 @@ func (m *PVMInstanceCreate) validateNetworks(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+var pVmInstanceCreateTypeOsTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["aix","ibmi","rhel","sles"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceCreateTypeOsTypePropEnum = append(pVmInstanceCreateTypeOsTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceCreateOsTypeAix captures enum value "aix"
+	PVMInstanceCreateOsTypeAix string = "aix"
+
+	// PVMInstanceCreateOsTypeIbmi captures enum value "ibmi"
+	PVMInstanceCreateOsTypeIbmi string = "ibmi"
+
+	// PVMInstanceCreateOsTypeRhel captures enum value "rhel"
+	PVMInstanceCreateOsTypeRhel string = "rhel"
+
+	// PVMInstanceCreateOsTypeSles captures enum value "sles"
+	PVMInstanceCreateOsTypeSles string = "sles"
+)
+
+// prop value enum
+func (m *PVMInstanceCreate) validateOsTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceCreateTypeOsTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceCreate) validateOsType(formats strfmt.Registry) error {
+	if swag.IsZero(m.OsType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateOsTypeEnum("osType", "body", m.OsType); err != nil {
+		return err
 	}
 
 	return nil

@@ -30,9 +30,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	V1DatacentersGet(params *V1DatacentersGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersGetOK, error)
+	V1DatacentersGet(params *V1DatacentersGetParams, opts ...ClientOption) (*V1DatacentersGetOK, error)
 
-	V1DatacentersGetall(params *V1DatacentersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersGetallOK, error)
+	V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...ClientOption) (*V1DatacentersGetallOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -40,7 +40,7 @@ type ClientService interface {
 /*
 V1DatacentersGet gets a datacenter s information and capabilities
 */
-func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersGetOK, error) {
+func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, opts ...ClientOption) (*V1DatacentersGetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewV1DatacentersGetParams()
@@ -54,7 +54,6 @@ func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, authInfo runti
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &V1DatacentersGetReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -79,7 +78,7 @@ func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, authInfo runti
 /*
 V1DatacentersGetall gets all datacenters information and capabilities
 */
-func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersGetallOK, error) {
+func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...ClientOption) (*V1DatacentersGetallOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewV1DatacentersGetallParams()
@@ -93,7 +92,6 @@ func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, authInfo
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &V1DatacentersGetallReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
