@@ -24,13 +24,16 @@ type Datacenter struct {
 	// Required: true
 	Capabilities map[string]bool `json:"capabilities"`
 
+	// Link to Datacenter Region
+	Href string `json:"href,omitempty"`
+
 	// The Datacenter location
 	// Required: true
 	Location *DatacenterLocation `json:"location"`
 
 	// The Datacenter status
 	// Required: true
-	// Enum: [ACTIVE MAINTENENCE DOWN]
+	// Enum: [Active Maintenance Down]
 	Status *string `json:"status"`
 
 	// The Datacenter type
@@ -98,7 +101,7 @@ var datacenterTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ACTIVE","MAINTENENCE","DOWN"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Active","Maintenance","Down"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -108,14 +111,14 @@ func init() {
 
 const (
 
-	// DatacenterStatusACTIVE captures enum value "ACTIVE"
-	DatacenterStatusACTIVE string = "ACTIVE"
+	// DatacenterStatusActive captures enum value "Active"
+	DatacenterStatusActive string = "Active"
 
-	// DatacenterStatusMAINTENENCE captures enum value "MAINTENENCE"
-	DatacenterStatusMAINTENENCE string = "MAINTENENCE"
+	// DatacenterStatusMaintenance captures enum value "Maintenance"
+	DatacenterStatusMaintenance string = "Maintenance"
 
-	// DatacenterStatusDOWN captures enum value "DOWN"
-	DatacenterStatusDOWN string = "DOWN"
+	// DatacenterStatusDown captures enum value "Down"
+	DatacenterStatusDown string = "Down"
 )
 
 // prop value enum
