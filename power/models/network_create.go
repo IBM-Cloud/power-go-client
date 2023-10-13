@@ -55,19 +55,6 @@ type NetworkCreate struct {
 	Type *string `json:"type"`
 }
 
-func (m *NetworkCreate) UnmarshalJSON(b []byte) error {
-	type NetworkCreateAlias NetworkCreate
-	var t NetworkCreateAlias
-	if err := json.Unmarshal([]byte("{\"accessConfig\":\"internal-only\",\"mtu\":1450}"), &t); err != nil {
-		return err
-	}
-	if err := json.Unmarshal(b, &t); err != nil {
-		return err
-	}
-	*m = NetworkCreate(t)
-	return nil
-}
-
 // Validate validates this network create
 func (m *NetworkCreate) Validate(formats strfmt.Registry) error {
 	var res []error
