@@ -40,18 +40,19 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPIWorkspacesClient(context.Background(), session, piID)
+
+	powerClient := v.NewIBMPIDatacenterClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	getWorkspace, err := powerClient.Get(piID)
+	getDatacenter, err := powerClient.Get("dal12")
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[0]****************** %+v \n", *getWorkspace)
-	getWorkspaces, err := powerClient.GetAll()
+	log.Printf("***************[0]****************** %+v \n", getDatacenter)
+	getDatacenters, err := powerClient.GetAll()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[1]****************** %+v \n", *getWorkspaces)
+	log.Printf("***************[1]****************** %+v \n", getDatacenters)
 }
