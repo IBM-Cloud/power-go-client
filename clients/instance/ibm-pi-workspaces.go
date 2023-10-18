@@ -44,7 +44,7 @@ func (f *IBMPIWorkspacesClient) GetAll() (*models.Workspaces, error) {
 	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
 	}
-	params := workspaces.NewV1WorkspacesGetallParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut)
+	params := workspaces.NewV1WorkspacesGetallParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
 	resp, err := f.session.Power.Workspaces.V1WorkspacesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all Workspaces: %w", err))
