@@ -24,12 +24,10 @@ type WorkspaceLocation struct {
 	Region *string `json:"region"`
 
 	// The Workspace location region type
-	// Required: true
-	Type *string `json:"type"`
+	Type string `json:"type,omitempty"`
 
 	// The Workspace location region url
-	// Required: true
-	URL *string `json:"url"`
+	URL string `json:"url,omitempty"`
 }
 
 // Validate validates this workspace location
@@ -37,14 +35,6 @@ func (m *WorkspaceLocation) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateRegion(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateURL(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -57,24 +47,6 @@ func (m *WorkspaceLocation) Validate(formats strfmt.Registry) error {
 func (m *WorkspaceLocation) validateRegion(formats strfmt.Registry) error {
 
 	if err := validate.Required("region", "body", m.Region); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *WorkspaceLocation) validateType(formats strfmt.Registry) error {
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *WorkspaceLocation) validateURL(formats strfmt.Registry) error {
-
-	if err := validate.Required("url", "body", m.URL); err != nil {
 		return err
 	}
 

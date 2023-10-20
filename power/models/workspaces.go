@@ -22,14 +22,14 @@ type Workspaces struct {
 
 	// The list of available workspaces
 	// Required: true
-	Workspace []*Workspace `json:"workspace"`
+	Workspaces []*Workspace `json:"workspaces"`
 }
 
 // Validate validates this workspaces
 func (m *Workspaces) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateWorkspace(formats); err != nil {
+	if err := m.validateWorkspaces(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -39,23 +39,23 @@ func (m *Workspaces) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Workspaces) validateWorkspace(formats strfmt.Registry) error {
+func (m *Workspaces) validateWorkspaces(formats strfmt.Registry) error {
 
-	if err := validate.Required("workspace", "body", m.Workspace); err != nil {
+	if err := validate.Required("workspaces", "body", m.Workspaces); err != nil {
 		return err
 	}
 
-	for i := 0; i < len(m.Workspace); i++ {
-		if swag.IsZero(m.Workspace[i]) { // not required
+	for i := 0; i < len(m.Workspaces); i++ {
+		if swag.IsZero(m.Workspaces[i]) { // not required
 			continue
 		}
 
-		if m.Workspace[i] != nil {
-			if err := m.Workspace[i].Validate(formats); err != nil {
+		if m.Workspaces[i] != nil {
+			if err := m.Workspaces[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("workspace" + "." + strconv.Itoa(i))
+					return ve.ValidateName("workspaces" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("workspace" + "." + strconv.Itoa(i))
+					return ce.ValidateName("workspaces" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -70,7 +70,7 @@ func (m *Workspaces) validateWorkspace(formats strfmt.Registry) error {
 func (m *Workspaces) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateWorkspace(ctx, formats); err != nil {
+	if err := m.contextValidateWorkspaces(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,21 +80,21 @@ func (m *Workspaces) ContextValidate(ctx context.Context, formats strfmt.Registr
 	return nil
 }
 
-func (m *Workspaces) contextValidateWorkspace(ctx context.Context, formats strfmt.Registry) error {
+func (m *Workspaces) contextValidateWorkspaces(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Workspace); i++ {
+	for i := 0; i < len(m.Workspaces); i++ {
 
-		if m.Workspace[i] != nil {
+		if m.Workspaces[i] != nil {
 
-			if swag.IsZero(m.Workspace[i]) { // not required
+			if swag.IsZero(m.Workspaces[i]) { // not required
 				return nil
 			}
 
-			if err := m.Workspace[i].ContextValidate(ctx, formats); err != nil {
+			if err := m.Workspaces[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("workspace" + "." + strconv.Itoa(i))
+					return ve.ValidateName("workspaces" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("workspace" + "." + strconv.Itoa(i))
+					return ce.ValidateName("workspaces" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -22,14 +22,14 @@ type Datacenters struct {
 
 	// Power Systems Virtual Server available Datacenters
 	// Required: true
-	Datacenter []*Datacenter `json:"datacenter"`
+	Datacenters []*Datacenter `json:"datacenters"`
 }
 
 // Validate validates this datacenters
 func (m *Datacenters) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateDatacenter(formats); err != nil {
+	if err := m.validateDatacenters(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -39,23 +39,23 @@ func (m *Datacenters) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Datacenters) validateDatacenter(formats strfmt.Registry) error {
+func (m *Datacenters) validateDatacenters(formats strfmt.Registry) error {
 
-	if err := validate.Required("datacenter", "body", m.Datacenter); err != nil {
+	if err := validate.Required("datacenters", "body", m.Datacenters); err != nil {
 		return err
 	}
 
-	for i := 0; i < len(m.Datacenter); i++ {
-		if swag.IsZero(m.Datacenter[i]) { // not required
+	for i := 0; i < len(m.Datacenters); i++ {
+		if swag.IsZero(m.Datacenters[i]) { // not required
 			continue
 		}
 
-		if m.Datacenter[i] != nil {
-			if err := m.Datacenter[i].Validate(formats); err != nil {
+		if m.Datacenters[i] != nil {
+			if err := m.Datacenters[i].Validate(formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("datacenter" + "." + strconv.Itoa(i))
+					return ve.ValidateName("datacenters" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("datacenter" + "." + strconv.Itoa(i))
+					return ce.ValidateName("datacenters" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
@@ -70,7 +70,7 @@ func (m *Datacenters) validateDatacenter(formats strfmt.Registry) error {
 func (m *Datacenters) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateDatacenter(ctx, formats); err != nil {
+	if err := m.contextValidateDatacenters(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -80,21 +80,21 @@ func (m *Datacenters) ContextValidate(ctx context.Context, formats strfmt.Regist
 	return nil
 }
 
-func (m *Datacenters) contextValidateDatacenter(ctx context.Context, formats strfmt.Registry) error {
+func (m *Datacenters) contextValidateDatacenters(ctx context.Context, formats strfmt.Registry) error {
 
-	for i := 0; i < len(m.Datacenter); i++ {
+	for i := 0; i < len(m.Datacenters); i++ {
 
-		if m.Datacenter[i] != nil {
+		if m.Datacenters[i] != nil {
 
-			if swag.IsZero(m.Datacenter[i]) { // not required
+			if swag.IsZero(m.Datacenters[i]) { // not required
 				return nil
 			}
 
-			if err := m.Datacenter[i].ContextValidate(ctx, formats); err != nil {
+			if err := m.Datacenters[i].ContextValidate(ctx, formats); err != nil {
 				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("datacenter" + "." + strconv.Itoa(i))
+					return ve.ValidateName("datacenters" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("datacenter" + "." + strconv.Itoa(i))
+					return ce.ValidateName("datacenters" + "." + strconv.Itoa(i))
 				}
 				return err
 			}

@@ -42,7 +42,7 @@ type Workspace struct {
 
 	// The Workspace status
 	// Required: true
-	// Enum: [ACTIVE FAILED]
+	// Enum: [Active Failed Provisioning]
 	Status *string `json:"status"`
 
 	// The Workspace type
@@ -160,7 +160,7 @@ var workspaceTypeStatusPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["ACTIVE","FAILED"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["Active","Failed","Provisioning"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -170,11 +170,14 @@ func init() {
 
 const (
 
-	// WorkspaceStatusACTIVE captures enum value "ACTIVE"
-	WorkspaceStatusACTIVE string = "ACTIVE"
+	// WorkspaceStatusActive captures enum value "Active"
+	WorkspaceStatusActive string = "Active"
 
-	// WorkspaceStatusFAILED captures enum value "FAILED"
-	WorkspaceStatusFAILED string = "FAILED"
+	// WorkspaceStatusFailed captures enum value "Failed"
+	WorkspaceStatusFailed string = "Failed"
+
+	// WorkspaceStatusProvisioning captures enum value "Provisioning"
+	WorkspaceStatusProvisioning string = "Provisioning"
 )
 
 // prop value enum
