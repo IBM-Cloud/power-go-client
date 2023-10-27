@@ -64,6 +64,8 @@ type ClientService interface {
 
 	PcloudV2VolumesClonetasksGet(params *PcloudV2VolumesClonetasksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesClonetasksGetOK, error)
 
+	PcloudV2VolumesDelete(params *PcloudV2VolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesDeleteAccepted, *PcloudV2VolumesDeletePartialContent, error)
+
 	PcloudV2VolumesPost(params *PcloudV2VolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesPostCreated, error)
 
 	PcloudV2VolumescloneCancelPost(params *PcloudV2VolumescloneCancelPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneCancelPostAccepted, error)
@@ -745,6 +747,46 @@ func (a *Client) PcloudV2VolumesClonetasksGet(params *PcloudV2VolumesClonetasksG
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.v2.volumes.clonetasks.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudV2VolumesDelete deletes all volumes
+*/
+func (a *Client) PcloudV2VolumesDelete(params *PcloudV2VolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesDeleteAccepted, *PcloudV2VolumesDeletePartialContent, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudV2VolumesDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.v2.volumes.delete",
+		Method:             "DELETE",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/volumes",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2VolumesDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, nil, err
+	}
+	switch value := result.(type) {
+	case *PcloudV2VolumesDeleteAccepted:
+		return value, nil, nil
+	case *PcloudV2VolumesDeletePartialContent:
+		return nil, value, nil
+	}
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for p_cloud_volumes: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
