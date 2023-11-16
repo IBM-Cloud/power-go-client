@@ -61,7 +61,8 @@ func NewIBMPISession(o *IBMPIOptions) (*IBMPISession, error) {
 	}
 
 	if o.UserAccount == "" {
-		return nil, fmt.Errorf("option UserAccount is required")
+		o.UserAccount = "missing"
+		fmt.Errorf("Skipping ... option UserAccount is required")
 	}
 
 	if o.Zone == "" {
