@@ -16,6 +16,20 @@ type IBMPIWorkspacesClient struct {
 	IBMPIClient
 }
 
+// Convert into valid plan or return empty (resulting in error)
+func translatePlan(plan string) string {
+	planID := ""
+	switch plan {
+	case "public":
+		planID = "f165dd34-3a40-423b-9d95-e90a23f724dd"
+	case "private":
+		planID = "1112d6a9-71d6-4968-956b-eb3edbf0225b"
+	default:
+		planID = ""
+	}
+	return planID
+}
+
 // NewIBMPIWorkspacesClient
 func NewIBMPIWorkspacesClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIWorkspacesClient {
 	return &IBMPIWorkspacesClient{
@@ -56,10 +70,14 @@ func (f *IBMPIWorkspacesClient) GetAll() (*models.Workspaces, error) {
 }
 
 // Create a workspace
-func (f *IBMPIWorkspacesClient) Create(name, location, groupID, planID string) error {
+func (f *IBMPIWorkspacesClient) Create(name, location, groupID, plan string) error {
 	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
 	if err != nil {
 		return fmt.Errorf("error creating Resource Controller client: %v", err)
+	}
+	planID := translatePlan(plan)
+	if planID == "" {
+		return fmt.Errorf("workspace creation error, incorrect plan value; either \"public\" or \"private\" is allowed")
 	}
 	params := resourceController.NewCreateResourceInstanceOptions(name, location, groupID, planID)
 	result, response, err := resourceController.CreateResourceInstance(params)
