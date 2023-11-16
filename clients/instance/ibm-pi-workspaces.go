@@ -54,3 +54,37 @@ func (f *IBMPIWorkspacesClient) GetAll() (*models.Workspaces, error) {
 	}
 	return resp.Payload, nil
 }
+
+// Create a workspace
+func (f *IBMPIWorkspacesClient) Create(name, location, groupID, planID string) error {
+	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
+	if err != nil {
+		return fmt.Errorf("error creating Resource Controller client: %v", err)
+	}
+	params := resourceController.NewCreateResourceInstanceOptions(name, location, groupID, planID)
+	result, response, err := resourceController.CreateResourceInstance(params)
+	if err != nil {
+		return fmt.Errorf("error creating workspace: result %v response %v  err %v", result, response, err)
+	}
+	if response.StatusCode >= 400 {
+		return fmt.Errorf("error creating resource instance. Status code: %d", response.StatusCode)
+	}
+	return nil
+}
+
+// Delete a workspace
+func (f *IBMPIWorkspacesClient) Delete(workspaceID string) error {
+	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
+	if err != nil {
+		return fmt.Errorf("error creating Resource Controller client: %v", err)
+	}
+	params := resourceController.NewDeleteResourceInstanceOptions(workspaceID)
+	response, err := resourceController.DeleteResourceInstance(params)
+	if err != nil {
+		return fmt.Errorf("error deleting workspace: response %v, err %v", response, err)
+	}
+	if response.StatusCode >= 400 {
+		return fmt.Errorf("error deleting resource instance. Status code: %d", response.StatusCode)
+	}
+	return nil
+}
