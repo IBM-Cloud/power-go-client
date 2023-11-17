@@ -223,12 +223,6 @@ const (
 	PIPlacementGroupPolicy = "pi_placement_group_policy"
 	PIPlacementGroupID     = "pi_placement_group_id"
 
-	// IBM PI Workspace
-	PIWorkspaceName          = "pi_name"
-	PIWorkspaceDatacenter    = "pi_datacenter"
-	PIWorkspaceResourceGroup = "pi_resource_group"
-	PIWorkspacePlan          = "pi_plan"
-
 	// Status For all the resources
 	PIVolumeDeleting         = "deleting"
 	PIVolumeDeleted          = "done"
