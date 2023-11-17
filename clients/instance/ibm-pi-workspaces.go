@@ -9,6 +9,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/workspaces"
 	"github.com/IBM-Cloud/power-go-client/power/models"
+	"github.com/IBM/platform-services-go-sdk/resourcecontrollerv2"
 )
 
 // IBMPIWorkspacesClient
@@ -70,24 +71,24 @@ func (f *IBMPIWorkspacesClient) GetAll() (*models.Workspaces, error) {
 }
 
 // Create a workspace
-func (f *IBMPIWorkspacesClient) Create(name, location, groupID, plan string) error {
+func (f *IBMPIWorkspacesClient) Create(name, location, groupID, plan string) (*resourcecontrollerv2.ResourceInstance, error) {
 	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
 	if err != nil {
-		return fmt.Errorf("error creating Resource Controller client: %v", err)
+		return nil, fmt.Errorf("error creating Resource Controller client: %v", err)
 	}
 	planID := translatePlan(plan)
 	if planID == "" {
-		return fmt.Errorf("workspace creation error, incorrect plan value; either \"public\" or \"private\" is allowed")
+		return nil, fmt.Errorf("workspace creation error, incorrect plan value; either \"public\" or \"private\" is allowed")
 	}
 	params := resourceController.NewCreateResourceInstanceOptions(name, location, groupID, planID)
-	result, response, err := resourceController.CreateResourceInstance(params)
+	controller, response, err := resourceController.CreateResourceInstance(params)
 	if err != nil {
-		return fmt.Errorf("error creating workspace: result %v response %v  err %v", result, response, err)
+		return nil, fmt.Errorf("error creating workspace: controller %v response %v  err %v", controller, response, err)
 	}
 	if response.StatusCode >= 400 {
-		return fmt.Errorf("error creating resource instance. Status code: %d", response.StatusCode)
+		return nil, fmt.Errorf("error creating resource instance. Status code: %d", response.StatusCode)
 	}
-	return nil
+	return controller, nil
 }
 
 // Delete a workspace
