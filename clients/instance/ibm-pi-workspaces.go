@@ -107,3 +107,21 @@ func (f *IBMPIWorkspacesClient) Delete(workspaceID string) error {
 	}
 	return nil
 }
+
+// GetRC: get a resource controller instance/workspace
+func (f *IBMPIWorkspacesClient) GetRC(workspaceID string) (*resourcecontrollerv2.ResourceInstance, error) {
+	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
+	if err != nil {
+		return nil, fmt.Errorf("error getting Resource Controller client: %v", err)
+	}
+	params := resourceController.NewGetResourceInstanceOptions(workspaceID)
+
+	controller, response, err := resourceController.GetResourceInstance(params)
+	if err != nil {
+		return nil, fmt.Errorf("error getting workspace: controller %v response %v  err %v", controller, response, err)
+	}
+	if response.StatusCode >= 400 {
+		return nil, fmt.Errorf("error getting resource instance. Status code: %d", response.StatusCode)
+	}
+	return controller, nil
+}
