@@ -82,14 +82,14 @@ func (f *IBMPIWorkspacesClient) Create(name, location, groupID, plan string) (*r
 		return nil, nil, fmt.Errorf("workspace creation error, incorrect plan value; either \"public\" or \"private\" is allowed")
 	}
 	params := resourceController.NewCreateResourceInstanceOptions(name, location, groupID, planID)
-	controller, response, err := resourceController.CreateResourceInstance(params)
+	workspace, response, err := resourceController.CreateResourceInstance(params)
 	if err != nil {
-		return nil, response, fmt.Errorf("error creating workspace: controller %v response %v  err %v", controller, response, err)
+		return nil, response, fmt.Errorf("error creating workspace: workspace %v response %v  err %v", workspace, response, err)
 	}
 	if response.StatusCode >= 400 {
 		return nil, response, fmt.Errorf("error creating resource instance. Status code: %d", response.StatusCode)
 	}
-	return controller, response, nil
+	return workspace, response, nil
 }
 
 // Delete a workspace
@@ -116,12 +116,12 @@ func (f *IBMPIWorkspacesClient) GetRC(rcWorkspaceID string) (*resourcecontroller
 		return nil, nil, fmt.Errorf("error creating Resource Controller client: %v", err)
 	}
 	params := resourceController.NewGetResourceInstanceOptions(rcWorkspaceID)
-	controller, response, err := resourceController.GetResourceInstance(params)
+	workspace, response, err := resourceController.GetResourceInstance(params)
 	if err != nil {
-		return nil, response, fmt.Errorf("error creating workspace: controller %v response %v  err %v", controller, response, err)
+		return nil, response, fmt.Errorf("error creating workspace: workspace %v response %v  err %v", workspace, response, err)
 	}
 	if response.StatusCode >= 400 {
 		return nil, response, fmt.Errorf("error getting resource instance. Status code: %d", response.StatusCode)
 	}
-	return controller, response, nil
+	return workspace, response, nil
 }

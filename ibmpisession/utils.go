@@ -110,9 +110,8 @@ func SDKFailWithAPIError(err error, origErr error) error {
 
 // CreateResourceControllerV2  returns a resourceControllerV2
 func CreateResourceControllerV2(url string, authenticator core.Authenticator) (service *rc.ResourceControllerV2, err error) {
-	endpoint := url
 	env := ""
-	if strings.Contains(endpoint, "test") {
+	if strings.Contains(url, "test") {
 		env = ".test"
 	}
 	rcUrl := "https://resource-controller" + env + ".cloud.ibm.com"
