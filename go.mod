@@ -4,7 +4,7 @@ go 1.20
 
 require (
 	github.com/IBM/go-sdk-core/v5 v5.15.0
-	github.com/IBM/platform-services-go-sdk v0.54.1
+	github.com/IBM/platform-services-go-sdk v0.55.0
 	github.com/apparentlymart/go-cidr v1.1.0
 	github.com/go-openapi/errors v0.20.4
 	github.com/go-openapi/runtime v0.26.2
