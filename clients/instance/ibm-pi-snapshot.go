@@ -82,11 +82,12 @@ func (f *IBMPISnapshotClient) GetAll() (*models.Snapshots, error) {
 }
 
 // Restore a Snapshot
-func (f *IBMPISnapshotClient) Restore(instanceID, snapshotID, restoreFailAction string) (*models.Snapshot, error) {
+func (f *IBMPISnapshotClient) Restore(instanceID, snapshotID, restoreFailAction string, body *models.SnapshotRestore) (*models.Snapshot, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(instanceID).
-		WithSnapshotID(snapshotID).WithRestoreFailAction(&restoreFailAction)
+		WithSnapshotID(snapshotID).WithRestoreFailAction(&restoreFailAction).
+		WithBody(body)
 	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, instanceID, err))
