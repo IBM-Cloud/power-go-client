@@ -81,8 +81,8 @@ func (f *IBMPISnapshotClient) GetAll() (*models.Snapshots, error) {
 	return resp.Payload, nil
 }
 
-// Create or Restore a Snapshot
-func (f *IBMPISnapshotClient) Create(instanceID, snapshotID, restoreFailAction string) (*models.Snapshot, error) {
+// Restore a Snapshot
+func (f *IBMPISnapshotClient) Restore(instanceID, snapshotID, restoreFailAction string) (*models.Snapshot, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(instanceID).
