@@ -9,7 +9,7 @@ require (
 	github.com/go-openapi/errors v0.21.0
 	github.com/go-openapi/runtime v0.26.0
 	github.com/go-openapi/strfmt v0.22.0
-	github.com/go-openapi/swag v0.22.5
+	github.com/go-openapi/swag v0.22.9
 	github.com/go-openapi/validate v0.22.4
 	github.com/stretchr/testify v1.8.4
 )
