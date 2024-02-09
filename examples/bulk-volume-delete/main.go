@@ -16,17 +16,17 @@ import (
 func main() {
 	//session Inputs
 	//  < IAM TOKEN >
-	// token := ""
-	region := ""
-	zone := ""
-	accountID := ""
+	token := ""
+	region := " < REGION > "
+	zone := " < ZONE > "
+	accountID := " < ACCOUNT ID > "
 	url := region + ".power-iaas.test.cloud.ibm.com"
 
 	// volume inputs
 	rand.Seed(time.Now().UnixNano())
 	randomNumber := rand.Intn(100) + 1
 	randomNumber2 := rand.Intn(100) + 1
-	piID := ""
+	piID := " < POWER INSTANCE ID > "
 	name := fmt.Sprintf("power-go-test-volume-%d", randomNumber)
 	name2 := fmt.Sprintf("power-go-test-volume-%d", randomNumber2)
 	size := 20.0
@@ -34,14 +34,14 @@ func main() {
 	sharable := true
 	replicationEnabled := false
 
-	// authenticator := &core.BearerTokenAuthenticator{
-	// 	BearerToken: token,
-	// }
-	authenticator := &core.IamAuthenticator{
-		ApiKey: "",
-		// Uncomment for test environment
-		URL: "https://iam.test.cloud.ibm.com",
+	authenticator := &core.BearerTokenAuthenticator{
+		BearerToken: token,
 	}
+	// authenticator := &core.IamAuthenticator{
+	// 	ApiKey: "< API KEY >",
+	// 	// Uncomment for test environment
+	// 	URL: "https://iam.test.cloud.ibm.com",
+	// }
 	// Create the session
 	options := &ps.IBMPIOptions{
 		Authenticator: authenticator,

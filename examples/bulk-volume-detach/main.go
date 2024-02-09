@@ -17,17 +17,17 @@ import (
 func main() {
 	//session Inputs
 	//  < IAM TOKEN >
-	// token := ""
-	region := "dal"
-	zone := "dal10"
-	accountID := "efe5e8b9d3f04b948790fe5499bd18bc"
+	token := ""
+	region := " < REGION > "
+	zone := " < ZONE > "
+	accountID := " < ACCOUNT ID > "
 	url := region + ".power-iaas.test.cloud.ibm.com"
 
 	// volume inputs
 	rand.Seed(time.Now().UnixNano())
 	randomNumber := rand.Intn(100) + 1
 	randomNumber2 := rand.Intn(100) + 1
-	piID := "a1a23e24-220d-4a20-a678-c8c5e84056bd"
+	piID := " < POWER INSTANCE ID > "
 	name := fmt.Sprintf("power-go-test-volume-%d", randomNumber)
 	name2 := fmt.Sprintf("power-go-test-volume-%d", randomNumber2)
 	size := 20.0
@@ -44,14 +44,14 @@ func main() {
 	procType := "shared"
 	sysType := "s922"
 
-	// authenticator := &core.BearerTokenAuthenticator{
-	// 	BearerToken: token,
-	// }
-	authenticator := &core.IamAuthenticator{
-		ApiKey: "PaBXQ7QI6AyBm86Bqo0C45o_6LmW9I76csCkWLojdZLQ",
-		// Uncomment for test environment
-		URL: "https://iam.test.cloud.ibm.com",
+	authenticator := &core.BearerTokenAuthenticator{
+		BearerToken: token,
 	}
+	// authenticator := &core.IamAuthenticator{
+	// 	ApiKey: "< API KEY >",
+	// 	// Uncomment for test environment
+	// 	URL: "https://iam.test.cloud.ibm.com",
+	// }
 	// Create the session
 	options := &ps.IBMPIOptions{
 		Authenticator: authenticator,
@@ -103,7 +103,7 @@ func main() {
 	log.Printf("***************[3]****************** %+v\n", *createRespOk2)
 
 	volumeID2 := *createRespOk2.VolumeID
-	getResp2, err := powerClientVolume.Get(volumeID)
+	getResp2, err := powerClientVolume.Get(volumeID2)
 	if err != nil {
 		log.Fatal(err)
 	}
