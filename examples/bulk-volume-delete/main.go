@@ -2,9 +2,10 @@ package main
 
 import (
 	"context"
+	"crypto/rand"
 	"fmt"
 	"log"
-	"math/rand"
+	"math/big"
 	"time"
 
 	v "github.com/IBM-Cloud/power-go-client/clients/instance"
@@ -23,9 +24,16 @@ func main() {
 	url := region + ".power-iaas.test.cloud.ibm.com"
 
 	// volume inputs
-	rand.Seed(time.Now().UnixNano())
-	randomNumber := rand.Intn(100) + 1
-	randomNumber2 := rand.Intn(100) + 1
+	randomNumber, err := rand.Int(rand.Reader, big.NewInt(100))
+	if err != nil {
+		fmt.Println("Error generating random number:", err)
+		return
+	}
+	randomNumber2, err := rand.Int(rand.Reader, big.NewInt(100))
+	if err != nil {
+		fmt.Println("Error generating random number:", err)
+		return
+	}
 	piID := " < POWER INSTANCE ID > "
 	name := fmt.Sprintf("power-go-test-volume-%d", randomNumber)
 	name2 := fmt.Sprintf("power-go-test-volume-%d", randomNumber2)
