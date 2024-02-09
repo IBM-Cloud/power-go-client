@@ -286,3 +286,17 @@ func (f *IBMPIVolumeClient) BulkVolumeDelete(body *models.VolumesDelete) (*model
 	}
 	return partialResp.Payload, nil
 }
+
+// Bulk volutme attach
+func (f *IBMPIVolumeClient) BulkVolumeAttach(pvmInstanceID string, body *models.VolumesAttach) (*models.VolumesAttachmentResponse, error) {
+	params := p_cloud_volumes.NewPcloudV2PvminstancesVolumesPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(pvmInstanceID).WithBody(body)
+	resp, err := f.session.Power.PCloudVolumes.PcloudV2PvminstancesVolumesPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.AttachVolumesOperationFailed, body.VolumeIDs, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Attach volumes %s to server %s", body.VolumeIDs, pvmInstanceID)
+	}
+	return resp.Payload, nil
+}

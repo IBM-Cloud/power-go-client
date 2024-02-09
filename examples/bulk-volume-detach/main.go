@@ -125,7 +125,6 @@ func main() {
 		ImageID:    &imageID,
 		NetworkIDs: []string{networkID},
 		ServerName: &serverName,
-		VolumeIDs:  []string{volumeID, volumeID2},
 		Memory:     &memory,
 		Processors: &processors,
 		ProcType:   &procType,
@@ -156,16 +155,27 @@ func main() {
 	}
 	log.Printf("***************[6]****************** %+v \n", *getRespVM)
 	waitForInstanceAvailable(insID, powerClientVM)
+
+	log.Print("Attaching Volumes\n")
+	attachBody := &models.VolumesAttach{
+		VolumeIDs: []string{volumeID, volumeID2},
+	}
+	attachVolsResp, err := powerClientVolume.BulkVolumeAttach(insID, attachBody)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[7]****************** %+v\n", *attachVolsResp)
+	time.Sleep(2 * time.Minute)
+
 	log.Print("Detaching Volumes\n")
 	detachBody := &models.VolumesDetach{
 		VolumeIDs: []string{volumeID, volumeID2},
 	}
-
 	createRespOkDetach, err := powerClientVolume.BulkVolumeDetach(insID, detachBody)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[7]****************** %+v\n", *createRespOkDetach)
+	log.Printf("***************[8]****************** %+v\n", *createRespOkDetach)
 	log.Print("Deleting VM\n")
 	err = powerClientVM.Delete(insID)
 	if err != nil {
