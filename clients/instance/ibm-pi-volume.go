@@ -274,17 +274,17 @@ func (f *IBMPIVolumeClient) BulkVolumeDetach(pvmID string, body *models.VolumesD
 func (f *IBMPIVolumeClient) BulkVolumeDelete(body *models.VolumesDelete) (*models.VolumesDeleteResponse, error) {
 	params := p_cloud_volumes.NewPcloudV2VolumesDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
-	acceptedRes, partialResp, err := f.session.Power.PCloudVolumes.PcloudV2VolumesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	respOk, respPartial, err := f.session.Power.PCloudVolumes.PcloudV2VolumesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.DeleteVolumeOperationFailed, body.VolumeIDs, err))
 	}
-	if acceptedRes.Code() == 202 {
-		return nil, nil
+	if respOk != nil && respOk.Payload != nil {
+		return respOk.Payload, nil
 	}
-	if partialResp == nil || partialResp.Payload == nil {
-		return nil, fmt.Errorf("failed Deleting volumes : %s", body.VolumeIDs)
+	if respPartial != nil && respPartial.Payload != nil {
+		return respPartial.Payload, nil
 	}
-	return partialResp.Payload, nil
+	return nil, fmt.Errorf("failed Deleting volumes : %s", body.VolumeIDs)
 }
 
 // Bulk volutme attach
