@@ -82,34 +82,34 @@ func (f *IBMPISnapshotClient) GetAll() (*models.Snapshots, error) {
 }
 
 // Restore a Snapshot
-func (f *IBMPISnapshotClient) Restore(instanceID, snapshotID, restoreFailAction string, body *models.SnapshotRestore) (*models.Snapshot, error) {
+func (f *IBMPISnapshotClient) Restore(id, snapshotID, restoreFailAction string, body *models.SnapshotRestore) (*models.Snapshot, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(instanceID).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
 		WithSnapshotID(snapshotID).WithRestoreFailAction(&restoreFailAction).
 		WithBody(body)
 	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, instanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s", snapshotID, instanceID)
+		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s", snapshotID, id)
 	}
 	return resp.Payload, nil
 }
 
 // Deprecated Restore function a Snapshot
-func (f *IBMPISnapshotClient) Create(instanceID, snapshotID string, body *models.SnapshotRestore) (*models.Snapshot, error) {
+func (f *IBMPISnapshotClient) Create(id, snapshotID string, body *models.SnapshotRestore) (*models.Snapshot, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsRestorePostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(instanceID).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
 		WithSnapshotID(snapshotID).WithBody(body)
 	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesSnapshotsRestorePost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, instanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s: %w", snapshotID, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s", snapshotID, instanceID)
+		return nil, fmt.Errorf("failed to restore PI Snapshot %s of the instance %s", snapshotID, id)
 	}
 	return resp.Payload, nil
 }
