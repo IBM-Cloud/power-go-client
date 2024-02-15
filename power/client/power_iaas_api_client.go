@@ -15,6 +15,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/catalog"
 	"github.com/IBM-Cloud/power-go-client/power/client/datacenters"
 	"github.com/IBM-Cloud/power-go-client/power/client/hardware_platforms"
+	"github.com/IBM-Cloud/power-go-client/power/client/hostgroups"
 	"github.com/IBM-Cloud/power-go-client/power/client/iaas_service_broker"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_locations"
@@ -101,6 +102,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.Catalog = catalog.New(transport, formats)
 	cli.Datacenters = datacenters.New(transport, formats)
 	cli.HardwarePlatforms = hardware_platforms.New(transport, formats)
+	cli.Hostgroups = hostgroups.New(transport, formats)
 	cli.IaasServiceBroker = iaas_service_broker.New(transport, formats)
 	cli.InternalPowervsInstances = internal_power_v_s_instances.New(transport, formats)
 	cli.InternalPowervsLocations = internal_power_v_s_locations.New(transport, formats)
@@ -192,6 +194,8 @@ type PowerIaasAPI struct {
 
 	HardwarePlatforms hardware_platforms.ClientService
 
+	Hostgroups hostgroups.ClientService
+
 	IaasServiceBroker iaas_service_broker.ClientService
 
 	InternalPowervsInstances internal_power_v_s_instances.ClientService
@@ -277,6 +281,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Catalog.SetTransport(transport)
 	c.Datacenters.SetTransport(transport)
 	c.HardwarePlatforms.SetTransport(transport)
+	c.Hostgroups.SetTransport(transport)
 	c.IaasServiceBroker.SetTransport(transport)
 	c.InternalPowervsInstances.SetTransport(transport)
 	c.InternalPowervsLocations.SetTransport(transport)
