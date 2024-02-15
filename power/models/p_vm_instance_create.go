@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
+	// The name of the host or hostgroup where to deploy the VM
+	DeployTarget string `json:"deployTarget,omitempty"`
+
 	// The custom deployment type
 	DeploymentType string `json:"deploymentType,omitempty"`
 
