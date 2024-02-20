@@ -87,7 +87,7 @@ V1HostgroupsIDPutOK describes a response with status code 200, with default head
 OK
 */
 type V1HostgroupsIDPutOK struct {
-	Payload *models.HostgroupWithSharingInfo
+	Payload *models.Hostgroup
 }
 
 // IsSuccess returns true when this v1 hostgroups Id put o k response has a 2xx status code
@@ -128,13 +128,13 @@ func (o *V1HostgroupsIDPutOK) String() string {
 	return fmt.Sprintf("[PUT /v1/hostgroups/{hostgroup_id}][%d] v1HostgroupsIdPutOK  %+v", 200, o.Payload)
 }
 
-func (o *V1HostgroupsIDPutOK) GetPayload() *models.HostgroupWithSharingInfo {
+func (o *V1HostgroupsIDPutOK) GetPayload() *models.Hostgroup {
 	return o.Payload
 }
 
 func (o *V1HostgroupsIDPutOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.HostgroupWithSharingInfo)
+	o.Payload = new(models.Hostgroup)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
