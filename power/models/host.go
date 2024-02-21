@@ -35,6 +35,9 @@ type Host struct {
 
 	// Status of the host (enabled/disabled)
 	Status string `json:"status,omitempty"`
+
+	// System type
+	SysType string `json:"sysType,omitempty"`
 }
 
 // Validate validates this host

@@ -35,6 +35,9 @@ type Hostgroup struct {
 
 	// Name of the workspace owning the hostgroup
 	Primary string `json:"primary,omitempty"`
+
+	// Names of workspaces the hostgroup has been shared with
+	Secondaries []string `json:"secondaries"`
 }
 
 // Validate validates this hostgroup

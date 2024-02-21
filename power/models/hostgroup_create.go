@@ -27,6 +27,9 @@ type HostgroupCreate struct {
 	// Name of the hostgroup to create
 	// Required: true
 	Name *string `json:"name"`
+
+	// List of workspace names to share the hostgroup with (optional)
+	Secondaries []*Secondary `json:"secondaries"`
 }
 
 // Validate validates this hostgroup create
@@ -38,6 +41,10 @@ func (m *HostgroupCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSecondaries(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -83,11 +90,41 @@ func (m *HostgroupCreate) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *HostgroupCreate) validateSecondaries(formats strfmt.Registry) error {
+	if swag.IsZero(m.Secondaries) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Secondaries); i++ {
+		if swag.IsZero(m.Secondaries[i]) { // not required
+			continue
+		}
+
+		if m.Secondaries[i] != nil {
+			if err := m.Secondaries[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("secondaries" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("secondaries" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this hostgroup create based on the context it is used
 func (m *HostgroupCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateHosts(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSecondaries(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -112,6 +149,31 @@ func (m *HostgroupCreate) contextValidateHosts(ctx context.Context, formats strf
 					return ve.ValidateName("hosts" + "." + strconv.Itoa(i))
 				} else if ce, ok := err.(*errors.CompositeError); ok {
 					return ce.ValidateName("hosts" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *HostgroupCreate) contextValidateSecondaries(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Secondaries); i++ {
+
+		if m.Secondaries[i] != nil {
+
+			if swag.IsZero(m.Secondaries[i]) { // not required
+				return nil
+			}
+
+			if err := m.Secondaries[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("secondaries" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("secondaries" + "." + strconv.Itoa(i))
 				}
 				return err
 			}
