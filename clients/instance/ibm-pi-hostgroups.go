@@ -65,7 +65,7 @@ func (f *IBMPIHostgroupsClient) CreateHostgroup(body *models.HostgroupCreate) (*
 }
 
 // Update a Hostgroup
-func (f *IBMPIHostgroupsClient) UpdateHostgroup(body *models.HostgroupShareOp, id string) (*models.HostgroupWithSharingInfo, error) {
+func (f *IBMPIHostgroupsClient) UpdateHostgroup(body *models.HostgroupShareOp, id string) (*models.Hostgroup, error) {
 	params := hostgroups.NewV1HostgroupsIDPutParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithBody(body).WithHostgroupID(id)
 	resp, err := f.session.Power.Hostgroups.V1HostgroupsIDPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -79,7 +79,7 @@ func (f *IBMPIHostgroupsClient) UpdateHostgroup(body *models.HostgroupShareOp, i
 }
 
 // Get a Hostgroup
-func (f *IBMPIHostgroupsClient) GetHostgroup(id string) (*models.HostgroupWithSharingInfo, error) {
+func (f *IBMPIHostgroupsClient) GetHostgroup(id string) (*models.Hostgroup, error) {
 	params := hostgroups.NewV1HostgroupsIDGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithHostgroupID(id)
 	resp, err := f.session.Power.Hostgroups.V1HostgroupsIDGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
