@@ -22,7 +22,7 @@ type AvailableHost struct {
 	Capacity *HostAvailableCapacity `json:"capacity,omitempty"`
 
 	// How many hosts of such type/capacities are available
-	Count float64 `json:"count,omitempty"`
+	Count int64 `json:"count,omitempty"`
 
 	// System type
 	SysType string `json:"sysType,omitempty"`
