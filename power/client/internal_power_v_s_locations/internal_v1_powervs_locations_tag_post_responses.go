@@ -69,7 +69,6 @@ InternalV1PowervsLocationsTagPostOK describes a response with status code 200, w
 OK
 */
 type InternalV1PowervsLocationsTagPostOK struct {
-	Payload *models.SatelliteOrder
 }
 
 // IsSuccess returns true when this internal v1 powervs locations tag post o k response has a 2xx status code
@@ -103,25 +102,14 @@ func (o *InternalV1PowervsLocationsTagPostOK) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsTagPostOK) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/powervs/locations/tag][%d] internalV1PowervsLocationsTagPostOK  %+v", 200, o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/powervs/locations/tag][%d] internalV1PowervsLocationsTagPostOK ", 200)
 }
 
 func (o *InternalV1PowervsLocationsTagPostOK) String() string {
-	return fmt.Sprintf("[POST /internal/v1/powervs/locations/tag][%d] internalV1PowervsLocationsTagPostOK  %+v", 200, o.Payload)
-}
-
-func (o *InternalV1PowervsLocationsTagPostOK) GetPayload() *models.SatelliteOrder {
-	return o.Payload
+	return fmt.Sprintf("[POST /internal/v1/powervs/locations/tag][%d] internalV1PowervsLocationsTagPostOK ", 200)
 }
 
 func (o *InternalV1PowervsLocationsTagPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.SatelliteOrder)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
 
 	return nil
 }

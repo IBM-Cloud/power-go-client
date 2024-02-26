@@ -65,9 +65,9 @@ type InternalV1PowervsLocationsTagDeleteParams struct {
 
 	/* Body.
 
-	   Parameters for activating a satellite location
+	   Parameters for tagging a satellite location
 	*/
-	Body *models.SatelliteRegistration
+	Body *models.SatelliteTag
 
 	timeout    time.Duration
 	Context    context.Context
@@ -123,13 +123,13 @@ func (o *InternalV1PowervsLocationsTagDeleteParams) SetHTTPClient(client *http.C
 }
 
 // WithBody adds the body to the internal v1 powervs locations tag delete params
-func (o *InternalV1PowervsLocationsTagDeleteParams) WithBody(body *models.SatelliteRegistration) *InternalV1PowervsLocationsTagDeleteParams {
+func (o *InternalV1PowervsLocationsTagDeleteParams) WithBody(body *models.SatelliteTag) *InternalV1PowervsLocationsTagDeleteParams {
 	o.SetBody(body)
 	return o
 }
 
 // SetBody adds the body to the internal v1 powervs locations tag delete params
-func (o *InternalV1PowervsLocationsTagDeleteParams) SetBody(body *models.SatelliteRegistration) {
+func (o *InternalV1PowervsLocationsTagDeleteParams) SetBody(body *models.SatelliteTag) {
 	o.Body = body
 }
 

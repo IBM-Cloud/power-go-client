@@ -19,11 +19,12 @@ import (
 // swagger:model SatelliteRegistration
 type SatelliteRegistration struct {
 
-	// Requested Number of Days to Delay Order Activation
+	// Requested Number of Days to Delay Order Activation. Defaults to 1.
 	DaysToDelay int64 `json:"daysToDelay,omitempty"`
 
 	// Billing ID for Power Private Cloud Satellite Subscription
-	OrderID string `json:"orderID,omitempty"`
+	// Required: true
+	OrderID *string `json:"orderID"`
 
 	// CRN of satellite to register
 	// Required: true
@@ -34,6 +35,10 @@ type SatelliteRegistration struct {
 func (m *SatelliteRegistration) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateOrderID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSatelliteID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -41,6 +46,15 @@ func (m *SatelliteRegistration) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SatelliteRegistration) validateOrderID(formats strfmt.Registry) error {
+
+	if err := validate.Required("orderID", "body", m.OrderID); err != nil {
+		return err
+	}
+
 	return nil
 }
 
