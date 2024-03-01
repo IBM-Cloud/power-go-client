@@ -36,6 +36,9 @@ type SAPProfile struct {
 	// Required: true
 	ProfileID *string `json:"profileID"`
 
+	// List of supported systems
+	SupportedSystems []string `json:"supportedSystems"`
+
 	// Type of profile
 	// Required: true
 	// Enum: [balanced compute memory non-production ultra-memory]
