@@ -9,12 +9,20 @@ updates:
     directory: /
     schedule:
       interval: daily
+    branches:
+      - "master"
+      - "dev"
     assignees:
       - yussufsh
+      - michaelkad
 
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+    branches:
+      - "master"
+      - "dev"
     assignees:
       - yussufsh
+      - michaelkad
