@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
 )
@@ -17,38 +18,126 @@ import (
 // swagger:model HostCapacity
 type HostCapacity struct {
 
-	// Number of cores currently available
-	AvailableCore float64 `json:"availableCore,omitempty"`
+	// Core capacity of the host
+	Cores *HostResourceCapacity `json:"cores,omitempty"`
 
-	// Amount of memory currently available (in MB)
-	AvailableMemory float64 `json:"availableMemory,omitempty"`
-
-	// Number of cores reserved for system use
-	ReservedCore float64 `json:"reservedCore,omitempty"`
-
-	// Amount of memory reserved for system use (in MB)
-	ReservedMemory float64 `json:"reservedMemory,omitempty"`
-
-	// Total number of cores of the host
-	TotalCore float64 `json:"totalCore,omitempty"`
-
-	// Total amount of memory of the host (in MB)
-	TotalMemory float64 `json:"totalMemory,omitempty"`
-
-	// Number of cores in use on the host
-	UsedCore float64 `json:"usedCore,omitempty"`
-
-	// Amount of memory used on the host (in MB)
-	UsedMemory float64 `json:"usedMemory,omitempty"`
+	// Memory capacity of the host (in MB)
+	Memory *HostResourceCapacity `json:"memory,omitempty"`
 }
 
 // Validate validates this host capacity
 func (m *HostCapacity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateCores(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMemory(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
 	return nil
 }
 
-// ContextValidate validates this host capacity based on context it is used
+func (m *HostCapacity) validateCores(formats strfmt.Registry) error {
+	if swag.IsZero(m.Cores) { // not required
+		return nil
+	}
+
+	if m.Cores != nil {
+		if err := m.Cores.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cores")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cores")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostCapacity) validateMemory(formats strfmt.Registry) error {
+	if swag.IsZero(m.Memory) { // not required
+		return nil
+	}
+
+	if m.Memory != nil {
+		if err := m.Memory.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("memory")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("memory")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+// ContextValidate validate this host capacity based on the context it is used
 func (m *HostCapacity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCores(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMemory(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HostCapacity) contextValidateCores(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Cores != nil {
+
+		if swag.IsZero(m.Cores) { // not required
+			return nil
+		}
+
+		if err := m.Cores.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("cores")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("cores")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *HostCapacity) contextValidateMemory(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.Memory != nil {
+
+		if swag.IsZero(m.Memory) { // not required
+			return nil
+		}
+
+		if err := m.Memory.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("memory")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("memory")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
