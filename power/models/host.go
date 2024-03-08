@@ -24,8 +24,8 @@ type Host struct {
 	// Name of the host (chosen by the user)
 	DisplayName string `json:"displayName,omitempty"`
 
-	// Link to the owning hostgroup
-	Hostgroup HostgroupHref `json:"hostgroup,omitempty"`
+	// Information about the owning hostgroup
+	Hostgroup *HostgroupSummary `json:"hostgroup,omitempty"`
 
 	// ID of the host
 	ID string `json:"id,omitempty"`
@@ -82,13 +82,15 @@ func (m *Host) validateHostgroup(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.Hostgroup.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("hostgroup")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("hostgroup")
+	if m.Hostgroup != nil {
+		if err := m.Hostgroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hostgroup")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hostgroup")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -135,17 +137,20 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 
 func (m *Host) contextValidateHostgroup(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Hostgroup) { // not required
-		return nil
-	}
+	if m.Hostgroup != nil {
 
-	if err := m.Hostgroup.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("hostgroup")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("hostgroup")
+		if swag.IsZero(m.Hostgroup) { // not required
+			return nil
 		}
-		return err
+
+		if err := m.Hostgroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hostgroup")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hostgroup")
+			}
+			return err
+		}
 	}
 
 	return nil
