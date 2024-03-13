@@ -39,6 +39,9 @@ type CreateCosImageImportJob struct {
 	// Required: true
 	ImageName *string `json:"imageName"`
 
+	// Import details for SAP images
+	ImportDetails *ImageImportDetails `json:"importDetails,omitempty"`
+
 	// Image OS Type, required if importing a raw image; raw images can only be imported using the command line interface
 	// Enum: [aix ibmi rhel sles]
 	OsType string `json:"osType,omitempty"`
@@ -77,6 +80,10 @@ func (m *CreateCosImageImportJob) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateImageName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateImportDetails(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -167,6 +174,25 @@ func (m *CreateCosImageImportJob) validateImageName(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *CreateCosImageImportJob) validateImportDetails(formats strfmt.Registry) error {
+	if swag.IsZero(m.ImportDetails) { // not required
+		return nil
+	}
+
+	if m.ImportDetails != nil {
+		if err := m.ImportDetails.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("importDetails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("importDetails")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 var createCosImageImportJobTypeOsTypePropEnum []interface{}
 
 func init() {
@@ -247,6 +273,10 @@ func (m *CreateCosImageImportJob) validateStorageAffinity(formats strfmt.Registr
 func (m *CreateCosImageImportJob) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateImportDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateStorageAffinity(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -254,6 +284,27 @@ func (m *CreateCosImageImportJob) ContextValidate(ctx context.Context, formats s
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *CreateCosImageImportJob) contextValidateImportDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ImportDetails != nil {
+
+		if swag.IsZero(m.ImportDetails) { // not required
+			return nil
+		}
+
+		if err := m.ImportDetails.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("importDetails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("importDetails")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
