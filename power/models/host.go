@@ -135,13 +135,15 @@ func (m *Host) validateUserTags(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("userTags")
+	if m.Hostgroup != nil {
+		if err := m.UserTags.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("userTags")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("userTags")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -196,11 +198,13 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 
 func (m *Host) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
-		return nil
-	}
+	if m.Hostgroup != nil {
 
-	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if swag.IsZero(m.Crn) { // not required
+			return nil
+		}
+
+		if err := m.Crn.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("crn")
 		} else if ce, ok := err.(*errors.CompositeError); ok {
@@ -236,12 +240,13 @@ func (m *Host) contextValidateHostGroup(ctx context.Context, formats strfmt.Regi
 func (m *Host) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("userTags")
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("userTags")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("userTags")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
