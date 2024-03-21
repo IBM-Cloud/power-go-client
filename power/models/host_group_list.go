@@ -14,13 +14,13 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// HostgroupList hostgroup list
+// HostGroupList host group list
 //
-// swagger:model HostgroupList
-type HostgroupList []*Hostgroup
+// swagger:model HostGroupList
+type HostGroupList []*HostGroup
 
-// Validate validates this hostgroup list
-func (m HostgroupList) Validate(formats strfmt.Registry) error {
+// Validate validates this host group list
+func (m HostGroupList) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	for i := 0; i < len(m); i++ {
@@ -47,8 +47,8 @@ func (m HostgroupList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this hostgroup list based on the context it is used
-func (m HostgroupList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this host group list based on the context it is used
+func (m HostGroupList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	for i := 0; i < len(m); i++ {

@@ -15,33 +15,33 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// Hostgroup Description of a hostgroup
+// HostGroup Description of a host group
 //
-// swagger:model Hostgroup
-type Hostgroup struct {
+// swagger:model HostGroup
+type HostGroup struct {
 
-	// Date/Time of hostgroup creation
+	// Date/Time of host group creation
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
 
 	// List of hosts
 	Hosts []HostHref `json:"hosts"`
 
-	// Hostgroup ID
+	// Host group ID
 	ID string `json:"id,omitempty"`
 
-	// Name of the hostgroup
+	// Name of the host group
 	Name string `json:"name,omitempty"`
 
-	// Name of the workspace owning the hostgroup
+	// Name of the workspace owning the host group
 	Primary string `json:"primary,omitempty"`
 
-	// Names of workspaces the hostgroup has been shared with
+	// Names of workspaces the host group has been shared with
 	Secondaries []string `json:"secondaries"`
 }
 
-// Validate validates this hostgroup
-func (m *Hostgroup) Validate(formats strfmt.Registry) error {
+// Validate validates this host group
+func (m *HostGroup) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreationDate(formats); err != nil {
@@ -58,7 +58,7 @@ func (m *Hostgroup) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Hostgroup) validateCreationDate(formats strfmt.Registry) error {
+func (m *HostGroup) validateCreationDate(formats strfmt.Registry) error {
 	if swag.IsZero(m.CreationDate) { // not required
 		return nil
 	}
@@ -70,7 +70,7 @@ func (m *Hostgroup) validateCreationDate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Hostgroup) validateHosts(formats strfmt.Registry) error {
+func (m *HostGroup) validateHosts(formats strfmt.Registry) error {
 	if swag.IsZero(m.Hosts) { // not required
 		return nil
 	}
@@ -91,8 +91,8 @@ func (m *Hostgroup) validateHosts(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this hostgroup based on the context it is used
-func (m *Hostgroup) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this host group based on the context it is used
+func (m *HostGroup) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateHosts(ctx, formats); err != nil {
@@ -105,7 +105,7 @@ func (m *Hostgroup) ContextValidate(ctx context.Context, formats strfmt.Registry
 	return nil
 }
 
-func (m *Hostgroup) contextValidateHosts(ctx context.Context, formats strfmt.Registry) error {
+func (m *HostGroup) contextValidateHosts(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Hosts); i++ {
 
@@ -128,7 +128,7 @@ func (m *Hostgroup) contextValidateHosts(ctx context.Context, formats strfmt.Reg
 }
 
 // MarshalBinary interface implementation
-func (m *Hostgroup) MarshalBinary() ([]byte, error) {
+func (m *HostGroup) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -136,8 +136,8 @@ func (m *Hostgroup) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *Hostgroup) UnmarshalBinary(b []byte) error {
-	var res Hostgroup
+func (m *HostGroup) UnmarshalBinary(b []byte) error {
+	var res HostGroup
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
