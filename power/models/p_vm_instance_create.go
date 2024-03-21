@@ -21,7 +21,7 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
-	// The name of the host or hostgroup where to deploy the VM
+	// The name of the host or host group where to deploy the VM
 	DeployTarget string `json:"deployTarget,omitempty"`
 
 	// The custom deployment type
@@ -106,7 +106,7 @@ type PVMInstanceCreate struct {
 	// System type used to host the instance
 	SysType string `json:"sysType,omitempty"`
 
-	// Cloud init user defined data
+	// Cloud init user defined data; For FLS, only cloud-config instance-data is supported and data must not be compressed or exceed 63K
 	UserData string `json:"userData,omitempty"`
 
 	// The pvm instance virtual CPU information

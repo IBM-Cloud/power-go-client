@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// HostCreate Parameters to add a host to an existing hostgroup
+// HostCreate Parameters to add a host to an existing host group
 //
 // swagger:model HostCreate
 type HostCreate struct {
@@ -23,9 +23,9 @@ type HostCreate struct {
 	// Required: true
 	Host *AddHost `json:"host"`
 
-	// ID of the hostgroup to which the host should be added
+	// ID of the host group to which the host should be added
 	// Required: true
-	HostgroupID *string `json:"hostgroupID"`
+	HostGroupID *string `json:"hostGroupID"`
 }
 
 // Validate validates this host create
@@ -36,7 +36,7 @@ func (m *HostCreate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateHostgroupID(formats); err != nil {
+	if err := m.validateHostGroupID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -66,9 +66,9 @@ func (m *HostCreate) validateHost(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostCreate) validateHostgroupID(formats strfmt.Registry) error {
+func (m *HostCreate) validateHostGroupID(formats strfmt.Registry) error {
 
-	if err := validate.Required("hostgroupID", "body", m.HostgroupID); err != nil {
+	if err := validate.Required("hostGroupID", "body", m.HostGroupID); err != nil {
 		return err
 	}
 
