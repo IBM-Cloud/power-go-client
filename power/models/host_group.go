@@ -27,7 +27,7 @@ type HostGroup struct {
 	// List of hosts
 	Hosts []HostHref `json:"hosts"`
 
-	// Host group ID
+	// Host Group ID
 	ID string `json:"id,omitempty"`
 
 	// Name of the host group
