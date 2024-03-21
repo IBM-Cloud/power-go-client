@@ -15,25 +15,25 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// HostgroupCreate Parameters for the creation of a new hostgroup
+// HostGroupCreate Parameters for the creation of a new host group
 //
-// swagger:model HostgroupCreate
-type HostgroupCreate struct {
+// swagger:model HostGroupCreate
+type HostGroupCreate struct {
 
-	// List of hosts to add to the group
+	// List of hosts to add to the host group
 	// Required: true
 	Hosts []*AddHost `json:"hosts"`
 
-	// Name of the hostgroup to create
+	// Name of the host group to create
 	// Required: true
 	Name *string `json:"name"`
 
-	// List of workspace names to share the hostgroup with (optional)
+	// List of workspace names to share the host group with (optional)
 	Secondaries []*Secondary `json:"secondaries"`
 }
 
-// Validate validates this hostgroup create
-func (m *HostgroupCreate) Validate(formats strfmt.Registry) error {
+// Validate validates this host group create
+func (m *HostGroupCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateHosts(formats); err != nil {
@@ -54,7 +54,7 @@ func (m *HostgroupCreate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostgroupCreate) validateHosts(formats strfmt.Registry) error {
+func (m *HostGroupCreate) validateHosts(formats strfmt.Registry) error {
 
 	if err := validate.Required("hosts", "body", m.Hosts); err != nil {
 		return err
@@ -81,7 +81,7 @@ func (m *HostgroupCreate) validateHosts(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostgroupCreate) validateName(formats strfmt.Registry) error {
+func (m *HostGroupCreate) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
@@ -90,7 +90,7 @@ func (m *HostgroupCreate) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostgroupCreate) validateSecondaries(formats strfmt.Registry) error {
+func (m *HostGroupCreate) validateSecondaries(formats strfmt.Registry) error {
 	if swag.IsZero(m.Secondaries) { // not required
 		return nil
 	}
@@ -116,8 +116,8 @@ func (m *HostgroupCreate) validateSecondaries(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this hostgroup create based on the context it is used
-func (m *HostgroupCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this host group create based on the context it is used
+func (m *HostGroupCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateHosts(ctx, formats); err != nil {
@@ -134,7 +134,7 @@ func (m *HostgroupCreate) ContextValidate(ctx context.Context, formats strfmt.Re
 	return nil
 }
 
-func (m *HostgroupCreate) contextValidateHosts(ctx context.Context, formats strfmt.Registry) error {
+func (m *HostGroupCreate) contextValidateHosts(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Hosts); i++ {
 
@@ -159,7 +159,7 @@ func (m *HostgroupCreate) contextValidateHosts(ctx context.Context, formats strf
 	return nil
 }
 
-func (m *HostgroupCreate) contextValidateSecondaries(ctx context.Context, formats strfmt.Registry) error {
+func (m *HostGroupCreate) contextValidateSecondaries(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Secondaries); i++ {
 
@@ -185,7 +185,7 @@ func (m *HostgroupCreate) contextValidateSecondaries(ctx context.Context, format
 }
 
 // MarshalBinary interface implementation
-func (m *HostgroupCreate) MarshalBinary() ([]byte, error) {
+func (m *HostGroupCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -193,8 +193,8 @@ func (m *HostgroupCreate) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *HostgroupCreate) UnmarshalBinary(b []byte) error {
-	var res HostgroupCreate
+func (m *HostGroupCreate) UnmarshalBinary(b []byte) error {
+	var res HostGroupCreate
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

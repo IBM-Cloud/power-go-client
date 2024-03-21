@@ -13,20 +13,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// HostCapacity host capacity
+// AvailableHostCapacity available host capacity
 //
-// swagger:model HostCapacity
-type HostCapacity struct {
+// swagger:model AvailableHostCapacity
+type AvailableHostCapacity struct {
 
 	// Core capacity of the host
-	Cores *HostResourceCapacity `json:"cores,omitempty"`
+	Cores *AvailableHostResourceCapacity `json:"cores,omitempty"`
 
 	// Memory capacity of the host (in MB)
-	Memory *HostResourceCapacity `json:"memory,omitempty"`
+	Memory *AvailableHostResourceCapacity `json:"memory,omitempty"`
 }
 
-// Validate validates this host capacity
-func (m *HostCapacity) Validate(formats strfmt.Registry) error {
+// Validate validates this available host capacity
+func (m *AvailableHostCapacity) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCores(formats); err != nil {
@@ -43,7 +43,7 @@ func (m *HostCapacity) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostCapacity) validateCores(formats strfmt.Registry) error {
+func (m *AvailableHostCapacity) validateCores(formats strfmt.Registry) error {
 	if swag.IsZero(m.Cores) { // not required
 		return nil
 	}
@@ -62,7 +62,7 @@ func (m *HostCapacity) validateCores(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostCapacity) validateMemory(formats strfmt.Registry) error {
+func (m *AvailableHostCapacity) validateMemory(formats strfmt.Registry) error {
 	if swag.IsZero(m.Memory) { // not required
 		return nil
 	}
@@ -81,8 +81,8 @@ func (m *HostCapacity) validateMemory(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this host capacity based on the context it is used
-func (m *HostCapacity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this available host capacity based on the context it is used
+func (m *AvailableHostCapacity) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateCores(ctx, formats); err != nil {
@@ -99,7 +99,7 @@ func (m *HostCapacity) ContextValidate(ctx context.Context, formats strfmt.Regis
 	return nil
 }
 
-func (m *HostCapacity) contextValidateCores(ctx context.Context, formats strfmt.Registry) error {
+func (m *AvailableHostCapacity) contextValidateCores(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Cores != nil {
 
@@ -120,7 +120,7 @@ func (m *HostCapacity) contextValidateCores(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *HostCapacity) contextValidateMemory(ctx context.Context, formats strfmt.Registry) error {
+func (m *AvailableHostCapacity) contextValidateMemory(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Memory != nil {
 
@@ -142,7 +142,7 @@ func (m *HostCapacity) contextValidateMemory(ctx context.Context, formats strfmt
 }
 
 // MarshalBinary interface implementation
-func (m *HostCapacity) MarshalBinary() ([]byte, error) {
+func (m *AvailableHostCapacity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -150,8 +150,8 @@ func (m *HostCapacity) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *HostCapacity) UnmarshalBinary(b []byte) error {
-	var res HostCapacity
+func (m *AvailableHostCapacity) UnmarshalBinary(b []byte) error {
+	var res AvailableHostCapacity
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

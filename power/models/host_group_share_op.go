@@ -14,20 +14,20 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// HostgroupShareOp Operation updating the sharing status (mutually exclusive)
+// HostGroupShareOp Operation updating the sharing status (mutually exclusive)
 //
-// swagger:model HostgroupShareOp
-type HostgroupShareOp struct {
+// swagger:model HostGroupShareOp
+type HostGroupShareOp struct {
 
-	// List of workspace names to share the hostgroup with
+	// List of workspace names to share the host group with
 	Add []*Secondary `json:"add"`
 
-	// A workspace name to stop sharing the hostgroup with
+	// A workspace name to stop sharing the host group with
 	Remove string `json:"remove,omitempty"`
 }
 
-// Validate validates this hostgroup share op
-func (m *HostgroupShareOp) Validate(formats strfmt.Registry) error {
+// Validate validates this host group share op
+func (m *HostGroupShareOp) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAdd(formats); err != nil {
@@ -40,7 +40,7 @@ func (m *HostgroupShareOp) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *HostgroupShareOp) validateAdd(formats strfmt.Registry) error {
+func (m *HostGroupShareOp) validateAdd(formats strfmt.Registry) error {
 	if swag.IsZero(m.Add) { // not required
 		return nil
 	}
@@ -66,8 +66,8 @@ func (m *HostgroupShareOp) validateAdd(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this hostgroup share op based on the context it is used
-func (m *HostgroupShareOp) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this host group share op based on the context it is used
+func (m *HostGroupShareOp) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateAdd(ctx, formats); err != nil {
@@ -80,7 +80,7 @@ func (m *HostgroupShareOp) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *HostgroupShareOp) contextValidateAdd(ctx context.Context, formats strfmt.Registry) error {
+func (m *HostGroupShareOp) contextValidateAdd(ctx context.Context, formats strfmt.Registry) error {
 
 	for i := 0; i < len(m.Add); i++ {
 
@@ -106,7 +106,7 @@ func (m *HostgroupShareOp) contextValidateAdd(ctx context.Context, formats strfm
 }
 
 // MarshalBinary interface implementation
-func (m *HostgroupShareOp) MarshalBinary() ([]byte, error) {
+func (m *HostGroupShareOp) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -114,8 +114,8 @@ func (m *HostgroupShareOp) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *HostgroupShareOp) UnmarshalBinary(b []byte) error {
-	var res HostgroupShareOp
+func (m *HostGroupShareOp) UnmarshalBinary(b []byte) error {
+	var res HostGroupShareOp
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
