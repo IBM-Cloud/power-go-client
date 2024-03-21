@@ -66,6 +66,7 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateUserTags(formats); err != nil {
+	if err := m.validateHostGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
