@@ -27,9 +27,6 @@ type PVMInstanceCreate struct {
 	// The deployment of a dedicated host
 	DeploymentTarget *DeploymentTarget `json:"deploymentTarget,omitempty"`
 
-	// The deployment of a dedicated host
-	DeploymentTarget *DeploymentTarget `json:"deploymentTarget,omitempty"`
-
 	// The custom deployment type
 	DeploymentType string `json:"deploymentType,omitempty"`
 
@@ -217,25 +214,6 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *PVMInstanceCreate) validateDeploymentTarget(formats strfmt.Registry) error {
-	if swag.IsZero(m.DeploymentTarget) { // not required
-		return nil
-	}
-
-	if m.DeploymentTarget != nil {
-		if err := m.DeploymentTarget.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("deploymentTarget")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("deploymentTarget")
-			}
-			return err
-		}
-	}
-
 	return nil
 }
 
