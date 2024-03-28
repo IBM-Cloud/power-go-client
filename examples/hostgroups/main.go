@@ -54,7 +54,7 @@ func main() {
 	}
 	log.Printf("***************[0]****************** %+v \n", getAllAvailableHost)
 
-	getHostgroups, err := powerClient.GetHostgroups()
+	getHostgroups, err := powerClient.GetHostGroups()
 	if err != nil {
 		log.Fatal(err)
 	}
