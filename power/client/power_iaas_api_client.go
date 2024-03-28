@@ -48,6 +48,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_onboarding"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
+	"github.com/IBM-Cloud/power-go-client/power/client/power_edge_router"
 	"github.com/IBM-Cloud/power-go-client/power/client/service_bindings"
 	"github.com/IBM-Cloud/power-go-client/power/client/service_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/storage_types"
@@ -135,6 +136,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudVolumeGroups = p_cloud_volume_groups.New(transport, formats)
 	cli.PCloudVolumeOnboarding = p_cloud_volume_onboarding.New(transport, formats)
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
+	cli.PowerEdgeRouter = power_edge_router.New(transport, formats)
 	cli.ServiceBindings = service_bindings.New(transport, formats)
 	cli.ServiceInstances = service_instances.New(transport, formats)
 	cli.StorageTypes = storage_types.New(transport, formats)
@@ -260,6 +262,8 @@ type PowerIaasAPI struct {
 
 	PCloudVolumes p_cloud_volumes.ClientService
 
+	PowerEdgeRouter power_edge_router.ClientService
+
 	ServiceBindings service_bindings.ClientService
 
 	ServiceInstances service_instances.ClientService
@@ -314,6 +318,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudVolumeGroups.SetTransport(transport)
 	c.PCloudVolumeOnboarding.SetTransport(transport)
 	c.PCloudVolumes.SetTransport(transport)
+	c.PowerEdgeRouter.SetTransport(transport)
 	c.ServiceBindings.SetTransport(transport)
 	c.ServiceInstances.SetTransport(transport)
 	c.StorageTypes.SetTransport(transport)

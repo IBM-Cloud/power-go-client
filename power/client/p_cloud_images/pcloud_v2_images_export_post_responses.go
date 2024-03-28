@@ -356,7 +356,7 @@ func NewPcloudV2ImagesExportPostNotFound() *PcloudV2ImagesExportPostNotFound {
 /*
 PcloudV2ImagesExportPostNotFound describes a response with status code 404, with default header values.
 
-image id not found
+Not Found
 */
 type PcloudV2ImagesExportPostNotFound struct {
 	Payload *models.Error
