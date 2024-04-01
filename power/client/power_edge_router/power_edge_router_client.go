@@ -36,7 +36,7 @@ type ClientService interface {
 }
 
 /*
-V1PoweredgerouterActionPost performs an power edge router action migrate start migrate validate on a workspace
+V1PoweredgerouterActionPost performs a power edge router action migrate start migrate validate on a workspace
 */
 func (a *Client) V1PoweredgerouterActionPost(params *V1PoweredgerouterActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1PoweredgerouterActionPostOK, error) {
 	// TODO: Validate the params before sending
