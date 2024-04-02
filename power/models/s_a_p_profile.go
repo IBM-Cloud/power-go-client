@@ -28,6 +28,10 @@ type SAPProfile struct {
 	// Required: true
 	Cores *int64 `json:"cores"`
 
+	// Requires full system for deployment
+	// Required: true
+	FullSystemProfile *bool `json:"fullSystemProfile"`
+
 	// Amount of memory (in GB)
 	// Required: true
 	Memory *int64 `json:"memory"`
@@ -36,13 +40,22 @@ type SAPProfile struct {
 	// Required: true
 	ProfileID *string `json:"profileID"`
 
+	// SAP Application Performance Standard
+	// Required: true
+	Saps *int64 `json:"saps"`
+
 	// List of supported systems
 	SupportedSystems []string `json:"supportedSystems"`
 
 	// Type of profile
 	// Required: true
-	// Enum: [balanced compute memory non-production ultra-memory]
+	// Enum: [balanced compute memory non-production ultra-memory small SAP Rise Optimized]
 	Type *string `json:"type"`
+
+	// Workload Type
+	// Required: true
+	// Enum: [N/A OLAP OLTP OLAP/OLTP]
+	WorkloadType *string `json:"workloadType"`
 }
 
 // Validate validates this s a p profile
@@ -57,6 +70,10 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFullSystemProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMemory(formats); err != nil {
 		res = append(res, err)
 	}
@@ -65,7 +82,15 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSaps(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWorkloadType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -93,6 +118,15 @@ func (m *SAPProfile) validateCores(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SAPProfile) validateFullSystemProfile(formats strfmt.Registry) error {
+
+	if err := validate.Required("fullSystemProfile", "body", m.FullSystemProfile); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *SAPProfile) validateMemory(formats strfmt.Registry) error {
 
 	if err := validate.Required("memory", "body", m.Memory); err != nil {
@@ -111,11 +145,20 @@ func (m *SAPProfile) validateProfileID(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SAPProfile) validateSaps(formats strfmt.Registry) error {
+
+	if err := validate.Required("saps", "body", m.Saps); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var sAPProfileTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["balanced","compute","memory","non-production","ultra-memory"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["balanced","compute","memory","non-production","ultra-memory","small","SAP Rise Optimized"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -139,6 +182,12 @@ const (
 
 	// SAPProfileTypeUltraDashMemory captures enum value "ultra-memory"
 	SAPProfileTypeUltraDashMemory string = "ultra-memory"
+
+	// SAPProfileTypeSmall captures enum value "small"
+	SAPProfileTypeSmall string = "small"
+
+	// SAPProfileTypeSAPRiseOptimized captures enum value "SAP Rise Optimized"
+	SAPProfileTypeSAPRiseOptimized string = "SAP Rise Optimized"
 )
 
 // prop value enum
@@ -157,6 +206,55 @@ func (m *SAPProfile) validateType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var sAPProfileTypeWorkloadTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["N/A","OLAP","OLTP","OLAP/OLTP"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		sAPProfileTypeWorkloadTypePropEnum = append(sAPProfileTypeWorkloadTypePropEnum, v)
+	}
+}
+
+const (
+
+	// SAPProfileWorkloadTypeNA captures enum value "N/A"
+	SAPProfileWorkloadTypeNA string = "N/A"
+
+	// SAPProfileWorkloadTypeOLAP captures enum value "OLAP"
+	SAPProfileWorkloadTypeOLAP string = "OLAP"
+
+	// SAPProfileWorkloadTypeOLTP captures enum value "OLTP"
+	SAPProfileWorkloadTypeOLTP string = "OLTP"
+
+	// SAPProfileWorkloadTypeOLAPOLTP captures enum value "OLAP/OLTP"
+	SAPProfileWorkloadTypeOLAPOLTP string = "OLAP/OLTP"
+)
+
+// prop value enum
+func (m *SAPProfile) validateWorkloadTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, sAPProfileTypeWorkloadTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SAPProfile) validateWorkloadType(formats strfmt.Registry) error {
+
+	if err := validate.Required("workloadType", "body", m.WorkloadType); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateWorkloadTypeEnum("workloadType", "body", *m.WorkloadType); err != nil {
 		return err
 	}
 
