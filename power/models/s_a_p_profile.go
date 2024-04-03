@@ -73,6 +73,10 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFullSystemProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateMemory(formats); err != nil {
 		res = append(res, err)
 	}
@@ -85,7 +89,15 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSaps(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWorkloadType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -107,6 +119,15 @@ func (m *SAPProfile) validateCertified(formats strfmt.Registry) error {
 func (m *SAPProfile) validateCores(formats strfmt.Registry) error {
 
 	if err := validate.Required("cores", "body", m.Cores); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SAPProfile) validateFullSystemProfile(formats strfmt.Registry) error {
+
+	if err := validate.Required("fullSystemProfile", "body", m.FullSystemProfile); err != nil {
 		return err
 	}
 
@@ -216,6 +237,55 @@ func (m *SAPProfile) validateType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var sAPProfileTypeWorkloadTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["N/A","OLAP","OLTP","OLAP/OLTP"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		sAPProfileTypeWorkloadTypePropEnum = append(sAPProfileTypeWorkloadTypePropEnum, v)
+	}
+}
+
+const (
+
+	// SAPProfileWorkloadTypeNA captures enum value "N/A"
+	SAPProfileWorkloadTypeNA string = "N/A"
+
+	// SAPProfileWorkloadTypeOLAP captures enum value "OLAP"
+	SAPProfileWorkloadTypeOLAP string = "OLAP"
+
+	// SAPProfileWorkloadTypeOLTP captures enum value "OLTP"
+	SAPProfileWorkloadTypeOLTP string = "OLTP"
+
+	// SAPProfileWorkloadTypeOLAPOLTP captures enum value "OLAP/OLTP"
+	SAPProfileWorkloadTypeOLAPOLTP string = "OLAP/OLTP"
+)
+
+// prop value enum
+func (m *SAPProfile) validateWorkloadTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, sAPProfileTypeWorkloadTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SAPProfile) validateWorkloadType(formats strfmt.Registry) error {
+
+	if err := validate.Required("workloadType", "body", m.WorkloadType); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateWorkloadTypeEnum("workloadType", "body", *m.WorkloadType); err != nil {
 		return err
 	}
 
