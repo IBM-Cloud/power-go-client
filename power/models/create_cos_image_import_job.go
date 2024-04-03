@@ -31,6 +31,9 @@ type CreateCosImageImportJob struct {
 	// Required: true
 	BucketName *string `json:"bucketName"`
 
+	// Import and Check checksum file
+	Checksum bool `json:"checksum,omitempty"`
+
 	// Cloud Object Storage image filename
 	// Required: true
 	ImageFilename *string `json:"imageFilename"`
