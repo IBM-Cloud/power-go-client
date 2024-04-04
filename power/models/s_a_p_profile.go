@@ -49,6 +49,11 @@ type SAPProfile struct {
 	// Enum: [4,8]
 	SmtMode int64 `json:"smtMode"`
 
+	// Required smt mode for that profile
+	// Required: true
+	// Enum: [4 8]
+	SmtMode *int64 `json:"smtMode"`
+
 	// List of supported systems
 	SupportedSystems []string `json:"supportedSystems"`
 
@@ -90,6 +95,10 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSaps(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSmtMode(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -179,6 +188,40 @@ func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateSmtModeEnum("smtMode", "body", m.SmtMode); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var sAPProfileTypeSmtModePropEnum []interface{}
+
+func init() {
+	var res []int64
+	if err := json.Unmarshal([]byte(`[4,8]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		sAPProfileTypeSmtModePropEnum = append(sAPProfileTypeSmtModePropEnum, v)
+	}
+}
+
+// prop value enum
+func (m *SAPProfile) validateSmtModeEnum(path, location string, value int64) error {
+	if err := validate.EnumCase(path, location, value, sAPProfileTypeSmtModePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
+
+	if err := validate.Required("smtMode", "body", m.SmtMode); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateSmtModeEnum("smtMode", "body", *m.SmtMode); err != nil {
 		return err
 	}
 
