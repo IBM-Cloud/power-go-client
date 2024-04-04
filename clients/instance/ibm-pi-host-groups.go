@@ -16,7 +16,7 @@ type IBMPIHostGroupsClient struct {
 }
 
 // NewIBMPIHostGroupsClient
-func NewIBMPHostgroupsClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIHostGroupsClient {
+func NewIBMPIHostGroupsClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIHostGroupsClient {
 	return &IBMPIHostGroupsClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
