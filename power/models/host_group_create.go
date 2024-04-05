@@ -28,7 +28,7 @@ type HostGroupCreate struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// List of workspace names to share the host group with (optional)
+	// List of workspaces to share the host group with (optional)
 	Secondaries []*Secondary `json:"secondaries"`
 }
 

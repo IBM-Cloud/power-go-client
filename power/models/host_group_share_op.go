@@ -19,10 +19,10 @@ import (
 // swagger:model HostGroupShareOp
 type HostGroupShareOp struct {
 
-	// List of workspace names to share the host group with
+	// List of workspaces to share the host group with
 	Add []*Secondary `json:"add"`
 
-	// A workspace name to stop sharing the host group with
+	// A workspace ID to stop sharing the host group with
 	Remove string `json:"remove,omitempty"`
 }
 

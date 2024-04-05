@@ -33,10 +33,10 @@ type HostGroup struct {
 	// Name of the host group
 	Name string `json:"name,omitempty"`
 
-	// Name of the workspace owning the host group
+	// ID of the workspace owning the host group
 	Primary string `json:"primary,omitempty"`
 
-	// Names of workspaces the host group has been shared with
+	// IDs of workspaces the host group has been shared with
 	Secondaries []string `json:"secondaries"`
 }
 
