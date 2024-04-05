@@ -176,6 +176,10 @@ func (f *IBMPIInstanceClient) UpdateConsoleLanguage(id string, body *models.Cons
 
 // Capture an Instance
 func (f *IBMPIInstanceClient) CaptureInstanceToImageCatalog(id string, body *models.PVMInstanceCapture) error {
+	// Check for satellite differences in this endpoint
+	if !f.session.IsOnPrem() && body.Checksum {
+		return fmt.Errorf("checksum parameter is not supported off-premise")
+	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesCapturePostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
