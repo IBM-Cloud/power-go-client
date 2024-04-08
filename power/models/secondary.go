@@ -22,7 +22,7 @@ type Secondary struct {
 	// Name of the host group to create in the secondary workspace
 	Name string `json:"name,omitempty"`
 
-	// Name of the workspace to share the host group with
+	// ID of the workspace to share the host group with
 	// Required: true
 	Workspace *string `json:"workspace"`
 }

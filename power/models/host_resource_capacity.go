@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // HostResourceCapacity host resource capacity
@@ -18,20 +20,81 @@ import (
 type HostResourceCapacity struct {
 
 	// available
-	Available float64 `json:"available,omitempty"`
+	// Required: true
+	Available *float64 `json:"available"`
 
 	// reserved
-	Reserved float64 `json:"reserved,omitempty"`
+	// Required: true
+	Reserved *float64 `json:"reserved"`
 
 	// total
-	Total float64 `json:"total,omitempty"`
+	// Required: true
+	Total *float64 `json:"total"`
 
 	// used
-	Used float64 `json:"used,omitempty"`
+	// Required: true
+	Used *float64 `json:"used"`
 }
 
 // Validate validates this host resource capacity
 func (m *HostResourceCapacity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateAvailable(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateReserved(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateTotal(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUsed(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *HostResourceCapacity) validateAvailable(formats strfmt.Registry) error {
+
+	if err := validate.Required("available", "body", m.Available); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *HostResourceCapacity) validateReserved(formats strfmt.Registry) error {
+
+	if err := validate.Required("reserved", "body", m.Reserved); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *HostResourceCapacity) validateTotal(formats strfmt.Registry) error {
+
+	if err := validate.Required("total", "body", m.Total); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *HostResourceCapacity) validateUsed(formats strfmt.Registry) error {
+
+	if err := validate.Required("used", "body", m.Used); err != nil {
+		return err
+	}
+
 	return nil
 }
 

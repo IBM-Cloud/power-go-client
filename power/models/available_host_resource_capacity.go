@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // AvailableHostResourceCapacity available host resource capacity
@@ -17,12 +19,31 @@ import (
 // swagger:model AvailableHostResourceCapacity
 type AvailableHostResourceCapacity struct {
 
-	// available
-	Available float64 `json:"available,omitempty"`
+	// total
+	// Required: true
+	Total *float64 `json:"total"`
 }
 
 // Validate validates this available host resource capacity
 func (m *AvailableHostResourceCapacity) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateTotal(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *AvailableHostResourceCapacity) validateTotal(formats strfmt.Registry) error {
+
+	if err := validate.Required("total", "body", m.Total); err != nil {
+		return err
+	}
+
 	return nil
 }
 
