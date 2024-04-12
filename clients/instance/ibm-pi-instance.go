@@ -55,8 +55,8 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 // Create an Instance
 func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PVMInstanceList, error) {
 	// Check for satellite differences in this endpoint
-	if f.session.IsOnPrem() && (body.DeploymentTarget != nil || body.SharedProcessorPool != "" || body.SoftwareLicenses != nil) {
-		return nil, fmt.Errorf("deployment target, shared processor pool, and software licenses parameters are not supported in satellite location, check documentation")
+	if f.session.IsOnPrem() && (body.DeploymentTarget != nil || body.SharedProcessorPool != "") {
+		return nil, fmt.Errorf("deployment target, and shared processor pool parameters are not supported in satellite location, check documentation")
 	}
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
