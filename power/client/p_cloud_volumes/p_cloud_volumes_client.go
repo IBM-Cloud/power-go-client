@@ -519,7 +519,11 @@ func (a *Client) PcloudPvminstancesVolumesGetall(params *PcloudPvminstancesVolum
 }
 
 /*
-PcloudPvminstancesVolumesPost attaches a volume to a p VM instance
+	PcloudPvminstancesVolumesPost attaches a volume to a p VM instance
+
+	Attach a volume to a PVMInstance.
+
+>**Note**: Recommended for attaching data volumes. In the case of VMRM, it is recommended to use the 'Attach all volumes to a PVM instance' API for attaching the first boot volume.
 */
 func (a *Client) PcloudPvminstancesVolumesPost(params *PcloudPvminstancesVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesPostOK, error) {
 	// TODO: Validate the params before sending
