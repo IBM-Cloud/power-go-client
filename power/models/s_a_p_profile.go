@@ -57,10 +57,9 @@ type SAPProfile struct {
 	// Enum: [balanced compute memory non-production ultra-memory small SAP Rise Optimized]
 	Type *string `json:"type"`
 
-	// Workload Type
+	// List of supported workload types
 	// Required: true
-	// Enum: [N/A OLAP OLTP OLAP/OLTP]
-	WorkloadType *string `json:"workloadType"`
+	WorkloadTypes []string `json:"workloadTypes"`
 }
 
 // Validate validates this s a p profile
@@ -99,7 +98,7 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateWorkloadType(formats); err != nil {
+	if err := m.validateWorkloadTypes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -255,49 +254,9 @@ func (m *SAPProfile) validateType(formats strfmt.Registry) error {
 	return nil
 }
 
-var sAPProfileTypeWorkloadTypePropEnum []interface{}
+func (m *SAPProfile) validateWorkloadTypes(formats strfmt.Registry) error {
 
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["N/A","OLAP","OLTP","OLAP/OLTP"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		sAPProfileTypeWorkloadTypePropEnum = append(sAPProfileTypeWorkloadTypePropEnum, v)
-	}
-}
-
-const (
-
-	// SAPProfileWorkloadTypeNA captures enum value "N/A"
-	SAPProfileWorkloadTypeNA string = "N/A"
-
-	// SAPProfileWorkloadTypeOLAP captures enum value "OLAP"
-	SAPProfileWorkloadTypeOLAP string = "OLAP"
-
-	// SAPProfileWorkloadTypeOLTP captures enum value "OLTP"
-	SAPProfileWorkloadTypeOLTP string = "OLTP"
-
-	// SAPProfileWorkloadTypeOLAPOLTP captures enum value "OLAP/OLTP"
-	SAPProfileWorkloadTypeOLAPOLTP string = "OLAP/OLTP"
-)
-
-// prop value enum
-func (m *SAPProfile) validateWorkloadTypeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, sAPProfileTypeWorkloadTypePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *SAPProfile) validateWorkloadType(formats strfmt.Registry) error {
-
-	if err := validate.Required("workloadType", "body", m.WorkloadType); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateWorkloadTypeEnum("workloadType", "body", *m.WorkloadType); err != nil {
+	if err := validate.Required("workloadTypes", "body", m.WorkloadTypes); err != nil {
 		return err
 	}
 
