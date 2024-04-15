@@ -43,7 +43,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	powerClient := v.NewIBMPHostgroupsClient(context.Background(), session, piID)
+	powerClient := v.NewIBMPIHostGroupsClient(context.Background(), session, piID)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -54,9 +54,9 @@ func main() {
 	}
 	log.Printf("***************[0]****************** %+v \n", getAllAvailableHost)
 
-	getHostgroups, err := powerClient.GetHostGroups()
+	getHostGroups, err := powerClient.GetHostGroups()
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[1]****************** %+v \n", getHostgroups)
+	log.Printf("***************[1]****************** %+v \n", getHostGroups)
 }
