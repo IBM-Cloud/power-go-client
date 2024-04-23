@@ -49,13 +49,13 @@ type Network struct {
 	// Required: true
 	IPAddressRanges []*IPAddressRange `json:"ipAddressRanges"`
 
-	// Enable MTU Jumbo Network (for multi-zone locations only)
+	// (deprecated - replaced by mtu) Enable MTU Jumbo Network (for multi-zone locations only)
 	Jumbo bool `json:"jumbo,omitempty"`
 
-	// Maximum transmission unit (for satellite locations only)
+	// Maximum transmission unit
 	// Maximum: 9000
 	// Minimum: 1450
-	Mtu int64 `json:"mtu,omitempty"`
+	Mtu *int64 `json:"mtu,omitempty"`
 
 	// Network Name
 	// Required: true
@@ -249,11 +249,11 @@ func (m *Network) validateMtu(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.MinimumInt("mtu", "body", m.Mtu, 1450, false); err != nil {
+	if err := validate.MinimumInt("mtu", "body", *m.Mtu, 1450, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("mtu", "body", m.Mtu, 9000, false); err != nil {
+	if err := validate.MaximumInt("mtu", "body", *m.Mtu, 9000, false); err != nil {
 		return err
 	}
 

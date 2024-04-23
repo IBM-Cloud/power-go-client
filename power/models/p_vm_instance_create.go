@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
+	// The name of the host or hostgroup where to deploy the VM
+	DeployTarget string `json:"deployTarget,omitempty"`
+
 	// The custom deployment type
 	DeploymentType string `json:"deploymentType,omitempty"`
 
@@ -91,7 +94,7 @@ type PVMInstanceCreate struct {
 	StorageConnection string `json:"storageConnection,omitempty"`
 
 	// The storage connection type
-	// Enum: [vSCSI maxVolumeAttachement]
+	// Enum: [vSCSI maxVolumeSupport]
 	StorageConnectionV2 string `json:"storageConnectionV2,omitempty"`
 
 	// Storage Pool for server deployment; if provided then storageAffinity will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage pool the image was created in
@@ -472,7 +475,7 @@ var pVmInstanceCreateTypeStorageConnectionV2PropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["vSCSI","maxVolumeAttachement"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["vSCSI","maxVolumeSupport"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -485,8 +488,8 @@ const (
 	// PVMInstanceCreateStorageConnectionV2VSCSI captures enum value "vSCSI"
 	PVMInstanceCreateStorageConnectionV2VSCSI string = "vSCSI"
 
-	// PVMInstanceCreateStorageConnectionV2MaxVolumeAttachement captures enum value "maxVolumeAttachement"
-	PVMInstanceCreateStorageConnectionV2MaxVolumeAttachement string = "maxVolumeAttachement"
+	// PVMInstanceCreateStorageConnectionV2MaxVolumeSupport captures enum value "maxVolumeSupport"
+	PVMInstanceCreateStorageConnectionV2MaxVolumeSupport string = "maxVolumeSupport"
 )
 
 // prop value enum
