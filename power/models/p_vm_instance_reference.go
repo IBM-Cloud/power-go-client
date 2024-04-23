@@ -141,6 +141,9 @@ type PVMInstanceReference struct {
 	// System type used to host the instance
 	SysType string `json:"sysType,omitempty"`
 
+	// Represents the task state of a virtual machine (VM).
+	TaskState string `json:"taskState,omitempty"`
+
 	// Date/Time of PVM last update
 	// Format: date-time
 	UpdatedDate strfmt.DateTime `json:"updatedDate,omitempty"`
