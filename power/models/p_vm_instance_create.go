@@ -90,7 +90,7 @@ type PVMInstanceCreate struct {
 	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
 
 	// The storage connection type
-	// Enum: [vSCSI]
+	// Enum: [vSCSI maxVolumeSupport]
 	StorageConnection string `json:"storageConnection,omitempty"`
 
 	// The storage connection type
@@ -462,7 +462,7 @@ var pVmInstanceCreateTypeStorageConnectionPropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["vSCSI"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["vSCSI","maxVolumeSupport"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -474,6 +474,9 @@ const (
 
 	// PVMInstanceCreateStorageConnectionVSCSI captures enum value "vSCSI"
 	PVMInstanceCreateStorageConnectionVSCSI string = "vSCSI"
+
+	// PVMInstanceCreateStorageConnectionMaxVolumeSupport captures enum value "maxVolumeSupport"
+	PVMInstanceCreateStorageConnectionMaxVolumeSupport string = "maxVolumeSupport"
 )
 
 // prop value enum
