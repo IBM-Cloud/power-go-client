@@ -29,8 +29,7 @@ type SAPProfile struct {
 	Cores *int64 `json:"cores"`
 
 	// Requires full system for deployment
-	// Required: true
-	FullSystemProfile *bool `json:"fullSystemProfile"`
+	FullSystemProfile bool `json:"fullSystemProfile"`
 
 	// Amount of memory (in GB)
 	// Required: true
@@ -41,13 +40,11 @@ type SAPProfile struct {
 	ProfileID *string `json:"profileID"`
 
 	// SAP Application Performance Standard
-	// Required: true
-	Saps *int64 `json:"saps"`
+	Saps int64 `json:"saps"`
 
 	// Required smt mode for that profile
-	// Required: true
 	// Enum: [4 8]
-	SmtMode *int64 `json:"smtMode"`
+	SmtMode int64 `json:"smtMode"`
 
 	// List of supported systems
 	SupportedSystems []string `json:"supportedSystems"`
@@ -58,7 +55,6 @@ type SAPProfile struct {
 	Type *string `json:"type"`
 
 	// List of supported workload types
-	// Required: true
 	WorkloadTypes []string `json:"workloadTypes"`
 }
 
@@ -74,10 +70,6 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateFullSystemProfile(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateMemory(formats); err != nil {
 		res = append(res, err)
 	}
@@ -86,19 +78,11 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateSaps(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateSmtMode(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateWorkloadTypes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -126,15 +110,6 @@ func (m *SAPProfile) validateCores(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SAPProfile) validateFullSystemProfile(formats strfmt.Registry) error {
-
-	if err := validate.Required("fullSystemProfile", "body", m.FullSystemProfile); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *SAPProfile) validateMemory(formats strfmt.Registry) error {
 
 	if err := validate.Required("memory", "body", m.Memory); err != nil {
@@ -147,15 +122,6 @@ func (m *SAPProfile) validateMemory(formats strfmt.Registry) error {
 func (m *SAPProfile) validateProfileID(formats strfmt.Registry) error {
 
 	if err := validate.Required("profileID", "body", m.ProfileID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SAPProfile) validateSaps(formats strfmt.Registry) error {
-
-	if err := validate.Required("saps", "body", m.Saps); err != nil {
 		return err
 	}
 
@@ -183,13 +149,12 @@ func (m *SAPProfile) validateSmtModeEnum(path, location string, value int64) err
 }
 
 func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
-
-	if err := validate.Required("smtMode", "body", m.SmtMode); err != nil {
-		return err
+	if swag.IsZero(m.SmtMode) { // not required
+		return nil
 	}
 
 	// value enum
-	if err := m.validateSmtModeEnum("smtMode", "body", *m.SmtMode); err != nil {
+	if err := m.validateSmtModeEnum("smtMode", "body", m.SmtMode); err != nil {
 		return err
 	}
 
@@ -248,15 +213,6 @@ func (m *SAPProfile) validateType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SAPProfile) validateWorkloadTypes(formats strfmt.Registry) error {
-
-	if err := validate.Required("workloadTypes", "body", m.WorkloadTypes); err != nil {
 		return err
 	}
 
