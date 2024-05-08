@@ -54,7 +54,9 @@ type ClientService interface {
 }
 
 /*
-PcloudVolumegroupsActionPost performs an action start stop reset on a volume group
+PcloudVolumegroupsActionPost performs an action on a volume group
+
+Corresponding actions are 'start', 'stop', 'reset'
 */
 func (a *Client) PcloudVolumegroupsActionPost(params *PcloudVolumegroupsActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsActionPostAccepted, error) {
 	// TODO: Validate the params before sending

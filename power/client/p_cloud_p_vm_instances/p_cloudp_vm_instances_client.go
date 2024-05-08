@@ -78,7 +78,9 @@ type ClientService interface {
 }
 
 /*
-PcloudPvminstancesActionPost performs an action start stop reboot immediate shutdown reset on a p VM instance
+PcloudPvminstancesActionPost performs an action on a p VM instance
+
+Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
 */
 func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesActionPostOK, error) {
 	// TODO: Validate the params before sending
