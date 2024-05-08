@@ -50,9 +50,8 @@ type SAPProfile struct {
 	SmtMode int64 `json:"smtMode"`
 
 	// Required smt mode for that profile
-	// Required: true
 	// Enum: [4 8]
-	SmtMode *int64 `json:"smtMode"`
+	SmtMode int64 `json:"smtMode"`
 
 	// List of supported systems
 	SupportedSystems []string `json:"supportedSystems"`
@@ -75,10 +74,6 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCores(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateFullSystemProfile(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -106,10 +101,6 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateWorkloadTypes(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -128,15 +119,6 @@ func (m *SAPProfile) validateCertified(formats strfmt.Registry) error {
 func (m *SAPProfile) validateCores(formats strfmt.Registry) error {
 
 	if err := validate.Required("cores", "body", m.Cores); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SAPProfile) validateFullSystemProfile(formats strfmt.Registry) error {
-
-	if err := validate.Required("fullSystemProfile", "body", m.FullSystemProfile); err != nil {
 		return err
 	}
 
@@ -215,13 +197,12 @@ func (m *SAPProfile) validateSmtModeEnum(path, location string, value int64) err
 }
 
 func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
-
-	if err := validate.Required("smtMode", "body", m.SmtMode); err != nil {
-		return err
+	if swag.IsZero(m.SmtMode) { // not required
+		return nil
 	}
 
 	// value enum
-	if err := m.validateSmtModeEnum("smtMode", "body", *m.SmtMode); err != nil {
+	if err := m.validateSmtModeEnum("smtMode", "body", m.SmtMode); err != nil {
 		return err
 	}
 
@@ -280,15 +261,6 @@ func (m *SAPProfile) validateType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *SAPProfile) validateWorkloadTypes(formats strfmt.Registry) error {
-
-	if err := validate.Required("workloadTypes", "body", m.WorkloadTypes); err != nil {
 		return err
 	}
 
