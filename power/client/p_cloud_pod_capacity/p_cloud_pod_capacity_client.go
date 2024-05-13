@@ -37,6 +37,8 @@ type ClientService interface {
 
 /*
 PcloudPodcapacityGet lists of available resources within a particular pod
+
+Applicable to satellite locations only.
 */
 func (a *Client) PcloudPodcapacityGet(params *PcloudPodcapacityGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPodcapacityGetOK, error) {
 	// TODO: Validate the params before sending
