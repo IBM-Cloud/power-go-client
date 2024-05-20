@@ -1,6 +1,6 @@
 module github.com/IBM-Cloud/power-go-client
 
-go 1.20
+go 1.22
 
 require (
 	github.com/IBM/go-sdk-core/v5 v5.15.3
