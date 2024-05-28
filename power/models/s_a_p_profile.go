@@ -50,7 +50,7 @@ type SAPProfile struct {
 	SmtMode int64 `json:"smtMode"`
 
 	// Required smt mode for that profile
-	// Enum: [4 8]
+	// Enum: [4,8]
 	SmtMode int64 `json:"smtMode"`
 
 	// List of supported systems

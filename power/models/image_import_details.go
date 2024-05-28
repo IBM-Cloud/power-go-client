@@ -27,7 +27,7 @@ type ImageImportDetails struct {
 
 	// Product within the image
 	// Required: true
-	// Enum: [Hana Netweaver]
+	// Enum: ["Hana","Netweaver"]
 	Product *string `json:"product"`
 
 	// Vendor supporting the product
