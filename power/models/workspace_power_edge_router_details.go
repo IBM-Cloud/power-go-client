@@ -21,17 +21,17 @@ import (
 type WorkspacePowerEdgeRouterDetails struct {
 
 	// The migration status of a Power Edge Router
-	// Enum: [intializing migrating deleted completed]
+	// Enum: ["intializing","migrating","deleted","completed"]
 	MigrationStatus string `json:"migrationStatus,omitempty"`
 
 	// The state of a Power Edge Router
 	// Required: true
-	// Enum: [active error warning configuring removing inactive user-validation]
+	// Enum: ["active","error","warning","configuring","removing","inactive","user-validation"]
 	State *string `json:"state"`
 
 	// The Power Edge Router type
 	// Required: true
-	// Enum: [automated manual]
+	// Enum: ["automated","manual"]
 	Type *string `json:"type"`
 }
 
