@@ -33,12 +33,12 @@ type Datacenter struct {
 
 	// The Datacenter status
 	// Required: true
-	// Enum: [active maintenance down]
+	// Enum: ["active","maintenance","down"]
 	Status *string `json:"status"`
 
 	// The Datacenter type
 	// Required: true
-	// Enum: [off-premises on-premises]
+	// Enum: ["off-premises","on-premises"]
 	Type *string `json:"type"`
 }
 
