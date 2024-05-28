@@ -42,7 +42,7 @@ type CreateImage struct {
 	ImagePath string `json:"imagePath,omitempty"`
 
 	// Image OS Type, required if importing a raw image; raw images can only be imported using the command line interface
-	// Enum: [aix ibmi rhel sles]
+	// Enum: ["aix","ibmi","rhel","sles"]
 	OsType string `json:"osType,omitempty"`
 
 	// Cloud Storage Region; only required to access IBM Cloud Storage
@@ -55,7 +55,7 @@ type CreateImage struct {
 	// >*Note*: url option is deprecated, this option is supported till Oct 2022
 	//
 	// Required: true
-	// Enum: [root-project url]
+	// Enum: ["root-project","url"]
 	Source *string `json:"source"`
 
 	// The storage affinity data; ignored if storagePool is provided; Used only when importing an image from cloud storage.

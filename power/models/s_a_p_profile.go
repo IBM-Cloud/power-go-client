@@ -43,7 +43,7 @@ type SAPProfile struct {
 	Saps int64 `json:"saps"`
 
 	// Required smt mode for that profile
-	// Enum: [4 8]
+	// Enum: [4,8]
 	SmtMode int64 `json:"smtMode"`
 
 	// List of supported systems
@@ -51,7 +51,7 @@ type SAPProfile struct {
 
 	// Type of profile
 	// Required: true
-	// Enum: [balanced compute memory non-production ultra-memory small SAP Rise Optimized]
+	// Enum: ["balanced","compute","memory","non-production","ultra-memory","small","SAP Rise Optimized"]
 	Type *string `json:"type"`
 
 	// List of supported workload types
