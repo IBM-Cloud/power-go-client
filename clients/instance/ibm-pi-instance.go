@@ -286,10 +286,10 @@ func (f *IBMPIInstanceClient) AddNetwork(id string, body *models.PVMInstanceAddN
 }
 
 // Delete a Network from an Instance
-func (f *IBMPIInstanceClient) DeleteNetwork(id string, body *models.PVMInstanceRemoveNetwork) error {
+func (f *IBMPIInstanceClient) DeleteNetwork(id, networkID string, body *models.PVMInstanceRemoveNetwork) error {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworksDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithNetworkID(networkID).
 		WithBody(body)
 	_, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesNetworksDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
