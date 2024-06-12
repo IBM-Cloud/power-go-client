@@ -60,6 +60,12 @@ func (o *V1SnapshotsGetReader) ReadResponse(response runtime.ClientResponse, con
 			return nil, err
 		}
 		return nil, result
+	case 503:
+		result := NewV1SnapshotsGetServiceUnavailable()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("[GET /v1/snapshots/{snapshot_id}] v1.snapshots.get", response, response.Code())
 	}
@@ -474,6 +480,76 @@ func (o *V1SnapshotsGetInternalServerError) GetPayload() *models.Error {
 }
 
 func (o *V1SnapshotsGetInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewV1SnapshotsGetServiceUnavailable creates a V1SnapshotsGetServiceUnavailable with default headers values
+func NewV1SnapshotsGetServiceUnavailable() *V1SnapshotsGetServiceUnavailable {
+	return &V1SnapshotsGetServiceUnavailable{}
+}
+
+/*
+V1SnapshotsGetServiceUnavailable describes a response with status code 503, with default header values.
+
+Service Unavailable
+*/
+type V1SnapshotsGetServiceUnavailable struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this v1 snapshots get service unavailable response has a 2xx status code
+func (o *V1SnapshotsGetServiceUnavailable) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this v1 snapshots get service unavailable response has a 3xx status code
+func (o *V1SnapshotsGetServiceUnavailable) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this v1 snapshots get service unavailable response has a 4xx status code
+func (o *V1SnapshotsGetServiceUnavailable) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this v1 snapshots get service unavailable response has a 5xx status code
+func (o *V1SnapshotsGetServiceUnavailable) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this v1 snapshots get service unavailable response a status code equal to that given
+func (o *V1SnapshotsGetServiceUnavailable) IsCode(code int) bool {
+	return code == 503
+}
+
+// Code gets the status code for the v1 snapshots get service unavailable response
+func (o *V1SnapshotsGetServiceUnavailable) Code() int {
+	return 503
+}
+
+func (o *V1SnapshotsGetServiceUnavailable) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetServiceUnavailable %s", 503, payload)
+}
+
+func (o *V1SnapshotsGetServiceUnavailable) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetServiceUnavailable %s", 503, payload)
+}
+
+func (o *V1SnapshotsGetServiceUnavailable) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *V1SnapshotsGetServiceUnavailable) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
