@@ -32,9 +32,6 @@ type PVMInstanceCapture struct {
 	// List of Data volume IDs to include in the captured PVMInstance
 	CaptureVolumeIDs []string `json:"captureVolumeIDs"`
 
-	// Create a checksum file
-	Checksum bool `json:"checksum,omitempty"`
-
 	// Cloud Storage Access key
 	CloudStorageAccessKey string `json:"cloudStorageAccessKey,omitempty"`
 

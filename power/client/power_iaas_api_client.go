@@ -10,18 +10,8 @@ import (
 	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 
-	"github.com/IBM-Cloud/power-go-client/power/client/authentication"
-	"github.com/IBM-Cloud/power-go-client/power/client/bluemix_service_instances"
-	"github.com/IBM-Cloud/power-go-client/power/client/catalog"
 	"github.com/IBM-Cloud/power-go-client/power/client/datacenters"
-	"github.com/IBM-Cloud/power-go-client/power/client/hardware_platforms"
 	"github.com/IBM-Cloud/power-go-client/power/client/host_groups"
-	"github.com/IBM-Cloud/power-go-client/power/client/iaas_service_broker"
-	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_instances"
-	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_locations"
-	"github.com/IBM-Cloud/power-go-client/power/client/internal_storage_regions"
-	"github.com/IBM-Cloud/power-go-client/power/client/internal_transit_gateway"
-	"github.com/IBM-Cloud/power-go-client/power/client/open_stacks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_cloud_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_disaster_recovery"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_events"
@@ -48,12 +38,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_onboarding"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
-	"github.com/IBM-Cloud/power-go-client/power/client/power_edge_router"
-	"github.com/IBM-Cloud/power-go-client/power/client/service_bindings"
-	"github.com/IBM-Cloud/power-go-client/power/client/service_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/snapshots"
-	"github.com/IBM-Cloud/power-go-client/power/client/storage_types"
-	"github.com/IBM-Cloud/power-go-client/power/client/swagger_spec"
 	"github.com/IBM-Cloud/power-go-client/power/client/workspaces"
 )
 
@@ -99,18 +84,8 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 
 	cli := new(PowerIaasAPI)
 	cli.Transport = transport
-	cli.Authentication = authentication.New(transport, formats)
-	cli.BluemixServiceInstances = bluemix_service_instances.New(transport, formats)
-	cli.Catalog = catalog.New(transport, formats)
 	cli.Datacenters = datacenters.New(transport, formats)
-	cli.HardwarePlatforms = hardware_platforms.New(transport, formats)
 	cli.HostGroups = host_groups.New(transport, formats)
-	cli.IaasServiceBroker = iaas_service_broker.New(transport, formats)
-	cli.InternalPowervsInstances = internal_power_v_s_instances.New(transport, formats)
-	cli.InternalPowervsLocations = internal_power_v_s_locations.New(transport, formats)
-	cli.InternalStorageRegions = internal_storage_regions.New(transport, formats)
-	cli.InternalTransitGateway = internal_transit_gateway.New(transport, formats)
-	cli.OpenStacks = open_stacks.New(transport, formats)
 	cli.PCloudCloudConnections = p_cloud_cloud_connections.New(transport, formats)
 	cli.PCloudDisasterRecovery = p_cloud_disaster_recovery.New(transport, formats)
 	cli.PCloudEvents = p_cloud_events.New(transport, formats)
@@ -137,12 +112,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudVolumeGroups = p_cloud_volume_groups.New(transport, formats)
 	cli.PCloudVolumeOnboarding = p_cloud_volume_onboarding.New(transport, formats)
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
-	cli.PowerEdgeRouter = power_edge_router.New(transport, formats)
-	cli.ServiceBindings = service_bindings.New(transport, formats)
-	cli.ServiceInstances = service_instances.New(transport, formats)
 	cli.Snapshots = snapshots.New(transport, formats)
-	cli.StorageTypes = storage_types.New(transport, formats)
-	cli.SwaggerSpec = swagger_spec.New(transport, formats)
 	cli.Workspaces = workspaces.New(transport, formats)
 	return cli
 }
@@ -188,29 +158,9 @@ func (cfg *TransportConfig) WithSchemes(schemes []string) *TransportConfig {
 
 // PowerIaasAPI is a client for power iaas API
 type PowerIaasAPI struct {
-	Authentication authentication.ClientService
-
-	BluemixServiceInstances bluemix_service_instances.ClientService
-
-	Catalog catalog.ClientService
-
 	Datacenters datacenters.ClientService
 
-	HardwarePlatforms hardware_platforms.ClientService
-
 	HostGroups host_groups.ClientService
-
-	IaasServiceBroker iaas_service_broker.ClientService
-
-	InternalPowervsInstances internal_power_v_s_instances.ClientService
-
-	InternalPowervsLocations internal_power_v_s_locations.ClientService
-
-	InternalStorageRegions internal_storage_regions.ClientService
-
-	InternalTransitGateway internal_transit_gateway.ClientService
-
-	OpenStacks open_stacks.ClientService
 
 	PCloudCloudConnections p_cloud_cloud_connections.ClientService
 
@@ -264,17 +214,7 @@ type PowerIaasAPI struct {
 
 	PCloudVolumes p_cloud_volumes.ClientService
 
-	PowerEdgeRouter power_edge_router.ClientService
-
-	ServiceBindings service_bindings.ClientService
-
-	ServiceInstances service_instances.ClientService
-
 	Snapshots snapshots.ClientService
-
-	StorageTypes storage_types.ClientService
-
-	SwaggerSpec swagger_spec.ClientService
 
 	Workspaces workspaces.ClientService
 
@@ -284,18 +224,8 @@ type PowerIaasAPI struct {
 // SetTransport changes the transport on the client and all its subresources
 func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.Transport = transport
-	c.Authentication.SetTransport(transport)
-	c.BluemixServiceInstances.SetTransport(transport)
-	c.Catalog.SetTransport(transport)
 	c.Datacenters.SetTransport(transport)
-	c.HardwarePlatforms.SetTransport(transport)
 	c.HostGroups.SetTransport(transport)
-	c.IaasServiceBroker.SetTransport(transport)
-	c.InternalPowervsInstances.SetTransport(transport)
-	c.InternalPowervsLocations.SetTransport(transport)
-	c.InternalStorageRegions.SetTransport(transport)
-	c.InternalTransitGateway.SetTransport(transport)
-	c.OpenStacks.SetTransport(transport)
 	c.PCloudCloudConnections.SetTransport(transport)
 	c.PCloudDisasterRecovery.SetTransport(transport)
 	c.PCloudEvents.SetTransport(transport)
@@ -322,11 +252,6 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudVolumeGroups.SetTransport(transport)
 	c.PCloudVolumeOnboarding.SetTransport(transport)
 	c.PCloudVolumes.SetTransport(transport)
-	c.PowerEdgeRouter.SetTransport(transport)
-	c.ServiceBindings.SetTransport(transport)
-	c.ServiceInstances.SetTransport(transport)
 	c.Snapshots.SetTransport(transport)
-	c.StorageTypes.SetTransport(transport)
-	c.SwaggerSpec.SetTransport(transport)
 	c.Workspaces.SetTransport(transport)
 }

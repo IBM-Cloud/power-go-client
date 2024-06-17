@@ -40,9 +40,6 @@ type Volume struct {
 	// Format: date-time
 	CreationDate *strfmt.DateTime `json:"creationDate"`
 
-	// Indicates if the volume should be deleted when the server terminates
-	DeleteOnTermination *bool `json:"deleteOnTermination,omitempty"`
-
 	// Type of Disk
 	DiskType string `json:"diskType,omitempty"`
 
@@ -79,9 +76,6 @@ type Volume struct {
 
 	// True if volume is replication enabled otherwise false
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
-
-	// List of replication sites for volume replication
-	ReplicationSite []string `json:"replicationSite,omitempty"`
 
 	// Replication status of a volume
 	ReplicationStatus string `json:"replicationStatus,omitempty"`

@@ -56,9 +56,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	V1WorkspacesGet(params *V1WorkspacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetOK, error)
+	V1WorkspacesGet(params *V1WorkspacesGetParams, opts ...ClientOption) (*V1WorkspacesGetOK, error)
 
-	V1WorkspacesGetall(params *V1WorkspacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetallOK, error)
+	V1WorkspacesGetall(params *V1WorkspacesGetallParams, opts ...ClientOption) (*V1WorkspacesGetallOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -66,7 +66,7 @@ type ClientService interface {
 /*
 V1WorkspacesGet gets a workspace s information and capabilities
 */
-func (a *Client) V1WorkspacesGet(params *V1WorkspacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetOK, error) {
+func (a *Client) V1WorkspacesGet(params *V1WorkspacesGetParams, opts ...ClientOption) (*V1WorkspacesGetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewV1WorkspacesGetParams()
@@ -80,7 +80,6 @@ func (a *Client) V1WorkspacesGet(params *V1WorkspacesGetParams, authInfo runtime
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &V1WorkspacesGetReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
@@ -105,7 +104,7 @@ func (a *Client) V1WorkspacesGet(params *V1WorkspacesGetParams, authInfo runtime
 /*
 V1WorkspacesGetall gets all workspaces information and capabilities for a tenant
 */
-func (a *Client) V1WorkspacesGetall(params *V1WorkspacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1WorkspacesGetallOK, error) {
+func (a *Client) V1WorkspacesGetall(params *V1WorkspacesGetallParams, opts ...ClientOption) (*V1WorkspacesGetallOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewV1WorkspacesGetallParams()
@@ -119,7 +118,6 @@ func (a *Client) V1WorkspacesGetall(params *V1WorkspacesGetallParams, authInfo r
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &V1WorkspacesGetallReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

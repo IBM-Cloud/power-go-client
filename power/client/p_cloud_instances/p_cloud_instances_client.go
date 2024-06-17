@@ -56,52 +56,9 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PcloudCloudinstancesDelete(params *PcloudCloudinstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesDeleteOK, error)
-
 	PcloudCloudinstancesGet(params *PcloudCloudinstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesGetOK, error)
 
-	PcloudCloudinstancesPut(params *PcloudCloudinstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesPutOK, error)
-
 	SetTransport(transport runtime.ClientTransport)
-}
-
-/*
-PcloudCloudinstancesDelete deletes a power cloud instance
-*/
-func (a *Client) PcloudCloudinstancesDelete(params *PcloudCloudinstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesDeleteOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPcloudCloudinstancesDeleteParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "pcloud.cloudinstances.delete",
-		Method:             "DELETE",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PcloudCloudinstancesDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PcloudCloudinstancesDeleteOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
 }
 
 /*
@@ -140,45 +97,6 @@ func (a *Client) PcloudCloudinstancesGet(params *PcloudCloudinstancesGetParams, 
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PcloudCloudinstancesPut updates upgrade a cloud instance
-*/
-func (a *Client) PcloudCloudinstancesPut(params *PcloudCloudinstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesPutOK, error) {
-	// TODO: Validate the params before sending
-	if params == nil {
-		params = NewPcloudCloudinstancesPutParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "pcloud.cloudinstances.put",
-		Method:             "PUT",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PcloudCloudinstancesPutReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-	success, ok := result.(*PcloudCloudinstancesPutOK)
-	if ok {
-		return success, nil
-	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

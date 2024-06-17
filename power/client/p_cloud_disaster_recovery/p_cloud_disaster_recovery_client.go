@@ -58,7 +58,7 @@ type ClientOption func(*runtime.ClientOperation)
 type ClientService interface {
 	PcloudLocationsDisasterrecoveryGet(params *PcloudLocationsDisasterrecoveryGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsDisasterrecoveryGetOK, error)
 
-	PcloudLocationsDisasterrecoveryGetall(params *PcloudLocationsDisasterrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsDisasterrecoveryGetallOK, error)
+	PcloudLocationsDisasterrecoveryGetall(params *PcloudLocationsDisasterrecoveryGetallParams, opts ...ClientOption) (*PcloudLocationsDisasterrecoveryGetallOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -105,7 +105,7 @@ func (a *Client) PcloudLocationsDisasterrecoveryGet(params *PcloudLocationsDisas
 /*
 PcloudLocationsDisasterrecoveryGetall gets all disaster recovery locations supported by power virtual server
 */
-func (a *Client) PcloudLocationsDisasterrecoveryGetall(params *PcloudLocationsDisasterrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsDisasterrecoveryGetallOK, error) {
+func (a *Client) PcloudLocationsDisasterrecoveryGetall(params *PcloudLocationsDisasterrecoveryGetallParams, opts ...ClientOption) (*PcloudLocationsDisasterrecoveryGetallOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudLocationsDisasterrecoveryGetallParams()
@@ -119,7 +119,6 @@ func (a *Client) PcloudLocationsDisasterrecoveryGetall(params *PcloudLocationsDi
 		Schemes:            []string{"http"},
 		Params:             params,
 		Reader:             &PcloudLocationsDisasterrecoveryGetallReader{formats: a.formats},
-		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}

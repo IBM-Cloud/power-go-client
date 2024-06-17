@@ -28,9 +28,6 @@ type SAPProfile struct {
 	// Required: true
 	Cores *int64 `json:"cores"`
 
-	// Requires full system for deployment
-	FullSystemProfile bool `json:"fullSystemProfile"`
-
 	// Amount of memory (in GB)
 	// Required: true
 	Memory *int64 `json:"memory"`
@@ -39,23 +36,10 @@ type SAPProfile struct {
 	// Required: true
 	ProfileID *string `json:"profileID"`
 
-	// SAP Application Performance Standard
-	Saps int64 `json:"saps"`
-
-	// Required smt mode for that profile
-	// Enum: [4,8]
-	SmtMode int64 `json:"smtMode"`
-
-	// List of supported systems
-	SupportedSystems []string `json:"supportedSystems"`
-
 	// Type of profile
 	// Required: true
 	// Enum: ["balanced","compute","memory","non-production","ultra-memory","small","SAP Rise Optimized"]
 	Type *string `json:"type"`
-
-	// List of supported workload types
-	WorkloadTypes []string `json:"workloadTypes"`
 }
 
 // Validate validates this s a p profile
@@ -75,10 +59,6 @@ func (m *SAPProfile) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateProfileID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateSmtMode(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -122,39 +102,6 @@ func (m *SAPProfile) validateMemory(formats strfmt.Registry) error {
 func (m *SAPProfile) validateProfileID(formats strfmt.Registry) error {
 
 	if err := validate.Required("profileID", "body", m.ProfileID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-var sAPProfileTypeSmtModePropEnum []interface{}
-
-func init() {
-	var res []int64
-	if err := json.Unmarshal([]byte(`[4,8]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		sAPProfileTypeSmtModePropEnum = append(sAPProfileTypeSmtModePropEnum, v)
-	}
-}
-
-// prop value enum
-func (m *SAPProfile) validateSmtModeEnum(path, location string, value int64) error {
-	if err := validate.EnumCase(path, location, value, sAPProfileTypeSmtModePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.SmtMode) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateSmtModeEnum("smtMode", "body", m.SmtMode); err != nil {
 		return err
 	}
 

@@ -93,15 +93,8 @@ type PVMInstanceCreate struct {
 	// Enum: ["vSCSI","maxVolumeSupport"]
 	StorageConnection string `json:"storageConnection,omitempty"`
 
-	// The storage connection type
-	// Enum: ["vSCSI","maxVolumeSupport"]
-	StorageConnectionV2 string `json:"storageConnectionV2,omitempty"`
-
 	// Storage Pool for server deployment; if provided then storageAffinity will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage pool the image was created in
 	StoragePool string `json:"storagePool,omitempty"`
-
-	// Indicates if all volumes attached to the server must reside in the same storage pool; If set to false then volumes from any storage type and pool can be attached to the PVMInstance; Impacts PVMInstance snapshot, capture, and clone, for capture and clone - only data volumes that are of the same storage type and in the same storage pool of the PVMInstance's boot volume can be included; for snapshot - all data volumes to be included in the snapshot must reside in the same storage type and pool. Once set to false, cannot be set back to true unless all volumes attached reside in the same storage type and pool.
-	StoragePoolAffinity *bool `json:"storagePoolAffinity,omitempty"`
 
 	// Storage type for server deployment; if storageType is not provided the storage type will default to 'tier3'.
 	StorageType string `json:"storageType,omitempty"`
@@ -172,10 +165,6 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStorageConnection(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateStorageConnectionV2(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -494,48 +483,6 @@ func (m *PVMInstanceCreate) validateStorageConnection(formats strfmt.Registry) e
 
 	// value enum
 	if err := m.validateStorageConnectionEnum("storageConnection", "body", m.StorageConnection); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-var pVmInstanceCreateTypeStorageConnectionV2PropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["vSCSI","maxVolumeSupport"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		pVmInstanceCreateTypeStorageConnectionV2PropEnum = append(pVmInstanceCreateTypeStorageConnectionV2PropEnum, v)
-	}
-}
-
-const (
-
-	// PVMInstanceCreateStorageConnectionV2VSCSI captures enum value "vSCSI"
-	PVMInstanceCreateStorageConnectionV2VSCSI string = "vSCSI"
-
-	// PVMInstanceCreateStorageConnectionV2MaxVolumeSupport captures enum value "maxVolumeSupport"
-	PVMInstanceCreateStorageConnectionV2MaxVolumeSupport string = "maxVolumeSupport"
-)
-
-// prop value enum
-func (m *PVMInstanceCreate) validateStorageConnectionV2Enum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, pVmInstanceCreateTypeStorageConnectionV2PropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *PVMInstanceCreate) validateStorageConnectionV2(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageConnectionV2) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateStorageConnectionV2Enum("storageConnectionV2", "body", m.StorageConnectionV2); err != nil {
 		return err
 	}
 
