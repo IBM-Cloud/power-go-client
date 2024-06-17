@@ -157,9 +157,9 @@ func main() {
 	waitForInstanceAvailable(insID, powerClientVM)
 
 	log.Print("Attaching Volumes\n")
-	attachBody := &models.VolumesAttach{
-		VolumeIDs: []string{volumeID, volumeID2},
-	}
+	// attachBody := &models.VolumesAttach{
+	// 	VolumeIDs: []string{volumeID, volumeID2},
+	// }
 	// attachVolsResp, err := powerClientVolume.BulkVolumeAttach(insID, attachBody)
 	// if err != nil {
 	// 	log.Fatal(err)
