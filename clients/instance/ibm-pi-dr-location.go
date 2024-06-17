@@ -48,7 +48,7 @@ func (f *IBMPIDisasterRecoveryLocationClient) GetAll() (*models.DisasterRecovery
 	}
 	params := p_cloud_disaster_recovery.NewPcloudLocationsDisasterrecoveryGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
-	resp, err := f.session.Power.PCloudDisasterRecovery.PcloudLocationsDisasterrecoveryGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.PCloudDisasterRecovery.PcloudLocationsDisasterrecoveryGetall(params)
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetAllDisasterRecoveryLocationOperationFailed, err))
 	}
