@@ -160,22 +160,22 @@ func main() {
 	attachBody := &models.VolumesAttach{
 		VolumeIDs: []string{volumeID, volumeID2},
 	}
-	attachVolsResp, err := powerClientVolume.BulkVolumeAttach(insID, attachBody)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("***************[7]****************** %+v\n", *attachVolsResp)
-	time.Sleep(2 * time.Minute)
+	// attachVolsResp, err := powerClientVolume.BulkVolumeAttach(insID, attachBody)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// log.Printf("***************[7]****************** %+v\n", *attachVolsResp)
+	// time.Sleep(2 * time.Minute)
 
-	log.Print("Detaching Volumes\n")
-	detachBody := &models.VolumesDetach{
-		VolumeIDs: []string{volumeID, volumeID2},
-	}
-	createRespOkDetach, err := powerClientVolume.BulkVolumeDetach(insID, detachBody)
-	if err != nil {
-		log.Fatal(err)
-	}
-	log.Printf("***************[8]****************** %+v\n", *createRespOkDetach)
+	// log.Print("Detaching Volumes\n")
+	// detachBody := &models.VolumesDetach{
+	// 	VolumeIDs: []string{volumeID, volumeID2},
+	// }
+	// createRespOkDetach, err := powerClientVolume.BulkVolumeDetach(insID, detachBody)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// log.Printf("***************[8]****************** %+v\n", *createRespOkDetach)
 	log.Print("Deleting VM\n")
 	err = powerClientVM.Delete(insID)
 	if err != nil {

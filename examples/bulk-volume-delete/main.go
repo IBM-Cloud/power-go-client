@@ -107,18 +107,18 @@ func main() {
 	}
 	log.Printf("***************[4]****************** %+v \n", *getResp2)
 	time.Sleep(2 * time.Minute)
-	log.Print("Deleting Volumes\n")
-	body := &models.VolumesDelete{VolumeIDs: []string{volumeID, volumeID2}}
-	delResp, err := powerClientVolume.BulkVolumeDelete(body)
-	if err != nil {
-		log.Fatal(err)
-	}
-	if delResp == nil {
-		log.Print("***************[5]****************** Deleted\n")
+	// log.Print("Deleting Volumes\n")
+	// body := &models.VolumesDelete{VolumeIDs: []string{volumeID, volumeID2}}
+	// delResp, err := powerClientVolume.BulkVolumeDelete(body)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// if delResp == nil {
+	// 	log.Print("***************[5]****************** Deleted\n")
 
-	} else {
+	// } else {
 
-		log.Printf("***************[5]****************** %+v\n", *delResp)
-	}
+	// 	log.Printf("***************[5]****************** %+v\n", *delResp)
+	// }
 
 }
