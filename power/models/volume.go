@@ -71,7 +71,7 @@ type Volume struct {
 	OutOfBandDeleted bool `json:"outOfBandDeleted,omitempty"`
 
 	// indicates whether master/aux volume is playing the primary role
-	// Enum: [master aux]
+	// Enum: ["master","aux"]
 	PrimaryRole string `json:"primaryRole,omitempty"`
 
 	// List of PCloud PVM Instance attached to the volume
@@ -79,6 +79,9 @@ type Volume struct {
 
 	// True if volume is replication enabled otherwise false
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
+
+	// List of replication sites for volume replication
+	ReplicationSite []string `json:"replicationSite,omitempty"`
 
 	// Replication status of a volume
 	ReplicationStatus string `json:"replicationStatus,omitempty"`

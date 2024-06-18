@@ -23,6 +23,9 @@ type SharedProcessorPoolCreate struct {
 	// Required: true
 	HostGroup *string `json:"hostGroup"`
 
+	// The host id of a host in a host group (only available for dedicated hosts)
+	HostID string `json:"hostID,omitempty"`
+
 	// The name of the Shared Processor Pool; minumum of 2 characters, maximum of 12, the only special character allowed is the underscore '_'.
 	// Required: true
 	Name *string `json:"name"`
