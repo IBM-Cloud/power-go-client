@@ -19,7 +19,7 @@ import (
 type AvailableHost struct {
 
 	// Resource capacities for that system type and configuration
-	Capacity *HostAvailableCapacity `json:"capacity,omitempty"`
+	Capacity *AvailableHostCapacity `json:"capacity,omitempty"`
 
 	// How many hosts of such type/capacities are available
 	Count int64 `json:"count,omitempty"`

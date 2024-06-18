@@ -26,6 +26,7 @@ type VolumesCloneAsyncRequest struct {
 	//   Example volume names using name="volume-abcdef"
 	//     single volume clone will be named "clone-volume-abcdef-83081"
 	//     multi volume clone will be named "clone-volume-abcdef-73721-1", "clone-volume-abcdef-73721-2", ...
+	// For multiple volume clone, the provided name will be truncated to the first 20 characters.
 	//
 	// Required: true
 	Name *string `json:"name"`

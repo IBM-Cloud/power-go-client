@@ -6,6 +6,7 @@ package p_cloud_cloud_connections
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -151,11 +152,13 @@ func (o *PcloudCloudconnectionsPostOK) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostOK) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostOK %s", 200, payload)
 }
 
 func (o *PcloudCloudconnectionsPostOK) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostOK %s", 200, payload)
 }
 
 func (o *PcloudCloudconnectionsPostOK) GetPayload() *models.CloudConnection {
@@ -219,11 +222,13 @@ func (o *PcloudCloudconnectionsPostCreated) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostCreated) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostCreated %s", 201, payload)
 }
 
 func (o *PcloudCloudconnectionsPostCreated) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostCreated %s", 201, payload)
 }
 
 func (o *PcloudCloudconnectionsPostCreated) GetPayload() *models.CloudConnection {
@@ -287,11 +292,13 @@ func (o *PcloudCloudconnectionsPostAccepted) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostAccepted) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostAccepted %s", 202, payload)
 }
 
 func (o *PcloudCloudconnectionsPostAccepted) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostAccepted %s", 202, payload)
 }
 
 func (o *PcloudCloudconnectionsPostAccepted) GetPayload() *models.CloudConnectionCreateResponse {
@@ -355,11 +362,13 @@ func (o *PcloudCloudconnectionsPostBadRequest) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudconnectionsPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudconnectionsPostBadRequest) GetPayload() *models.Error {
@@ -423,11 +432,13 @@ func (o *PcloudCloudconnectionsPostUnauthorized) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudconnectionsPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudconnectionsPostUnauthorized) GetPayload() *models.Error {
@@ -491,11 +502,13 @@ func (o *PcloudCloudconnectionsPostForbidden) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudconnectionsPostForbidden) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudconnectionsPostForbidden) GetPayload() *models.Error {
@@ -559,11 +572,13 @@ func (o *PcloudCloudconnectionsPostNotFound) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudconnectionsPostNotFound) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudconnectionsPostNotFound) GetPayload() *models.Error {
@@ -627,11 +642,13 @@ func (o *PcloudCloudconnectionsPostRequestTimeout) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostRequestTimeout) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostRequestTimeout  %+v", 408, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostRequestTimeout %s", 408, payload)
 }
 
 func (o *PcloudCloudconnectionsPostRequestTimeout) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostRequestTimeout  %+v", 408, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostRequestTimeout %s", 408, payload)
 }
 
 func (o *PcloudCloudconnectionsPostRequestTimeout) GetPayload() *models.Error {
@@ -695,11 +712,13 @@ func (o *PcloudCloudconnectionsPostConflict) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostConflict) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostConflict %s", 409, payload)
 }
 
 func (o *PcloudCloudconnectionsPostConflict) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostConflict %s", 409, payload)
 }
 
 func (o *PcloudCloudconnectionsPostConflict) GetPayload() *models.Error {
@@ -763,11 +782,13 @@ func (o *PcloudCloudconnectionsPostUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudCloudconnectionsPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudCloudconnectionsPostUnprocessableEntity) GetPayload() *models.Error {
@@ -831,11 +852,13 @@ func (o *PcloudCloudconnectionsPostInternalServerError) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudconnectionsPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudconnectionsPostInternalServerError) GetPayload() *models.Error {
@@ -899,11 +922,13 @@ func (o *PcloudCloudconnectionsPostServiceUnavailable) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostServiceUnavailable) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostServiceUnavailable  %+v", 503, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostServiceUnavailable %s", 503, payload)
 }
 
 func (o *PcloudCloudconnectionsPostServiceUnavailable) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostServiceUnavailable  %+v", 503, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostServiceUnavailable %s", 503, payload)
 }
 
 func (o *PcloudCloudconnectionsPostServiceUnavailable) GetPayload() *models.Error {
@@ -967,11 +992,13 @@ func (o *PcloudCloudconnectionsPostGatewayTimeout) Code() int {
 }
 
 func (o *PcloudCloudconnectionsPostGatewayTimeout) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostGatewayTimeout %s", 504, payload)
 }
 
 func (o *PcloudCloudconnectionsPostGatewayTimeout) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostGatewayTimeout %s", 504, payload)
 }
 
 func (o *PcloudCloudconnectionsPostGatewayTimeout) GetPayload() *models.Error {
