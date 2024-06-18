@@ -49,9 +49,6 @@ type MultiVolumesCreate struct {
 	// Indicates if the volume should be replication enabled or not
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
 
-	// List of replication sites for volume replication
-	ReplicationSite []string `json:"replicationSite,omitempty"`
-
 	// Indicates if the volume is shareable between VMs
 	Shareable *bool `json:"shareable,omitempty"`
 

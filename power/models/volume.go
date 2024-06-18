@@ -80,8 +80,8 @@ type Volume struct {
 	// True if volume is replication enabled otherwise false
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
 
-	// List of replication sites for volume replication
-	ReplicationSite []string `json:"replicationSite,omitempty"`
+	// List of replication site for volume replication
+	ReplicationSites []string `json:"replicationSites,omitempty"`
 
 	// Replication status of a volume
 	ReplicationStatus string `json:"replicationStatus,omitempty"`
