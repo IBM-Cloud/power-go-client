@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// AddHost Host to add to a hostgroup
+// AddHost Host to add to a host group
 //
 // swagger:model AddHost
 type AddHost struct {

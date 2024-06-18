@@ -22,7 +22,7 @@ type PVMInstanceCapture struct {
 
 	// Destination for the deployable image
 	// Required: true
-	// Enum: [image-catalog cloud-storage both]
+	// Enum: ["image-catalog","cloud-storage","both"]
 	CaptureDestination *string `json:"captureDestination"`
 
 	// Name of the deployable image created for the captured PVMInstance
@@ -31,6 +31,9 @@ type PVMInstanceCapture struct {
 
 	// List of Data volume IDs to include in the captured PVMInstance
 	CaptureVolumeIDs []string `json:"captureVolumeIDs"`
+
+	// Create a checksum file
+	Checksum bool `json:"checksum,omitempty"`
 
 	// Cloud Storage Access key
 	CloudStorageAccessKey string `json:"cloudStorageAccessKey,omitempty"`

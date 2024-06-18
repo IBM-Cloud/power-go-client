@@ -24,8 +24,8 @@ type Host struct {
 	// Name of the host (chosen by the user)
 	DisplayName string `json:"displayName,omitempty"`
 
-	// Link to the owning hostgroup
-	Hostgroup HostgroupHref `json:"hostgroup,omitempty"`
+	// Information about the owning host group
+	HostGroup *HostGroupSummary `json:"hostGroup,omitempty"`
 
 	// ID of the host
 	ID string `json:"id,omitempty"`
@@ -48,7 +48,7 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateHostgroup(formats); err != nil {
+	if err := m.validateHostGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -77,18 +77,20 @@ func (m *Host) validateCapacity(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Host) validateHostgroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.Hostgroup) { // not required
+func (m *Host) validateHostGroup(formats strfmt.Registry) error {
+	if swag.IsZero(m.HostGroup) { // not required
 		return nil
 	}
 
-	if err := m.Hostgroup.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("hostgroup")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("hostgroup")
+	if m.HostGroup != nil {
+		if err := m.HostGroup.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hostGroup")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hostGroup")
+			}
+			return err
 		}
-		return err
 	}
 
 	return nil
@@ -102,7 +104,7 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateHostgroup(ctx, formats); err != nil {
+	if err := m.contextValidateHostGroup(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -133,19 +135,22 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 	return nil
 }
 
-func (m *Host) contextValidateHostgroup(ctx context.Context, formats strfmt.Registry) error {
+func (m *Host) contextValidateHostGroup(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Hostgroup) { // not required
-		return nil
-	}
+	if m.HostGroup != nil {
 
-	if err := m.Hostgroup.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("hostgroup")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("hostgroup")
+		if swag.IsZero(m.HostGroup) { // not required
+			return nil
 		}
-		return err
+
+		if err := m.HostGroup.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("hostGroup")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("hostGroup")
+			}
+			return err
+		}
 	}
 
 	return nil

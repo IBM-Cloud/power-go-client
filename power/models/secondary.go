@@ -14,15 +14,15 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// Secondary Information to create a secondary hostgroup
+// Secondary Information to create a secondary host group
 //
 // swagger:model Secondary
 type Secondary struct {
 
-	// Name of the hostgroup to create in the secondary workspace
+	// Name of the host group to create in the secondary workspace
 	Name string `json:"name,omitempty"`
 
-	// Name of the workspace to share the hostgroup with
+	// ID of the workspace to share the host group with
 	// Required: true
 	Workspace *string `json:"workspace"`
 }

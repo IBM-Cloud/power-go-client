@@ -9,12 +9,38 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new p cloud volumes API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new p cloud volumes API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new p cloud volumes API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -25,7 +51,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -519,7 +545,11 @@ func (a *Client) PcloudPvminstancesVolumesGetall(params *PcloudPvminstancesVolum
 }
 
 /*
-PcloudPvminstancesVolumesPost attaches a volume to a p VM instance
+	PcloudPvminstancesVolumesPost attaches a volume to a p VM instance
+
+	Attach a volume to a PVMInstance.
+
+>**Note**: Recommended for attaching data volumes. In the case of VMRM, it is recommended to use the 'Attach all volumes to a PVM instance' API for attaching the first boot volume.
 */
 func (a *Client) PcloudPvminstancesVolumesPost(params *PcloudPvminstancesVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesPostOK, error) {
 	// TODO: Validate the params before sending
@@ -597,7 +627,11 @@ func (a *Client) PcloudPvminstancesVolumesPut(params *PcloudPvminstancesVolumesP
 }
 
 /*
-PcloudPvminstancesVolumesSetbootPut sets the p VM instance volume as the boot volume
+	PcloudPvminstancesVolumesSetbootPut sets the p VM instance volume as the boot volume
+
+	Set the PVMInstance volume as the boot volume.
+
+>**Note**: If a non-bootable volume is provided, it will be converted to a bootable volume and then attached.
 */
 func (a *Client) PcloudPvminstancesVolumesSetbootPut(params *PcloudPvminstancesVolumesSetbootPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesSetbootPutOK, error) {
 	// TODO: Validate the params before sending
@@ -675,7 +709,11 @@ func (a *Client) PcloudV2PvminstancesVolumesDelete(params *PcloudV2PvminstancesV
 }
 
 /*
-PcloudV2PvminstancesVolumesPost attaches all volumes to a p VM instance
+	PcloudV2PvminstancesVolumesPost attaches all volumes to a p VM instance
+
+	Attach all volumes to a PVMInstance.
+
+>**Note**: In the case of VMRM, if a single volume ID is provided in the 'volumeIDs' field, that volume will be converted to a bootable volume and then attached.
 */
 func (a *Client) PcloudV2PvminstancesVolumesPost(params *PcloudV2PvminstancesVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesVolumesPostAccepted, error) {
 	// TODO: Validate the params before sending
