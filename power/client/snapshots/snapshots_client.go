@@ -65,6 +65,8 @@ type ClientService interface {
 
 /*
 V1SnapshotsGet gets the detail of a snapshot
+
+View the usage of a snapshot. The snapshot may take time sync because the data is cached.
 */
 func (a *Client) V1SnapshotsGet(params *V1SnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetOK, error) {
 	// TODO: Validate the params before sending
@@ -104,6 +106,8 @@ func (a *Client) V1SnapshotsGet(params *V1SnapshotsGetParams, authInfo runtime.C
 
 /*
 V1SnapshotsGetall gets a list of all the snapshots on a workspace
+
+View the usage of snapshots on the workspace. The snapshots may take time sync because the data is cached.
 */
 func (a *Client) V1SnapshotsGetall(params *V1SnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetallOK, error) {
 	// TODO: Validate the params before sending
