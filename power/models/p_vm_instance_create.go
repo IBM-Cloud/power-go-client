@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
+	// Indicates if the boot volume should be replication enabled or not
+	BootVolumeReplicationEnabled *bool `json:"bootVolumeReplicationEnabled,omitempty"`
+
 	// The deployment of a dedicated host
 	DeploymentTarget *DeploymentTarget `json:"deploymentTarget,omitempty"`
 
