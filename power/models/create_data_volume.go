@@ -46,6 +46,9 @@ type CreateDataVolume struct {
 	// Indicates if the volume should be replication enabled or not
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
 
+	// List of replication site for volume replication
+	ReplicationSites []string `json:"replicationSites,omitempty"`
+
 	// Indicates if the volume is shareable between VMs
 	Shareable *bool `json:"shareable,omitempty"`
 
