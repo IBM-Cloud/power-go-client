@@ -24,6 +24,7 @@ func main() {
 	instance_id := " < INSTANCE ID > "
 	snap_name := " < SNAPSHOT NAME > "
 	description := " < DESCRIPTION > "
+	snapshot_id := " < SNAPSHOT ID > "
 
 	authenticator := &core.BearerTokenAuthenticator{
 		BearerToken: token,
@@ -81,4 +82,16 @@ func main() {
 	}
 	log.Printf("***************[4]****************** %+v \n", err)
 
+	// ***************[] SnapshotsV1 []******************
+	getAllSnapV1Resp, err := powerSnapClient.V1SnapshotsGetall()
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[5]****************** %+v \n", getAllSnapV1Resp)
+
+	getSnapV1Resp, err := powerSnapClient.V1SnapshotsGet(snapshot_id)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.Printf("***************[6]****************** %+v \n", getSnapV1Resp)
 }
