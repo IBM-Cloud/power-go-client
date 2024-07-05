@@ -79,6 +79,9 @@ type PVMInstanceCreate struct {
 	// Number of duplicate instances to create in this request
 	Replicants float64 `json:"replicants,omitempty"`
 
+	// Indicates the replication site of the boot volume
+	ReplicationSites []string `json:"replicationSites"`
+
 	// Name of the server to create
 	// Required: true
 	ServerName *string `json:"serverName"`
