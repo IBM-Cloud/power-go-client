@@ -46,6 +46,10 @@ type Volume struct {
 	// Type of Disk
 	DiskType string `json:"diskType,omitempty"`
 
+	// Freeze time of remote copy relationship
+	// Format: date-time
+	FreezeTime *strfmt.DateTime `json:"freezeTime,omitempty"`
+
 	// Volume Group ID
 	GroupID string `json:"groupID,omitempty"`
 
@@ -121,6 +125,10 @@ func (m *Volume) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFreezeTime(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLastUpdateDate(formats); err != nil {
 		res = append(res, err)
 	}
@@ -154,6 +162,18 @@ func (m *Volume) validateCreationDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("creationDate", "body", "date-time", m.CreationDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Volume) validateFreezeTime(formats strfmt.Registry) error {
+	if swag.IsZero(m.FreezeTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("freezeTime", "body", "date-time", m.FreezeTime.String(), formats); err != nil {
 		return err
 	}
 

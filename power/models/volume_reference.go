@@ -48,6 +48,10 @@ type VolumeReference struct {
 	// Required: true
 	DiskType *string `json:"diskType"`
 
+	// Freeze time of remote copy relationship
+	// Format: date-time
+	FreezeTime *strfmt.DateTime `json:"freezeTime,omitempty"`
+
 	// Volume Group ID
 	GroupID string `json:"groupID,omitempty"`
 
@@ -85,6 +89,9 @@ type VolumeReference struct {
 
 	// True if volume is replication enabled otherwise false
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
+
+	// List of replication site for volume replication
+	ReplicationSites []string `json:"replicationSites,omitempty"`
 
 	// shows the replication status of a volume
 	ReplicationStatus string `json:"replicationStatus,omitempty"`
@@ -132,6 +139,10 @@ func (m *VolumeReference) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDiskType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateFreezeTime(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -202,6 +213,18 @@ func (m *VolumeReference) validateCreationDate(formats strfmt.Registry) error {
 func (m *VolumeReference) validateDiskType(formats strfmt.Registry) error {
 
 	if err := validate.Required("diskType", "body", m.DiskType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *VolumeReference) validateFreezeTime(formats strfmt.Registry) error {
+	if swag.IsZero(m.FreezeTime) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("freezeTime", "body", "date-time", m.FreezeTime.String(), formats); err != nil {
 		return err
 	}
 
