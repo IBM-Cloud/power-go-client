@@ -139,6 +139,10 @@ func (m *Volume) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateFreezeTime(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLastUpdateDate(formats); err != nil {
 		res = append(res, err)
 	}

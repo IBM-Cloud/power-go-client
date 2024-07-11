@@ -86,6 +86,9 @@ type PVMInstanceCreate struct {
 	// Indicates the replication site of the boot volume
 	ReplicationSites []string `json:"replicationSites"`
 
+	// Indicates the replication site of the boot volume
+	ReplicationSites []string `json:"replicationSites"`
+
 	// Name of the server to create
 	// Required: true
 	ServerName *string `json:"serverName"`
