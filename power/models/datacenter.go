@@ -24,6 +24,9 @@ type Datacenter struct {
 	// Required: true
 	Capabilities map[string]bool `json:"capabilities"`
 
+	// Additional Datacenter Capability Details
+	CapabilityDetails *CapabilityDetails `json:"capabilityDetails,omitempty"`
+
 	// Link to Datacenter Region
 	Href string `json:"href,omitempty"`
 
@@ -50,6 +53,10 @@ func (m *Datacenter) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCapabilityDetails(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateLocation(formats); err != nil {
 		res = append(res, err)
 	}
@@ -72,6 +79,25 @@ func (m *Datacenter) validateCapabilities(formats strfmt.Registry) error {
 
 	if err := validate.Required("capabilities", "body", m.Capabilities); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *Datacenter) validateCapabilityDetails(formats strfmt.Registry) error {
+	if swag.IsZero(m.CapabilityDetails) { // not required
+		return nil
+	}
+
+	if m.CapabilityDetails != nil {
+		if err := m.CapabilityDetails.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("capabilityDetails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("capabilityDetails")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -190,6 +216,10 @@ func (m *Datacenter) validateType(formats strfmt.Registry) error {
 func (m *Datacenter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCapabilityDetails(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateLocation(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -197,6 +227,27 @@ func (m *Datacenter) ContextValidate(ctx context.Context, formats strfmt.Registr
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Datacenter) contextValidateCapabilityDetails(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.CapabilityDetails != nil {
+
+		if swag.IsZero(m.CapabilityDetails) { // not required
+			return nil
+		}
+
+		if err := m.CapabilityDetails.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("capabilityDetails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("capabilityDetails")
+			}
+			return err
+		}
+	}
+
 	return nil
 }
 
