@@ -20,7 +20,7 @@ import (
 type VolumeGroup struct {
 
 	// Indicates whether the volume group is for auxiliary volumes or master volumes
-	Auxiliary bool `json:"auxiliary,omitempty"`
+	Auxiliary *bool `json:"auxiliary,omitempty"`
 
 	// The name of consistencyGroup at storage host level
 	ConsistencyGroupName string `json:"consistencyGroupName,omitempty"`

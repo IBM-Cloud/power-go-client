@@ -31,6 +31,9 @@ type Network struct {
 	// (currently not available) cloud connections this network is attached
 	CloudConnections []*NetworkCloudConnectionsItems0 `json:"cloudConnections,omitempty"`
 
+	// The CRN for this resource
+	Crn string `json:"crn,omitempty"`
+
 	// DHCP Managed Network
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
 
@@ -72,6 +75,9 @@ type Network struct {
 	// Required: true
 	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
 	Type *string `json:"type"`
+
+	// The user tags associated with this resource.
+	UserTags []string `json:"userTags,omitempty"`
 
 	// VLAN ID
 	// Required: true
