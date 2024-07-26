@@ -40,6 +40,9 @@ type Volume struct {
 	// Format: date-time
 	CreationDate *strfmt.DateTime `json:"creationDate"`
 
+	// crn
+	Crn CRN `json:"crn,omitempty"`
+
 	// Indicates if the volume should be deleted when the server terminates
 	DeleteOnTermination *bool `json:"deleteOnTermination,omitempty"`
 
@@ -103,6 +106,9 @@ type Volume struct {
 	// Volume State
 	State string `json:"state,omitempty"`
 
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
+
 	// Volume ID
 	// Required: true
 	VolumeID *string `json:"volumeID"`
@@ -122,6 +128,10 @@ func (m *Volume) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreationDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCrn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -145,6 +155,10 @@ func (m *Volume) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUserTags(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVolumeID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -162,6 +176,23 @@ func (m *Volume) validateCreationDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("creationDate", "body", "date-time", m.CreationDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Volume) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
 		return err
 	}
 
@@ -253,6 +284,23 @@ func (m *Volume) validateSize(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Volume) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *Volume) validateVolumeID(formats strfmt.Registry) error {
 
 	if err := validate.Required("volumeID", "body", m.VolumeID); err != nil {
@@ -262,8 +310,53 @@ func (m *Volume) validateVolumeID(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this volume based on context it is used
+// ContextValidate validate this volume based on the context it is used
 func (m *Volume) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCrn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *Volume) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *Volume) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
 	return nil
 }
 

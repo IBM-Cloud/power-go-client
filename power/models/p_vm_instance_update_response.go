@@ -36,7 +36,7 @@ type PVMInstanceUpdateResponse struct {
 	// Number of processors allocated
 	Processors float64 `json:"processors,omitempty"`
 
-	// Name of the server to create
+	// Name of the server
 	ServerName string `json:"serverName,omitempty"`
 
 	// URL to check for status of the operation (for now, just the URL for the GET on the server, which has status information from powervc)
