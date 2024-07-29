@@ -74,6 +74,10 @@ func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network
 
 // Update a Network
 func (f *IBMPINetworkClient) Update(id string, body *models.NetworkUpdate) (*models.Network, error) {
+	// Check for satellite differences in this endpoint
+	if f.session.IsOnPrem() && body.Gateway != nil {
+		return nil, fmt.Errorf("gateway parameter is not supported in satellite location, check documentation")
+	}
 	params := p_cloud_networks.NewPcloudNetworksPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithNetworkID(id).
