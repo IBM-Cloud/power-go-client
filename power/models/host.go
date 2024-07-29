@@ -21,6 +21,9 @@ type Host struct {
 	// Capacities of the host
 	Capacity *HostCapacity `json:"capacity,omitempty"`
 
+	// crn
+	Crn CRN `json:"crn,omitempty"`
+
 	// Name of the host (chosen by the user)
 	DisplayName string `json:"displayName,omitempty"`
 
@@ -38,6 +41,9 @@ type Host struct {
 
 	// System type
 	SysType string `json:"sysType,omitempty"`
+
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 }
 
 // Validate validates this host
@@ -48,7 +54,15 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCrn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHostGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -77,6 +91,23 @@ func (m *Host) validateCapacity(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *Host) validateHostGroup(formats strfmt.Registry) error {
 	if swag.IsZero(m.HostGroup) { // not required
 		return nil
@@ -96,6 +127,23 @@ func (m *Host) validateHostGroup(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Host) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this host based on the context it is used
 func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -104,7 +152,15 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCrn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateHostGroup(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -135,6 +191,24 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 	return nil
 }
 
+func (m *Host) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *Host) contextValidateHostGroup(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.HostGroup != nil {
@@ -151,6 +225,20 @@ func (m *Host) contextValidateHostGroup(ctx context.Context, formats strfmt.Regi
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil
