@@ -31,8 +31,8 @@ type Network struct {
 	// (currently not available) cloud connections this network is attached
 	CloudConnections []*NetworkCloudConnectionsItems0 `json:"cloudConnections,omitempty"`
 
-	// The CRN for this resource
-	Crn string `json:"crn,omitempty"`
+	// crn
+	Crn CRN `json:"crn,omitempty"`
 
 	// DHCP Managed Network
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
@@ -76,8 +76,8 @@ type Network struct {
 	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
 	Type *string `json:"type"`
 
-	// The user tags associated with this resource.
-	UserTags []string `json:"userTags,omitempty"`
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 
 	// VLAN ID
 	// Required: true
@@ -97,6 +97,10 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCloudConnections(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCrn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -129,6 +133,10 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -189,6 +197,23 @@ func (m *Network) validateCloudConnections(formats strfmt.Registry) error {
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Network) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
 	}
 
 	return nil
@@ -356,6 +381,23 @@ func (m *Network) validateType(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Network) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *Network) validateVlanID(formats strfmt.Registry) error {
 
 	if err := validate.Required("vlanID", "body", m.VlanID); err != nil {
@@ -377,6 +419,10 @@ func (m *Network) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCrn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateIPAddressMetrics(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -386,6 +432,10 @@ func (m *Network) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 	}
 
 	if err := m.contextValidatePublicIPAddressRanges(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -433,6 +483,24 @@ func (m *Network) contextValidateCloudConnections(ctx context.Context, formats s
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Network) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
 	}
 
 	return nil
@@ -500,6 +568,20 @@ func (m *Network) contextValidatePublicIPAddressRanges(ctx context.Context, form
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *Network) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil
