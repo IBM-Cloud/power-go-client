@@ -61,12 +61,20 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCrn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateHostGroup(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateUserTags(formats); err != nil {
 	if err := m.validateHostGroup(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -170,6 +178,10 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -206,6 +218,24 @@ func (m *Host) contextValidateCrn(ctx context.Context, formats strfmt.Registry) 
 		}
 
 		if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *Host) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
 		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("crn")
 		} else if ce, ok := err.(*errors.CompositeError); ok {

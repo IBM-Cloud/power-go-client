@@ -369,6 +369,23 @@ func (m *PVMInstance) validateCrn(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PVMInstance) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *PVMInstance) validateDiskSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("diskSize", "body", m.DiskSize); err != nil {
@@ -971,6 +988,20 @@ func (m *PVMInstance) contextValidateSrcs(ctx context.Context, formats strfmt.Re
 
 		}
 
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil

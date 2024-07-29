@@ -203,6 +203,23 @@ func (m *Volume) validateCrn(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Volume) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *Volume) validateFreezeTime(formats strfmt.Registry) error {
 	if swag.IsZero(m.FreezeTime) { // not required
 		return nil
@@ -282,6 +299,23 @@ func (m *Volume) validatePrimaryRole(formats strfmt.Registry) error {
 func (m *Volume) validateSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("size", "body", m.Size); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *Volume) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
 		return err
 	}
 
