@@ -138,3 +138,13 @@ func (f *IBMPINetworkSecurityGroupClient) DeleteRule(id, ruleId string) (*models
 	}
 	return resp.Payload, nil
 }
+
+// Action on a network security group
+func (f *IBMPINetworkSecurityGroupClient) Action(body *models.NetworkSecurityGroupsAction) error {
+	params := network_security_groups.NewV1NetworkSecurityGroupsActionPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithBody(body)
+	_, _, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsActionPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf("failed to perform action :%w", err)
+	}
+	return nil
+}
