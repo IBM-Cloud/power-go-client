@@ -84,6 +84,25 @@ func (m *Datacenter) validateCapabilities(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *Datacenter) validateCapabilitiesDetails(formats strfmt.Registry) error {
+	if swag.IsZero(m.CapabilitiesDetails) { // not required
+		return nil
+	}
+
+	if m.CapabilitiesDetails != nil {
+		if err := m.CapabilitiesDetails.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("capabilitiesDetails")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("capabilitiesDetails")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Datacenter) validateLocation(formats strfmt.Registry) error {
 
 	if err := validate.Required("location", "body", m.Location); err != nil {
