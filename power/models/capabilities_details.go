@@ -14,10 +14,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// CapabilityDetails capability details
+// CapabilitiesDetails capabilities details
 //
-// swagger:model CapabilityDetails
-type CapabilityDetails struct {
+// swagger:model CapabilitiesDetails
+type CapabilitiesDetails struct {
 
 	// Disaster Recovery Information
 	// Required: true
@@ -28,8 +28,8 @@ type CapabilityDetails struct {
 	SupportedSystems *SupportedSystems `json:"supportedSystems"`
 }
 
-// Validate validates this capability details
-func (m *CapabilityDetails) Validate(formats strfmt.Registry) error {
+// Validate validates this capabilities details
+func (m *CapabilitiesDetails) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDisasterRecovery(formats); err != nil {
@@ -46,7 +46,7 @@ func (m *CapabilityDetails) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *CapabilityDetails) validateDisasterRecovery(formats strfmt.Registry) error {
+func (m *CapabilitiesDetails) validateDisasterRecovery(formats strfmt.Registry) error {
 
 	if err := validate.Required("disasterRecovery", "body", m.DisasterRecovery); err != nil {
 		return err
@@ -66,7 +66,7 @@ func (m *CapabilityDetails) validateDisasterRecovery(formats strfmt.Registry) er
 	return nil
 }
 
-func (m *CapabilityDetails) validateSupportedSystems(formats strfmt.Registry) error {
+func (m *CapabilitiesDetails) validateSupportedSystems(formats strfmt.Registry) error {
 
 	if err := validate.Required("supportedSystems", "body", m.SupportedSystems); err != nil {
 		return err
@@ -86,8 +86,8 @@ func (m *CapabilityDetails) validateSupportedSystems(formats strfmt.Registry) er
 	return nil
 }
 
-// ContextValidate validate this capability details based on the context it is used
-func (m *CapabilityDetails) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this capabilities details based on the context it is used
+func (m *CapabilitiesDetails) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateDisasterRecovery(ctx, formats); err != nil {
@@ -104,7 +104,7 @@ func (m *CapabilityDetails) ContextValidate(ctx context.Context, formats strfmt.
 	return nil
 }
 
-func (m *CapabilityDetails) contextValidateDisasterRecovery(ctx context.Context, formats strfmt.Registry) error {
+func (m *CapabilitiesDetails) contextValidateDisasterRecovery(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.DisasterRecovery != nil {
 
@@ -121,7 +121,7 @@ func (m *CapabilityDetails) contextValidateDisasterRecovery(ctx context.Context,
 	return nil
 }
 
-func (m *CapabilityDetails) contextValidateSupportedSystems(ctx context.Context, formats strfmt.Registry) error {
+func (m *CapabilitiesDetails) contextValidateSupportedSystems(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SupportedSystems != nil {
 
@@ -139,7 +139,7 @@ func (m *CapabilityDetails) contextValidateSupportedSystems(ctx context.Context,
 }
 
 // MarshalBinary interface implementation
-func (m *CapabilityDetails) MarshalBinary() ([]byte, error) {
+func (m *CapabilitiesDetails) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -147,8 +147,8 @@ func (m *CapabilityDetails) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *CapabilityDetails) UnmarshalBinary(b []byte) error {
-	var res CapabilityDetails
+func (m *CapabilitiesDetails) UnmarshalBinary(b []byte) error {
+	var res CapabilitiesDetails
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

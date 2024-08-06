@@ -19,16 +19,23 @@ import (
 // swagger:model DisasterRecovery
 type DisasterRecovery struct {
 
-	// Disaster Recovery Information
+	// Asynchronous Replication Target Information
 	// Required: true
-	ReplicationServices *ReplicationServices `json:"replicationServices"`
+	AsynchronousReplication *ReplicationService `json:"asynchronousReplication"`
+
+	// Synchronous Replication Target Information
+	SynchronousReplication *ReplicationService `json:"synchronousReplication,omitempty"`
 }
 
 // Validate validates this disaster recovery
 func (m *DisasterRecovery) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateReplicationServices(formats); err != nil {
+	if err := m.validateAsynchronousReplication(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSynchronousReplication(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -38,18 +45,37 @@ func (m *DisasterRecovery) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *DisasterRecovery) validateReplicationServices(formats strfmt.Registry) error {
+func (m *DisasterRecovery) validateAsynchronousReplication(formats strfmt.Registry) error {
 
-	if err := validate.Required("replicationServices", "body", m.ReplicationServices); err != nil {
+	if err := validate.Required("asynchronousReplication", "body", m.AsynchronousReplication); err != nil {
 		return err
 	}
 
-	if m.ReplicationServices != nil {
-		if err := m.ReplicationServices.Validate(formats); err != nil {
+	if m.AsynchronousReplication != nil {
+		if err := m.AsynchronousReplication.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replicationServices")
+				return ve.ValidateName("asynchronousReplication")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replicationServices")
+				return ce.ValidateName("asynchronousReplication")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DisasterRecovery) validateSynchronousReplication(formats strfmt.Registry) error {
+	if swag.IsZero(m.SynchronousReplication) { // not required
+		return nil
+	}
+
+	if m.SynchronousReplication != nil {
+		if err := m.SynchronousReplication.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("synchronousReplication")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("synchronousReplication")
 			}
 			return err
 		}
@@ -62,7 +88,11 @@ func (m *DisasterRecovery) validateReplicationServices(formats strfmt.Registry) 
 func (m *DisasterRecovery) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateReplicationServices(ctx, formats); err != nil {
+	if err := m.contextValidateAsynchronousReplication(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateSynchronousReplication(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -72,15 +102,36 @@ func (m *DisasterRecovery) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *DisasterRecovery) contextValidateReplicationServices(ctx context.Context, formats strfmt.Registry) error {
+func (m *DisasterRecovery) contextValidateAsynchronousReplication(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.ReplicationServices != nil {
+	if m.AsynchronousReplication != nil {
 
-		if err := m.ReplicationServices.ContextValidate(ctx, formats); err != nil {
+		if err := m.AsynchronousReplication.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("replicationServices")
+				return ve.ValidateName("asynchronousReplication")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("replicationServices")
+				return ce.ValidateName("asynchronousReplication")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *DisasterRecovery) contextValidateSynchronousReplication(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.SynchronousReplication != nil {
+
+		if swag.IsZero(m.SynchronousReplication) { // not required
+			return nil
+		}
+
+		if err := m.SynchronousReplication.ContextValidate(ctx, formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("synchronousReplication")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("synchronousReplication")
 			}
 			return err
 		}
