@@ -254,7 +254,7 @@ func (f *IBMPINetworkClient) UpdateNetworkInterface(id, netIntID string, body *m
 	return resp.Payload, nil
 }
 
-// Delete  a network interface
+// Delete a network interface
 func (f *IBMPINetworkClient) DeleteNetworkInterface(id, netIntID string) error {
 	params := networks.NewV1NetworksNetworkInterfacesDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkID(id).WithNetworkInterfaceID(netIntID)
 	_, err := f.session.Power.Networks.V1NetworksNetworkInterfacesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
