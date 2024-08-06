@@ -228,7 +228,7 @@ func (f *IBMPINetworkClient) GetAllNetworkInterfaces(id string) (*models.Network
 	return resp.Payload, nil
 }
 
-// Get  a network interface
+// Get a network interface
 func (f *IBMPINetworkClient) GetNetworkInterface(id, netIntID string) (*models.NetworkInterface, error) {
 	params := networks.NewV1NetworksNetworkInterfacesGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithNetworkID(id).WithNetworkInterfaceID(netIntID)
 	resp, err := f.session.Power.Networks.V1NetworksNetworkInterfacesGet(params, f.session.AuthInfo(f.cloudInstanceID))
