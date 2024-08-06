@@ -24,8 +24,8 @@ type Datacenter struct {
 	// Required: true
 	Capabilities map[string]bool `json:"capabilities"`
 
-	// Additional Datacenter Capability Details
-	CapabilityDetails *CapabilityDetails `json:"capabilityDetails,omitempty"`
+	// Additional Datacenter Capabilities Details
+	CapabilitiesDetails *CapabilitiesDetails `json:"capabilitiesDetails,omitempty"`
 
 	// Link to Datacenter Region
 	Href string `json:"href,omitempty"`
@@ -53,7 +53,7 @@ func (m *Datacenter) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateCapabilityDetails(formats); err != nil {
+	if err := m.validateCapabilitiesDetails(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -84,17 +84,17 @@ func (m *Datacenter) validateCapabilities(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Datacenter) validateCapabilityDetails(formats strfmt.Registry) error {
-	if swag.IsZero(m.CapabilityDetails) { // not required
+func (m *Datacenter) validateCapabilitiesDetails(formats strfmt.Registry) error {
+	if swag.IsZero(m.CapabilitiesDetails) { // not required
 		return nil
 	}
 
-	if m.CapabilityDetails != nil {
-		if err := m.CapabilityDetails.Validate(formats); err != nil {
+	if m.CapabilitiesDetails != nil {
+		if err := m.CapabilitiesDetails.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("capabilityDetails")
+				return ve.ValidateName("capabilitiesDetails")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("capabilityDetails")
+				return ce.ValidateName("capabilitiesDetails")
 			}
 			return err
 		}
@@ -216,7 +216,7 @@ func (m *Datacenter) validateType(formats strfmt.Registry) error {
 func (m *Datacenter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateCapabilityDetails(ctx, formats); err != nil {
+	if err := m.contextValidateCapabilitiesDetails(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -230,19 +230,19 @@ func (m *Datacenter) ContextValidate(ctx context.Context, formats strfmt.Registr
 	return nil
 }
 
-func (m *Datacenter) contextValidateCapabilityDetails(ctx context.Context, formats strfmt.Registry) error {
+func (m *Datacenter) contextValidateCapabilitiesDetails(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.CapabilityDetails != nil {
+	if m.CapabilitiesDetails != nil {
 
-		if swag.IsZero(m.CapabilityDetails) { // not required
+		if swag.IsZero(m.CapabilitiesDetails) { // not required
 			return nil
 		}
 
-		if err := m.CapabilityDetails.ContextValidate(ctx, formats); err != nil {
+		if err := m.CapabilitiesDetails.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("capabilityDetails")
+				return ve.ValidateName("capabilitiesDetails")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("capabilityDetails")
+				return ce.ValidateName("capabilitiesDetails")
 			}
 			return err
 		}
