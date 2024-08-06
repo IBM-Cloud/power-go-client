@@ -241,7 +241,7 @@ func (f *IBMPINetworkClient) GetNetworkInterface(id, netIntID string) (*models.N
 	return resp.Payload, nil
 }
 
-// Update  a network interface
+// Update a network interface
 func (f *IBMPINetworkClient) UpdateNetworkInterface(id, netIntID string, body *models.NetworkInterfaceUpdate) (*models.NetworkInterface, error) {
 	params := networks.NewV1NetworksNetworkInterfacesPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithNetworkID(id).WithNetworkInterfaceID(netIntID).WithBody(body)
 	resp, err := f.session.Power.Networks.V1NetworksNetworkInterfacesPut(params, f.session.AuthInfo(f.cloudInstanceID))
