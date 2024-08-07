@@ -48,6 +48,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_policies"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_virtual_serial_number"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_onboarding"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
@@ -140,6 +141,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudTenantsSSHKeys = p_cloud_tenants_ssh_keys.New(transport, formats)
 	cli.PCloudvpnConnections = p_cloud_v_p_n_connections.New(transport, formats)
 	cli.PCloudvpnPolicies = p_cloud_v_p_n_policies.New(transport, formats)
+	cli.PCloudVirtualSerialNumber = p_cloud_virtual_serial_number.New(transport, formats)
 	cli.PCloudVolumeGroups = p_cloud_volume_groups.New(transport, formats)
 	cli.PCloudVolumeOnboarding = p_cloud_volume_onboarding.New(transport, formats)
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
@@ -270,6 +272,8 @@ type PowerIaasAPI struct {
 
 	PCloudvpnPolicies p_cloud_v_p_n_policies.ClientService
 
+	PCloudVirtualSerialNumber p_cloud_virtual_serial_number.ClientService
+
 	PCloudVolumeGroups p_cloud_volume_groups.ClientService
 
 	PCloudVolumeOnboarding p_cloud_volume_onboarding.ClientService
@@ -334,6 +338,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudTenantsSSHKeys.SetTransport(transport)
 	c.PCloudvpnConnections.SetTransport(transport)
 	c.PCloudvpnPolicies.SetTransport(transport)
+	c.PCloudVirtualSerialNumber.SetTransport(transport)
 	c.PCloudVolumeGroups.SetTransport(transport)
 	c.PCloudVolumeOnboarding.SetTransport(transport)
 	c.PCloudVolumes.SetTransport(transport)
