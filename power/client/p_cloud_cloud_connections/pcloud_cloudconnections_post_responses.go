@@ -66,6 +66,12 @@ func (o *PcloudCloudconnectionsPostReader) ReadResponse(response runtime.ClientR
 			return nil, err
 		}
 		return nil, result
+	case 405:
+		result := NewPcloudCloudconnectionsPostMethodNotAllowed()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 408:
 		result := NewPcloudCloudconnectionsPostRequestTimeout()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -586,6 +592,76 @@ func (o *PcloudCloudconnectionsPostNotFound) GetPayload() *models.Error {
 }
 
 func (o *PcloudCloudconnectionsPostNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudconnectionsPostMethodNotAllowed creates a PcloudCloudconnectionsPostMethodNotAllowed with default headers values
+func NewPcloudCloudconnectionsPostMethodNotAllowed() *PcloudCloudconnectionsPostMethodNotAllowed {
+	return &PcloudCloudconnectionsPostMethodNotAllowed{}
+}
+
+/*
+PcloudCloudconnectionsPostMethodNotAllowed describes a response with status code 405, with default header values.
+
+Method Not Allowed
+*/
+type PcloudCloudconnectionsPostMethodNotAllowed struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud cloudconnections post method not allowed response has a 2xx status code
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud cloudconnections post method not allowed response has a 3xx status code
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud cloudconnections post method not allowed response has a 4xx status code
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud cloudconnections post method not allowed response has a 5xx status code
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud cloudconnections post method not allowed response a status code equal to that given
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) IsCode(code int) bool {
+	return code == 405
+}
+
+// Code gets the status code for the pcloud cloudconnections post method not allowed response
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) Code() int {
+	return 405
+}
+
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostMethodNotAllowed %s", 405, payload)
+}
+
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections][%d] pcloudCloudconnectionsPostMethodNotAllowed %s", 405, payload)
+}
+
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudCloudconnectionsPostMethodNotAllowed) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
