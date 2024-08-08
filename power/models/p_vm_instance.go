@@ -164,6 +164,9 @@ type PVMInstance struct {
 	// The pvm instance virtual CPU information
 	VirtualCores *VirtualCores `json:"virtualCores,omitempty"`
 
+	// VSN id allocated to the Virtual Machine
+	VirtualSerialNumber string `json:"virtualSerialNumber,omitempty"`
+
 	// List of volume IDs
 	// Required: true
 	VolumeIDs []string `json:"volumeIDs"`
