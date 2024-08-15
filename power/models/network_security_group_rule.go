@@ -28,11 +28,6 @@ type NetworkSecurityGroupRule struct {
 	// destination port
 	DestinationPort *NetworkSecurityGroupRulePort `json:"destinationPort,omitempty"`
 
-	// The direction of the network traffic
-	// Required: true
-	// Enum: ["inbound","outbound"]
-	Direction *string `json:"direction"`
-
 	// The ID of the rule in a Network Security Group
 	// Required: true
 	ID *string `json:"id"`
@@ -62,10 +57,6 @@ func (m *NetworkSecurityGroupRule) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDestinationPort(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateDirection(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -152,49 +143,6 @@ func (m *NetworkSecurityGroupRule) validateDestinationPort(formats strfmt.Regist
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-var networkSecurityGroupRuleTypeDirectionPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["inbound","outbound"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		networkSecurityGroupRuleTypeDirectionPropEnum = append(networkSecurityGroupRuleTypeDirectionPropEnum, v)
-	}
-}
-
-const (
-
-	// NetworkSecurityGroupRuleDirectionInbound captures enum value "inbound"
-	NetworkSecurityGroupRuleDirectionInbound string = "inbound"
-
-	// NetworkSecurityGroupRuleDirectionOutbound captures enum value "outbound"
-	NetworkSecurityGroupRuleDirectionOutbound string = "outbound"
-)
-
-// prop value enum
-func (m *NetworkSecurityGroupRule) validateDirectionEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, networkSecurityGroupRuleTypeDirectionPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *NetworkSecurityGroupRule) validateDirection(formats strfmt.Registry) error {
-
-	if err := validate.Required("direction", "body", m.Direction); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
-		return err
 	}
 
 	return nil
