@@ -17,14 +17,11 @@ import (
 // swagger:model NetworkInterfaceUpdate
 type NetworkInterfaceUpdate struct {
 
+	// If supplied populated it attaches to the InstanceID, if empty detaches from InstanceID
+	InstanceID *string `json:"instanceID,omitempty"`
+
 	// Name of the Network Interface
 	Name *string `json:"name,omitempty"`
-
-	// ID of the Network Security Group the network interface will be added to, if empty detaches from Network Security Group
-	NetworkSecurityGroupID string `json:"networkSecurityGroupID,omitempty"`
-
-	// If supplied populated it attaches to the PVMInstanceID, if empty detaches from PVMInstanceID
-	PvmInstanceID *string `json:"pvmInstanceID,omitempty"`
 }
 
 // Validate validates this network interface update

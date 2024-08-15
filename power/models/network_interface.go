@@ -27,6 +27,9 @@ type NetworkInterface struct {
 	// Required: true
 	ID *string `json:"id"`
 
+	// instance
+	Instance *NetworkInterfaceInstance `json:"instance,omitempty"`
+
 	// The ip address of this Network Interface
 	// Required: true
 	IPAddress *string `json:"ipAddress"`
@@ -41,9 +44,6 @@ type NetworkInterface struct {
 
 	// ID of the Network Security Group the network interface will be added to
 	NetworkSecurityGroupID string `json:"networkSecurityGroupID,omitempty"`
-
-	// pvm instance
-	PvmInstance *NetworkInterfacePvmInstance `json:"pvmInstance,omitempty"`
 
 	// The status of the network address group
 	// Required: true
@@ -65,6 +65,10 @@ func (m *NetworkInterface) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateInstance(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateIPAddress(formats); err != nil {
 		res = append(res, err)
 	}
@@ -74,10 +78,6 @@ func (m *NetworkInterface) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePvmInstance(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -104,6 +104,25 @@ func (m *NetworkInterface) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkInterface) validateInstance(formats strfmt.Registry) error {
+	if swag.IsZero(m.Instance) { // not required
+		return nil
+	}
+
+	if m.Instance != nil {
+		if err := m.Instance.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("instance")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("instance")
+			}
+			return err
+		}
 	}
 
 	return nil
@@ -136,25 +155,6 @@ func (m *NetworkInterface) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NetworkInterface) validatePvmInstance(formats strfmt.Registry) error {
-	if swag.IsZero(m.PvmInstance) { // not required
-		return nil
-	}
-
-	if m.PvmInstance != nil {
-		if err := m.PvmInstance.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("pvmInstance")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("pvmInstance")
-			}
-			return err
-		}
-	}
-
-	return nil
-}
-
 func (m *NetworkInterface) validateStatus(formats strfmt.Registry) error {
 
 	if err := validate.Required("status", "body", m.Status); err != nil {
@@ -168,7 +168,7 @@ func (m *NetworkInterface) validateStatus(formats strfmt.Registry) error {
 func (m *NetworkInterface) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidatePvmInstance(ctx, formats); err != nil {
+	if err := m.contextValidateInstance(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -178,19 +178,19 @@ func (m *NetworkInterface) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *NetworkInterface) contextValidatePvmInstance(ctx context.Context, formats strfmt.Registry) error {
+func (m *NetworkInterface) contextValidateInstance(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.PvmInstance != nil {
+	if m.Instance != nil {
 
-		if swag.IsZero(m.PvmInstance) { // not required
+		if swag.IsZero(m.Instance) { // not required
 			return nil
 		}
 
-		if err := m.PvmInstance.ContextValidate(ctx, formats); err != nil {
+		if err := m.Instance.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("pvmInstance")
+				return ve.ValidateName("instance")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("pvmInstance")
+				return ce.ValidateName("instance")
 			}
 			return err
 		}
@@ -217,30 +217,30 @@ func (m *NetworkInterface) UnmarshalBinary(b []byte) error {
 	return nil
 }
 
-// NetworkInterfacePvmInstance The attached pvm-instance to this Network Interface
+// NetworkInterfaceInstance The attached instance to this Network Interface
 //
-// swagger:model NetworkInterfacePvmInstance
-type NetworkInterfacePvmInstance struct {
+// swagger:model NetworkInterfaceInstance
+type NetworkInterfaceInstance struct {
 
-	// Link to pvm-instance resource
+	// Link to instance resource
 	Href string `json:"href,omitempty"`
 
-	// The attahed pvm-instance ID
-	PvmInstanceID string `json:"pvmInstanceID,omitempty"`
+	// The attached instance ID
+	InstanceID string `json:"instanceID,omitempty"`
 }
 
-// Validate validates this network interface pvm instance
-func (m *NetworkInterfacePvmInstance) Validate(formats strfmt.Registry) error {
+// Validate validates this network interface instance
+func (m *NetworkInterfaceInstance) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this network interface pvm instance based on context it is used
-func (m *NetworkInterfacePvmInstance) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this network interface instance based on context it is used
+func (m *NetworkInterfaceInstance) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *NetworkInterfacePvmInstance) MarshalBinary() ([]byte, error) {
+func (m *NetworkInterfaceInstance) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -248,8 +248,8 @@ func (m *NetworkInterfacePvmInstance) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *NetworkInterfacePvmInstance) UnmarshalBinary(b []byte) error {
-	var res NetworkInterfacePvmInstance
+func (m *NetworkInterfaceInstance) UnmarshalBinary(b []byte) error {
+	var res NetworkInterfaceInstance
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
