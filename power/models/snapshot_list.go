@@ -20,7 +20,7 @@ import (
 // swagger:model SnapshotList
 type SnapshotList struct {
 
-	// The list of snapshots.
+	// The list of volume snapshots.
 	// Required: true
 	Snapshots []*SnapshotV1 `json:"snapshots"`
 }

@@ -19,30 +19,30 @@ import (
 // swagger:model SnapshotV1
 type SnapshotV1 struct {
 
-	// The date and time when the snapshot was created.
+	// The date and time when the volume snapshot was created.
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
 
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
-	// The snapshot UUID.
+	// The volume snapshot UUID.
 	// Required: true
 	ID *string `json:"id"`
 
-	// The snapshot name.
+	// The volume snapshot name.
 	// Required: true
 	Name *string `json:"name"`
 
-	// The size of the snapshot, in gibibytes (GiB).
+	// The size of the volume snapshot, in gibibytes (GiB).
 	// Required: true
 	Size *float64 `json:"size"`
 
-	// The status for the snapshot.
+	// The status for the volume snapshot.
 	// Required: true
 	Status *string `json:"status"`
 
-	// The date and time when the snapshot was last updated.
+	// The date and time when the volume snapshot was last updated.
 	// Format: date-time
 	UpdatedDate strfmt.DateTime `json:"updatedDate,omitempty"`
 
