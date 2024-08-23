@@ -72,6 +72,12 @@ func (o *V1NetworkSecurityGroupsActionPostReader) ReadResponse(response runtime.
 			return nil, err
 		}
 		return nil, result
+	case 550:
+		result := NewV1NetworkSecurityGroupsActionPostStatus550()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	default:
 		return nil, runtime.NewAPIError("[POST /v1/network-security-groups/action] v1.networkSecurityGroups.action.post", response, response.Code())
 	}
@@ -622,6 +628,76 @@ func (o *V1NetworkSecurityGroupsActionPostInternalServerError) GetPayload() *mod
 }
 
 func (o *V1NetworkSecurityGroupsActionPostInternalServerError) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewV1NetworkSecurityGroupsActionPostStatus550 creates a V1NetworkSecurityGroupsActionPostStatus550 with default headers values
+func NewV1NetworkSecurityGroupsActionPostStatus550() *V1NetworkSecurityGroupsActionPostStatus550 {
+	return &V1NetworkSecurityGroupsActionPostStatus550{}
+}
+
+/*
+V1NetworkSecurityGroupsActionPostStatus550 describes a response with status code 550, with default header values.
+
+Workspace Status Error
+*/
+type V1NetworkSecurityGroupsActionPostStatus550 struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this v1 network security groups action post status550 response has a 2xx status code
+func (o *V1NetworkSecurityGroupsActionPostStatus550) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this v1 network security groups action post status550 response has a 3xx status code
+func (o *V1NetworkSecurityGroupsActionPostStatus550) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this v1 network security groups action post status550 response has a 4xx status code
+func (o *V1NetworkSecurityGroupsActionPostStatus550) IsClientError() bool {
+	return false
+}
+
+// IsServerError returns true when this v1 network security groups action post status550 response has a 5xx status code
+func (o *V1NetworkSecurityGroupsActionPostStatus550) IsServerError() bool {
+	return true
+}
+
+// IsCode returns true when this v1 network security groups action post status550 response a status code equal to that given
+func (o *V1NetworkSecurityGroupsActionPostStatus550) IsCode(code int) bool {
+	return code == 550
+}
+
+// Code gets the status code for the v1 network security groups action post status550 response
+func (o *V1NetworkSecurityGroupsActionPostStatus550) Code() int {
+	return 550
+}
+
+func (o *V1NetworkSecurityGroupsActionPostStatus550) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-security-groups/action][%d] v1NetworkSecurityGroupsActionPostStatus550 %s", 550, payload)
+}
+
+func (o *V1NetworkSecurityGroupsActionPostStatus550) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-security-groups/action][%d] v1NetworkSecurityGroupsActionPostStatus550 %s", 550, payload)
+}
+
+func (o *V1NetworkSecurityGroupsActionPostStatus550) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *V1NetworkSecurityGroupsActionPostStatus550) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

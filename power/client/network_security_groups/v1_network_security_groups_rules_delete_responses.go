@@ -82,7 +82,7 @@ V1NetworkSecurityGroupsRulesDeleteOK describes a response with status code 200, 
 OK
 */
 type V1NetworkSecurityGroupsRulesDeleteOK struct {
-	Payload *models.NetworkSecurityGroup
+	Payload models.Object
 }
 
 // IsSuccess returns true when this v1 network security groups rules delete o k response has a 2xx status code
@@ -125,16 +125,14 @@ func (o *V1NetworkSecurityGroupsRulesDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/rules/{network_security_group_rule_id}][%d] v1NetworkSecurityGroupsRulesDeleteOK %s", 200, payload)
 }
 
-func (o *V1NetworkSecurityGroupsRulesDeleteOK) GetPayload() *models.NetworkSecurityGroup {
+func (o *V1NetworkSecurityGroupsRulesDeleteOK) GetPayload() models.Object {
 	return o.Payload
 }
 
 func (o *V1NetworkSecurityGroupsRulesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NetworkSecurityGroup)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 

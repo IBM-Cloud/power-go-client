@@ -88,7 +88,7 @@ V1NetworkSecurityGroupsMembersPostOK describes a response with status code 200, 
 OK
 */
 type V1NetworkSecurityGroupsMembersPostOK struct {
-	Payload *models.NetworkSecurityGroup
+	Payload *models.NetworkSecurityGroupMember
 }
 
 // IsSuccess returns true when this v1 network security groups members post o k response has a 2xx status code
@@ -131,13 +131,13 @@ func (o *V1NetworkSecurityGroupsMembersPostOK) String() string {
 	return fmt.Sprintf("[POST /v1/network-security-groups/{network_security_group_id}/members][%d] v1NetworkSecurityGroupsMembersPostOK %s", 200, payload)
 }
 
-func (o *V1NetworkSecurityGroupsMembersPostOK) GetPayload() *models.NetworkSecurityGroup {
+func (o *V1NetworkSecurityGroupsMembersPostOK) GetPayload() *models.NetworkSecurityGroupMember {
 	return o.Payload
 }
 
 func (o *V1NetworkSecurityGroupsMembersPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NetworkSecurityGroup)
+	o.Payload = new(models.NetworkSecurityGroupMember)
 
 	// response payload
 	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
