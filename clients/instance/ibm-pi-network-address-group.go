@@ -103,15 +103,12 @@ func (f *IBMPINetworkAddressGroupClient) AddMember(id string, body *models.Netwo
 }
 
 // Delete the member from a Network Address Group
-func (f *IBMPINetworkAddressGroupClient) DeleteMember(id, memberId string) (models.Object, error) {
+func (f *IBMPINetworkAddressGroupClient) DeleteMember(id, memberId string) error {
 	params := network_address_groups.NewV1NetworkAddressGroupsMembersDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkAddressGroupID(id).WithNetworkAddressGroupMemberID(memberId)
-	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	_, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete member %s from network address group %s: %w", memberId, id, err))
+		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete member %s from network address group %s: %w", memberId, id, err))
 	}
-	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to delete member %s from  network address group %s", memberId, id)
-	}
-	return resp.Payload, nil
 
+	return nil
 }
