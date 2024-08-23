@@ -82,7 +82,7 @@ V1NetworkAddressGroupsMembersDeleteOK describes a response with status code 200,
 OK
 */
 type V1NetworkAddressGroupsMembersDeleteOK struct {
-	Payload *models.NetworkAddressGroup
+	Payload models.Object
 }
 
 // IsSuccess returns true when this v1 network address groups members delete o k response has a 2xx status code
@@ -125,16 +125,14 @@ func (o *V1NetworkAddressGroupsMembersDeleteOK) String() string {
 	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}/members/{network_address_group_member_id}][%d] v1NetworkAddressGroupsMembersDeleteOK %s", 200, payload)
 }
 
-func (o *V1NetworkAddressGroupsMembersDeleteOK) GetPayload() *models.NetworkAddressGroup {
+func (o *V1NetworkAddressGroupsMembersDeleteOK) GetPayload() models.Object {
 	return o.Payload
 }
 
 func (o *V1NetworkAddressGroupsMembersDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.NetworkAddressGroup)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
