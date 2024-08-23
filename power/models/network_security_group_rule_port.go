@@ -18,10 +18,10 @@ import (
 type NetworkSecurityGroupRulePort struct {
 
 	// The end of the port range, if applicable, If values are not present then all ports are in the range
-	Maximum float64 `json:"maximum,omitempty"`
+	Maximum int64 `json:"maximum,omitempty"`
 
 	// The start of the port range, if applicable. If values are not present then all ports are in the range
-	Minimum float64 `json:"minimum,omitempty"`
+	Minimum int64 `json:"minimum,omitempty"`
 }
 
 // Validate validates this network security group rule port
