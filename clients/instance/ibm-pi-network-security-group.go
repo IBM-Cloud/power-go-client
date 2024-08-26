@@ -88,7 +88,7 @@ func (f *IBMPINetworkSecurityGroupClient) Delete(id string) error {
 }
 
 // Add a member to a network security group
-func (f *IBMPINetworkSecurityGroupClient) AddMember(id string, body *models.NetworkSecurityGroupAddMember) (*models.NetworkSecurityGroup, error) {
+func (f *IBMPINetworkSecurityGroupClient) AddMember(id string, body *models.NetworkSecurityGroupAddMember) (*models.NetworkSecurityGroupMember, error) {
 	params := network_security_groups.NewV1NetworkSecurityGroupsMembersPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkSecurityGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsMembersPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -101,20 +101,17 @@ func (f *IBMPINetworkSecurityGroupClient) AddMember(id string, body *models.Netw
 }
 
 // Deleta a member from a network securti group
-func (f *IBMPINetworkSecurityGroupClient) DeleteMember(id, memberId string) (*models.NetworkSecurityGroup, error) {
+func (f *IBMPINetworkSecurityGroupClient) DeleteMember(id, memberId string) error {
 	params := network_security_groups.NewV1NetworkSecurityGroupsMembersDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkSecurityGroupID(id).WithNetworkSecurityGroupMemberID(memberId)
-	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	_, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete member %s from network security group %s: %w", memberId, id, err))
+		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete member %s from network security group %s: %w", memberId, id, err))
 	}
-	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to delete member %s from  network security group %s", memberId, id)
-	}
-	return resp.Payload, nil
+	return nil
 }
 
 // Add a rule to a network security group
-func (f *IBMPINetworkSecurityGroupClient) AddRule(id string, body *models.NetworkSecurityGroupAddRule) (*models.NetworkSecurityGroup, error) {
+func (f *IBMPINetworkSecurityGroupClient) AddRule(id string, body *models.NetworkSecurityGroupAddRule) (*models.NetworkSecurityGroupRule, error) {
 	params := network_security_groups.NewV1NetworkSecurityGroupsRulesPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkSecurityGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsRulesPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -127,16 +124,13 @@ func (f *IBMPINetworkSecurityGroupClient) AddRule(id string, body *models.Networ
 }
 
 // Delete a rule from a network security group
-func (f *IBMPINetworkSecurityGroupClient) DeleteRule(id, ruleId string) (*models.NetworkSecurityGroup, error) {
+func (f *IBMPINetworkSecurityGroupClient) DeleteRule(id, ruleId string) error {
 	params := network_security_groups.NewV1NetworkSecurityGroupsRulesDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkSecurityGroupID(id).WithNetworkSecurityGroupRuleID(ruleId)
-	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsRulesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	_, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsRulesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete rule %s from network security group %s: %w", ruleId, id, err))
+		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete rule %s from network security group %s: %w", ruleId, id, err))
 	}
-	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to delete rule %s from  network security group %s", ruleId, id)
-	}
-	return resp.Payload, nil
+	return nil
 }
 
 // Action on a network security group
