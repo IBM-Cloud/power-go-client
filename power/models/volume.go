@@ -26,7 +26,7 @@ type Volume struct {
 	// true if volume is auxiliary otherwise false
 	Auxiliary *bool `json:"auxiliary,omitempty"`
 
-	// Indicates if the volume is the server's boot volume
+	// Indicates if the volume is the server's boot volume. Only returned when querying a server's attached volumes
 	BootVolume *bool `json:"bootVolume,omitempty"`
 
 	// Indicates if the volume is boot capable
