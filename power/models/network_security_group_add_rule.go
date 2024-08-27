@@ -28,15 +28,6 @@ type NetworkSecurityGroupAddRule struct {
 	// destination ports
 	DestinationPorts *NetworkSecurityGroupRulePort `json:"destinationPorts,omitempty"`
 
-	// The direction of the network traffic
-	// Required: true
-	// Enum: ["inbound","outbound"]
-	Direction *string `json:"direction"`
-
-	// The unique name of the Network Security Group rule
-	// Required: true
-	Name *string `json:"name"`
-
 	// protocol
 	// Required: true
 	Protocol *NetworkSecurityGroupRuleProtocol `json:"protocol"`
@@ -58,14 +49,6 @@ func (m *NetworkSecurityGroupAddRule) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDestinationPorts(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateDirection(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -144,58 +127,6 @@ func (m *NetworkSecurityGroupAddRule) validateDestinationPorts(formats strfmt.Re
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-var networkSecurityGroupAddRuleTypeDirectionPropEnum []interface{}
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["inbound","outbound"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		networkSecurityGroupAddRuleTypeDirectionPropEnum = append(networkSecurityGroupAddRuleTypeDirectionPropEnum, v)
-	}
-}
-
-const (
-
-	// NetworkSecurityGroupAddRuleDirectionInbound captures enum value "inbound"
-	NetworkSecurityGroupAddRuleDirectionInbound string = "inbound"
-
-	// NetworkSecurityGroupAddRuleDirectionOutbound captures enum value "outbound"
-	NetworkSecurityGroupAddRuleDirectionOutbound string = "outbound"
-)
-
-// prop value enum
-func (m *NetworkSecurityGroupAddRule) validateDirectionEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, networkSecurityGroupAddRuleTypeDirectionPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *NetworkSecurityGroupAddRule) validateDirection(formats strfmt.Registry) error {
-
-	if err := validate.Required("direction", "body", m.Direction); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NetworkSecurityGroupAddRule) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
 	}
 
 	return nil
