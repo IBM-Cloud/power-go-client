@@ -22,7 +22,7 @@ import (
 type NetworkSecurityGroupRuleProtocol struct {
 
 	// If icmp type, the list of ICMP packet types (by numbers) affected by ICMP rules and if not present then all types are matched
-	IcmpTypes []float64 `json:"icmpTypes"`
+	IcmpTypes []int64 `json:"icmpTypes"`
 
 	// If tcp type, the list of TCP flags and if not present then all flags are matched
 	TCPFlags []*NetworkSecurityGroupRuleProtocolTCPFlag `json:"tcpFlags"`
