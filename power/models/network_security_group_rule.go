@@ -32,10 +32,6 @@ type NetworkSecurityGroupRule struct {
 	// Required: true
 	ID *string `json:"id"`
 
-	// The unique name of the Network Security Group rule
-	// Required: true
-	Name *string `json:"name"`
-
 	// protocol
 	// Required: true
 	Protocol *NetworkSecurityGroupRuleProtocol `json:"protocol"`
@@ -61,10 +57,6 @@ func (m *NetworkSecurityGroupRule) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -151,15 +143,6 @@ func (m *NetworkSecurityGroupRule) validateDestinationPort(formats strfmt.Regist
 func (m *NetworkSecurityGroupRule) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NetworkSecurityGroupRule) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 

@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // NetworkSecurityGroupRulePort network security group rule port
@@ -17,15 +19,54 @@ import (
 // swagger:model NetworkSecurityGroupRulePort
 type NetworkSecurityGroupRulePort struct {
 
-	// The end of the port range, if applicable, If values are not present then all ports are in the range
+	// The end of the port range, if applicable. If the value is not present then the default value of 65535 will be the maximum port number.
+	// Maximum: 65535
 	Maximum int64 `json:"maximum,omitempty"`
 
-	// The start of the port range, if applicable. If values are not present then all ports are in the range
+	// The start of the port range, if applicable. If the value is not present then the default value of 1 will be the minimum port number.
+	// Minimum: 1
 	Minimum int64 `json:"minimum,omitempty"`
 }
 
 // Validate validates this network security group rule port
 func (m *NetworkSecurityGroupRulePort) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateMaximum(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMinimum(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *NetworkSecurityGroupRulePort) validateMaximum(formats strfmt.Registry) error {
+	if swag.IsZero(m.Maximum) { // not required
+		return nil
+	}
+
+	if err := validate.MaximumInt("maximum", "body", m.Maximum, 65535, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkSecurityGroupRulePort) validateMinimum(formats strfmt.Registry) error {
+	if swag.IsZero(m.Minimum) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("minimum", "body", m.Minimum, 1, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 
