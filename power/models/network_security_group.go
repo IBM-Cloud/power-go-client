@@ -39,7 +39,7 @@ type NetworkSecurityGroup struct {
 	Rules []*NetworkSecurityGroupRule `json:"rules"`
 
 	// The user tags associated with this resource.
-	UserTags []string `json:"userTags"`
+	UserTags []string `json:"userTags,omitempty"`
 }
 
 // Validate validates this network security group
