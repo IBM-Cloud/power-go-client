@@ -36,7 +36,7 @@ type NetworkAddressGroup struct {
 	Name *string `json:"name"`
 
 	// The user tags associated with this resource.
-	UserTags []string `json:"userTags"`
+	UserTags []string `json:"userTags,omitempty"`
 }
 
 // Validate validates this network address group
