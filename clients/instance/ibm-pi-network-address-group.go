@@ -68,7 +68,7 @@ func (f *IBMPINetworkAddressGroupClient) Get(id string) (*models.NetworkAddressG
 
 // Update a Network Address Group
 func (f *IBMPINetworkAddressGroupClient) Update(id string, body *models.NetworkAddressGroupUpdate) (*models.NetworkAddressGroup, error) {
-	params := network_address_groups.NewV1NetworkAddressGroupsIDPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut)
+	params := network_address_groups.NewV1NetworkAddressGroupsIDPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithNetworkAddressGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsIDPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update network address group %s: %w", id, err))
