@@ -91,7 +91,7 @@ func (f *IBMPINetworkAddressGroupClient) Delete(id string) error {
 
 // Add a member to a Network Address Group
 func (f *IBMPINetworkAddressGroupClient) AddMember(id string, body *models.NetworkAddressGroupAddMember) (*models.NetworkAddressGroupMember, error) {
-	params := network_address_groups.NewV1NetworkAddressGroupsMembersPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkAddressGroupID(id)
+	params := network_address_groups.NewV1NetworkAddressGroupsMembersPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkAddressGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsMembersPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to add member to network address group %s: %w", id, err))
