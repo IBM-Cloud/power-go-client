@@ -124,9 +124,6 @@ type PVMInstanceCreate struct {
 	// The pvm instance virtual CPU information
 	VirtualCores *VirtualCores `json:"virtualCores,omitempty"`
 
-	// VSN ID of a retained VSN or specify 'auto-assign' to have a new VSN ID generated.
-	VirtualSerialNumber string `json:"virtualSerialNumber,omitempty"`
-
 	// List of volume IDs
 	VolumeIDs []string `json:"volumeIDs"`
 }

@@ -21,9 +21,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_locations"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_storage_regions"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_transit_gateway"
-	"github.com/IBM-Cloud/power-go-client/power/client/network_address_groups"
-	"github.com/IBM-Cloud/power-go-client/power/client/network_security_groups"
-	"github.com/IBM-Cloud/power-go-client/power/client/networks"
 	"github.com/IBM-Cloud/power-go-client/power/client/open_stacks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_cloud_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_disaster_recovery"
@@ -48,7 +45,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_policies"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_virtual_serial_number"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volume_onboarding"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_volumes"
@@ -114,9 +110,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.InternalPowervsLocations = internal_power_v_s_locations.New(transport, formats)
 	cli.InternalStorageRegions = internal_storage_regions.New(transport, formats)
 	cli.InternalTransitGateway = internal_transit_gateway.New(transport, formats)
-	cli.NetworkAddressGroups = network_address_groups.New(transport, formats)
-	cli.NetworkSecurityGroups = network_security_groups.New(transport, formats)
-	cli.Networks = networks.New(transport, formats)
 	cli.OpenStacks = open_stacks.New(transport, formats)
 	cli.PCloudCloudConnections = p_cloud_cloud_connections.New(transport, formats)
 	cli.PCloudDisasterRecovery = p_cloud_disaster_recovery.New(transport, formats)
@@ -141,7 +134,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudTenantsSSHKeys = p_cloud_tenants_ssh_keys.New(transport, formats)
 	cli.PCloudvpnConnections = p_cloud_v_p_n_connections.New(transport, formats)
 	cli.PCloudvpnPolicies = p_cloud_v_p_n_policies.New(transport, formats)
-	cli.PCloudVirtualSerialNumber = p_cloud_virtual_serial_number.New(transport, formats)
 	cli.PCloudVolumeGroups = p_cloud_volume_groups.New(transport, formats)
 	cli.PCloudVolumeOnboarding = p_cloud_volume_onboarding.New(transport, formats)
 	cli.PCloudVolumes = p_cloud_volumes.New(transport, formats)
@@ -218,12 +210,6 @@ type PowerIaasAPI struct {
 
 	InternalTransitGateway internal_transit_gateway.ClientService
 
-	NetworkAddressGroups network_address_groups.ClientService
-
-	NetworkSecurityGroups network_security_groups.ClientService
-
-	Networks networks.ClientService
-
 	OpenStacks open_stacks.ClientService
 
 	PCloudCloudConnections p_cloud_cloud_connections.ClientService
@@ -272,8 +258,6 @@ type PowerIaasAPI struct {
 
 	PCloudvpnPolicies p_cloud_v_p_n_policies.ClientService
 
-	PCloudVirtualSerialNumber p_cloud_virtual_serial_number.ClientService
-
 	PCloudVolumeGroups p_cloud_volume_groups.ClientService
 
 	PCloudVolumeOnboarding p_cloud_volume_onboarding.ClientService
@@ -311,9 +295,6 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.InternalPowervsLocations.SetTransport(transport)
 	c.InternalStorageRegions.SetTransport(transport)
 	c.InternalTransitGateway.SetTransport(transport)
-	c.NetworkAddressGroups.SetTransport(transport)
-	c.NetworkSecurityGroups.SetTransport(transport)
-	c.Networks.SetTransport(transport)
 	c.OpenStacks.SetTransport(transport)
 	c.PCloudCloudConnections.SetTransport(transport)
 	c.PCloudDisasterRecovery.SetTransport(transport)
@@ -338,7 +319,6 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudTenantsSSHKeys.SetTransport(transport)
 	c.PCloudvpnConnections.SetTransport(transport)
 	c.PCloudvpnPolicies.SetTransport(transport)
-	c.PCloudVirtualSerialNumber.SetTransport(transport)
 	c.PCloudVolumeGroups.SetTransport(transport)
 	c.PCloudVolumeOnboarding.SetTransport(transport)
 	c.PCloudVolumes.SetTransport(transport)
