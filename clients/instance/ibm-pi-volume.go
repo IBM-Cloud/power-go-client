@@ -257,12 +257,34 @@ func (f *IBMPIVolumeClient) GetVolumeFlashCopyMappings(id string) (models.FlashC
 
 // Bulk volume detach
 func (f *IBMPIVolumeClient) BulkVolumeDetach(pvmID string, body *models.VolumesDetach) (*models.VolumesDetachmentResponse, error) {
-	return nil, fmt.Errorf("operation not supported")
+	params := p_cloud_volumes.NewPcloudV2PvminstancesVolumesDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(pvmID).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudVolumes.PcloudV2PvminstancesVolumesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.DetachVolumesOperationFailed, pvmID, f.cloudInstanceID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed detaching volumes for %s", pvmID)
+	}
+	return resp.Payload, nil
 }
 
 // Bulk volume delete
 func (f *IBMPIVolumeClient) BulkVolumeDelete(body *models.VolumesDelete) (*models.VolumesDeleteResponse, error) {
-	return nil, fmt.Errorf("operation not supported")
+	params := p_cloud_volumes.NewPcloudV2VolumesDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithBody(body)
+	respOk, respPartial, err := f.session.Power.PCloudVolumes.PcloudV2VolumesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.DeleteVolumeOperationFailed, body.VolumeIDs, err))
+	}
+	if respOk != nil && respOk.Payload != nil {
+		return respOk.Payload, nil
+	}
+	if respPartial != nil && respPartial.Payload != nil {
+		return respPartial.Payload, nil
+	}
+	return nil, fmt.Errorf("failed Deleting volumes : %s", body.VolumeIDs)
 }
 
 // Bulk volutme attach
