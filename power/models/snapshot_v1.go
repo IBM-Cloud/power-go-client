@@ -19,27 +19,30 @@ import (
 // swagger:model SnapshotV1
 type SnapshotV1 struct {
 
-	// The date and time when the snapshot was created.
+	// The date and time when the volume snapshot was created.
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
 
-	// The snapshot UUID.
+	// crn
+	Crn CRN `json:"crn,omitempty"`
+
+	// The volume snapshot UUID.
 	// Required: true
 	ID *string `json:"id"`
 
-	// The snapshot name.
+	// The volume snapshot name.
 	// Required: true
 	Name *string `json:"name"`
 
-	// The size of the snapshot, in gibibytes (GiB).
+	// The size of the volume snapshot, in gibibytes (GiB).
 	// Required: true
 	Size *float64 `json:"size"`
 
-	// The status for the snapshot.
+	// The status for the volume snapshot.
 	// Required: true
 	Status *string `json:"status"`
 
-	// The date and time when the snapshot was last updated.
+	// The date and time when the volume snapshot was last updated.
 	// Format: date-time
 	UpdatedDate strfmt.DateTime `json:"updatedDate,omitempty"`
 
@@ -53,6 +56,10 @@ func (m *SnapshotV1) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCreationDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCrn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -92,6 +99,23 @@ func (m *SnapshotV1) validateCreationDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("creationDate", "body", "date-time", m.CreationDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *SnapshotV1) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
 		return err
 	}
 
@@ -155,8 +179,35 @@ func (m *SnapshotV1) validateVolumeID(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this snapshot v1 based on context it is used
+// ContextValidate validate this snapshot v1 based on the context it is used
 func (m *SnapshotV1) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateCrn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SnapshotV1) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
+	}
+
 	return nil
 }
 

@@ -31,6 +31,9 @@ type PVMInstanceReference struct {
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
 
+	// crn
+	Crn CRN `json:"crn,omitempty"`
+
 	// Size of allocated disk (in GB)
 	// Required: true
 	DiskSize *float64 `json:"diskSize"`
@@ -168,6 +171,10 @@ func (m *PVMInstanceReference) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCrn(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDiskSize(formats); err != nil {
 		res = append(res, err)
 	}
@@ -297,6 +304,23 @@ func (m *PVMInstanceReference) validateCreationDate(formats strfmt.Registry) err
 	}
 
 	if err := validate.FormatOf("creationDate", "body", "date-time", m.CreationDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceReference) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
 		return err
 	}
 
@@ -605,6 +629,10 @@ func (m *PVMInstanceReference) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCrn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateFault(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -680,6 +708,24 @@ func (m *PVMInstanceReference) contextValidateConsoleLanguage(ctx context.Contex
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceReference) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
 	}
 
 	return nil

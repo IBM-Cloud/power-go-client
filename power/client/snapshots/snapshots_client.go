@@ -60,11 +60,21 @@ type ClientService interface {
 
 	V1SnapshotsGetall(params *V1SnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetallOK, error)
 
+	V1VolumeSnapshotsGet(params *V1VolumeSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1VolumeSnapshotsGetOK, error)
+
+	V1VolumeSnapshotsGetall(params *V1VolumeSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1VolumeSnapshotsGetallOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-V1SnapshotsGet gets the detail of a snapshot
+	V1SnapshotsGet gets the detail of a snapshot
+
+	This API is deprecated for /v1/snapshots.
+
+The API v1/volume-snapshots has replaced this endpoint.
+
+View the usage of a snapshot. The snapshot may take time sync because the data is cached.
 */
 func (a *Client) V1SnapshotsGet(params *V1SnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetOK, error) {
 	// TODO: Validate the params before sending
@@ -103,7 +113,13 @@ func (a *Client) V1SnapshotsGet(params *V1SnapshotsGetParams, authInfo runtime.C
 }
 
 /*
-V1SnapshotsGetall gets a list of all the snapshots on a workspace
+	V1SnapshotsGetall gets a list of all the snapshots on a workspace
+
+	This API is deprecated for /v1/snapshots.
+
+The API v1/volume-snapshots has replaced this endpoint.
+
+View the usage of snapshots on the workspace. The snapshots may take time sync because the data is cached.
 */
 func (a *Client) V1SnapshotsGetall(params *V1SnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetallOK, error) {
 	// TODO: Validate the params before sending
@@ -138,6 +154,88 @@ func (a *Client) V1SnapshotsGetall(params *V1SnapshotsGetallParams, authInfo run
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.snapshots.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1VolumeSnapshotsGet gets the detail of a volume snapshot
+
+View the usage of a snapshot. The snapshot may take time sync because the data is cached.
+*/
+func (a *Client) V1VolumeSnapshotsGet(params *V1VolumeSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1VolumeSnapshotsGetOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewV1VolumeSnapshotsGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.volume-snapshots.get",
+		Method:             "GET",
+		PathPattern:        "/v1/volume-snapshots/{volume_snapshot_uuid}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1VolumeSnapshotsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*V1VolumeSnapshotsGetOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.volume-snapshots.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1VolumeSnapshotsGetall gets the list of volume snapshots on a workspace
+
+View the usage of volume snapshots on the workspace. The volume snapshots may take time sync because the data is cached.
+*/
+func (a *Client) V1VolumeSnapshotsGetall(params *V1VolumeSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1VolumeSnapshotsGetallOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewV1VolumeSnapshotsGetallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.volume-snapshots.getall",
+		Method:             "GET",
+		PathPattern:        "/v1/volume-snapshots",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1VolumeSnapshotsGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*V1VolumeSnapshotsGetallOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.volume-snapshots.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

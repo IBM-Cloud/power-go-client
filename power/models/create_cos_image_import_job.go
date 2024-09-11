@@ -64,6 +64,9 @@ type CreateCosImageImportJob struct {
 
 	// Type of storage; If only using storageType for storage selection then the storage pool with the most available space will be selected if storageType is not provided the storage type will default to 'tier3'.
 	StorageType string `json:"storageType,omitempty"`
+
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 }
 
 // Validate validates this create cos image import job
@@ -99,6 +102,10 @@ func (m *CreateCosImageImportJob) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStorageAffinity(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -272,6 +279,23 @@ func (m *CreateCosImageImportJob) validateStorageAffinity(formats strfmt.Registr
 	return nil
 }
 
+func (m *CreateCosImageImportJob) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this create cos image import job based on the context it is used
 func (m *CreateCosImageImportJob) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -281,6 +305,10 @@ func (m *CreateCosImageImportJob) ContextValidate(ctx context.Context, formats s
 	}
 
 	if err := m.contextValidateStorageAffinity(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -327,6 +355,20 @@ func (m *CreateCosImageImportJob) contextValidateStorageAffinity(ctx context.Con
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *CreateCosImageImportJob) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil

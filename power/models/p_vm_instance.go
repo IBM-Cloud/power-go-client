@@ -31,6 +31,9 @@ type PVMInstance struct {
 	// Format: date-time
 	CreationDate strfmt.DateTime `json:"creationDate,omitempty"`
 
+	// crn
+	Crn CRN `json:"crn,omitempty"`
+
 	// The custom deployment type
 	DeploymentType string `json:"deploymentType,omitempty"`
 
@@ -155,6 +158,9 @@ type PVMInstance struct {
 	// Format: date-time
 	UpdatedDate strfmt.DateTime `json:"updatedDate,omitempty"`
 
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
+
 	// The pvm instance virtual CPU information
 	VirtualCores *VirtualCores `json:"virtualCores,omitempty"`
 
@@ -176,6 +182,10 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateCreationDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCrn(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -251,6 +261,10 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUserTags(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVirtualCores(formats); err != nil {
 		res = append(res, err)
 	}
@@ -316,6 +330,23 @@ func (m *PVMInstance) validateCreationDate(formats strfmt.Registry) error {
 	}
 
 	if err := validate.FormatOf("creationDate", "body", "date-time", m.CreationDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) validateCrn(formats strfmt.Registry) error {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
 		return err
 	}
 
@@ -605,6 +636,23 @@ func (m *PVMInstance) validateUpdatedDate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PVMInstance) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *PVMInstance) validateVirtualCores(formats strfmt.Registry) error {
 	if swag.IsZero(m.VirtualCores) { // not required
 		return nil
@@ -645,6 +693,10 @@ func (m *PVMInstance) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateCrn(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateFault(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -666,6 +718,10 @@ func (m *PVMInstance) ContextValidate(ctx context.Context, formats strfmt.Regist
 	}
 
 	if err := m.contextValidateSrcs(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -720,6 +776,24 @@ func (m *PVMInstance) contextValidateConsoleLanguage(ctx context.Context, format
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
+
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
+
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
+		}
+		return err
 	}
 
 	return nil
@@ -858,6 +932,20 @@ func (m *PVMInstance) contextValidateSrcs(ctx context.Context, formats strfmt.Re
 
 		}
 
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil

@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
+	// Indicates if the boot volume should be replication enabled or not
+	BootVolumeReplicationEnabled *bool `json:"bootVolumeReplicationEnabled,omitempty"`
+
 	// The deployment of a dedicated host
 	DeploymentTarget *DeploymentTarget `json:"deploymentTarget,omitempty"`
 
@@ -76,6 +79,9 @@ type PVMInstanceCreate struct {
 	// Number of duplicate instances to create in this request
 	Replicants float64 `json:"replicants,omitempty"`
 
+	// Indicates the replication site of the boot volume
+	ReplicationSites []string `json:"replicationSites"`
+
 	// Name of the server to create
 	// Required: true
 	ServerName *string `json:"serverName"`
@@ -111,6 +117,9 @@ type PVMInstanceCreate struct {
 
 	// Cloud init user defined data; For FLS, only cloud-config instance-data is supported and data must not be compressed or exceed 63K
 	UserData string `json:"userData,omitempty"`
+
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 
 	// The pvm instance virtual CPU information
 	VirtualCores *VirtualCores `json:"virtualCores,omitempty"`
@@ -176,6 +185,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStorageConnectionV2(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -542,6 +555,23 @@ func (m *PVMInstanceCreate) validateStorageConnectionV2(formats strfmt.Registry)
 	return nil
 }
 
+func (m *PVMInstanceCreate) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 func (m *PVMInstanceCreate) validateVirtualCores(formats strfmt.Registry) error {
 	if swag.IsZero(m.VirtualCores) { // not required
 		return nil
@@ -582,6 +612,10 @@ func (m *PVMInstanceCreate) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateStorageAffinity(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -696,6 +730,20 @@ func (m *PVMInstanceCreate) contextValidateStorageAffinity(ctx context.Context, 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceCreate) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil

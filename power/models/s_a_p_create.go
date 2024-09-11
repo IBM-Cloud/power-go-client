@@ -20,6 +20,9 @@ import (
 // swagger:model SAPCreate
 type SAPCreate struct {
 
+	// Indicates if the boot volume should be replication enabled or not
+	BootVolumeReplicationEnabled *bool `json:"bootVolumeReplicationEnabled,omitempty"`
+
 	// The deployment of a dedicated host
 	DeploymentTarget *DeploymentTarget `json:"deploymentTarget,omitempty"`
 
@@ -51,6 +54,9 @@ type SAPCreate struct {
 	// Required: true
 	ProfileID *string `json:"profileID"`
 
+	// Indicates the replication site of the boot volume
+	ReplicationSites []string `json:"replicationSites"`
+
 	// The name of the SSH Key to provide to the server for authenticating
 	SSHKeyName string `json:"sshKeyName,omitempty"`
 
@@ -68,6 +74,9 @@ type SAPCreate struct {
 
 	// Cloud init user defined data; For FLS, only cloud-config instance-data is supported and data must not be compressed or exceed 63K
 	UserData string `json:"userData,omitempty"`
+
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 
 	// List of Volume IDs to attach to the pvm-instance on creation
 	VolumeIDs []string `json:"volumeIDs"`
@@ -106,6 +115,10 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateStorageAffinity(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -243,6 +256,23 @@ func (m *SAPCreate) validateStorageAffinity(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SAPCreate) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this s a p create based on the context it is used
 func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -264,6 +294,10 @@ func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry
 	}
 
 	if err := m.contextValidateStorageAffinity(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -374,6 +408,20 @@ func (m *SAPCreate) contextValidateStorageAffinity(ctx context.Context, formats 
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *SAPCreate) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil
