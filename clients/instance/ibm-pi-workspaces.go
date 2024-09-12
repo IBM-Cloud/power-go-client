@@ -92,6 +92,30 @@ func (f *IBMPIWorkspacesClient) Create(name, location, groupID, plan string) (*r
 	return workspace, response, nil
 }
 
+// Create a workspace with tags
+func (f *IBMPIWorkspacesClient) CreateWithUserTags(name, location, groupID, plan string, userTags []string) (*resourcecontrollerv2.ResourceInstance, *core.DetailedResponse, error) {
+	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
+	if err != nil {
+		return nil, nil, fmt.Errorf("error creating Resource Controller client: %v", err)
+	}
+	planID := translatePlan(plan)
+	if planID == "" {
+		return nil, nil, fmt.Errorf("workspace creation error, incorrect plan value; either \"public\" or \"private\" is allowed")
+	}
+	params := resourceController.NewCreateResourceInstanceOptions(name, location, groupID, planID)
+	if len(userTags) > 0 {
+		params.Tags = userTags
+	}
+	workspace, response, err := resourceController.CreateResourceInstance(params)
+	if err != nil {
+		return nil, response, fmt.Errorf("error creating workspace: workspace %v response %v  err %v", workspace, response, err)
+	}
+	if response.StatusCode >= 400 {
+		return nil, response, fmt.Errorf("error creating resource instance. Status code: %d", response.StatusCode)
+	}
+	return workspace, response, nil
+}
+
 // Delete a workspace
 func (f *IBMPIWorkspacesClient) Delete(workspaceID string) (*core.DetailedResponse, error) {
 	resourceController, err := ibmpisession.CreateResourceControllerV2(f.session.Options.URL, f.session.Options.Authenticator)
