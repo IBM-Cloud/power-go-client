@@ -21,6 +21,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_locations"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_storage_regions"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_transit_gateway"
+	"github.com/IBM-Cloud/power-go-client/power/client/networks"
 	"github.com/IBM-Cloud/power-go-client/power/client/open_stacks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_cloud_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_disaster_recovery"
@@ -110,6 +111,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.InternalPowervsLocations = internal_power_v_s_locations.New(transport, formats)
 	cli.InternalStorageRegions = internal_storage_regions.New(transport, formats)
 	cli.InternalTransitGateway = internal_transit_gateway.New(transport, formats)
+	cli.Networks = networks.New(transport, formats)
 	cli.OpenStacks = open_stacks.New(transport, formats)
 	cli.PCloudCloudConnections = p_cloud_cloud_connections.New(transport, formats)
 	cli.PCloudDisasterRecovery = p_cloud_disaster_recovery.New(transport, formats)
@@ -210,6 +212,8 @@ type PowerIaasAPI struct {
 
 	InternalTransitGateway internal_transit_gateway.ClientService
 
+	Networks networks.ClientService
+
 	OpenStacks open_stacks.ClientService
 
 	PCloudCloudConnections p_cloud_cloud_connections.ClientService
@@ -295,6 +299,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.InternalPowervsLocations.SetTransport(transport)
 	c.InternalStorageRegions.SetTransport(transport)
 	c.InternalTransitGateway.SetTransport(transport)
+	c.Networks.SetTransport(transport)
 	c.OpenStacks.SetTransport(transport)
 	c.PCloudCloudConnections.SetTransport(transport)
 	c.PCloudDisasterRecovery.SetTransport(transport)
