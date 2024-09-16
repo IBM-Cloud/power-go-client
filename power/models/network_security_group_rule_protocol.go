@@ -21,8 +21,9 @@ import (
 // swagger:model NetworkSecurityGroupRuleProtocol
 type NetworkSecurityGroupRuleProtocol struct {
 
-	// If icmp type, the list of ICMP packet types (by numbers) affected by ICMP rules and if not present then all types are matched
-	IcmpTypes []int64 `json:"icmpTypes"`
+	// If icmp type, a ICMP packet type affected by ICMP rules and if not present then all types are matched
+	// Enum: ["all","echo","echo-reply","source-quench","time-exceeded","destination-unreach"]
+	IcmpType *string `json:"icmpType,omitempty"`
 
 	// If tcp type, the list of TCP flags and if not present then all flags are matched
 	TCPFlags []*NetworkSecurityGroupRuleProtocolTCPFlag `json:"tcpFlags"`
@@ -36,6 +37,10 @@ type NetworkSecurityGroupRuleProtocol struct {
 func (m *NetworkSecurityGroupRuleProtocol) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateIcmpType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateTCPFlags(formats); err != nil {
 		res = append(res, err)
 	}
@@ -47,6 +52,60 @@ func (m *NetworkSecurityGroupRuleProtocol) Validate(formats strfmt.Registry) err
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var networkSecurityGroupRuleProtocolTypeIcmpTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["all","echo","echo-reply","source-quench","time-exceeded","destination-unreach"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		networkSecurityGroupRuleProtocolTypeIcmpTypePropEnum = append(networkSecurityGroupRuleProtocolTypeIcmpTypePropEnum, v)
+	}
+}
+
+const (
+
+	// NetworkSecurityGroupRuleProtocolIcmpTypeAll captures enum value "all"
+	NetworkSecurityGroupRuleProtocolIcmpTypeAll string = "all"
+
+	// NetworkSecurityGroupRuleProtocolIcmpTypeEcho captures enum value "echo"
+	NetworkSecurityGroupRuleProtocolIcmpTypeEcho string = "echo"
+
+	// NetworkSecurityGroupRuleProtocolIcmpTypeEchoDashReply captures enum value "echo-reply"
+	NetworkSecurityGroupRuleProtocolIcmpTypeEchoDashReply string = "echo-reply"
+
+	// NetworkSecurityGroupRuleProtocolIcmpTypeSourceDashQuench captures enum value "source-quench"
+	NetworkSecurityGroupRuleProtocolIcmpTypeSourceDashQuench string = "source-quench"
+
+	// NetworkSecurityGroupRuleProtocolIcmpTypeTimeDashExceeded captures enum value "time-exceeded"
+	NetworkSecurityGroupRuleProtocolIcmpTypeTimeDashExceeded string = "time-exceeded"
+
+	// NetworkSecurityGroupRuleProtocolIcmpTypeDestinationDashUnreach captures enum value "destination-unreach"
+	NetworkSecurityGroupRuleProtocolIcmpTypeDestinationDashUnreach string = "destination-unreach"
+)
+
+// prop value enum
+func (m *NetworkSecurityGroupRuleProtocol) validateIcmpTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, networkSecurityGroupRuleProtocolTypeIcmpTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *NetworkSecurityGroupRuleProtocol) validateIcmpType(formats strfmt.Registry) error {
+	if swag.IsZero(m.IcmpType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateIcmpTypeEnum("icmpType", "body", *m.IcmpType); err != nil {
+		return err
+	}
+
 	return nil
 }
 
