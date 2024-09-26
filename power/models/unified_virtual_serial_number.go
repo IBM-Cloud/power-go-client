@@ -14,21 +14,24 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VirtualSerialNumber virtual serial number
+// UnifiedVirtualSerialNumber unified virtual serial number
 //
-// swagger:model VirtualSerialNumber
-type VirtualSerialNumber struct {
+// swagger:model UnifiedVirtualSerialNumber
+type UnifiedVirtualSerialNumber struct {
 
 	// Description of the VSN
 	Description string `json:"description,omitempty"`
+
+	// ID of the virtual machine VSN is attached to.
+	PvmInstanceID string `json:"pvmInstanceID,omitempty"`
 
 	// VSN ID of a reserved VSN or specify 'auto-assign' to have a new VSN ID generated.
 	// Required: true
 	Serial *string `json:"serial"`
 }
 
-// Validate validates this virtual serial number
-func (m *VirtualSerialNumber) Validate(formats strfmt.Registry) error {
+// Validate validates this unified virtual serial number
+func (m *UnifiedVirtualSerialNumber) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateSerial(formats); err != nil {
@@ -41,7 +44,7 @@ func (m *VirtualSerialNumber) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
+func (m *UnifiedVirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
 
 	if err := validate.Required("serial", "body", m.Serial); err != nil {
 		return err
@@ -50,13 +53,13 @@ func (m *VirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this virtual serial number based on context it is used
-func (m *VirtualSerialNumber) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this unified virtual serial number based on context it is used
+func (m *UnifiedVirtualSerialNumber) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *VirtualSerialNumber) MarshalBinary() ([]byte, error) {
+func (m *UnifiedVirtualSerialNumber) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -64,8 +67,8 @@ func (m *VirtualSerialNumber) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *VirtualSerialNumber) UnmarshalBinary(b []byte) error {
-	var res VirtualSerialNumber
+func (m *UnifiedVirtualSerialNumber) UnmarshalBinary(b []byte) error {
+	var res UnifiedVirtualSerialNumber
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
