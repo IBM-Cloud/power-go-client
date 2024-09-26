@@ -14,13 +14,13 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VirtualSerialNumberList An array of retained VSNs
+// UnifiedVirtualSerialNumberList An array of retained VSNs
 //
-// swagger:model VirtualSerialNumberList
-type VirtualSerialNumberList []*VirtualSerialNumber
+// swagger:model UnifiedVirtualSerialNumberList
+type UnifiedVirtualSerialNumberList []*UnifiedVirtualSerialNumber
 
-// Validate validates this virtual serial number list
-func (m VirtualSerialNumberList) Validate(formats strfmt.Registry) error {
+// Validate validates this unified virtual serial number list
+func (m UnifiedVirtualSerialNumberList) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	for i := 0; i < len(m); i++ {
@@ -47,8 +47,8 @@ func (m VirtualSerialNumberList) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this virtual serial number list based on the context it is used
-func (m VirtualSerialNumberList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this unified virtual serial number list based on the context it is used
+func (m UnifiedVirtualSerialNumberList) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	for i := 0; i < len(m); i++ {
