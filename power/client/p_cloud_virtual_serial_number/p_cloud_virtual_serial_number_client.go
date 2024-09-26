@@ -56,28 +56,30 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PcloudCloudinstancesVirtualSerialNumberGetall(params *PcloudCloudinstancesVirtualSerialNumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVirtualSerialNumberGetallOK, error)
+	PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error)
+
+	PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
 
 /*
-PcloudCloudinstancesVirtualSerialNumberGetall lists all retained v s ns this cloud instance
+PcloudVirtualserialnumberGet gets inforamation for a v s n
 */
-func (a *Client) PcloudCloudinstancesVirtualSerialNumberGetall(params *PcloudCloudinstancesVirtualSerialNumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVirtualSerialNumberGetallOK, error) {
+func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
-		params = NewPcloudCloudinstancesVirtualSerialNumberGetallParams()
+		params = NewPcloudVirtualserialnumberGetParams()
 	}
 	op := &runtime.ClientOperation{
-		ID:                 "pcloud.cloudinstances.virtual-serial-number.getall",
+		ID:                 "pcloud.virtualserialnumber.get",
 		Method:             "GET",
-		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/virtual-serial-number",
+		PathPattern:        "/pcloud/v1/virtual-serial-number/{virtual_serial_number_id}",
 		ProducesMediaTypes: []string{"application/json"},
 		ConsumesMediaTypes: []string{"application/json"},
 		Schemes:            []string{"http"},
 		Params:             params,
-		Reader:             &PcloudCloudinstancesVirtualSerialNumberGetallReader{formats: a.formats},
+		Reader:             &PcloudVirtualserialnumberGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
 		Context:            params.Context,
 		Client:             params.HTTPClient,
@@ -90,13 +92,52 @@ func (a *Client) PcloudCloudinstancesVirtualSerialNumberGetall(params *PcloudClo
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PcloudCloudinstancesVirtualSerialNumberGetallOK)
+	success, ok := result.(*PcloudVirtualserialnumberGetOK)
 	if ok {
 		return success, nil
 	}
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.virtual-serial-number.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudVirtualserialnumberGetall lists all reserved v s ns this cloud instance
+*/
+func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVirtualserialnumberGetallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.virtualserialnumber.getall",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/virtual-serial-number",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVirtualserialnumberGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVirtualserialnumberGetallOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
