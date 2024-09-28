@@ -8,27 +8,76 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// VirtualSerialNumber VSN Details
+// VirtualSerialNumber virtual serial number
 //
 // swagger:model VirtualSerialNumber
 type VirtualSerialNumber struct {
 
-	// Description of the retained VSN
-	Description string `json:"description,omitempty"`
+	// Description of the VSN
+	// Required: true
+	Description *string `json:"description"`
 
-	// HostID of the  retained VSN
-	Host string `json:"host,omitempty"`
+	// ID of the virtual machine VSN is attached to.
+	// Required: true
+	PvmInstanceID *string `json:"pvmInstanceID"`
 
-	// ID of the retained VSN
-	VirtualSerialNumber string `json:"virtual-serial-number,omitempty"`
+	// Virtual Serial Number assigned to the Virtual Machine
+	// Required: true
+	Serial *string `json:"serial"`
 }
 
 // Validate validates this virtual serial number
 func (m *VirtualSerialNumber) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateDescription(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePvmInstanceID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSerial(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *VirtualSerialNumber) validateDescription(formats strfmt.Registry) error {
+
+	if err := validate.Required("description", "body", m.Description); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *VirtualSerialNumber) validatePvmInstanceID(formats strfmt.Registry) error {
+
+	if err := validate.Required("pvmInstanceID", "body", m.PvmInstanceID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *VirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
+
+	if err := validate.Required("serial", "body", m.Serial); err != nil {
+		return err
+	}
+
 	return nil
 }
 
