@@ -14,7 +14,7 @@ import (
 	"github.com/go-openapi/swag"
 )
 
-// VirtualSerialNumberList An array of retained VSNs
+// VirtualSerialNumberList List of all Virtual Serial Numbers
 //
 // swagger:model VirtualSerialNumberList
 type VirtualSerialNumberList []*VirtualSerialNumber
