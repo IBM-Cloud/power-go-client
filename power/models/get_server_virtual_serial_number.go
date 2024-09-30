@@ -14,33 +14,25 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// VirtualSerialNumber virtual serial number
+// GetServerVirtualSerialNumber get server virtual serial number
 //
-// swagger:model VirtualSerialNumber
-type VirtualSerialNumber struct {
+// swagger:model GetServerVirtualSerialNumber
+type GetServerVirtualSerialNumber struct {
 
 	// Description of the Virtual Serial Number
 	// Required: true
 	Description *string `json:"description"`
 
-	// ID of the PVM Instance Virtual Serial Number is attached to.
-	// Required: true
-	PvmInstanceID *string `json:"pvmInstanceID"`
-
-	// Virtual Serial Number assigned to the PVM Instance
+	// Provide an existing reserved Virtual Serial Number or specify 'auto-assign' for auto generated Virtual Serial Number.
 	// Required: true
 	Serial *string `json:"serial"`
 }
 
-// Validate validates this virtual serial number
-func (m *VirtualSerialNumber) Validate(formats strfmt.Registry) error {
+// Validate validates this get server virtual serial number
+func (m *GetServerVirtualSerialNumber) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDescription(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePvmInstanceID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -54,7 +46,7 @@ func (m *VirtualSerialNumber) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VirtualSerialNumber) validateDescription(formats strfmt.Registry) error {
+func (m *GetServerVirtualSerialNumber) validateDescription(formats strfmt.Registry) error {
 
 	if err := validate.Required("description", "body", m.Description); err != nil {
 		return err
@@ -63,16 +55,7 @@ func (m *VirtualSerialNumber) validateDescription(formats strfmt.Registry) error
 	return nil
 }
 
-func (m *VirtualSerialNumber) validatePvmInstanceID(formats strfmt.Registry) error {
-
-	if err := validate.Required("pvmInstanceID", "body", m.PvmInstanceID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *VirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
+func (m *GetServerVirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
 
 	if err := validate.Required("serial", "body", m.Serial); err != nil {
 		return err
@@ -81,13 +64,13 @@ func (m *VirtualSerialNumber) validateSerial(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validates this virtual serial number based on context it is used
-func (m *VirtualSerialNumber) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validates this get server virtual serial number based on context it is used
+func (m *GetServerVirtualSerialNumber) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	return nil
 }
 
 // MarshalBinary interface implementation
-func (m *VirtualSerialNumber) MarshalBinary() ([]byte, error) {
+func (m *GetServerVirtualSerialNumber) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -95,8 +78,8 @@ func (m *VirtualSerialNumber) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *VirtualSerialNumber) UnmarshalBinary(b []byte) error {
-	var res VirtualSerialNumber
+func (m *GetServerVirtualSerialNumber) UnmarshalBinary(b []byte) error {
+	var res GetServerVirtualSerialNumber
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}
