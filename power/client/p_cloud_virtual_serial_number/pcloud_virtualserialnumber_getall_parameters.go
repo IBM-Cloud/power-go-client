@@ -14,7 +14,6 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
 )
 
 // NewPcloudVirtualserialnumberGetallParams creates a new PcloudVirtualserialnumberGetallParams object,
@@ -66,7 +65,7 @@ type PcloudVirtualserialnumberGetallParams struct {
 
 	   PVM Instance ID
 	*/
-	PvmInstanceID *bool
+	PvmInstanceID *string
 
 	timeout    time.Duration
 	Context    context.Context
@@ -122,13 +121,13 @@ func (o *PcloudVirtualserialnumberGetallParams) SetHTTPClient(client *http.Clien
 }
 
 // WithPvmInstanceID adds the pvmInstanceID to the pcloud virtualserialnumber getall params
-func (o *PcloudVirtualserialnumberGetallParams) WithPvmInstanceID(pvmInstanceID *bool) *PcloudVirtualserialnumberGetallParams {
+func (o *PcloudVirtualserialnumberGetallParams) WithPvmInstanceID(pvmInstanceID *string) *PcloudVirtualserialnumberGetallParams {
 	o.SetPvmInstanceID(pvmInstanceID)
 	return o
 }
 
 // SetPvmInstanceID adds the pvmInstanceId to the pcloud virtualserialnumber getall params
-func (o *PcloudVirtualserialnumberGetallParams) SetPvmInstanceID(pvmInstanceID *bool) {
+func (o *PcloudVirtualserialnumberGetallParams) SetPvmInstanceID(pvmInstanceID *string) {
 	o.PvmInstanceID = pvmInstanceID
 }
 
@@ -143,12 +142,12 @@ func (o *PcloudVirtualserialnumberGetallParams) WriteToRequest(r runtime.ClientR
 	if o.PvmInstanceID != nil {
 
 		// query param pvmInstanceID
-		var qrPvmInstanceID bool
+		var qrPvmInstanceID string
 
 		if o.PvmInstanceID != nil {
 			qrPvmInstanceID = *o.PvmInstanceID
 		}
-		qPvmInstanceID := swag.FormatBool(qrPvmInstanceID)
+		qPvmInstanceID := qrPvmInstanceID
 		if qPvmInstanceID != "" {
 
 			if err := r.SetQueryParam("pvmInstanceID", qPvmInstanceID); err != nil {
