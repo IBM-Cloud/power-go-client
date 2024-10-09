@@ -89,6 +89,18 @@ func (f *IBMPIInstanceClient) Delete(id string) error {
 	return nil
 }
 
+// Delete an Instance with body
+func (f *IBMPIInstanceClient) DeleteWithBody(id string, body *models.PVMInstanceDelete) error {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithBody(body)
+	_, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf("failed to Delete PVM Instance %s :%w", id, err)
+	}
+	return nil
+}
+
 // Update an Instance
 func (f *IBMPIInstanceClient) Update(id string, body *models.PVMInstanceUpdate) (*models.PVMInstanceUpdateResponse, error) {
 	// Check for satellite differences in this endpoint
