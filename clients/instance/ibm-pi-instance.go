@@ -78,10 +78,17 @@ func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PV
 }
 
 // Delete an Instance
-func (f *IBMPIInstanceClient) Delete(id string) error {
+func (f *IBMPIInstanceClient) Delete(id string, body ...*models.PVMInstanceDelete) error {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
+	// Body must be list to make optional
+	if len(body) > 1 {
+		return fmt.Errorf("invalid arguments, please pass in only one body")
+	}
+	if len(body) == 1 {
+		params.SetBody(body[0])
+	}
 	_, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return fmt.Errorf("failed to Delete PVM Instance %s :%w", id, err)
