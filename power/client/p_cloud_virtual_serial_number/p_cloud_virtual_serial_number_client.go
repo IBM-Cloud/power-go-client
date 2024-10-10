@@ -56,7 +56,7 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
-	PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteOK, error)
+	PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error)
 
 	PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error)
 
@@ -74,7 +74,7 @@ type ClientService interface {
 /*
 PcloudPvminstancesVirtualserialnumberDelete unassigns virtual serial number from a p VM instance
 */
-func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteOK, error) {
+func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberDeleteParams()
@@ -100,7 +100,7 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvmin
 	if err != nil {
 		return nil, err
 	}
-	success, ok := result.(*PcloudPvminstancesVirtualserialnumberDeleteOK)
+	success, ok := result.(*PcloudPvminstancesVirtualserialnumberDeleteAccepted)
 	if ok {
 		return success, nil
 	}
