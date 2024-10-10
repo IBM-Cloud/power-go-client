@@ -22,6 +22,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_storage_regions"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_transit_gateway"
 	"github.com/IBM-Cloud/power-go-client/power/client/network_address_groups"
+	"github.com/IBM-Cloud/power-go-client/power/client/network_peers"
 	"github.com/IBM-Cloud/power-go-client/power/client/network_security_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/networks"
 	"github.com/IBM-Cloud/power-go-client/power/client/open_stacks"
@@ -115,6 +116,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.InternalStorageRegions = internal_storage_regions.New(transport, formats)
 	cli.InternalTransitGateway = internal_transit_gateway.New(transport, formats)
 	cli.NetworkAddressGroups = network_address_groups.New(transport, formats)
+	cli.NetworkPeers = network_peers.New(transport, formats)
 	cli.NetworkSecurityGroups = network_security_groups.New(transport, formats)
 	cli.Networks = networks.New(transport, formats)
 	cli.OpenStacks = open_stacks.New(transport, formats)
@@ -220,6 +222,8 @@ type PowerIaasAPI struct {
 
 	NetworkAddressGroups network_address_groups.ClientService
 
+	NetworkPeers network_peers.ClientService
+
 	NetworkSecurityGroups network_security_groups.ClientService
 
 	Networks networks.ClientService
@@ -312,6 +316,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.InternalStorageRegions.SetTransport(transport)
 	c.InternalTransitGateway.SetTransport(transport)
 	c.NetworkAddressGroups.SetTransport(transport)
+	c.NetworkPeers.SetTransport(transport)
 	c.NetworkSecurityGroups.SetTransport(transport)
 	c.Networks.SetTransport(transport)
 	c.OpenStacks.SetTransport(transport)
