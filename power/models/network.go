@@ -150,6 +150,10 @@ func (m *Network) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateNetworkAddressTranslation(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateNetworkID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -429,6 +433,25 @@ func (m *Network) validateNetworkAddressTranslation(formats strfmt.Registry) err
 	return nil
 }
 
+func (m *Network) validateNetworkAddressTranslation(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetworkAddressTranslation) { // not required
+		return nil
+	}
+
+	if m.NetworkAddressTranslation != nil {
+		if err := m.NetworkAddressTranslation.Validate(formats); err != nil {
+			if ve, ok := err.(*errors.Validation); ok {
+				return ve.ValidateName("networkAddressTranslation")
+			} else if ce, ok := err.(*errors.CompositeError); ok {
+				return ce.ValidateName("networkAddressTranslation")
+			}
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *Network) validateNetworkID(formats strfmt.Registry) error {
 
 	if err := validate.Required("networkID", "body", m.NetworkID); err != nil {
@@ -557,6 +580,10 @@ func (m *Network) ContextValidate(ctx context.Context, formats strfmt.Registry) 
 	}
 
 	if err := m.contextValidateIPAddressRanges(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateNetworkAddressTranslation(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
