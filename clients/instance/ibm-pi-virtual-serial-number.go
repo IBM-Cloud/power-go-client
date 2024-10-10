@@ -38,9 +38,12 @@ func (f *IBMPIVSNClient) Get(id string) (*models.VirtualSerialNumber, error) {
 }
 
 // Get All Virtual Serial Numbers
-func (f *IBMPIVSNClient) GetAll() (models.VirtualSerialNumberList, error) {
+func (f *IBMPIVSNClient) GetAll(pvmInstanceID *string) (models.VirtualSerialNumberList, error) {
 	params := p_cloud_virtual_serial_number.NewPcloudVirtualserialnumberGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
+	if pvmInstanceID != nil {
+		params.SetPvmInstanceID(pvmInstanceID)
+	}
 	resp, err := f.session.Power.PCloudVirtualSerialNumber.PcloudVirtualserialnumberGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all virtual serial numbers in %s :%w", f.cloudInstanceID, err))
