@@ -24,8 +24,8 @@ type PcloudPvminstancesVirtualserialnumberDeleteReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *PcloudPvminstancesVirtualserialnumberDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewPcloudPvminstancesVirtualserialnumberDeleteOK()
+	case 202:
+		result := NewPcloudPvminstancesVirtualserialnumberDeleteAccepted()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
 			return nil, err
 		}
@@ -71,65 +71,65 @@ func (o *PcloudPvminstancesVirtualserialnumberDeleteReader) ReadResponse(respons
 	}
 }
 
-// NewPcloudPvminstancesVirtualserialnumberDeleteOK creates a PcloudPvminstancesVirtualserialnumberDeleteOK with default headers values
-func NewPcloudPvminstancesVirtualserialnumberDeleteOK() *PcloudPvminstancesVirtualserialnumberDeleteOK {
-	return &PcloudPvminstancesVirtualserialnumberDeleteOK{}
+// NewPcloudPvminstancesVirtualserialnumberDeleteAccepted creates a PcloudPvminstancesVirtualserialnumberDeleteAccepted with default headers values
+func NewPcloudPvminstancesVirtualserialnumberDeleteAccepted() *PcloudPvminstancesVirtualserialnumberDeleteAccepted {
+	return &PcloudPvminstancesVirtualserialnumberDeleteAccepted{}
 }
 
 /*
-PcloudPvminstancesVirtualserialnumberDeleteOK describes a response with status code 200, with default header values.
+PcloudPvminstancesVirtualserialnumberDeleteAccepted describes a response with status code 202, with default header values.
 
-OK
+Accepted
 */
-type PcloudPvminstancesVirtualserialnumberDeleteOK struct {
+type PcloudPvminstancesVirtualserialnumberDeleteAccepted struct {
 	Payload models.Object
 }
 
-// IsSuccess returns true when this pcloud pvminstances virtualserialnumber delete o k response has a 2xx status code
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) IsSuccess() bool {
+// IsSuccess returns true when this pcloud pvminstances virtualserialnumber delete accepted response has a 2xx status code
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) IsSuccess() bool {
 	return true
 }
 
-// IsRedirect returns true when this pcloud pvminstances virtualserialnumber delete o k response has a 3xx status code
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) IsRedirect() bool {
+// IsRedirect returns true when this pcloud pvminstances virtualserialnumber delete accepted response has a 3xx status code
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) IsRedirect() bool {
 	return false
 }
 
-// IsClientError returns true when this pcloud pvminstances virtualserialnumber delete o k response has a 4xx status code
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) IsClientError() bool {
+// IsClientError returns true when this pcloud pvminstances virtualserialnumber delete accepted response has a 4xx status code
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) IsClientError() bool {
 	return false
 }
 
-// IsServerError returns true when this pcloud pvminstances virtualserialnumber delete o k response has a 5xx status code
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) IsServerError() bool {
+// IsServerError returns true when this pcloud pvminstances virtualserialnumber delete accepted response has a 5xx status code
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) IsServerError() bool {
 	return false
 }
 
-// IsCode returns true when this pcloud pvminstances virtualserialnumber delete o k response a status code equal to that given
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) IsCode(code int) bool {
-	return code == 200
+// IsCode returns true when this pcloud pvminstances virtualserialnumber delete accepted response a status code equal to that given
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) IsCode(code int) bool {
+	return code == 202
 }
 
-// Code gets the status code for the pcloud pvminstances virtualserialnumber delete o k response
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) Code() int {
-	return 200
+// Code gets the status code for the pcloud pvminstances virtualserialnumber delete accepted response
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) Code() int {
+	return 202
 }
 
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) Error() string {
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) Error() string {
 	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberDeleteAccepted %s", 202, payload)
 }
 
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) String() string {
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) String() string {
 	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberDeleteAccepted %s", 202, payload)
 }
 
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) GetPayload() models.Object {
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) GetPayload() models.Object {
 	return o.Payload
 }
 
-func (o *PcloudPvminstancesVirtualserialnumberDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+func (o *PcloudPvminstancesVirtualserialnumberDeleteAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
 	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
