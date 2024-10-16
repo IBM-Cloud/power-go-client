@@ -139,3 +139,69 @@ func (f *IBMPIVSNClient) PVMInstanceAttachVSN(pvmInstanceID string, body *models
 	}
 	return resp.Payload, nil
 }
+
+// Update Virtual Serial Nunber
+func (f *IBMPIVSNClient) Update(id string, body *models.UpdateVirtualSerialNumber) (*models.GetServerVirtualSerialNumber, error) {
+	params := p_cloud_virtual_serial_number.NewPcloudVirtualserialnumberPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithVirtualSerialNumber(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudVirtualSerialNumber.PcloudVirtualserialnumberPut(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update virtual serial number %s :%w", id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Update virtual serial number %s", id)
+	}
+	return resp.Payload, nil
+}
+
+// Delete Virtual Serial Number
+func (f *IBMPIVSNClient) Delete(id string) error {
+	params := p_cloud_virtual_serial_number.NewPcloudVirtualserialnumberDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithVirtualSerialNumber(id)
+	_, err := f.session.Power.PCloudVirtualSerialNumber.PcloudVirtualserialnumberDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete virtual serial number %s :%w", id, err))
+	}
+	return nil
+}
+
+// PVM Instance Delete VSN
+func (f *IBMPIVSNClient) PVMInstanceDeleteVSN(pvmInstanceID string, body *models.DeleteServerVirtualSerialNumber) error {
+	params := p_cloud_virtual_serial_number.NewPcloudPvminstancesVirtualserialnumberDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(pvmInstanceID).
+		WithBody(body)
+	_, err := f.session.Power.PCloudVirtualSerialNumber.PcloudPvminstancesVirtualserialnumberDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to delete virtual serial number for pvm instance %s :%w", pvmInstanceID, err))
+	}
+	return nil
+}
+
+// PVM Instance Update VSN
+func (f *IBMPIVSNClient) PVMInstanceUpdateVSN(pvmInstanceID string, body *models.UpdateServerVirtualSerialNumber) (*models.VirtualSerialNumber, error) {
+	params := p_cloud_virtual_serial_number.NewPcloudPvminstancesVirtualserialnumberPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(f.cloudInstanceID).
+		WithPvmInstanceID(pvmInstanceID).WithBody(body)
+	resp, err := f.session.Power.PCloudVirtualSerialNumber.PcloudPvminstancesVirtualserialnumberPut(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update virtual serial number for pvm instance %s :%w", pvmInstanceID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to update virtual serial number for pvm instance %s", pvmInstanceID)
+	}
+	return resp.Payload, nil
+}
+
+// PVM Attach VSN
+func (f *IBMPIVSNClient) PVMInstanceAttachVSN(pvmInstanceID string, body *models.AddServerVirtualSerialNumber) error {
+	params := p_cloud_virtual_serial_number.NewPcloudPvminstancesVirtualserialnumberPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(f.cloudInstanceID).
+		WithPvmInstanceID(pvmInstanceID).WithBody(body)
+	_, err := f.session.Power.PCloudVirtualSerialNumber.PcloudPvminstancesVirtualserialnumberPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to attach virtual serial number for pvm instance %s :%w", pvmInstanceID, err))
+	}
+	return nil
+}
