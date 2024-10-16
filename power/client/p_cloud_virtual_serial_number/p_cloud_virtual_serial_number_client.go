@@ -64,9 +64,13 @@ type ClientService interface {
 
 	PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, error)
 
+	PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error)
+
 	PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error)
 
 	PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error)
+
+	PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -228,6 +232,45 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminsta
 }
 
 /*
+PcloudVirtualserialnumberDelete unreserves a retained virtual serial number
+*/
+func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVirtualserialnumberDeleteParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.virtualserialnumber.delete",
+		Method:             "DELETE",
+		PathPattern:        "/v1/virtual-serial-number/{virtual_serial_number}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVirtualserialnumberDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVirtualserialnumberDeleteOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PcloudVirtualserialnumberGet gets information for a virtual serial number
 */
 func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error) {
@@ -302,6 +345,45 @@ func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumb
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudVirtualserialnumberPut updates description of a reserved virtual serial number
+*/
+func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewPcloudVirtualserialnumberPutParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.virtualserialnumber.put",
+		Method:             "PUT",
+		PathPattern:        "/v1/virtual-serial-number/{virtual_serial_number}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudVirtualserialnumberPutReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*PcloudVirtualserialnumberPutOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
