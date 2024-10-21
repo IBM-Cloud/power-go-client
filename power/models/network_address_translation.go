@@ -17,7 +17,10 @@ import (
 // swagger:model NetworkAddressTranslation
 type NetworkAddressTranslation struct {
 
-	// source IP address, required if network peer type is L3BGP or L3STATIC and if NAT is enabled
+	// source IP address, required if network peer type is L3BGP
+	// or L3STATIC and if Network Address Translation (NAT) is
+	// enabled
+	//
 	SourceIP string `json:"sourceIP,omitempty"`
 }
 
