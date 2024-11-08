@@ -88,7 +88,7 @@ PcloudPvminstancesVirtualserialnumberPostAccepted describes a response with stat
 Accepted
 */
 type PcloudPvminstancesVirtualserialnumberPostAccepted struct {
-	Payload models.Object
+	Payload *models.VirtualSerialNumber
 }
 
 // IsSuccess returns true when this pcloud pvminstances virtualserialnumber post accepted response has a 2xx status code
@@ -131,14 +131,16 @@ func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) String() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostAccepted %s", 202, payload)
 }
 
-func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) GetPayload() models.Object {
+func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) GetPayload() *models.VirtualSerialNumber {
 	return o.Payload
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
+	o.Payload = new(models.VirtualSerialNumber)
+
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
 		return err
 	}
 
