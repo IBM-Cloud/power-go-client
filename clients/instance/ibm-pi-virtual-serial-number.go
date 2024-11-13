@@ -195,13 +195,16 @@ func (f *IBMPIVSNClient) PVMInstanceUpdateVSN(pvmInstanceID string, body *models
 }
 
 // PVM Attach VSN
-func (f *IBMPIVSNClient) PVMInstanceAttachVSN(pvmInstanceID string, body *models.AddServerVirtualSerialNumber) error {
+func (f *IBMPIVSNClient) PVMInstanceAttachVSN(pvmInstanceID string, body *models.AddServerVirtualSerialNumber) (*models.VirtualSerialNumber, error) {
 	params := p_cloud_virtual_serial_number.NewPcloudPvminstancesVirtualserialnumberPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithCloudInstanceID(f.cloudInstanceID).
 		WithPvmInstanceID(pvmInstanceID).WithBody(body)
-	_, err := f.session.Power.PCloudVirtualSerialNumber.PcloudPvminstancesVirtualserialnumberPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.PCloudVirtualSerialNumber.PcloudPvminstancesVirtualserialnumberPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to attach virtual serial number for pvm instance %s :%w", pvmInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to attach virtual serial number for pvm instance %s :%w", pvmInstanceID, err))
 	}
-	return nil
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to attach virtual serial number for pvm instance %s", pvmInstanceID)
+	}
+	return resp.Payload, nil
 }
