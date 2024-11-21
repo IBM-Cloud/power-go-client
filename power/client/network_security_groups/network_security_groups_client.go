@@ -70,6 +70,8 @@ type ClientService interface {
 
 	V1NetworkSecurityGroupsMembersPost(params *V1NetworkSecurityGroupsMembersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsMembersPostOK, error)
 
+	V1NetworkSecurityGroupsMoveMemberPost(params *V1NetworkSecurityGroupsMoveMemberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsMoveMemberPostOK, error)
+
 	V1NetworkSecurityGroupsPost(params *V1NetworkSecurityGroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsPostOK, *V1NetworkSecurityGroupsPostCreated, error)
 
 	V1NetworkSecurityGroupsRulesDelete(params *V1NetworkSecurityGroupsRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsRulesDeleteOK, error)
@@ -350,6 +352,45 @@ func (a *Client) V1NetworkSecurityGroupsMembersPost(params *V1NetworkSecurityGro
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkSecurityGroups.members.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1NetworkSecurityGroupsMoveMemberPost moves a network security group member to another network security group
+*/
+func (a *Client) V1NetworkSecurityGroupsMoveMemberPost(params *V1NetworkSecurityGroupsMoveMemberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsMoveMemberPostOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewV1NetworkSecurityGroupsMoveMemberPostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.networkSecurityGroups.move_member.post",
+		Method:             "POST",
+		PathPattern:        "/v1/network-security-groups/{network_security_group_id}/move_member",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1NetworkSecurityGroupsMoveMemberPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*V1NetworkSecurityGroupsMoveMemberPostOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.networkSecurityGroups.move_member.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
