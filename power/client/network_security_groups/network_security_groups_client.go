@@ -62,6 +62,8 @@ type ClientService interface {
 
 	V1NetworkSecurityGroupsIDGet(params *V1NetworkSecurityGroupsIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDGetOK, error)
 
+	V1NetworkSecurityGroupsIDPost(params *V1NetworkSecurityGroupsIDPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDPostCreated, error)
+
 	V1NetworkSecurityGroupsIDPut(params *V1NetworkSecurityGroupsIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDPutOK, error)
 
 	V1NetworkSecurityGroupsList(params *V1NetworkSecurityGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsListOK, error)
@@ -196,6 +198,45 @@ func (a *Client) V1NetworkSecurityGroupsIDGet(params *V1NetworkSecurityGroupsIDG
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkSecurityGroups.id.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1NetworkSecurityGroupsIDPost clones a network security group
+*/
+func (a *Client) V1NetworkSecurityGroupsIDPost(params *V1NetworkSecurityGroupsIDPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDPostCreated, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewV1NetworkSecurityGroupsIDPostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.networkSecurityGroups.id.post",
+		Method:             "POST",
+		PathPattern:        "/v1/network-security-groups/{network_security_group_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1NetworkSecurityGroupsIDPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*V1NetworkSecurityGroupsIDPostCreated)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.networkSecurityGroups.id.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
