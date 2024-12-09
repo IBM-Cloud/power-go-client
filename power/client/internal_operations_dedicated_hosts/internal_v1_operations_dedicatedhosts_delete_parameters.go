@@ -61,6 +61,24 @@ InternalV1OperationsDedicatedhostsDeleteParams contains all the parameters to se
 */
 type InternalV1OperationsDedicatedhostsDeleteParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* ResourceCrn.
 
 	   Encoded resource CRN, "/" to be encoded into "%2F", example 'crn:v1:staging:public:power-iaas:satloc_dal_clp2joc20ppo19876n50:a%2Fc7e6bd2517ad44eabbd61fcc25cf68d5:79bffc73-0035-4e7b-b34a-15da38927424:network:d8d51d44-053b-4df3-90b6-31fbe72ba600'
@@ -120,6 +138,39 @@ func (o *InternalV1OperationsDedicatedhostsDeleteParams) SetHTTPClient(client *h
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations dedicatedhosts delete params
+func (o *InternalV1OperationsDedicatedhostsDeleteParams) WithAuthorization(authorization string) *InternalV1OperationsDedicatedhostsDeleteParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations dedicatedhosts delete params
+func (o *InternalV1OperationsDedicatedhostsDeleteParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations dedicatedhosts delete params
+func (o *InternalV1OperationsDedicatedhostsDeleteParams) WithCRN(cRN string) *InternalV1OperationsDedicatedhostsDeleteParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations dedicatedhosts delete params
+func (o *InternalV1OperationsDedicatedhostsDeleteParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations dedicatedhosts delete params
+func (o *InternalV1OperationsDedicatedhostsDeleteParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsDedicatedhostsDeleteParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations dedicatedhosts delete params
+func (o *InternalV1OperationsDedicatedhostsDeleteParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithResourceCrn adds the resourceCrn to the internal v1 operations dedicatedhosts delete params
 func (o *InternalV1OperationsDedicatedhostsDeleteParams) WithResourceCrn(resourceCrn string) *InternalV1OperationsDedicatedhostsDeleteParams {
 	o.SetResourceCrn(resourceCrn)
@@ -138,6 +189,21 @@ func (o *InternalV1OperationsDedicatedhostsDeleteParams) WriteToRequest(r runtim
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 
 	// path param resource_crn
 	if err := r.SetPathParam("resource_crn", o.ResourceCrn); err != nil {

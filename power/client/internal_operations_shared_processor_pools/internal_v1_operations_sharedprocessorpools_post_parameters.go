@@ -63,6 +63,24 @@ InternalV1OperationsSharedprocessorpoolsPostParams contains all the parameters t
 */
 type InternalV1OperationsSharedprocessorpoolsPostParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* Body.
 
 	   Parameters for creating a Shared Processor Pool CRN
@@ -122,6 +140,39 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostParams) SetHTTPClient(clien
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations sharedprocessorpools post params
+func (o *InternalV1OperationsSharedprocessorpoolsPostParams) WithAuthorization(authorization string) *InternalV1OperationsSharedprocessorpoolsPostParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations sharedprocessorpools post params
+func (o *InternalV1OperationsSharedprocessorpoolsPostParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations sharedprocessorpools post params
+func (o *InternalV1OperationsSharedprocessorpoolsPostParams) WithCRN(cRN string) *InternalV1OperationsSharedprocessorpoolsPostParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations sharedprocessorpools post params
+func (o *InternalV1OperationsSharedprocessorpoolsPostParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations sharedprocessorpools post params
+func (o *InternalV1OperationsSharedprocessorpoolsPostParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsSharedprocessorpoolsPostParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations sharedprocessorpools post params
+func (o *InternalV1OperationsSharedprocessorpoolsPostParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithBody adds the body to the internal v1 operations sharedprocessorpools post params
 func (o *InternalV1OperationsSharedprocessorpoolsPostParams) WithBody(body *models.InternalOperationsRequest) *InternalV1OperationsSharedprocessorpoolsPostParams {
 	o.SetBody(body)
@@ -140,6 +191,21 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostParams) WriteToRequest(r ru
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err
