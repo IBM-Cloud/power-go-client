@@ -63,6 +63,24 @@ InternalV1OperationsSnapshotsPostParams contains all the parameters to send to t
 */
 type InternalV1OperationsSnapshotsPostParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* Body.
 
 	   Parameters for creating snapshot CRN
@@ -122,6 +140,39 @@ func (o *InternalV1OperationsSnapshotsPostParams) SetHTTPClient(client *http.Cli
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations snapshots post params
+func (o *InternalV1OperationsSnapshotsPostParams) WithAuthorization(authorization string) *InternalV1OperationsSnapshotsPostParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations snapshots post params
+func (o *InternalV1OperationsSnapshotsPostParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations snapshots post params
+func (o *InternalV1OperationsSnapshotsPostParams) WithCRN(cRN string) *InternalV1OperationsSnapshotsPostParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations snapshots post params
+func (o *InternalV1OperationsSnapshotsPostParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations snapshots post params
+func (o *InternalV1OperationsSnapshotsPostParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsSnapshotsPostParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations snapshots post params
+func (o *InternalV1OperationsSnapshotsPostParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithBody adds the body to the internal v1 operations snapshots post params
 func (o *InternalV1OperationsSnapshotsPostParams) WithBody(body *models.InternalOperationsRequest) *InternalV1OperationsSnapshotsPostParams {
 	o.SetBody(body)
@@ -140,6 +191,21 @@ func (o *InternalV1OperationsSnapshotsPostParams) WriteToRequest(r runtime.Clien
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

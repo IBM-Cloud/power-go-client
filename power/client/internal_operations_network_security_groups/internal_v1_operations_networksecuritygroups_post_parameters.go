@@ -63,6 +63,24 @@ InternalV1OperationsNetworksecuritygroupsPostParams contains all the parameters 
 */
 type InternalV1OperationsNetworksecuritygroupsPostParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* Body.
 
 	   Parameters for creating a Network Security Group CRN
@@ -122,6 +140,39 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostParams) SetHTTPClient(clie
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations networksecuritygroups post params
+func (o *InternalV1OperationsNetworksecuritygroupsPostParams) WithAuthorization(authorization string) *InternalV1OperationsNetworksecuritygroupsPostParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations networksecuritygroups post params
+func (o *InternalV1OperationsNetworksecuritygroupsPostParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations networksecuritygroups post params
+func (o *InternalV1OperationsNetworksecuritygroupsPostParams) WithCRN(cRN string) *InternalV1OperationsNetworksecuritygroupsPostParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations networksecuritygroups post params
+func (o *InternalV1OperationsNetworksecuritygroupsPostParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations networksecuritygroups post params
+func (o *InternalV1OperationsNetworksecuritygroupsPostParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsNetworksecuritygroupsPostParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations networksecuritygroups post params
+func (o *InternalV1OperationsNetworksecuritygroupsPostParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithBody adds the body to the internal v1 operations networksecuritygroups post params
 func (o *InternalV1OperationsNetworksecuritygroupsPostParams) WithBody(body *models.InternalOperationsRequest) *InternalV1OperationsNetworksecuritygroupsPostParams {
 	o.SetBody(body)
@@ -140,6 +191,21 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostParams) WriteToRequest(r r
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

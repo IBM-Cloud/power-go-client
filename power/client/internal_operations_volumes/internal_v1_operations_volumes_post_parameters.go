@@ -63,6 +63,24 @@ InternalV1OperationsVolumesPostParams contains all the parameters to send to the
 */
 type InternalV1OperationsVolumesPostParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* Body.
 
 	   Parameters for creating Volume CRN
@@ -122,6 +140,39 @@ func (o *InternalV1OperationsVolumesPostParams) SetHTTPClient(client *http.Clien
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations volumes post params
+func (o *InternalV1OperationsVolumesPostParams) WithAuthorization(authorization string) *InternalV1OperationsVolumesPostParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations volumes post params
+func (o *InternalV1OperationsVolumesPostParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations volumes post params
+func (o *InternalV1OperationsVolumesPostParams) WithCRN(cRN string) *InternalV1OperationsVolumesPostParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations volumes post params
+func (o *InternalV1OperationsVolumesPostParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations volumes post params
+func (o *InternalV1OperationsVolumesPostParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsVolumesPostParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations volumes post params
+func (o *InternalV1OperationsVolumesPostParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithBody adds the body to the internal v1 operations volumes post params
 func (o *InternalV1OperationsVolumesPostParams) WithBody(body *models.InternalOperationsRequest) *InternalV1OperationsVolumesPostParams {
 	o.SetBody(body)
@@ -140,6 +191,21 @@ func (o *InternalV1OperationsVolumesPostParams) WriteToRequest(r runtime.ClientR
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err
