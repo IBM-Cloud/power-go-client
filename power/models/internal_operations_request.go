@@ -19,33 +19,33 @@ import (
 // swagger:model InternalOperationsRequest
 type InternalOperationsRequest struct {
 
-	// The PowerVS resource parent cloud instance ID
-	// Example: 3a5798f1-4d2b-4e0a-9311-9b0fd6b94698
-	// Required: true
-	CloudInstanceID *string `json:"cloudInstanceID"`
-
-	// The PowerVS resource name
-	// Required: true
-	Name *string `json:"name"`
-
 	// The PowerVS resource ID
 	// Required: true
 	ResourceID *string `json:"resourceID"`
+
+	// The PowerVS resource name
+	// Required: true
+	ResourceName *string `json:"resourceName"`
+
+	// The PowerVS resource parent cloud instance ID
+	// Example: 3a5798f1-4d2b-4e0a-9311-9b0fd6b94698
+	// Required: true
+	WorkspaceID *string `json:"workspaceID"`
 }
 
 // Validate validates this internal operations request
 func (m *InternalOperationsRequest) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCloudInstanceID(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateResourceID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateResourceName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateWorkspaceID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -55,27 +55,27 @@ func (m *InternalOperationsRequest) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *InternalOperationsRequest) validateCloudInstanceID(formats strfmt.Registry) error {
-
-	if err := validate.Required("cloudInstanceID", "body", m.CloudInstanceID); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *InternalOperationsRequest) validateName(formats strfmt.Registry) error {
-
-	if err := validate.Required("name", "body", m.Name); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *InternalOperationsRequest) validateResourceID(formats strfmt.Registry) error {
 
 	if err := validate.Required("resourceID", "body", m.ResourceID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InternalOperationsRequest) validateResourceName(formats strfmt.Registry) error {
+
+	if err := validate.Required("resourceName", "body", m.ResourceName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *InternalOperationsRequest) validateWorkspaceID(formats strfmt.Registry) error {
+
+	if err := validate.Required("workspaceID", "body", m.WorkspaceID); err != nil {
 		return err
 	}
 

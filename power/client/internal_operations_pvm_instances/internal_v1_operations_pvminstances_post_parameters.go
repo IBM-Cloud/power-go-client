@@ -63,6 +63,24 @@ InternalV1OperationsPvminstancesPostParams contains all the parameters to send t
 */
 type InternalV1OperationsPvminstancesPostParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* Body.
 
 	   Parameters for creating a PVM Instance CRN
@@ -122,6 +140,39 @@ func (o *InternalV1OperationsPvminstancesPostParams) SetHTTPClient(client *http.
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations pvminstances post params
+func (o *InternalV1OperationsPvminstancesPostParams) WithAuthorization(authorization string) *InternalV1OperationsPvminstancesPostParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations pvminstances post params
+func (o *InternalV1OperationsPvminstancesPostParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations pvminstances post params
+func (o *InternalV1OperationsPvminstancesPostParams) WithCRN(cRN string) *InternalV1OperationsPvminstancesPostParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations pvminstances post params
+func (o *InternalV1OperationsPvminstancesPostParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations pvminstances post params
+func (o *InternalV1OperationsPvminstancesPostParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsPvminstancesPostParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations pvminstances post params
+func (o *InternalV1OperationsPvminstancesPostParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithBody adds the body to the internal v1 operations pvminstances post params
 func (o *InternalV1OperationsPvminstancesPostParams) WithBody(body *models.InternalOperationsRequest) *InternalV1OperationsPvminstancesPostParams {
 	o.SetBody(body)
@@ -140,6 +191,21 @@ func (o *InternalV1OperationsPvminstancesPostParams) WriteToRequest(r runtime.Cl
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err

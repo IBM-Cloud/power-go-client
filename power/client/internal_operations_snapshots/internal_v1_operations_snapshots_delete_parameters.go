@@ -61,6 +61,24 @@ InternalV1OperationsSnapshotsDeleteParams contains all the parameters to send to
 */
 type InternalV1OperationsSnapshotsDeleteParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* ResourceCrn.
 
 	   Encoded resource CRN, "/" to be encoded into "%2F", example 'crn:v1:staging:public:power-iaas:satloc_dal_clp2joc20ppo19876n50:a%2Fc7e6bd2517ad44eabbd61fcc25cf68d5:79bffc73-0035-4e7b-b34a-15da38927424:network:d8d51d44-053b-4df3-90b6-31fbe72ba600'
@@ -120,6 +138,39 @@ func (o *InternalV1OperationsSnapshotsDeleteParams) SetHTTPClient(client *http.C
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations snapshots delete params
+func (o *InternalV1OperationsSnapshotsDeleteParams) WithAuthorization(authorization string) *InternalV1OperationsSnapshotsDeleteParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations snapshots delete params
+func (o *InternalV1OperationsSnapshotsDeleteParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations snapshots delete params
+func (o *InternalV1OperationsSnapshotsDeleteParams) WithCRN(cRN string) *InternalV1OperationsSnapshotsDeleteParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations snapshots delete params
+func (o *InternalV1OperationsSnapshotsDeleteParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations snapshots delete params
+func (o *InternalV1OperationsSnapshotsDeleteParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsSnapshotsDeleteParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations snapshots delete params
+func (o *InternalV1OperationsSnapshotsDeleteParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithResourceCrn adds the resourceCrn to the internal v1 operations snapshots delete params
 func (o *InternalV1OperationsSnapshotsDeleteParams) WithResourceCrn(resourceCrn string) *InternalV1OperationsSnapshotsDeleteParams {
 	o.SetResourceCrn(resourceCrn)
@@ -138,6 +189,21 @@ func (o *InternalV1OperationsSnapshotsDeleteParams) WriteToRequest(r runtime.Cli
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 
 	// path param resource_crn
 	if err := r.SetPathParam("resource_crn", o.ResourceCrn); err != nil {

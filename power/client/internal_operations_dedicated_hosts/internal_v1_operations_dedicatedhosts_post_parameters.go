@@ -63,6 +63,24 @@ InternalV1OperationsDedicatedhostsPostParams contains all the parameters to send
 */
 type InternalV1OperationsDedicatedhostsPostParams struct {
 
+	/* Authorization.
+
+	   Authentication of the service token
+	*/
+	Authorization string
+
+	/* CRN.
+
+	   the CRN of the workspace
+	*/
+	CRN string
+
+	/* IBMUserAuthorization.
+
+	   Authentication of the operation account user
+	*/
+	IBMUserAuthorization string
+
 	/* Body.
 
 	   Parameters for creating a Dedicated Host CRN
@@ -122,6 +140,39 @@ func (o *InternalV1OperationsDedicatedhostsPostParams) SetHTTPClient(client *htt
 	o.HTTPClient = client
 }
 
+// WithAuthorization adds the authorization to the internal v1 operations dedicatedhosts post params
+func (o *InternalV1OperationsDedicatedhostsPostParams) WithAuthorization(authorization string) *InternalV1OperationsDedicatedhostsPostParams {
+	o.SetAuthorization(authorization)
+	return o
+}
+
+// SetAuthorization adds the authorization to the internal v1 operations dedicatedhosts post params
+func (o *InternalV1OperationsDedicatedhostsPostParams) SetAuthorization(authorization string) {
+	o.Authorization = authorization
+}
+
+// WithCRN adds the cRN to the internal v1 operations dedicatedhosts post params
+func (o *InternalV1OperationsDedicatedhostsPostParams) WithCRN(cRN string) *InternalV1OperationsDedicatedhostsPostParams {
+	o.SetCRN(cRN)
+	return o
+}
+
+// SetCRN adds the cRN to the internal v1 operations dedicatedhosts post params
+func (o *InternalV1OperationsDedicatedhostsPostParams) SetCRN(cRN string) {
+	o.CRN = cRN
+}
+
+// WithIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations dedicatedhosts post params
+func (o *InternalV1OperationsDedicatedhostsPostParams) WithIBMUserAuthorization(iBMUserAuthorization string) *InternalV1OperationsDedicatedhostsPostParams {
+	o.SetIBMUserAuthorization(iBMUserAuthorization)
+	return o
+}
+
+// SetIBMUserAuthorization adds the iBMUserAuthorization to the internal v1 operations dedicatedhosts post params
+func (o *InternalV1OperationsDedicatedhostsPostParams) SetIBMUserAuthorization(iBMUserAuthorization string) {
+	o.IBMUserAuthorization = iBMUserAuthorization
+}
+
 // WithBody adds the body to the internal v1 operations dedicatedhosts post params
 func (o *InternalV1OperationsDedicatedhostsPostParams) WithBody(body *models.InternalOperationsRequest) *InternalV1OperationsDedicatedhostsPostParams {
 	o.SetBody(body)
@@ -140,6 +191,21 @@ func (o *InternalV1OperationsDedicatedhostsPostParams) WriteToRequest(r runtime.
 		return err
 	}
 	var res []error
+
+	// header param Authorization
+	if err := r.SetHeaderParam("Authorization", o.Authorization); err != nil {
+		return err
+	}
+
+	// header param CRN
+	if err := r.SetHeaderParam("CRN", o.CRN); err != nil {
+		return err
+	}
+
+	// header param IBM-UserAuthorization
+	if err := r.SetHeaderParam("IBM-UserAuthorization", o.IBMUserAuthorization); err != nil {
+		return err
+	}
 	if o.Body != nil {
 		if err := r.SetBodyParam(o.Body); err != nil {
 			return err
