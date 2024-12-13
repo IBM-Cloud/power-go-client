@@ -1,5 +1,5 @@
-github.com/IBM/go-sdk-core/v5 v5.17.5 h1:AjGC7xNee5tgDIjndekBDW5AbypdERHSgib3EZ1KNsA=
-github.com/IBM/go-sdk-core/v5 v5.17.5/go.mod h1:KsAAI7eStAWwQa4F96MLy+whYSh39JzNjklZRbN/8ns=
+github.com/IBM/go-sdk-core/v5 v5.18.2 h1:qsfLcLW77F2Q/fpnvKxaGx2/gkckl9UE8NUedrX69dw=
+github.com/IBM/go-sdk-core/v5 v5.18.2/go.mod h1:3ywpylZ41WhWPusqtpJZWopYlt2brebcphV7mA2JncU=
 github.com/IBM/platform-services-go-sdk v0.69.1 h1:Wb8BYVpsPIppWbOQCgF7ytm+BbSOXdWWCf9zcZ6xGA4=
 github.com/IBM/platform-services-go-sdk v0.69.1/go.mod h1:ZP3zUDxR1qRdUqzFdnJOlQN0QpVYol2eOUCv4uk03Jc=
 github.com/apparentlymart/go-cidr v1.1.0 h1:2mAhrMoF+nhXqxTzSZMUzDHkLjmIHC+Zzn4tdgBZjnU=
