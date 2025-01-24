@@ -52,6 +52,21 @@ func (f *IBMPIInstanceClient) GetAll() (*models.PVMInstances, error) {
 	return resp.Payload, nil
 }
 
+// Get All Instances
+func (f *IBMPIInstanceClient) GetAllV2() (*models.PVMInstancesV2, error) {
+	params := p_cloud_p_vm_instances.NewPcloudV2PvminstancesGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudV2PvminstancesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all V2 PVM Instances of Power Instance %s :%w", f.cloudInstanceID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get all V2 PVM Instances of Power Instance %s", f.cloudInstanceID)
+	}
+	return resp.Payload, nil
+}
+
 // Create an Instance
 func (f *IBMPIInstanceClient) Create(body *models.PVMInstanceCreate) (*models.PVMInstanceList, error) {
 	// Check for satellite differences in this endpoint
