@@ -26,7 +26,7 @@ func NewIBMPINetworkAddressGroupClient(ctx context.Context, sess *ibmpisession.I
 func (f *IBMPINetworkAddressGroupClient) Create(body *models.NetworkAddressGroupCreate) (*models.NetworkAddressGroup, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("not supported in on-prem location")
+		return nil, fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithBody(body)
 	postok, postcreated, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsPost(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -46,7 +46,7 @@ func (f *IBMPINetworkAddressGroupClient) Create(body *models.NetworkAddressGroup
 func (f *IBMPINetworkAddressGroupClient) GetAll() (*models.NetworkAddressGroups, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("not supported in on-prem location")
+		return nil, fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
 	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsGet(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -64,7 +64,7 @@ func (f *IBMPINetworkAddressGroupClient) GetAll() (*models.NetworkAddressGroups,
 func (f *IBMPINetworkAddressGroupClient) Get(id string) (*models.NetworkAddressGroup, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("not supported in on-prem location")
+		return nil, fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsIDGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithNetworkAddressGroupID(id)
 	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsIDGet(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -82,7 +82,7 @@ func (f *IBMPINetworkAddressGroupClient) Get(id string) (*models.NetworkAddressG
 func (f *IBMPINetworkAddressGroupClient) Update(id string, body *models.NetworkAddressGroupUpdate) (*models.NetworkAddressGroup, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("not supported in on-prem location")
+		return nil, fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsIDPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithNetworkAddressGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsIDPut(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -99,7 +99,7 @@ func (f *IBMPINetworkAddressGroupClient) Update(id string, body *models.NetworkA
 func (f *IBMPINetworkAddressGroupClient) Delete(id string) error {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return fmt.Errorf("not supported in on-prem location")
+		return fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsIDDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkAddressGroupID(id)
 	_, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsIDDelete(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -113,7 +113,7 @@ func (f *IBMPINetworkAddressGroupClient) Delete(id string) error {
 func (f *IBMPINetworkAddressGroupClient) AddMember(id string, body *models.NetworkAddressGroupAddMember) (*models.NetworkAddressGroupMember, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("not supported in on-prem location")
+		return nil, fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsMembersPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkAddressGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsMembersPost(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -130,7 +130,7 @@ func (f *IBMPINetworkAddressGroupClient) AddMember(id string, body *models.Netwo
 func (f *IBMPINetworkAddressGroupClient) DeleteMember(id, memberId string) error {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return fmt.Errorf("not supported in on-prem location")
+		return fmt.Errorf("operation not supported in satellite location.")
 	}
 	params := network_address_groups.NewV1NetworkAddressGroupsMembersDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkAddressGroupID(id).WithNetworkAddressGroupMemberID(memberId)
 	_, err := f.session.Power.NetworkAddressGroups.V1NetworkAddressGroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
