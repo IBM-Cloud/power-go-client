@@ -26,7 +26,7 @@ func NewIBMIPINetworkSecurityGroupClient(ctx context.Context, sess *ibmpisession
 func (f *IBMPINetworkSecurityGroupClient) Get(id string) (*models.NetworkSecurityGroup, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location.")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsIDGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithNetworkSecurityGroupID(id)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsIDGet(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -43,7 +43,7 @@ func (f *IBMPINetworkSecurityGroupClient) Get(id string) (*models.NetworkSecurit
 func (f *IBMPINetworkSecurityGroupClient) GetAll() (*models.NetworkSecurityGroups, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location.")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsListParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsList(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -60,7 +60,7 @@ func (f *IBMPINetworkSecurityGroupClient) GetAll() (*models.NetworkSecurityGroup
 func (f *IBMPINetworkSecurityGroupClient) Create(body *models.NetworkSecurityGroupCreate) (*models.NetworkSecurityGroup, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location.")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithBody(body)
 	postok, postcreated, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsPost(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -80,7 +80,7 @@ func (f *IBMPINetworkSecurityGroupClient) Create(body *models.NetworkSecurityGro
 func (f *IBMPINetworkSecurityGroupClient) Update(id string, body *models.NetworkSecurityGroupUpdate) (*models.NetworkSecurityGroup, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location.")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsIDPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithNetworkSecurityGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsIDPut(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -97,7 +97,7 @@ func (f *IBMPINetworkSecurityGroupClient) Update(id string, body *models.Network
 func (f *IBMPINetworkSecurityGroupClient) Delete(id string) error {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return fmt.Errorf("operation not supported in satellite location.")
+		return fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsIDDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkSecurityGroupID(id)
 	_, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsIDDelete(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -111,7 +111,7 @@ func (f *IBMPINetworkSecurityGroupClient) Delete(id string) error {
 func (f *IBMPINetworkSecurityGroupClient) AddMember(id string, body *models.NetworkSecurityGroupAddMember) (*models.NetworkSecurityGroupMember, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location.")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsMembersPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkSecurityGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsMembersPost(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -128,7 +128,7 @@ func (f *IBMPINetworkSecurityGroupClient) AddMember(id string, body *models.Netw
 func (f *IBMPINetworkSecurityGroupClient) DeleteMember(id, memberId string) error {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return fmt.Errorf("operation not supported in satellite location.")
+		return fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsMembersDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkSecurityGroupID(id).WithNetworkSecurityGroupMemberID(memberId)
 	_, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsMembersDelete(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -142,7 +142,7 @@ func (f *IBMPINetworkSecurityGroupClient) DeleteMember(id, memberId string) erro
 func (f *IBMPINetworkSecurityGroupClient) AddRule(id string, body *models.NetworkSecurityGroupAddRule) (*models.NetworkSecurityGroupRule, error) {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location.")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsRulesPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkSecurityGroupID(id).WithBody(body)
 	resp, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsRulesPost(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -159,7 +159,7 @@ func (f *IBMPINetworkSecurityGroupClient) AddRule(id string, body *models.Networ
 func (f *IBMPINetworkSecurityGroupClient) DeleteRule(id, ruleId string) error {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return fmt.Errorf("operation not supported in satellite location.")
+		return fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsRulesDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkSecurityGroupID(id).WithNetworkSecurityGroupRuleID(ruleId)
 	_, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsRulesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -173,7 +173,7 @@ func (f *IBMPINetworkSecurityGroupClient) DeleteRule(id, ruleId string) error {
 func (f *IBMPINetworkSecurityGroupClient) Action(body *models.NetworkSecurityGroupsAction) error {
 	// Add check for on-prem location
 	if f.session.IsOnPrem() {
-		return fmt.Errorf("operation not supported in satellite location.")
+		return fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := network_security_groups.NewV1NetworkSecurityGroupsActionPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithBody(body)
 	_, _, err := f.session.Power.NetworkSecurityGroups.V1NetworkSecurityGroupsActionPost(params, f.session.AuthInfo(f.cloudInstanceID))
