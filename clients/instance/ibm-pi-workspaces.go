@@ -42,7 +42,7 @@ func NewIBMPIWorkspacesClient(ctx context.Context, sess *ibmpisession.IBMPISessi
 // Get a workspace
 func (f *IBMPIWorkspacesClient) Get(cloudInstanceID string) (*models.Workspace, error) {
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := workspaces.NewV1WorkspacesGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithWorkspaceID(cloudInstanceID)
 	resp, err := f.session.Power.Workspaces.V1WorkspacesGet(params, f.session.AuthInfo(f.cloudInstanceID))
@@ -58,7 +58,7 @@ func (f *IBMPIWorkspacesClient) Get(cloudInstanceID string) (*models.Workspace, 
 // Get all workspaces
 func (f *IBMPIWorkspacesClient) GetAll() (*models.Workspaces, error) {
 	if f.session.IsOnPrem() {
-		return nil, fmt.Errorf("operation not supported in satellite location, check documentation")
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
 	params := workspaces.NewV1WorkspacesGetallParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
 	resp, err := f.session.Power.Workspaces.V1WorkspacesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
