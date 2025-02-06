@@ -18,7 +18,7 @@ import (
 type PvmInstanceHost struct {
 
 	// ID of the dedicated host where the PVM Instance is running, if applicable
-	DedicatedHostID string `json:"dedicatedHostId,omitempty"`
+	DedicatedHostID string `json:"dedicatedHostID,omitempty"`
 
 	// The PVM Instance Host ID (Internal Use Only)
 	ID int64 `json:"id,omitempty"`
