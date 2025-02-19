@@ -14,6 +14,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewPcloudCloudinstancesVolumesDeleteParams creates a new PcloudCloudinstancesVolumesDeleteParams object,
@@ -66,6 +67,12 @@ type PcloudCloudinstancesVolumesDeleteParams struct {
 	   Cloud Instance ID of a PCloud Instance
 	*/
 	CloudInstanceID string
+
+	/* Force.
+
+	   set to true to forcefully delete only auxiliary volume.
+	*/
+	Force *bool
 
 	/* VolumeID.
 
@@ -137,6 +144,17 @@ func (o *PcloudCloudinstancesVolumesDeleteParams) SetCloudInstanceID(cloudInstan
 	o.CloudInstanceID = cloudInstanceID
 }
 
+// WithForce adds the force to the pcloud cloudinstances volumes delete params
+func (o *PcloudCloudinstancesVolumesDeleteParams) WithForce(force *bool) *PcloudCloudinstancesVolumesDeleteParams {
+	o.SetForce(force)
+	return o
+}
+
+// SetForce adds the force to the pcloud cloudinstances volumes delete params
+func (o *PcloudCloudinstancesVolumesDeleteParams) SetForce(force *bool) {
+	o.Force = force
+}
+
 // WithVolumeID adds the volumeID to the pcloud cloudinstances volumes delete params
 func (o *PcloudCloudinstancesVolumesDeleteParams) WithVolumeID(volumeID string) *PcloudCloudinstancesVolumesDeleteParams {
 	o.SetVolumeID(volumeID)
@@ -159,6 +177,23 @@ func (o *PcloudCloudinstancesVolumesDeleteParams) WriteToRequest(r runtime.Clien
 	// path param cloud_instance_id
 	if err := r.SetPathParam("cloud_instance_id", o.CloudInstanceID); err != nil {
 		return err
+	}
+
+	if o.Force != nil {
+
+		// query param force
+		var qrForce bool
+
+		if o.Force != nil {
+			qrForce = *o.Force
+		}
+		qForce := swag.FormatBool(qrForce)
+		if qForce != "" {
+
+			if err := r.SetQueryParam("force", qForce); err != nil {
+				return err
+			}
+		}
 	}
 
 	// path param volume_id
