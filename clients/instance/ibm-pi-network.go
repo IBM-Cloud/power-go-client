@@ -58,7 +58,7 @@ func (f *IBMPINetworkClient) GetAll() (*models.Networks, error) {
 func (f *IBMPINetworkClient) Create(body *models.NetworkCreate) (*models.Network, error) {
 	// Check for satellite differences in this endpoint
 	if f.session.IsOnPrem() && body.Jumbo {
-		return nil, fmt.Errorf("jumbo parameter is not supported in satellite location, use mtu instead")
+		return nil, fmt.Errorf("jumbo parameter is not supported in on-prem location, use mtu instead")
 	}
 	params := p_cloud_networks.NewPcloudNetworksPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
