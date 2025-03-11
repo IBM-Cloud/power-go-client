@@ -19,6 +19,9 @@ import (
 // swagger:model NetworkUpdate
 type NetworkUpdate struct {
 
+	// Indicates if the ARP broadcast is enabled
+	ArpBroadcast bool `json:"arpBroadcast,omitempty"`
+
 	// Replaces the current DNS Servers
 	DNSServers []string `json:"dnsServers"`
 
