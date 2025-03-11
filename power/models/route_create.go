@@ -40,6 +40,8 @@ type RouteCreate struct {
 
 	// Name of the route
 	// Required: true
+	// Max Length: 128
+	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
 	Name *string `json:"name"`
 
 	// The next hop
@@ -182,6 +184,14 @@ func (m *RouteCreate) validateDestinationType(formats strfmt.Registry) error {
 func (m *RouteCreate) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 128); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("name", "body", *m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
 		return err
 	}
 

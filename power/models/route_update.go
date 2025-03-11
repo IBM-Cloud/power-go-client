@@ -35,9 +35,14 @@ type RouteUpdate struct {
 	// Enum: ["ipv4-address"]
 	DestinationType *string `json:"destinationType,omitempty"`
 
+	// Indicates if the route should be enabled in the fabric
+	Enabled bool `json:"enabled,omitempty"`
+
 	// Name of the route
 	// Required: true
-	Name interface{} `json:"name"`
+	// Max Length: 128
+	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
+	Name *string `json:"name"`
 
 	// The next hop
 	// Required: true
@@ -171,8 +176,16 @@ func (m *RouteUpdate) validateDestinationType(formats strfmt.Registry) error {
 
 func (m *RouteUpdate) validateName(formats strfmt.Registry) error {
 
-	if m.Name == nil {
-		return errors.Required("name", "body", nil)
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 128); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("name", "body", *m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
+		return err
 	}
 
 	return nil
