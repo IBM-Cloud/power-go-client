@@ -38,6 +38,9 @@ type RouteUpdate struct {
 	// Indicates if the route should be enabled in the fabric
 	Enabled *bool `json:"enabled,omitempty"`
 
+	// Indicates if the route should be enabled in the fabric
+	Enabled bool `json:"enabled,omitempty"`
+
 	// Name of the route
 	// Max Length: 128
 	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
