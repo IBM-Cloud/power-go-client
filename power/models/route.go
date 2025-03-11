@@ -51,7 +51,9 @@ type Route struct {
 
 	// Name of the route
 	// Required: true
-	Name interface{} `json:"name"`
+	// Max Length: 128
+	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
+	Name *string `json:"name"`
 
 	// The next hop
 	// Required: true
@@ -243,8 +245,16 @@ func (m *Route) validateID(formats strfmt.Registry) error {
 
 func (m *Route) validateName(formats strfmt.Registry) error {
 
-	if m.Name == nil {
-		return errors.Required("name", "body", nil)
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 128); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("name", "body", *m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
+		return err
 	}
 
 	return nil
