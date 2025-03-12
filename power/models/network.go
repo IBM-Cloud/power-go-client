@@ -24,6 +24,9 @@ type Network struct {
 	// access config
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
+	// Indicates if the ARP broadcast is enabled
+	ArpBroadcast bool `json:"arpBroadcast,omitempty"`
+
 	// Network in CIDR notation (192.168.0.0/24)
 	// Required: true
 	Cidr *string `json:"cidr"`
