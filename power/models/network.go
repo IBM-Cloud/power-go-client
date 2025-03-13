@@ -24,6 +24,9 @@ type Network struct {
 	// access config
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
+	// Indicates if the network is advertised externally
+	AdvertiseExternally bool `json:"advertiseExternally,omitempty"`
+
 	// Indicates if the ARP broadcast is enabled
 	ArpBroadcast bool `json:"arpBroadcast,omitempty"`
 

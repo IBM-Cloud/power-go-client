@@ -23,9 +23,9 @@ type RouteReportRoute struct {
 	// Indicates if the route is advertised externally
 	AdvertiseExternally bool `json:"advertiseExternally,omitempty"`
 
-	// The destination CIDR
+	// The destination
 	// Required: true
-	DestinationCIDR *string `json:"destinationCIDR"`
+	Destination *string `json:"destination"`
 
 	// The next hop
 	NextHop string `json:"nextHop,omitempty"`
@@ -40,7 +40,7 @@ type RouteReportRoute struct {
 func (m *RouteReportRoute) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateDestinationCIDR(formats); err != nil {
+	if err := m.validateDestination(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -54,9 +54,9 @@ func (m *RouteReportRoute) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RouteReportRoute) validateDestinationCIDR(formats strfmt.Registry) error {
+func (m *RouteReportRoute) validateDestination(formats strfmt.Registry) error {
 
-	if err := validate.Required("destinationCIDR", "body", m.DestinationCIDR); err != nil {
+	if err := validate.Required("destination", "body", m.Destination); err != nil {
 		return err
 	}
 

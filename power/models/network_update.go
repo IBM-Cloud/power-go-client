@@ -19,6 +19,9 @@ import (
 // swagger:model NetworkUpdate
 type NetworkUpdate struct {
 
+	// Indicates if the network is advertised externally
+	AdvertiseExternally bool `json:"advertiseExternally,omitempty"`
+
 	// Indicates if the ARP broadcast is enabled
 	ArpBroadcast bool `json:"arpBroadcast,omitempty"`
 
