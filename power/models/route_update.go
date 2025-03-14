@@ -28,8 +28,7 @@ type RouteUpdate struct {
 	AdvertiseExternally *bool `json:"advertiseExternally,omitempty"`
 
 	// The route destination
-	// Required: true
-	Destination *string `json:"destination"`
+	Destination string `json:"destination,omitempty"`
 
 	// The destination type
 	// Enum: ["ipv4-address"]
@@ -39,14 +38,12 @@ type RouteUpdate struct {
 	Enabled bool `json:"enabled,omitempty"`
 
 	// Name of the route
-	// Required: true
 	// Max Length: 128
 	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
-	Name *string `json:"name"`
+	Name string `json:"name,omitempty"`
 
 	// The next hop
-	// Required: true
-	NextHop *string `json:"nextHop"`
+	NextHop string `json:"nextHop,omitempty"`
 
 	// The next hop type
 	// Enum: ["ipv4-address"]
@@ -61,19 +58,11 @@ func (m *RouteUpdate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateDestination(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateDestinationType(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNextHop(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -126,15 +115,6 @@ func (m *RouteUpdate) validateAction(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RouteUpdate) validateDestination(formats strfmt.Registry) error {
-
-	if err := validate.Required("destination", "body", m.Destination); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 var routeUpdateTypeDestinationTypePropEnum []interface{}
 
 func init() {
@@ -175,25 +155,15 @@ func (m *RouteUpdate) validateDestinationType(formats strfmt.Registry) error {
 }
 
 func (m *RouteUpdate) validateName(formats strfmt.Registry) error {
+	if swag.IsZero(m.Name) { // not required
+		return nil
+	}
 
-	if err := validate.Required("name", "body", m.Name); err != nil {
+	if err := validate.MaxLength("name", "body", m.Name, 128); err != nil {
 		return err
 	}
 
-	if err := validate.MaxLength("name", "body", *m.Name, 128); err != nil {
-		return err
-	}
-
-	if err := validate.Pattern("name", "body", *m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *RouteUpdate) validateNextHop(formats strfmt.Registry) error {
-
-	if err := validate.Required("nextHop", "body", m.NextHop); err != nil {
+	if err := validate.Pattern("name", "body", m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
 		return err
 	}
 
