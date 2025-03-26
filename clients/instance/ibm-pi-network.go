@@ -199,6 +199,10 @@ func (f *IBMPINetworkClient) UpdatePort(id, networkPortID string, body *models.N
 
 // Create a network interface
 func (f *IBMPINetworkClient) CreateNetworkInterface(id string, body *models.NetworkInterfaceCreate) (*models.NetworkInterface, error) {
+	// Add check for on-prem location
+	if f.session.IsOnPrem() {
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
+	}
 	params := networks.NewV1NetworksNetworkInterfacesPostParams().WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).WithNetworkID(id).WithBody(body)
 	resp, err := f.session.Power.Networks.V1NetworksNetworkInterfacesPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -212,6 +216,10 @@ func (f *IBMPINetworkClient) CreateNetworkInterface(id string, body *models.Netw
 
 // Get all Create a network interface
 func (f *IBMPINetworkClient) GetAllNetworkInterfaces(id string) (*models.NetworkInterfaces, error) {
+	// Add check for on-prem location
+	if f.session.IsOnPrem() {
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
+	}
 	params := networks.NewV1NetworksNetworkInterfacesGetallParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithNetworkID(id)
 	resp, err := f.session.Power.Networks.V1NetworksNetworkInterfacesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -225,6 +233,10 @@ func (f *IBMPINetworkClient) GetAllNetworkInterfaces(id string) (*models.Network
 
 // Get a network interface
 func (f *IBMPINetworkClient) GetNetworkInterface(id, netIntID string) (*models.NetworkInterface, error) {
+	// Add check for on-prem location
+	if f.session.IsOnPrem() {
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
+	}
 	params := networks.NewV1NetworksNetworkInterfacesGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithNetworkID(id).WithNetworkInterfaceID(netIntID)
 	resp, err := f.session.Power.Networks.V1NetworksNetworkInterfacesGet(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -238,6 +250,10 @@ func (f *IBMPINetworkClient) GetNetworkInterface(id, netIntID string) (*models.N
 
 // Update a network interface
 func (f *IBMPINetworkClient) UpdateNetworkInterface(id, netIntID string, body *models.NetworkInterfaceUpdate) (*models.NetworkInterface, error) {
+	// Add check for on-prem location
+	if f.session.IsOnPrem() {
+		return nil, fmt.Errorf(helpers.NotOnPremSupported)
+	}
 	params := networks.NewV1NetworksNetworkInterfacesPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithNetworkID(id).WithNetworkInterfaceID(netIntID).WithBody(body)
 	resp, err := f.session.Power.Networks.V1NetworksNetworkInterfacesPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
@@ -251,6 +267,10 @@ func (f *IBMPINetworkClient) UpdateNetworkInterface(id, netIntID string, body *m
 
 // Delete a network interface
 func (f *IBMPINetworkClient) DeleteNetworkInterface(id, netIntID string) error {
+	// Add check for on-prem location
+	if f.session.IsOnPrem() {
+		return fmt.Errorf(helpers.NotOnPremSupported)
+	}
 	params := networks.NewV1NetworksNetworkInterfacesDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkID(id).WithNetworkInterfaceID(netIntID)
 	_, err := f.session.Power.Networks.V1NetworksNetworkInterfacesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
