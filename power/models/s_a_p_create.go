@@ -52,6 +52,7 @@ type SAPCreate struct {
 
 	// SAP Profile ID for the amount of cores and memory
 	// Required: true
+	// Pattern: ^[\s]*[A-Za-z][A-Za-z0-9\-]{3,}$
 	ProfileID *string `json:"profileID"`
 
 	// Indicates the replication site of the boot volume
@@ -234,6 +235,10 @@ func (m *SAPCreate) validatePinPolicy(formats strfmt.Registry) error {
 func (m *SAPCreate) validateProfileID(formats strfmt.Registry) error {
 
 	if err := validate.Required("profileID", "body", m.ProfileID); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("profileID", "body", *m.ProfileID, `^[\s]*[A-Za-z][A-Za-z0-9\-]{3,}$`); err != nil {
 		return err
 	}
 
