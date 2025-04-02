@@ -54,7 +54,21 @@ func (f *IBMPIVSNClient) GetAll(pvmInstanceID *string) (models.VirtualSerialNumb
 	return resp.Payload, nil
 }
 
-// Update Virtual Serial Nunber
+// Get All Supported IBMi Software Tiers
+func (f *IBMPIVSNClient) GetAllSoftwareTiers() (models.SupportedSoftwareTierList, error) {
+	params := p_cloud_virtual_serial_number.NewPcloudVirtualserialnumberSoftwaretiersGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.session.Power.PCloudVirtualSerialNumber.PcloudVirtualserialnumberSoftwaretiersGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get all supported IBMi software tiers in %s :%w", f.cloudInstanceID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get all supported IBMi software tiers in %s", f.cloudInstanceID)
+	}
+	return resp.Payload, nil
+}
+
+// Update Virtual Serial Number
 func (f *IBMPIVSNClient) Update(id string, body *models.UpdateVirtualSerialNumber) (*models.GetServerVirtualSerialNumber, error) {
 	params := p_cloud_virtual_serial_number.NewPcloudVirtualserialnumberPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithVirtualSerialNumber(id).
