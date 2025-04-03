@@ -16,7 +16,7 @@ type IBMPIRouteClient struct {
 }
 
 // NewIBMPIPlacementGroupClient
-func NewIBMPIPRouteClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIRouteClient {
+func NewIBMPIRouteClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIRouteClient {
 	return &IBMPIRouteClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
 	}
