@@ -10,12 +10,12 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
-// IBMPIPlacementGroupClient
+// IBMPIRouteClient
 type IBMPIRouteClient struct {
 	IBMPIClient
 }
 
-// NewIBMPIPlacementGroupClient
+// NewIBMPIRouteClient
 func NewIBMPIRouteClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPIRouteClient {
 	return &IBMPIRouteClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
