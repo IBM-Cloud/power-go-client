@@ -94,6 +94,10 @@ func (m *NetworkCreate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validatePeer(formats); err != nil {
 		res = append(res, err)
 	}
