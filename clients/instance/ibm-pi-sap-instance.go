@@ -83,7 +83,7 @@ func (f *IBMPISAPInstanceClient) GetAllSAPProfiles(cloudInstanceID string) (*mod
 }
 
 // Get All SAP Profiles with filters
-func (f *IBMPISAPInstanceClient) GetAllSAPProfilesWithFilters(cloudInstanceID string, prefixFilter string, familyFilter string) (*models.SAPProfiles, error) {
+func (f *IBMPISAPInstanceClient) GetAllSAPProfilesWithFilters(cloudInstanceID string, familyFilter string, prefixFilter string) (*models.SAPProfiles, error) {
 	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
