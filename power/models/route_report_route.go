@@ -20,15 +20,9 @@ import (
 // swagger:model RouteReportRoute
 type RouteReportRoute struct {
 
-	// Indicates if the route is advertised externally
-	AdvertiseExternally bool `json:"advertiseExternally,omitempty"`
-
-	// The destination
+	// The destination. The destination is a CIDR for the external route type.
 	// Required: true
 	Destination *string `json:"destination"`
-
-	// The next hop
-	NextHop string `json:"nextHop,omitempty"`
 
 	// The route type
 	// Required: true
