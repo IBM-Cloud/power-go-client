@@ -24,8 +24,9 @@ type RouteCreate struct {
 	// Enum: ["deliver"]
 	Action *string `json:"action,omitempty"`
 
-	// Indicates if the route is advertised externally
-	AdvertiseExternally *bool `json:"advertiseExternally,omitempty"`
+	// Indicates if the route is advertised externally of the workspace to PER and\or peer networks
+	// Enum: ["enable","disable"]
+	Advertise *string `json:"advertise,omitempty"`
 
 	// The route destination
 	// Required: true
@@ -61,6 +62,10 @@ func (m *RouteCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAction(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAdvertise(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -127,6 +132,48 @@ func (m *RouteCreate) validateAction(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateActionEnum("action", "body", *m.Action); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var routeCreateTypeAdvertisePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enable","disable"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeCreateTypeAdvertisePropEnum = append(routeCreateTypeAdvertisePropEnum, v)
+	}
+}
+
+const (
+
+	// RouteCreateAdvertiseEnable captures enum value "enable"
+	RouteCreateAdvertiseEnable string = "enable"
+
+	// RouteCreateAdvertiseDisable captures enum value "disable"
+	RouteCreateAdvertiseDisable string = "disable"
+)
+
+// prop value enum
+func (m *RouteCreate) validateAdvertiseEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeCreateTypeAdvertisePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteCreate) validateAdvertise(formats strfmt.Registry) error {
+	if swag.IsZero(m.Advertise) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAdvertiseEnum("advertise", "body", *m.Advertise); err != nil {
 		return err
 	}
 
