@@ -165,6 +165,48 @@ func (m *RouteUpdate) validateAdvertise(formats strfmt.Registry) error {
 	return nil
 }
 
+var routeUpdateTypeAdvertisePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["enable","disable"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeUpdateTypeAdvertisePropEnum = append(routeUpdateTypeAdvertisePropEnum, v)
+	}
+}
+
+const (
+
+	// RouteUpdateAdvertiseEnable captures enum value "enable"
+	RouteUpdateAdvertiseEnable string = "enable"
+
+	// RouteUpdateAdvertiseDisable captures enum value "disable"
+	RouteUpdateAdvertiseDisable string = "disable"
+)
+
+// prop value enum
+func (m *RouteUpdate) validateAdvertiseEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeUpdateTypeAdvertisePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteUpdate) validateAdvertise(formats strfmt.Registry) error {
+	if swag.IsZero(m.Advertise) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAdvertiseEnum("advertise", "body", m.Advertise); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var routeUpdateTypeDestinationTypePropEnum []interface{}
 
 func init() {
