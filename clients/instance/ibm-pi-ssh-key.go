@@ -1,0 +1,85 @@
+package instance
+
+import (
+	"context"
+	"fmt"
+
+	"github.com/IBM-Cloud/power-go-client/errors"
+	"github.com/IBM-Cloud/power-go-client/helpers"
+	"github.com/IBM-Cloud/power-go-client/ibmpisession"
+	"github.com/IBM-Cloud/power-go-client/power/client/ssh_keys"
+	"github.com/IBM-Cloud/power-go-client/power/models"
+)
+
+// IBMPIKeyClient
+type IBMPISSHKeyClient struct {
+	IBMPIClient
+}
+
+// NewIBMPIKeyClient
+func NewIBMPISSHKeyClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISSHKeyClient {
+	return &IBMPISSHKeyClient{
+		*NewIBMPIClient(ctx, sess, cloudInstanceID),
+	}
+}
+
+// Get a SSH Key
+func (f *IBMPISSHKeyClient) Get(id string) (*models.WorkspaceSSHKey, error) {
+	params := ssh_keys.NewV1SshkeysGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithSshkeyID(id)
+
+	resp, err := f.session.Power.SSHKeys.V1SshkeysGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetPISSHKeyOperationFailed, id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get PI ssh Key %s", id)
+	}
+	return resp.Payload, nil
+}
+
+// Get All SSH Keys
+func (f *IBMPISSHKeyClient) GetAll() (*models.WorkspaceSSHKeys, error) {
+	params := ssh_keys.NewV1SshkeysGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
+
+	resp, err := f.session.Power.SSHKeys.V1SshkeysGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetAllPISSHKeyOperationFailed, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get all PI SSH Keys")
+	}
+	return resp.Payload, nil
+}
+
+// Create a SSH Key
+func (f *IBMPISSHKeyClient) Create(body *models.CreateWorkspaceSSHKey) (*models.WorkspaceSSHKey, error) {
+	params := ssh_keys.NewV1SshkeysPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithBody(body)
+	postok, postcreated, err := f.session.Power.SSHKeys.V1SshkeysPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreatePISSHKeyOperationFailed, err))
+	}
+	if postok != nil && postok.Payload != nil {
+		return postok.Payload, nil
+	}
+	if postcreated != nil && postcreated.Payload != nil {
+		return postcreated.Payload, nil
+	}
+	return nil, fmt.Errorf("failed to Create PI ssh Key")
+}
+
+// Delete a SSH Key
+func (f *IBMPISSHKeyClient) Delete(id string) error {
+	params := ssh_keys.NewV1SshkeysDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithSshkeyID(id)
+	_, err := f.session.Power.SSHKeys.V1SshkeysDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf(errors.DeletePISSHKeyOperationFailed, id, err)
+	}
+	return nil
+}
