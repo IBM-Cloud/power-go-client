@@ -83,10 +83,14 @@ func (f *IBMPISAPInstanceClient) GetAllSAPProfiles(cloudInstanceID string) (*mod
 }
 
 // Get All SAP Profiles with filters
-func (f *IBMPISAPInstanceClient) GetAllSAPProfilesWithFilters(cloudInstanceID string, familyFilter string, prefixFilter string) (*models.SAPProfiles, error) {
+func (f *IBMPISAPInstanceClient) GetAllSAPProfilesWithFilters(cloudInstanceID string, filterMap map[string]string) (*models.SAPProfiles, error) {
 	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
+
+	familyFilter := filterMap[helpers.PISAPProfileFamilyFilterMapKey]
+	prefixFilter := filterMap[helpers.PISAPProfilePrefixFilterMapKey]
+
 	params := p_cloud_s_a_p.NewPcloudSapGetallParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithProfilePrefix(&prefixFilter).
