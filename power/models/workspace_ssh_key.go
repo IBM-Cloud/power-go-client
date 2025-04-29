@@ -37,6 +37,10 @@ type WorkspaceSSHKey struct {
 	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
 	Name *string `json:"name" datastore:"name"`
 
+	// Indicates if the current workspace owns the ssh key or not
+	// Required: true
+	PrimaryWorkspace *bool `json:"primaryWorkspace"`
+
 	// SSH RSA key
 	// Required: true
 	SSHKey *string `json:"sshKey" datastore:"sshKey"`
@@ -44,10 +48,6 @@ type WorkspaceSSHKey struct {
 	// Visibility of the sshkey; workspace suggests ssh-key is only accessible in a workspace, account suggests ssh-key is accessible throughout an account
 	// Enum: ["account","workspace"]
 	Visibility *string `json:"visibility,omitempty" datastore:"visibility"`
-
-	// workspace crn of the ssh-key
-	// Required: true
-	Workspace *string `json:"workspace" datastore:"workspace"`
 }
 
 // Validate validates this workspace SSH key
@@ -66,15 +66,15 @@ func (m *WorkspaceSSHKey) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validatePrimaryWorkspace(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSSHKey(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateVisibility(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateWorkspace(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -116,6 +116,15 @@ func (m *WorkspaceSSHKey) validateName(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("name", "body", *m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *WorkspaceSSHKey) validatePrimaryWorkspace(formats strfmt.Registry) error {
+
+	if err := validate.Required("primaryWorkspace", "body", m.PrimaryWorkspace); err != nil {
 		return err
 	}
 
@@ -167,15 +176,6 @@ func (m *WorkspaceSSHKey) validateVisibility(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateVisibilityEnum("visibility", "body", *m.Visibility); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *WorkspaceSSHKey) validateWorkspace(formats strfmt.Registry) error {
-
-	if err := validate.Required("workspace", "body", m.Workspace); err != nil {
 		return err
 	}
 

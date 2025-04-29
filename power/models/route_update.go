@@ -22,7 +22,7 @@ type RouteUpdate struct {
 
 	// Action
 	// Enum: ["deliver"]
-	Action *string `json:"action,omitempty"`
+	Action string `json:"action,omitempty"`
 
 	// Indicates if the route is advertised externally of the workspace to PER and\or peer networks
 	// Enum: ["enable","disable"]
@@ -33,7 +33,7 @@ type RouteUpdate struct {
 
 	// The destination type
 	// Enum: ["ipv4-address"]
-	DestinationType *string `json:"destinationType,omitempty"`
+	DestinationType string `json:"destinationType,omitempty"`
 
 	// Indicates if the route should be enabled in the fabric
 	Enabled *bool `json:"enabled,omitempty"`
@@ -48,7 +48,7 @@ type RouteUpdate struct {
 
 	// The next hop type
 	// Enum: ["ipv4-address"]
-	NextHopType *string `json:"nextHopType,omitempty"`
+	NextHopType string `json:"nextHopType,omitempty"`
 }
 
 // Validate validates this route update
@@ -113,7 +113,7 @@ func (m *RouteUpdate) validateAction(formats strfmt.Registry) error {
 	}
 
 	// value enum
-	if err := m.validateActionEnum("action", "body", *m.Action); err != nil {
+	if err := m.validateActionEnum("action", "body", m.Action); err != nil {
 		return err
 	}
 
@@ -194,7 +194,7 @@ func (m *RouteUpdate) validateDestinationType(formats strfmt.Registry) error {
 	}
 
 	// value enum
-	if err := m.validateDestinationTypeEnum("destinationType", "body", *m.DestinationType); err != nil {
+	if err := m.validateDestinationTypeEnum("destinationType", "body", m.DestinationType); err != nil {
 		return err
 	}
 
@@ -249,7 +249,7 @@ func (m *RouteUpdate) validateNextHopType(formats strfmt.Registry) error {
 	}
 
 	// value enum
-	if err := m.validateNextHopTypeEnum("nextHopType", "body", *m.NextHopType); err != nil {
+	if err := m.validateNextHopTypeEnum("nextHopType", "body", m.NextHopType); err != nil {
 		return err
 	}
 
