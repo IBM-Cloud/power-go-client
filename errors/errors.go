@@ -100,7 +100,7 @@ const CreatePIKeyOperationFailed = "failed to Create PI Key with error %w"
 const DeletePIKeyOperationFailed = "failed to Delete PI Key %s with error %w"
 
 // start of PI ssh Key Messages
-const GetAllPISSHKeyOperationFailed = "failed to Get PI Keys with error %w"
+const GetAllPISSHKeyOperationFailed = "failed to Get PI SSH Keys with error %w"
 const GetPISSHKeyOperationFailed = "failed to Get PI SSH Key %s with error %w"
 const CreatePISSHKeyOperationFailed = "failed to Create PI SSH Key with error %w"
 const DeletePISSHKeyOperationFailed = "failed to Delete PI SSH Key %s with error %w"
