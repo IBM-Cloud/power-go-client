@@ -131,6 +131,15 @@ func (m *WorkspaceSSHKey) validatePrimaryWorkspace(formats strfmt.Registry) erro
 	return nil
 }
 
+func (m *WorkspaceSSHKey) validatePrimaryWorkspace(formats strfmt.Registry) error {
+
+	if err := validate.Required("primaryWorkspace", "body", m.PrimaryWorkspace); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *WorkspaceSSHKey) validateSSHKey(formats strfmt.Registry) error {
 
 	if err := validate.Required("sshKey", "body", m.SSHKey); err != nil {
