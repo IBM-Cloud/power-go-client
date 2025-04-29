@@ -11,12 +11,12 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
-// IBMPIKeyClient
+// IBMPISSHKeyClient
 type IBMPISSHKeyClient struct {
 	IBMPIClient
 }
 
-// NewIBMPIKeyClient
+// NewIBMPISSHKeyClient
 func NewIBMPISSHKeyClient(ctx context.Context, sess *ibmpisession.IBMPISession, cloudInstanceID string) *IBMPISSHKeyClient {
 	return &IBMPISSHKeyClient{
 		*NewIBMPIClient(ctx, sess, cloudInstanceID),
