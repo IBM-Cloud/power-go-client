@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/IBM-Cloud/power-go-client/errors"
 	"github.com/IBM-Cloud/power-go-client/helpers"
 	"github.com/IBM-Cloud/power-go-client/ibmpisession"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_virtual_serial_number"
@@ -115,7 +114,7 @@ func (f *IBMPIVSNClient) PVMInstanceUpdateVSN(pvmInstanceID string, body *models
 		WithPvmInstanceID(pvmInstanceID).WithBody(body)
 	respOk, respAccepted, err := f.session.Power.PCloudVirtualSerialNumber.PcloudPvminstancesVirtualserialnumberPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreateImageOperationFailed, f.cloudInstanceID, err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update virtual serial number for pvm instance %s :%w", pvmInstanceID, err))
 	}
 	if respOk != nil && respOk.Payload != nil {
 		return respOk.Payload, nil
