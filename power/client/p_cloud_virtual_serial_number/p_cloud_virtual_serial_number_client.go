@@ -62,7 +62,7 @@ type ClientService interface {
 
 	PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error)
 
-	PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, error)
+	PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error)
 
 	PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error)
 
@@ -197,7 +197,7 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminst
 /*
 PcloudPvminstancesVirtualserialnumberPut updates a virtual serial number
 */
-func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, error) {
+func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberPutParams()
@@ -221,15 +221,16 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminsta
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, err
+		return nil, nil, err
 	}
-	success, ok := result.(*PcloudPvminstancesVirtualserialnumberPutOK)
-	if ok {
-		return success, nil
+	switch value := result.(type) {
+	case *PcloudPvminstancesVirtualserialnumberPutOK:
+		return value, nil, nil
+	case *PcloudPvminstancesVirtualserialnumberPutAccepted:
+		return nil, value, nil
 	}
-	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.virtualserialnumber.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for p_cloud_virtual_serial_number: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
