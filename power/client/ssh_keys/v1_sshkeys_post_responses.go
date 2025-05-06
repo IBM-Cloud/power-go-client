@@ -24,12 +24,6 @@ type V1SshkeysPostReader struct {
 // ReadResponse reads a server response into the received o.
 func (o *V1SshkeysPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
 	switch response.Code() {
-	case 200:
-		result := NewV1SshkeysPostOK()
-		if err := result.readResponse(response, consumer, o.formats); err != nil {
-			return nil, err
-		}
-		return result, nil
 	case 201:
 		result := NewV1SshkeysPostCreated()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -81,76 +75,6 @@ func (o *V1SshkeysPostReader) ReadResponse(response runtime.ClientResponse, cons
 	default:
 		return nil, runtime.NewAPIError("[POST /v1/ssh-keys] v1.sshkeys.post", response, response.Code())
 	}
-}
-
-// NewV1SshkeysPostOK creates a V1SshkeysPostOK with default headers values
-func NewV1SshkeysPostOK() *V1SshkeysPostOK {
-	return &V1SshkeysPostOK{}
-}
-
-/*
-V1SshkeysPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
-type V1SshkeysPostOK struct {
-	Payload *models.WorkspaceSSHKey
-}
-
-// IsSuccess returns true when this v1 sshkeys post o k response has a 2xx status code
-func (o *V1SshkeysPostOK) IsSuccess() bool {
-	return true
-}
-
-// IsRedirect returns true when this v1 sshkeys post o k response has a 3xx status code
-func (o *V1SshkeysPostOK) IsRedirect() bool {
-	return false
-}
-
-// IsClientError returns true when this v1 sshkeys post o k response has a 4xx status code
-func (o *V1SshkeysPostOK) IsClientError() bool {
-	return false
-}
-
-// IsServerError returns true when this v1 sshkeys post o k response has a 5xx status code
-func (o *V1SshkeysPostOK) IsServerError() bool {
-	return false
-}
-
-// IsCode returns true when this v1 sshkeys post o k response a status code equal to that given
-func (o *V1SshkeysPostOK) IsCode(code int) bool {
-	return code == 200
-}
-
-// Code gets the status code for the v1 sshkeys post o k response
-func (o *V1SshkeysPostOK) Code() int {
-	return 200
-}
-
-func (o *V1SshkeysPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostOK %s", 200, payload)
-}
-
-func (o *V1SshkeysPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostOK %s", 200, payload)
-}
-
-func (o *V1SshkeysPostOK) GetPayload() *models.WorkspaceSSHKey {
-	return o.Payload
-}
-
-func (o *V1SshkeysPostOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
-
-	o.Payload = new(models.WorkspaceSSHKey)
-
-	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
-		return err
-	}
-
-	return nil
 }
 
 // NewV1SshkeysPostCreated creates a V1SshkeysPostCreated with default headers values

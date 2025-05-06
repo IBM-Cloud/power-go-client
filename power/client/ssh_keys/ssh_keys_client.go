@@ -62,7 +62,7 @@ type ClientService interface {
 
 	V1SshkeysGetall(params *V1SshkeysGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysGetallOK, error)
 
-	V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPostOK, *V1SshkeysPostCreated, error)
+	V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPostCreated, error)
 
 	SetTransport(transport runtime.ClientTransport)
 }
@@ -187,7 +187,7 @@ func (a *Client) V1SshkeysGetall(params *V1SshkeysGetallParams, authInfo runtime
 /*
 V1SshkeysPost adds a new SSH key
 */
-func (a *Client) V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPostOK, *V1SshkeysPostCreated, error) {
+func (a *Client) V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPostCreated, error) {
 	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewV1SshkeysPostParams()
@@ -211,16 +211,15 @@ func (a *Client) V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.Cli
 
 	result, err := a.transport.Submit(op)
 	if err != nil {
-		return nil, nil, err
+		return nil, err
 	}
-	switch value := result.(type) {
-	case *V1SshkeysPostOK:
-		return value, nil, nil
-	case *V1SshkeysPostCreated:
-		return nil, value, nil
+	success, ok := result.(*V1SshkeysPostCreated)
+	if ok {
+		return success, nil
 	}
+	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for ssh_keys: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	msg := fmt.Sprintf("unexpected success response for v1.sshkeys.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
