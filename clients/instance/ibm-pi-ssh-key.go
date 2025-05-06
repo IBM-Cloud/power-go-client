@@ -34,7 +34,7 @@ func (f *IBMPISSHKeyClient) Get(id string) (*models.WorkspaceSSHKey, error) {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetPISSHKeyOperationFailed, id, err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to Get PI ssh Key %s", id)
+		return nil, fmt.Errorf("failed to Get PI SSH Key %s", id)
 	}
 	return resp.Payload, nil
 }
@@ -59,17 +59,14 @@ func (f *IBMPISSHKeyClient) Create(body *models.CreateWorkspaceSSHKey) (*models.
 	params := ssh_keys.NewV1SshkeysPostParams().
 		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
 		WithBody(body)
-	postok, postcreated, err := f.session.Power.SSHKeys.V1SshkeysPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.SSHKeys.V1SshkeysPost(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.CreatePISSHKeyOperationFailed, err))
 	}
-	if postok != nil && postok.Payload != nil {
-		return postok.Payload, nil
+	if resp != nil && resp.Payload != nil {
+		return resp.Payload, nil
 	}
-	if postcreated != nil && postcreated.Payload != nil {
-		return postcreated.Payload, nil
-	}
-	return nil, fmt.Errorf("failed to Create PI ssh Key")
+	return nil, fmt.Errorf("failed to Create PI SSH Key")
 }
 
 // Delete a SSH Key
