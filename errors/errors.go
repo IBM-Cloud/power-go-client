@@ -104,6 +104,7 @@ const GetAllPISSHKeyOperationFailed = "failed to Get PI SSH Keys with error %w"
 const GetPISSHKeyOperationFailed = "failed to Get PI SSH Key %s with error %w"
 const CreatePISSHKeyOperationFailed = "failed to Create PI SSH Key with error %w"
 const DeletePISSHKeyOperationFailed = "failed to Delete PI SSH Key %s with error %w"
+const UpdatePISSHKeyOperationFailed = "failed to Update PI SSH Key %s with error %w"
 
 // start of Volume Groups
 const GetVolumeGroupOperationFailed = "failed to Get volume-group %s for the cloud instance %s with error %w"
