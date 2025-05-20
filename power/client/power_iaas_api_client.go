@@ -51,7 +51,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_service_d_h_c_p"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_shared_processor_pools"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_snapshots"
-	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_ssh_keys"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_storage_capacity"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_storage_tiers"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_system_pools"
@@ -158,7 +157,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudServicedhcp = p_cloud_service_d_h_c_p.New(transport, formats)
 	cli.PCloudSharedProcessorPools = p_cloud_shared_processor_pools.New(transport, formats)
 	cli.PCloudSnapshots = p_cloud_snapshots.New(transport, formats)
-	cli.PCloudSSHKeys = p_cloud_ssh_keys.New(transport, formats)
 	cli.PCloudStorageCapacity = p_cloud_storage_capacity.New(transport, formats)
 	cli.PCloudStorageTiers = p_cloud_storage_tiers.New(transport, formats)
 	cli.PCloudSystemPools = p_cloud_system_pools.New(transport, formats)
@@ -306,8 +304,6 @@ type PowerIaasAPI struct {
 
 	PCloudSnapshots p_cloud_snapshots.ClientService
 
-	PCloudSSHKeys p_cloud_ssh_keys.ClientService
-
 	PCloudStorageCapacity p_cloud_storage_capacity.ClientService
 
 	PCloudStorageTiers p_cloud_storage_tiers.ClientService
@@ -397,7 +393,6 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudServicedhcp.SetTransport(transport)
 	c.PCloudSharedProcessorPools.SetTransport(transport)
 	c.PCloudSnapshots.SetTransport(transport)
-	c.PCloudSSHKeys.SetTransport(transport)
 	c.PCloudStorageCapacity.SetTransport(transport)
 	c.PCloudStorageTiers.SetTransport(transport)
 	c.PCloudSystemPools.SetTransport(transport)
