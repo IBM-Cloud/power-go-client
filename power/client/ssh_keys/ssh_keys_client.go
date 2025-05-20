@@ -64,6 +64,8 @@ type ClientService interface {
 
 	V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPostCreated, error)
 
+	V1SshkeysPut(params *V1SshkeysPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPutOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -220,6 +222,45 @@ func (a *Client) V1SshkeysPost(params *V1SshkeysPostParams, authInfo runtime.Cli
 	// unexpected success response
 	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.sshkeys.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1SshkeysPut updates the ssh key
+*/
+func (a *Client) V1SshkeysPut(params *V1SshkeysPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SshkeysPutOK, error) {
+	// TODO: Validate the params before sending
+	if params == nil {
+		params = NewV1SshkeysPutParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.sshkeys.put",
+		Method:             "PUT",
+		PathPattern:        "/v1/ssh-keys/{sshkey_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1SshkeysPutReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+	success, ok := result.(*V1SshkeysPutOK)
+	if ok {
+		return success, nil
+	}
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.sshkeys.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
