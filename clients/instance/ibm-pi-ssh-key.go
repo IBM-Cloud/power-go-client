@@ -80,3 +80,19 @@ func (f *IBMPISSHKeyClient) Delete(id string) error {
 	}
 	return nil
 }
+
+// Update an SSH Key
+func (f *IBMPISSHKeyClient) Update(id string, body *models.UpdateWorkspaceSSHKey) (*models.WorkspaceSSHKey, error) {
+	params := ssh_keys.NewV1SshkeysPutParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
+		WithSshkeyID(id)
+
+	resp, err := f.session.Power.SSHKeys.V1SshkeysPut(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.UpdatePISSHKeyOperationFailed, id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to update ssh key %s", id)
+	}
+	return resp.Payload, nil
+}
