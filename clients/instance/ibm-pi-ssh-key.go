@@ -85,7 +85,7 @@ func (f *IBMPISSHKeyClient) Delete(id string) error {
 func (f *IBMPISSHKeyClient) Update(id string, body *models.UpdateWorkspaceSSHKey) (*models.WorkspaceSSHKey, error) {
 	params := ssh_keys.NewV1SshkeysPutParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
-		WithSshkeyID(id)
+		WithSshkeyID(id).WithBody(body)
 
 	resp, err := f.session.Power.SSHKeys.V1SshkeysPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
