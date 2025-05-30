@@ -25,7 +25,7 @@ type WorkspaceSSHKey struct {
 	CreationDate *strfmt.DateTime `json:"creationDate,omitempty" datastore:"creationDate"`
 
 	// Description of the sshkey
-	Description string `json:"description,omitempty" datastore:"description"`
+	Description string `json:"description" datastore:"description"`
 
 	// Unique id of ssh-key
 	// Required: true
