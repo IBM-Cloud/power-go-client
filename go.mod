@@ -6,12 +6,12 @@ require (
 	github.com/IBM/go-sdk-core/v5 v5.17.5
 	github.com/IBM/platform-services-go-sdk v0.69.1
 	github.com/apparentlymart/go-cidr v1.1.0
-	github.com/go-openapi/errors v0.22.0
+	github.com/go-openapi/errors v0.22.1
 	github.com/go-openapi/runtime v0.26.0
 	github.com/go-openapi/strfmt v0.22.1
 	github.com/go-openapi/swag v0.22.5
 	github.com/go-openapi/validate v0.22.4
-	github.com/stretchr/testify v1.9.0
+	github.com/stretchr/testify v1.10.0
 )
 
 require (
