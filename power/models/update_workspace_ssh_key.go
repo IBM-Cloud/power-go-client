@@ -24,6 +24,8 @@ type UpdateWorkspaceSSHKey struct {
 	Description *string `json:"description,omitempty" datastore:"description"`
 
 	// User defined name for the SSH key
+	// Max Length: 128
+	// Pattern: ^[A-Za-z0-9-_]+(?: +[A-Za-z0-9-_]+)*$
 	Name *string `json:"name,omitempty" datastore:"name"`
 
 	// SSH RSA key
@@ -38,6 +40,10 @@ type UpdateWorkspaceSSHKey struct {
 func (m *UpdateWorkspaceSSHKey) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateVisibility(formats); err != nil {
 		res = append(res, err)
 	}
@@ -45,6 +51,22 @@ func (m *UpdateWorkspaceSSHKey) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *UpdateWorkspaceSSHKey) validateName(formats strfmt.Registry) error {
+	if swag.IsZero(m.Name) { // not required
+		return nil
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 128); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("name", "body", *m.Name, `^[A-Za-z0-9-_]+(?: +[A-Za-z0-9-_]+)*$`); err != nil {
+		return err
+	}
+
 	return nil
 }
 
