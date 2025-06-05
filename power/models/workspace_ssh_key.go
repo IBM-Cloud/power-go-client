@@ -34,7 +34,7 @@ type WorkspaceSSHKey struct {
 	// User defined name for the SSH key
 	// Required: true
 	// Max Length: 128
-	// Pattern: ^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$
+	// Pattern: ^[A-Za-z0-9-_]+(?: +[A-Za-z0-9-_]+)*$
 	Name *string `json:"name" datastore:"name"`
 
 	// Indicates if the current workspace owns the ssh key or not
@@ -115,7 +115,7 @@ func (m *WorkspaceSSHKey) validateName(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", *m.Name, `^[\s]*[A-Za-z0-9:_.\-][A-Za-z0-9\s:_.\-]*$`); err != nil {
+	if err := validate.Pattern("name", "body", *m.Name, `^[A-Za-z0-9-_]+(?: +[A-Za-z0-9-_]+)*$`); err != nil {
 		return err
 	}
 
