@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -18,29 +19,89 @@ import (
 //
 // swagger:model NetworkPeer
 type NetworkPeer struct {
+	NetworkPeerBase
 
-	// Description of the network peer
+	// network peer id
+	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
 	// Required: true
-	Description *string `json:"description"`
+	ID *string `json:"ID"`
 
-	// ID of the network peer
+	// List of export route filters
 	// Required: true
-	ID *string `json:"id"`
+	ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
 
-	// Name of the network peer
+	// List of import route filters
 	// Required: true
-	Name *string `json:"name"`
+	ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
+}
 
-	// type
-	// Required: true
-	Type *NetworkPeerType `json:"type"`
+// UnmarshalJSON unmarshals this object from a JSON structure
+func (m *NetworkPeer) UnmarshalJSON(raw []byte) error {
+	// AO0
+	var aO0 NetworkPeerBase
+	if err := swag.ReadJSON(raw, &aO0); err != nil {
+		return err
+	}
+	m.NetworkPeerBase = aO0
+
+	// now for regular properties
+	var propsNetworkPeer struct {
+		ID *string `json:"ID"`
+
+		ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
+
+		ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
+	}
+	if err := swag.ReadJSON(raw, &propsNetworkPeer); err != nil {
+		return err
+	}
+	m.ID = propsNetworkPeer.ID
+
+	m.ExportRouteFilters = propsNetworkPeer.ExportRouteFilters
+
+	m.ImportRouteFilters = propsNetworkPeer.ImportRouteFilters
+
+	return nil
+}
+
+// MarshalJSON marshals this object to a JSON structure
+func (m NetworkPeer) MarshalJSON() ([]byte, error) {
+	_parts := make([][]byte, 0, 1)
+
+	aO0, err := swag.WriteJSON(m.NetworkPeerBase)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO0)
+
+	// now for regular properties
+	var propsNetworkPeer struct {
+		ID *string `json:"ID"`
+
+		ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
+
+		ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
+	}
+	propsNetworkPeer.ID = m.ID
+
+	propsNetworkPeer.ExportRouteFilters = m.ExportRouteFilters
+
+	propsNetworkPeer.ImportRouteFilters = m.ImportRouteFilters
+
+	jsonDataPropsNetworkPeer, errNetworkPeer := swag.WriteJSON(propsNetworkPeer)
+	if errNetworkPeer != nil {
+		return nil, errNetworkPeer
+	}
+	_parts = append(_parts, jsonDataPropsNetworkPeer)
+	return swag.ConcatJSON(_parts...), nil
 }
 
 // Validate validates this network peer
 func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateDescription(formats); err != nil {
+	// validation for a type composition with NetworkPeerBase
+	if err := m.NetworkPeerBase.Validate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -48,11 +109,11 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateName(formats); err != nil {
+	if err := m.validateExportRouteFilters(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateType(formats); err != nil {
+	if err := m.validateImportRouteFilters(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -62,52 +123,64 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NetworkPeer) validateDescription(formats strfmt.Registry) error {
-
-	if err := validate.Required("description", "body", m.Description); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 func (m *NetworkPeer) validateID(formats strfmt.Registry) error {
 
-	if err := validate.Required("id", "body", m.ID); err != nil {
+	if err := validate.Required("ID", "body", m.ID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *NetworkPeer) validateName(formats strfmt.Registry) error {
+func (m *NetworkPeer) validateExportRouteFilters(formats strfmt.Registry) error {
 
-	if err := validate.Required("name", "body", m.Name); err != nil {
+	if err := validate.Required("exportRouteFilters", "body", m.ExportRouteFilters); err != nil {
 		return err
 	}
 
-	return nil
-}
-
-func (m *NetworkPeer) validateType(formats strfmt.Registry) error {
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
-		return err
-	}
-
-	if err := validate.Required("type", "body", m.Type); err != nil {
-		return err
-	}
-
-	if m.Type != nil {
-		if err := m.Type.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("type")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("type")
-			}
-			return err
+	for i := 0; i < len(m.ExportRouteFilters); i++ {
+		if swag.IsZero(m.ExportRouteFilters[i]) { // not required
+			continue
 		}
+
+		if m.ExportRouteFilters[i] != nil {
+			if err := m.ExportRouteFilters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) validateImportRouteFilters(formats strfmt.Registry) error {
+
+	if err := validate.Required("importRouteFilters", "body", m.ImportRouteFilters); err != nil {
+		return err
+	}
+
+	for i := 0; i < len(m.ImportRouteFilters); i++ {
+		if swag.IsZero(m.ImportRouteFilters[i]) { // not required
+			continue
+		}
+
+		if m.ImportRouteFilters[i] != nil {
+			if err := m.ImportRouteFilters[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -117,7 +190,16 @@ func (m *NetworkPeer) validateType(formats strfmt.Registry) error {
 func (m *NetworkPeer) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateType(ctx, formats); err != nil {
+	// validation for a type composition with NetworkPeerBase
+	if err := m.NetworkPeerBase.ContextValidate(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateExportRouteFilters(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateImportRouteFilters(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -127,18 +209,51 @@ func (m *NetworkPeer) ContextValidate(ctx context.Context, formats strfmt.Regist
 	return nil
 }
 
-func (m *NetworkPeer) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
+func (m *NetworkPeer) contextValidateExportRouteFilters(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Type != nil {
+	for i := 0; i < len(m.ExportRouteFilters); i++ {
 
-		if err := m.Type.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("type")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("type")
+		if m.ExportRouteFilters[i] != nil {
+
+			if swag.IsZero(m.ExportRouteFilters[i]) { // not required
+				return nil
 			}
-			return err
+
+			if err := m.ExportRouteFilters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
 		}
+
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) contextValidateImportRouteFilters(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.ImportRouteFilters); i++ {
+
+		if m.ImportRouteFilters[i] != nil {
+
+			if swag.IsZero(m.ImportRouteFilters[i]) { // not required
+				return nil
+			}
+
+			if err := m.ImportRouteFilters[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
