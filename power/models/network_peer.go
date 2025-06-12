@@ -21,14 +21,20 @@ import (
 type NetworkPeer struct {
 	NetworkPeerBase
 
-	// network peer id
-	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
+	NetworkPeerAllOf1
+
+	// [DEPRECATED] Description of the network peer
 	// Required: true
-	ID *string `json:"ID"`
+	Description *string `json:"description"`
 
 	// List of export route filters
 	// Required: true
 	ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
+
+	// network peer id
+	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
+	// Required: true
+	ID *string `json:"id"`
 
 	// List of import route filters
 	// Required: true
@@ -44,20 +50,31 @@ func (m *NetworkPeer) UnmarshalJSON(raw []byte) error {
 	}
 	m.NetworkPeerBase = aO0
 
+	// AO1
+	var aO1 NetworkPeerAllOf1
+	if err := swag.ReadJSON(raw, &aO1); err != nil {
+		return err
+	}
+	m.NetworkPeerAllOf1 = aO1
+
 	// now for regular properties
 	var propsNetworkPeer struct {
-		ID *string `json:"ID"`
+		Description *string `json:"description"`
 
 		ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
+
+		ID *string `json:"id"`
 
 		ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
 	}
 	if err := swag.ReadJSON(raw, &propsNetworkPeer); err != nil {
 		return err
 	}
-	m.ID = propsNetworkPeer.ID
+	m.Description = propsNetworkPeer.Description
 
 	m.ExportRouteFilters = propsNetworkPeer.ExportRouteFilters
+
+	m.ID = propsNetworkPeer.ID
 
 	m.ImportRouteFilters = propsNetworkPeer.ImportRouteFilters
 
@@ -66,7 +83,7 @@ func (m *NetworkPeer) UnmarshalJSON(raw []byte) error {
 
 // MarshalJSON marshals this object to a JSON structure
 func (m NetworkPeer) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 1)
+	_parts := make([][]byte, 0, 2)
 
 	aO0, err := swag.WriteJSON(m.NetworkPeerBase)
 	if err != nil {
@@ -74,17 +91,27 @@ func (m NetworkPeer) MarshalJSON() ([]byte, error) {
 	}
 	_parts = append(_parts, aO0)
 
+	aO1, err := swag.WriteJSON(m.NetworkPeerAllOf1)
+	if err != nil {
+		return nil, err
+	}
+	_parts = append(_parts, aO1)
+
 	// now for regular properties
 	var propsNetworkPeer struct {
-		ID *string `json:"ID"`
+		Description *string `json:"description"`
 
 		ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
 
+		ID *string `json:"id"`
+
 		ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
 	}
-	propsNetworkPeer.ID = m.ID
+	propsNetworkPeer.Description = m.Description
 
 	propsNetworkPeer.ExportRouteFilters = m.ExportRouteFilters
+
+	propsNetworkPeer.ID = m.ID
 
 	propsNetworkPeer.ImportRouteFilters = m.ImportRouteFilters
 
@@ -104,12 +131,17 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	if err := m.NetworkPeerBase.Validate(formats); err != nil {
 		res = append(res, err)
 	}
+	// validation for a type composition with NetworkPeerAllOf1
 
-	if err := m.validateID(formats); err != nil {
+	if err := m.validateDescription(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.validateExportRouteFilters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -123,9 +155,9 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *NetworkPeer) validateID(formats strfmt.Registry) error {
+func (m *NetworkPeer) validateDescription(formats strfmt.Registry) error {
 
-	if err := validate.Required("ID", "body", m.ID); err != nil {
+	if err := validate.Required("description", "body", m.Description); err != nil {
 		return err
 	}
 
@@ -154,6 +186,15 @@ func (m *NetworkPeer) validateExportRouteFilters(formats strfmt.Registry) error 
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) validateID(formats strfmt.Registry) error {
+
+	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
 	}
 
 	return nil
@@ -194,6 +235,7 @@ func (m *NetworkPeer) ContextValidate(ctx context.Context, formats strfmt.Regist
 	if err := m.NetworkPeerBase.ContextValidate(ctx, formats); err != nil {
 		res = append(res, err)
 	}
+	// validation for a type composition with NetworkPeerAllOf1
 
 	if err := m.contextValidateExportRouteFilters(ctx, formats); err != nil {
 		res = append(res, err)
@@ -276,3 +318,8 @@ func (m *NetworkPeer) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
+
+// NetworkPeerAllOf1 network peer all of1
+//
+// swagger:model NetworkPeerAllOf1
+type NetworkPeerAllOf1 interface{}
