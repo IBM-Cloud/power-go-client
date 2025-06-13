@@ -11,7 +11,6 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // NetworkCreatePeer [DEPRECATED]
@@ -20,8 +19,7 @@ import (
 type NetworkCreatePeer struct {
 
 	// ID of the network peer
-	// Required: true
-	ID *string `json:"id"`
+	ID string `json:"id,omitempty"`
 
 	// network address translation
 	NetworkAddressTranslation *NetworkAddressTranslation `json:"networkAddressTranslation,omitempty"`
@@ -34,10 +32,6 @@ type NetworkCreatePeer struct {
 func (m *NetworkCreatePeer) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateID(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateNetworkAddressTranslation(formats); err != nil {
 		res = append(res, err)
 	}
@@ -49,15 +43,6 @@ func (m *NetworkCreatePeer) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *NetworkCreatePeer) validateID(formats strfmt.Registry) error {
-
-	if err := validate.Required("id", "body", m.ID); err != nil {
-		return err
-	}
-
 	return nil
 }
 
