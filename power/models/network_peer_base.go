@@ -62,9 +62,12 @@ type NetworkPeerBase struct {
 
 	// type of the peer network
 	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
+	// * L2: [DEPRECATED]
+	// * L3BGP: [DEPRECATED]
+	// * L3Static: [DEPRECATED]
 	//
 	// Example: dcnetwork_bgp
-	// Enum: ["dcnetwork_bgp"]
+	// Enum: ["dcnetwork_bgp","L2","L3BGP","L3Static"]
 	Type string `json:"type,omitempty"`
 
 	// A vlan configured at the customer network.
@@ -182,7 +185,7 @@ var networkPeerBaseTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["dcnetwork_bgp"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["dcnetwork_bgp","L2","L3BGP","L3Static"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -194,6 +197,15 @@ const (
 
 	// NetworkPeerBaseTypeDcnetworkBgp captures enum value "dcnetwork_bgp"
 	NetworkPeerBaseTypeDcnetworkBgp string = "dcnetwork_bgp"
+
+	// NetworkPeerBaseTypeL2 captures enum value "L2"
+	NetworkPeerBaseTypeL2 string = "L2"
+
+	// NetworkPeerBaseTypeL3BGP captures enum value "L3BGP"
+	NetworkPeerBaseTypeL3BGP string = "L3BGP"
+
+	// NetworkPeerBaseTypeL3Static captures enum value "L3Static"
+	NetworkPeerBaseTypeL3Static string = "L3Static"
 )
 
 // prop value enum
