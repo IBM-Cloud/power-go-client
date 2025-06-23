@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -18,7 +19,44 @@ import (
 //
 // swagger:model RouteFilter
 type RouteFilter struct {
-	RouteFilterBase
+
+	// The minimum matching length of the prefix-set(1 ≤ value ≤ 32 value ≤ GE)
+	// Example: 25
+	// Maximum: 32
+	// Minimum: 1
+	GE int64 `json:"GE,omitempty"`
+
+	// The maximum matching length of the prefix-set( 1 ≤ value ≤ 32 value >= GE)
+	// Example: 30
+	// Maximum: 32
+	// Minimum: 1
+	LE int64 `json:"LE,omitempty"`
+
+	// action of the filter
+	// * allow: allow
+	// * deny: deny
+	//
+	// Required: true
+	// Enum: ["allow","deny"]
+	Action *string `json:"action"`
+
+	// direction of the filter
+	// * import - import the routes
+	// * export - export the routes
+	//
+	// Required: true
+	// Enum: ["import","export"]
+	Direction *string `json:"direction"`
+
+	// priority or order of the filter
+	// Example: 10
+	// Required: true
+	Index *int64 `json:"index"`
+
+	// IP prefix representing an address and mask length of the prefix-set
+	// Example: 192.168.91.0/24
+	// Required: true
+	Prefix *string `json:"prefix"`
 
 	// route filter ID
 	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
@@ -26,57 +64,31 @@ type RouteFilter struct {
 	RouteFilterID *string `json:"routeFilterID"`
 }
 
-// UnmarshalJSON unmarshals this object from a JSON structure
-func (m *RouteFilter) UnmarshalJSON(raw []byte) error {
-	// AO0
-	var aO0 RouteFilterBase
-	if err := swag.ReadJSON(raw, &aO0); err != nil {
-		return err
-	}
-	m.RouteFilterBase = aO0
-
-	// now for regular properties
-	var propsRouteFilter struct {
-		RouteFilterID *string `json:"routeFilterID"`
-	}
-	if err := swag.ReadJSON(raw, &propsRouteFilter); err != nil {
-		return err
-	}
-	m.RouteFilterID = propsRouteFilter.RouteFilterID
-
-	return nil
-}
-
-// MarshalJSON marshals this object to a JSON structure
-func (m RouteFilter) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 1)
-
-	aO0, err := swag.WriteJSON(m.RouteFilterBase)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, aO0)
-
-	// now for regular properties
-	var propsRouteFilter struct {
-		RouteFilterID *string `json:"routeFilterID"`
-	}
-	propsRouteFilter.RouteFilterID = m.RouteFilterID
-
-	jsonDataPropsRouteFilter, errRouteFilter := swag.WriteJSON(propsRouteFilter)
-	if errRouteFilter != nil {
-		return nil, errRouteFilter
-	}
-	_parts = append(_parts, jsonDataPropsRouteFilter)
-	return swag.ConcatJSON(_parts...), nil
-}
-
 // Validate validates this route filter
 func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	// validation for a type composition with RouteFilterBase
-	if err := m.RouteFilterBase.Validate(formats); err != nil {
+	if err := m.validateGE(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLE(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAction(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDirection(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIndex(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrefix(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -90,6 +102,142 @@ func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *RouteFilter) validateGE(formats strfmt.Registry) error {
+	if swag.IsZero(m.GE) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("GE", "body", m.GE, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("GE", "body", m.GE, 32, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilter) validateLE(formats strfmt.Registry) error {
+	if swag.IsZero(m.LE) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("LE", "body", m.LE, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("LE", "body", m.LE, 32, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var routeFilterTypeActionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["allow","deny"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeFilterTypeActionPropEnum = append(routeFilterTypeActionPropEnum, v)
+	}
+}
+
+const (
+
+	// RouteFilterActionAllow captures enum value "allow"
+	RouteFilterActionAllow string = "allow"
+
+	// RouteFilterActionDeny captures enum value "deny"
+	RouteFilterActionDeny string = "deny"
+)
+
+// prop value enum
+func (m *RouteFilter) validateActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeFilterTypeActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteFilter) validateAction(formats strfmt.Registry) error {
+
+	if err := validate.Required("action", "body", m.Action); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateActionEnum("action", "body", *m.Action); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var routeFilterTypeDirectionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["import","export"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeFilterTypeDirectionPropEnum = append(routeFilterTypeDirectionPropEnum, v)
+	}
+}
+
+const (
+
+	// RouteFilterDirectionImport captures enum value "import"
+	RouteFilterDirectionImport string = "import"
+
+	// RouteFilterDirectionExport captures enum value "export"
+	RouteFilterDirectionExport string = "export"
+)
+
+// prop value enum
+func (m *RouteFilter) validateDirectionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeFilterTypeDirectionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteFilter) validateDirection(formats strfmt.Registry) error {
+
+	if err := validate.Required("direction", "body", m.Direction); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilter) validateIndex(formats strfmt.Registry) error {
+
+	if err := validate.Required("index", "body", m.Index); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilter) validatePrefix(formats strfmt.Registry) error {
+
+	if err := validate.Required("prefix", "body", m.Prefix); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *RouteFilter) validateRouteFilterID(formats strfmt.Registry) error {
 
 	if err := validate.Required("routeFilterID", "body", m.RouteFilterID); err != nil {
@@ -99,18 +247,8 @@ func (m *RouteFilter) validateRouteFilterID(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this route filter based on the context it is used
+// ContextValidate validates this route filter based on context it is used
 func (m *RouteFilter) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	// validation for a type composition with RouteFilterBase
-	if err := m.RouteFilterBase.ContextValidate(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 

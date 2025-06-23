@@ -7,49 +7,82 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
-// RouteFilterCreate json object expected in create route filter request
+// RouteFilterCreate route filter create
 //
 // swagger:model RouteFilterCreate
 type RouteFilterCreate struct {
-	RouteFilterBase
-}
 
-// UnmarshalJSON unmarshals this object from a JSON structure
-func (m *RouteFilterCreate) UnmarshalJSON(raw []byte) error {
-	// AO0
-	var aO0 RouteFilterBase
-	if err := swag.ReadJSON(raw, &aO0); err != nil {
-		return err
-	}
-	m.RouteFilterBase = aO0
+	// The minimum matching length of the prefix-set(1 ≤ value ≤ 32 & value ≤ LE)
+	// Example: 25
+	// Maximum: 32
+	// Minimum: 1
+	GE int64 `json:"GE,omitempty"`
 
-	return nil
-}
+	// The maximum matching length of the prefix-set( 1 ≤ value ≤ 32 & value >= GE)
+	// Example: 30
+	// Maximum: 32
+	// Minimum: 1
+	LE int64 `json:"LE,omitempty"`
 
-// MarshalJSON marshals this object to a JSON structure
-func (m RouteFilterCreate) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 1)
+	// action of the filter
+	// * allow: allow
+	// * deny: deny
+	//
+	// Enum: ["allow","deny"]
+	Action *string `json:"action,omitempty"`
 
-	aO0, err := swag.WriteJSON(m.RouteFilterBase)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, aO0)
-	return swag.ConcatJSON(_parts...), nil
+	// direction of the filter
+	// * import - import the routes
+	// * export - export the routes
+	//
+	// Required: true
+	// Enum: ["import","export"]
+	Direction *string `json:"direction"`
+
+	// priority or order of the filter
+	// Example: 10
+	// Required: true
+	Index *int64 `json:"index"`
+
+	// IP prefix representing an address and mask length of the prefix-set
+	// Example: 192.168.91.0/24
+	// Required: true
+	Prefix *string `json:"prefix"`
 }
 
 // Validate validates this route filter create
 func (m *RouteFilterCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	// validation for a type composition with RouteFilterBase
-	if err := m.RouteFilterBase.Validate(formats); err != nil {
+	if err := m.validateGE(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateLE(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateAction(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateDirection(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIndex(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validatePrefix(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -59,18 +92,143 @@ func (m *RouteFilterCreate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this route filter create based on the context it is used
+func (m *RouteFilterCreate) validateGE(formats strfmt.Registry) error {
+	if swag.IsZero(m.GE) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("GE", "body", m.GE, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("GE", "body", m.GE, 32, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilterCreate) validateLE(formats strfmt.Registry) error {
+	if swag.IsZero(m.LE) { // not required
+		return nil
+	}
+
+	if err := validate.MinimumInt("LE", "body", m.LE, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("LE", "body", m.LE, 32, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var routeFilterCreateTypeActionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["allow","deny"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeFilterCreateTypeActionPropEnum = append(routeFilterCreateTypeActionPropEnum, v)
+	}
+}
+
+const (
+
+	// RouteFilterCreateActionAllow captures enum value "allow"
+	RouteFilterCreateActionAllow string = "allow"
+
+	// RouteFilterCreateActionDeny captures enum value "deny"
+	RouteFilterCreateActionDeny string = "deny"
+)
+
+// prop value enum
+func (m *RouteFilterCreate) validateActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeFilterCreateTypeActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteFilterCreate) validateAction(formats strfmt.Registry) error {
+	if swag.IsZero(m.Action) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateActionEnum("action", "body", *m.Action); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var routeFilterCreateTypeDirectionPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["import","export"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeFilterCreateTypeDirectionPropEnum = append(routeFilterCreateTypeDirectionPropEnum, v)
+	}
+}
+
+const (
+
+	// RouteFilterCreateDirectionImport captures enum value "import"
+	RouteFilterCreateDirectionImport string = "import"
+
+	// RouteFilterCreateDirectionExport captures enum value "export"
+	RouteFilterCreateDirectionExport string = "export"
+)
+
+// prop value enum
+func (m *RouteFilterCreate) validateDirectionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeFilterCreateTypeDirectionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteFilterCreate) validateDirection(formats strfmt.Registry) error {
+
+	if err := validate.Required("direction", "body", m.Direction); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilterCreate) validateIndex(formats strfmt.Registry) error {
+
+	if err := validate.Required("index", "body", m.Index); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilterCreate) validatePrefix(formats strfmt.Registry) error {
+
+	if err := validate.Required("prefix", "body", m.Prefix); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+// ContextValidate validates this route filter create based on context it is used
 func (m *RouteFilterCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
-	var res []error
-
-	// validation for a type composition with RouteFilterBase
-	if err := m.RouteFilterBase.ContextValidate(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
 	return nil
 }
 
