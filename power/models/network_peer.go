@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -19,17 +20,44 @@ import (
 //
 // swagger:model NetworkPeer
 type NetworkPeer struct {
-	NetworkPeerBase
 
-	NetworkPeerAllOf1
+	// ASN number at customer network side
+	// Example: 64512
+	CustomerASN int64 `json:"customerASN,omitempty"`
 
-	// [DEPRECATED] Description of the network peer
+	// IP address used for configuring customer network interface with network subnet mask. customerCidr and ibmCidr must have matching network and subnet mask values.
+	// Example: 192.168.91.2/30
+	CustomerCidr string `json:"customerCidr,omitempty"`
+
+	// default action for export route filter
+	// * allow: allow
+	// * deny: deny
+	//
+	// Example: allow
 	// Required: true
-	Description *string `json:"description"`
+	// Enum: ["allow","deny"]
+	DefaultExportRouteFilter *string `json:"defaultExportRouteFilter"`
+
+	// default action for import route filter
+	// * allow: allow
+	// * deny: deny
+	//
+	// Example: allow
+	// Required: true
+	// Enum: ["allow","deny"]
+	DefaultImportRouteFilter *string `json:"defaultImportRouteFilter"`
 
 	// List of export route filters
 	// Required: true
 	ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
+
+	// ASN number at IBM PowerVS side
+	// Example: 64512
+	IbmASN int64 `json:"ibmASN,omitempty"`
+
+	// IP address used for configuring IBM network interface with network subnet mask. customerCidr and ibmCidr must have matching network and subnet mask values.
+	// Example: 192.168.91.1/30
+	IbmCidr string `json:"ibmCidr,omitempty"`
 
 	// network peer id
 	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
@@ -39,101 +67,38 @@ type NetworkPeer struct {
 	// List of import route filters
 	// Required: true
 	ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
-}
 
-// UnmarshalJSON unmarshals this object from a JSON structure
-func (m *NetworkPeer) UnmarshalJSON(raw []byte) error {
-	// AO0
-	var aO0 NetworkPeerBase
-	if err := swag.ReadJSON(raw, &aO0); err != nil {
-		return err
-	}
-	m.NetworkPeerBase = aO0
+	// user defined name
+	// Example: newPeerNetwork
+	// Required: true
+	Name *string `json:"name"`
 
-	// AO1
-	var aO1 NetworkPeerAllOf1
-	if err := swag.ReadJSON(raw, &aO1); err != nil {
-		return err
-	}
-	m.NetworkPeerAllOf1 = aO1
+	// peer interface id. use API '/v1/network-peers/interfaces' to get a list of valid peer interface id
+	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
+	PeerInterfaceID string `json:"peerInterfaceID,omitempty"`
 
-	// now for regular properties
-	var propsNetworkPeer struct {
-		Description *string `json:"description"`
+	// type of the peer network
+	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
+	//
+	// Example: dcnetwork_bgp
+	// Required: true
+	// Enum: ["dcnetwork_bgp"]
+	Type *string `json:"type"`
 
-		ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
-
-		ID *string `json:"id"`
-
-		ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
-	}
-	if err := swag.ReadJSON(raw, &propsNetworkPeer); err != nil {
-		return err
-	}
-	m.Description = propsNetworkPeer.Description
-
-	m.ExportRouteFilters = propsNetworkPeer.ExportRouteFilters
-
-	m.ID = propsNetworkPeer.ID
-
-	m.ImportRouteFilters = propsNetworkPeer.ImportRouteFilters
-
-	return nil
-}
-
-// MarshalJSON marshals this object to a JSON structure
-func (m NetworkPeer) MarshalJSON() ([]byte, error) {
-	_parts := make([][]byte, 0, 2)
-
-	aO0, err := swag.WriteJSON(m.NetworkPeerBase)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, aO0)
-
-	aO1, err := swag.WriteJSON(m.NetworkPeerAllOf1)
-	if err != nil {
-		return nil, err
-	}
-	_parts = append(_parts, aO1)
-
-	// now for regular properties
-	var propsNetworkPeer struct {
-		Description *string `json:"description"`
-
-		ExportRouteFilters []*RouteFilter `json:"exportRouteFilters"`
-
-		ID *string `json:"id"`
-
-		ImportRouteFilters []*RouteFilter `json:"importRouteFilters"`
-	}
-	propsNetworkPeer.Description = m.Description
-
-	propsNetworkPeer.ExportRouteFilters = m.ExportRouteFilters
-
-	propsNetworkPeer.ID = m.ID
-
-	propsNetworkPeer.ImportRouteFilters = m.ImportRouteFilters
-
-	jsonDataPropsNetworkPeer, errNetworkPeer := swag.WriteJSON(propsNetworkPeer)
-	if errNetworkPeer != nil {
-		return nil, errNetworkPeer
-	}
-	_parts = append(_parts, jsonDataPropsNetworkPeer)
-	return swag.ConcatJSON(_parts...), nil
+	// A vlan configured at the customer network.
+	// Example: 2000
+	Vlan int64 `json:"vlan,omitempty"`
 }
 
 // Validate validates this network peer
 func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	// validation for a type composition with NetworkPeerBase
-	if err := m.NetworkPeerBase.Validate(formats); err != nil {
+	if err := m.validateDefaultExportRouteFilter(formats); err != nil {
 		res = append(res, err)
 	}
-	// validation for a type composition with NetworkPeerAllOf1
 
-	if err := m.validateDescription(formats); err != nil {
+	if err := m.validateDefaultImportRouteFilter(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -149,15 +114,100 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
 	return nil
 }
 
-func (m *NetworkPeer) validateDescription(formats strfmt.Registry) error {
+var networkPeerTypeDefaultExportRouteFilterPropEnum []interface{}
 
-	if err := validate.Required("description", "body", m.Description); err != nil {
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["allow","deny"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		networkPeerTypeDefaultExportRouteFilterPropEnum = append(networkPeerTypeDefaultExportRouteFilterPropEnum, v)
+	}
+}
+
+const (
+
+	// NetworkPeerDefaultExportRouteFilterAllow captures enum value "allow"
+	NetworkPeerDefaultExportRouteFilterAllow string = "allow"
+
+	// NetworkPeerDefaultExportRouteFilterDeny captures enum value "deny"
+	NetworkPeerDefaultExportRouteFilterDeny string = "deny"
+)
+
+// prop value enum
+func (m *NetworkPeer) validateDefaultExportRouteFilterEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, networkPeerTypeDefaultExportRouteFilterPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *NetworkPeer) validateDefaultExportRouteFilter(formats strfmt.Registry) error {
+
+	if err := validate.Required("defaultExportRouteFilter", "body", m.DefaultExportRouteFilter); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateDefaultExportRouteFilterEnum("defaultExportRouteFilter", "body", *m.DefaultExportRouteFilter); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var networkPeerTypeDefaultImportRouteFilterPropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["allow","deny"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		networkPeerTypeDefaultImportRouteFilterPropEnum = append(networkPeerTypeDefaultImportRouteFilterPropEnum, v)
+	}
+}
+
+const (
+
+	// NetworkPeerDefaultImportRouteFilterAllow captures enum value "allow"
+	NetworkPeerDefaultImportRouteFilterAllow string = "allow"
+
+	// NetworkPeerDefaultImportRouteFilterDeny captures enum value "deny"
+	NetworkPeerDefaultImportRouteFilterDeny string = "deny"
+)
+
+// prop value enum
+func (m *NetworkPeer) validateDefaultImportRouteFilterEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, networkPeerTypeDefaultImportRouteFilterPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *NetworkPeer) validateDefaultImportRouteFilter(formats strfmt.Registry) error {
+
+	if err := validate.Required("defaultImportRouteFilter", "body", m.DefaultImportRouteFilter); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateDefaultImportRouteFilterEnum("defaultImportRouteFilter", "body", *m.DefaultImportRouteFilter); err != nil {
 		return err
 	}
 
@@ -227,15 +277,58 @@ func (m *NetworkPeer) validateImportRouteFilters(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *NetworkPeer) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var networkPeerTypeTypePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["dcnetwork_bgp"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		networkPeerTypeTypePropEnum = append(networkPeerTypeTypePropEnum, v)
+	}
+}
+
+const (
+
+	// NetworkPeerTypeDcnetworkBgp captures enum value "dcnetwork_bgp"
+	NetworkPeerTypeDcnetworkBgp string = "dcnetwork_bgp"
+)
+
+// prop value enum
+func (m *NetworkPeer) validateTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, networkPeerTypeTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *NetworkPeer) validateType(formats strfmt.Registry) error {
+
+	if err := validate.Required("type", "body", m.Type); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this network peer based on the context it is used
 func (m *NetworkPeer) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
-
-	// validation for a type composition with NetworkPeerBase
-	if err := m.NetworkPeerBase.ContextValidate(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-	// validation for a type composition with NetworkPeerAllOf1
 
 	if err := m.contextValidateExportRouteFilters(ctx, formats); err != nil {
 		res = append(res, err)
@@ -318,8 +411,3 @@ func (m *NetworkPeer) UnmarshalBinary(b []byte) error {
 	*m = res
 	return nil
 }
-
-// NetworkPeerAllOf1 network peer all of1
-//
-// swagger:model NetworkPeerAllOf1
-type NetworkPeerAllOf1 interface{}
