@@ -154,7 +154,7 @@ func (f *IBMPINetworkPeerClient) GetNetworkPeersRouteFilter(id, routeFilterID st
 }
 
 // Create network peer's route filter
-func (f *IBMPINetworkPeerClient) CreateNetowrkPeersRouteFilters(id string, body *models.RouteFilterCreate) (*models.RouteFilter, error) {
+func (f *IBMPINetworkPeerClient) CreateNetworkPeersRouteFilters(id string, body *models.RouteFilterCreate) (*models.RouteFilter, error) {
 	if !f.session.IsOnPrem() {
 		return nil, fmt.Errorf(helpers.NotOffPremSupported)
 	}
