@@ -46,10 +46,10 @@ func (f *IBMPIRouteClient) GetAll() (*models.Routes, error) {
 	params := routes.NewV1RoutesGetallParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
 	resp, err := f.session.Power.Routes.V1RoutesGetall(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get all routes: %w", err))
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get all routes for cloud instance %s with: %w", f.cloudInstanceID, err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get all routes for %s", f.cloudInstanceID)
+		return nil, fmt.Errorf("failed to get all routes for cloud instance %s", f.cloudInstanceID)
 	}
 	return resp.Payload, nil
 }
@@ -65,7 +65,7 @@ func (f *IBMPIRouteClient) GetRouteReport() (*models.RouteReport, error) {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get route report: %w", err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get route report for %s", f.cloudInstanceID)
+		return nil, fmt.Errorf("failed to get route report for cloud instance %s", f.cloudInstanceID)
 	}
 	return resp.Payload, nil
 }
@@ -91,7 +91,7 @@ func (f *IBMPIRouteClient) Update(id string, body *models.RouteUpdate) (*models.
 	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
-	params := routes.NewV1RoutesPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithRouteID(id)
+	params := routes.NewV1RoutesPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).WithRouteID(id).WithBody(body)
 	resp, err := f.session.Power.Routes.V1RoutesPut(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update route %s: %w", id, err))
