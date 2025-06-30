@@ -167,7 +167,10 @@ func TestNewIBMPISession(t *testing.T) {
 }
 
 func TestNewIBMPISessionViaEnv(t *testing.T) {
-	os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "power-iaas.test.cloud.ibm.com")
+	if err := os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "power-iaas.test.cloud.ibm.com"); err != nil {
+		return
+	}
+
 	type args struct {
 		o *IBMPIOptions
 	}
