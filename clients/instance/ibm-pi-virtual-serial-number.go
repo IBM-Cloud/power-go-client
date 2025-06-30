@@ -122,7 +122,7 @@ func (f *IBMPIVSNClient) PVMInstanceUpdateVSN(pvmInstanceID string, body *models
 	if respAccepted != nil && respAccepted.Payload != nil {
 		return respAccepted.Payload, nil
 	}
-	return nil, fmt.Errorf("failed to update virtual serial number for pvm instance %s")
+	return nil, fmt.Errorf("failed to update virtual serial number for pvm instance %s", pvmInstanceID)
 }
 
 // PVM Attach VSN
