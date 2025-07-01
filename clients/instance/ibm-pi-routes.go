@@ -49,7 +49,7 @@ func (f *IBMPIRouteClient) GetAll() (*models.Routes, error) {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get all routes: %w", err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get all routes %s", f.cloudInstanceID)
+		return nil, fmt.Errorf("failed to get all routes for cloud instance %s", f.cloudInstanceID)
 	}
 	return resp.Payload, nil
 }
