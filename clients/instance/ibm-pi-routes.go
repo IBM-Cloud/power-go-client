@@ -65,7 +65,7 @@ func (f *IBMPIRouteClient) GetRouteReport() (*models.RouteReport, error) {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get route report: %w", err))
 	}
 	if resp == nil || resp.Payload == nil {
-		return nil, fmt.Errorf("failed to get route report %s", f.cloudInstanceID)
+		return nil, fmt.Errorf("failed to get route report for cloud instance %s", f.cloudInstanceID)
 	}
 	return resp.Payload, nil
 }
