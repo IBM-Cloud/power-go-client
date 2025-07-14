@@ -54,6 +54,12 @@ func (o *V1NetworkPeersRouteFilterIDGetReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 409:
+		result := NewV1NetworkPeersRouteFilterIDGetConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewV1NetworkPeersRouteFilterIDGetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -404,6 +410,76 @@ func (o *V1NetworkPeersRouteFilterIDGetNotFound) GetPayload() *models.Error {
 }
 
 func (o *V1NetworkPeersRouteFilterIDGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewV1NetworkPeersRouteFilterIDGetConflict creates a V1NetworkPeersRouteFilterIDGetConflict with default headers values
+func NewV1NetworkPeersRouteFilterIDGetConflict() *V1NetworkPeersRouteFilterIDGetConflict {
+	return &V1NetworkPeersRouteFilterIDGetConflict{}
+}
+
+/*
+V1NetworkPeersRouteFilterIDGetConflict describes a response with status code 409, with default header values.
+
+Conflict
+*/
+type V1NetworkPeersRouteFilterIDGetConflict struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this v1 network peers route filter Id get conflict response has a 2xx status code
+func (o *V1NetworkPeersRouteFilterIDGetConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this v1 network peers route filter Id get conflict response has a 3xx status code
+func (o *V1NetworkPeersRouteFilterIDGetConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this v1 network peers route filter Id get conflict response has a 4xx status code
+func (o *V1NetworkPeersRouteFilterIDGetConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this v1 network peers route filter Id get conflict response has a 5xx status code
+func (o *V1NetworkPeersRouteFilterIDGetConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this v1 network peers route filter Id get conflict response a status code equal to that given
+func (o *V1NetworkPeersRouteFilterIDGetConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the v1 network peers route filter Id get conflict response
+func (o *V1NetworkPeersRouteFilterIDGetConflict) Code() int {
+	return 409
+}
+
+func (o *V1NetworkPeersRouteFilterIDGetConflict) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-peers/{network_peer_id}/route-filters/{route_filter_id}][%d] v1NetworkPeersRouteFilterIdGetConflict %s", 409, payload)
+}
+
+func (o *V1NetworkPeersRouteFilterIDGetConflict) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-peers/{network_peer_id}/route-filters/{route_filter_id}][%d] v1NetworkPeersRouteFilterIdGetConflict %s", 409, payload)
+}
+
+func (o *V1NetworkPeersRouteFilterIDGetConflict) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *V1NetworkPeersRouteFilterIDGetConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
