@@ -54,6 +54,12 @@ func (o *V1NetworkPeersIDGetReader) ReadResponse(response runtime.ClientResponse
 			return nil, err
 		}
 		return nil, result
+	case 409:
+		result := NewV1NetworkPeersIDGetConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewV1NetworkPeersIDGetInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -404,6 +410,76 @@ func (o *V1NetworkPeersIDGetNotFound) GetPayload() *models.Error {
 }
 
 func (o *V1NetworkPeersIDGetNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+		return err
+	}
+
+	return nil
+}
+
+// NewV1NetworkPeersIDGetConflict creates a V1NetworkPeersIDGetConflict with default headers values
+func NewV1NetworkPeersIDGetConflict() *V1NetworkPeersIDGetConflict {
+	return &V1NetworkPeersIDGetConflict{}
+}
+
+/*
+V1NetworkPeersIDGetConflict describes a response with status code 409, with default header values.
+
+Conflict
+*/
+type V1NetworkPeersIDGetConflict struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this v1 network peers Id get conflict response has a 2xx status code
+func (o *V1NetworkPeersIDGetConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this v1 network peers Id get conflict response has a 3xx status code
+func (o *V1NetworkPeersIDGetConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this v1 network peers Id get conflict response has a 4xx status code
+func (o *V1NetworkPeersIDGetConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this v1 network peers Id get conflict response has a 5xx status code
+func (o *V1NetworkPeersIDGetConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this v1 network peers Id get conflict response a status code equal to that given
+func (o *V1NetworkPeersIDGetConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the v1 network peers Id get conflict response
+func (o *V1NetworkPeersIDGetConflict) Code() int {
+	return 409
+}
+
+func (o *V1NetworkPeersIDGetConflict) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdGetConflict %s", 409, payload)
+}
+
+func (o *V1NetworkPeersIDGetConflict) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdGetConflict %s", 409, payload)
+}
+
+func (o *V1NetworkPeersIDGetConflict) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *V1NetworkPeersIDGetConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
