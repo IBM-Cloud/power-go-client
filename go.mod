@@ -3,8 +3,8 @@ module github.com/IBM-Cloud/power-go-client
 go 1.24.0
 
 require (
-	github.com/IBM/go-sdk-core/v5 v5.19.1
-	github.com/IBM/platform-services-go-sdk v0.81.0
+	github.com/IBM/go-sdk-core/v5 v5.20.1
+	github.com/IBM/platform-services-go-sdk v0.84.3
 	github.com/apparentlymart/go-cidr v1.1.0
 	github.com/go-openapi/errors v0.22.1
 	github.com/go-openapi/runtime v0.28.0
