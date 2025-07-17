@@ -45,12 +45,9 @@ func (f *IBMPINetworkPeerClient) DeleteNetworkPeer(id string) error {
 		return fmt.Errorf(helpers.NotOffPremSupported)
 	}
 	params := network_peers.NewV1NetworkPeersIDDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkPeerID(id)
-	resp, err := f.session.Power.NetworkPeers.V1NetworkPeersIDDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	_, err := f.session.Power.NetworkPeers.V1NetworkPeersIDDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Delete network peer %s for cloud instance %s with error %w", id, f.cloudInstanceID, err))
-	}
-	if resp == nil || resp.Payload == nil {
-		return fmt.Errorf("failed to Delete network peer %s for cloud instance %s", id, f.cloudInstanceID)
 	}
 	return nil
 
@@ -127,12 +124,9 @@ func (f *IBMPINetworkPeerClient) DeleteNetworkPeersRouteFilter(id, routeFilterID
 		return fmt.Errorf(helpers.NotOffPremSupported)
 	}
 	params := network_peers.NewV1NetworkPeersRouteFilterIDDeleteParams().WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).WithNetworkPeerID(id).WithRouteFilterID(routeFilterID)
-	resp, err := f.session.Power.NetworkPeers.V1NetworkPeersRouteFilterIDDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	_, err := f.session.Power.NetworkPeers.V1NetworkPeersRouteFilterIDDelete(params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Delete network peer's %s route filter %s for cloud instance %s with error %w", id, routeFilterID, f.cloudInstanceID, err))
-	}
-	if resp == nil || resp.Payload == nil {
-		return fmt.Errorf("failed to Delete network peer's %s route filter %s for cloud instance %s", id, routeFilterID, f.cloudInstanceID)
 	}
 	return nil
 }
