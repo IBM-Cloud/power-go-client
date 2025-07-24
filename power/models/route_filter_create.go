@@ -50,6 +50,8 @@ type RouteFilterCreate struct {
 	// priority or order of the filter
 	// Example: 10
 	// Required: true
+	// Maximum: 1e+07
+	// Minimum: 1
 	Index *int64 `json:"index"`
 
 	// IP prefix representing an address and mask length of the prefix-set
@@ -212,6 +214,14 @@ func (m *RouteFilterCreate) validateDirection(formats strfmt.Registry) error {
 func (m *RouteFilterCreate) validateIndex(formats strfmt.Registry) error {
 
 	if err := validate.Required("index", "body", m.Index); err != nil {
+		return err
+	}
+
+	if err := validate.MinimumInt("index", "body", *m.Index, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("index", "body", *m.Index, 1e+07, false); err != nil {
 		return err
 	}
 

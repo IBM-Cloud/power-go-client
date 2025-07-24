@@ -19,6 +19,9 @@ import (
 // swagger:model VolumesDelete
 type VolumesDelete struct {
 
+	// Target CRN of the secondary workspace where the auxiliary data resides
+	TargetCRN *string `json:"targetCRN,omitempty"`
+
 	// List of volumes to be deleted
 	// Required: true
 	VolumeIDs []string `json:"volumeIDs"`

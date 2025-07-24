@@ -23,11 +23,13 @@ type NetworkPeer struct {
 
 	// ASN number at customer network side
 	// Example: 64512
-	CustomerASN int64 `json:"customerASN,omitempty"`
+	// Required: true
+	CustomerASN *int64 `json:"customerASN"`
 
 	// IP address used for configuring customer network interface with network subnet mask. customerCidr and ibmCidr must have matching network and subnet mask values.
 	// Example: 192.168.91.2/30
-	CustomerCidr string `json:"customerCidr,omitempty"`
+	// Required: true
+	CustomerCidr *string `json:"customerCidr"`
 
 	// default action for export route filter
 	// * allow: allow
@@ -53,11 +55,13 @@ type NetworkPeer struct {
 
 	// ASN number at IBM PowerVS side
 	// Example: 64512
-	IbmASN int64 `json:"ibmASN,omitempty"`
+	// Required: true
+	IbmASN *int64 `json:"ibmASN"`
 
 	// IP address used for configuring IBM network interface with network subnet mask. customerCidr and ibmCidr must have matching network and subnet mask values.
 	// Example: 192.168.91.1/30
-	IbmCidr string `json:"ibmCidr,omitempty"`
+	// Required: true
+	IbmCidr *string `json:"ibmCidr"`
 
 	// network peer id
 	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
@@ -75,7 +79,8 @@ type NetworkPeer struct {
 
 	// peer interface id. use API '/v1/network-peers/interfaces' to get a list of valid peer interface id
 	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
-	PeerInterfaceID string `json:"peerInterfaceID,omitempty"`
+	// Required: true
+	PeerInterfaceID *string `json:"peerInterfaceID"`
 
 	// type of the peer network
 	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
@@ -87,12 +92,21 @@ type NetworkPeer struct {
 
 	// A vlan configured at the customer network.
 	// Example: 2000
-	Vlan int64 `json:"vlan,omitempty"`
+	// Required: true
+	Vlan *int64 `json:"vlan"`
 }
 
 // Validate validates this network peer
 func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateCustomerASN(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCustomerCidr(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateDefaultExportRouteFilter(formats); err != nil {
 		res = append(res, err)
@@ -103,6 +117,14 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateExportRouteFilters(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIbmASN(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateIbmCidr(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -118,13 +140,39 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validatePeerInterfaceID(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVlan(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NetworkPeer) validateCustomerASN(formats strfmt.Registry) error {
+
+	if err := validate.Required("customerASN", "body", m.CustomerASN); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) validateCustomerCidr(formats strfmt.Registry) error {
+
+	if err := validate.Required("customerCidr", "body", m.CustomerCidr); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -241,6 +289,24 @@ func (m *NetworkPeer) validateExportRouteFilters(formats strfmt.Registry) error 
 	return nil
 }
 
+func (m *NetworkPeer) validateIbmASN(formats strfmt.Registry) error {
+
+	if err := validate.Required("ibmASN", "body", m.IbmASN); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) validateIbmCidr(formats strfmt.Registry) error {
+
+	if err := validate.Required("ibmCidr", "body", m.IbmCidr); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *NetworkPeer) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
@@ -286,6 +352,15 @@ func (m *NetworkPeer) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NetworkPeer) validatePeerInterfaceID(formats strfmt.Registry) error {
+
+	if err := validate.Required("peerInterfaceID", "body", m.PeerInterfaceID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var networkPeerTypeTypePropEnum []interface{}
 
 func init() {
@@ -320,6 +395,15 @@ func (m *NetworkPeer) validateType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) validateVlan(formats strfmt.Registry) error {
+
+	if err := validate.Required("vlan", "body", m.Vlan); err != nil {
 		return err
 	}
 
