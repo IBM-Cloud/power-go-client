@@ -73,7 +73,7 @@ type SAPCreate struct {
 	// Storage type for server deployment; if storageType is not provided the storage type will default to 'tier3'.
 	StorageType string `json:"storageType,omitempty"`
 
-	// System type used to host the instance. Only e880, e980, e1080 are supported
+	// System type used to host the instance. Only e980, s1022, e1050, e1080, s1122, e1150, and e1180 are supported
 	SysType string `json:"sysType,omitempty"`
 
 	// Cloud init user defined data; For FLS, only cloud-config user-data is supported and data must not be compressed or exceed 63K
