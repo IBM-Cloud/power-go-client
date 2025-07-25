@@ -22,11 +22,11 @@ type NetworkPeerUpdate struct {
 
 	// ASN number at customer network side
 	// Example: 64512
-	CustomerASN int64 `json:"customerASN,omitempty"`
+	CustomerASN *int64 `json:"customerASN,omitempty"`
 
 	// IP address used for configuring customer network interface with network subnet mask. customerCidr and ibmCidr must have matching network and subnet mask values.
 	// Example: 192.168.91.2/30
-	CustomerCidr string `json:"customerCidr,omitempty"`
+	CustomerCidr *string `json:"customerCidr,omitempty"`
 
 	// default action for export route filter
 	// * allow: allow
@@ -46,19 +46,19 @@ type NetworkPeerUpdate struct {
 
 	// ASN number at IBM PowerVS side
 	// Example: 64512
-	IbmASN int64 `json:"ibmASN,omitempty"`
+	IbmASN *int64 `json:"ibmASN,omitempty"`
 
 	// IP address used for configuring IBM network interface with network subnet mask. customerCidr and ibmCidr must have matching network and subnet mask values.
 	// Example: 192.168.91.1/30
-	IbmCidr string `json:"ibmCidr,omitempty"`
+	IbmCidr *string `json:"ibmCidr,omitempty"`
 
 	// user defined name
 	// Example: newPeerNetwork
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 
 	// peer interface id. use API '/v1/network-peers/interfaces' to get a list of valid peer interface id
 	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
-	PeerInterfaceID string `json:"peerInterfaceID,omitempty"`
+	PeerInterfaceID *string `json:"peerInterfaceID,omitempty"`
 
 	// type of the peer network
 	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
@@ -69,7 +69,7 @@ type NetworkPeerUpdate struct {
 
 	// A vlan configured at the customer network.
 	// Example: 2000
-	Vlan int64 `json:"vlan,omitempty"`
+	Vlan *int64 `json:"vlan,omitempty"`
 }
 
 // Validate validates this network peer update
