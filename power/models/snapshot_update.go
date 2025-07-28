@@ -20,12 +20,12 @@ import (
 type SnapshotUpdate struct {
 
 	// Description of the PVM instance snapshot
-	Description string `json:"description,omitempty"`
+	Description *string `json:"description,omitempty"`
 
 	// Name of the PVM instance snapshot
 	// Max Length: 120
 	// Pattern: ^[a-zA-Z0-9_.-]+$
-	Name string `json:"name,omitempty"`
+	Name *string `json:"name,omitempty"`
 }
 
 // Validate validates this snapshot update
@@ -47,11 +47,11 @@ func (m *SnapshotUpdate) validateName(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.MaxLength("name", "body", m.Name, 120); err != nil {
+	if err := validate.MaxLength("name", "body", *m.Name, 120); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", m.Name, `^[a-zA-Z0-9_.-]+$`); err != nil {
+	if err := validate.Pattern("name", "body", *m.Name, `^[a-zA-Z0-9_.-]+$`); err != nil {
 		return err
 	}
 
