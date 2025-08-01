@@ -21,6 +21,10 @@ import (
 // swagger:model NetworkPeer
 type NetworkPeer struct {
 
+	// time stamp for create network peer
+	// Required: true
+	CreationDate *string `json:"creationDate"`
+
 	// ASN number at customer network side
 	// Example: 64512
 	// Required: true
@@ -48,6 +52,10 @@ type NetworkPeer struct {
 	// Required: true
 	// Enum: ["allow","deny"]
 	DefaultImportRouteFilter *string `json:"defaultImportRouteFilter"`
+
+	// error description
+	// Required: true
+	Error *string `json:"error"`
 
 	// List of export route filters
 	// Required: true
@@ -82,6 +90,12 @@ type NetworkPeer struct {
 	// Required: true
 	PeerInterfaceID *string `json:"peerInterfaceID"`
 
+	// status of the network peer
+	// Example: active
+	// Required: true
+	// Enum: ["active","configuring","removing","error","updating"]
+	State *string `json:"state"`
+
 	// type of the peer network
 	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
 	//
@@ -89,6 +103,10 @@ type NetworkPeer struct {
 	// Required: true
 	// Enum: ["dcnetwork_bgp"]
 	Type *string `json:"type"`
+
+	// time stamp for update network peer
+	// Required: true
+	UpdatedDate *string `json:"updatedDate"`
 
 	// A vlan configured at the customer network.
 	// Example: 2000
@@ -99,6 +117,10 @@ type NetworkPeer struct {
 // Validate validates this network peer
 func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateCreationDate(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCustomerASN(formats); err != nil {
 		res = append(res, err)
@@ -113,6 +135,10 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateDefaultImportRouteFilter(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateError(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -144,7 +170,15 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateState(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -155,6 +189,15 @@ func (m *NetworkPeer) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *NetworkPeer) validateCreationDate(formats strfmt.Registry) error {
+
+	if err := validate.Required("creationDate", "body", m.CreationDate); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -262,6 +305,15 @@ func (m *NetworkPeer) validateDefaultImportRouteFilter(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *NetworkPeer) validateError(formats strfmt.Registry) error {
+
+	if err := validate.Required("error", "body", m.Error); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *NetworkPeer) validateExportRouteFilters(formats strfmt.Registry) error {
 
 	if err := validate.Required("exportRouteFilters", "body", m.ExportRouteFilters); err != nil {
@@ -361,6 +413,58 @@ func (m *NetworkPeer) validatePeerInterfaceID(formats strfmt.Registry) error {
 	return nil
 }
 
+var networkPeerTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["active","configuring","removing","error","updating"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		networkPeerTypeStatePropEnum = append(networkPeerTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// NetworkPeerStateActive captures enum value "active"
+	NetworkPeerStateActive string = "active"
+
+	// NetworkPeerStateConfiguring captures enum value "configuring"
+	NetworkPeerStateConfiguring string = "configuring"
+
+	// NetworkPeerStateRemoving captures enum value "removing"
+	NetworkPeerStateRemoving string = "removing"
+
+	// NetworkPeerStateError captures enum value "error"
+	NetworkPeerStateError string = "error"
+
+	// NetworkPeerStateUpdating captures enum value "updating"
+	NetworkPeerStateUpdating string = "updating"
+)
+
+// prop value enum
+func (m *NetworkPeer) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, networkPeerTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *NetworkPeer) validateState(formats strfmt.Registry) error {
+
+	if err := validate.Required("state", "body", m.State); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var networkPeerTypeTypePropEnum []interface{}
 
 func init() {
@@ -395,6 +499,15 @@ func (m *NetworkPeer) validateType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateTypeEnum("type", "body", *m.Type); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *NetworkPeer) validateUpdatedDate(formats strfmt.Registry) error {
+
+	if err := validate.Required("updatedDate", "body", m.UpdatedDate); err != nil {
 		return err
 	}
 

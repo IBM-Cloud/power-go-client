@@ -40,6 +40,10 @@ type RouteFilter struct {
 	// Enum: ["allow","deny"]
 	Action *string `json:"action"`
 
+	// time stamp for create route filter
+	// Required: true
+	CreationDate *string `json:"creationDate"`
+
 	// direction of the filter
 	// * import - import the routes
 	// * export - export the routes
@@ -47,6 +51,10 @@ type RouteFilter struct {
 	// Required: true
 	// Enum: ["import","export"]
 	Direction *string `json:"direction"`
+
+	// error description
+	// Required: true
+	Error *string `json:"error"`
 
 	// priority or order of the filter
 	// Example: 10
@@ -62,6 +70,16 @@ type RouteFilter struct {
 	// Example: 031ab7da-bca6-493f-ac55-1a2a26f19160
 	// Required: true
 	RouteFilterID *string `json:"routeFilterID"`
+
+	// status of the route filter
+	// Example: active
+	// Required: true
+	// Enum: ["active","configuring","removing","error","updating"]
+	State *string `json:"state"`
+
+	// time stamp for update route filter
+	// Required: true
+	UpdatedDate *string `json:"updatedDate"`
 }
 
 // Validate validates this route filter
@@ -80,7 +98,15 @@ func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCreationDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDirection(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateError(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -93,6 +119,14 @@ func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRouteFilterID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateState(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUpdatedDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -177,6 +211,15 @@ func (m *RouteFilter) validateAction(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *RouteFilter) validateCreationDate(formats strfmt.Registry) error {
+
+	if err := validate.Required("creationDate", "body", m.CreationDate); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var routeFilterTypeDirectionPropEnum []interface{}
 
 func init() {
@@ -220,6 +263,15 @@ func (m *RouteFilter) validateDirection(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *RouteFilter) validateError(formats strfmt.Registry) error {
+
+	if err := validate.Required("error", "body", m.Error); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *RouteFilter) validateIndex(formats strfmt.Registry) error {
 
 	if err := validate.Required("index", "body", m.Index); err != nil {
@@ -241,6 +293,67 @@ func (m *RouteFilter) validatePrefix(formats strfmt.Registry) error {
 func (m *RouteFilter) validateRouteFilterID(formats strfmt.Registry) error {
 
 	if err := validate.Required("routeFilterID", "body", m.RouteFilterID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var routeFilterTypeStatePropEnum []interface{}
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["active","configuring","removing","error","updating"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		routeFilterTypeStatePropEnum = append(routeFilterTypeStatePropEnum, v)
+	}
+}
+
+const (
+
+	// RouteFilterStateActive captures enum value "active"
+	RouteFilterStateActive string = "active"
+
+	// RouteFilterStateConfiguring captures enum value "configuring"
+	RouteFilterStateConfiguring string = "configuring"
+
+	// RouteFilterStateRemoving captures enum value "removing"
+	RouteFilterStateRemoving string = "removing"
+
+	// RouteFilterStateError captures enum value "error"
+	RouteFilterStateError string = "error"
+
+	// RouteFilterStateUpdating captures enum value "updating"
+	RouteFilterStateUpdating string = "updating"
+)
+
+// prop value enum
+func (m *RouteFilter) validateStateEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, routeFilterTypeStatePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *RouteFilter) validateState(formats strfmt.Registry) error {
+
+	if err := validate.Required("state", "body", m.State); err != nil {
+		return err
+	}
+
+	// value enum
+	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilter) validateUpdatedDate(formats strfmt.Registry) error {
+
+	if err := validate.Required("updatedDate", "body", m.UpdatedDate); err != nil {
 		return err
 	}
 
