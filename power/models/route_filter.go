@@ -98,6 +98,10 @@ func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateCreationDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDirection(formats); err != nil {
 		res = append(res, err)
 	}
@@ -212,6 +216,15 @@ func (m *RouteFilter) validateCreationDate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *RouteFilter) validateCreationDate(formats strfmt.Registry) error {
+
+	if err := validate.Required("creationDate", "body", m.CreationDate); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 var routeFilterTypeDirectionPropEnum []interface{}
 
 func init() {
@@ -249,6 +262,15 @@ func (m *RouteFilter) validateDirection(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RouteFilter) validateError(formats strfmt.Registry) error {
+
+	if err := validate.Required("error", "body", m.Error); err != nil {
 		return err
 	}
 
