@@ -24,13 +24,13 @@ type RouteFilter struct {
 	// Example: 25
 	// Maximum: 32
 	// Minimum: 1
-	GE int64 `json:"GE,omitempty"`
+	GE *int64 `json:"GE,omitempty"`
 
 	// The maximum matching length of the prefix-set( 1 ≤ value ≤ 32 value >= GE)
 	// Example: 30
 	// Maximum: 32
 	// Minimum: 1
-	LE int64 `json:"LE,omitempty"`
+	LE *int64 `json:"LE,omitempty"`
 
 	// action of the filter
 	// * allow: allow
@@ -141,11 +141,11 @@ func (m *RouteFilter) validateGE(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.MinimumInt("GE", "body", m.GE, 1, false); err != nil {
+	if err := validate.MinimumInt("GE", "body", *m.GE, 1, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("GE", "body", m.GE, 32, false); err != nil {
+	if err := validate.MaximumInt("GE", "body", *m.GE, 32, false); err != nil {
 		return err
 	}
 
@@ -157,11 +157,11 @@ func (m *RouteFilter) validateLE(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.MinimumInt("LE", "body", m.LE, 1, false); err != nil {
+	if err := validate.MinimumInt("LE", "body", *m.LE, 1, false); err != nil {
 		return err
 	}
 
-	if err := validate.MaximumInt("LE", "body", m.LE, 32, false); err != nil {
+	if err := validate.MaximumInt("LE", "body", *m.LE, 32, false); err != nil {
 		return err
 	}
 
