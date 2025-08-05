@@ -76,10 +76,6 @@ type RouteFilter struct {
 	// Required: true
 	// Enum: ["active","configuring","removing","error","updating"]
 	State *string `json:"state"`
-
-	// time stamp for update route filter
-	// Required: true
-	UpdatedDate *string `json:"updatedDate"`
 }
 
 // Validate validates this route filter
@@ -123,10 +119,6 @@ func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateState(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUpdatedDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -345,15 +337,6 @@ func (m *RouteFilter) validateState(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateStateEnum("state", "body", *m.State); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *RouteFilter) validateUpdatedDate(formats strfmt.Registry) error {
-
-	if err := validate.Required("updatedDate", "body", m.UpdatedDate); err != nil {
 		return err
 	}
 
