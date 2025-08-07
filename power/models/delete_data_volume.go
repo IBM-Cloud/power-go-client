@@ -17,7 +17,7 @@ import (
 // swagger:model DeleteDataVolume
 type DeleteDataVolume struct {
 
-	// Target CRN of the secondary workspace where the auxiliary data resides
+	// Target CRN of the secondary workspace where the auxiliary data resides; optional; only valid for replication enabled volumes; if specified, and the volume is replication enabled, the corresponding auxiliary volume will also be deleted.
 	TargetCRN *string `json:"targetCRN,omitempty"`
 }
 

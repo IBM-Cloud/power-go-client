@@ -23,7 +23,7 @@ type VolumeGroupUpdate struct {
 	// List of volume IDs to remove from the volume-group
 	RemoveVolumes []string `json:"removeVolumes"`
 
-	// Target CRN of the secondary workspace where the auxiliary data resides; optional; if specified, the auxiliary volumes for the primary volumes getting added/removed to/from the volume group will be automatically added/removed to/from the corresponding auxiliary consistency group; Added volumes will be automatically onboarded if not already onboarded prior to getting added to the auxiliary CG.
+	// Target CRN of the secondary workspace where the auxiliary data resides; optional; if specified, the primary volume's corresponding auxiliary volume will be automatically added or removed from the auxiliary consistency group.
 	TargetCRN string `json:"targetCRN,omitempty"`
 }
 
