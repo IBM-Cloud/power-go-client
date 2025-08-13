@@ -129,7 +129,7 @@ func (f *IBMPIVolumeGroupClient) DeleteVolumeGroup(id string) error {
 }
 
 // Delete a Volume Group with body
-func (f *IBMPIVolumeGroupClient) DeleteVolumeGroupV2(id string, body *models.VolumeGroupDelete) error {
+func (f *IBMPIVolumeGroupClient) DeleteVolumeGroupWithBody(id string, body *models.VolumeGroupDelete) error {
 	params := p_cloud_volume_groups.NewPcloudVolumegroupsDeleteParams().
 		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithVolumeGroupID(id)
