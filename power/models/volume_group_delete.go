@@ -17,7 +17,7 @@ import (
 // swagger:model VolumeGroupDelete
 type VolumeGroupDelete struct {
 
-	// Target CRN of the secondary workspace where the auxiliary data resides
+	// Target CRN of the secondary workspace where the auxiliary data resides; optional; if specified, the auxiliary consistency group will be deleted and any auxiliary volumes that are in the consistency group will also be deleted.
 	TargetCRN *string `json:"targetCRN,omitempty"`
 }
 
