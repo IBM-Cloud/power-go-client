@@ -50,6 +50,9 @@ type SAPCreate struct {
 	// The placement group for the server
 	PlacementGroup string `json:"placementGroup,omitempty"`
 
+	// Preferred processor compatibility mode
+	PreferredProcessorCompatibilityMode string `json:"preferredProcessorCompatibilityMode,omitempty"`
+
 	// SAP Profile ID for the amount of cores and memory
 	// Required: true
 	// Pattern: ^[\s]*[A-Za-z][A-Za-z0-9\-]{3,}$
