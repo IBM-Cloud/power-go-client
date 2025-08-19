@@ -126,6 +126,21 @@ func (f *IBMPIVolumeClient) DeleteVolume(id string) error {
 	return nil
 }
 
+// DeleteVolumeWithBody deletes a volume and optionally sends a JSON body
+func (f *IBMPIVolumeClient) DeleteVolumeWithBody(id string, body *models.DeleteDataVolume) error {
+	params := p_cloud_volumes.NewPcloudCloudinstancesVolumesDeleteParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithVolumeID(id)
+	if body != nil {
+		params.SetBody(body)
+	}
+	_, err := f.session.Power.PCloudVolumes.PcloudCloudinstancesVolumesDelete(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf(errors.DeleteVolumeOperationFailed, id, err)
+	}
+	return nil
+}
+
 // Attach a Volume to an Instance
 func (f *IBMPIVolumeClient) Attach(id, volumename string) error {
 	params := p_cloud_volumes.NewPcloudPvminstancesVolumesPostParams().
