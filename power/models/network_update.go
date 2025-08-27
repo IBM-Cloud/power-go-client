@@ -22,11 +22,11 @@ import (
 type NetworkUpdate struct {
 
 	// Indicates if the network is advertised externally of the workspace to PER and\or peer networks
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	Advertise string `json:"advertise,omitempty"`
 
 	// Indicates if the ARP broadcast is enabled
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	ArpBroadcast string `json:"arpBroadcast,omitempty"`
 
 	// Replaces the current DNS Servers

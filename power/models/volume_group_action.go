@@ -16,8 +16,8 @@ import (
 
 // VolumeGroupAction Performs an action (start stop reset ) on a volume group(one at a time).
 //
-// MinProperties: 1
-// MaxProperties: 1
+// Min Properties: 1
+// Max Properties: 1
 //
 // swagger:model VolumeGroupAction
 type VolumeGroupAction struct {

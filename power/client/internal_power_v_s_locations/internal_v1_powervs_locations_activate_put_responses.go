@@ -6,7 +6,6 @@ package internal_power_v_s_locations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -104,13 +103,11 @@ func (o *InternalV1PowervsLocationsActivatePutOK) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK  %+v", 200, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK  %+v", 200, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutOK) GetPayload() *models.SatelliteOrder {
@@ -174,13 +171,11 @@ func (o *InternalV1PowervsLocationsActivatePutBadRequest) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutBadRequest) GetPayload() *models.Error {
@@ -244,13 +239,11 @@ func (o *InternalV1PowervsLocationsActivatePutUnauthorized) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnauthorized) GetPayload() *models.Error {
@@ -314,13 +307,11 @@ func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) GetPayload() *models.Error {
@@ -384,13 +375,11 @@ func (o *InternalV1PowervsLocationsActivatePutInternalServerError) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutInternalServerError) GetPayload() *models.Error {
