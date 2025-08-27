@@ -6,7 +6,6 @@ package p_cloud_s_p_p_placement_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -122,13 +121,11 @@ func (o *PcloudSppplacementgroupsMembersPostOK) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostOK) GetPayload() *models.SPPPlacementGroup {
@@ -192,13 +189,11 @@ func (o *PcloudSppplacementgroupsMembersPostBadRequest) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostBadRequest) GetPayload() *models.Error {
@@ -262,13 +257,11 @@ func (o *PcloudSppplacementgroupsMembersPostUnauthorized) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostUnauthorized) GetPayload() *models.Error {
@@ -332,13 +325,11 @@ func (o *PcloudSppplacementgroupsMembersPostForbidden) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostForbidden) GetPayload() *models.Error {
@@ -402,13 +393,11 @@ func (o *PcloudSppplacementgroupsMembersPostNotFound) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostNotFound) GetPayload() *models.Error {
@@ -472,13 +461,11 @@ func (o *PcloudSppplacementgroupsMembersPostConflict) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostConflict) GetPayload() *models.Error {
@@ -542,13 +529,11 @@ func (o *PcloudSppplacementgroupsMembersPostUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostUnprocessableEntity) GetPayload() *models.Error {
@@ -612,13 +597,11 @@ func (o *PcloudSppplacementgroupsMembersPostInternalServerError) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsMembersPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}/members/{shared_processor_pool_id}][%d] pcloudSppplacementgroupsMembersPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsMembersPostInternalServerError) GetPayload() *models.Error {

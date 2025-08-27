@@ -6,7 +6,6 @@ package p_cloud_volume_onboarding
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudVolumeOnboardingGetOK) Code() int {
 }
 
 func (o *PcloudVolumeOnboardingGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetOK) GetPayload() *models.VolumeOnboarding {
@@ -180,13 +177,11 @@ func (o *PcloudVolumeOnboardingGetBadRequest) Code() int {
 }
 
 func (o *PcloudVolumeOnboardingGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudVolumeOnboardingGetUnauthorized) Code() int {
 }
 
 func (o *PcloudVolumeOnboardingGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudVolumeOnboardingGetForbidden) Code() int {
 }
 
 func (o *PcloudVolumeOnboardingGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudVolumeOnboardingGetNotFound) Code() int {
 }
 
 func (o *PcloudVolumeOnboardingGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudVolumeOnboardingGetInternalServerError) Code() int {
 }
 
 func (o *PcloudVolumeOnboardingGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/onboarding/{volume_onboarding_id}][%d] pcloudVolumeOnboardingGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVolumeOnboardingGetInternalServerError) GetPayload() *models.Error {

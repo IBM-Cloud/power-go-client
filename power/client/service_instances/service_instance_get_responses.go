@@ -6,7 +6,6 @@ package service_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -104,13 +103,11 @@ func (o *ServiceInstanceGetOK) Code() int {
 }
 
 func (o *ServiceInstanceGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceInstanceGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceInstanceGetOK) GetPayload() *models.ServiceInstanceResource {
@@ -174,13 +171,11 @@ func (o *ServiceInstanceGetBadRequest) Code() int {
 }
 
 func (o *ServiceInstanceGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceInstanceGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceInstanceGetBadRequest) GetPayload() *models.Error {
@@ -244,13 +239,11 @@ func (o *ServiceInstanceGetUnauthorized) Code() int {
 }
 
 func (o *ServiceInstanceGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceInstanceGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceInstanceGetUnauthorized) GetPayload() *models.Error {
@@ -314,13 +307,11 @@ func (o *ServiceInstanceGetForbidden) Code() int {
 }
 
 func (o *ServiceInstanceGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceInstanceGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceInstanceGetForbidden) GetPayload() *models.Error {
@@ -384,13 +375,11 @@ func (o *ServiceInstanceGetNotFound) Code() int {
 }
 
 func (o *ServiceInstanceGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceInstanceGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}][%d] serviceInstanceGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceInstanceGetNotFound) GetPayload() *models.Error {

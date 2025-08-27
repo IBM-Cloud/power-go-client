@@ -24,7 +24,7 @@ type CreateCosImageImportJob struct {
 	AccessKey string `json:"accessKey,omitempty"`
 
 	// indicates if the bucket has public or private access public access require no authentication keys private access requires hmac authentication keys (access,secret)
-	// Enum: ["public","private"]
+	// Enum: [public private]
 	BucketAccess *string `json:"bucketAccess,omitempty"`
 
 	// Cloud Object Storage bucket name; bucket-name[/optional/folder]
@@ -46,7 +46,7 @@ type CreateCosImageImportJob struct {
 	ImportDetails *ImageImportDetails `json:"importDetails,omitempty"`
 
 	// Image OS Type, required if importing a raw image; raw images can only be imported using the command line interface
-	// Enum: ["aix","ibmi","rhel","sles"]
+	// Enum: [aix ibmi rhel sles]
 	OsType string `json:"osType,omitempty"`
 
 	// Cloud Object Storage region

@@ -6,7 +6,6 @@ package internal_operations_networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -121,11 +120,11 @@ func (o *InternalV1OperationsNetworksDeleteNoContent) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNoContent", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNoContent ", 204)
 }
 
 func (o *InternalV1OperationsNetworksDeleteNoContent) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNoContent", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNoContent ", 204)
 }
 
 func (o *InternalV1OperationsNetworksDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -178,13 +177,11 @@ func (o *InternalV1OperationsNetworksDeleteBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteBadRequest) GetPayload() *models.Error {
@@ -248,13 +245,11 @@ func (o *InternalV1OperationsNetworksDeleteUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteUnauthorized) GetPayload() *models.Error {
@@ -318,13 +313,11 @@ func (o *InternalV1OperationsNetworksDeleteForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteForbidden) GetPayload() *models.Error {
@@ -388,13 +381,11 @@ func (o *InternalV1OperationsNetworksDeleteNotFound) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteNotFound) GetPayload() *models.Error {
@@ -458,13 +449,11 @@ func (o *InternalV1OperationsNetworksDeleteGone) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteGone) GetPayload() *models.Error {
@@ -528,13 +517,11 @@ func (o *InternalV1OperationsNetworksDeleteTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteTooManyRequests) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteTooManyRequests) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteTooManyRequests) GetPayload() *models.Error {
@@ -598,13 +585,11 @@ func (o *InternalV1OperationsNetworksDeleteInternalServerError) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/networks/{resource_crn}][%d] internalV1OperationsNetworksDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsNetworksDeleteInternalServerError) GetPayload() *models.Error {

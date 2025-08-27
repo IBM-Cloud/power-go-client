@@ -6,7 +6,6 @@ package bluemix_service_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -104,13 +103,11 @@ func (o *BluemixServiceInstancePutOK) Code() int {
 }
 
 func (o *BluemixServiceInstancePutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutOK  %+v", 200, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutOK  %+v", 200, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutOK) GetPayload() *models.ServiceInstance {
@@ -174,13 +171,11 @@ func (o *BluemixServiceInstancePutBadRequest) Code() int {
 }
 
 func (o *BluemixServiceInstancePutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutBadRequest) GetPayload() *models.Error {
@@ -244,13 +239,11 @@ func (o *BluemixServiceInstancePutUnauthorized) Code() int {
 }
 
 func (o *BluemixServiceInstancePutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutUnauthorized) GetPayload() *models.Error {
@@ -314,13 +307,11 @@ func (o *BluemixServiceInstancePutForbidden) Code() int {
 }
 
 func (o *BluemixServiceInstancePutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutForbidden) GetPayload() *models.Error {
@@ -384,13 +375,11 @@ func (o *BluemixServiceInstancePutNotFound) Code() int {
 }
 
 func (o *BluemixServiceInstancePutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /bluemix_v1/service_instances/{instance_id}][%d] bluemixServiceInstancePutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *BluemixServiceInstancePutNotFound) GetPayload() *models.Error {
