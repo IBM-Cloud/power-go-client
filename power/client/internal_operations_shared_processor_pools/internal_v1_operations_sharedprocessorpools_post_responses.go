@@ -6,7 +6,6 @@ package internal_operations_shared_processor_pools
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostCreated) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostCreated) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostCreated) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostCreated) GetPayload() *models.InternalOperationsResponse {
@@ -180,13 +177,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostTooManyRequests) Code() int
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostTooManyRequests) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostTooManyRequests) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostTooManyRequests) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsPostInternalServerError) Code()
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/shared-processor-pools][%d] internalV1OperationsSharedprocessorpoolsPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsPostInternalServerError) GetPayload() *models.Error {

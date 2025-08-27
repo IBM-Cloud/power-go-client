@@ -6,7 +6,6 @@ package power_edge_router
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1PoweredgerouterActionPostOK) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostOK  %+v", 200, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostOK  %+v", 200, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *V1PoweredgerouterActionPostBadRequest) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *V1PoweredgerouterActionPostUnauthorized) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *V1PoweredgerouterActionPostForbidden) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *V1PoweredgerouterActionPostNotFound) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *V1PoweredgerouterActionPostConflict) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostConflict) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *V1PoweredgerouterActionPostInternalServerError) Code() int {
 }
 
 func (o *V1PoweredgerouterActionPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /v1/workspaces/{workspace_id}/power-edge-router/action][%d] v1PoweredgerouterActionPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1PoweredgerouterActionPostInternalServerError) GetPayload() *models.Error {

@@ -6,7 +6,6 @@ package service_bindings
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *ServiceBindingLastOperationGetOK) Code() int {
 }
 
 func (o *ServiceBindingLastOperationGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetOK) GetPayload() *models.LastOperationResource {
@@ -180,13 +177,11 @@ func (o *ServiceBindingLastOperationGetBadRequest) Code() int {
 }
 
 func (o *ServiceBindingLastOperationGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *ServiceBindingLastOperationGetUnauthorized) Code() int {
 }
 
 func (o *ServiceBindingLastOperationGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *ServiceBindingLastOperationGetForbidden) Code() int {
 }
 
 func (o *ServiceBindingLastOperationGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *ServiceBindingLastOperationGetNotFound) Code() int {
 }
 
 func (o *ServiceBindingLastOperationGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *ServiceBindingLastOperationGetGone) Code() int {
 }
 
 func (o *ServiceBindingLastOperationGetGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetGone %s", 410, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetGone  %+v", 410, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetGone %s", 410, payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}/last_operation][%d] serviceBindingLastOperationGetGone  %+v", 410, o.Payload)
 }
 
 func (o *ServiceBindingLastOperationGetGone) GetPayload() *models.Error {

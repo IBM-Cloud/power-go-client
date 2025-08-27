@@ -6,7 +6,6 @@ package iaas_service_broker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -104,13 +103,11 @@ func (o *ServiceBrokerHealthOK) Code() int {
 }
 
 func (o *ServiceBrokerHealthOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthOK %s", 200, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerHealthOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthOK %s", 200, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerHealthOK) GetPayload() *models.Health {
@@ -174,13 +171,11 @@ func (o *ServiceBrokerHealthBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerHealthBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerHealthBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerHealthBadRequest) GetPayload() *models.Error {
@@ -244,13 +239,11 @@ func (o *ServiceBrokerHealthUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerHealthUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerHealthUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerHealthUnauthorized) GetPayload() *models.Error {
@@ -314,13 +307,11 @@ func (o *ServiceBrokerHealthForbidden) Code() int {
 }
 
 func (o *ServiceBrokerHealthForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerHealthForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerHealthForbidden) GetPayload() *models.Error {
@@ -384,13 +375,11 @@ func (o *ServiceBrokerHealthNotFound) Code() int {
 }
 
 func (o *ServiceBrokerHealthNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerHealthNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /broker/v1/health][%d] serviceBrokerHealthNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerHealthNotFound) GetPayload() *models.Error {

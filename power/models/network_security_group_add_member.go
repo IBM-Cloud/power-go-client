@@ -26,7 +26,7 @@ type NetworkSecurityGroupAddMember struct {
 
 	// The type of member
 	// Required: true
-	// Enum: ["ipv4-address","network-interface"]
+	// Enum: [ipv4-address network-interface]
 	Type *string `json:"type"`
 }
 
