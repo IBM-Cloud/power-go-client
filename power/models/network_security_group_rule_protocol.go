@@ -22,14 +22,14 @@ import (
 type NetworkSecurityGroupRuleProtocol struct {
 
 	// If icmp type, a ICMP packet type affected by ICMP rules and if not present then all types are matched
-	// Enum: ["all","echo","echo-reply","source-quench","time-exceeded","destination-unreach"]
+	// Enum: [all echo echo-reply source-quench time-exceeded destination-unreach]
 	IcmpType *string `json:"icmpType,omitempty"`
 
 	// If tcp type, the list of TCP flags and if not present then all flags are matched
 	TCPFlags []*NetworkSecurityGroupRuleProtocolTCPFlag `json:"tcpFlags"`
 
 	// The protocol of the network traffic
-	// Enum: ["icmp","tcp","udp","all"]
+	// Enum: [icmp tcp udp all]
 	Type string `json:"type,omitempty"`
 }
 
