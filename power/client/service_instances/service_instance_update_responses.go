@@ -6,7 +6,6 @@ package service_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *ServiceInstanceUpdateOK) Code() int {
 }
 
 func (o *ServiceInstanceUpdateOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateOK %s", 200, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateOK %s", 200, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateOK) GetPayload() *models.ServiceInstanceUpdate {
@@ -186,13 +183,11 @@ func (o *ServiceInstanceUpdateAccepted) Code() int {
 }
 
 func (o *ServiceInstanceUpdateAccepted) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateAccepted %s", 202, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateAccepted  %+v", 202, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateAccepted) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateAccepted %s", 202, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateAccepted  %+v", 202, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateAccepted) GetPayload() *models.ServiceInstanceAsyncOperation {
@@ -256,13 +251,11 @@ func (o *ServiceInstanceUpdateBadRequest) Code() int {
 }
 
 func (o *ServiceInstanceUpdateBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateBadRequest) GetPayload() *models.Error {
@@ -326,13 +319,11 @@ func (o *ServiceInstanceUpdateUnauthorized) Code() int {
 }
 
 func (o *ServiceInstanceUpdateUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateUnauthorized) GetPayload() *models.Error {
@@ -396,13 +387,11 @@ func (o *ServiceInstanceUpdateForbidden) Code() int {
 }
 
 func (o *ServiceInstanceUpdateForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateForbidden %s", 403, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateForbidden %s", 403, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateForbidden) GetPayload() *models.Error {
@@ -466,13 +455,11 @@ func (o *ServiceInstanceUpdateNotFound) Code() int {
 }
 
 func (o *ServiceInstanceUpdateNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateNotFound %s", 404, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateNotFound %s", 404, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateNotFound) GetPayload() *models.Error {
@@ -536,13 +523,11 @@ func (o *ServiceInstanceUpdateUnprocessableEntity) Code() int {
 }
 
 func (o *ServiceInstanceUpdateUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PATCH /v2/service_instances/{instance_id}][%d] serviceInstanceUpdateUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *ServiceInstanceUpdateUnprocessableEntity) GetPayload() *models.Error {

@@ -6,7 +6,6 @@ package p_cloud_virtual_serial_number
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *PcloudVirtualserialnumberDeleteOK) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *PcloudVirtualserialnumberDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *PcloudVirtualserialnumberDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *PcloudVirtualserialnumberDeleteForbidden) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *PcloudVirtualserialnumberDeleteNotFound) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *PcloudVirtualserialnumberDeleteGone) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteGone) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *PcloudVirtualserialnumberDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteInternalServerError) GetPayload() *models.Error {

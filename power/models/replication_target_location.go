@@ -24,7 +24,7 @@ type ReplicationTargetLocation struct {
 	Region string `json:"region,omitempty"`
 
 	// the replication site is active / down
-	// Enum: ["active","down"]
+	// Enum: [active down]
 	Status string `json:"status,omitempty"`
 }
 

@@ -6,7 +6,6 @@ package network_address_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *V1NetworkAddressGroupsIDPutOK) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDPutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutOK) GetPayload() *models.NetworkAddressGroup {
@@ -180,13 +177,11 @@ func (o *V1NetworkAddressGroupsIDPutBadRequest) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDPutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *V1NetworkAddressGroupsIDPutUnauthorized) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDPutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *V1NetworkAddressGroupsIDPutForbidden) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDPutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *V1NetworkAddressGroupsIDPutNotFound) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDPutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *V1NetworkAddressGroupsIDPutInternalServerError) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDPutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDPutInternalServerError) GetPayload() *models.Error {

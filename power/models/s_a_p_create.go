@@ -87,6 +87,9 @@ type SAPCreate struct {
 
 	// List of Volume IDs to attach to the pvm-instance on creation
 	VolumeIDs []string `json:"volumeIDs"`
+
+	// vpmem volumes
+	VpmemVolumes PVMInstanceVPMemCreate `json:"vpmemVolumes,omitempty"`
 }
 
 // Validate validates this s a p create
@@ -126,6 +129,10 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateUserTags(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpmemVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -284,6 +291,23 @@ func (m *SAPCreate) validateUserTags(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SAPCreate) validateVpmemVolumes(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpmemVolumes) { // not required
+		return nil
+	}
+
+	if err := m.VpmemVolumes.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("vpmemVolumes")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("vpmemVolumes")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this s a p create based on the context it is used
 func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -309,6 +333,10 @@ func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry
 	}
 
 	if err := m.contextValidateUserTags(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpmemVolumes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -431,6 +459,20 @@ func (m *SAPCreate) contextValidateUserTags(ctx context.Context, formats strfmt.
 			return ve.ValidateName("userTags")
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
+func (m *SAPCreate) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.VpmemVolumes.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("vpmemVolumes")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("vpmemVolumes")
 		}
 		return err
 	}

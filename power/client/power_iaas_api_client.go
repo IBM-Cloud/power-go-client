@@ -57,6 +57,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tasks"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_tenants_ssh_keys"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_mem_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_v_p_n_policies"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_virtual_serial_number"
@@ -71,6 +72,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/ssh_keys"
 	"github.com/IBM-Cloud/power-go-client/power/client/storage_types"
 	"github.com/IBM-Cloud/power-go-client/power/client/swagger_spec"
+	"github.com/IBM-Cloud/power-go-client/power/client/v_p_mem_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/workspaces"
 )
 
@@ -163,6 +165,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.PCloudTasks = p_cloud_tasks.New(transport, formats)
 	cli.PCloudTenants = p_cloud_tenants.New(transport, formats)
 	cli.PCloudTenantsSSHKeys = p_cloud_tenants_ssh_keys.New(transport, formats)
+	cli.PCloudvpMemVolumes = p_cloud_v_p_mem_volumes.New(transport, formats)
 	cli.PCloudvpnConnections = p_cloud_v_p_n_connections.New(transport, formats)
 	cli.PCloudvpnPolicies = p_cloud_v_p_n_policies.New(transport, formats)
 	cli.PCloudVirtualSerialNumber = p_cloud_virtual_serial_number.New(transport, formats)
@@ -177,6 +180,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.SSHKeys = ssh_keys.New(transport, formats)
 	cli.StorageTypes = storage_types.New(transport, formats)
 	cli.SwaggerSpec = swagger_spec.New(transport, formats)
+	cli.VpMemVolumes = v_p_mem_volumes.New(transport, formats)
 	cli.Workspaces = workspaces.New(transport, formats)
 	return cli
 }
@@ -316,6 +320,8 @@ type PowerIaasAPI struct {
 
 	PCloudTenantsSSHKeys p_cloud_tenants_ssh_keys.ClientService
 
+	PCloudvpMemVolumes p_cloud_v_p_mem_volumes.ClientService
+
 	PCloudvpnConnections p_cloud_v_p_n_connections.ClientService
 
 	PCloudvpnPolicies p_cloud_v_p_n_policies.ClientService
@@ -343,6 +349,8 @@ type PowerIaasAPI struct {
 	StorageTypes storage_types.ClientService
 
 	SwaggerSpec swagger_spec.ClientService
+
+	VpMemVolumes v_p_mem_volumes.ClientService
 
 	Workspaces workspaces.ClientService
 
@@ -399,6 +407,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.PCloudTasks.SetTransport(transport)
 	c.PCloudTenants.SetTransport(transport)
 	c.PCloudTenantsSSHKeys.SetTransport(transport)
+	c.PCloudvpMemVolumes.SetTransport(transport)
 	c.PCloudvpnConnections.SetTransport(transport)
 	c.PCloudvpnPolicies.SetTransport(transport)
 	c.PCloudVirtualSerialNumber.SetTransport(transport)
@@ -413,5 +422,6 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.SSHKeys.SetTransport(transport)
 	c.StorageTypes.SetTransport(transport)
 	c.SwaggerSpec.SetTransport(transport)
+	c.VpMemVolumes.SetTransport(transport)
 	c.Workspaces.SetTransport(transport)
 }

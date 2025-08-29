@@ -78,7 +78,7 @@ type Volume struct {
 	OutOfBandDeleted bool `json:"outOfBandDeleted,omitempty"`
 
 	// indicates whether master/aux volume is playing the primary role
-	// Enum: ["master","aux"]
+	// Enum: [master aux]
 	PrimaryRole string `json:"primaryRole,omitempty"`
 
 	// List of PCloud PVM Instance attached to the volume
