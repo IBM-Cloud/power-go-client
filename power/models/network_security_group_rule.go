@@ -22,7 +22,7 @@ type NetworkSecurityGroupRule struct {
 
 	// The action to take if the rule matches network traffic
 	// Required: true
-	// Enum: ["allow","deny"]
+	// Enum: [allow deny]
 	Action *string `json:"action"`
 
 	// destination port

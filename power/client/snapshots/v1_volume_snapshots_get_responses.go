@@ -6,7 +6,6 @@ package snapshots
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1VolumeSnapshotsGetOK) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK  %+v", 200, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK  %+v", 200, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetOK) GetPayload() *models.SnapshotV1 {
@@ -186,13 +183,11 @@ func (o *V1VolumeSnapshotsGetBadRequest) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetBadRequest) GetPayload() *models.Error {
@@ -256,13 +251,11 @@ func (o *V1VolumeSnapshotsGetUnauthorized) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetUnauthorized) GetPayload() *models.Error {
@@ -326,13 +319,11 @@ func (o *V1VolumeSnapshotsGetForbidden) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetForbidden) GetPayload() *models.Error {
@@ -396,13 +387,11 @@ func (o *V1VolumeSnapshotsGetNotFound) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetNotFound) GetPayload() *models.Error {
@@ -466,13 +455,11 @@ func (o *V1VolumeSnapshotsGetInternalServerError) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetInternalServerError) GetPayload() *models.Error {
@@ -536,13 +523,11 @@ func (o *V1VolumeSnapshotsGetServiceUnavailable) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetServiceUnavailable) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable %s", 503, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable  %+v", 503, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetServiceUnavailable) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable %s", 503, payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable  %+v", 503, o.Payload)
 }
 
 func (o *V1VolumeSnapshotsGetServiceUnavailable) GetPayload() *models.Error {

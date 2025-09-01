@@ -6,7 +6,6 @@ package ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1SshkeysDeleteOK) Code() int {
 }
 
 func (o *V1SshkeysDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *V1SshkeysDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *V1SshkeysDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *V1SshkeysDeleteBadRequest) Code() int {
 }
 
 func (o *V1SshkeysDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1SshkeysDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1SshkeysDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *V1SshkeysDeleteUnauthorized) Code() int {
 }
 
 func (o *V1SshkeysDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1SshkeysDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1SshkeysDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *V1SshkeysDeleteForbidden) Code() int {
 }
 
 func (o *V1SshkeysDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1SshkeysDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1SshkeysDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *V1SshkeysDeleteNotFound) Code() int {
 }
 
 func (o *V1SshkeysDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1SshkeysDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1SshkeysDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *V1SshkeysDeleteGone) Code() int {
 }
 
 func (o *V1SshkeysDeleteGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *V1SshkeysDeleteGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *V1SshkeysDeleteGone) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *V1SshkeysDeleteInternalServerError) Code() int {
 }
 
 func (o *V1SshkeysDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1SshkeysDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1SshkeysDeleteInternalServerError) GetPayload() *models.Error {
