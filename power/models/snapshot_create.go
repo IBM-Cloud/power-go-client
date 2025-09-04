@@ -20,6 +20,7 @@ import (
 type SnapshotCreate struct {
 
 	// Description of the PVM instance snapshot
+	// Max Length: 255
 	Description string `json:"description,omitempty"`
 
 	// Name of the PVM instance snapshot to create
@@ -39,6 +40,10 @@ type SnapshotCreate struct {
 func (m *SnapshotCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDescription(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
@@ -50,6 +55,18 @@ func (m *SnapshotCreate) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SnapshotCreate) validateDescription(formats strfmt.Registry) error {
+	if swag.IsZero(m.Description) { // not required
+		return nil
+	}
+
+	if err := validate.MaxLength("description", "body", m.Description, 255); err != nil {
+		return err
+	}
+
 	return nil
 }
 
