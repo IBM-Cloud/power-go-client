@@ -7,7 +7,6 @@ package authentication
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -118,13 +117,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostOK) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostOK) GetPayload() *models.Token {
@@ -188,13 +185,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostBadRequest) GetPayload() *models.Error {
@@ -258,13 +253,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostUnauthorized) GetPayload() *models.Error {
@@ -328,13 +321,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostForbidden) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostForbidden) GetPayload() *models.Error {
@@ -398,13 +389,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostNotFound) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostNotFound) GetPayload() *models.Error {
@@ -468,13 +457,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostTooManyRequests) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostTooManyRequests) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostTooManyRequests) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostTooManyRequests) GetPayload() *models.Error {
@@ -538,13 +525,11 @@ func (o *ServiceBrokerAuthDeviceTokenPostInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /auth/v1/device/token][%d] serviceBrokerAuthDeviceTokenPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerAuthDeviceTokenPostInternalServerError) GetPayload() *models.Error {

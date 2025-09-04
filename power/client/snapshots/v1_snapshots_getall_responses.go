@@ -6,7 +6,6 @@ package snapshots
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *V1SnapshotsGetallOK) Code() int {
 }
 
 func (o *V1SnapshotsGetallOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *V1SnapshotsGetallOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *V1SnapshotsGetallOK) GetPayload() *models.SnapshotList {
@@ -180,13 +177,11 @@ func (o *V1SnapshotsGetallUnauthorized) Code() int {
 }
 
 func (o *V1SnapshotsGetallUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1SnapshotsGetallUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1SnapshotsGetallUnauthorized) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *V1SnapshotsGetallForbidden) Code() int {
 }
 
 func (o *V1SnapshotsGetallForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1SnapshotsGetallForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1SnapshotsGetallForbidden) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *V1SnapshotsGetallNotFound) Code() int {
 }
 
 func (o *V1SnapshotsGetallNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1SnapshotsGetallNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1SnapshotsGetallNotFound) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *V1SnapshotsGetallInternalServerError) Code() int {
 }
 
 func (o *V1SnapshotsGetallInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1SnapshotsGetallInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1SnapshotsGetallInternalServerError) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *V1SnapshotsGetallServiceUnavailable) Code() int {
 }
 
 func (o *V1SnapshotsGetallServiceUnavailable) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallServiceUnavailable %s", 503, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallServiceUnavailable  %+v", 503, o.Payload)
 }
 
 func (o *V1SnapshotsGetallServiceUnavailable) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallServiceUnavailable %s", 503, payload)
+	return fmt.Sprintf("[GET /v1/snapshots][%d] v1SnapshotsGetallServiceUnavailable  %+v", 503, o.Payload)
 }
 
 func (o *V1SnapshotsGetallServiceUnavailable) GetPayload() *models.Error {
