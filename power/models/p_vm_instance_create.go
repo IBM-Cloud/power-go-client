@@ -64,7 +64,7 @@ type PVMInstanceCreate struct {
 
 	// Processor type (dedicated, shared, capped)
 	// Required: true
-	// Enum: ["dedicated","shared","capped"]
+	// Enum: [dedicated shared capped]
 	ProcType *string `json:"procType"`
 
 	// Number of processors allocated
@@ -72,11 +72,11 @@ type PVMInstanceCreate struct {
 	Processors *float64 `json:"processors"`
 
 	// Affinity policy for replicants being created; affinity for the same host, anti-affinity for different hosts, none for no preference
-	// Enum: ["affinity","anti-affinity","none"]
+	// Enum: [affinity anti-affinity none]
 	ReplicantAffinityPolicy *string `json:"replicantAffinityPolicy,omitempty"`
 
 	// How to name the created vms
-	// Enum: ["prefix","suffix"]
+	// Enum: [prefix suffix]
 	ReplicantNamingScheme *string `json:"replicantNamingScheme,omitempty"`
 
 	// Number of duplicate instances to create in this request
@@ -103,11 +103,11 @@ type PVMInstanceCreate struct {
 	StorageAffinity *StorageAffinity `json:"storageAffinity,omitempty"`
 
 	// The storage connection type
-	// Enum: ["vSCSI","maxVolumeSupport"]
+	// Enum: [vSCSI maxVolumeSupport]
 	StorageConnection string `json:"storageConnection,omitempty"`
 
 	// The storage connection type
-	// Enum: ["vSCSI","maxVolumeSupport"]
+	// Enum: [vSCSI maxVolumeSupport]
 	StorageConnectionV2 string `json:"storageConnectionV2,omitempty"`
 
 	// Storage Pool for server deployment; if provided then storageAffinity will be ignored; Only valid when you deploy one of the IBM supplied stock images. Storage pool for a custom image (an imported image or an image that is created from a PVMInstance capture) defaults to the storage pool the image was created in
@@ -136,6 +136,9 @@ type PVMInstanceCreate struct {
 
 	// List of volume IDs
 	VolumeIDs []string `json:"volumeIDs"`
+
+	// vpmem volumes
+	VpmemVolumes PVMInstanceVPMemCreate `json:"vpmemVolumes,omitempty"`
 }
 
 // Validate validates this p VM instance create
@@ -211,6 +214,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVirtualSerialNumber(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpmemVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -640,6 +647,23 @@ func (m *PVMInstanceCreate) validateVirtualSerialNumber(formats strfmt.Registry)
 	return nil
 }
 
+func (m *PVMInstanceCreate) validateVpmemVolumes(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpmemVolumes) { // not required
+		return nil
+	}
+
+	if err := m.VpmemVolumes.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("vpmemVolumes")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("vpmemVolumes")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this p VM instance create based on the context it is used
 func (m *PVMInstanceCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -673,6 +697,10 @@ func (m *PVMInstanceCreate) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateVirtualSerialNumber(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpmemVolumes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -839,6 +867,20 @@ func (m *PVMInstanceCreate) contextValidateVirtualSerialNumber(ctx context.Conte
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceCreate) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.VpmemVolumes.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("vpmemVolumes")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("vpmemVolumes")
+		}
+		return err
 	}
 
 	return nil

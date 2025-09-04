@@ -26,7 +26,7 @@ type DeploymentTarget struct {
 
 	// specify if deploying to a host group or a host
 	// Required: true
-	// Enum: ["hostGroup","host"]
+	// Enum: [hostGroup host]
 	Type *string `json:"type"`
 }
 

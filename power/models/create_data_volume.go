@@ -24,7 +24,7 @@ type CreateDataVolume struct {
 	AffinityPVMInstance *string `json:"affinityPVMInstance,omitempty"`
 
 	// Affinity policy for data volume being created; ignored if volumePool provided; for policy 'affinity' requires one of affinityPVMInstance or affinityVolume to be specified; for policy 'anti-affinity' requires one of antiAffinityPVMInstances or antiAffinityVolumes to be specified
-	// Enum: ["affinity","anti-affinity"]
+	// Enum: [affinity anti-affinity]
 	AffinityPolicy *string `json:"affinityPolicy,omitempty"`
 
 	// Volume (ID or Name) to base volume affinity policy against; required if requesting affinity and affinityPVMInstance is not provided

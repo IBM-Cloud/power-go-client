@@ -107,7 +107,7 @@ type PVMInstance struct {
 
 	// Processor type (dedicated, shared, capped)
 	// Required: true
-	// Enum: ["dedicated","shared","capped",""]
+	// Enum: [dedicated shared capped ]
 	ProcType *string `json:"procType"`
 
 	// Number of processors allocated
@@ -179,6 +179,9 @@ type PVMInstance struct {
 	// List of volume IDs
 	// Required: true
 	VolumeIDs []string `json:"volumeIDs"`
+
+	// List of vPMEM volume IDs
+	VpmemVolumeIDs []string `json:"vpmemVolumeIDs,omitempty"`
 }
 
 // Validate validates this p VM instance
