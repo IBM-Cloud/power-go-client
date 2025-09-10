@@ -79,7 +79,7 @@ type Network struct {
 	// Required: true
 	NetworkID *string `json:"networkID"`
 
-	// Network Peer ID
+	// [DEPRECATED] Network Peer ID
 	PeerID string `json:"peerID,omitempty"`
 
 	// Public IP Address Ranges (for pub-vlan networks)

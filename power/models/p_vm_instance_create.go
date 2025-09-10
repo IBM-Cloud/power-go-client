@@ -59,6 +59,9 @@ type PVMInstanceCreate struct {
 	// The placement group for the server
 	PlacementGroup string `json:"placementGroup,omitempty"`
 
+	// processor compatibility mode
+	PreferredProcessorCompatibilityMode string `json:"preferredProcessorCompatibilityMode,omitempty"`
+
 	// Processor type (dedicated, shared, capped)
 	// Required: true
 	// Enum: ["dedicated","shared","capped"]
