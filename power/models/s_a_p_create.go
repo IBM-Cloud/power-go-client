@@ -88,8 +88,8 @@ type SAPCreate struct {
 	// List of Volume IDs to attach to the pvm-instance on creation
 	VolumeIDs []string `json:"volumeIDs"`
 
-	// vpmem volumes
-	VpmemVolumes PVMInstanceVPMemCreate `json:"vpmemVolumes,omitempty"`
+	// The vPMEM volumes information
+	VpmemVolumes []*VPMemVolumeCreate `json:"vpmemVolumes"`
 }
 
 // Validate validates this s a p create
@@ -296,13 +296,22 @@ func (m *SAPCreate) validateVpmemVolumes(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := m.VpmemVolumes.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("vpmemVolumes")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("vpmemVolumes")
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+		if swag.IsZero(m.VpmemVolumes[i]) { // not required
+			continue
 		}
-		return err
+
+		if m.VpmemVolumes[i] != nil {
+			if err := m.VpmemVolumes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -468,13 +477,24 @@ func (m *SAPCreate) contextValidateUserTags(ctx context.Context, formats strfmt.
 
 func (m *SAPCreate) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.VpmemVolumes.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("vpmemVolumes")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("vpmemVolumes")
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+
+		if m.VpmemVolumes[i] != nil {
+
+			if swag.IsZero(m.VpmemVolumes[i]) { // not required
+				return nil
+			}
+
+			if err := m.VpmemVolumes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
 		}
-		return err
+
 	}
 
 	return nil
