@@ -27,6 +27,9 @@ type VPMemVolumeReference struct {
 	// Required: true
 	Crn *CRN `json:"crn"`
 
+	// Error code for the vPMEM volume
+	ErrorCode string `json:"errorCode,omitempty"`
+
 	// Link to vPMEM volume resource
 	// Required: true
 	Href *string `json:"href"`
@@ -38,6 +41,9 @@ type VPMemVolumeReference struct {
 	// PVM Instance ID which the volume is attached to
 	// Required: true
 	PvmInstanceID *string `json:"pvmInstanceID"`
+
+	// Reason for error
+	Reason string `json:"reason,omitempty"`
 
 	// Volume Size (GB)
 	// Required: true
