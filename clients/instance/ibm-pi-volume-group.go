@@ -128,21 +128,6 @@ func (f *IBMPIVolumeGroupClient) DeleteVolumeGroup(id string) error {
 	return nil
 }
 
-// Delete a Volume Group with body
-func (f *IBMPIVolumeGroupClient) DeleteVolumeGroupWithBody(id string, body *models.VolumeGroupDelete) error {
-	params := p_cloud_volume_groups.NewPcloudVolumegroupsDeleteParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIDeleteTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithVolumeGroupID(id)
-	if body != nil {
-		params.SetBody(body)
-	}
-	_, err := f.session.Power.PCloudVolumeGroups.PcloudVolumegroupsDelete(params, f.session.AuthInfo(f.cloudInstanceID))
-	if err != nil {
-		return fmt.Errorf(errors.DeleteVolumeGroupOperationFailed, id, err)
-	}
-	return nil
-}
-
 // Get live details of a Volume Group
 func (f *IBMPIVolumeGroupClient) GetVolumeGroupLiveDetails(id string) (*models.VolumeGroupStorageDetails, error) {
 	params := p_cloud_volume_groups.NewPcloudVolumegroupsStorageDetailsGetParams().
