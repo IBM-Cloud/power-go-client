@@ -52,7 +52,7 @@ type ClientService interface {
 }
 
 /*
-V1NetworkPeersGetall lists all peer networks in the workspace
+V1NetworkPeersGetall gets the list of network peers
 */
 func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersGetallOK, error) {
 	// TODO: Validate the params before sending
@@ -91,7 +91,7 @@ func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authIn
 }
 
 /*
-V1NetworkPeersIDDelete deletes the specified peer network
+V1NetworkPeersIDDelete deletes a network peer
 */
 func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDDeleteOK, error) {
 	// TODO: Validate the params before sending
@@ -130,7 +130,7 @@ func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, au
 }
 
 /*
-V1NetworkPeersIDGet retrieves the specified peer network
+V1NetworkPeersIDGet gets the details of a network peer
 */
 func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDGetOK, error) {
 	// TODO: Validate the params before sending
@@ -169,7 +169,7 @@ func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo
 }
 
 /*
-V1NetworkPeersIDPut updates a peer network
+V1NetworkPeersIDPut updates a network peer
 */
 func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDPutOK, error) {
 	// TODO: Validate the params before sending
@@ -208,7 +208,7 @@ func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo
 }
 
 /*
-V1NetworkPeersInterfacesGetall lists peer interfaces configured in the workspace
+V1NetworkPeersInterfacesGetall gets the list of interfaces for network peer
 */
 func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersInterfacesGetallOK, error) {
 	// TODO: Validate the params before sending
@@ -247,7 +247,7 @@ func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfaces
 }
 
 /*
-V1NetworkPeersPost creates a peer network
+V1NetworkPeersPost creates a new network peer
 */
 func (a *Client) V1NetworkPeersPost(params *V1NetworkPeersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersPostOK, error) {
 	// TODO: Validate the params before sending
@@ -325,7 +325,7 @@ func (a *Client) V1NetworkPeersRouteFilterIDDelete(params *V1NetworkPeersRouteFi
 }
 
 /*
-V1NetworkPeersRouteFilterIDGet gets a route filter
+V1NetworkPeersRouteFilterIDGet gets the details of a route filter
 */
 func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilterIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFilterIDGetOK, error) {
 	// TODO: Validate the params before sending
@@ -364,7 +364,7 @@ func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilte
 }
 
 /*
-V1NetworkPeersRouteFiltersPost creates a route filter
+V1NetworkPeersRouteFiltersPost creates a new route filter
 */
 func (a *Client) V1NetworkPeersRouteFiltersPost(params *V1NetworkPeersRouteFiltersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFiltersPostOK, error) {
 	// TODO: Validate the params before sending
