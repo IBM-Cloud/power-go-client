@@ -42,7 +42,7 @@ type ClientService interface {
 }
 
 /*
-PcloudPvminstancesVpmemVolumesDelete deletes a v p m e m volume attached to a p VM instance
+PcloudPvminstancesVpmemVolumesDelete deletes a v p m e m volume attached to this p VM instance
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesDelete(params *PcloudPvminstancesVpmemVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesDeleteAccepted, error) {
 	// TODO: Validate the params before sending
@@ -120,7 +120,7 @@ func (a *Client) PcloudPvminstancesVpmemVolumesGet(params *PcloudPvminstancesVpm
 }
 
 /*
-PcloudPvminstancesVpmemVolumesGetall lists all v p m e m volumes attached to a p VM instance
+PcloudPvminstancesVpmemVolumesGetall lists all v p m e m volumes attached to this p VM instance
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesGetall(params *PcloudPvminstancesVpmemVolumesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesGetallOK, error) {
 	// TODO: Validate the params before sending
@@ -159,9 +159,7 @@ func (a *Client) PcloudPvminstancesVpmemVolumesGetall(params *PcloudPvminstances
 }
 
 /*
-PcloudPvminstancesVpmemVolumesPost creates a v p m e m volume
-
-Create a vPMEM volume for this PVM Instance
+PcloudPvminstancesVpmemVolumesPost creates a v p m e m volume to be attached to this p VM instance
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesPost(params *PcloudPvminstancesVpmemVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesPostAccepted, error) {
 	// TODO: Validate the params before sending

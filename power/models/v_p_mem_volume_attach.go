@@ -19,49 +19,29 @@ import (
 // swagger:model VPMemVolumeAttach
 type VPMemVolumeAttach struct {
 
-	// Number of volumes to create
-	// Minimum: 1
-	Count *int64 `json:"count,omitempty"`
-
 	// user tags
 	UserTags Tags `json:"userTags,omitempty"`
 
-	// Description of volume(s) to create
+	// Description of volume to create
 	// Required: true
-	Volume *VPMemVolumeCreate `json:"volume"`
+	VpmemVolume *VPMemVolumeCreate `json:"vpmemVolume"`
 }
 
 // Validate validates this v p mem volume attach
 func (m *VPMemVolumeAttach) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCount(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateVolume(formats); err != nil {
+	if err := m.validateVpmemVolume(formats); err != nil {
 		res = append(res, err)
 	}
 
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
-	return nil
-}
-
-func (m *VPMemVolumeAttach) validateCount(formats strfmt.Registry) error {
-	if swag.IsZero(m.Count) { // not required
-		return nil
-	}
-
-	if err := validate.MinimumInt("count", "body", *m.Count, 1, false); err != nil {
-		return err
-	}
-
 	return nil
 }
 
@@ -82,18 +62,18 @@ func (m *VPMemVolumeAttach) validateUserTags(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VPMemVolumeAttach) validateVolume(formats strfmt.Registry) error {
+func (m *VPMemVolumeAttach) validateVpmemVolume(formats strfmt.Registry) error {
 
-	if err := validate.Required("volume", "body", m.Volume); err != nil {
+	if err := validate.Required("vpmemVolume", "body", m.VpmemVolume); err != nil {
 		return err
 	}
 
-	if m.Volume != nil {
-		if err := m.Volume.Validate(formats); err != nil {
+	if m.VpmemVolume != nil {
+		if err := m.VpmemVolume.Validate(formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("volume")
+				return ve.ValidateName("vpmemVolume")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("volume")
+				return ce.ValidateName("vpmemVolume")
 			}
 			return err
 		}
@@ -110,7 +90,7 @@ func (m *VPMemVolumeAttach) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVolume(ctx, formats); err != nil {
+	if err := m.contextValidateVpmemVolume(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -134,15 +114,15 @@ func (m *VPMemVolumeAttach) contextValidateUserTags(ctx context.Context, formats
 	return nil
 }
 
-func (m *VPMemVolumeAttach) contextValidateVolume(ctx context.Context, formats strfmt.Registry) error {
+func (m *VPMemVolumeAttach) contextValidateVpmemVolume(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Volume != nil {
+	if m.VpmemVolume != nil {
 
-		if err := m.Volume.ContextValidate(ctx, formats); err != nil {
+		if err := m.VpmemVolume.ContextValidate(ctx, formats); err != nil {
 			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("volume")
+				return ve.ValidateName("vpmemVolume")
 			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("volume")
+				return ce.ValidateName("vpmemVolume")
 			}
 			return err
 		}
