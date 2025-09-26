@@ -88,7 +88,7 @@ type SAPCreate struct {
 	// List of Volume IDs to attach to the pvm-instance on creation
 	VolumeIDs []string `json:"volumeIDs"`
 
-	// The vPMEM volumes information
+	// The vPMEM volumes information. Only one volume is supported at this time.
 	VpmemVolumes []*VPMemVolumeCreate `json:"vpmemVolumes"`
 }
 

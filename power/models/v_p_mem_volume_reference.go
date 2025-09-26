@@ -24,8 +24,7 @@ type VPMemVolumeReference struct {
 	CreatedAt *string `json:"createdAt"`
 
 	// crn
-	// Required: true
-	Crn *CRN `json:"crn"`
+	Crn CRN `json:"crn,omitempty"`
 
 	// Error code for the vPMEM volume
 	ErrorCode string `json:"errorCode,omitempty"`
@@ -52,6 +51,9 @@ type VPMemVolumeReference struct {
 	// Status of the volume
 	// Required: true
 	Status *string `json:"status"`
+
+	// Time when the volume was updated
+	UpdatedAt string `json:"updatedAt,omitempty"`
 
 	// user tags
 	UserTags Tags `json:"userTags,omitempty"`
@@ -117,24 +119,17 @@ func (m *VPMemVolumeReference) validateCreatedAt(formats strfmt.Registry) error 
 }
 
 func (m *VPMemVolumeReference) validateCrn(formats strfmt.Registry) error {
-
-	if err := validate.Required("crn", "body", m.Crn); err != nil {
-		return err
+	if swag.IsZero(m.Crn) { // not required
+		return nil
 	}
 
-	if err := validate.Required("crn", "body", m.Crn); err != nil {
-		return err
-	}
-
-	if m.Crn != nil {
-		if err := m.Crn.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("crn")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("crn")
-			}
-			return err
+	if err := m.Crn.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
 		}
+		return err
 	}
 
 	return nil
@@ -231,16 +226,17 @@ func (m *VPMemVolumeReference) ContextValidate(ctx context.Context, formats strf
 
 func (m *VPMemVolumeReference) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Crn != nil {
+	if swag.IsZero(m.Crn) { // not required
+		return nil
+	}
 
-		if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("crn")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("crn")
-			}
-			return err
+	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("crn")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("crn")
 		}
+		return err
 	}
 
 	return nil

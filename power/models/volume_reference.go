@@ -99,6 +99,9 @@ type VolumeReference struct {
 	// shows the replication status of a volume
 	ReplicationStatus string `json:"replicationStatus,omitempty"`
 
+	// CRN of the replication targert workspace; for a primary replicated volume this is the target workspace that owns the auxiliary data; for an auxiliary replicated volume this is the target workspace that owns the primary data.
+	ReplicationTargetCRN string `json:"replicationTargetCRN,omitempty"`
+
 	// type of replication(metro, global)s
 	ReplicationType string `json:"replicationType,omitempty"`
 

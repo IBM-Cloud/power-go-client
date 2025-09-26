@@ -180,8 +180,8 @@ type PVMInstance struct {
 	// Required: true
 	VolumeIDs []string `json:"volumeIDs"`
 
-	// List of vPMEM volume IDs
-	VpmemVolumeIDs []string `json:"vpmemVolumeIDs,omitempty"`
+	// List of vPMEM volumes attached to this PVM Instance
+	VpmemVolumes []*VPMemVolumeReference `json:"vpmemVolumes,omitempty"`
 }
 
 // Validate validates this p VM instance
@@ -289,6 +289,10 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVolumeIDs(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpmemVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -736,6 +740,32 @@ func (m *PVMInstance) validateVolumeIDs(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PVMInstance) validateVpmemVolumes(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpmemVolumes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+		if swag.IsZero(m.VpmemVolumes[i]) { // not required
+			continue
+		}
+
+		if m.VpmemVolumes[i] != nil {
+			if err := m.VpmemVolumes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this p VM instance based on the context it is used
 func (m *PVMInstance) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -785,6 +815,10 @@ func (m *PVMInstance) ContextValidate(ctx context.Context, formats strfmt.Regist
 	}
 
 	if err := m.contextValidateVirtualSerialNumber(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpmemVolumes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1061,6 +1095,31 @@ func (m *PVMInstance) contextValidateVirtualSerialNumber(ctx context.Context, fo
 			}
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+
+		if m.VpmemVolumes[i] != nil {
+
+			if swag.IsZero(m.VpmemVolumes[i]) { // not required
+				return nil
+			}
+
+			if err := m.VpmemVolumes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
