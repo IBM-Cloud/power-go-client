@@ -19,7 +19,7 @@ import (
 // swagger:model SnapshotUpdate
 type SnapshotUpdate struct {
 
-	// Description of the PVM instance snapshot
+	// Description of the PVM instance snapshot with a maximum of 255 characters allowed.
 	// Max Length: 255
 	Description *string `json:"description,omitempty"`
 
