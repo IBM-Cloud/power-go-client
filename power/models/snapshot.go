@@ -29,7 +29,7 @@ type Snapshot struct {
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
-	// Description of the PVM instance snapshot
+	// Description of the PVM instance snapshot with a maximum of 255 characters allowed.
 	Description string `json:"description,omitempty"`
 
 	// Last Update Date
