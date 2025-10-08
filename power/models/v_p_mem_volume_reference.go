@@ -55,12 +55,9 @@ type VPMemVolumeReference struct {
 	// Time when the volume was updated
 	UpdatedAt string `json:"updatedAt,omitempty"`
 
-	// user tags
-	UserTags Tags `json:"userTags,omitempty"`
-
 	// Volume ID
 	// Required: true
-	VolumeID *string `json:"volumeID"`
+	UUID *string `json:"uuid"`
 }
 
 // Validate validates this v p mem volume reference
@@ -95,11 +92,7 @@ func (m *VPMemVolumeReference) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateUserTags(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVolumeID(formats); err != nil {
+	if err := m.validateUUID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -180,26 +173,9 @@ func (m *VPMemVolumeReference) validateStatus(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VPMemVolumeReference) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
-		return nil
-	}
+func (m *VPMemVolumeReference) validateUUID(formats strfmt.Registry) error {
 
-	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("userTags")
-		}
-		return err
-	}
-
-	return nil
-}
-
-func (m *VPMemVolumeReference) validateVolumeID(formats strfmt.Registry) error {
-
-	if err := validate.Required("volumeID", "body", m.VolumeID); err != nil {
+	if err := validate.Required("uuid", "body", m.UUID); err != nil {
 		return err
 	}
 
@@ -211,10 +187,6 @@ func (m *VPMemVolumeReference) ContextValidate(ctx context.Context, formats strf
 	var res []error
 
 	if err := m.contextValidateCrn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -235,20 +207,6 @@ func (m *VPMemVolumeReference) contextValidateCrn(ctx context.Context, formats s
 			return ve.ValidateName("crn")
 		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("crn")
-		}
-		return err
-	}
-
-	return nil
-}
-
-func (m *VPMemVolumeReference) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
-
-	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("userTags")
 		}
 		return err
 	}
