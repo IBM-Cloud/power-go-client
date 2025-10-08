@@ -43,6 +43,8 @@ type ClientService interface {
 
 /*
 PcloudPvminstancesVpmemVolumesDelete deletes a v p m e m volume attached to this p VM instance
+
+vPMEM volumes of PVM Instances using SAP profiles will return carved out memory. Other cases are a reduction from total memory.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesDelete(params *PcloudPvminstancesVpmemVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesDeleteAccepted, error) {
 	// TODO: Validate the params before sending
@@ -160,6 +162,8 @@ func (a *Client) PcloudPvminstancesVpmemVolumesGetall(params *PcloudPvminstances
 
 /*
 PcloudPvminstancesVpmemVolumesPost creates a v p m e m volume to be attached to this p VM instance
+
+vPMEM volumes of PVM Instances using SAP profiles will be carved out of profile total memory. Other cases are in addition to toal memory.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesPost(params *PcloudPvminstancesVpmemVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesPostAccepted, error) {
 	// TODO: Validate the params before sending
