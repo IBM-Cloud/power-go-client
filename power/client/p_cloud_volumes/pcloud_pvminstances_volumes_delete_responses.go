@@ -78,7 +78,7 @@ func NewPcloudPvminstancesVolumesDeleteAccepted() *PcloudPvminstancesVolumesDele
 /*
 PcloudPvminstancesVolumesDeleteAccepted describes a response with status code 202, with default header values.
 
-OK
+Accepted
 */
 type PcloudPvminstancesVolumesDeleteAccepted struct {
 	Payload models.Object
