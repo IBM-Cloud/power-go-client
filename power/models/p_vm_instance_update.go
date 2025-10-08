@@ -8,7 +8,6 @@ package models
 import (
 	"context"
 	"encoding/json"
-	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -60,9 +59,6 @@ type PVMInstanceUpdate struct {
 
 	// The pvm instance virtual CPU information
 	VirtualCores *VirtualCores `json:"virtualCores,omitempty"`
-
-	// The vPMEM volumes information to create or remove as a carve out of total memory. Only one type of operation allowed.
-	VpmemVolumes []*VPMemVolumeUpdate `json:"vpmemVolumes"`
 }
 
 // Validate validates this p VM instance update
@@ -86,10 +82,6 @@ func (m *PVMInstanceUpdate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVirtualCores(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateVpmemVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -218,32 +210,6 @@ func (m *PVMInstanceUpdate) validateVirtualCores(formats strfmt.Registry) error 
 	return nil
 }
 
-func (m *PVMInstanceUpdate) validateVpmemVolumes(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpmemVolumes) { // not required
-		return nil
-	}
-
-	for i := 0; i < len(m.VpmemVolumes); i++ {
-		if swag.IsZero(m.VpmemVolumes[i]) { // not required
-			continue
-		}
-
-		if m.VpmemVolumes[i] != nil {
-			if err := m.VpmemVolumes[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
-	}
-
-	return nil
-}
-
 // ContextValidate validate this p VM instance update based on the context it is used
 func (m *PVMInstanceUpdate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -261,10 +227,6 @@ func (m *PVMInstanceUpdate) ContextValidate(ctx context.Context, formats strfmt.
 	}
 
 	if err := m.contextValidateVirtualCores(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateVpmemVolumes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -350,31 +312,6 @@ func (m *PVMInstanceUpdate) contextValidateVirtualCores(ctx context.Context, for
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *PVMInstanceUpdate) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
-
-	for i := 0; i < len(m.VpmemVolumes); i++ {
-
-		if m.VpmemVolumes[i] != nil {
-
-			if swag.IsZero(m.VpmemVolumes[i]) { // not required
-				return nil
-			}
-
-			if err := m.VpmemVolumes[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
-					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
-					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
-				}
-				return err
-			}
-		}
-
 	}
 
 	return nil
