@@ -19,9 +19,10 @@ import (
 // swagger:model VPMemVolumeReference
 type VPMemVolumeReference struct {
 
-	// Time when the volume was created
+	// The date and time when the volume was created
 	// Required: true
-	CreatedAt *string `json:"createdAt"`
+	// Format: date-time
+	CreationDate *strfmt.DateTime `json:"creationDate"`
 
 	// crn
 	Crn CRN `json:"crn,omitempty"`
@@ -52,8 +53,9 @@ type VPMemVolumeReference struct {
 	// Required: true
 	Status *string `json:"status"`
 
-	// Time when the volume was updated
-	UpdatedAt string `json:"updatedAt,omitempty"`
+	// The date and time when the volume was updated
+	// Format: date-time
+	UpdatedDate strfmt.DateTime `json:"updatedDate,omitempty"`
 
 	// Volume ID
 	// Required: true
@@ -64,7 +66,7 @@ type VPMemVolumeReference struct {
 func (m *VPMemVolumeReference) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCreatedAt(formats); err != nil {
+	if err := m.validateCreationDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -92,6 +94,10 @@ func (m *VPMemVolumeReference) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateUpdatedDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateUUID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -102,9 +108,13 @@ func (m *VPMemVolumeReference) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VPMemVolumeReference) validateCreatedAt(formats strfmt.Registry) error {
+func (m *VPMemVolumeReference) validateCreationDate(formats strfmt.Registry) error {
 
-	if err := validate.Required("createdAt", "body", m.CreatedAt); err != nil {
+	if err := validate.Required("creationDate", "body", m.CreationDate); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("creationDate", "body", "date-time", m.CreationDate.String(), formats); err != nil {
 		return err
 	}
 
@@ -167,6 +177,18 @@ func (m *VPMemVolumeReference) validateSize(formats strfmt.Registry) error {
 func (m *VPMemVolumeReference) validateStatus(formats strfmt.Registry) error {
 
 	if err := validate.Required("status", "body", m.Status); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *VPMemVolumeReference) validateUpdatedDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.UpdatedDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("updatedDate", "body", "date-time", m.UpdatedDate.String(), formats); err != nil {
 		return err
 	}
 

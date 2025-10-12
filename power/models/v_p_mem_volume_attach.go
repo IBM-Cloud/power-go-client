@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -22,9 +23,9 @@ type VPMemVolumeAttach struct {
 	// user tags
 	UserTags Tags `json:"userTags,omitempty"`
 
-	// Description of volume to create
+	// Description of volumes to create
 	// Required: true
-	VpmemVolume *VPMemVolumeCreate `json:"vpmemVolume"`
+	VpmemVolumes []*VPMemVolumeCreate `json:"vpmemVolumes"`
 }
 
 // Validate validates this v p mem volume attach
@@ -35,7 +36,7 @@ func (m *VPMemVolumeAttach) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateVpmemVolume(formats); err != nil {
+	if err := m.validateVpmemVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -62,21 +63,28 @@ func (m *VPMemVolumeAttach) validateUserTags(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *VPMemVolumeAttach) validateVpmemVolume(formats strfmt.Registry) error {
+func (m *VPMemVolumeAttach) validateVpmemVolumes(formats strfmt.Registry) error {
 
-	if err := validate.Required("vpmemVolume", "body", m.VpmemVolume); err != nil {
+	if err := validate.Required("vpmemVolumes", "body", m.VpmemVolumes); err != nil {
 		return err
 	}
 
-	if m.VpmemVolume != nil {
-		if err := m.VpmemVolume.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpmemVolume")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpmemVolume")
-			}
-			return err
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+		if swag.IsZero(m.VpmemVolumes[i]) { // not required
+			continue
 		}
+
+		if m.VpmemVolumes[i] != nil {
+			if err := m.VpmemVolumes[i].Validate(formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -90,7 +98,7 @@ func (m *VPMemVolumeAttach) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateVpmemVolume(ctx, formats); err != nil {
+	if err := m.contextValidateVpmemVolumes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -114,18 +122,26 @@ func (m *VPMemVolumeAttach) contextValidateUserTags(ctx context.Context, formats
 	return nil
 }
 
-func (m *VPMemVolumeAttach) contextValidateVpmemVolume(ctx context.Context, formats strfmt.Registry) error {
+func (m *VPMemVolumeAttach) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VpmemVolume != nil {
+	for i := 0; i < len(m.VpmemVolumes); i++ {
 
-		if err := m.VpmemVolume.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("vpmemVolume")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("vpmemVolume")
+		if m.VpmemVolumes[i] != nil {
+
+			if swag.IsZero(m.VpmemVolumes[i]) { // not required
+				return nil
 			}
-			return err
+
+			if err := m.VpmemVolumes[i].ContextValidate(ctx, formats); err != nil {
+				if ve, ok := err.(*errors.Validation); ok {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				} else if ce, ok := err.(*errors.CompositeError); ok {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				return err
+			}
 		}
+
 	}
 
 	return nil

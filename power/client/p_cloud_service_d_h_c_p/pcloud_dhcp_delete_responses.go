@@ -66,7 +66,7 @@ func NewPcloudDhcpDeleteAccepted() *PcloudDhcpDeleteAccepted {
 /*
 PcloudDhcpDeleteAccepted describes a response with status code 202, with default header values.
 
-OK
+Accepted
 */
 type PcloudDhcpDeleteAccepted struct {
 	Payload models.Object
