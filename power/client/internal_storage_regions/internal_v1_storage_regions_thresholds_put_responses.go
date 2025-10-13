@@ -78,7 +78,7 @@ func NewInternalV1StorageRegionsThresholdsPutAccepted() *InternalV1StorageRegion
 /*
 InternalV1StorageRegionsThresholdsPutAccepted describes a response with status code 202, with default header values.
 
-OK, region-zone default threshold settings update
+Accepted, region-zone default threshold settings update
 */
 type InternalV1StorageRegionsThresholdsPutAccepted struct {
 	Payload *models.Thresholds

@@ -72,7 +72,7 @@ func NewPcloudDhcpPostAccepted() *PcloudDhcpPostAccepted {
 /*
 PcloudDhcpPostAccepted describes a response with status code 202, with default header values.
 
-OK
+Accepted
 */
 type PcloudDhcpPostAccepted struct {
 	Payload *models.DHCPServer
