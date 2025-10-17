@@ -6,6 +6,7 @@ package host_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -121,11 +122,13 @@ func (o *V1HostGroupsPostCreated) Code() int {
 }
 
 func (o *V1HostGroupsPostCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostCreated %s", 201, payload)
 }
 
 func (o *V1HostGroupsPostCreated) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostCreated %s", 201, payload)
 }
 
 func (o *V1HostGroupsPostCreated) GetPayload() *models.HostGroup {
@@ -189,11 +192,13 @@ func (o *V1HostGroupsPostBadRequest) Code() int {
 }
 
 func (o *V1HostGroupsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *V1HostGroupsPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *V1HostGroupsPostBadRequest) GetPayload() *models.Error {
@@ -257,11 +262,13 @@ func (o *V1HostGroupsPostUnauthorized) Code() int {
 }
 
 func (o *V1HostGroupsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostGroupsPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostGroupsPostUnauthorized) GetPayload() *models.Error {
@@ -325,11 +332,13 @@ func (o *V1HostGroupsPostForbidden) Code() int {
 }
 
 func (o *V1HostGroupsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostForbidden %s", 403, payload)
 }
 
 func (o *V1HostGroupsPostForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostForbidden %s", 403, payload)
 }
 
 func (o *V1HostGroupsPostForbidden) GetPayload() *models.Error {
@@ -393,11 +402,13 @@ func (o *V1HostGroupsPostConflict) Code() int {
 }
 
 func (o *V1HostGroupsPostConflict) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostConflict %s", 409, payload)
 }
 
 func (o *V1HostGroupsPostConflict) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostConflict %s", 409, payload)
 }
 
 func (o *V1HostGroupsPostConflict) GetPayload() *models.Error {
@@ -461,11 +472,13 @@ func (o *V1HostGroupsPostUnprocessableEntity) Code() int {
 }
 
 func (o *V1HostGroupsPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1HostGroupsPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1HostGroupsPostUnprocessableEntity) GetPayload() *models.Error {
@@ -529,11 +542,13 @@ func (o *V1HostGroupsPostInternalServerError) Code() int {
 }
 
 func (o *V1HostGroupsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostGroupsPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostGroupsPostInternalServerError) GetPayload() *models.Error {
@@ -597,11 +612,13 @@ func (o *V1HostGroupsPostGatewayTimeout) Code() int {
 }
 
 func (o *V1HostGroupsPostGatewayTimeout) Error() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostGroupsPostGatewayTimeout) String() string {
-	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/host-groups][%d] v1HostGroupsPostGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostGroupsPostGatewayTimeout) GetPayload() *models.Error {

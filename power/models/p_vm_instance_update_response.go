@@ -33,7 +33,7 @@ type PVMInstanceUpdateResponse struct {
 	PreferredProcessorCompatibilityMode string `json:"preferredProcessorCompatibilityMode,omitempty"`
 
 	// Processor type (dedicated, shared, capped)
-	// Enum: [dedicated shared capped]
+	// Enum: ["dedicated","shared","capped"]
 	ProcType string `json:"procType,omitempty"`
 
 	// Number of processors allocated

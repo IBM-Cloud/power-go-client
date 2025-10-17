@@ -41,7 +41,7 @@ type NetworkPeer struct {
 	//
 	// Example: allow
 	// Required: true
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	DefaultExportRouteFilter *string `json:"defaultExportRouteFilter"`
 
 	// default action for import route filter
@@ -50,7 +50,7 @@ type NetworkPeer struct {
 	//
 	// Example: allow
 	// Required: true
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	DefaultImportRouteFilter *string `json:"defaultImportRouteFilter"`
 
 	// error description
@@ -93,7 +93,7 @@ type NetworkPeer struct {
 	// status of the network peer
 	// Example: active
 	// Required: true
-	// Enum: [active configuring removing error updating]
+	// Enum: ["active","configuring","removing","error","updating"]
 	State *string `json:"state"`
 
 	// type of the peer network
@@ -101,7 +101,7 @@ type NetworkPeer struct {
 	//
 	// Example: dcnetwork_bgp
 	// Required: true
-	// Enum: [dcnetwork_bgp]
+	// Enum: ["dcnetwork_bgp"]
 	Type *string `json:"type"`
 
 	// time stamp for update network peer

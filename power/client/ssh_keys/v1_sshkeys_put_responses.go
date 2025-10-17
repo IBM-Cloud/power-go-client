@@ -6,6 +6,7 @@ package ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -121,11 +122,13 @@ func (o *V1SshkeysPutOK) Code() int {
 }
 
 func (o *V1SshkeysPutOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutOK %s", 200, payload)
 }
 
 func (o *V1SshkeysPutOK) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutOK %s", 200, payload)
 }
 
 func (o *V1SshkeysPutOK) GetPayload() *models.WorkspaceSSHKey {
@@ -189,11 +192,13 @@ func (o *V1SshkeysPutBadRequest) Code() int {
 }
 
 func (o *V1SshkeysPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysPutBadRequest) GetPayload() *models.Error {
@@ -257,11 +262,13 @@ func (o *V1SshkeysPutUnauthorized) Code() int {
 }
 
 func (o *V1SshkeysPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysPutUnauthorized) GetPayload() *models.Error {
@@ -325,11 +332,13 @@ func (o *V1SshkeysPutForbidden) Code() int {
 }
 
 func (o *V1SshkeysPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysPutForbidden) GetPayload() *models.Error {
@@ -393,11 +402,13 @@ func (o *V1SshkeysPutNotFound) Code() int {
 }
 
 func (o *V1SshkeysPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysPutNotFound) GetPayload() *models.Error {
@@ -461,11 +472,13 @@ func (o *V1SshkeysPutConflict) Code() int {
 }
 
 func (o *V1SshkeysPutConflict) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutConflict %s", 409, payload)
 }
 
 func (o *V1SshkeysPutConflict) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutConflict %s", 409, payload)
 }
 
 func (o *V1SshkeysPutConflict) GetPayload() *models.Error {
@@ -529,11 +542,13 @@ func (o *V1SshkeysPutGone) Code() int {
 }
 
 func (o *V1SshkeysPutGone) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutGone %s", 410, payload)
 }
 
 func (o *V1SshkeysPutGone) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutGone %s", 410, payload)
 }
 
 func (o *V1SshkeysPutGone) GetPayload() *models.Error {
@@ -597,11 +612,13 @@ func (o *V1SshkeysPutInternalServerError) Code() int {
 }
 
 func (o *V1SshkeysPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysPutInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysPutInternalServerError) GetPayload() *models.Error {

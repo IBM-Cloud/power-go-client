@@ -6,6 +6,7 @@ package host_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -115,11 +116,13 @@ func (o *V1HostsIDGetOK) Code() int {
 }
 
 func (o *V1HostsIDGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetOK %s", 200, payload)
 }
 
 func (o *V1HostsIDGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetOK %s", 200, payload)
 }
 
 func (o *V1HostsIDGetOK) GetPayload() *models.Host {
@@ -183,11 +186,13 @@ func (o *V1HostsIDGetBadRequest) Code() int {
 }
 
 func (o *V1HostsIDGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetBadRequest %s", 400, payload)
 }
 
 func (o *V1HostsIDGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetBadRequest %s", 400, payload)
 }
 
 func (o *V1HostsIDGetBadRequest) GetPayload() *models.Error {
@@ -251,11 +256,13 @@ func (o *V1HostsIDGetUnauthorized) Code() int {
 }
 
 func (o *V1HostsIDGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostsIDGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostsIDGetUnauthorized) GetPayload() *models.Error {
@@ -319,11 +326,13 @@ func (o *V1HostsIDGetForbidden) Code() int {
 }
 
 func (o *V1HostsIDGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetForbidden %s", 403, payload)
 }
 
 func (o *V1HostsIDGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetForbidden %s", 403, payload)
 }
 
 func (o *V1HostsIDGetForbidden) GetPayload() *models.Error {
@@ -387,11 +396,13 @@ func (o *V1HostsIDGetNotFound) Code() int {
 }
 
 func (o *V1HostsIDGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetNotFound %s", 404, payload)
 }
 
 func (o *V1HostsIDGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetNotFound %s", 404, payload)
 }
 
 func (o *V1HostsIDGetNotFound) GetPayload() *models.Error {
@@ -455,11 +466,13 @@ func (o *V1HostsIDGetInternalServerError) Code() int {
 }
 
 func (o *V1HostsIDGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostsIDGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostsIDGetInternalServerError) GetPayload() *models.Error {
@@ -523,11 +536,13 @@ func (o *V1HostsIDGetGatewayTimeout) Code() int {
 }
 
 func (o *V1HostsIDGetGatewayTimeout) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostsIDGetGatewayTimeout) String() string {
-	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts/{host_id}][%d] v1HostsIdGetGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostsIDGetGatewayTimeout) GetPayload() *models.Error {

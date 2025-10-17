@@ -6,6 +6,7 @@ package network_peers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -115,11 +116,13 @@ func (o *V1NetworkPeersRouteFiltersPostOK) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostOK) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostOK) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostOK) GetPayload() *models.RouteFilter {
@@ -183,11 +186,13 @@ func (o *V1NetworkPeersRouteFiltersPostBadRequest) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostBadRequest) GetPayload() *models.Error {
@@ -251,11 +256,13 @@ func (o *V1NetworkPeersRouteFiltersPostUnauthorized) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostUnauthorized) GetPayload() *models.Error {
@@ -319,11 +326,13 @@ func (o *V1NetworkPeersRouteFiltersPostForbidden) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostForbidden) GetPayload() *models.Error {
@@ -387,11 +396,13 @@ func (o *V1NetworkPeersRouteFiltersPostNotFound) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostNotFound) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostNotFound) GetPayload() *models.Error {
@@ -455,11 +466,13 @@ func (o *V1NetworkPeersRouteFiltersPostConflict) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostConflict) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostConflict) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostConflict) GetPayload() *models.Error {
@@ -523,11 +536,13 @@ func (o *V1NetworkPeersRouteFiltersPostInternalServerError) Code() int {
 }
 
 func (o *V1NetworkPeersRouteFiltersPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers/{network_peer_id}/route-filters][%d] v1NetworkPeersRouteFiltersPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersRouteFiltersPostInternalServerError) GetPayload() *models.Error {

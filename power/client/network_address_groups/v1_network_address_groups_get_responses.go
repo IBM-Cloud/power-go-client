@@ -6,6 +6,7 @@ package network_address_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -109,11 +110,13 @@ func (o *V1NetworkAddressGroupsGetOK) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetOK %s", 200, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetOK %s", 200, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetOK) GetPayload() *models.NetworkAddressGroups {
@@ -177,11 +180,13 @@ func (o *V1NetworkAddressGroupsGetBadRequest) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetBadRequest) GetPayload() *models.Error {
@@ -245,11 +250,13 @@ func (o *V1NetworkAddressGroupsGetUnauthorized) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetUnauthorized) GetPayload() *models.Error {
@@ -313,11 +320,13 @@ func (o *V1NetworkAddressGroupsGetForbidden) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetForbidden) GetPayload() *models.Error {
@@ -381,11 +390,13 @@ func (o *V1NetworkAddressGroupsGetNotFound) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetNotFound) GetPayload() *models.Error {
@@ -449,11 +460,13 @@ func (o *V1NetworkAddressGroupsGetInternalServerError) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-address-groups][%d] v1NetworkAddressGroupsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkAddressGroupsGetInternalServerError) GetPayload() *models.Error {

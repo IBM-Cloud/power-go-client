@@ -6,6 +6,7 @@ package ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -121,11 +122,13 @@ func (o *V1SshkeysPostCreated) Code() int {
 }
 
 func (o *V1SshkeysPostCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostCreated %s", 201, payload)
 }
 
 func (o *V1SshkeysPostCreated) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostCreated %s", 201, payload)
 }
 
 func (o *V1SshkeysPostCreated) GetPayload() *models.WorkspaceSSHKey {
@@ -189,11 +192,13 @@ func (o *V1SshkeysPostBadRequest) Code() int {
 }
 
 func (o *V1SshkeysPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysPostBadRequest) GetPayload() *models.Error {
@@ -257,11 +262,13 @@ func (o *V1SshkeysPostUnauthorized) Code() int {
 }
 
 func (o *V1SshkeysPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysPostUnauthorized) GetPayload() *models.Error {
@@ -325,11 +332,13 @@ func (o *V1SshkeysPostForbidden) Code() int {
 }
 
 func (o *V1SshkeysPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysPostForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysPostForbidden) GetPayload() *models.Error {
@@ -393,11 +402,13 @@ func (o *V1SshkeysPostNotFound) Code() int {
 }
 
 func (o *V1SshkeysPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysPostNotFound) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysPostNotFound) GetPayload() *models.Error {
@@ -461,11 +472,13 @@ func (o *V1SshkeysPostConflict) Code() int {
 }
 
 func (o *V1SshkeysPostConflict) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostConflict %s", 409, payload)
 }
 
 func (o *V1SshkeysPostConflict) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostConflict %s", 409, payload)
 }
 
 func (o *V1SshkeysPostConflict) GetPayload() *models.Error {
@@ -529,11 +542,13 @@ func (o *V1SshkeysPostUnprocessableEntity) Code() int {
 }
 
 func (o *V1SshkeysPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1SshkeysPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1SshkeysPostUnprocessableEntity) GetPayload() *models.Error {
@@ -597,11 +612,13 @@ func (o *V1SshkeysPostInternalServerError) Code() int {
 }
 
 func (o *V1SshkeysPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/ssh-keys][%d] v1SshkeysPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysPostInternalServerError) GetPayload() *models.Error {
