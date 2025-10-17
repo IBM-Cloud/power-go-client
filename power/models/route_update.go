@@ -21,18 +21,18 @@ import (
 type RouteUpdate struct {
 
 	// Action
-	// Enum: [deliver]
+	// Enum: ["deliver"]
 	Action string `json:"action,omitempty"`
 
 	// Indicates if the route is advertised externally of the workspace to PER and\or peer networks
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	Advertise string `json:"advertise,omitempty"`
 
 	// The route destination
 	Destination string `json:"destination,omitempty"`
 
 	// The destination type
-	// Enum: [ipv4-address]
+	// Enum: ["ipv4-address"]
 	DestinationType string `json:"destinationType,omitempty"`
 
 	// Indicates if the route should be enabled in the fabric
@@ -47,7 +47,7 @@ type RouteUpdate struct {
 	NextHop string `json:"nextHop,omitempty"`
 
 	// The next hop type
-	// Enum: [ipv4-address]
+	// Enum: ["ipv4-address"]
 	NextHopType string `json:"nextHopType,omitempty"`
 }
 

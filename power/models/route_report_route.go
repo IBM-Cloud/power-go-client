@@ -26,7 +26,7 @@ type RouteReportRoute struct {
 
 	// The route type
 	// Required: true
-	// Enum: [external]
+	// Enum: ["external"]
 	Type *string `json:"type"`
 }
 

@@ -6,6 +6,7 @@ package routes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -109,11 +110,13 @@ func (o *V1RoutesReportGetOK) Code() int {
 }
 
 func (o *V1RoutesReportGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetOK %s", 200, payload)
 }
 
 func (o *V1RoutesReportGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetOK %s", 200, payload)
 }
 
 func (o *V1RoutesReportGetOK) GetPayload() *models.RouteReport {
@@ -177,11 +180,13 @@ func (o *V1RoutesReportGetBadRequest) Code() int {
 }
 
 func (o *V1RoutesReportGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetBadRequest %s", 400, payload)
 }
 
 func (o *V1RoutesReportGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetBadRequest %s", 400, payload)
 }
 
 func (o *V1RoutesReportGetBadRequest) GetPayload() *models.Error {
@@ -245,11 +250,13 @@ func (o *V1RoutesReportGetUnauthorized) Code() int {
 }
 
 func (o *V1RoutesReportGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1RoutesReportGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1RoutesReportGetUnauthorized) GetPayload() *models.Error {
@@ -313,11 +320,13 @@ func (o *V1RoutesReportGetForbidden) Code() int {
 }
 
 func (o *V1RoutesReportGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetForbidden %s", 403, payload)
 }
 
 func (o *V1RoutesReportGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetForbidden %s", 403, payload)
 }
 
 func (o *V1RoutesReportGetForbidden) GetPayload() *models.Error {
@@ -381,11 +390,13 @@ func (o *V1RoutesReportGetNotFound) Code() int {
 }
 
 func (o *V1RoutesReportGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetNotFound %s", 404, payload)
 }
 
 func (o *V1RoutesReportGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetNotFound %s", 404, payload)
 }
 
 func (o *V1RoutesReportGetNotFound) GetPayload() *models.Error {
@@ -449,11 +460,13 @@ func (o *V1RoutesReportGetInternalServerError) Code() int {
 }
 
 func (o *V1RoutesReportGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1RoutesReportGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes/report][%d] v1RoutesReportGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1RoutesReportGetInternalServerError) GetPayload() *models.Error {

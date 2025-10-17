@@ -6,6 +6,7 @@ package internal_operations_network_security_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -109,11 +110,13 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostCreated) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostCreated) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostCreated) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostCreated) GetPayload() *models.InternalOperationsResponse {
@@ -177,11 +180,13 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostBadRequest) GetPayload() *models.Error {
@@ -245,11 +250,13 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostUnauthorized) GetPayload() *models.Error {
@@ -313,11 +320,13 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostForbidden) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostForbidden) GetPayload() *models.Error {
@@ -381,11 +390,13 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostTooManyRequests) Code() in
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostTooManyRequests) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostTooManyRequests) GetPayload() *models.Error {
@@ -449,11 +460,13 @@ func (o *InternalV1OperationsNetworksecuritygroupsPostInternalServerError) Code(
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/network-security-groups][%d] internalV1OperationsNetworksecuritygroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsNetworksecuritygroupsPostInternalServerError) GetPayload() *models.Error {

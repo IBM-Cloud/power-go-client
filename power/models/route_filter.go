@@ -37,7 +37,7 @@ type RouteFilter struct {
 	// * deny: deny
 	//
 	// Required: true
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	Action *string `json:"action"`
 
 	// time stamp for create route filter
@@ -49,7 +49,7 @@ type RouteFilter struct {
 	// * export - export the routes
 	//
 	// Required: true
-	// Enum: [import export]
+	// Enum: ["import","export"]
 	Direction *string `json:"direction"`
 
 	// error description
@@ -74,7 +74,7 @@ type RouteFilter struct {
 	// status of the route filter
 	// Example: active
 	// Required: true
-	// Enum: [active configuring removing error updating]
+	// Enum: ["active","configuring","removing","error","updating"]
 	State *string `json:"state"`
 }
 
