@@ -6,6 +6,7 @@ package network_peers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -115,11 +116,13 @@ func (o *V1NetworkPeersIDPutOK) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersIDPutOK) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersIDPutOK) GetPayload() *models.NetworkPeer {
@@ -183,11 +186,13 @@ func (o *V1NetworkPeersIDPutBadRequest) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersIDPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersIDPutBadRequest) GetPayload() *models.Error {
@@ -251,11 +256,13 @@ func (o *V1NetworkPeersIDPutUnauthorized) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersIDPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersIDPutUnauthorized) GetPayload() *models.Error {
@@ -319,11 +326,13 @@ func (o *V1NetworkPeersIDPutForbidden) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersIDPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersIDPutForbidden) GetPayload() *models.Error {
@@ -387,11 +396,13 @@ func (o *V1NetworkPeersIDPutNotFound) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersIDPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersIDPutNotFound) GetPayload() *models.Error {
@@ -455,11 +466,13 @@ func (o *V1NetworkPeersIDPutConflict) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutConflict) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersIDPutConflict) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersIDPutConflict) GetPayload() *models.Error {
@@ -523,11 +536,13 @@ func (o *V1NetworkPeersIDPutInternalServerError) Code() int {
 }
 
 func (o *V1NetworkPeersIDPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersIDPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdPutInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersIDPutInternalServerError) GetPayload() *models.Error {

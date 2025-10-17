@@ -6,6 +6,7 @@ package network_security_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -109,11 +110,13 @@ func (o *V1NetworkSecurityGroupsListOK) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsListOK) Error() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListOK %s", 200, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListOK) String() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListOK %s", 200, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListOK) GetPayload() *models.NetworkSecurityGroups {
@@ -177,11 +180,13 @@ func (o *V1NetworkSecurityGroupsListBadRequest) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsListBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListBadRequest) GetPayload() *models.Error {
@@ -245,11 +250,13 @@ func (o *V1NetworkSecurityGroupsListUnauthorized) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsListUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListUnauthorized) GetPayload() *models.Error {
@@ -313,11 +320,13 @@ func (o *V1NetworkSecurityGroupsListForbidden) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsListForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListForbidden) GetPayload() *models.Error {
@@ -381,11 +390,13 @@ func (o *V1NetworkSecurityGroupsListNotFound) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsListNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListNotFound) GetPayload() *models.Error {
@@ -449,11 +460,13 @@ func (o *V1NetworkSecurityGroupsListInternalServerError) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsListInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/network-security-groups][%d] v1NetworkSecurityGroupsListInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkSecurityGroupsListInternalServerError) GetPayload() *models.Error {

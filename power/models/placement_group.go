@@ -37,7 +37,7 @@ type PlacementGroup struct {
 
 	// The Placement Group Policy
 	// Required: true
-	// Enum: [affinity anti-affinity]
+	// Enum: ["affinity","anti-affinity"]
 	Policy *string `json:"policy"`
 
 	// user tags

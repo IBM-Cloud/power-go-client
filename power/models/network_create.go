@@ -26,11 +26,11 @@ type NetworkCreate struct {
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
 	// Indicates if the network is advertised externally of the workspace to PER and\or peer networks
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	Advertise *string `json:"advertise,omitempty"`
 
 	// Indicates if ARP broadcast is enabled
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	ArpBroadcast *string `json:"arpBroadcast,omitempty"`
 
 	// Network in CIDR notation (192.168.0.0/24)
@@ -63,7 +63,7 @@ type NetworkCreate struct {
 
 	// Type of Network - 'vlan' (private network), 'pub-vlan' (public network), 'dhcp-vlan'[DEPRECATED]
 	// Required: true
-	// Enum: [vlan pub-vlan dhcp-vlan]
+	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
 	Type *string `json:"type"`
 
 	// user tags

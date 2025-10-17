@@ -46,7 +46,7 @@ type SAPProfile struct {
 	Saps int64 `json:"saps"`
 
 	// Required smt mode for that profile
-	// Enum: [4 8]
+	// Enum: [4,8]
 	SmtMode int64 `json:"smtMode"`
 
 	// Required smt mode for that profile
@@ -58,7 +58,7 @@ type SAPProfile struct {
 
 	// Type of profile
 	// Required: true
-	// Enum: [balanced compute memory ultra-memory small sap-rise sap-rise-app]
+	// Enum: ["balanced","compute","memory","ultra-memory","small","sap-rise","sap-rise-app"]
 	Type *string `json:"type"`
 
 	// vpmem volume

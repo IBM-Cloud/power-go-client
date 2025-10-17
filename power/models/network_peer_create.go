@@ -35,7 +35,7 @@ type NetworkPeerCreate struct {
 	// * deny: deny
 	//
 	// Example: allow
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	DefaultExportRouteFilter *string `json:"defaultExportRouteFilter,omitempty"`
 
 	// default action for import route filter
@@ -43,7 +43,7 @@ type NetworkPeerCreate struct {
 	// * deny: deny
 	//
 	// Example: allow
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	DefaultImportRouteFilter *string `json:"defaultImportRouteFilter,omitempty"`
 
 	// ASN number at IBM PowerVS side
@@ -70,7 +70,7 @@ type NetworkPeerCreate struct {
 	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
 	//
 	// Example: dcnetwork_bgp
-	// Enum: [dcnetwork_bgp]
+	// Enum: ["dcnetwork_bgp"]
 	Type *string `json:"type,omitempty"`
 
 	// A vlan configured at the customer network.

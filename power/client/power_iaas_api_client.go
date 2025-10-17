@@ -72,7 +72,6 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/ssh_keys"
 	"github.com/IBM-Cloud/power-go-client/power/client/storage_types"
 	"github.com/IBM-Cloud/power-go-client/power/client/swagger_spec"
-	"github.com/IBM-Cloud/power-go-client/power/client/v_p_mem_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/workspaces"
 )
 
@@ -180,7 +179,6 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.SSHKeys = ssh_keys.New(transport, formats)
 	cli.StorageTypes = storage_types.New(transport, formats)
 	cli.SwaggerSpec = swagger_spec.New(transport, formats)
-	cli.VpMemVolumes = v_p_mem_volumes.New(transport, formats)
 	cli.Workspaces = workspaces.New(transport, formats)
 	return cli
 }
@@ -350,8 +348,6 @@ type PowerIaasAPI struct {
 
 	SwaggerSpec swagger_spec.ClientService
 
-	VpMemVolumes v_p_mem_volumes.ClientService
-
 	Workspaces workspaces.ClientService
 
 	Transport runtime.ClientTransport
@@ -422,6 +418,5 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.SSHKeys.SetTransport(transport)
 	c.StorageTypes.SetTransport(transport)
 	c.SwaggerSpec.SetTransport(transport)
-	c.VpMemVolumes.SetTransport(transport)
 	c.Workspaces.SetTransport(transport)
 }

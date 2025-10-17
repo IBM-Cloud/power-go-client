@@ -6,6 +6,7 @@ package network_address_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 
@@ -121,11 +122,13 @@ func (o *V1NetworkAddressGroupsMembersPostOK) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostOK) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostOK) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostOK) GetPayload() *models.NetworkAddressGroupMember {
@@ -189,11 +192,13 @@ func (o *V1NetworkAddressGroupsMembersPostBadRequest) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostBadRequest) GetPayload() *models.Error {
@@ -257,11 +262,13 @@ func (o *V1NetworkAddressGroupsMembersPostUnauthorized) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostUnauthorized) GetPayload() *models.Error {
@@ -325,11 +332,13 @@ func (o *V1NetworkAddressGroupsMembersPostForbidden) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostForbidden) GetPayload() *models.Error {
@@ -393,11 +402,13 @@ func (o *V1NetworkAddressGroupsMembersPostNotFound) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostNotFound) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostNotFound) GetPayload() *models.Error {
@@ -461,11 +472,13 @@ func (o *V1NetworkAddressGroupsMembersPostConflict) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostConflict) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostConflict) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostConflict) GetPayload() *models.Error {
@@ -529,11 +542,13 @@ func (o *V1NetworkAddressGroupsMembersPostUnprocessableEntity) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostUnprocessableEntity) GetPayload() *models.Error {
@@ -597,11 +612,13 @@ func (o *V1NetworkAddressGroupsMembersPostInternalServerError) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsMembersPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups/{network_address_group_id}/members][%d] v1NetworkAddressGroupsMembersPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkAddressGroupsMembersPostInternalServerError) GetPayload() *models.Error {
