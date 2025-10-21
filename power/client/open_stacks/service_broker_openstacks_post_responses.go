@@ -6,7 +6,6 @@ package open_stacks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -128,13 +127,11 @@ func (o *ServiceBrokerOpenstacksPostOK) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostOK) GetPayload() *models.OpenStack {
@@ -198,13 +195,11 @@ func (o *ServiceBrokerOpenstacksPostCreated) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) GetPayload() *models.OpenStack {
@@ -268,13 +263,11 @@ func (o *ServiceBrokerOpenstacksPostBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostBadRequest) GetPayload() *models.Error {
@@ -338,13 +331,11 @@ func (o *ServiceBrokerOpenstacksPostUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnauthorized) GetPayload() *models.Error {
@@ -408,13 +399,11 @@ func (o *ServiceBrokerOpenstacksPostForbidden) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostForbidden) GetPayload() *models.Error {
@@ -478,13 +467,11 @@ func (o *ServiceBrokerOpenstacksPostNotFound) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostNotFound) GetPayload() *models.Error {
@@ -548,13 +535,11 @@ func (o *ServiceBrokerOpenstacksPostConflict) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) GetPayload() *models.Error {
@@ -618,13 +603,11 @@ func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) GetPayload() *models.Error {
@@ -688,13 +671,11 @@ func (o *ServiceBrokerOpenstacksPostInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) GetPayload() *models.Error {

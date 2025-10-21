@@ -22,7 +22,7 @@ type PowerEdgeRouterAction struct {
 
 	// Name of the action to take; can be migrate-start, migrate-validate
 	// Required: true
-	// Enum: ["migrate-start","migrate-validate"]
+	// Enum: [migrate-start migrate-validate]
 	Action *string `json:"action"`
 }
 

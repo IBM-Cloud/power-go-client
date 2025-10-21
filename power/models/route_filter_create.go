@@ -36,7 +36,7 @@ type RouteFilterCreate struct {
 	// * allow: allow
 	// * deny: deny
 	//
-	// Enum: ["allow","deny"]
+	// Enum: [allow deny]
 	Action *string `json:"action,omitempty"`
 
 	// direction of the filter
@@ -44,7 +44,7 @@ type RouteFilterCreate struct {
 	// * export - export the routes
 	//
 	// Required: true
-	// Enum: ["import","export"]
+	// Enum: [import export]
 	Direction *string `json:"direction"`
 
 	// priority or order of the filter

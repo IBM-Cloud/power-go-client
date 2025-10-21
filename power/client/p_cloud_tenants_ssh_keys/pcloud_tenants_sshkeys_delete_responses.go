@@ -6,7 +6,6 @@ package p_cloud_tenants_ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *PcloudTenantsSshkeysDeleteOK) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *PcloudTenantsSshkeysDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *PcloudTenantsSshkeysDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *PcloudTenantsSshkeysDeleteForbidden) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *PcloudTenantsSshkeysDeleteNotFound) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *PcloudTenantsSshkeysDeleteGone) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteGone) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *PcloudTenantsSshkeysDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysDeleteInternalServerError) GetPayload() *models.Error {

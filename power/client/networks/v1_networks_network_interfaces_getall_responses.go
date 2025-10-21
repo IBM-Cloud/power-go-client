@@ -6,7 +6,6 @@ package networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *V1NetworksNetworkInterfacesGetallOK) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetallOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallOK) GetPayload() *models.NetworkInterfaces {
@@ -180,13 +177,11 @@ func (o *V1NetworksNetworkInterfacesGetallBadRequest) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetallBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *V1NetworksNetworkInterfacesGetallUnauthorized) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetallUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *V1NetworksNetworkInterfacesGetallForbidden) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetallForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *V1NetworksNetworkInterfacesGetallNotFound) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetallNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *V1NetworksNetworkInterfacesGetallInternalServerError) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetallInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces][%d] v1NetworksNetworkInterfacesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetallInternalServerError) GetPayload() *models.Error {

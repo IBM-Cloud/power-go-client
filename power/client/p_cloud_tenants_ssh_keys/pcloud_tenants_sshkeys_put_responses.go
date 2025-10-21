@@ -6,7 +6,6 @@ package p_cloud_tenants_ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *PcloudTenantsSshkeysPutOK) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutOK) GetPayload() *models.SSHKey {
@@ -186,13 +183,11 @@ func (o *PcloudTenantsSshkeysPutBadRequest) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutBadRequest) GetPayload() *models.Error {
@@ -256,13 +251,11 @@ func (o *PcloudTenantsSshkeysPutUnauthorized) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnauthorized) GetPayload() *models.Error {
@@ -326,13 +319,11 @@ func (o *PcloudTenantsSshkeysPutForbidden) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutForbidden) GetPayload() *models.Error {
@@ -396,13 +387,11 @@ func (o *PcloudTenantsSshkeysPutNotFound) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutNotFound) GetPayload() *models.Error {
@@ -466,13 +455,11 @@ func (o *PcloudTenantsSshkeysPutUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnprocessableEntity) GetPayload() *models.Error {
@@ -536,13 +523,11 @@ func (o *PcloudTenantsSshkeysPutInternalServerError) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPutInternalServerError) GetPayload() *models.Error {

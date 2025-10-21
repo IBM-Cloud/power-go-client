@@ -6,7 +6,6 @@ package p_cloud_p_vm_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -122,13 +121,11 @@ func (o *PcloudPvminstancesNetworksPostCreated) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostCreated) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostCreated) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostCreated) GetPayload() *models.PVMInstanceNetwork {
@@ -192,13 +189,11 @@ func (o *PcloudPvminstancesNetworksPostBadRequest) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostBadRequest) GetPayload() *models.Error {
@@ -262,13 +257,11 @@ func (o *PcloudPvminstancesNetworksPostUnauthorized) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostUnauthorized) GetPayload() *models.Error {
@@ -332,13 +325,11 @@ func (o *PcloudPvminstancesNetworksPostForbidden) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostForbidden) GetPayload() *models.Error {
@@ -402,13 +393,11 @@ func (o *PcloudPvminstancesNetworksPostNotFound) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostNotFound) GetPayload() *models.Error {
@@ -472,13 +461,11 @@ func (o *PcloudPvminstancesNetworksPostConflict) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostConflict) GetPayload() *models.Error {
@@ -542,13 +529,11 @@ func (o *PcloudPvminstancesNetworksPostUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostUnprocessableEntity) GetPayload() *models.Error {
@@ -612,13 +597,11 @@ func (o *PcloudPvminstancesNetworksPostInternalServerError) Code() int {
 }
 
 func (o *PcloudPvminstancesNetworksPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudPvminstancesNetworksPostInternalServerError) GetPayload() *models.Error {

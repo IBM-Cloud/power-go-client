@@ -22,12 +22,12 @@ type Route struct {
 
 	// The route action
 	// Required: true
-	// Enum: ["deliver"]
+	// Enum: [deliver]
 	Action *string `json:"action"`
 
 	// Indicates if the route is advertised externally of the workspace to PER and\or peer networks
 	// Required: true
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	Advertise *string `json:"advertise"`
 
 	// The route's crn
@@ -40,7 +40,7 @@ type Route struct {
 
 	// The destination type
 	// Required: true
-	// Enum: ["ipv4-address"]
+	// Enum: [ipv4-address]
 	DestinationType *string `json:"destinationType"`
 
 	// Indicates if the route should be enabled in the fabric
@@ -62,12 +62,12 @@ type Route struct {
 
 	// The next hop type
 	// Required: true
-	// Enum: ["ipv4-address"]
+	// Enum: [ipv4-address]
 	NextHopType *string `json:"nextHopType"`
 
 	// The state of the route
 	// Required: true
-	// Enum: ["defined","deployed","disabled"]
+	// Enum: [defined deployed disabled]
 	State *string `json:"state"`
 
 	// user tags

@@ -6,7 +6,6 @@ package host_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *V1HostsGetOK) Code() int {
 }
 
 func (o *V1HostsGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK  %+v", 200, o.Payload)
 }
 
 func (o *V1HostsGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK  %+v", 200, o.Payload)
 }
 
 func (o *V1HostsGetOK) GetPayload() models.HostList {
@@ -178,13 +175,11 @@ func (o *V1HostsGetBadRequest) Code() int {
 }
 
 func (o *V1HostsGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1HostsGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1HostsGetBadRequest) GetPayload() *models.Error {
@@ -248,13 +243,11 @@ func (o *V1HostsGetUnauthorized) Code() int {
 }
 
 func (o *V1HostsGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1HostsGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1HostsGetUnauthorized) GetPayload() *models.Error {
@@ -318,13 +311,11 @@ func (o *V1HostsGetForbidden) Code() int {
 }
 
 func (o *V1HostsGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1HostsGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1HostsGetForbidden) GetPayload() *models.Error {
@@ -388,13 +379,11 @@ func (o *V1HostsGetInternalServerError) Code() int {
 }
 
 func (o *V1HostsGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1HostsGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1HostsGetInternalServerError) GetPayload() *models.Error {
@@ -458,13 +447,11 @@ func (o *V1HostsGetGatewayTimeout) Code() int {
 }
 
 func (o *V1HostsGetGatewayTimeout) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout %s", 504, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout  %+v", 504, o.Payload)
 }
 
 func (o *V1HostsGetGatewayTimeout) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout %s", 504, payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout  %+v", 504, o.Payload)
 }
 
 func (o *V1HostsGetGatewayTimeout) GetPayload() *models.Error {

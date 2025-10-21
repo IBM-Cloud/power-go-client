@@ -22,7 +22,7 @@ type PVMInstanceAction struct {
 
 	// Name of the action to take; can be start, stop, hard-reboot, soft-reboot, immediate-shutdown, reset-state, dhcp-ip-sync (on-prem only)
 	// Required: true
-	// Enum: ["start","stop","immediate-shutdown","hard-reboot","soft-reboot","reset-state","dhcp-ip-sync"]
+	// Enum: [start stop immediate-shutdown hard-reboot soft-reboot reset-state dhcp-ip-sync]
 	Action *string `json:"action"`
 }
 

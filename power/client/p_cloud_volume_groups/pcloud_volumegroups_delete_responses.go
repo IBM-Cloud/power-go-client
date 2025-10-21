@@ -6,7 +6,6 @@ package p_cloud_volume_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudVolumegroupsDeleteAccepted) Code() int {
 }
 
 func (o *PcloudVolumegroupsDeleteAccepted) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteAccepted %s", 202, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteAccepted) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteAccepted %s", 202, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteAccepted) GetPayload() models.Object {
@@ -178,13 +175,11 @@ func (o *PcloudVolumegroupsDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudVolumegroupsDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteBadRequest) GetPayload() *models.Error {
@@ -248,13 +243,11 @@ func (o *PcloudVolumegroupsDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudVolumegroupsDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteUnauthorized) GetPayload() *models.Error {
@@ -318,13 +311,11 @@ func (o *PcloudVolumegroupsDeleteForbidden) Code() int {
 }
 
 func (o *PcloudVolumegroupsDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteForbidden) GetPayload() *models.Error {
@@ -388,13 +379,11 @@ func (o *PcloudVolumegroupsDeleteNotFound) Code() int {
 }
 
 func (o *PcloudVolumegroupsDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteNotFound) GetPayload() *models.Error {
@@ -458,13 +447,11 @@ func (o *PcloudVolumegroupsDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudVolumegroupsDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVolumegroupsDeleteInternalServerError) GetPayload() *models.Error {
