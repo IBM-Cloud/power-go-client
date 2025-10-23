@@ -6,7 +6,6 @@ package p_cloud_jobs
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *PcloudCloudinstancesJobsDeleteOK) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *PcloudCloudinstancesJobsDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *PcloudCloudinstancesJobsDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *PcloudCloudinstancesJobsDeleteForbidden) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *PcloudCloudinstancesJobsDeleteNotFound) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *PcloudCloudinstancesJobsDeleteConflict) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteConflict %s", 409, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteConflict %s", 409, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteConflict) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *PcloudCloudinstancesJobsDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudCloudinstancesJobsDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/jobs/{job_id}][%d] pcloudCloudinstancesJobsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudCloudinstancesJobsDeleteInternalServerError) GetPayload() *models.Error {

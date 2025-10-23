@@ -6,7 +6,6 @@ package p_cloud_volume_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -122,13 +121,11 @@ func (o *PcloudVolumegroupsPutAccepted) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutAccepted) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutAccepted %s", 202, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutAccepted) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutAccepted %s", 202, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutAccepted) GetPayload() models.Object {
@@ -190,13 +187,11 @@ func (o *PcloudVolumegroupsPutBadRequest) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutBadRequest) GetPayload() *models.Error {
@@ -260,13 +255,11 @@ func (o *PcloudVolumegroupsPutUnauthorized) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutUnauthorized) GetPayload() *models.Error {
@@ -330,13 +323,11 @@ func (o *PcloudVolumegroupsPutForbidden) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutForbidden) GetPayload() *models.Error {
@@ -400,13 +391,11 @@ func (o *PcloudVolumegroupsPutNotFound) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutNotFound) GetPayload() *models.Error {
@@ -470,13 +459,11 @@ func (o *PcloudVolumegroupsPutConflict) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutConflict %s", 409, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutConflict %s", 409, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutConflict) GetPayload() *models.Error {
@@ -540,13 +527,11 @@ func (o *PcloudVolumegroupsPutUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutUnprocessableEntity) GetPayload() *models.Error {
@@ -610,13 +595,11 @@ func (o *PcloudVolumegroupsPutInternalServerError) Code() int {
 }
 
 func (o *PcloudVolumegroupsPutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups/{volume_group_id}][%d] pcloudVolumegroupsPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudVolumegroupsPutInternalServerError) GetPayload() *models.Error {

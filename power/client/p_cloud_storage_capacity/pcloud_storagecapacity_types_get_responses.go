@@ -6,7 +6,6 @@ package p_cloud_storage_capacity
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudStoragecapacityTypesGetOK) Code() int {
 }
 
 func (o *PcloudStoragecapacityTypesGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetOK) GetPayload() *models.StorageTypeCapacity {
@@ -180,13 +177,11 @@ func (o *PcloudStoragecapacityTypesGetBadRequest) Code() int {
 }
 
 func (o *PcloudStoragecapacityTypesGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudStoragecapacityTypesGetUnauthorized) Code() int {
 }
 
 func (o *PcloudStoragecapacityTypesGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudStoragecapacityTypesGetForbidden) Code() int {
 }
 
 func (o *PcloudStoragecapacityTypesGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudStoragecapacityTypesGetNotFound) Code() int {
 }
 
 func (o *PcloudStoragecapacityTypesGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudStoragecapacityTypesGetInternalServerError) Code() int {
 }
 
 func (o *PcloudStoragecapacityTypesGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-capacity/storage-types/{storage_type_name}][%d] pcloudStoragecapacityTypesGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudStoragecapacityTypesGetInternalServerError) GetPayload() *models.Error {

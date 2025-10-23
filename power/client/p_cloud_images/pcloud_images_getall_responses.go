@@ -6,7 +6,6 @@ package p_cloud_images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudImagesGetallOK) Code() int {
 }
 
 func (o *PcloudImagesGetallOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudImagesGetallOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudImagesGetallOK) GetPayload() *models.Images {
@@ -180,13 +177,11 @@ func (o *PcloudImagesGetallBadRequest) Code() int {
 }
 
 func (o *PcloudImagesGetallBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudImagesGetallBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudImagesGetallBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudImagesGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudImagesGetallUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudImagesGetallUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudImagesGetallUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudImagesGetallForbidden) Code() int {
 }
 
 func (o *PcloudImagesGetallForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudImagesGetallForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudImagesGetallForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudImagesGetallNotFound) Code() int {
 }
 
 func (o *PcloudImagesGetallNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudImagesGetallNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudImagesGetallNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudImagesGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudImagesGetallInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudImagesGetallInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudImagesGetallInternalServerError) GetPayload() *models.Error {

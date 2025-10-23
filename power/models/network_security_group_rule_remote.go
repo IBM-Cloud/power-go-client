@@ -24,7 +24,7 @@ type NetworkSecurityGroupRuleRemote struct {
 	ID string `json:"id,omitempty"`
 
 	// The type of remote group the rules apply to
-	// Enum: ["network-security-group","network-address-group","default-network-address-group"]
+	// Enum: [network-security-group network-address-group default-network-address-group]
 	Type string `json:"type,omitempty"`
 }
 

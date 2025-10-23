@@ -6,7 +6,6 @@ package p_cloud_shared_processor_pools
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *PcloudSharedprocessorpoolsDeleteOK) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *PcloudSharedprocessorpoolsDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *PcloudSharedprocessorpoolsDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *PcloudSharedprocessorpoolsDeleteForbidden) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *PcloudSharedprocessorpoolsDeleteNotFound) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *PcloudSharedprocessorpoolsDeleteConflict) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteConflict %s", 409, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteConflict %s", 409, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteConflict) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *PcloudSharedprocessorpoolsDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools/{shared_processor_pool_id}][%d] pcloudSharedprocessorpoolsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudSharedprocessorpoolsDeleteInternalServerError) GetPayload() *models.Error {
