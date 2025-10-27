@@ -6,7 +6,6 @@ package iaas_service_broker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -104,13 +103,11 @@ func (o *ServiceBrokerTestTimeoutOK) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK %s", 200, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK %s", 200, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutOK) GetPayload() models.Object {
@@ -172,13 +169,11 @@ func (o *ServiceBrokerTestTimeoutBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutBadRequest) GetPayload() *models.Error {
@@ -242,13 +237,11 @@ func (o *ServiceBrokerTestTimeoutUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutUnauthorized) GetPayload() *models.Error {
@@ -312,13 +305,11 @@ func (o *ServiceBrokerTestTimeoutForbidden) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutForbidden) GetPayload() *models.Error {
@@ -382,13 +373,11 @@ func (o *ServiceBrokerTestTimeoutNotFound) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerTestTimeoutNotFound) GetPayload() *models.Error {

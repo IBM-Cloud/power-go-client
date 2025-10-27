@@ -22,7 +22,7 @@ type NetworkSecurityGroupsAction struct {
 
 	// Name of the action to take; can be enable to enable NSGs in a workspace or disable to disable NSGs in a workspace
 	// Required: true
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	Action *string `json:"action"`
 }
 

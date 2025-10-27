@@ -6,7 +6,6 @@ package p_cloud_virtual_serial_number
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -122,13 +121,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostAccepted %s", 202, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostAccepted %s", 202, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostAccepted  %+v", 202, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostAccepted) GetPayload() *models.VirtualSerialNumber {
@@ -192,13 +189,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostBadRequest) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostBadRequest) GetPayload() *models.Error {
@@ -262,13 +257,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostUnauthorized) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostUnauthorized) GetPayload() *models.Error {
@@ -332,13 +325,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostForbidden) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostForbidden) GetPayload() *models.Error {
@@ -402,13 +393,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostNotFound) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostNotFound) GetPayload() *models.Error {
@@ -472,13 +461,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostConflict) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostConflict) GetPayload() *models.Error {
@@ -542,13 +529,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostInternalServerError) Code() in
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostInternalServerError) GetPayload() *models.Error {
@@ -612,13 +597,11 @@ func (o *PcloudPvminstancesVirtualserialnumberPostGatewayTimeout) Code() int {
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostGatewayTimeout) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostGatewayTimeout %s", 504, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostGatewayTimeout  %+v", 504, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostGatewayTimeout) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostGatewayTimeout %s", 504, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/virtual-serial-number][%d] pcloudPvminstancesVirtualserialnumberPostGatewayTimeout  %+v", 504, o.Payload)
 }
 
 func (o *PcloudPvminstancesVirtualserialnumberPostGatewayTimeout) GetPayload() *models.Error {

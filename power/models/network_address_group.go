@@ -35,8 +35,8 @@ type NetworkAddressGroup struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// The user tags associated with this resource.
-	UserTags []string `json:"userTags,omitempty"`
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 }
 
 // Validate validates this network address group
@@ -56,6 +56,10 @@ func (m *NetworkAddressGroup) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -118,11 +122,32 @@ func (m *NetworkAddressGroup) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NetworkAddressGroup) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this network address group based on the context it is used
 func (m *NetworkAddressGroup) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateMembers(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -152,6 +177,20 @@ func (m *NetworkAddressGroup) contextValidateMembers(ctx context.Context, format
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *NetworkAddressGroup) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil

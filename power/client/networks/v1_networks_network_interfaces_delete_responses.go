@@ -6,7 +6,6 @@ package networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1NetworksNetworkInterfacesDeleteOK) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *V1NetworksNetworkInterfacesDeleteBadRequest) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *V1NetworksNetworkInterfacesDeleteUnauthorized) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *V1NetworksNetworkInterfacesDeleteForbidden) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *V1NetworksNetworkInterfacesDeleteNotFound) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *V1NetworksNetworkInterfacesDeleteGone) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteGone) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *V1NetworksNetworkInterfacesDeleteInternalServerError) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworksNetworkInterfacesDeleteInternalServerError) GetPayload() *models.Error {
