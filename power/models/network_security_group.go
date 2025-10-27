@@ -41,8 +41,8 @@ type NetworkSecurityGroup struct {
 	// The list of rules in the Network Security Group
 	Rules []*NetworkSecurityGroupRule `json:"rules"`
 
-	// The user tags associated with this resource.
-	UserTags []string `json:"userTags,omitempty"`
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 }
 
 // Validate validates this network security group
@@ -66,6 +66,10 @@ func (m *NetworkSecurityGroup) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateRules(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -154,6 +158,23 @@ func (m *NetworkSecurityGroup) validateRules(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *NetworkSecurityGroup) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this network security group based on the context it is used
 func (m *NetworkSecurityGroup) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -163,6 +184,10 @@ func (m *NetworkSecurityGroup) ContextValidate(ctx context.Context, formats strf
 	}
 
 	if err := m.contextValidateRules(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -217,6 +242,20 @@ func (m *NetworkSecurityGroup) contextValidateRules(ctx context.Context, formats
 			}
 		}
 
+	}
+
+	return nil
+}
+
+func (m *NetworkSecurityGroup) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
+		}
+		return err
 	}
 
 	return nil

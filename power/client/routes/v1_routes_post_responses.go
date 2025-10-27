@@ -6,7 +6,6 @@ package routes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -122,13 +121,11 @@ func (o *V1RoutesPostCreated) Code() int {
 }
 
 func (o *V1RoutesPostCreated) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *V1RoutesPostCreated) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *V1RoutesPostCreated) GetPayload() *models.Route {
@@ -192,13 +189,11 @@ func (o *V1RoutesPostBadRequest) Code() int {
 }
 
 func (o *V1RoutesPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1RoutesPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1RoutesPostBadRequest) GetPayload() *models.Error {
@@ -262,13 +257,11 @@ func (o *V1RoutesPostUnauthorized) Code() int {
 }
 
 func (o *V1RoutesPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1RoutesPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1RoutesPostUnauthorized) GetPayload() *models.Error {
@@ -332,13 +325,11 @@ func (o *V1RoutesPostForbidden) Code() int {
 }
 
 func (o *V1RoutesPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1RoutesPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1RoutesPostForbidden) GetPayload() *models.Error {
@@ -402,13 +393,11 @@ func (o *V1RoutesPostNotFound) Code() int {
 }
 
 func (o *V1RoutesPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1RoutesPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1RoutesPostNotFound) GetPayload() *models.Error {
@@ -472,13 +461,11 @@ func (o *V1RoutesPostConflict) Code() int {
 }
 
 func (o *V1RoutesPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1RoutesPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1RoutesPostConflict) GetPayload() *models.Error {
@@ -542,13 +529,11 @@ func (o *V1RoutesPostUnprocessableEntity) Code() int {
 }
 
 func (o *V1RoutesPostUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *V1RoutesPostUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *V1RoutesPostUnprocessableEntity) GetPayload() *models.Error {
@@ -612,13 +597,11 @@ func (o *V1RoutesPostInternalServerError) Code() int {
 }
 
 func (o *V1RoutesPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1RoutesPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /v1/routes][%d] v1RoutesPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1RoutesPostInternalServerError) GetPayload() *models.Error {

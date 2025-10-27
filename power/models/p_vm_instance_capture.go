@@ -22,7 +22,7 @@ type PVMInstanceCapture struct {
 
 	// Destination for the deployable image
 	// Required: true
-	// Enum: ["image-catalog","cloud-storage","both"]
+	// Enum: [image-catalog cloud-storage both]
 	CaptureDestination *string `json:"captureDestination"`
 
 	// Name of the deployable image created for the captured PVMInstance

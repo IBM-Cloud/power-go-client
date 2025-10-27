@@ -16,7 +16,7 @@ import (
 
 // VPNConnectionUpdate VPN Connection object to send during the update
 //
-// MinProperties: 1
+// Min Properties: 1
 //
 // swagger:model VPNConnectionUpdate
 type VPNConnectionUpdate struct {

@@ -6,7 +6,6 @@ package authentication
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *ServiceBrokerAuthLogoutOK) Code() int {
 }
 
 func (o *ServiceBrokerAuthLogoutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutOK %s", 200, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutOK %s", 200, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutOK) GetPayload() models.Object {
@@ -178,13 +175,11 @@ func (o *ServiceBrokerAuthLogoutBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerAuthLogoutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutBadRequest) GetPayload() *models.Error {
@@ -248,13 +243,11 @@ func (o *ServiceBrokerAuthLogoutUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerAuthLogoutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutUnauthorized) GetPayload() *models.Error {
@@ -318,13 +311,11 @@ func (o *ServiceBrokerAuthLogoutForbidden) Code() int {
 }
 
 func (o *ServiceBrokerAuthLogoutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutForbidden) GetPayload() *models.Error {
@@ -388,13 +379,11 @@ func (o *ServiceBrokerAuthLogoutNotFound) Code() int {
 }
 
 func (o *ServiceBrokerAuthLogoutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutNotFound) GetPayload() *models.Error {
@@ -458,13 +447,11 @@ func (o *ServiceBrokerAuthLogoutInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerAuthLogoutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /auth/v1/logout][%d] serviceBrokerAuthLogoutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerAuthLogoutInternalServerError) GetPayload() *models.Error {

@@ -6,7 +6,6 @@ package p_cloud_v_p_n_policies
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudIkepoliciesGetallOK) Code() int {
 }
 
 func (o *PcloudIkepoliciesGetallOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallOK) GetPayload() *models.IKEPolicies {
@@ -180,13 +177,11 @@ func (o *PcloudIkepoliciesGetallBadRequest) Code() int {
 }
 
 func (o *PcloudIkepoliciesGetallBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudIkepoliciesGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudIkepoliciesGetallUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudIkepoliciesGetallForbidden) Code() int {
 }
 
 func (o *PcloudIkepoliciesGetallForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudIkepoliciesGetallNotFound) Code() int {
 }
 
 func (o *PcloudIkepoliciesGetallNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudIkepoliciesGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudIkepoliciesGetallInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ike-policies][%d] pcloudIkepoliciesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudIkepoliciesGetallInternalServerError) GetPayload() *models.Error {

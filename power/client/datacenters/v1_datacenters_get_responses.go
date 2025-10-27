@@ -6,7 +6,6 @@ package datacenters
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -104,13 +103,11 @@ func (o *V1DatacentersGetOK) Code() int {
 }
 
 func (o *V1DatacentersGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK  %+v", 200, o.Payload)
 }
 
 func (o *V1DatacentersGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK  %+v", 200, o.Payload)
 }
 
 func (o *V1DatacentersGetOK) GetPayload() *models.Datacenter {
@@ -174,13 +171,11 @@ func (o *V1DatacentersGetBadRequest) Code() int {
 }
 
 func (o *V1DatacentersGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1DatacentersGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1DatacentersGetBadRequest) GetPayload() *models.Error {
@@ -244,13 +239,11 @@ func (o *V1DatacentersGetUnauthorized) Code() int {
 }
 
 func (o *V1DatacentersGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1DatacentersGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1DatacentersGetUnauthorized) GetPayload() *models.Error {
@@ -314,13 +307,11 @@ func (o *V1DatacentersGetForbidden) Code() int {
 }
 
 func (o *V1DatacentersGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1DatacentersGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1DatacentersGetForbidden) GetPayload() *models.Error {
@@ -384,13 +375,11 @@ func (o *V1DatacentersGetInternalServerError) Code() int {
 }
 
 func (o *V1DatacentersGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1DatacentersGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1DatacentersGetInternalServerError) GetPayload() *models.Error {

@@ -6,7 +6,6 @@ package internal_operations_shared_processor_pools
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -121,11 +120,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteNoContent) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNoContent", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNoContent ", 204)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteNoContent) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNoContent", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNoContent ", 204)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -178,13 +177,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteBadRequest) GetPayload() *models.Error {
@@ -248,13 +245,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized) Code() int 
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized) GetPayload() *models.Error {
@@ -318,13 +313,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteForbidden) GetPayload() *models.Error {
@@ -388,13 +381,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteNotFound) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteNotFound) GetPayload() *models.Error {
@@ -458,13 +449,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteGone) Code() int {
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteGone) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteGone) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteGone %s", 410, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteGone  %+v", 410, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteGone) GetPayload() *models.Error {
@@ -528,13 +517,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests) Code() i
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests) GetPayload() *models.Error {
@@ -598,13 +585,11 @@ func (o *InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError) Code
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/shared-processor-pools/{resource_crn}][%d] internalV1OperationsSharedprocessorpoolsDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError) GetPayload() *models.Error {

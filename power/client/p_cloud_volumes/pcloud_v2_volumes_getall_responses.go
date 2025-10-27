@@ -6,7 +6,6 @@ package p_cloud_volumes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudV2VolumesGetallOK) Code() int {
 }
 
 func (o *PcloudV2VolumesGetallOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallOK) GetPayload() *models.Volumes {
@@ -180,13 +177,11 @@ func (o *PcloudV2VolumesGetallBadRequest) Code() int {
 }
 
 func (o *PcloudV2VolumesGetallBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudV2VolumesGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudV2VolumesGetallUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudV2VolumesGetallForbidden) Code() int {
 }
 
 func (o *PcloudV2VolumesGetallForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudV2VolumesGetallNotFound) Code() int {
 }
 
 func (o *PcloudV2VolumesGetallNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudV2VolumesGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudV2VolumesGetallInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/volumes][%d] pcloudV2VolumesGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudV2VolumesGetallInternalServerError) GetPayload() *models.Error {

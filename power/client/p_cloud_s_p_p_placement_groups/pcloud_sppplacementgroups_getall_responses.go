@@ -6,7 +6,6 @@ package p_cloud_s_p_p_placement_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudSppplacementgroupsGetallOK) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsGetallOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallOK) GetPayload() *models.SPPPlacementGroups {
@@ -180,13 +177,11 @@ func (o *PcloudSppplacementgroupsGetallBadRequest) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsGetallBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudSppplacementgroupsGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsGetallUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudSppplacementgroupsGetallForbidden) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsGetallForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudSppplacementgroupsGetallNotFound) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsGetallNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudSppplacementgroupsGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsGetallInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups][%d] pcloudSppplacementgroupsGetallInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudSppplacementgroupsGetallInternalServerError) GetPayload() *models.Error {

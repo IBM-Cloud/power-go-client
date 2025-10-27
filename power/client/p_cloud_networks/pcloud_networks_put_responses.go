@@ -6,7 +6,6 @@ package p_cloud_networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *PcloudNetworksPutOK) Code() int {
 }
 
 func (o *PcloudNetworksPutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudNetworksPutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudNetworksPutOK) GetPayload() *models.Network {
@@ -186,13 +183,11 @@ func (o *PcloudNetworksPutBadRequest) Code() int {
 }
 
 func (o *PcloudNetworksPutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudNetworksPutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudNetworksPutBadRequest) GetPayload() *models.Error {
@@ -256,13 +251,11 @@ func (o *PcloudNetworksPutUnauthorized) Code() int {
 }
 
 func (o *PcloudNetworksPutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudNetworksPutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudNetworksPutUnauthorized) GetPayload() *models.Error {
@@ -326,13 +319,11 @@ func (o *PcloudNetworksPutForbidden) Code() int {
 }
 
 func (o *PcloudNetworksPutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudNetworksPutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudNetworksPutForbidden) GetPayload() *models.Error {
@@ -396,13 +387,11 @@ func (o *PcloudNetworksPutNotFound) Code() int {
 }
 
 func (o *PcloudNetworksPutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudNetworksPutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudNetworksPutNotFound) GetPayload() *models.Error {
@@ -466,13 +455,11 @@ func (o *PcloudNetworksPutUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudNetworksPutUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudNetworksPutUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudNetworksPutUnprocessableEntity) GetPayload() *models.Error {
@@ -536,13 +523,11 @@ func (o *PcloudNetworksPutInternalServerError) Code() int {
 }
 
 func (o *PcloudNetworksPutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudNetworksPutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudNetworksPutInternalServerError) GetPayload() *models.Error {

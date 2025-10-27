@@ -22,17 +22,17 @@ type ImageImportDetails struct {
 
 	// Origin of the license of the product
 	// Required: true
-	// Enum: ["byol"]
+	// Enum: [byol]
 	LicenseType *string `json:"licenseType"`
 
 	// Product within the image
 	// Required: true
-	// Enum: ["Hana","Netweaver"]
+	// Enum: [Hana Netweaver]
 	Product *string `json:"product"`
 
 	// Vendor supporting the product
 	// Required: true
-	// Enum: ["SAP"]
+	// Enum: [SAP]
 	Vendor *string `json:"vendor"`
 }
 

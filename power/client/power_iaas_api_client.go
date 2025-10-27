@@ -26,6 +26,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_pvm_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_shared_processor_pools"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_snapshots"
+	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_v_p_mem_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_volumes"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_instances"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_power_v_s_locations"
@@ -133,6 +134,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.InternalOperationsPvmInstances = internal_operations_pvm_instances.New(transport, formats)
 	cli.InternalOperationsSharedProcessorPools = internal_operations_shared_processor_pools.New(transport, formats)
 	cli.InternalOperationsSnapshots = internal_operations_snapshots.New(transport, formats)
+	cli.InternalOperationsvpMemVolumes = internal_operations_v_p_mem_volumes.New(transport, formats)
 	cli.InternalOperationsVolumes = internal_operations_volumes.New(transport, formats)
 	cli.InternalPowervsInstances = internal_power_v_s_instances.New(transport, formats)
 	cli.InternalPowervsLocations = internal_power_v_s_locations.New(transport, formats)
@@ -256,6 +258,8 @@ type PowerIaasAPI struct {
 
 	InternalOperationsSnapshots internal_operations_snapshots.ClientService
 
+	InternalOperationsvpMemVolumes internal_operations_v_p_mem_volumes.ClientService
+
 	InternalOperationsVolumes internal_operations_volumes.ClientService
 
 	InternalPowervsInstances internal_power_v_s_instances.ClientService
@@ -372,6 +376,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.InternalOperationsPvmInstances.SetTransport(transport)
 	c.InternalOperationsSharedProcessorPools.SetTransport(transport)
 	c.InternalOperationsSnapshots.SetTransport(transport)
+	c.InternalOperationsvpMemVolumes.SetTransport(transport)
 	c.InternalOperationsVolumes.SetTransport(transport)
 	c.InternalPowervsInstances.SetTransport(transport)
 	c.InternalPowervsLocations.SetTransport(transport)
