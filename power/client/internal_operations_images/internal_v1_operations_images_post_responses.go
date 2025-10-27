@@ -6,7 +6,6 @@ package internal_operations_images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *InternalV1OperationsImagesPostCreated) Code() int {
 }
 
 func (o *InternalV1OperationsImagesPostCreated) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostCreated) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostCreated) GetPayload() *models.InternalOperationsResponse {
@@ -180,13 +177,11 @@ func (o *InternalV1OperationsImagesPostBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsImagesPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *InternalV1OperationsImagesPostUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsImagesPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *InternalV1OperationsImagesPostForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsImagesPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *InternalV1OperationsImagesPostTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsImagesPostTooManyRequests) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostTooManyRequests) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostTooManyRequests %s", 429, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostTooManyRequests  %+v", 429, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostTooManyRequests) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *InternalV1OperationsImagesPostInternalServerError) Code() int {
 }
 
 func (o *InternalV1OperationsImagesPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/images][%d] internalV1OperationsImagesPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *InternalV1OperationsImagesPostInternalServerError) GetPayload() *models.Error {

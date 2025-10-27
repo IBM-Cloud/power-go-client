@@ -6,7 +6,6 @@ package routes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1RoutesPutOK) Code() int {
 }
 
 func (o *V1RoutesPutOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutOK  %+v", 200, o.Payload)
 }
 
 func (o *V1RoutesPutOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutOK %s", 200, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutOK  %+v", 200, o.Payload)
 }
 
 func (o *V1RoutesPutOK) GetPayload() *models.Route {
@@ -186,13 +183,11 @@ func (o *V1RoutesPutBadRequest) Code() int {
 }
 
 func (o *V1RoutesPutBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1RoutesPutBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutBadRequest %s", 400, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1RoutesPutBadRequest) GetPayload() *models.Error {
@@ -256,13 +251,11 @@ func (o *V1RoutesPutUnauthorized) Code() int {
 }
 
 func (o *V1RoutesPutUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1RoutesPutUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1RoutesPutUnauthorized) GetPayload() *models.Error {
@@ -326,13 +319,11 @@ func (o *V1RoutesPutForbidden) Code() int {
 }
 
 func (o *V1RoutesPutForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1RoutesPutForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutForbidden %s", 403, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1RoutesPutForbidden) GetPayload() *models.Error {
@@ -396,13 +387,11 @@ func (o *V1RoutesPutNotFound) Code() int {
 }
 
 func (o *V1RoutesPutNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1RoutesPutNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutNotFound %s", 404, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1RoutesPutNotFound) GetPayload() *models.Error {
@@ -466,13 +455,11 @@ func (o *V1RoutesPutUnprocessableEntity) Code() int {
 }
 
 func (o *V1RoutesPutUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *V1RoutesPutUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *V1RoutesPutUnprocessableEntity) GetPayload() *models.Error {
@@ -536,13 +523,11 @@ func (o *V1RoutesPutInternalServerError) Code() int {
 }
 
 func (o *V1RoutesPutInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1RoutesPutInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[PUT /v1/routes/{route_id}][%d] v1RoutesPutInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1RoutesPutInternalServerError) GetPayload() *models.Error {

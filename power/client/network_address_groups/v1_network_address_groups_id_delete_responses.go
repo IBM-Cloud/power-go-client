@@ -6,7 +6,6 @@ package network_address_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1NetworkAddressGroupsIDDeleteOK) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteOK %s", 200, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteOK) GetPayload() models.Object {
@@ -184,13 +181,11 @@ func (o *V1NetworkAddressGroupsIDDeleteBadRequest) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteBadRequest %s", 400, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteBadRequest) GetPayload() *models.Error {
@@ -254,13 +249,11 @@ func (o *V1NetworkAddressGroupsIDDeleteUnauthorized) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteUnauthorized) GetPayload() *models.Error {
@@ -324,13 +317,11 @@ func (o *V1NetworkAddressGroupsIDDeleteForbidden) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteForbidden %s", 403, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteForbidden) GetPayload() *models.Error {
@@ -394,13 +385,11 @@ func (o *V1NetworkAddressGroupsIDDeleteNotFound) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteNotFound %s", 404, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteNotFound) GetPayload() *models.Error {
@@ -464,13 +453,11 @@ func (o *V1NetworkAddressGroupsIDDeleteConflict) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteConflict %s", 409, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteConflict %s", 409, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteConflict) GetPayload() *models.Error {
@@ -534,13 +521,11 @@ func (o *V1NetworkAddressGroupsIDDeleteInternalServerError) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[DELETE /v1/network-address-groups/{network_address_group_id}][%d] v1NetworkAddressGroupsIdDeleteInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworkAddressGroupsIDDeleteInternalServerError) GetPayload() *models.Error {

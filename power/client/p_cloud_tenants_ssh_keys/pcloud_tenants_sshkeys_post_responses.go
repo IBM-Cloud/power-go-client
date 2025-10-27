@@ -6,7 +6,6 @@ package p_cloud_tenants_ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -128,13 +127,11 @@ func (o *PcloudTenantsSshkeysPostOK) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostOK) GetPayload() *models.SSHKey {
@@ -198,13 +195,11 @@ func (o *PcloudTenantsSshkeysPostCreated) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostCreated) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostCreated) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostCreated %s", 201, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostCreated  %+v", 201, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostCreated) GetPayload() *models.SSHKey {
@@ -268,13 +263,11 @@ func (o *PcloudTenantsSshkeysPostBadRequest) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostBadRequest) GetPayload() *models.Error {
@@ -338,13 +331,11 @@ func (o *PcloudTenantsSshkeysPostUnauthorized) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostUnauthorized) GetPayload() *models.Error {
@@ -408,13 +399,11 @@ func (o *PcloudTenantsSshkeysPostForbidden) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostForbidden) GetPayload() *models.Error {
@@ -478,13 +467,11 @@ func (o *PcloudTenantsSshkeysPostNotFound) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostNotFound) GetPayload() *models.Error {
@@ -548,13 +535,11 @@ func (o *PcloudTenantsSshkeysPostConflict) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostConflict) GetPayload() *models.Error {
@@ -618,13 +603,11 @@ func (o *PcloudTenantsSshkeysPostUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostUnprocessableEntity) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostUnprocessableEntity) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnprocessableEntity %s", 422, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostUnprocessableEntity  %+v", 422, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostUnprocessableEntity) GetPayload() *models.Error {
@@ -688,13 +671,11 @@ func (o *PcloudTenantsSshkeysPostInternalServerError) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudTenantsSshkeysPostInternalServerError) GetPayload() *models.Error {

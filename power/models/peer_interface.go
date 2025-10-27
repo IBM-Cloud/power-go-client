@@ -38,7 +38,7 @@ type PeerInterface struct {
 	// type of peer interface
 	// Example: interface
 	// Required: true
-	// Enum: ["interface","lag"]
+	// Enum: [interface lag]
 	PeerType *string `json:"peerType"`
 
 	// port ID of the peer interface

@@ -6,7 +6,6 @@ package open_stacks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *ServiceBrokerOpenstacksServersGetOK) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksServersGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetOK  %+v", 200, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetOK) GetPayload() *models.HostPVMInstance {
@@ -180,13 +177,11 @@ func (o *ServiceBrokerOpenstacksServersGetBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksServersGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *ServiceBrokerOpenstacksServersGetUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksServersGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *ServiceBrokerOpenstacksServersGetForbidden) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksServersGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *ServiceBrokerOpenstacksServersGetNotFound) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksServersGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *ServiceBrokerOpenstacksServersGetInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksServersGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/servers/{pvm_instance_id}][%d] serviceBrokerOpenstacksServersGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *ServiceBrokerOpenstacksServersGetInternalServerError) GetPayload() *models.Error {

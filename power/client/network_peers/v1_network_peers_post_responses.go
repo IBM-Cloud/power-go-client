@@ -6,7 +6,6 @@ package network_peers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -116,13 +115,11 @@ func (o *V1NetworkPeersPostOK) Code() int {
 }
 
 func (o *V1NetworkPeersPostOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworkPeersPostOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK %s", 200, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK  %+v", 200, o.Payload)
 }
 
 func (o *V1NetworkPeersPostOK) GetPayload() *models.NetworkPeer {
@@ -186,13 +183,11 @@ func (o *V1NetworkPeersPostBadRequest) Code() int {
 }
 
 func (o *V1NetworkPeersPostBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworkPeersPostBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest %s", 400, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *V1NetworkPeersPostBadRequest) GetPayload() *models.Error {
@@ -256,13 +251,11 @@ func (o *V1NetworkPeersPostUnauthorized) Code() int {
 }
 
 func (o *V1NetworkPeersPostUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworkPeersPostUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *V1NetworkPeersPostUnauthorized) GetPayload() *models.Error {
@@ -326,13 +319,11 @@ func (o *V1NetworkPeersPostForbidden) Code() int {
 }
 
 func (o *V1NetworkPeersPostForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworkPeersPostForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden %s", 403, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden  %+v", 403, o.Payload)
 }
 
 func (o *V1NetworkPeersPostForbidden) GetPayload() *models.Error {
@@ -396,13 +387,11 @@ func (o *V1NetworkPeersPostNotFound) Code() int {
 }
 
 func (o *V1NetworkPeersPostNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworkPeersPostNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound %s", 404, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound  %+v", 404, o.Payload)
 }
 
 func (o *V1NetworkPeersPostNotFound) GetPayload() *models.Error {
@@ -466,13 +455,11 @@ func (o *V1NetworkPeersPostConflict) Code() int {
 }
 
 func (o *V1NetworkPeersPostConflict) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1NetworkPeersPostConflict) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict %s", 409, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict  %+v", 409, o.Payload)
 }
 
 func (o *V1NetworkPeersPostConflict) GetPayload() *models.Error {
@@ -536,13 +523,11 @@ func (o *V1NetworkPeersPostInternalServerError) Code() int {
 }
 
 func (o *V1NetworkPeersPostInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworkPeersPostInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *V1NetworkPeersPostInternalServerError) GetPayload() *models.Error {
