@@ -6,7 +6,6 @@ package p_cloud_pod_capacity
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
-	"encoding/json"
 	"fmt"
 	"io"
 
@@ -110,13 +109,11 @@ func (o *PcloudPodcapacityGetOK) Code() int {
 }
 
 func (o *PcloudPodcapacityGetOK) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetOK) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK %s", 200, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK  %+v", 200, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetOK) GetPayload() *models.PodCapacity {
@@ -180,13 +177,11 @@ func (o *PcloudPodcapacityGetBadRequest) Code() int {
 }
 
 func (o *PcloudPodcapacityGetBadRequest) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetBadRequest) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest %s", 400, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest  %+v", 400, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetBadRequest) GetPayload() *models.Error {
@@ -250,13 +245,11 @@ func (o *PcloudPodcapacityGetUnauthorized) Code() int {
 }
 
 func (o *PcloudPodcapacityGetUnauthorized) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetUnauthorized) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized %s", 401, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized  %+v", 401, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetUnauthorized) GetPayload() *models.Error {
@@ -320,13 +313,11 @@ func (o *PcloudPodcapacityGetForbidden) Code() int {
 }
 
 func (o *PcloudPodcapacityGetForbidden) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetForbidden) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden %s", 403, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden  %+v", 403, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetForbidden) GetPayload() *models.Error {
@@ -390,13 +381,11 @@ func (o *PcloudPodcapacityGetNotFound) Code() int {
 }
 
 func (o *PcloudPodcapacityGetNotFound) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetNotFound) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound %s", 404, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound  %+v", 404, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetNotFound) GetPayload() *models.Error {
@@ -460,13 +449,11 @@ func (o *PcloudPodcapacityGetInternalServerError) Code() int {
 }
 
 func (o *PcloudPodcapacityGetInternalServerError) Error() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetInternalServerError) String() string {
-	payload, _ := json.Marshal(o.Payload)
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError %s", 500, payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError  %+v", 500, o.Payload)
 }
 
 func (o *PcloudPodcapacityGetInternalServerError) GetPayload() *models.Error {

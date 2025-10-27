@@ -55,7 +55,7 @@ type VPMemVolumeReference struct {
 
 	// The date and time when the volume was updated
 	// Format: date-time
-	UpdatedDate strfmt.DateTime `json:"updatedDate,omitempty"`
+	UpdatedDate *strfmt.DateTime `json:"updatedDate,omitempty"`
 
 	// Volume ID
 	// Required: true

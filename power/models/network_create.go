@@ -26,11 +26,11 @@ type NetworkCreate struct {
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
 	// Indicates if the network is advertised externally of the workspace to PER and\or peer networks
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	Advertise *string `json:"advertise,omitempty"`
 
 	// Indicates if ARP broadcast is enabled
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	ArpBroadcast *string `json:"arpBroadcast,omitempty"`
 
 	// Network in CIDR notation (192.168.0.0/24)
@@ -38,6 +38,9 @@ type NetworkCreate struct {
 
 	// DNS Servers. If not specified, default is 127.0.0.1 for 'vlan' (private network) and 9.9.9.9 for 'pub-vlan' (public network)
 	DNSServers []string `json:"dnsServers"`
+
+	// network will support DHCP
+	EnableDHCP *bool `json:"enableDHCP,omitempty"`
 
 	// Gateway IP Address
 	Gateway string `json:"gateway,omitempty"`
@@ -61,9 +64,9 @@ type NetworkCreate struct {
 	// Network Peer information
 	Peer *NetworkCreatePeer `json:"peer,omitempty"`
 
-	// Type of Network - 'vlan' (private network), 'pub-vlan' (public network), 'dhcp-vlan'[DEPRECATED]
+	// Type of Network - 'vlan' (private network), 'pub-vlan' (public network)
 	// Required: true
-	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
+	// Enum: [vlan pub-vlan]
 	Type *string `json:"type"`
 
 	// user tags
@@ -310,7 +313,7 @@ var networkCreateTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["vlan","pub-vlan","dhcp-vlan"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["vlan","pub-vlan"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -325,9 +328,6 @@ const (
 
 	// NetworkCreateTypePubDashVlan captures enum value "pub-vlan"
 	NetworkCreateTypePubDashVlan string = "pub-vlan"
-
-	// NetworkCreateTypeDhcpDashVlan captures enum value "dhcp-vlan"
-	NetworkCreateTypeDhcpDashVlan string = "dhcp-vlan"
 )
 
 // prop value enum

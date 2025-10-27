@@ -24,11 +24,11 @@ type NetworkReference struct {
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
 	// Indicates if the network is advertised externally of the workspace to PER and\or peer networks
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	Advertise string `json:"advertise,omitempty"`
 
 	// Indicates if the ARP broadcast is enabled
-	// Enum: ["enable","disable"]
+	// Enum: [enable disable]
 	ArpBroadcast string `json:"arpBroadcast,omitempty"`
 
 	// crn
@@ -62,7 +62,7 @@ type NetworkReference struct {
 
 	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
 	// Required: true
-	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
+	// Enum: [vlan pub-vlan dhcp-vlan]
 	Type *string `json:"type"`
 
 	// VLAN ID
