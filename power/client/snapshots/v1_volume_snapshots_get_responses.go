@@ -6,6 +6,8 @@ package snapshots
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1VolumeSnapshotsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1VolumeSnapshotsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1VolumeSnapshotsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1VolumeSnapshotsGetOK()
@@ -115,11 +117,13 @@ func (o *V1VolumeSnapshotsGetOK) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK %s", 200, payload)
 }
 
 func (o *V1VolumeSnapshotsGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetOK %s", 200, payload)
 }
 
 func (o *V1VolumeSnapshotsGetOK) GetPayload() *models.SnapshotV1 {
@@ -131,7 +135,7 @@ func (o *V1VolumeSnapshotsGetOK) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.SnapshotV1)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *V1VolumeSnapshotsGetBadRequest) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1VolumeSnapshotsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1VolumeSnapshotsGetBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *V1VolumeSnapshotsGetBadRequest) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *V1VolumeSnapshotsGetUnauthorized) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1VolumeSnapshotsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1VolumeSnapshotsGetUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *V1VolumeSnapshotsGetUnauthorized) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *V1VolumeSnapshotsGetForbidden) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden %s", 403, payload)
 }
 
 func (o *V1VolumeSnapshotsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetForbidden %s", 403, payload)
 }
 
 func (o *V1VolumeSnapshotsGetForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *V1VolumeSnapshotsGetForbidden) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *V1VolumeSnapshotsGetNotFound) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound %s", 404, payload)
 }
 
 func (o *V1VolumeSnapshotsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetNotFound %s", 404, payload)
 }
 
 func (o *V1VolumeSnapshotsGetNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *V1VolumeSnapshotsGetNotFound) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *V1VolumeSnapshotsGetInternalServerError) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1VolumeSnapshotsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1VolumeSnapshotsGetInternalServerError) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *V1VolumeSnapshotsGetInternalServerError) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *V1VolumeSnapshotsGetServiceUnavailable) Code() int {
 }
 
 func (o *V1VolumeSnapshotsGetServiceUnavailable) Error() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable  %+v", 503, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable %s", 503, payload)
 }
 
 func (o *V1VolumeSnapshotsGetServiceUnavailable) String() string {
-	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable  %+v", 503, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/volume-snapshots/{volume_snapshot_uuid}][%d] v1VolumeSnapshotsGetServiceUnavailable %s", 503, payload)
 }
 
 func (o *V1VolumeSnapshotsGetServiceUnavailable) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *V1VolumeSnapshotsGetServiceUnavailable) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

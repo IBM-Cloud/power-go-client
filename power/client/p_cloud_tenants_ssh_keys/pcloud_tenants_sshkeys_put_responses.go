@@ -6,6 +6,8 @@ package p_cloud_tenants_ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudTenantsSshkeysPutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudTenantsSshkeysPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudTenantsSshkeysPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudTenantsSshkeysPutOK()
@@ -115,11 +117,13 @@ func (o *PcloudTenantsSshkeysPutOK) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutOK) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK %s", 200, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutOK) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutOK %s", 200, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutOK) GetPayload() *models.SSHKey {
@@ -131,7 +135,7 @@ func (o *PcloudTenantsSshkeysPutOK) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.SSHKey)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *PcloudTenantsSshkeysPutBadRequest) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *PcloudTenantsSshkeysPutBadRequest) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *PcloudTenantsSshkeysPutUnauthorized) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *PcloudTenantsSshkeysPutUnauthorized) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *PcloudTenantsSshkeysPutForbidden) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *PcloudTenantsSshkeysPutForbidden) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *PcloudTenantsSshkeysPutNotFound) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *PcloudTenantsSshkeysPutNotFound) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *PcloudTenantsSshkeysPutUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnprocessableEntity) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutUnprocessableEntity) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *PcloudTenantsSshkeysPutUnprocessableEntity) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *PcloudTenantsSshkeysPutInternalServerError) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/tenants/{tenant_id}/sshkeys/{sshkey_name}][%d] pcloudTenantsSshkeysPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudTenantsSshkeysPutInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *PcloudTenantsSshkeysPutInternalServerError) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

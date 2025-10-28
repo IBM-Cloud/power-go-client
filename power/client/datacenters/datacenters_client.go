@@ -9,12 +9,38 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new datacenters API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new datacenters API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new datacenters API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -25,7 +51,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -45,7 +71,7 @@ type ClientService interface {
 V1DatacentersGet gets a datacenter s information and capabilities
 */
 func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, opts ...ClientOption) (*V1DatacentersGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1DatacentersGetParams()
 	}
@@ -64,17 +90,22 @@ func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, opts ...Client
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1DatacentersGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.datacenters.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -83,7 +114,7 @@ func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, opts ...Client
 V1DatacentersGetall gets all datacenters information and capabilities
 */
 func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...ClientOption) (*V1DatacentersGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1DatacentersGetallParams()
 	}
@@ -102,17 +133,22 @@ func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1DatacentersGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.datacenters.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -121,7 +157,7 @@ func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...
 V1DatacentersPrivateGet gets a private datacenter s information and capabilities
 */
 func (a *Client) V1DatacentersPrivateGet(params *V1DatacentersPrivateGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersPrivateGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1DatacentersPrivateGetParams()
 	}
@@ -141,17 +177,22 @@ func (a *Client) V1DatacentersPrivateGet(params *V1DatacentersPrivateGetParams, 
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1DatacentersPrivateGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.datacentersPrivate.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -160,7 +201,7 @@ func (a *Client) V1DatacentersPrivateGet(params *V1DatacentersPrivateGetParams, 
 V1DatacentersPrivateGetall gets private datacenter information and capabilities
 */
 func (a *Client) V1DatacentersPrivateGetall(params *V1DatacentersPrivateGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersPrivateGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1DatacentersPrivateGetallParams()
 	}
@@ -180,17 +221,22 @@ func (a *Client) V1DatacentersPrivateGetall(params *V1DatacentersPrivateGetallPa
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1DatacentersPrivateGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.datacentersPrivate.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }

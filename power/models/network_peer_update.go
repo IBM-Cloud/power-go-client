@@ -33,7 +33,7 @@ type NetworkPeerUpdate struct {
 	// * deny: deny
 	//
 	// Example: allow
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	DefaultExportRouteFilter *string `json:"defaultExportRouteFilter,omitempty"`
 
 	// default action for import route filter
@@ -41,7 +41,7 @@ type NetworkPeerUpdate struct {
 	// * deny: deny
 	//
 	// Example: allow
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	DefaultImportRouteFilter *string `json:"defaultImportRouteFilter,omitempty"`
 
 	// ASN number at IBM PowerVS side
@@ -64,7 +64,7 @@ type NetworkPeerUpdate struct {
 	// * dcnetwork_bgp: broader gateway protocol is used to share routes between two autonomous network
 	//
 	// Example: dcnetwork_bgp
-	// Enum: [dcnetwork_bgp]
+	// Enum: ["dcnetwork_bgp"]
 	Type *string `json:"type,omitempty"`
 
 	// A vlan configured at the customer network.
@@ -94,7 +94,7 @@ func (m *NetworkPeerUpdate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkPeerUpdateTypeDefaultExportRouteFilterPropEnum []interface{}
+var networkPeerUpdateTypeDefaultExportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -136,7 +136,7 @@ func (m *NetworkPeerUpdate) validateDefaultExportRouteFilter(formats strfmt.Regi
 	return nil
 }
 
-var networkPeerUpdateTypeDefaultImportRouteFilterPropEnum []interface{}
+var networkPeerUpdateTypeDefaultImportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -178,7 +178,7 @@ func (m *NetworkPeerUpdate) validateDefaultImportRouteFilter(formats strfmt.Regi
 	return nil
 }
 
-var networkPeerUpdateTypeTypePropEnum []interface{}
+var networkPeerUpdateTypeTypePropEnum []any
 
 func init() {
 	var res []string

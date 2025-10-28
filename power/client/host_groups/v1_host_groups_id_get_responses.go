@@ -6,6 +6,8 @@ package host_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1HostGroupsIDGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1HostGroupsIDGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1HostGroupsIDGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1HostGroupsIDGetOK()
@@ -115,11 +117,13 @@ func (o *V1HostGroupsIDGetOK) Code() int {
 }
 
 func (o *V1HostGroupsIDGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetOK %s", 200, payload)
 }
 
 func (o *V1HostGroupsIDGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetOK %s", 200, payload)
 }
 
 func (o *V1HostGroupsIDGetOK) GetPayload() *models.HostGroup {
@@ -131,7 +135,7 @@ func (o *V1HostGroupsIDGetOK) readResponse(response runtime.ClientResponse, cons
 	o.Payload = new(models.HostGroup)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *V1HostGroupsIDGetBadRequest) Code() int {
 }
 
 func (o *V1HostGroupsIDGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetBadRequest %s", 400, payload)
 }
 
 func (o *V1HostGroupsIDGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetBadRequest %s", 400, payload)
 }
 
 func (o *V1HostGroupsIDGetBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *V1HostGroupsIDGetBadRequest) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *V1HostGroupsIDGetUnauthorized) Code() int {
 }
 
 func (o *V1HostGroupsIDGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostGroupsIDGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostGroupsIDGetUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *V1HostGroupsIDGetUnauthorized) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *V1HostGroupsIDGetForbidden) Code() int {
 }
 
 func (o *V1HostGroupsIDGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetForbidden %s", 403, payload)
 }
 
 func (o *V1HostGroupsIDGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetForbidden %s", 403, payload)
 }
 
 func (o *V1HostGroupsIDGetForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *V1HostGroupsIDGetForbidden) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *V1HostGroupsIDGetNotFound) Code() int {
 }
 
 func (o *V1HostGroupsIDGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetNotFound %s", 404, payload)
 }
 
 func (o *V1HostGroupsIDGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetNotFound %s", 404, payload)
 }
 
 func (o *V1HostGroupsIDGetNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *V1HostGroupsIDGetNotFound) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *V1HostGroupsIDGetInternalServerError) Code() int {
 }
 
 func (o *V1HostGroupsIDGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostGroupsIDGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostGroupsIDGetInternalServerError) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *V1HostGroupsIDGetInternalServerError) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *V1HostGroupsIDGetGatewayTimeout) Code() int {
 }
 
 func (o *V1HostGroupsIDGetGatewayTimeout) Error() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostGroupsIDGetGatewayTimeout) String() string {
-	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/host-groups/{host_group_id}][%d] v1HostGroupsIdGetGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostGroupsIDGetGatewayTimeout) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *V1HostGroupsIDGetGatewayTimeout) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

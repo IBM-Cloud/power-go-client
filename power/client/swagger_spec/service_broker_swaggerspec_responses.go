@@ -6,6 +6,8 @@ package swagger_spec
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerSwaggerspecReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerSwaggerspecReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerSwaggerspecReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerSwaggerspecOK()
@@ -103,11 +105,13 @@ func (o *ServiceBrokerSwaggerspecOK) Code() int {
 }
 
 func (o *ServiceBrokerSwaggerspecOK) Error() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecOK) String() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecOK) GetPayload() models.Object {
@@ -117,7 +121,7 @@ func (o *ServiceBrokerSwaggerspecOK) GetPayload() models.Object {
 func (o *ServiceBrokerSwaggerspecOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -169,11 +173,13 @@ func (o *ServiceBrokerSwaggerspecBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerSwaggerspecBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecBadRequest) GetPayload() *models.Error {
@@ -185,7 +191,7 @@ func (o *ServiceBrokerSwaggerspecBadRequest) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -237,11 +243,13 @@ func (o *ServiceBrokerSwaggerspecUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerSwaggerspecUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecUnauthorized) GetPayload() *models.Error {
@@ -253,7 +261,7 @@ func (o *ServiceBrokerSwaggerspecUnauthorized) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -305,11 +313,13 @@ func (o *ServiceBrokerSwaggerspecForbidden) Code() int {
 }
 
 func (o *ServiceBrokerSwaggerspecForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecForbidden) GetPayload() *models.Error {
@@ -321,7 +331,7 @@ func (o *ServiceBrokerSwaggerspecForbidden) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -373,11 +383,13 @@ func (o *ServiceBrokerSwaggerspecNotFound) Code() int {
 }
 
 func (o *ServiceBrokerSwaggerspecNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/swagger.json][%d] serviceBrokerSwaggerspecNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerSwaggerspecNotFound) GetPayload() *models.Error {
@@ -389,7 +401,7 @@ func (o *ServiceBrokerSwaggerspecNotFound) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

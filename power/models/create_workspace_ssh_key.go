@@ -34,7 +34,7 @@ type CreateWorkspaceSSHKey struct {
 	SSHKey *string `json:"sshKey" datastore:"sshKey"`
 
 	// Visibility of the sshkey; workspace suggests ssh-key is only accessible in a workspace, account suggests ssh-key is accessible throughout an account
-	// Enum: [account workspace]
+	// Enum: ["account","workspace"]
 	Visibility *string `json:"visibility,omitempty" datastore:"visibility"`
 }
 
@@ -86,7 +86,7 @@ func (m *CreateWorkspaceSSHKey) validateSSHKey(formats strfmt.Registry) error {
 	return nil
 }
 
-var createWorkspaceSshKeyTypeVisibilityPropEnum []interface{}
+var createWorkspaceSshKeyTypeVisibilityPropEnum []any
 
 func init() {
 	var res []string

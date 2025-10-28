@@ -6,6 +6,8 @@ package iaas_service_broker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerTestTimeoutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerTestTimeoutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerTestTimeoutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerTestTimeoutOK()
@@ -103,11 +105,13 @@ func (o *ServiceBrokerTestTimeoutOK) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutOK) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutOK) String() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutOK) GetPayload() models.Object {
@@ -117,7 +121,7 @@ func (o *ServiceBrokerTestTimeoutOK) GetPayload() models.Object {
 func (o *ServiceBrokerTestTimeoutOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -169,11 +173,13 @@ func (o *ServiceBrokerTestTimeoutBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutBadRequest) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutBadRequest) String() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutBadRequest) GetPayload() *models.Error {
@@ -185,7 +191,7 @@ func (o *ServiceBrokerTestTimeoutBadRequest) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -237,11 +243,13 @@ func (o *ServiceBrokerTestTimeoutUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutUnauthorized) String() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutUnauthorized) GetPayload() *models.Error {
@@ -253,7 +261,7 @@ func (o *ServiceBrokerTestTimeoutUnauthorized) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -305,11 +313,13 @@ func (o *ServiceBrokerTestTimeoutForbidden) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutForbidden) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutForbidden) String() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutForbidden) GetPayload() *models.Error {
@@ -321,7 +331,7 @@ func (o *ServiceBrokerTestTimeoutForbidden) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -373,11 +383,13 @@ func (o *ServiceBrokerTestTimeoutNotFound) Code() int {
 }
 
 func (o *ServiceBrokerTestTimeoutNotFound) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutNotFound) String() string {
-	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/test/timeout][%d] serviceBrokerTestTimeoutNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerTestTimeoutNotFound) GetPayload() *models.Error {
@@ -389,7 +401,7 @@ func (o *ServiceBrokerTestTimeoutNotFound) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

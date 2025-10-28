@@ -22,17 +22,17 @@ type ImageImportDetails struct {
 
 	// Origin of the license of the product
 	// Required: true
-	// Enum: [byol]
+	// Enum: ["byol"]
 	LicenseType *string `json:"licenseType"`
 
 	// Product within the image
 	// Required: true
-	// Enum: [Hana Netweaver]
+	// Enum: ["Hana","Netweaver"]
 	Product *string `json:"product"`
 
 	// Vendor supporting the product
 	// Required: true
-	// Enum: [SAP]
+	// Enum: ["SAP"]
 	Vendor *string `json:"vendor"`
 }
 
@@ -58,7 +58,7 @@ func (m *ImageImportDetails) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var imageImportDetailsTypeLicenseTypePropEnum []interface{}
+var imageImportDetailsTypeLicenseTypePropEnum []any
 
 func init() {
 	var res []string
@@ -98,7 +98,7 @@ func (m *ImageImportDetails) validateLicenseType(formats strfmt.Registry) error 
 	return nil
 }
 
-var imageImportDetailsTypeProductPropEnum []interface{}
+var imageImportDetailsTypeProductPropEnum []any
 
 func init() {
 	var res []string
@@ -141,7 +141,7 @@ func (m *ImageImportDetails) validateProduct(formats strfmt.Registry) error {
 	return nil
 }
 
-var imageImportDetailsTypeVendorPropEnum []interface{}
+var imageImportDetailsTypeVendorPropEnum []any
 
 func init() {
 	var res []string

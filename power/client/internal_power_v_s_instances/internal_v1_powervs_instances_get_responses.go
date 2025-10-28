@@ -6,6 +6,8 @@ package internal_power_v_s_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1PowervsInstancesGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1PowervsInstancesGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1PowervsInstancesGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewInternalV1PowervsInstancesGetOK()
@@ -91,11 +93,13 @@ func (o *InternalV1PowervsInstancesGetOK) Code() int {
 }
 
 func (o *InternalV1PowervsInstancesGetOK) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetOK %s", 200, payload)
 }
 
 func (o *InternalV1PowervsInstancesGetOK) String() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetOK %s", 200, payload)
 }
 
 func (o *InternalV1PowervsInstancesGetOK) GetPayload() *models.PowerVSInstances {
@@ -107,7 +111,7 @@ func (o *InternalV1PowervsInstancesGetOK) readResponse(response runtime.ClientRe
 	o.Payload = new(models.PowerVSInstances)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -159,11 +163,13 @@ func (o *InternalV1PowervsInstancesGetForbidden) Code() int {
 }
 
 func (o *InternalV1PowervsInstancesGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetForbidden %s", 403, payload)
 }
 
 func (o *InternalV1PowervsInstancesGetForbidden) String() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetForbidden %s", 403, payload)
 }
 
 func (o *InternalV1PowervsInstancesGetForbidden) GetPayload() *models.Error {
@@ -175,7 +181,7 @@ func (o *InternalV1PowervsInstancesGetForbidden) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -227,11 +233,13 @@ func (o *InternalV1PowervsInstancesGetInternalServerError) Code() int {
 }
 
 func (o *InternalV1PowervsInstancesGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1PowervsInstancesGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/instances][%d] internalV1PowervsInstancesGetInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1PowervsInstancesGetInternalServerError) GetPayload() *models.Error {
@@ -243,7 +251,7 @@ func (o *InternalV1PowervsInstancesGetInternalServerError) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

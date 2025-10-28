@@ -36,7 +36,7 @@ type RouteFilterCreate struct {
 	// * allow: allow
 	// * deny: deny
 	//
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	Action *string `json:"action,omitempty"`
 
 	// direction of the filter
@@ -44,7 +44,7 @@ type RouteFilterCreate struct {
 	// * export - export the routes
 	//
 	// Required: true
-	// Enum: [import export]
+	// Enum: ["import","export"]
 	Direction *string `json:"direction"`
 
 	// priority or order of the filter
@@ -126,7 +126,7 @@ func (m *RouteFilterCreate) validateLE(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeFilterCreateTypeActionPropEnum []interface{}
+var routeFilterCreateTypeActionPropEnum []any
 
 func init() {
 	var res []string
@@ -168,7 +168,7 @@ func (m *RouteFilterCreate) validateAction(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeFilterCreateTypeDirectionPropEnum []interface{}
+var routeFilterCreateTypeDirectionPropEnum []any
 
 func init() {
 	var res []string

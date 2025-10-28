@@ -21,15 +21,15 @@ import (
 type Operations struct {
 
 	// Name of the server boot mode a(Boot from disk using copy A), b(Boot from disk using copy B), c(Reserved for IBM lab use only), d(Boot from media/drives)
-	// Enum: [a b c d]
+	// Enum: ["a","b","c","d"]
 	BootMode string `json:"bootMode,omitempty"`
 
 	// Name of the server operating mode
-	// Enum: [normal manual]
+	// Enum: ["normal","manual"]
 	OperatingMode string `json:"operatingMode,omitempty"`
 
 	// Name of the job task to execute
-	// Enum: [dston retrydump consoleservice iopreset remotedstoff remotedston iopdump dumprestart]
+	// Enum: ["dston","retrydump","consoleservice","iopreset","remotedstoff","remotedston","iopdump","dumprestart"]
 	Task string `json:"task,omitempty"`
 }
 
@@ -55,7 +55,7 @@ func (m *Operations) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var operationsTypeBootModePropEnum []interface{}
+var operationsTypeBootModePropEnum []any
 
 func init() {
 	var res []string
@@ -103,7 +103,7 @@ func (m *Operations) validateBootMode(formats strfmt.Registry) error {
 	return nil
 }
 
-var operationsTypeOperatingModePropEnum []interface{}
+var operationsTypeOperatingModePropEnum []any
 
 func init() {
 	var res []string
@@ -145,7 +145,7 @@ func (m *Operations) validateOperatingMode(formats strfmt.Registry) error {
 	return nil
 }
 
-var operationsTypeTaskPropEnum []interface{}
+var operationsTypeTaskPropEnum []any
 
 func init() {
 	var res []string

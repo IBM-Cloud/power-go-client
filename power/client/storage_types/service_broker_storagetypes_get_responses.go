@@ -6,6 +6,8 @@ package storage_types
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerStoragetypesGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerStoragetypesGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerStoragetypesGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerStoragetypesGetOK()
@@ -115,11 +117,13 @@ func (o *ServiceBrokerStoragetypesGetOK) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetOK) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetOK) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetOK) GetPayload() models.StorageTypes {
@@ -129,7 +133,7 @@ func (o *ServiceBrokerStoragetypesGetOK) GetPayload() models.StorageTypes {
 func (o *ServiceBrokerStoragetypesGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *ServiceBrokerStoragetypesGetBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *ServiceBrokerStoragetypesGetBadRequest) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *ServiceBrokerStoragetypesGetUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *ServiceBrokerStoragetypesGetUnauthorized) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *ServiceBrokerStoragetypesGetForbidden) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetForbidden) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *ServiceBrokerStoragetypesGetForbidden) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *ServiceBrokerStoragetypesGetNotFound) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetNotFound) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *ServiceBrokerStoragetypesGetNotFound) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *ServiceBrokerStoragetypesGetUnprocessableEntity) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnprocessableEntity %s", 422, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetUnprocessableEntity) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetUnprocessableEntity %s", 422, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetUnprocessableEntity) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *ServiceBrokerStoragetypesGetUnprocessableEntity) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *ServiceBrokerStoragetypesGetInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerStoragetypesGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/storage-types][%d] serviceBrokerStoragetypesGetInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerStoragetypesGetInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *ServiceBrokerStoragetypesGetInternalServerError) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

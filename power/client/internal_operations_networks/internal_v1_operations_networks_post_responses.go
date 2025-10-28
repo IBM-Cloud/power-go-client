@@ -6,6 +6,8 @@ package internal_operations_networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1OperationsNetworksPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1OperationsNetworksPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1OperationsNetworksPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 201:
 		result := NewInternalV1OperationsNetworksPostCreated()
@@ -109,11 +111,13 @@ func (o *InternalV1OperationsNetworksPostCreated) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksPostCreated) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostCreated) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostCreated) GetPayload() *models.InternalOperationsResponse {
@@ -125,7 +129,7 @@ func (o *InternalV1OperationsNetworksPostCreated) readResponse(response runtime.
 	o.Payload = new(models.InternalOperationsResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *InternalV1OperationsNetworksPostBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *InternalV1OperationsNetworksPostBadRequest) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *InternalV1OperationsNetworksPostUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *InternalV1OperationsNetworksPostUnauthorized) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *InternalV1OperationsNetworksPostForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostForbidden) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *InternalV1OperationsNetworksPostForbidden) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *InternalV1OperationsNetworksPostTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksPostTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostTooManyRequests) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostTooManyRequests) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *InternalV1OperationsNetworksPostTooManyRequests) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *InternalV1OperationsNetworksPostInternalServerError) Code() int {
 }
 
 func (o *InternalV1OperationsNetworksPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/networks][%d] internalV1OperationsNetworksPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsNetworksPostInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *InternalV1OperationsNetworksPostInternalServerError) readResponse(respo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

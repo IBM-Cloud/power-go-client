@@ -6,6 +6,8 @@ package hardware_platforms
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerHardwareplatformsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerHardwareplatformsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerHardwareplatformsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerHardwareplatformsGetOK()
@@ -109,11 +111,13 @@ func (o *ServiceBrokerHardwareplatformsGetOK) Code() int {
 }
 
 func (o *ServiceBrokerHardwareplatformsGetOK) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetOK) String() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetOK) GetPayload() models.HardwarePlatforms {
@@ -123,7 +127,7 @@ func (o *ServiceBrokerHardwareplatformsGetOK) GetPayload() models.HardwarePlatfo
 func (o *ServiceBrokerHardwareplatformsGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -175,11 +179,13 @@ func (o *ServiceBrokerHardwareplatformsGetBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerHardwareplatformsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetBadRequest) GetPayload() *models.Error {
@@ -191,7 +197,7 @@ func (o *ServiceBrokerHardwareplatformsGetBadRequest) readResponse(response runt
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -243,11 +249,13 @@ func (o *ServiceBrokerHardwareplatformsGetUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerHardwareplatformsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetUnauthorized) GetPayload() *models.Error {
@@ -259,7 +267,7 @@ func (o *ServiceBrokerHardwareplatformsGetUnauthorized) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -311,11 +319,13 @@ func (o *ServiceBrokerHardwareplatformsGetForbidden) Code() int {
 }
 
 func (o *ServiceBrokerHardwareplatformsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetForbidden) GetPayload() *models.Error {
@@ -327,7 +337,7 @@ func (o *ServiceBrokerHardwareplatformsGetForbidden) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -379,11 +389,13 @@ func (o *ServiceBrokerHardwareplatformsGetNotFound) Code() int {
 }
 
 func (o *ServiceBrokerHardwareplatformsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetNotFound) GetPayload() *models.Error {
@@ -395,7 +407,7 @@ func (o *ServiceBrokerHardwareplatformsGetNotFound) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -447,11 +459,13 @@ func (o *ServiceBrokerHardwareplatformsGetInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerHardwareplatformsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/hardware-platforms][%d] serviceBrokerHardwareplatformsGetInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerHardwareplatformsGetInternalServerError) GetPayload() *models.Error {
@@ -463,7 +477,7 @@ func (o *ServiceBrokerHardwareplatformsGetInternalServerError) readResponse(resp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
