@@ -6,6 +6,8 @@ package internal_storage_regions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1StorageRegionsStoragePoolsGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1StorageRegionsStoragePoolsGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1StorageRegionsStoragePoolsGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewInternalV1StorageRegionsStoragePoolsGetallOK()
@@ -103,11 +105,13 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallOK) Code() int {
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallOK) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallOK %s", 200, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallOK) String() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallOK %s", 200, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallOK) GetPayload() models.StoragePools {
@@ -117,7 +121,7 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallOK) GetPayload() models.Stora
 func (o *InternalV1StorageRegionsStoragePoolsGetallOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -169,11 +173,13 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallUnauthorized) Code() int {
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallUnauthorized) GetPayload() *models.Error {
@@ -185,7 +191,7 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallUnauthorized) readResponse(re
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -237,11 +243,13 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallForbidden) Code() int {
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallForbidden %s", 403, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallForbidden %s", 403, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallForbidden) GetPayload() *models.Error {
@@ -253,7 +261,7 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallForbidden) readResponse(respo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -305,11 +313,13 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallNotFound) Code() int {
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallNotFound %s", 404, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallNotFound %s", 404, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallNotFound) GetPayload() *models.Error {
@@ -321,7 +331,7 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallNotFound) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -373,11 +383,13 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallInternalServerError) Code() i
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/storage/regions/{region_zone_id}/storage-pools][%d] internalV1StorageRegionsStoragePoolsGetallInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1StorageRegionsStoragePoolsGetallInternalServerError) GetPayload() *models.Error {
@@ -389,7 +401,7 @@ func (o *InternalV1StorageRegionsStoragePoolsGetallInternalServerError) readResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

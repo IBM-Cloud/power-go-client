@@ -6,6 +6,8 @@ package catalog
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type CatalogGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *CatalogGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *CatalogGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewCatalogGetOK()
@@ -103,11 +105,13 @@ func (o *CatalogGetOK) Code() int {
 }
 
 func (o *CatalogGetOK) Error() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetOK %s", 200, payload)
 }
 
 func (o *CatalogGetOK) String() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetOK %s", 200, payload)
 }
 
 func (o *CatalogGetOK) GetPayload() *models.Catalog {
@@ -119,7 +123,7 @@ func (o *CatalogGetOK) readResponse(response runtime.ClientResponse, consumer ru
 	o.Payload = new(models.Catalog)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *CatalogGetBadRequest) Code() int {
 }
 
 func (o *CatalogGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetBadRequest %s", 400, payload)
 }
 
 func (o *CatalogGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetBadRequest %s", 400, payload)
 }
 
 func (o *CatalogGetBadRequest) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *CatalogGetBadRequest) readResponse(response runtime.ClientResponse, con
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *CatalogGetUnauthorized) Code() int {
 }
 
 func (o *CatalogGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetUnauthorized %s", 401, payload)
 }
 
 func (o *CatalogGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetUnauthorized %s", 401, payload)
 }
 
 func (o *CatalogGetUnauthorized) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *CatalogGetUnauthorized) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *CatalogGetForbidden) Code() int {
 }
 
 func (o *CatalogGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetForbidden %s", 403, payload)
 }
 
 func (o *CatalogGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetForbidden %s", 403, payload)
 }
 
 func (o *CatalogGetForbidden) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *CatalogGetForbidden) readResponse(response runtime.ClientResponse, cons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *CatalogGetNotFound) Code() int {
 }
 
 func (o *CatalogGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetNotFound %s", 404, payload)
 }
 
 func (o *CatalogGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/catalog][%d] catalogGetNotFound %s", 404, payload)
 }
 
 func (o *CatalogGetNotFound) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *CatalogGetNotFound) readResponse(response runtime.ClientResponse, consu
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -6,6 +6,8 @@ package host_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1AvailableHostsReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1AvailableHostsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1AvailableHostsReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1AvailableHostsOK()
@@ -109,11 +111,13 @@ func (o *V1AvailableHostsOK) Code() int {
 }
 
 func (o *V1AvailableHostsOK) Error() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsOK %s", 200, payload)
 }
 
 func (o *V1AvailableHostsOK) String() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsOK %s", 200, payload)
 }
 
 func (o *V1AvailableHostsOK) GetPayload() models.AvailableHostList {
@@ -123,7 +127,7 @@ func (o *V1AvailableHostsOK) GetPayload() models.AvailableHostList {
 func (o *V1AvailableHostsOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -175,11 +179,13 @@ func (o *V1AvailableHostsBadRequest) Code() int {
 }
 
 func (o *V1AvailableHostsBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsBadRequest %s", 400, payload)
 }
 
 func (o *V1AvailableHostsBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsBadRequest %s", 400, payload)
 }
 
 func (o *V1AvailableHostsBadRequest) GetPayload() *models.Error {
@@ -191,7 +197,7 @@ func (o *V1AvailableHostsBadRequest) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -243,11 +249,13 @@ func (o *V1AvailableHostsUnauthorized) Code() int {
 }
 
 func (o *V1AvailableHostsUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsUnauthorized %s", 401, payload)
 }
 
 func (o *V1AvailableHostsUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsUnauthorized %s", 401, payload)
 }
 
 func (o *V1AvailableHostsUnauthorized) GetPayload() *models.Error {
@@ -259,7 +267,7 @@ func (o *V1AvailableHostsUnauthorized) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -311,11 +319,13 @@ func (o *V1AvailableHostsForbidden) Code() int {
 }
 
 func (o *V1AvailableHostsForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsForbidden %s", 403, payload)
 }
 
 func (o *V1AvailableHostsForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsForbidden %s", 403, payload)
 }
 
 func (o *V1AvailableHostsForbidden) GetPayload() *models.Error {
@@ -327,7 +337,7 @@ func (o *V1AvailableHostsForbidden) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -379,11 +389,13 @@ func (o *V1AvailableHostsInternalServerError) Code() int {
 }
 
 func (o *V1AvailableHostsInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsInternalServerError %s", 500, payload)
 }
 
 func (o *V1AvailableHostsInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsInternalServerError %s", 500, payload)
 }
 
 func (o *V1AvailableHostsInternalServerError) GetPayload() *models.Error {
@@ -395,7 +407,7 @@ func (o *V1AvailableHostsInternalServerError) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -447,11 +459,13 @@ func (o *V1AvailableHostsGatewayTimeout) Code() int {
 }
 
 func (o *V1AvailableHostsGatewayTimeout) Error() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1AvailableHostsGatewayTimeout) String() string {
-	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/available-hosts][%d] v1AvailableHostsGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1AvailableHostsGatewayTimeout) GetPayload() *models.Error {
@@ -463,7 +477,7 @@ func (o *V1AvailableHostsGatewayTimeout) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -6,6 +6,8 @@ package internal_storage_regions
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1StorageRegionsThresholdsPutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1StorageRegionsThresholdsPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1StorageRegionsThresholdsPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 202:
 		result := NewInternalV1StorageRegionsThresholdsPutAccepted()
@@ -115,11 +117,13 @@ func (o *InternalV1StorageRegionsThresholdsPutAccepted) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutAccepted) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutAccepted %s", 202, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutAccepted) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutAccepted %s", 202, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutAccepted) GetPayload() *models.Thresholds {
@@ -131,7 +135,7 @@ func (o *InternalV1StorageRegionsThresholdsPutAccepted) readResponse(response ru
 	o.Payload = new(models.Thresholds)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *InternalV1StorageRegionsThresholdsPutBadRequest) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *InternalV1StorageRegionsThresholdsPutBadRequest) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *InternalV1StorageRegionsThresholdsPutUnauthorized) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *InternalV1StorageRegionsThresholdsPutForbidden) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutForbidden %s", 403, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutForbidden %s", 403, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *InternalV1StorageRegionsThresholdsPutForbidden) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *InternalV1StorageRegionsThresholdsPutConflict) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutConflict) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutConflict %s", 409, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutConflict) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutConflict %s", 409, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutConflict) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *InternalV1StorageRegionsThresholdsPutConflict) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *InternalV1StorageRegionsThresholdsPutUnprocessableEntity) readResponse(
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) Code() int {
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/storage/regions/{region_zone_id}/thresholds][%d] internalV1StorageRegionsThresholdsPutInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *InternalV1StorageRegionsThresholdsPutInternalServerError) readResponse(
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

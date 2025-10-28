@@ -6,6 +6,8 @@ package authentication
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerAuthDeviceCodePostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerAuthDeviceCodePostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerAuthDeviceCodePostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerAuthDeviceCodePostOK()
@@ -109,11 +111,13 @@ func (o *ServiceBrokerAuthDeviceCodePostOK) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostOK) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostOK) String() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostOK) GetPayload() *models.DeviceCode {
@@ -125,7 +129,7 @@ func (o *ServiceBrokerAuthDeviceCodePostOK) readResponse(response runtime.Client
 	o.Payload = new(models.DeviceCode)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *ServiceBrokerAuthDeviceCodePostBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostBadRequest) String() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *ServiceBrokerAuthDeviceCodePostBadRequest) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *ServiceBrokerAuthDeviceCodePostUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *ServiceBrokerAuthDeviceCodePostUnauthorized) readResponse(response runt
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *ServiceBrokerAuthDeviceCodePostForbidden) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostForbidden) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostForbidden) String() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *ServiceBrokerAuthDeviceCodePostForbidden) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *ServiceBrokerAuthDeviceCodePostNotFound) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostNotFound) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostNotFound) String() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *ServiceBrokerAuthDeviceCodePostNotFound) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/device/code][%d] serviceBrokerAuthDeviceCodePostInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *ServiceBrokerAuthDeviceCodePostInternalServerError) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

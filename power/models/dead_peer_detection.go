@@ -22,7 +22,7 @@ type DeadPeerDetection struct {
 
 	// Action to take when a Peer Gateway stops responding
 	// Required: true
-	// Enum: [restart]
+	// Enum: ["restart"]
 	Action *string `json:"action"`
 
 	// How often to test that the Peer Gateway is responsive
@@ -62,7 +62,7 @@ func (m *DeadPeerDetection) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var deadPeerDetectionTypeActionPropEnum []interface{}
+var deadPeerDetectionTypeActionPropEnum []any
 
 func init() {
 	var res []string

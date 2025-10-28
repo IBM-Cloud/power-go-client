@@ -26,7 +26,7 @@ type TokenRequest struct {
 
 	// Source type of the token request (web or cli)
 	// Required: true
-	// Enum: [web cli]
+	// Enum: ["web","cli"]
 	Source *string `json:"source"`
 }
 
@@ -57,7 +57,7 @@ func (m *TokenRequest) validateRefreshToken(formats strfmt.Registry) error {
 	return nil
 }
 
-var tokenRequestTypeSourcePropEnum []interface{}
+var tokenRequestTypeSourcePropEnum []any
 
 func init() {
 	var res []string

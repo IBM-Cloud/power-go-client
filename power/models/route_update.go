@@ -21,18 +21,18 @@ import (
 type RouteUpdate struct {
 
 	// Action
-	// Enum: [deliver]
+	// Enum: ["deliver"]
 	Action string `json:"action,omitempty"`
 
 	// Indicates if the route is advertised externally of the workspace to PER and\or peer networks
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	Advertise string `json:"advertise,omitempty"`
 
 	// The route destination
 	Destination string `json:"destination,omitempty"`
 
 	// The destination type
-	// Enum: [ipv4-address]
+	// Enum: ["ipv4-address"]
 	DestinationType string `json:"destinationType,omitempty"`
 
 	// Indicates if the route should be enabled in the fabric
@@ -47,7 +47,7 @@ type RouteUpdate struct {
 	NextHop string `json:"nextHop,omitempty"`
 
 	// The next hop type
-	// Enum: [ipv4-address]
+	// Enum: ["ipv4-address"]
 	NextHopType string `json:"nextHopType,omitempty"`
 }
 
@@ -81,7 +81,7 @@ func (m *RouteUpdate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeUpdateTypeActionPropEnum []interface{}
+var routeUpdateTypeActionPropEnum []any
 
 func init() {
 	var res []string
@@ -120,7 +120,7 @@ func (m *RouteUpdate) validateAction(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeUpdateTypeAdvertisePropEnum []interface{}
+var routeUpdateTypeAdvertisePropEnum []any
 
 func init() {
 	var res []string
@@ -162,7 +162,7 @@ func (m *RouteUpdate) validateAdvertise(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeUpdateTypeDestinationTypePropEnum []interface{}
+var routeUpdateTypeDestinationTypePropEnum []any
 
 func init() {
 	var res []string
@@ -217,7 +217,7 @@ func (m *RouteUpdate) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeUpdateTypeNextHopTypePropEnum []interface{}
+var routeUpdateTypeNextHopTypePropEnum []any
 
 func init() {
 	var res []string

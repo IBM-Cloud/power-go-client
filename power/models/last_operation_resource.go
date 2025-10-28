@@ -24,11 +24,11 @@ type LastOperationResource struct {
 	Description string `json:"description,omitempty"`
 
 	// extensions
-	Extensions interface{} `json:"extensions,omitempty"`
+	Extensions any `json:"extensions,omitempty"`
 
 	// state
 	// Required: true
-	// Enum: [in progress succeeded failed]
+	// Enum: ["in progress","succeeded","failed"]
 	State *string `json:"state"`
 }
 
@@ -46,7 +46,7 @@ func (m *LastOperationResource) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var lastOperationResourceTypeStatePropEnum []interface{}
+var lastOperationResourceTypeStatePropEnum []any
 
 func init() {
 	var res []string

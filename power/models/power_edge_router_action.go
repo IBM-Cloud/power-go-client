@@ -22,7 +22,7 @@ type PowerEdgeRouterAction struct {
 
 	// Name of the action to take; can be migrate-start, migrate-validate
 	// Required: true
-	// Enum: [migrate-start migrate-validate]
+	// Enum: ["migrate-start","migrate-validate"]
 	Action *string `json:"action"`
 }
 
@@ -40,7 +40,7 @@ func (m *PowerEdgeRouterAction) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var powerEdgeRouterActionTypeActionPropEnum []interface{}
+var powerEdgeRouterActionTypeActionPropEnum []any
 
 func init() {
 	var res []string

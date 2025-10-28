@@ -6,6 +6,8 @@ package internal_power_v_s_locations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1PowervsLocationsActivatePutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1PowervsLocationsActivatePutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1PowervsLocationsActivatePutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewInternalV1PowervsLocationsActivatePutOK()
@@ -103,11 +105,13 @@ func (o *InternalV1PowervsLocationsActivatePutOK) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutOK) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK %s", 200, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutOK) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutOK %s", 200, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutOK) GetPayload() *models.SatelliteOrder {
@@ -119,7 +123,7 @@ func (o *InternalV1PowervsLocationsActivatePutOK) readResponse(response runtime.
 	o.Payload = new(models.SatelliteOrder)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *InternalV1PowervsLocationsActivatePutBadRequest) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutBadRequest) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *InternalV1PowervsLocationsActivatePutBadRequest) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *InternalV1PowervsLocationsActivatePutUnauthorized) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnauthorized) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *InternalV1PowervsLocationsActivatePutUnauthorized) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *InternalV1PowervsLocationsActivatePutUnprocessableEntity) readResponse(
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *InternalV1PowervsLocationsActivatePutInternalServerError) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsActivatePutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /internal/v1/powervs/locations/activate][%d] internalV1PowervsLocationsActivatePutInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1PowervsLocationsActivatePutInternalServerError) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *InternalV1PowervsLocationsActivatePutInternalServerError) readResponse(
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

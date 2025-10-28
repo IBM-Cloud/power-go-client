@@ -6,6 +6,8 @@ package network_address_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1NetworkAddressGroupsPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1NetworkAddressGroupsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1NetworkAddressGroupsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1NetworkAddressGroupsPostOK()
@@ -127,11 +129,13 @@ func (o *V1NetworkAddressGroupsPostOK) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostOK) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostOK) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostOK) GetPayload() *models.NetworkAddressGroup {
@@ -143,7 +147,7 @@ func (o *V1NetworkAddressGroupsPostOK) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.NetworkAddressGroup)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -195,11 +199,13 @@ func (o *V1NetworkAddressGroupsPostCreated) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostCreated) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostCreated %s", 201, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostCreated) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostCreated %s", 201, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostCreated) GetPayload() *models.NetworkAddressGroup {
@@ -211,7 +217,7 @@ func (o *V1NetworkAddressGroupsPostCreated) readResponse(response runtime.Client
 	o.Payload = new(models.NetworkAddressGroup)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -263,11 +269,13 @@ func (o *V1NetworkAddressGroupsPostBadRequest) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostBadRequest) GetPayload() *models.Error {
@@ -279,7 +287,7 @@ func (o *V1NetworkAddressGroupsPostBadRequest) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -331,11 +339,13 @@ func (o *V1NetworkAddressGroupsPostUnauthorized) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostUnauthorized) GetPayload() *models.Error {
@@ -347,7 +357,7 @@ func (o *V1NetworkAddressGroupsPostUnauthorized) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -399,11 +409,13 @@ func (o *V1NetworkAddressGroupsPostForbidden) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostForbidden) GetPayload() *models.Error {
@@ -415,7 +427,7 @@ func (o *V1NetworkAddressGroupsPostForbidden) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -467,11 +479,13 @@ func (o *V1NetworkAddressGroupsPostNotFound) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostNotFound) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostNotFound) GetPayload() *models.Error {
@@ -483,7 +497,7 @@ func (o *V1NetworkAddressGroupsPostNotFound) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -535,11 +549,13 @@ func (o *V1NetworkAddressGroupsPostConflict) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostConflict) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostConflict) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostConflict) GetPayload() *models.Error {
@@ -551,7 +567,7 @@ func (o *V1NetworkAddressGroupsPostConflict) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -603,11 +619,13 @@ func (o *V1NetworkAddressGroupsPostUnprocessableEntity) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostUnprocessableEntity) GetPayload() *models.Error {
@@ -619,7 +637,7 @@ func (o *V1NetworkAddressGroupsPostUnprocessableEntity) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -671,11 +689,13 @@ func (o *V1NetworkAddressGroupsPostInternalServerError) Code() int {
 }
 
 func (o *V1NetworkAddressGroupsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-address-groups][%d] v1NetworkAddressGroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkAddressGroupsPostInternalServerError) GetPayload() *models.Error {
@@ -687,7 +707,7 @@ func (o *V1NetworkAddressGroupsPostInternalServerError) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -6,6 +6,8 @@ package iaas_service_broker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerHealthHeadReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerHealthHeadReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerHealthHeadReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerHealthHeadOK()
@@ -103,11 +105,13 @@ func (o *ServiceBrokerHealthHeadOK) Code() int {
 }
 
 func (o *ServiceBrokerHealthHeadOK) Error() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerHealthHeadOK) String() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerHealthHeadOK) GetPayload() *models.Health {
@@ -119,7 +123,7 @@ func (o *ServiceBrokerHealthHeadOK) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Health)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *ServiceBrokerHealthHeadBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerHealthHeadBadRequest) Error() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerHealthHeadBadRequest) String() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerHealthHeadBadRequest) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *ServiceBrokerHealthHeadBadRequest) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *ServiceBrokerHealthHeadUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerHealthHeadUnauthorized) Error() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerHealthHeadUnauthorized) String() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerHealthHeadUnauthorized) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *ServiceBrokerHealthHeadUnauthorized) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *ServiceBrokerHealthHeadForbidden) Code() int {
 }
 
 func (o *ServiceBrokerHealthHeadForbidden) Error() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerHealthHeadForbidden) String() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerHealthHeadForbidden) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *ServiceBrokerHealthHeadForbidden) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *ServiceBrokerHealthHeadNotFound) Code() int {
 }
 
 func (o *ServiceBrokerHealthHeadNotFound) Error() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerHealthHeadNotFound) String() string {
-	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[HEAD /broker/v1/health][%d] serviceBrokerHealthHeadNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerHealthHeadNotFound) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *ServiceBrokerHealthHeadNotFound) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
