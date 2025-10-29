@@ -17,6 +17,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/hardware_platforms"
 	"github.com/IBM-Cloud/power-go-client/power/client/host_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/iaas_service_broker"
+	"github.com/IBM-Cloud/power-go-client/power/client/internal_capacity_management"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_dedicated_hosts"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_images"
 	"github.com/IBM-Cloud/power-go-client/power/client/internal_operations_network_address_groups"
@@ -125,6 +126,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.HardwarePlatforms = hardware_platforms.New(transport, formats)
 	cli.HostGroups = host_groups.New(transport, formats)
 	cli.IaasServiceBroker = iaas_service_broker.New(transport, formats)
+	cli.InternalCapacityManagement = internal_capacity_management.New(transport, formats)
 	cli.InternalOperationsDedicatedHosts = internal_operations_dedicated_hosts.New(transport, formats)
 	cli.InternalOperationsImages = internal_operations_images.New(transport, formats)
 	cli.InternalOperationsNetworkAddressGroups = internal_operations_network_address_groups.New(transport, formats)
@@ -239,6 +241,8 @@ type PowerIaasAPI struct {
 	HostGroups host_groups.ClientService
 
 	IaasServiceBroker iaas_service_broker.ClientService
+
+	InternalCapacityManagement internal_capacity_management.ClientService
 
 	InternalOperationsDedicatedHosts internal_operations_dedicated_hosts.ClientService
 
@@ -367,6 +371,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.HardwarePlatforms.SetTransport(transport)
 	c.HostGroups.SetTransport(transport)
 	c.IaasServiceBroker.SetTransport(transport)
+	c.InternalCapacityManagement.SetTransport(transport)
 	c.InternalOperationsDedicatedHosts.SetTransport(transport)
 	c.InternalOperationsImages.SetTransport(transport)
 	c.InternalOperationsNetworkAddressGroups.SetTransport(transport)

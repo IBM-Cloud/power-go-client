@@ -6,6 +6,8 @@ package p_cloud_volumes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudCloudinstancesVolumesRemoteCopyRelationshipGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK()
@@ -115,11 +117,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK) GetPayload() *models.VolumeRemoteCopyRelationship {
@@ -131,7 +135,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK) readResponse(re
 	o.Payload = new(models.VolumeRemoteCopyRelationship)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest) Code() 
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetBadRequest) readRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized) Code(
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetUnauthorized) readR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden) Code() i
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetForbidden) readResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound) Code() in
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetNotFound) readRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests) Co
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests %s", 429, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests %s", 429, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetTooManyRequests) re
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/remote-copy][%d] pcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetInternalServerError
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

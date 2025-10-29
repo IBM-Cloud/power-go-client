@@ -6,6 +6,8 @@ package authentication
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerAuthTokenPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerAuthTokenPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerAuthTokenPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerAuthTokenPostOK()
@@ -115,11 +117,13 @@ func (o *ServiceBrokerAuthTokenPostOK) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostOK) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostOK) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostOK) GetPayload() *models.Token {
@@ -131,7 +135,7 @@ func (o *ServiceBrokerAuthTokenPostOK) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Token)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *ServiceBrokerAuthTokenPostBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *ServiceBrokerAuthTokenPostBadRequest) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *ServiceBrokerAuthTokenPostUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *ServiceBrokerAuthTokenPostUnauthorized) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *ServiceBrokerAuthTokenPostForbidden) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostForbidden) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *ServiceBrokerAuthTokenPostForbidden) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *ServiceBrokerAuthTokenPostNotFound) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostNotFound) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *ServiceBrokerAuthTokenPostNotFound) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *ServiceBrokerAuthTokenPostTooManyRequests) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostTooManyRequests %s", 429, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostTooManyRequests) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostTooManyRequests %s", 429, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostTooManyRequests) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *ServiceBrokerAuthTokenPostTooManyRequests) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *ServiceBrokerAuthTokenPostInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerAuthTokenPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /auth/v1/token][%d] serviceBrokerAuthTokenPostInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerAuthTokenPostInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *ServiceBrokerAuthTokenPostInternalServerError) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -6,6 +6,8 @@ package p_cloud_virtual_serial_number
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudVirtualserialnumberPutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudVirtualserialnumberPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudVirtualserialnumberPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudVirtualserialnumberPutOK()
@@ -115,11 +117,13 @@ func (o *PcloudVirtualserialnumberPutOK) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutOK %s", 200, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutOK) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutOK %s", 200, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutOK) GetPayload() *models.GetServerVirtualSerialNumber {
@@ -131,7 +135,7 @@ func (o *PcloudVirtualserialnumberPutOK) readResponse(response runtime.ClientRes
 	o.Payload = new(models.GetServerVirtualSerialNumber)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *PcloudVirtualserialnumberPutBadRequest) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *PcloudVirtualserialnumberPutBadRequest) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *PcloudVirtualserialnumberPutUnauthorized) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *PcloudVirtualserialnumberPutUnauthorized) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *PcloudVirtualserialnumberPutForbidden) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *PcloudVirtualserialnumberPutForbidden) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *PcloudVirtualserialnumberPutNotFound) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *PcloudVirtualserialnumberPutNotFound) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *PcloudVirtualserialnumberPutGone) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutGone) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutGone %s", 410, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutGone) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutGone %s", 410, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutGone) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *PcloudVirtualserialnumberPutGone) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *PcloudVirtualserialnumberPutInternalServerError) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVirtualserialnumberPutInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *PcloudVirtualserialnumberPutInternalServerError) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -6,6 +6,8 @@ package networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1NetworksNetworkInterfacesGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1NetworksNetworkInterfacesGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1NetworksNetworkInterfacesGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1NetworksNetworkInterfacesGetOK()
@@ -109,11 +111,13 @@ func (o *V1NetworksNetworkInterfacesGetOK) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetOK %s", 200, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetOK %s", 200, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetOK) GetPayload() *models.NetworkInterface {
@@ -125,7 +129,7 @@ func (o *V1NetworksNetworkInterfacesGetOK) readResponse(response runtime.ClientR
 	o.Payload = new(models.NetworkInterface)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *V1NetworksNetworkInterfacesGetBadRequest) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *V1NetworksNetworkInterfacesGetBadRequest) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *V1NetworksNetworkInterfacesGetUnauthorized) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *V1NetworksNetworkInterfacesGetUnauthorized) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *V1NetworksNetworkInterfacesGetForbidden) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetForbidden %s", 403, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetForbidden %s", 403, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *V1NetworksNetworkInterfacesGetForbidden) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *V1NetworksNetworkInterfacesGetNotFound) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetNotFound %s", 404, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetNotFound %s", 404, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *V1NetworksNetworkInterfacesGetNotFound) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *V1NetworksNetworkInterfacesGetInternalServerError) Code() int {
 }
 
 func (o *V1NetworksNetworkInterfacesGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/networks/{network_id}/network-interfaces/{network_interface_id}][%d] v1NetworksNetworkInterfacesGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworksNetworkInterfacesGetInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *V1NetworksNetworkInterfacesGetInternalServerError) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

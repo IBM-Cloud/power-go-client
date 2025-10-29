@@ -21,14 +21,14 @@ import (
 type PVMInstanceMultiCreate struct {
 
 	// Affinity policy for pvm-instances being created; affinity for the same host, anti-affinity for different hosts, none for no preference
-	// Enum: [affinity anti-affinity none]
+	// Enum: ["affinity","anti-affinity","none"]
 	AffinityPolicy *string `json:"affinityPolicy,omitempty"`
 
 	// Number of pvm-instances to create
 	Count int64 `json:"count,omitempty"`
 
 	// Where to place the numerical number of the multi-created instance
-	// Enum: [prefix suffix]
+	// Enum: ["prefix","suffix"]
 	Numerical *string `json:"numerical,omitempty"`
 }
 
@@ -50,7 +50,7 @@ func (m *PVMInstanceMultiCreate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var pVmInstanceMultiCreateTypeAffinityPolicyPropEnum []interface{}
+var pVmInstanceMultiCreateTypeAffinityPolicyPropEnum []any
 
 func init() {
 	var res []string
@@ -95,7 +95,7 @@ func (m *PVMInstanceMultiCreate) validateAffinityPolicy(formats strfmt.Registry)
 	return nil
 }
 
-var pVmInstanceMultiCreateTypeNumericalPropEnum []interface{}
+var pVmInstanceMultiCreateTypeNumericalPropEnum []any
 
 func init() {
 	var res []string

@@ -6,6 +6,8 @@ package p_cloud_images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudImagesGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudImagesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudImagesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudImagesGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudImagesGetallOK) Code() int {
 }
 
 func (o *PcloudImagesGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK %s", 200, payload)
 }
 
 func (o *PcloudImagesGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallOK %s", 200, payload)
 }
 
 func (o *PcloudImagesGetallOK) GetPayload() *models.Images {
@@ -125,7 +129,7 @@ func (o *PcloudImagesGetallOK) readResponse(response runtime.ClientResponse, con
 	o.Payload = new(models.Images)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudImagesGetallBadRequest) Code() int {
 }
 
 func (o *PcloudImagesGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudImagesGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudImagesGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudImagesGetallBadRequest) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudImagesGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudImagesGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudImagesGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudImagesGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudImagesGetallUnauthorized) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudImagesGetallForbidden) Code() int {
 }
 
 func (o *PcloudImagesGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudImagesGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudImagesGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudImagesGetallForbidden) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudImagesGetallNotFound) Code() int {
 }
 
 func (o *PcloudImagesGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudImagesGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudImagesGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudImagesGetallNotFound) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudImagesGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudImagesGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudImagesGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/images][%d] pcloudImagesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudImagesGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudImagesGetallInternalServerError) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

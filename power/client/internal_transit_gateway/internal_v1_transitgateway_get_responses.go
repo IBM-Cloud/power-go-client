@@ -6,6 +6,8 @@ package internal_transit_gateway
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1TransitgatewayGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1TransitgatewayGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1TransitgatewayGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewInternalV1TransitgatewayGetOK()
@@ -85,11 +87,13 @@ func (o *InternalV1TransitgatewayGetOK) Code() int {
 }
 
 func (o *InternalV1TransitgatewayGetOK) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetOK %s", 200, payload)
 }
 
 func (o *InternalV1TransitgatewayGetOK) String() string {
-	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetOK %s", 200, payload)
 }
 
 func (o *InternalV1TransitgatewayGetOK) GetPayload() *models.TransitGatewayInstance {
@@ -101,7 +105,7 @@ func (o *InternalV1TransitgatewayGetOK) readResponse(response runtime.ClientResp
 	o.Payload = new(models.TransitGatewayInstance)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -153,11 +157,13 @@ func (o *InternalV1TransitgatewayGetForbidden) Code() int {
 }
 
 func (o *InternalV1TransitgatewayGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetForbidden %s", 403, payload)
 }
 
 func (o *InternalV1TransitgatewayGetForbidden) String() string {
-	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/transit-gateway/{powervs_service_crn}][%d] internalV1TransitgatewayGetForbidden %s", 403, payload)
 }
 
 func (o *InternalV1TransitgatewayGetForbidden) GetPayload() *models.Error {
@@ -169,7 +175,7 @@ func (o *InternalV1TransitgatewayGetForbidden) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

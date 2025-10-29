@@ -6,6 +6,8 @@ package service_bindings
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBindingGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBindingGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBindingGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBindingGetOK()
@@ -103,11 +105,13 @@ func (o *ServiceBindingGetOK) Code() int {
 }
 
 func (o *ServiceBindingGetOK) Error() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetOK %s", 200, payload)
 }
 
 func (o *ServiceBindingGetOK) String() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetOK %s", 200, payload)
 }
 
 func (o *ServiceBindingGetOK) GetPayload() *models.ServiceBindingResource {
@@ -119,7 +123,7 @@ func (o *ServiceBindingGetOK) readResponse(response runtime.ClientResponse, cons
 	o.Payload = new(models.ServiceBindingResource)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *ServiceBindingGetBadRequest) Code() int {
 }
 
 func (o *ServiceBindingGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBindingGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBindingGetBadRequest) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *ServiceBindingGetBadRequest) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *ServiceBindingGetUnauthorized) Code() int {
 }
 
 func (o *ServiceBindingGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBindingGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBindingGetUnauthorized) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *ServiceBindingGetUnauthorized) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *ServiceBindingGetForbidden) Code() int {
 }
 
 func (o *ServiceBindingGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetForbidden %s", 403, payload)
 }
 
 func (o *ServiceBindingGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetForbidden %s", 403, payload)
 }
 
 func (o *ServiceBindingGetForbidden) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *ServiceBindingGetForbidden) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *ServiceBindingGetNotFound) Code() int {
 }
 
 func (o *ServiceBindingGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBindingGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v2/service_instances/{instance_id}/service_bindings/{binding_id}][%d] serviceBindingGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBindingGetNotFound) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *ServiceBindingGetNotFound) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
