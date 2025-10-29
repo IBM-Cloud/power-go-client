@@ -6,6 +6,8 @@ package internal_operations_dedicated_hosts
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1OperationsDedicatedhostsPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1OperationsDedicatedhostsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1OperationsDedicatedhostsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 201:
 		result := NewInternalV1OperationsDedicatedhostsPostCreated()
@@ -109,11 +111,13 @@ func (o *InternalV1OperationsDedicatedhostsPostCreated) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostCreated) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostCreated) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostCreated) GetPayload() *models.InternalOperationsResponse {
@@ -125,7 +129,7 @@ func (o *InternalV1OperationsDedicatedhostsPostCreated) readResponse(response ru
 	o.Payload = new(models.InternalOperationsResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *InternalV1OperationsDedicatedhostsPostBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *InternalV1OperationsDedicatedhostsPostBadRequest) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *InternalV1OperationsDedicatedhostsPostUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *InternalV1OperationsDedicatedhostsPostUnauthorized) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *InternalV1OperationsDedicatedhostsPostForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostForbidden) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *InternalV1OperationsDedicatedhostsPostForbidden) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *InternalV1OperationsDedicatedhostsPostTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostTooManyRequests) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostTooManyRequests) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *InternalV1OperationsDedicatedhostsPostTooManyRequests) readResponse(res
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *InternalV1OperationsDedicatedhostsPostInternalServerError) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/dedicated-hosts][%d] internalV1OperationsDedicatedhostsPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsPostInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *InternalV1OperationsDedicatedhostsPostInternalServerError) readResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

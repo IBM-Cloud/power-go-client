@@ -26,7 +26,7 @@ type RouteReportRoute struct {
 
 	// The route type
 	// Required: true
-	// Enum: [external]
+	// Enum: ["external"]
 	Type *string `json:"type"`
 }
 
@@ -57,7 +57,7 @@ func (m *RouteReportRoute) validateDestination(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeReportRouteTypeTypePropEnum []interface{}
+var routeReportRouteTypeTypePropEnum []any
 
 func init() {
 	var res []string

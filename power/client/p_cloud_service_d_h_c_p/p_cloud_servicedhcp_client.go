@@ -9,12 +9,38 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new p cloud service d h c p API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new p cloud service d h c p API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new p cloud service d h c p API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -25,7 +51,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -45,7 +71,7 @@ type ClientService interface {
 PcloudDhcpDelete deletes d h c p server open shift internal use only
 */
 func (a *Client) PcloudDhcpDelete(params *PcloudDhcpDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpDeleteAccepted, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudDhcpDeleteParams()
 	}
@@ -65,17 +91,22 @@ func (a *Client) PcloudDhcpDelete(params *PcloudDhcpDeleteParams, authInfo runti
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudDhcpDeleteAccepted)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.dhcp.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -84,7 +115,7 @@ func (a *Client) PcloudDhcpDelete(params *PcloudDhcpDeleteParams, authInfo runti
 PcloudDhcpGet gets d h c p server information open shift internal use only
 */
 func (a *Client) PcloudDhcpGet(params *PcloudDhcpGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudDhcpGetParams()
 	}
@@ -104,17 +135,22 @@ func (a *Client) PcloudDhcpGet(params *PcloudDhcpGetParams, authInfo runtime.Cli
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudDhcpGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.dhcp.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -123,7 +159,7 @@ func (a *Client) PcloudDhcpGet(params *PcloudDhcpGetParams, authInfo runtime.Cli
 PcloudDhcpGetall gets all d h c p servers information open shift internal use only
 */
 func (a *Client) PcloudDhcpGetall(params *PcloudDhcpGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudDhcpGetallParams()
 	}
@@ -143,17 +179,22 @@ func (a *Client) PcloudDhcpGetall(params *PcloudDhcpGetallParams, authInfo runti
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudDhcpGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.dhcp.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -162,7 +203,7 @@ func (a *Client) PcloudDhcpGetall(params *PcloudDhcpGetallParams, authInfo runti
 PcloudDhcpPost creates a d h c p server open shift internal use only
 */
 func (a *Client) PcloudDhcpPost(params *PcloudDhcpPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpPostAccepted, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudDhcpPostParams()
 	}
@@ -182,17 +223,22 @@ func (a *Client) PcloudDhcpPost(params *PcloudDhcpPostParams, authInfo runtime.C
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudDhcpPostAccepted)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.dhcp.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }

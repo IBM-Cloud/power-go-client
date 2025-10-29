@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -22,7 +23,7 @@ type PVMInstanceCapture struct {
 
 	// Destination for the deployable image
 	// Required: true
-	// Enum: [image-catalog cloud-storage both]
+	// Enum: ["image-catalog","cloud-storage","both"]
 	CaptureDestination *string `json:"captureDestination"`
 
 	// Name of the deployable image created for the captured PVMInstance
@@ -73,7 +74,7 @@ func (m *PVMInstanceCapture) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var pVmInstanceCaptureTypeCaptureDestinationPropEnum []interface{}
+var pVmInstanceCaptureTypeCaptureDestinationPropEnum []any
 
 func init() {
 	var res []string
@@ -134,11 +135,15 @@ func (m *PVMInstanceCapture) validateUserTags(formats strfmt.Registry) error {
 	}
 
 	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 
@@ -162,11 +167,15 @@ func (m *PVMInstanceCapture) ContextValidate(ctx context.Context, formats strfmt
 func (m *PVMInstanceCapture) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 

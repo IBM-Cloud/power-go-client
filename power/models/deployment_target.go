@@ -26,7 +26,7 @@ type DeploymentTarget struct {
 
 	// specify if deploying to a host group or a host
 	// Required: true
-	// Enum: [hostGroup host]
+	// Enum: ["hostGroup","host"]
 	Type *string `json:"type"`
 }
 
@@ -57,7 +57,7 @@ func (m *DeploymentTarget) validateID(formats strfmt.Registry) error {
 	return nil
 }
 
-var deploymentTargetTypeTypePropEnum []interface{}
+var deploymentTargetTypeTypePropEnum []any
 
 func init() {
 	var res []string

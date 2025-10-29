@@ -6,6 +6,8 @@ package p_cloud_images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudCloudinstancesImagesDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudCloudinstancesImagesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudCloudinstancesImagesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudCloudinstancesImagesDeleteOK()
@@ -115,11 +117,13 @@ func (o *PcloudCloudinstancesImagesDeleteOK) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *PcloudCloudinstancesImagesDeleteOK) GetPayload() models.Object {
 func (o *PcloudCloudinstancesImagesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *PcloudCloudinstancesImagesDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *PcloudCloudinstancesImagesDeleteBadRequest) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *PcloudCloudinstancesImagesDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *PcloudCloudinstancesImagesDeleteUnauthorized) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *PcloudCloudinstancesImagesDeleteForbidden) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *PcloudCloudinstancesImagesDeleteForbidden) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *PcloudCloudinstancesImagesDeleteNotFound) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *PcloudCloudinstancesImagesDeleteNotFound) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *PcloudCloudinstancesImagesDeleteGone) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteGone) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *PcloudCloudinstancesImagesDeleteGone) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *PcloudCloudinstancesImagesDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudCloudinstancesImagesDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/images/{image_id}][%d] pcloudCloudinstancesImagesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesImagesDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *PcloudCloudinstancesImagesDeleteInternalServerError) readResponse(respo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

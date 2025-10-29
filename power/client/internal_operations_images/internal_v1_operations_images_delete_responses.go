@@ -6,6 +6,8 @@ package internal_operations_images
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1OperationsImagesDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1OperationsImagesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1OperationsImagesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 204:
 		result := NewInternalV1OperationsImagesDeleteNoContent()
@@ -120,11 +122,11 @@ func (o *InternalV1OperationsImagesDeleteNoContent) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNoContent", 204)
 }
 
 func (o *InternalV1OperationsImagesDeleteNoContent) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNoContent", 204)
 }
 
 func (o *InternalV1OperationsImagesDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -177,11 +179,13 @@ func (o *InternalV1OperationsImagesDeleteBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteBadRequest) GetPayload() *models.Error {
@@ -193,7 +197,7 @@ func (o *InternalV1OperationsImagesDeleteBadRequest) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +249,13 @@ func (o *InternalV1OperationsImagesDeleteUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteUnauthorized) GetPayload() *models.Error {
@@ -261,7 +267,7 @@ func (o *InternalV1OperationsImagesDeleteUnauthorized) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +319,13 @@ func (o *InternalV1OperationsImagesDeleteForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteForbidden) GetPayload() *models.Error {
@@ -329,7 +337,7 @@ func (o *InternalV1OperationsImagesDeleteForbidden) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +389,13 @@ func (o *InternalV1OperationsImagesDeleteNotFound) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNotFound %s", 404, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteNotFound %s", 404, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteNotFound) GetPayload() *models.Error {
@@ -397,7 +407,7 @@ func (o *InternalV1OperationsImagesDeleteNotFound) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +459,13 @@ func (o *InternalV1OperationsImagesDeleteGone) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteGone %s", 410, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteGone %s", 410, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteGone) GetPayload() *models.Error {
@@ -465,7 +477,7 @@ func (o *InternalV1OperationsImagesDeleteGone) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -517,11 +529,13 @@ func (o *InternalV1OperationsImagesDeleteTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteTooManyRequests) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteTooManyRequests) GetPayload() *models.Error {
@@ -533,7 +547,7 @@ func (o *InternalV1OperationsImagesDeleteTooManyRequests) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -585,11 +599,13 @@ func (o *InternalV1OperationsImagesDeleteInternalServerError) Code() int {
 }
 
 func (o *InternalV1OperationsImagesDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/images/{resource_crn}][%d] internalV1OperationsImagesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsImagesDeleteInternalServerError) GetPayload() *models.Error {
@@ -601,7 +617,7 @@ func (o *InternalV1OperationsImagesDeleteInternalServerError) readResponse(respo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

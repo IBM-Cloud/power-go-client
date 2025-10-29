@@ -6,6 +6,8 @@ package network_peers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1NetworkPeersPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1NetworkPeersPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1NetworkPeersPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1NetworkPeersPostOK()
@@ -115,11 +117,13 @@ func (o *V1NetworkPeersPostOK) Code() int {
 }
 
 func (o *V1NetworkPeersPostOK) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersPostOK) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersPostOK) GetPayload() *models.NetworkPeer {
@@ -131,7 +135,7 @@ func (o *V1NetworkPeersPostOK) readResponse(response runtime.ClientResponse, con
 	o.Payload = new(models.NetworkPeer)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *V1NetworkPeersPostBadRequest) Code() int {
 }
 
 func (o *V1NetworkPeersPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersPostBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *V1NetworkPeersPostBadRequest) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *V1NetworkPeersPostUnauthorized) Code() int {
 }
 
 func (o *V1NetworkPeersPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersPostUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *V1NetworkPeersPostUnauthorized) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *V1NetworkPeersPostForbidden) Code() int {
 }
 
 func (o *V1NetworkPeersPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersPostForbidden) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersPostForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *V1NetworkPeersPostForbidden) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *V1NetworkPeersPostNotFound) Code() int {
 }
 
 func (o *V1NetworkPeersPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersPostNotFound) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersPostNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *V1NetworkPeersPostNotFound) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *V1NetworkPeersPostConflict) Code() int {
 }
 
 func (o *V1NetworkPeersPostConflict) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersPostConflict) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersPostConflict) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *V1NetworkPeersPostConflict) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *V1NetworkPeersPostInternalServerError) Code() int {
 }
 
 func (o *V1NetworkPeersPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /v1/network-peers][%d] v1NetworkPeersPostInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersPostInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *V1NetworkPeersPostInternalServerError) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

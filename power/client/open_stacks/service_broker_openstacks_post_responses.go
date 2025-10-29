@@ -6,6 +6,8 @@ package open_stacks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerOpenstacksPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerOpenstacksPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerOpenstacksPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerOpenstacksPostOK()
@@ -127,11 +129,13 @@ func (o *ServiceBrokerOpenstacksPostOK) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostOK) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostOK) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostOK) GetPayload() *models.OpenStack {
@@ -143,7 +147,7 @@ func (o *ServiceBrokerOpenstacksPostOK) readResponse(response runtime.ClientResp
 	o.Payload = new(models.OpenStack)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -195,11 +199,13 @@ func (o *ServiceBrokerOpenstacksPostCreated) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated %s", 201, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostCreated %s", 201, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostCreated) GetPayload() *models.OpenStack {
@@ -211,7 +217,7 @@ func (o *ServiceBrokerOpenstacksPostCreated) readResponse(response runtime.Clien
 	o.Payload = new(models.OpenStack)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -263,11 +269,13 @@ func (o *ServiceBrokerOpenstacksPostBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostBadRequest) GetPayload() *models.Error {
@@ -279,7 +287,7 @@ func (o *ServiceBrokerOpenstacksPostBadRequest) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -331,11 +339,13 @@ func (o *ServiceBrokerOpenstacksPostUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnauthorized) GetPayload() *models.Error {
@@ -347,7 +357,7 @@ func (o *ServiceBrokerOpenstacksPostUnauthorized) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -399,11 +409,13 @@ func (o *ServiceBrokerOpenstacksPostForbidden) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostForbidden) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostForbidden) GetPayload() *models.Error {
@@ -415,7 +427,7 @@ func (o *ServiceBrokerOpenstacksPostForbidden) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -467,11 +479,13 @@ func (o *ServiceBrokerOpenstacksPostNotFound) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostNotFound) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostNotFound) GetPayload() *models.Error {
@@ -483,7 +497,7 @@ func (o *ServiceBrokerOpenstacksPostNotFound) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -535,11 +549,13 @@ func (o *ServiceBrokerOpenstacksPostConflict) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict %s", 409, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostConflict %s", 409, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostConflict) GetPayload() *models.Error {
@@ -551,7 +567,7 @@ func (o *ServiceBrokerOpenstacksPostConflict) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -603,11 +619,13 @@ func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) GetPayload() *models.Error {
@@ -619,7 +637,7 @@ func (o *ServiceBrokerOpenstacksPostUnprocessableEntity) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -671,11 +689,13 @@ func (o *ServiceBrokerOpenstacksPostInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /broker/v1/openstacks][%d] serviceBrokerOpenstacksPostInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerOpenstacksPostInternalServerError) GetPayload() *models.Error {
@@ -687,7 +707,7 @@ func (o *ServiceBrokerOpenstacksPostInternalServerError) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

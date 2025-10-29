@@ -6,6 +6,8 @@ package snapshots
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1SnapshotsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1SnapshotsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1SnapshotsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1SnapshotsGetOK()
@@ -115,11 +117,13 @@ func (o *V1SnapshotsGetOK) Code() int {
 }
 
 func (o *V1SnapshotsGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetOK %s", 200, payload)
 }
 
 func (o *V1SnapshotsGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetOK %s", 200, payload)
 }
 
 func (o *V1SnapshotsGetOK) GetPayload() *models.SnapshotV1 {
@@ -131,7 +135,7 @@ func (o *V1SnapshotsGetOK) readResponse(response runtime.ClientResponse, consume
 	o.Payload = new(models.SnapshotV1)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *V1SnapshotsGetBadRequest) Code() int {
 }
 
 func (o *V1SnapshotsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1SnapshotsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1SnapshotsGetBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *V1SnapshotsGetBadRequest) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *V1SnapshotsGetUnauthorized) Code() int {
 }
 
 func (o *V1SnapshotsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1SnapshotsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1SnapshotsGetUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *V1SnapshotsGetUnauthorized) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *V1SnapshotsGetForbidden) Code() int {
 }
 
 func (o *V1SnapshotsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetForbidden %s", 403, payload)
 }
 
 func (o *V1SnapshotsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetForbidden %s", 403, payload)
 }
 
 func (o *V1SnapshotsGetForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *V1SnapshotsGetForbidden) readResponse(response runtime.ClientResponse, 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *V1SnapshotsGetNotFound) Code() int {
 }
 
 func (o *V1SnapshotsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetNotFound %s", 404, payload)
 }
 
 func (o *V1SnapshotsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetNotFound %s", 404, payload)
 }
 
 func (o *V1SnapshotsGetNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *V1SnapshotsGetNotFound) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *V1SnapshotsGetInternalServerError) Code() int {
 }
 
 func (o *V1SnapshotsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1SnapshotsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1SnapshotsGetInternalServerError) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *V1SnapshotsGetInternalServerError) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *V1SnapshotsGetServiceUnavailable) Code() int {
 }
 
 func (o *V1SnapshotsGetServiceUnavailable) Error() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetServiceUnavailable  %+v", 503, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetServiceUnavailable %s", 503, payload)
 }
 
 func (o *V1SnapshotsGetServiceUnavailable) String() string {
-	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetServiceUnavailable  %+v", 503, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/snapshots/{snapshot_id}][%d] v1SnapshotsGetServiceUnavailable %s", 503, payload)
 }
 
 func (o *V1SnapshotsGetServiceUnavailable) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *V1SnapshotsGetServiceUnavailable) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

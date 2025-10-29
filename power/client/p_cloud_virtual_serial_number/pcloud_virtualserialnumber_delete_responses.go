@@ -6,6 +6,8 @@ package p_cloud_virtual_serial_number
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudVirtualserialnumberDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudVirtualserialnumberDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudVirtualserialnumberDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudVirtualserialnumberDeleteOK()
@@ -115,11 +117,13 @@ func (o *PcloudVirtualserialnumberDeleteOK) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *PcloudVirtualserialnumberDeleteOK) GetPayload() models.Object {
 func (o *PcloudVirtualserialnumberDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *PcloudVirtualserialnumberDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *PcloudVirtualserialnumberDeleteBadRequest) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *PcloudVirtualserialnumberDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *PcloudVirtualserialnumberDeleteUnauthorized) readResponse(response runt
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *PcloudVirtualserialnumberDeleteForbidden) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *PcloudVirtualserialnumberDeleteForbidden) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *PcloudVirtualserialnumberDeleteNotFound) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *PcloudVirtualserialnumberDeleteNotFound) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *PcloudVirtualserialnumberDeleteGone) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteGone) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *PcloudVirtualserialnumberDeleteGone) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *PcloudVirtualserialnumberDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/virtual-serial-number/{virtual_serial_number}][%d] pcloudVirtualserialnumberDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVirtualserialnumberDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *PcloudVirtualserialnumberDeleteInternalServerError) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

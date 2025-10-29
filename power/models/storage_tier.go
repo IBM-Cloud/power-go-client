@@ -27,7 +27,7 @@ type StorageTier struct {
 	Name string `json:"name,omitempty"`
 
 	// State of the storage tier (active or inactive)
-	// Enum: [active inactive]
+	// Enum: ["active","inactive"]
 	State *string `json:"state,omitempty"`
 }
 
@@ -45,7 +45,7 @@ func (m *StorageTier) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var storageTierTypeStatePropEnum []interface{}
+var storageTierTypeStatePropEnum []any
 
 func init() {
 	var res []string

@@ -22,7 +22,7 @@ type VolumeGroupActionStart struct {
 
 	// Indicates the source of the action
 	// Required: true
-	// Enum: [master aux]
+	// Enum: ["master","aux"]
 	Source *string `json:"source"`
 }
 
@@ -40,7 +40,7 @@ func (m *VolumeGroupActionStart) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var volumeGroupActionStartTypeSourcePropEnum []interface{}
+var volumeGroupActionStartTypeSourcePropEnum []any
 
 func init() {
 	var res []string

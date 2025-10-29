@@ -6,6 +6,8 @@ package p_cloud_tenants_ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudTenantsSshkeysGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudTenantsSshkeysGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudTenantsSshkeysGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudTenantsSshkeysGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudTenantsSshkeysGetallOK) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallOK %s", 200, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallOK %s", 200, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallOK) GetPayload() *models.SSHKeys {
@@ -125,7 +129,7 @@ func (o *PcloudTenantsSshkeysGetallOK) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.SSHKeys)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudTenantsSshkeysGetallBadRequest) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudTenantsSshkeysGetallBadRequest) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudTenantsSshkeysGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudTenantsSshkeysGetallUnauthorized) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudTenantsSshkeysGetallForbidden) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudTenantsSshkeysGetallForbidden) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudTenantsSshkeysGetallNotFound) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudTenantsSshkeysGetallNotFound) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudTenantsSshkeysGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudTenantsSshkeysGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}/sshkeys][%d] pcloudTenantsSshkeysGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudTenantsSshkeysGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudTenantsSshkeysGetallInternalServerError) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

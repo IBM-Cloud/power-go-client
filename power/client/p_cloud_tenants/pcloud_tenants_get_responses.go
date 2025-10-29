@@ -6,6 +6,8 @@ package p_cloud_tenants
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudTenantsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudTenantsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudTenantsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudTenantsGetOK()
@@ -109,11 +111,13 @@ func (o *PcloudTenantsGetOK) Code() int {
 }
 
 func (o *PcloudTenantsGetOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetOK %s", 200, payload)
 }
 
 func (o *PcloudTenantsGetOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetOK %s", 200, payload)
 }
 
 func (o *PcloudTenantsGetOK) GetPayload() *models.Tenant {
@@ -125,7 +129,7 @@ func (o *PcloudTenantsGetOK) readResponse(response runtime.ClientResponse, consu
 	o.Payload = new(models.Tenant)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudTenantsGetBadRequest) Code() int {
 }
 
 func (o *PcloudTenantsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudTenantsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudTenantsGetBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudTenantsGetBadRequest) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudTenantsGetUnauthorized) Code() int {
 }
 
 func (o *PcloudTenantsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudTenantsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudTenantsGetUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudTenantsGetUnauthorized) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudTenantsGetForbidden) Code() int {
 }
 
 func (o *PcloudTenantsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudTenantsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudTenantsGetForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudTenantsGetForbidden) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudTenantsGetNotFound) Code() int {
 }
 
 func (o *PcloudTenantsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudTenantsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudTenantsGetNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudTenantsGetNotFound) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudTenantsGetInternalServerError) Code() int {
 }
 
 func (o *PcloudTenantsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudTenantsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/tenants/{tenant_id}][%d] pcloudTenantsGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudTenantsGetInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudTenantsGetInternalServerError) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

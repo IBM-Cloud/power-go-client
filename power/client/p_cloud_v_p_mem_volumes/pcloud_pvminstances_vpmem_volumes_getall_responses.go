@@ -6,6 +6,8 @@ package p_cloud_v_p_mem_volumes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudPvminstancesVpmemVolumesGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudPvminstancesVpmemVolumesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudPvminstancesVpmemVolumesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudPvminstancesVpmemVolumesGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudPvminstancesVpmemVolumesGetallOK) Code() int {
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallOK %s", 200, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallOK %s", 200, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallOK) GetPayload() *models.VPMemVolumes {
@@ -125,7 +129,7 @@ func (o *PcloudPvminstancesVpmemVolumesGetallOK) readResponse(response runtime.C
 	o.Payload = new(models.VPMemVolumes)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudPvminstancesVpmemVolumesGetallBadRequest) Code() int {
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudPvminstancesVpmemVolumesGetallBadRequest) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudPvminstancesVpmemVolumesGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudPvminstancesVpmemVolumesGetallUnauthorized) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudPvminstancesVpmemVolumesGetallForbidden) Code() int {
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudPvminstancesVpmemVolumesGetallForbidden) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudPvminstancesVpmemVolumesGetallNotFound) Code() int {
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudPvminstancesVpmemVolumesGetallNotFound) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudPvminstancesVpmemVolumesGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/vpmem-volumes][%d] pcloudPvminstancesVpmemVolumesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudPvminstancesVpmemVolumesGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudPvminstancesVpmemVolumesGetallInternalServerError) readResponse(r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
