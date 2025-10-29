@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -33,7 +34,7 @@ type CloudConnectionUpdate struct {
 	Name *string `json:"name,omitempty"`
 
 	// speed of the cloud connection (speed in megabits per second)
-	// Enum: [50 100 200 500 1000 2000 5000 10000]
+	// Enum: [50,100,200,500,1000,2000,5000,10000]
 	Speed *int64 `json:"speed,omitempty"`
 
 	// vpc
@@ -69,11 +70,15 @@ func (m *CloudConnectionUpdate) validateClassic(formats strfmt.Registry) error {
 
 	if m.Classic != nil {
 		if err := m.Classic.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("classic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("classic")
 			}
+
 			return err
 		}
 	}
@@ -81,7 +86,7 @@ func (m *CloudConnectionUpdate) validateClassic(formats strfmt.Registry) error {
 	return nil
 }
 
-var cloudConnectionUpdateTypeSpeedPropEnum []interface{}
+var cloudConnectionUpdateTypeSpeedPropEnum []any
 
 func init() {
 	var res []int64
@@ -121,11 +126,15 @@ func (m *CloudConnectionUpdate) validateVpc(formats strfmt.Registry) error {
 
 	if m.Vpc != nil {
 		if err := m.Vpc.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("vpc")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("vpc")
 			}
+
 			return err
 		}
 	}
@@ -160,11 +169,15 @@ func (m *CloudConnectionUpdate) contextValidateClassic(ctx context.Context, form
 		}
 
 		if err := m.Classic.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("classic")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("classic")
 			}
+
 			return err
 		}
 	}
@@ -181,11 +194,15 @@ func (m *CloudConnectionUpdate) contextValidateVpc(ctx context.Context, formats 
 		}
 
 		if err := m.Vpc.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("vpc")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("vpc")
 			}
+
 			return err
 		}
 	}

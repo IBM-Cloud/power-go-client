@@ -26,7 +26,7 @@ type NetworkSecurityGroupAddMember struct {
 
 	// The type of member
 	// Required: true
-	// Enum: [ipv4-address network-interface]
+	// Enum: ["ipv4-address","network-interface"]
 	Type *string `json:"type"`
 }
 
@@ -57,7 +57,7 @@ func (m *NetworkSecurityGroupAddMember) validateTarget(formats strfmt.Registry) 
 	return nil
 }
 
-var networkSecurityGroupAddMemberTypeTypePropEnum []interface{}
+var networkSecurityGroupAddMemberTypeTypePropEnum []any
 
 func init() {
 	var res []string

@@ -9,12 +9,38 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new internal power v s locations API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new internal power v s locations API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new internal power v s locations API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -25,7 +51,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -45,7 +71,7 @@ type ClientService interface {
 InternalV1PowervsLocationsActivatePut activates a power v s on prem location
 */
 func (a *Client) InternalV1PowervsLocationsActivatePut(params *InternalV1PowervsLocationsActivatePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsActivatePutOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1PowervsLocationsActivatePutParams()
 	}
@@ -65,17 +91,22 @@ func (a *Client) InternalV1PowervsLocationsActivatePut(params *InternalV1Powervs
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*InternalV1PowervsLocationsActivatePutOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for internal.v1.powervs.locations.activate.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -84,7 +115,7 @@ func (a *Client) InternalV1PowervsLocationsActivatePut(params *InternalV1Powervs
 InternalV1PowervsLocationsTagDelete deletes a power satellite tag
 */
 func (a *Client) InternalV1PowervsLocationsTagDelete(params *InternalV1PowervsLocationsTagDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsTagDeleteOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1PowervsLocationsTagDeleteParams()
 	}
@@ -104,17 +135,22 @@ func (a *Client) InternalV1PowervsLocationsTagDelete(params *InternalV1PowervsLo
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*InternalV1PowervsLocationsTagDeleteOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for internal.v1.powervs.locations.tag.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -123,7 +159,7 @@ func (a *Client) InternalV1PowervsLocationsTagDelete(params *InternalV1PowervsLo
 InternalV1PowervsLocationsTagPost adds a power satellite tag
 */
 func (a *Client) InternalV1PowervsLocationsTagPost(params *InternalV1PowervsLocationsTagPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsTagPostOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1PowervsLocationsTagPostParams()
 	}
@@ -143,17 +179,22 @@ func (a *Client) InternalV1PowervsLocationsTagPost(params *InternalV1PowervsLoca
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*InternalV1PowervsLocationsTagPostOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for internal.v1.powervs.locations.tag.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -162,7 +203,7 @@ func (a *Client) InternalV1PowervsLocationsTagPost(params *InternalV1PowervsLoca
 InternalV1PowervsLocationsTransitgatewayGet gets list of p e r enabled power v s locations
 */
 func (a *Client) InternalV1PowervsLocationsTransitgatewayGet(params *InternalV1PowervsLocationsTransitgatewayGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsTransitgatewayGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1PowervsLocationsTransitgatewayGetParams()
 	}
@@ -182,17 +223,22 @@ func (a *Client) InternalV1PowervsLocationsTransitgatewayGet(params *InternalV1P
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*InternalV1PowervsLocationsTransitgatewayGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for internal.v1.powervs.locations.transitgateway.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }

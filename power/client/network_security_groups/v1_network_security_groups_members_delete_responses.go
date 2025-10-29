@@ -6,6 +6,8 @@ package network_security_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1NetworkSecurityGroupsMembersDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1NetworkSecurityGroupsMembersDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1NetworkSecurityGroupsMembersDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1NetworkSecurityGroupsMembersDeleteOK()
@@ -115,11 +117,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteOK) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteOK %s", 200, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteOK %s", 200, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteOK) GetPayload() models.Object {
 func (o *V1NetworkSecurityGroupsMembersDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteBadRequest) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteBadRequest) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteUnauthorized) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteUnauthorized) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteForbidden) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteForbidden) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteNotFound) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteNotFound) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteConflict) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteConflict) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteConflict %s", 409, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteConflict) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteConflict %s", 409, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteConflict) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteConflict) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *V1NetworkSecurityGroupsMembersDeleteInternalServerError) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-security-groups/{network_security_group_id}/members/{network_security_group_member_id}][%d] v1NetworkSecurityGroupsMembersDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkSecurityGroupsMembersDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *V1NetworkSecurityGroupsMembersDeleteInternalServerError) readResponse(r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

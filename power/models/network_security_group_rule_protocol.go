@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -22,14 +23,14 @@ import (
 type NetworkSecurityGroupRuleProtocol struct {
 
 	// If icmp type, a ICMP packet type affected by ICMP rules and if not present then all types are matched
-	// Enum: [all echo echo-reply source-quench time-exceeded destination-unreach]
+	// Enum: ["all","echo","echo-reply","source-quench","time-exceeded","destination-unreach"]
 	IcmpType *string `json:"icmpType,omitempty"`
 
 	// If tcp type, the list of TCP flags and if not present then all flags are matched
 	TCPFlags []*NetworkSecurityGroupRuleProtocolTCPFlag `json:"tcpFlags"`
 
 	// The protocol of the network traffic
-	// Enum: [icmp tcp udp all]
+	// Enum: ["icmp","tcp","udp","all"]
 	Type string `json:"type,omitempty"`
 }
 
@@ -55,7 +56,7 @@ func (m *NetworkSecurityGroupRuleProtocol) Validate(formats strfmt.Registry) err
 	return nil
 }
 
-var networkSecurityGroupRuleProtocolTypeIcmpTypePropEnum []interface{}
+var networkSecurityGroupRuleProtocolTypeIcmpTypePropEnum []any
 
 func init() {
 	var res []string
@@ -121,11 +122,15 @@ func (m *NetworkSecurityGroupRuleProtocol) validateTCPFlags(formats strfmt.Regis
 
 		if m.TCPFlags[i] != nil {
 			if err := m.TCPFlags[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("tcpFlags" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("tcpFlags" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -135,7 +140,7 @@ func (m *NetworkSecurityGroupRuleProtocol) validateTCPFlags(formats strfmt.Regis
 	return nil
 }
 
-var networkSecurityGroupRuleProtocolTypeTypePropEnum []interface{}
+var networkSecurityGroupRuleProtocolTypeTypePropEnum []any
 
 func init() {
 	var res []string
@@ -208,11 +213,15 @@ func (m *NetworkSecurityGroupRuleProtocol) contextValidateTCPFlags(ctx context.C
 			}
 
 			if err := m.TCPFlags[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("tcpFlags" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("tcpFlags" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}

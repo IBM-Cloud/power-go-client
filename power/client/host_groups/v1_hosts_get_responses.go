@@ -6,6 +6,8 @@ package host_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1HostsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1HostsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1HostsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1HostsGetOK()
@@ -109,11 +111,13 @@ func (o *V1HostsGetOK) Code() int {
 }
 
 func (o *V1HostsGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK %s", 200, payload)
 }
 
 func (o *V1HostsGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetOK %s", 200, payload)
 }
 
 func (o *V1HostsGetOK) GetPayload() models.HostList {
@@ -123,7 +127,7 @@ func (o *V1HostsGetOK) GetPayload() models.HostList {
 func (o *V1HostsGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -175,11 +179,13 @@ func (o *V1HostsGetBadRequest) Code() int {
 }
 
 func (o *V1HostsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1HostsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetBadRequest %s", 400, payload)
 }
 
 func (o *V1HostsGetBadRequest) GetPayload() *models.Error {
@@ -191,7 +197,7 @@ func (o *V1HostsGetBadRequest) readResponse(response runtime.ClientResponse, con
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -243,11 +249,13 @@ func (o *V1HostsGetUnauthorized) Code() int {
 }
 
 func (o *V1HostsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1HostsGetUnauthorized) GetPayload() *models.Error {
@@ -259,7 +267,7 @@ func (o *V1HostsGetUnauthorized) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -311,11 +319,13 @@ func (o *V1HostsGetForbidden) Code() int {
 }
 
 func (o *V1HostsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden %s", 403, payload)
 }
 
 func (o *V1HostsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetForbidden %s", 403, payload)
 }
 
 func (o *V1HostsGetForbidden) GetPayload() *models.Error {
@@ -327,7 +337,7 @@ func (o *V1HostsGetForbidden) readResponse(response runtime.ClientResponse, cons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -379,11 +389,13 @@ func (o *V1HostsGetInternalServerError) Code() int {
 }
 
 func (o *V1HostsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1HostsGetInternalServerError) GetPayload() *models.Error {
@@ -395,7 +407,7 @@ func (o *V1HostsGetInternalServerError) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -447,11 +459,13 @@ func (o *V1HostsGetGatewayTimeout) Code() int {
 }
 
 func (o *V1HostsGetGatewayTimeout) Error() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostsGetGatewayTimeout) String() string {
-	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/hosts][%d] v1HostsGetGatewayTimeout %s", 504, payload)
 }
 
 func (o *V1HostsGetGatewayTimeout) GetPayload() *models.Error {
@@ -463,7 +477,7 @@ func (o *V1HostsGetGatewayTimeout) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

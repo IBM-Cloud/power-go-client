@@ -6,6 +6,8 @@ package network_security_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1NetworkSecurityGroupsIDPutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1NetworkSecurityGroupsIDPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1NetworkSecurityGroupsIDPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1NetworkSecurityGroupsIDPutOK()
@@ -109,11 +111,13 @@ func (o *V1NetworkSecurityGroupsIDPutOK) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsIDPutOK) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutOK %s", 200, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutOK) String() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutOK %s", 200, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutOK) GetPayload() *models.NetworkSecurityGroup {
@@ -125,7 +129,7 @@ func (o *V1NetworkSecurityGroupsIDPutOK) readResponse(response runtime.ClientRes
 	o.Payload = new(models.NetworkSecurityGroup)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *V1NetworkSecurityGroupsIDPutBadRequest) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsIDPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *V1NetworkSecurityGroupsIDPutBadRequest) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *V1NetworkSecurityGroupsIDPutUnauthorized) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsIDPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *V1NetworkSecurityGroupsIDPutUnauthorized) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *V1NetworkSecurityGroupsIDPutForbidden) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsIDPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *V1NetworkSecurityGroupsIDPutForbidden) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *V1NetworkSecurityGroupsIDPutNotFound) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsIDPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *V1NetworkSecurityGroupsIDPutNotFound) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *V1NetworkSecurityGroupsIDPutInternalServerError) Code() int {
 }
 
 func (o *V1NetworkSecurityGroupsIDPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v1/network-security-groups/{network_security_group_id}][%d] v1NetworkSecurityGroupsIdPutInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkSecurityGroupsIDPutInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *V1NetworkSecurityGroupsIDPutInternalServerError) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
