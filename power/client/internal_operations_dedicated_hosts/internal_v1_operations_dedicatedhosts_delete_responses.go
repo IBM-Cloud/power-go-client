@@ -6,6 +6,8 @@ package internal_operations_dedicated_hosts
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1OperationsDedicatedhostsDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1OperationsDedicatedhostsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1OperationsDedicatedhostsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 204:
 		result := NewInternalV1OperationsDedicatedhostsDeleteNoContent()
@@ -120,11 +122,11 @@ func (o *InternalV1OperationsDedicatedhostsDeleteNoContent) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteNoContent) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNoContent", 204)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteNoContent) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNoContent ", 204)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNoContent", 204)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteNoContent) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
@@ -177,11 +179,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteBadRequest) GetPayload() *models.Error {
@@ -193,7 +197,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteBadRequest) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +249,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteUnauthorized) GetPayload() *models.Error {
@@ -261,7 +267,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteUnauthorized) readResponse(resp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +319,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteForbidden) GetPayload() *models.Error {
@@ -329,7 +337,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteForbidden) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +389,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteNotFound) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNotFound %s", 404, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteNotFound %s", 404, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteNotFound) GetPayload() *models.Error {
@@ -397,7 +407,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteNotFound) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +459,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteGone) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteGone %s", 410, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteGone %s", 410, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteGone) GetPayload() *models.Error {
@@ -465,7 +477,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteGone) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -517,11 +529,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteTooManyRequests) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteTooManyRequests) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteTooManyRequests) GetPayload() *models.Error {
@@ -533,7 +547,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteTooManyRequests) readResponse(r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -585,11 +599,13 @@ func (o *InternalV1OperationsDedicatedhostsDeleteInternalServerError) Code() int
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /internal/v1/operations/dedicated-hosts/{resource_crn}][%d] internalV1OperationsDedicatedhostsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsDedicatedhostsDeleteInternalServerError) GetPayload() *models.Error {
@@ -601,7 +617,7 @@ func (o *InternalV1OperationsDedicatedhostsDeleteInternalServerError) readRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

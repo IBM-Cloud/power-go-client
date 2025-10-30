@@ -6,6 +6,8 @@ package p_cloud_s_p_p_placement_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudSppplacementgroupsDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudSppplacementgroupsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudSppplacementgroupsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudSppplacementgroupsDeleteOK()
@@ -115,11 +117,13 @@ func (o *PcloudSppplacementgroupsDeleteOK) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *PcloudSppplacementgroupsDeleteOK) GetPayload() models.Object {
 func (o *PcloudSppplacementgroupsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *PcloudSppplacementgroupsDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *PcloudSppplacementgroupsDeleteBadRequest) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *PcloudSppplacementgroupsDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *PcloudSppplacementgroupsDeleteUnauthorized) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *PcloudSppplacementgroupsDeleteForbidden) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *PcloudSppplacementgroupsDeleteForbidden) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *PcloudSppplacementgroupsDeleteNotFound) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *PcloudSppplacementgroupsDeleteNotFound) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *PcloudSppplacementgroupsDeleteConflict) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteConflict) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteConflict %s", 409, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteConflict) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteConflict %s", 409, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteConflict) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *PcloudSppplacementgroupsDeleteConflict) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *PcloudSppplacementgroupsDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudSppplacementgroupsDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/spp-placement-groups/{spp_placement_group_id}][%d] pcloudSppplacementgroupsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudSppplacementgroupsDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *PcloudSppplacementgroupsDeleteInternalServerError) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

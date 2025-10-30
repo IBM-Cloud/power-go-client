@@ -28,7 +28,7 @@ type PvmInstanceDeployment struct {
 
 	// Processor mode (dedicated, shared, capped)
 	// Required: true
-	// Enum: [dedicated shared capped]
+	// Enum: ["dedicated","shared","capped"]
 	ProcessorMode *string `json:"processorMode"`
 
 	// Type of Deployment [SAP-RISE, EPIC]
@@ -49,7 +49,7 @@ func (m *PvmInstanceDeployment) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var pvmInstanceDeploymentTypeProcessorModePropEnum []interface{}
+var pvmInstanceDeploymentTypeProcessorModePropEnum []any
 
 func init() {
 	var res []string

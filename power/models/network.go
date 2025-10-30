@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -25,11 +26,11 @@ type Network struct {
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
 	// Indicates if the network is advertised externally of the workspace to PER and\or peer networks.
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	Advertise string `json:"advertise,omitempty"`
 
 	// Indicates if the ARP broadcast is enabled
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	ArpBroadcast string `json:"arpBroadcast,omitempty"`
 
 	// Network in CIDR notation (192.168.0.0/24)
@@ -87,7 +88,7 @@ type Network struct {
 
 	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
 	// Required: true
-	// Enum: [vlan pub-vlan dhcp-vlan]
+	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
 	Type *string `json:"type"`
 
 	// user tags
@@ -182,18 +183,22 @@ func (m *Network) validateAccessConfig(formats strfmt.Registry) error {
 	}
 
 	if err := m.AccessConfig.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("accessConfig")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("accessConfig")
 		}
+
 		return err
 	}
 
 	return nil
 }
 
-var networkTypeAdvertisePropEnum []interface{}
+var networkTypeAdvertisePropEnum []any
 
 func init() {
 	var res []string
@@ -235,7 +240,7 @@ func (m *Network) validateAdvertise(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkTypeArpBroadcastPropEnum []interface{}
+var networkTypeArpBroadcastPropEnum []any
 
 func init() {
 	var res []string
@@ -298,11 +303,15 @@ func (m *Network) validateCloudConnections(formats strfmt.Registry) error {
 
 		if m.CloudConnections[i] != nil {
 			if err := m.CloudConnections[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("cloudConnections" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("cloudConnections" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -318,11 +327,15 @@ func (m *Network) validateCrn(formats strfmt.Registry) error {
 	}
 
 	if err := m.Crn.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -346,11 +359,15 @@ func (m *Network) validateIPAddressMetrics(formats strfmt.Registry) error {
 
 	if m.IPAddressMetrics != nil {
 		if err := m.IPAddressMetrics.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("ipAddressMetrics")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("ipAddressMetrics")
 			}
+
 			return err
 		}
 	}
@@ -371,11 +388,15 @@ func (m *Network) validateIPAddressRanges(formats strfmt.Registry) error {
 
 		if m.IPAddressRanges[i] != nil {
 			if err := m.IPAddressRanges[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("ipAddressRanges" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("ipAddressRanges" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -417,11 +438,15 @@ func (m *Network) validateNetworkAddressTranslation(formats strfmt.Registry) err
 
 	if m.NetworkAddressTranslation != nil {
 		if err := m.NetworkAddressTranslation.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("networkAddressTranslation")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("networkAddressTranslation")
 			}
+
 			return err
 		}
 	}
@@ -450,11 +475,15 @@ func (m *Network) validatePublicIPAddressRanges(formats strfmt.Registry) error {
 
 		if m.PublicIPAddressRanges[i] != nil {
 			if err := m.PublicIPAddressRanges[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("publicIPAddressRanges" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("publicIPAddressRanges" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -464,7 +493,7 @@ func (m *Network) validatePublicIPAddressRanges(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkTypeTypePropEnum []interface{}
+var networkTypeTypePropEnum []any
 
 func init() {
 	var res []string
@@ -516,11 +545,15 @@ func (m *Network) validateUserTags(formats strfmt.Registry) error {
 	}
 
 	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 
@@ -585,11 +618,15 @@ func (m *Network) contextValidateAccessConfig(ctx context.Context, formats strfm
 	}
 
 	if err := m.AccessConfig.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("accessConfig")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("accessConfig")
 		}
+
 		return err
 	}
 
@@ -607,11 +644,15 @@ func (m *Network) contextValidateCloudConnections(ctx context.Context, formats s
 			}
 
 			if err := m.CloudConnections[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("cloudConnections" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("cloudConnections" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -628,11 +669,15 @@ func (m *Network) contextValidateCrn(ctx context.Context, formats strfmt.Registr
 	}
 
 	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -644,11 +689,15 @@ func (m *Network) contextValidateIPAddressMetrics(ctx context.Context, formats s
 	if m.IPAddressMetrics != nil {
 
 		if err := m.IPAddressMetrics.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("ipAddressMetrics")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("ipAddressMetrics")
 			}
+
 			return err
 		}
 	}
@@ -667,11 +716,15 @@ func (m *Network) contextValidateIPAddressRanges(ctx context.Context, formats st
 			}
 
 			if err := m.IPAddressRanges[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("ipAddressRanges" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("ipAddressRanges" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -690,11 +743,15 @@ func (m *Network) contextValidateNetworkAddressTranslation(ctx context.Context, 
 		}
 
 		if err := m.NetworkAddressTranslation.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("networkAddressTranslation")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("networkAddressTranslation")
 			}
+
 			return err
 		}
 	}
@@ -713,11 +770,15 @@ func (m *Network) contextValidatePublicIPAddressRanges(ctx context.Context, form
 			}
 
 			if err := m.PublicIPAddressRanges[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("publicIPAddressRanges" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("publicIPAddressRanges" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -730,11 +791,15 @@ func (m *Network) contextValidatePublicIPAddressRanges(ctx context.Context, form
 func (m *Network) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 

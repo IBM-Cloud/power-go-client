@@ -24,7 +24,7 @@ type PVMInstanceV2NetworkPort struct {
 	ID string `json:"id,omitempty"`
 
 	// Dynamic Host Configuration Protocol {IPv4, IPv6}
-	// Enum: [IPv4 IPv6]
+	// Enum: ["IPv4","IPv6"]
 	IPProtocol string `json:"ipProtocol,omitempty"`
 
 	// The mac address of the network interface
@@ -34,7 +34,7 @@ type PVMInstanceV2NetworkPort struct {
 	PrivateIP string `json:"privateIP,omitempty"`
 
 	// The type of ip allocation {dhcp, static}
-	// Enum: [dhcp static]
+	// Enum: ["dhcp","static"]
 	Type string `json:"type,omitempty"`
 }
 
@@ -56,7 +56,7 @@ func (m *PVMInstanceV2NetworkPort) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var pVmInstanceV2NetworkPortTypeIPProtocolPropEnum []interface{}
+var pVmInstanceV2NetworkPortTypeIPProtocolPropEnum []any
 
 func init() {
 	var res []string
@@ -98,7 +98,7 @@ func (m *PVMInstanceV2NetworkPort) validateIPProtocol(formats strfmt.Registry) e
 	return nil
 }
 
-var pVmInstanceV2NetworkPortTypeTypePropEnum []interface{}
+var pVmInstanceV2NetworkPortTypeTypePropEnum []any
 
 func init() {
 	var res []string

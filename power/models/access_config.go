@@ -53,7 +53,7 @@ const (
 )
 
 // for schema
-var accessConfigEnum []interface{}
+var accessConfigEnum []any
 
 func init() {
 	var res []AccessConfig

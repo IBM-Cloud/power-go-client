@@ -6,6 +6,8 @@ package p_cloud_shared_processor_pools
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudSharedprocessorpoolsGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudSharedprocessorpoolsGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudSharedprocessorpoolsGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudSharedprocessorpoolsGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudSharedprocessorpoolsGetallOK) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallOK %s", 200, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallOK %s", 200, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallOK) GetPayload() *models.SharedProcessorPools {
@@ -125,7 +129,7 @@ func (o *PcloudSharedprocessorpoolsGetallOK) readResponse(response runtime.Clien
 	o.Payload = new(models.SharedProcessorPools)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudSharedprocessorpoolsGetallBadRequest) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudSharedprocessorpoolsGetallBadRequest) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudSharedprocessorpoolsGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudSharedprocessorpoolsGetallUnauthorized) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudSharedprocessorpoolsGetallForbidden) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudSharedprocessorpoolsGetallForbidden) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudSharedprocessorpoolsGetallNotFound) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudSharedprocessorpoolsGetallNotFound) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudSharedprocessorpoolsGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudSharedprocessorpoolsGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/shared-processor-pools][%d] pcloudSharedprocessorpoolsGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudSharedprocessorpoolsGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudSharedprocessorpoolsGetallInternalServerError) readResponse(respo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

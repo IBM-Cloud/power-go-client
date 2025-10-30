@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -109,11 +110,15 @@ func (m *NetworkSecurityGroup) validateMembers(formats strfmt.Registry) error {
 
 		if m.Members[i] != nil {
 			if err := m.Members[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("members" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -144,11 +149,15 @@ func (m *NetworkSecurityGroup) validateRules(formats strfmt.Registry) error {
 
 		if m.Rules[i] != nil {
 			if err := m.Rules[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -164,11 +173,15 @@ func (m *NetworkSecurityGroup) validateUserTags(formats strfmt.Registry) error {
 	}
 
 	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 
@@ -208,11 +221,15 @@ func (m *NetworkSecurityGroup) contextValidateMembers(ctx context.Context, forma
 			}
 
 			if err := m.Members[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("members" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("members" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -233,11 +250,15 @@ func (m *NetworkSecurityGroup) contextValidateRules(ctx context.Context, formats
 			}
 
 			if err := m.Rules[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("rules" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("rules" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -250,11 +271,15 @@ func (m *NetworkSecurityGroup) contextValidateRules(ctx context.Context, formats
 func (m *NetworkSecurityGroup) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -123,11 +124,15 @@ func (m *NetworkInterface) validateInstance(formats strfmt.Registry) error {
 
 	if m.Instance != nil {
 		if err := m.Instance.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("instance")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("instance")
 			}
+
 			return err
 		}
 	}
@@ -177,11 +182,15 @@ func (m *NetworkInterface) validateUserTags(formats strfmt.Registry) error {
 	}
 
 	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 
@@ -215,11 +224,15 @@ func (m *NetworkInterface) contextValidateInstance(ctx context.Context, formats 
 		}
 
 		if err := m.Instance.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("instance")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("instance")
 			}
+
 			return err
 		}
 	}
@@ -230,11 +243,15 @@ func (m *NetworkInterface) contextValidateInstance(ctx context.Context, formats 
 func (m *NetworkInterface) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 

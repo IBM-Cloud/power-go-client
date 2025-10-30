@@ -6,6 +6,8 @@ package p_cloud_networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudNetworksPortsDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudNetworksPortsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudNetworksPortsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudNetworksPortsDeleteOK()
@@ -115,11 +117,13 @@ func (o *PcloudNetworksPortsDeleteOK) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *PcloudNetworksPortsDeleteOK) GetPayload() models.Object {
 func (o *PcloudNetworksPortsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *PcloudNetworksPortsDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *PcloudNetworksPortsDeleteBadRequest) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *PcloudNetworksPortsDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *PcloudNetworksPortsDeleteUnauthorized) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *PcloudNetworksPortsDeleteForbidden) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *PcloudNetworksPortsDeleteForbidden) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *PcloudNetworksPortsDeleteNotFound) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *PcloudNetworksPortsDeleteNotFound) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *PcloudNetworksPortsDeleteGone) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteGone) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *PcloudNetworksPortsDeleteGone) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *PcloudNetworksPortsDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudNetworksPortsDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudNetworksPortsDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *PcloudNetworksPortsDeleteInternalServerError) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -6,6 +6,8 @@ package p_cloud_v_p_n_policies
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudIpsecpoliciesDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudIpsecpoliciesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudIpsecpoliciesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudIpsecpoliciesDeleteOK()
@@ -109,11 +111,13 @@ func (o *PcloudIpsecpoliciesDeleteOK) Code() int {
 }
 
 func (o *PcloudIpsecpoliciesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteOK) GetPayload() models.Object {
@@ -123,7 +127,7 @@ func (o *PcloudIpsecpoliciesDeleteOK) GetPayload() models.Object {
 func (o *PcloudIpsecpoliciesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -175,11 +179,13 @@ func (o *PcloudIpsecpoliciesDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudIpsecpoliciesDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteBadRequest) GetPayload() *models.Error {
@@ -191,7 +197,7 @@ func (o *PcloudIpsecpoliciesDeleteBadRequest) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -243,11 +249,13 @@ func (o *PcloudIpsecpoliciesDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudIpsecpoliciesDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteUnauthorized) GetPayload() *models.Error {
@@ -259,7 +267,7 @@ func (o *PcloudIpsecpoliciesDeleteUnauthorized) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -311,11 +319,13 @@ func (o *PcloudIpsecpoliciesDeleteForbidden) Code() int {
 }
 
 func (o *PcloudIpsecpoliciesDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteForbidden) GetPayload() *models.Error {
@@ -327,7 +337,7 @@ func (o *PcloudIpsecpoliciesDeleteForbidden) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -379,11 +389,13 @@ func (o *PcloudIpsecpoliciesDeleteNotFound) Code() int {
 }
 
 func (o *PcloudIpsecpoliciesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteNotFound) GetPayload() *models.Error {
@@ -395,7 +407,7 @@ func (o *PcloudIpsecpoliciesDeleteNotFound) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -447,11 +459,13 @@ func (o *PcloudIpsecpoliciesDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudIpsecpoliciesDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/vpn/ipsec-policies/{ipsec_policy_id}][%d] pcloudIpsecpoliciesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudIpsecpoliciesDeleteInternalServerError) GetPayload() *models.Error {
@@ -463,7 +477,7 @@ func (o *PcloudIpsecpoliciesDeleteInternalServerError) readResponse(response run
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

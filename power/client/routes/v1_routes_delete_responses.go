@@ -6,6 +6,8 @@ package routes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1RoutesDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1RoutesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1RoutesDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1RoutesDeleteOK()
@@ -115,11 +117,13 @@ func (o *V1RoutesDeleteOK) Code() int {
 }
 
 func (o *V1RoutesDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteOK %s", 200, payload)
 }
 
 func (o *V1RoutesDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteOK %s", 200, payload)
 }
 
 func (o *V1RoutesDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *V1RoutesDeleteOK) GetPayload() models.Object {
 func (o *V1RoutesDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *V1RoutesDeleteBadRequest) Code() int {
 }
 
 func (o *V1RoutesDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1RoutesDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1RoutesDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *V1RoutesDeleteBadRequest) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *V1RoutesDeleteUnauthorized) Code() int {
 }
 
 func (o *V1RoutesDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1RoutesDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1RoutesDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *V1RoutesDeleteUnauthorized) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *V1RoutesDeleteForbidden) Code() int {
 }
 
 func (o *V1RoutesDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1RoutesDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1RoutesDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *V1RoutesDeleteForbidden) readResponse(response runtime.ClientResponse, 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *V1RoutesDeleteNotFound) Code() int {
 }
 
 func (o *V1RoutesDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1RoutesDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1RoutesDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *V1RoutesDeleteNotFound) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *V1RoutesDeleteGone) Code() int {
 }
 
 func (o *V1RoutesDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteGone %s", 410, payload)
 }
 
 func (o *V1RoutesDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteGone %s", 410, payload)
 }
 
 func (o *V1RoutesDeleteGone) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *V1RoutesDeleteGone) readResponse(response runtime.ClientResponse, consu
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *V1RoutesDeleteInternalServerError) Code() int {
 }
 
 func (o *V1RoutesDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1RoutesDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/routes/{route_id}][%d] v1RoutesDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1RoutesDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *V1RoutesDeleteInternalServerError) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

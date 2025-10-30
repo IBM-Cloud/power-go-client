@@ -6,6 +6,8 @@ package p_cloud_volume_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudVolumegroupsPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudVolumegroupsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudVolumegroupsPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 202:
 		result := NewPcloudVolumegroupsPostAccepted()
@@ -133,11 +135,13 @@ func (o *PcloudVolumegroupsPostAccepted) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostAccepted) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostAccepted %s", 202, payload)
 }
 
 func (o *PcloudVolumegroupsPostAccepted) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostAccepted %s", 202, payload)
 }
 
 func (o *PcloudVolumegroupsPostAccepted) GetPayload() *models.VolumeGroupCreateResponse {
@@ -149,7 +153,7 @@ func (o *PcloudVolumegroupsPostAccepted) readResponse(response runtime.ClientRes
 	o.Payload = new(models.VolumeGroupCreateResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -201,11 +205,13 @@ func (o *PcloudVolumegroupsPostPartialContent) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostPartialContent) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostPartialContent  %+v", 206, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostPartialContent %s", 206, payload)
 }
 
 func (o *PcloudVolumegroupsPostPartialContent) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostPartialContent  %+v", 206, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostPartialContent %s", 206, payload)
 }
 
 func (o *PcloudVolumegroupsPostPartialContent) GetPayload() *models.VolumeGroupCreateResponse {
@@ -217,7 +223,7 @@ func (o *PcloudVolumegroupsPostPartialContent) readResponse(response runtime.Cli
 	o.Payload = new(models.VolumeGroupCreateResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -269,11 +275,13 @@ func (o *PcloudVolumegroupsPostBadRequest) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVolumegroupsPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVolumegroupsPostBadRequest) GetPayload() *models.Error {
@@ -285,7 +293,7 @@ func (o *PcloudVolumegroupsPostBadRequest) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -337,11 +345,13 @@ func (o *PcloudVolumegroupsPostUnauthorized) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVolumegroupsPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVolumegroupsPostUnauthorized) GetPayload() *models.Error {
@@ -353,7 +363,7 @@ func (o *PcloudVolumegroupsPostUnauthorized) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -405,11 +415,13 @@ func (o *PcloudVolumegroupsPostForbidden) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostForbidden %s", 403, payload)
 }
 
 func (o *PcloudVolumegroupsPostForbidden) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostForbidden %s", 403, payload)
 }
 
 func (o *PcloudVolumegroupsPostForbidden) GetPayload() *models.Error {
@@ -421,7 +433,7 @@ func (o *PcloudVolumegroupsPostForbidden) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -473,11 +485,13 @@ func (o *PcloudVolumegroupsPostNotFound) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostNotFound) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostNotFound %s", 404, payload)
 }
 
 func (o *PcloudVolumegroupsPostNotFound) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostNotFound %s", 404, payload)
 }
 
 func (o *PcloudVolumegroupsPostNotFound) GetPayload() *models.Error {
@@ -489,7 +503,7 @@ func (o *PcloudVolumegroupsPostNotFound) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -541,11 +555,13 @@ func (o *PcloudVolumegroupsPostConflict) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostConflict) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostConflict %s", 409, payload)
 }
 
 func (o *PcloudVolumegroupsPostConflict) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostConflict %s", 409, payload)
 }
 
 func (o *PcloudVolumegroupsPostConflict) GetPayload() *models.Error {
@@ -557,7 +573,7 @@ func (o *PcloudVolumegroupsPostConflict) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -609,11 +625,13 @@ func (o *PcloudVolumegroupsPostUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudVolumegroupsPostUnprocessableEntity) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudVolumegroupsPostUnprocessableEntity) GetPayload() *models.Error {
@@ -625,7 +643,7 @@ func (o *PcloudVolumegroupsPostUnprocessableEntity) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -677,11 +695,13 @@ func (o *PcloudVolumegroupsPostInternalServerError) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVolumegroupsPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVolumegroupsPostInternalServerError) GetPayload() *models.Error {
@@ -693,7 +713,7 @@ func (o *PcloudVolumegroupsPostInternalServerError) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -745,11 +765,13 @@ func (o *PcloudVolumegroupsPostGatewayTimeout) Code() int {
 }
 
 func (o *PcloudVolumegroupsPostGatewayTimeout) Error() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostGatewayTimeout %s", 504, payload)
 }
 
 func (o *PcloudVolumegroupsPostGatewayTimeout) String() string {
-	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostGatewayTimeout  %+v", 504, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/volume-groups][%d] pcloudVolumegroupsPostGatewayTimeout %s", 504, payload)
 }
 
 func (o *PcloudVolumegroupsPostGatewayTimeout) GetPayload() *models.Error {
@@ -761,7 +783,7 @@ func (o *PcloudVolumegroupsPostGatewayTimeout) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

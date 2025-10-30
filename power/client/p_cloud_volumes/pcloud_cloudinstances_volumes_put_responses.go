@@ -6,6 +6,8 @@ package p_cloud_volumes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudCloudinstancesVolumesPutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudCloudinstancesVolumesPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudCloudinstancesVolumesPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudCloudinstancesVolumesPutOK()
@@ -121,11 +123,13 @@ func (o *PcloudCloudinstancesVolumesPutOK) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutOK) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutOK) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutOK) GetPayload() *models.Volume {
@@ -137,7 +141,7 @@ func (o *PcloudCloudinstancesVolumesPutOK) readResponse(response runtime.ClientR
 	o.Payload = new(models.Volume)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -189,11 +193,13 @@ func (o *PcloudCloudinstancesVolumesPutBadRequest) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutBadRequest) GetPayload() *models.Error {
@@ -205,7 +211,7 @@ func (o *PcloudCloudinstancesVolumesPutBadRequest) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -257,11 +263,13 @@ func (o *PcloudCloudinstancesVolumesPutUnauthorized) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutUnauthorized) GetPayload() *models.Error {
@@ -273,7 +281,7 @@ func (o *PcloudCloudinstancesVolumesPutUnauthorized) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -325,11 +333,13 @@ func (o *PcloudCloudinstancesVolumesPutForbidden) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutForbidden) GetPayload() *models.Error {
@@ -341,7 +351,7 @@ func (o *PcloudCloudinstancesVolumesPutForbidden) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -393,11 +403,13 @@ func (o *PcloudCloudinstancesVolumesPutNotFound) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutNotFound) GetPayload() *models.Error {
@@ -409,7 +421,7 @@ func (o *PcloudCloudinstancesVolumesPutNotFound) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -461,11 +473,13 @@ func (o *PcloudCloudinstancesVolumesPutConflict) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutConflict) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutConflict %s", 409, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutConflict) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutConflict %s", 409, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutConflict) GetPayload() *models.Error {
@@ -477,7 +491,7 @@ func (o *PcloudCloudinstancesVolumesPutConflict) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -529,11 +543,13 @@ func (o *PcloudCloudinstancesVolumesPutUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutUnprocessableEntity) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutUnprocessableEntity) GetPayload() *models.Error {
@@ -545,7 +561,7 @@ func (o *PcloudCloudinstancesVolumesPutUnprocessableEntity) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -597,11 +613,13 @@ func (o *PcloudCloudinstancesVolumesPutInternalServerError) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}][%d] pcloudCloudinstancesVolumesPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesPutInternalServerError) GetPayload() *models.Error {
@@ -613,7 +631,7 @@ func (o *PcloudCloudinstancesVolumesPutInternalServerError) readResponse(respons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

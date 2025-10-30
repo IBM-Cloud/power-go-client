@@ -27,7 +27,7 @@ type StorageType struct {
 	Description string `json:"description,omitempty"`
 
 	// State of the storage type (active or inactive)
-	// Enum: [active inactive]
+	// Enum: ["active","inactive"]
 	State *string `json:"state,omitempty"`
 
 	// Storage type
@@ -48,7 +48,7 @@ func (m *StorageType) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var storageTypeTypeStatePropEnum []interface{}
+var storageTypeTypeStatePropEnum []any
 
 func init() {
 	var res []string

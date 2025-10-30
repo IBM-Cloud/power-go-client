@@ -6,6 +6,8 @@ package p_cloud_volumes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudCloudinstancesVolumesFlashCopyMappingsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudCloudinstancesVolumesFlashCopyMappingsGetOK()
@@ -115,11 +117,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) GetPayload() models.FlashCopyMappings {
@@ -129,7 +133,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) GetPayload() models.
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest) readResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) Code() int
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized) readRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden) readResponse(
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) Code() int {
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound) readResponse(r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) Code() 
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests %s", 429, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests %s", 429, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests) readRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) Cod
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/volumes/{volume_id}/flash-copy-mappings][%d] pcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError) rea
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

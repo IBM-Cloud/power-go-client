@@ -22,7 +22,7 @@ type VolumeGroupActionReset struct {
 
 	// New status to be set for a volume group
 	// Required: true
-	// Enum: [available]
+	// Enum: ["available"]
 	Status *string `json:"status"`
 }
 
@@ -40,7 +40,7 @@ func (m *VolumeGroupActionReset) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var volumeGroupActionResetTypeStatusPropEnum []interface{}
+var volumeGroupActionResetTypeStatusPropEnum []any
 
 func init() {
 	var res []string

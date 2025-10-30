@@ -6,6 +6,8 @@ package service_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceInstanceProvisionReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceInstanceProvisionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceInstanceProvisionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceInstanceProvisionOK()
@@ -127,11 +129,13 @@ func (o *ServiceInstanceProvisionOK) Code() int {
 }
 
 func (o *ServiceInstanceProvisionOK) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionOK %s", 200, payload)
 }
 
 func (o *ServiceInstanceProvisionOK) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionOK %s", 200, payload)
 }
 
 func (o *ServiceInstanceProvisionOK) GetPayload() *models.ServiceInstanceProvision {
@@ -143,7 +147,7 @@ func (o *ServiceInstanceProvisionOK) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.ServiceInstanceProvision)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -195,11 +199,13 @@ func (o *ServiceInstanceProvisionCreated) Code() int {
 }
 
 func (o *ServiceInstanceProvisionCreated) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionCreated %s", 201, payload)
 }
 
 func (o *ServiceInstanceProvisionCreated) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionCreated %s", 201, payload)
 }
 
 func (o *ServiceInstanceProvisionCreated) GetPayload() *models.ServiceInstanceProvision {
@@ -211,7 +217,7 @@ func (o *ServiceInstanceProvisionCreated) readResponse(response runtime.ClientRe
 	o.Payload = new(models.ServiceInstanceProvision)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -263,11 +269,13 @@ func (o *ServiceInstanceProvisionAccepted) Code() int {
 }
 
 func (o *ServiceInstanceProvisionAccepted) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionAccepted %s", 202, payload)
 }
 
 func (o *ServiceInstanceProvisionAccepted) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionAccepted %s", 202, payload)
 }
 
 func (o *ServiceInstanceProvisionAccepted) GetPayload() *models.ServiceInstanceAsyncOperation {
@@ -279,7 +287,7 @@ func (o *ServiceInstanceProvisionAccepted) readResponse(response runtime.ClientR
 	o.Payload = new(models.ServiceInstanceAsyncOperation)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -331,11 +339,13 @@ func (o *ServiceInstanceProvisionBadRequest) Code() int {
 }
 
 func (o *ServiceInstanceProvisionBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionBadRequest %s", 400, payload)
 }
 
 func (o *ServiceInstanceProvisionBadRequest) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionBadRequest %s", 400, payload)
 }
 
 func (o *ServiceInstanceProvisionBadRequest) GetPayload() *models.Error {
@@ -347,7 +357,7 @@ func (o *ServiceInstanceProvisionBadRequest) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -399,11 +409,13 @@ func (o *ServiceInstanceProvisionUnauthorized) Code() int {
 }
 
 func (o *ServiceInstanceProvisionUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceInstanceProvisionUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceInstanceProvisionUnauthorized) GetPayload() *models.Error {
@@ -415,7 +427,7 @@ func (o *ServiceInstanceProvisionUnauthorized) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -467,11 +479,13 @@ func (o *ServiceInstanceProvisionForbidden) Code() int {
 }
 
 func (o *ServiceInstanceProvisionForbidden) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionForbidden %s", 403, payload)
 }
 
 func (o *ServiceInstanceProvisionForbidden) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionForbidden %s", 403, payload)
 }
 
 func (o *ServiceInstanceProvisionForbidden) GetPayload() *models.Error {
@@ -483,7 +497,7 @@ func (o *ServiceInstanceProvisionForbidden) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -535,11 +549,13 @@ func (o *ServiceInstanceProvisionNotFound) Code() int {
 }
 
 func (o *ServiceInstanceProvisionNotFound) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionNotFound %s", 404, payload)
 }
 
 func (o *ServiceInstanceProvisionNotFound) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionNotFound %s", 404, payload)
 }
 
 func (o *ServiceInstanceProvisionNotFound) GetPayload() *models.Error {
@@ -551,7 +567,7 @@ func (o *ServiceInstanceProvisionNotFound) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -603,11 +619,13 @@ func (o *ServiceInstanceProvisionConflict) Code() int {
 }
 
 func (o *ServiceInstanceProvisionConflict) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionConflict %s", 409, payload)
 }
 
 func (o *ServiceInstanceProvisionConflict) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionConflict %s", 409, payload)
 }
 
 func (o *ServiceInstanceProvisionConflict) GetPayload() *models.Error {
@@ -619,7 +637,7 @@ func (o *ServiceInstanceProvisionConflict) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -671,11 +689,13 @@ func (o *ServiceInstanceProvisionUnprocessableEntity) Code() int {
 }
 
 func (o *ServiceInstanceProvisionUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnprocessableEntity %s", 422, payload)
 }
 
 func (o *ServiceInstanceProvisionUnprocessableEntity) String() string {
-	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /v2/service_instances/{instance_id}][%d] serviceInstanceProvisionUnprocessableEntity %s", 422, payload)
 }
 
 func (o *ServiceInstanceProvisionUnprocessableEntity) GetPayload() *models.Error {
@@ -687,7 +707,7 @@ func (o *ServiceInstanceProvisionUnprocessableEntity) readResponse(response runt
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

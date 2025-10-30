@@ -38,7 +38,7 @@ type PeerInterface struct {
 	// type of peer interface
 	// Example: interface
 	// Required: true
-	// Enum: [interface lag]
+	// Enum: ["interface","lag"]
 	PeerType *string `json:"peerType"`
 
 	// port ID of the peer interface
@@ -104,7 +104,7 @@ func (m *PeerInterface) validatePeerInterfaceID(formats strfmt.Registry) error {
 	return nil
 }
 
-var peerInterfaceTypePeerTypePropEnum []interface{}
+var peerInterfaceTypePeerTypePropEnum []any
 
 func init() {
 	var res []string

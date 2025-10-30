@@ -6,6 +6,8 @@ package p_cloud_placement_groups
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudPlacementgroupsGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudPlacementgroupsGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudPlacementgroupsGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudPlacementgroupsGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudPlacementgroupsGetallOK) Code() int {
 }
 
 func (o *PcloudPlacementgroupsGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallOK %s", 200, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallOK %s", 200, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallOK) GetPayload() *models.PlacementGroups {
@@ -125,7 +129,7 @@ func (o *PcloudPlacementgroupsGetallOK) readResponse(response runtime.ClientResp
 	o.Payload = new(models.PlacementGroups)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudPlacementgroupsGetallBadRequest) Code() int {
 }
 
 func (o *PcloudPlacementgroupsGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudPlacementgroupsGetallBadRequest) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudPlacementgroupsGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudPlacementgroupsGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudPlacementgroupsGetallUnauthorized) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudPlacementgroupsGetallForbidden) Code() int {
 }
 
 func (o *PcloudPlacementgroupsGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudPlacementgroupsGetallForbidden) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudPlacementgroupsGetallNotFound) Code() int {
 }
 
 func (o *PcloudPlacementgroupsGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudPlacementgroupsGetallNotFound) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudPlacementgroupsGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudPlacementgroupsGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/placement-groups][%d] pcloudPlacementgroupsGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudPlacementgroupsGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudPlacementgroupsGetallInternalServerError) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
