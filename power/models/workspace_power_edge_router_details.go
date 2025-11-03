@@ -21,17 +21,17 @@ import (
 type WorkspacePowerEdgeRouterDetails struct {
 
 	// The migration status of a Power Edge Router
-	// Enum: [intializing migrating deleted completed]
+	// Enum: ["intializing","migrating","deleted","completed"]
 	MigrationStatus string `json:"migrationStatus,omitempty"`
 
 	// The state of a Power Edge Router
 	// Required: true
-	// Enum: [active error warning configuring removing inactive user-validation inaccessible]
+	// Enum: ["active","error","warning","configuring","removing","inactive","user-validation","inaccessible"]
 	State *string `json:"state"`
 
 	// The Power Edge Router type
 	// Required: true
-	// Enum: [automated manual]
+	// Enum: ["automated","manual"]
 	Type *string `json:"type"`
 }
 
@@ -57,7 +57,7 @@ func (m *WorkspacePowerEdgeRouterDetails) Validate(formats strfmt.Registry) erro
 	return nil
 }
 
-var workspacePowerEdgeRouterDetailsTypeMigrationStatusPropEnum []interface{}
+var workspacePowerEdgeRouterDetailsTypeMigrationStatusPropEnum []any
 
 func init() {
 	var res []string
@@ -105,7 +105,7 @@ func (m *WorkspacePowerEdgeRouterDetails) validateMigrationStatus(formats strfmt
 	return nil
 }
 
-var workspacePowerEdgeRouterDetailsTypeStatePropEnum []interface{}
+var workspacePowerEdgeRouterDetailsTypeStatePropEnum []any
 
 func init() {
 	var res []string
@@ -166,7 +166,7 @@ func (m *WorkspacePowerEdgeRouterDetails) validateState(formats strfmt.Registry)
 	return nil
 }
 
-var workspacePowerEdgeRouterDetailsTypeTypePropEnum []interface{}
+var workspacePowerEdgeRouterDetailsTypeTypePropEnum []any
 
 func init() {
 	var res []string

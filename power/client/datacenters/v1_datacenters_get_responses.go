@@ -6,6 +6,8 @@ package datacenters
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1DatacentersGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1DatacentersGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1DatacentersGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1DatacentersGetOK()
@@ -103,11 +105,13 @@ func (o *V1DatacentersGetOK) Code() int {
 }
 
 func (o *V1DatacentersGetOK) Error() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK %s", 200, payload)
 }
 
 func (o *V1DatacentersGetOK) String() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetOK %s", 200, payload)
 }
 
 func (o *V1DatacentersGetOK) GetPayload() *models.Datacenter {
@@ -119,7 +123,7 @@ func (o *V1DatacentersGetOK) readResponse(response runtime.ClientResponse, consu
 	o.Payload = new(models.Datacenter)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *V1DatacentersGetBadRequest) Code() int {
 }
 
 func (o *V1DatacentersGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest %s", 400, payload)
 }
 
 func (o *V1DatacentersGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetBadRequest %s", 400, payload)
 }
 
 func (o *V1DatacentersGetBadRequest) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *V1DatacentersGetBadRequest) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *V1DatacentersGetUnauthorized) Code() int {
 }
 
 func (o *V1DatacentersGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1DatacentersGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetUnauthorized %s", 401, payload)
 }
 
 func (o *V1DatacentersGetUnauthorized) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *V1DatacentersGetUnauthorized) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *V1DatacentersGetForbidden) Code() int {
 }
 
 func (o *V1DatacentersGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden %s", 403, payload)
 }
 
 func (o *V1DatacentersGetForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetForbidden %s", 403, payload)
 }
 
 func (o *V1DatacentersGetForbidden) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *V1DatacentersGetForbidden) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *V1DatacentersGetInternalServerError) Code() int {
 }
 
 func (o *V1DatacentersGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1DatacentersGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/datacenters/{datacenter_region}][%d] v1DatacentersGetInternalServerError %s", 500, payload)
 }
 
 func (o *V1DatacentersGetInternalServerError) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *V1DatacentersGetInternalServerError) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

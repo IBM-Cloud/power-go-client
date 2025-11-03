@@ -6,6 +6,8 @@ package internal_power_v_s_locations
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1PowervsLocationsTransitgatewayGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1PowervsLocationsTransitgatewayGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1PowervsLocationsTransitgatewayGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewInternalV1PowervsLocationsTransitgatewayGetOK()
@@ -91,11 +93,13 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetOK) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetOK) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetOK %s", 200, payload)
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetOK) String() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetOK %s", 200, payload)
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetOK) GetPayload() *models.TransitGatewayLocations {
@@ -107,7 +111,7 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetOK) readResponse(response ru
 	o.Payload = new(models.TransitGatewayLocations)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -159,11 +163,13 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) Code() int {
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetForbidden %s", 403, payload)
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) String() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetForbidden %s", 403, payload)
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) GetPayload() *models.Error {
@@ -175,7 +181,7 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetForbidden) readResponse(resp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -227,11 +233,13 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) Code() 
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /internal/v1/powervs/locations/transit-gateway][%d] internalV1PowervsLocationsTransitgatewayGetInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) GetPayload() *models.Error {
@@ -243,7 +251,7 @@ func (o *InternalV1PowervsLocationsTransitgatewayGetInternalServerError) readRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

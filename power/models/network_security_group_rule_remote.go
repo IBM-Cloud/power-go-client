@@ -24,7 +24,7 @@ type NetworkSecurityGroupRuleRemote struct {
 	ID string `json:"id,omitempty"`
 
 	// The type of remote group the rules apply to
-	// Enum: [network-security-group network-address-group default-network-address-group]
+	// Enum: ["network-security-group","network-address-group","default-network-address-group"]
 	Type string `json:"type,omitempty"`
 }
 
@@ -42,7 +42,7 @@ func (m *NetworkSecurityGroupRuleRemote) Validate(formats strfmt.Registry) error
 	return nil
 }
 
-var networkSecurityGroupRuleRemoteTypeTypePropEnum []interface{}
+var networkSecurityGroupRuleRemoteTypeTypePropEnum []any
 
 func init() {
 	var res []string

@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -167,11 +168,15 @@ func (m *PVMInstanceReferenceV2) validateConfiguration(formats strfmt.Registry) 
 
 	if m.Configuration != nil {
 		if err := m.Configuration.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("configuration")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("configuration")
 			}
+
 			return err
 		}
 	}
@@ -187,11 +192,15 @@ func (m *PVMInstanceReferenceV2) validateCores(formats strfmt.Registry) error {
 
 	if m.Cores != nil {
 		if err := m.Cores.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("cores")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("cores")
 			}
+
 			return err
 		}
 	}
@@ -217,11 +226,15 @@ func (m *PVMInstanceReferenceV2) validateCrn(formats strfmt.Registry) error {
 	}
 
 	if err := m.Crn.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -236,11 +249,15 @@ func (m *PVMInstanceReferenceV2) validateDeployment(formats strfmt.Registry) err
 
 	if m.Deployment != nil {
 		if err := m.Deployment.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("deployment")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("deployment")
 			}
+
 			return err
 		}
 	}
@@ -255,11 +272,15 @@ func (m *PVMInstanceReferenceV2) validateHealth(formats strfmt.Registry) error {
 
 	if m.Health != nil {
 		if err := m.Health.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("health")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("health")
 			}
+
 			return err
 		}
 	}
@@ -274,11 +295,15 @@ func (m *PVMInstanceReferenceV2) validateHost(formats strfmt.Registry) error {
 
 	if m.Host != nil {
 		if err := m.Host.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("host")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("host")
 			}
+
 			return err
 		}
 	}
@@ -312,11 +337,15 @@ func (m *PVMInstanceReferenceV2) validateMemory(formats strfmt.Registry) error {
 
 	if m.Memory != nil {
 		if err := m.Memory.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("memory")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("memory")
 			}
+
 			return err
 		}
 	}
@@ -346,11 +375,15 @@ func (m *PVMInstanceReferenceV2) validateNetworkPorts(formats strfmt.Registry) e
 
 		if m.NetworkPorts[i] != nil {
 			if err := m.NetworkPorts[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("networkPorts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("networkPorts" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -368,11 +401,15 @@ func (m *PVMInstanceReferenceV2) validateOperatingSystem(formats strfmt.Registry
 
 	if m.OperatingSystem != nil {
 		if err := m.OperatingSystem.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("operatingSystem")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("operatingSystem")
 			}
+
 			return err
 		}
 	}
@@ -387,11 +424,15 @@ func (m *PVMInstanceReferenceV2) validatePlacementGroup(formats strfmt.Registry)
 
 	if m.PlacementGroup != nil {
 		if err := m.PlacementGroup.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("placementGroup")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("placementGroup")
 			}
+
 			return err
 		}
 	}
@@ -415,11 +456,15 @@ func (m *PVMInstanceReferenceV2) validateVirtualCores(formats strfmt.Registry) e
 
 	if m.VirtualCores != nil {
 		if err := m.VirtualCores.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("virtualCores")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("virtualCores")
 			}
+
 			return err
 		}
 	}
@@ -434,11 +479,15 @@ func (m *PVMInstanceReferenceV2) validateVirtualSerialNumber(formats strfmt.Regi
 
 	if m.VirtualSerialNumber != nil {
 		if err := m.VirtualSerialNumber.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("virtualSerialNumber")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("virtualSerialNumber")
 			}
+
 			return err
 		}
 	}
@@ -513,11 +562,15 @@ func (m *PVMInstanceReferenceV2) contextValidateConfiguration(ctx context.Contex
 		}
 
 		if err := m.Configuration.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("configuration")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("configuration")
 			}
+
 			return err
 		}
 	}
@@ -530,11 +583,15 @@ func (m *PVMInstanceReferenceV2) contextValidateCores(ctx context.Context, forma
 	if m.Cores != nil {
 
 		if err := m.Cores.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("cores")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("cores")
 			}
+
 			return err
 		}
 	}
@@ -549,11 +606,15 @@ func (m *PVMInstanceReferenceV2) contextValidateCrn(ctx context.Context, formats
 	}
 
 	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -565,11 +626,15 @@ func (m *PVMInstanceReferenceV2) contextValidateDeployment(ctx context.Context, 
 	if m.Deployment != nil {
 
 		if err := m.Deployment.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("deployment")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("deployment")
 			}
+
 			return err
 		}
 	}
@@ -586,11 +651,15 @@ func (m *PVMInstanceReferenceV2) contextValidateHealth(ctx context.Context, form
 		}
 
 		if err := m.Health.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("health")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("health")
 			}
+
 			return err
 		}
 	}
@@ -607,11 +676,15 @@ func (m *PVMInstanceReferenceV2) contextValidateHost(ctx context.Context, format
 		}
 
 		if err := m.Host.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("host")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("host")
 			}
+
 			return err
 		}
 	}
@@ -624,11 +697,15 @@ func (m *PVMInstanceReferenceV2) contextValidateMemory(ctx context.Context, form
 	if m.Memory != nil {
 
 		if err := m.Memory.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("memory")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("memory")
 			}
+
 			return err
 		}
 	}
@@ -647,11 +724,15 @@ func (m *PVMInstanceReferenceV2) contextValidateNetworkPorts(ctx context.Context
 			}
 
 			if err := m.NetworkPorts[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("networkPorts" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("networkPorts" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -666,11 +747,15 @@ func (m *PVMInstanceReferenceV2) contextValidateOperatingSystem(ctx context.Cont
 	if m.OperatingSystem != nil {
 
 		if err := m.OperatingSystem.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("operatingSystem")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("operatingSystem")
 			}
+
 			return err
 		}
 	}
@@ -687,11 +772,15 @@ func (m *PVMInstanceReferenceV2) contextValidatePlacementGroup(ctx context.Conte
 		}
 
 		if err := m.PlacementGroup.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("placementGroup")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("placementGroup")
 			}
+
 			return err
 		}
 	}
@@ -708,11 +797,15 @@ func (m *PVMInstanceReferenceV2) contextValidateVirtualCores(ctx context.Context
 		}
 
 		if err := m.VirtualCores.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("virtualCores")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("virtualCores")
 			}
+
 			return err
 		}
 	}
@@ -729,11 +822,15 @@ func (m *PVMInstanceReferenceV2) contextValidateVirtualSerialNumber(ctx context.
 		}
 
 		if err := m.VirtualSerialNumber.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("virtualSerialNumber")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("virtualSerialNumber")
 			}
+
 			return err
 		}
 	}

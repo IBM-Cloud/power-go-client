@@ -6,6 +6,8 @@ package p_cloud_virtual_serial_number
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudVirtualserialnumberGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudVirtualserialnumberGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudVirtualserialnumberGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudVirtualserialnumberGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudVirtualserialnumberGetallOK) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberGetallOK) Error() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallOK %s", 200, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallOK) String() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallOK %s", 200, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallOK) GetPayload() models.VirtualSerialNumberList {
@@ -123,7 +127,7 @@ func (o *PcloudVirtualserialnumberGetallOK) GetPayload() models.VirtualSerialNum
 func (o *PcloudVirtualserialnumberGetallOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -175,11 +179,13 @@ func (o *PcloudVirtualserialnumberGetallBadRequest) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallBadRequest) GetPayload() *models.Error {
@@ -191,7 +197,7 @@ func (o *PcloudVirtualserialnumberGetallBadRequest) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -243,11 +249,13 @@ func (o *PcloudVirtualserialnumberGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallUnauthorized) GetPayload() *models.Error {
@@ -259,7 +267,7 @@ func (o *PcloudVirtualserialnumberGetallUnauthorized) readResponse(response runt
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -311,11 +319,13 @@ func (o *PcloudVirtualserialnumberGetallForbidden) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallForbidden) GetPayload() *models.Error {
@@ -327,7 +337,7 @@ func (o *PcloudVirtualserialnumberGetallForbidden) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -379,11 +389,13 @@ func (o *PcloudVirtualserialnumberGetallNotFound) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallNotFound) GetPayload() *models.Error {
@@ -395,7 +407,7 @@ func (o *PcloudVirtualserialnumberGetallNotFound) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -447,11 +459,13 @@ func (o *PcloudVirtualserialnumberGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudVirtualserialnumberGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/virtual-serial-number][%d] pcloudVirtualserialnumberGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudVirtualserialnumberGetallInternalServerError) GetPayload() *models.Error {
@@ -463,7 +477,7 @@ func (o *PcloudVirtualserialnumberGetallInternalServerError) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
