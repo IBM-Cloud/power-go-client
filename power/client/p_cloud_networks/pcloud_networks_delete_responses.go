@@ -55,6 +55,12 @@ func (o *PcloudNetworksDeleteReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 409:
+		result := NewPcloudNetworksDeleteConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 410:
 		result := NewPcloudNetworksDeleteGone()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -409,6 +415,76 @@ func (o *PcloudNetworksDeleteNotFound) GetPayload() *models.Error {
 }
 
 func (o *PcloudNetworksDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudNetworksDeleteConflict creates a PcloudNetworksDeleteConflict with default headers values
+func NewPcloudNetworksDeleteConflict() *PcloudNetworksDeleteConflict {
+	return &PcloudNetworksDeleteConflict{}
+}
+
+/*
+PcloudNetworksDeleteConflict describes a response with status code 409, with default header values.
+
+Conflict
+*/
+type PcloudNetworksDeleteConflict struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud networks delete conflict response has a 2xx status code
+func (o *PcloudNetworksDeleteConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud networks delete conflict response has a 3xx status code
+func (o *PcloudNetworksDeleteConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud networks delete conflict response has a 4xx status code
+func (o *PcloudNetworksDeleteConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud networks delete conflict response has a 5xx status code
+func (o *PcloudNetworksDeleteConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud networks delete conflict response a status code equal to that given
+func (o *PcloudNetworksDeleteConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the pcloud networks delete conflict response
+func (o *PcloudNetworksDeleteConflict) Code() int {
+	return 409
+}
+
+func (o *PcloudNetworksDeleteConflict) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksDeleteConflict %s", 409, payload)
+}
+
+func (o *PcloudNetworksDeleteConflict) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}][%d] pcloudNetworksDeleteConflict %s", 409, payload)
+}
+
+func (o *PcloudNetworksDeleteConflict) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudNetworksDeleteConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
