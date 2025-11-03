@@ -61,6 +61,12 @@ func (o *PcloudPvminstancesVpmemVolumesPostReader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
+	case 422:
+		result := NewPcloudPvminstancesVpmemVolumesPostUnprocessableEntity()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudPvminstancesVpmemVolumesPostInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
