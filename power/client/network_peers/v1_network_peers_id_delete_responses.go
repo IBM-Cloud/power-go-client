@@ -6,6 +6,8 @@ package network_peers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1NetworkPeersIDDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1NetworkPeersIDDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1NetworkPeersIDDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1NetworkPeersIDDeleteOK()
@@ -115,11 +117,13 @@ func (o *V1NetworkPeersIDDeleteOK) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteOK %s", 200, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *V1NetworkPeersIDDeleteOK) GetPayload() models.Object {
 func (o *V1NetworkPeersIDDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *V1NetworkPeersIDDeleteBadRequest) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *V1NetworkPeersIDDeleteBadRequest) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *V1NetworkPeersIDDeleteUnauthorized) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *V1NetworkPeersIDDeleteUnauthorized) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *V1NetworkPeersIDDeleteForbidden) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *V1NetworkPeersIDDeleteForbidden) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *V1NetworkPeersIDDeleteNotFound) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *V1NetworkPeersIDDeleteNotFound) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *V1NetworkPeersIDDeleteConflict) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteConflict) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteConflict) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteConflict  %+v", 409, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteConflict %s", 409, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteConflict) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *V1NetworkPeersIDDeleteConflict) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *V1NetworkPeersIDDeleteInternalServerError) Code() int {
 }
 
 func (o *V1NetworkPeersIDDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/network-peers/{network_peer_id}][%d] v1NetworkPeersIdDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1NetworkPeersIDDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *V1NetworkPeersIDDeleteInternalServerError) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

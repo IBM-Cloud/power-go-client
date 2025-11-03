@@ -6,6 +6,8 @@ package authentication
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerAuthLoginReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerAuthLoginReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerAuthLoginReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerAuthLoginOK()
@@ -109,11 +111,13 @@ func (o *ServiceBrokerAuthLoginOK) Code() int {
 }
 
 func (o *ServiceBrokerAuthLoginOK) Error() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerAuthLoginOK) String() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerAuthLoginOK) GetPayload() *models.AccessToken {
@@ -125,7 +129,7 @@ func (o *ServiceBrokerAuthLoginOK) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.AccessToken)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *ServiceBrokerAuthLoginBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerAuthLoginBadRequest) Error() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerAuthLoginBadRequest) String() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerAuthLoginBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *ServiceBrokerAuthLoginBadRequest) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *ServiceBrokerAuthLoginUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerAuthLoginUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerAuthLoginUnauthorized) String() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerAuthLoginUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *ServiceBrokerAuthLoginUnauthorized) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *ServiceBrokerAuthLoginForbidden) Code() int {
 }
 
 func (o *ServiceBrokerAuthLoginForbidden) Error() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerAuthLoginForbidden) String() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerAuthLoginForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *ServiceBrokerAuthLoginForbidden) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *ServiceBrokerAuthLoginNotFound) Code() int {
 }
 
 func (o *ServiceBrokerAuthLoginNotFound) Error() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerAuthLoginNotFound) String() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerAuthLoginNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *ServiceBrokerAuthLoginNotFound) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *ServiceBrokerAuthLoginInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerAuthLoginInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerAuthLoginInternalServerError) String() string {
-	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /auth/v1/login][%d] serviceBrokerAuthLoginInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerAuthLoginInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *ServiceBrokerAuthLoginInternalServerError) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

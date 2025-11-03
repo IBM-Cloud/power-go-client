@@ -6,6 +6,8 @@ package p_cloud_networks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudNetworksPortsPutReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudNetworksPortsPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudNetworksPortsPutReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudNetworksPortsPutOK()
@@ -115,11 +117,13 @@ func (o *PcloudNetworksPortsPutOK) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutOK) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutOK %s", 200, payload)
 }
 
 func (o *PcloudNetworksPortsPutOK) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutOK %s", 200, payload)
 }
 
 func (o *PcloudNetworksPortsPutOK) GetPayload() *models.NetworkPort {
@@ -131,7 +135,7 @@ func (o *PcloudNetworksPortsPutOK) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.NetworkPort)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *PcloudNetworksPortsPutBadRequest) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutBadRequest) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudNetworksPortsPutBadRequest) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutBadRequest %s", 400, payload)
 }
 
 func (o *PcloudNetworksPortsPutBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *PcloudNetworksPortsPutBadRequest) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *PcloudNetworksPortsPutUnauthorized) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutUnauthorized) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudNetworksPortsPutUnauthorized) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudNetworksPortsPutUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *PcloudNetworksPortsPutUnauthorized) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *PcloudNetworksPortsPutForbidden) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutForbidden) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudNetworksPortsPutForbidden) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutForbidden %s", 403, payload)
 }
 
 func (o *PcloudNetworksPortsPutForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *PcloudNetworksPortsPutForbidden) readResponse(response runtime.ClientRe
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *PcloudNetworksPortsPutNotFound) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutNotFound) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudNetworksPortsPutNotFound) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutNotFound %s", 404, payload)
 }
 
 func (o *PcloudNetworksPortsPutNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *PcloudNetworksPortsPutNotFound) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *PcloudNetworksPortsPutUnprocessableEntity) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutUnprocessableEntity) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudNetworksPortsPutUnprocessableEntity) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnprocessableEntity  %+v", 422, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutUnprocessableEntity %s", 422, payload)
 }
 
 func (o *PcloudNetworksPortsPutUnprocessableEntity) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *PcloudNetworksPortsPutUnprocessableEntity) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *PcloudNetworksPortsPutInternalServerError) Code() int {
 }
 
 func (o *PcloudNetworksPortsPutInternalServerError) Error() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudNetworksPortsPutInternalServerError) String() string {
-	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[PUT /pcloud/v1/cloud-instances/{cloud_instance_id}/networks/{network_id}/ports/{port_id}][%d] pcloudNetworksPortsPutInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudNetworksPortsPutInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *PcloudNetworksPortsPutInternalServerError) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

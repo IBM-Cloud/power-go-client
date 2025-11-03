@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -30,7 +31,7 @@ type ServiceBindingVolumeMount struct {
 
 	// device type
 	// Required: true
-	// Enum: [shared]
+	// Enum: ["shared"]
 	DeviceType *string `json:"device_type"`
 
 	// driver
@@ -39,7 +40,7 @@ type ServiceBindingVolumeMount struct {
 
 	// mode
 	// Required: true
-	// Enum: [r rw]
+	// Enum: ["r","rw"]
 	Mode *string `json:"mode"`
 }
 
@@ -90,11 +91,15 @@ func (m *ServiceBindingVolumeMount) validateDevice(formats strfmt.Registry) erro
 
 	if m.Device != nil {
 		if err := m.Device.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("device")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("device")
 			}
+
 			return err
 		}
 	}
@@ -102,7 +107,7 @@ func (m *ServiceBindingVolumeMount) validateDevice(formats strfmt.Registry) erro
 	return nil
 }
 
-var serviceBindingVolumeMountTypeDeviceTypePropEnum []interface{}
+var serviceBindingVolumeMountTypeDeviceTypePropEnum []any
 
 func init() {
 	var res []string
@@ -151,7 +156,7 @@ func (m *ServiceBindingVolumeMount) validateDriver(formats strfmt.Registry) erro
 	return nil
 }
 
-var serviceBindingVolumeMountTypeModePropEnum []interface{}
+var serviceBindingVolumeMountTypeModePropEnum []any
 
 func init() {
 	var res []string
@@ -213,11 +218,15 @@ func (m *ServiceBindingVolumeMount) contextValidateDevice(ctx context.Context, f
 	if m.Device != nil {
 
 		if err := m.Device.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("device")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("device")
 			}
+
 			return err
 		}
 	}

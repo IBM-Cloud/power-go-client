@@ -9,12 +9,38 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new p cloud networks API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new p cloud networks API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new p cloud networks API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -25,7 +51,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -57,7 +83,7 @@ type ClientService interface {
 PcloudNetworksDelete deletes a network
 */
 func (a *Client) PcloudNetworksDelete(params *PcloudNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksDeleteOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksDeleteParams()
 	}
@@ -77,17 +103,22 @@ func (a *Client) PcloudNetworksDelete(params *PcloudNetworksDeleteParams, authIn
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksDeleteOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -96,7 +127,7 @@ func (a *Client) PcloudNetworksDelete(params *PcloudNetworksDeleteParams, authIn
 PcloudNetworksGet gets a network s current state information
 */
 func (a *Client) PcloudNetworksGet(params *PcloudNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksGetParams()
 	}
@@ -116,17 +147,22 @@ func (a *Client) PcloudNetworksGet(params *PcloudNetworksGetParams, authInfo run
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -135,7 +171,7 @@ func (a *Client) PcloudNetworksGet(params *PcloudNetworksGetParams, authInfo run
 PcloudNetworksGetall gets all networks in this cloud instance
 */
 func (a *Client) PcloudNetworksGetall(params *PcloudNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksGetallParams()
 	}
@@ -155,17 +191,22 @@ func (a *Client) PcloudNetworksGetall(params *PcloudNetworksGetallParams, authIn
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -176,7 +217,7 @@ PcloudNetworksPortsDelete deletes a network port
 This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
 */
 func (a *Client) PcloudNetworksPortsDelete(params *PcloudNetworksPortsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsDeleteOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPortsDeleteParams()
 	}
@@ -196,17 +237,22 @@ func (a *Client) PcloudNetworksPortsDelete(params *PcloudNetworksPortsDeletePara
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksPortsDeleteOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.ports.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -217,7 +263,7 @@ PcloudNetworksPortsGet gets a port s information
 This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
 */
 func (a *Client) PcloudNetworksPortsGet(params *PcloudNetworksPortsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPortsGetParams()
 	}
@@ -237,17 +283,22 @@ func (a *Client) PcloudNetworksPortsGet(params *PcloudNetworksPortsGetParams, au
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksPortsGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.ports.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -258,7 +309,7 @@ PcloudNetworksPortsGetall gets all ports for this network
 This API is deprecated for /v1/networks/{network_id}/network-interfaces.
 */
 func (a *Client) PcloudNetworksPortsGetall(params *PcloudNetworksPortsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPortsGetallParams()
 	}
@@ -278,17 +329,22 @@ func (a *Client) PcloudNetworksPortsGetall(params *PcloudNetworksPortsGetallPara
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksPortsGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.ports.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -299,7 +355,7 @@ PcloudNetworksPortsPost performs port addition deletion and listing
 This API is deprecated for /v1/networks/{network_id}/network-interfaces.
 */
 func (a *Client) PcloudNetworksPortsPost(params *PcloudNetworksPortsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsPostCreated, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPortsPostParams()
 	}
@@ -319,17 +375,22 @@ func (a *Client) PcloudNetworksPortsPost(params *PcloudNetworksPortsPostParams, 
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksPortsPostCreated)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.ports.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -340,7 +401,7 @@ PcloudNetworksPortsPut updates a port s information
 This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
 */
 func (a *Client) PcloudNetworksPortsPut(params *PcloudNetworksPortsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsPutOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPortsPutParams()
 	}
@@ -360,17 +421,22 @@ func (a *Client) PcloudNetworksPortsPut(params *PcloudNetworksPortsPutParams, au
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksPortsPutOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.ports.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -379,7 +445,7 @@ func (a *Client) PcloudNetworksPortsPut(params *PcloudNetworksPortsPutParams, au
 PcloudNetworksPost creates a new network
 */
 func (a *Client) PcloudNetworksPost(params *PcloudNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPostOK, *PcloudNetworksPostCreated, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPostParams()
 	}
@@ -399,18 +465,22 @@ func (a *Client) PcloudNetworksPost(params *PcloudNetworksPostParams, authInfo r
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
+
+	// several success responses have to be checked
 	switch value := result.(type) {
 	case *PcloudNetworksPostOK:
 		return value, nil, nil
 	case *PcloudNetworksPostCreated:
 		return nil, value, nil
 	}
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for p_cloud_networks: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -419,7 +489,7 @@ func (a *Client) PcloudNetworksPost(params *PcloudNetworksPostParams, authInfo r
 PcloudNetworksPut updates a network
 */
 func (a *Client) PcloudNetworksPut(params *PcloudNetworksPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPutOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudNetworksPutParams()
 	}
@@ -439,17 +509,22 @@ func (a *Client) PcloudNetworksPut(params *PcloudNetworksPutParams, authInfo run
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*PcloudNetworksPutOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.networks.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }

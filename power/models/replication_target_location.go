@@ -24,7 +24,7 @@ type ReplicationTargetLocation struct {
 	Region string `json:"region,omitempty"`
 
 	// the replication site is active / down
-	// Enum: [active down]
+	// Enum: ["active","down"]
 	Status string `json:"status,omitempty"`
 }
 
@@ -42,7 +42,7 @@ func (m *ReplicationTargetLocation) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var replicationTargetLocationTypeStatusPropEnum []interface{}
+var replicationTargetLocationTypeStatusPropEnum []any
 
 func init() {
 	var res []string

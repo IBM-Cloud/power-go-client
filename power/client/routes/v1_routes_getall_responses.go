@@ -6,6 +6,8 @@ package routes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1RoutesGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1RoutesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1RoutesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1RoutesGetallOK()
@@ -109,11 +111,13 @@ func (o *V1RoutesGetallOK) Code() int {
 }
 
 func (o *V1RoutesGetallOK) Error() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallOK %s", 200, payload)
 }
 
 func (o *V1RoutesGetallOK) String() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallOK %s", 200, payload)
 }
 
 func (o *V1RoutesGetallOK) GetPayload() *models.Routes {
@@ -125,7 +129,7 @@ func (o *V1RoutesGetallOK) readResponse(response runtime.ClientResponse, consume
 	o.Payload = new(models.Routes)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *V1RoutesGetallBadRequest) Code() int {
 }
 
 func (o *V1RoutesGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallBadRequest %s", 400, payload)
 }
 
 func (o *V1RoutesGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallBadRequest %s", 400, payload)
 }
 
 func (o *V1RoutesGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *V1RoutesGetallBadRequest) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *V1RoutesGetallUnauthorized) Code() int {
 }
 
 func (o *V1RoutesGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *V1RoutesGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *V1RoutesGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *V1RoutesGetallUnauthorized) readResponse(response runtime.ClientRespons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *V1RoutesGetallForbidden) Code() int {
 }
 
 func (o *V1RoutesGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallForbidden %s", 403, payload)
 }
 
 func (o *V1RoutesGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallForbidden %s", 403, payload)
 }
 
 func (o *V1RoutesGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *V1RoutesGetallForbidden) readResponse(response runtime.ClientResponse, 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *V1RoutesGetallNotFound) Code() int {
 }
 
 func (o *V1RoutesGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallNotFound %s", 404, payload)
 }
 
 func (o *V1RoutesGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallNotFound %s", 404, payload)
 }
 
 func (o *V1RoutesGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *V1RoutesGetallNotFound) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *V1RoutesGetallInternalServerError) Code() int {
 }
 
 func (o *V1RoutesGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *V1RoutesGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/routes][%d] v1RoutesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *V1RoutesGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *V1RoutesGetallInternalServerError) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

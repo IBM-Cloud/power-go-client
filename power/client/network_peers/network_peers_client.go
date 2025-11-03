@@ -9,12 +9,38 @@ import (
 	"fmt"
 
 	"github.com/go-openapi/runtime"
+	httptransport "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
 )
 
 // New creates a new network peers API client.
 func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
+}
+
+// New creates a new network peers API client with basic auth credentials.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - user: user for basic authentication header.
+// - password: password for basic authentication header.
+func NewClientWithBasicAuth(host, basePath, scheme, user, password string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BasicAuth(user, password)
+	return &Client{transport: transport, formats: strfmt.Default}
+}
+
+// New creates a new network peers API client with a bearer token for authentication.
+// It takes the following parameters:
+// - host: http host (github.com).
+// - basePath: any base path for the API client ("/v1", "/v3").
+// - scheme: http scheme ("http", "https").
+// - bearerToken: bearer token for Bearer authentication header.
+func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) ClientService {
+	transport := httptransport.New(host, basePath, []string{scheme})
+	transport.DefaultAuthentication = httptransport.BearerToken(bearerToken)
+	return &Client{transport: transport, formats: strfmt.Default}
 }
 
 /*
@@ -25,7 +51,7 @@ type Client struct {
 	formats   strfmt.Registry
 }
 
-// ClientOption is the option for Client methods
+// ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
@@ -55,7 +81,7 @@ type ClientService interface {
 V1NetworkPeersGetall gets the list of network peers
 */
 func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersGetallParams()
 	}
@@ -75,17 +101,22 @@ func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authIn
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -94,7 +125,7 @@ func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authIn
 V1NetworkPeersIDDelete deletes a network peer
 */
 func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDDeleteOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersIDDeleteParams()
 	}
@@ -114,17 +145,22 @@ func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, au
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersIDDeleteOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.id.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -133,7 +169,7 @@ func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, au
 V1NetworkPeersIDGet gets the details of a network peer
 */
 func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersIDGetParams()
 	}
@@ -153,17 +189,22 @@ func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersIDGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.id.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -172,7 +213,7 @@ func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo
 V1NetworkPeersIDPut updates a network peer
 */
 func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDPutOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersIDPutParams()
 	}
@@ -192,17 +233,22 @@ func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersIDPutOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.id.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -211,7 +257,7 @@ func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo
 V1NetworkPeersInterfacesGetall gets the list of interfaces for network peer
 */
 func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersInterfacesGetallOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersInterfacesGetallParams()
 	}
@@ -231,17 +277,22 @@ func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfaces
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersInterfacesGetallOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.interfaces.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -250,7 +301,7 @@ func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfaces
 V1NetworkPeersPost creates a new network peer
 */
 func (a *Client) V1NetworkPeersPost(params *V1NetworkPeersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersPostOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersPostParams()
 	}
@@ -270,17 +321,22 @@ func (a *Client) V1NetworkPeersPost(params *V1NetworkPeersPostParams, authInfo r
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersPostOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -289,7 +345,7 @@ func (a *Client) V1NetworkPeersPost(params *V1NetworkPeersPostParams, authInfo r
 V1NetworkPeersRouteFilterIDDelete deletes a route filter
 */
 func (a *Client) V1NetworkPeersRouteFilterIDDelete(params *V1NetworkPeersRouteFilterIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFilterIDDeleteOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersRouteFilterIDDeleteParams()
 	}
@@ -309,17 +365,22 @@ func (a *Client) V1NetworkPeersRouteFilterIDDelete(params *V1NetworkPeersRouteFi
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersRouteFilterIDDeleteOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.routeFilter.id.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -328,7 +389,7 @@ func (a *Client) V1NetworkPeersRouteFilterIDDelete(params *V1NetworkPeersRouteFi
 V1NetworkPeersRouteFilterIDGet gets the details of a route filter
 */
 func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilterIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFilterIDGetOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersRouteFilterIDGetParams()
 	}
@@ -348,17 +409,22 @@ func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilte
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersRouteFilterIDGetOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.routeFilter.id.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -367,7 +433,7 @@ func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilte
 V1NetworkPeersRouteFiltersPost creates a new route filter
 */
 func (a *Client) V1NetworkPeersRouteFiltersPost(params *V1NetworkPeersRouteFiltersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFiltersPostOK, error) {
-	// TODO: Validate the params before sending
+	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewV1NetworkPeersRouteFiltersPostParams()
 	}
@@ -387,17 +453,22 @@ func (a *Client) V1NetworkPeersRouteFiltersPost(params *V1NetworkPeersRouteFilte
 	for _, opt := range opts {
 		opt(op)
 	}
-
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
+
+	// only one success response has to be checked
 	success, ok := result.(*V1NetworkPeersRouteFiltersPostOK)
 	if ok {
 		return success, nil
 	}
-	// unexpected success response
-	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.networkPeers.routeFilters.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }

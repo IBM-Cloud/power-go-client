@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -155,11 +156,15 @@ func (m *SharedProcessorPool) validateCrn(formats strfmt.Registry) error {
 	}
 
 	if err := m.Crn.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -205,11 +210,15 @@ func (m *SharedProcessorPool) validateSharedProcessorPoolPlacementGroups(formats
 
 		if m.SharedProcessorPoolPlacementGroups[i] != nil {
 			if err := m.SharedProcessorPoolPlacementGroups[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("sharedProcessorPoolPlacementGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("sharedProcessorPoolPlacementGroups" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -225,11 +234,15 @@ func (m *SharedProcessorPool) validateUserTags(formats strfmt.Registry) error {
 	}
 
 	if err := m.UserTags.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 
@@ -282,11 +295,15 @@ func (m *SharedProcessorPool) contextValidateCrn(ctx context.Context, formats st
 	}
 
 	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -304,11 +321,15 @@ func (m *SharedProcessorPool) contextValidateSharedProcessorPoolPlacementGroups(
 			}
 
 			if err := m.SharedProcessorPoolPlacementGroups[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("sharedProcessorPoolPlacementGroups" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("sharedProcessorPoolPlacementGroups" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -321,11 +342,15 @@ func (m *SharedProcessorPool) contextValidateSharedProcessorPoolPlacementGroups(
 func (m *SharedProcessorPool) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("userTags")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("userTags")
 		}
+
 		return err
 	}
 

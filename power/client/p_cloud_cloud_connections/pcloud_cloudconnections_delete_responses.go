@@ -6,6 +6,8 @@ package p_cloud_cloud_connections
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudCloudconnectionsDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudCloudconnectionsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudCloudconnectionsDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudCloudconnectionsDeleteOK()
@@ -127,11 +129,13 @@ func (o *PcloudCloudconnectionsDeleteOK) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteOK %s", 200, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteOK) GetPayload() models.Object {
@@ -141,7 +145,7 @@ func (o *PcloudCloudconnectionsDeleteOK) GetPayload() models.Object {
 func (o *PcloudCloudconnectionsDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -193,11 +197,13 @@ func (o *PcloudCloudconnectionsDeleteAccepted) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteAccepted) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteAccepted %s", 202, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteAccepted) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteAccepted  %+v", 202, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteAccepted %s", 202, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteAccepted) GetPayload() *models.JobReference {
@@ -209,7 +215,7 @@ func (o *PcloudCloudconnectionsDeleteAccepted) readResponse(response runtime.Cli
 	o.Payload = new(models.JobReference)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -261,11 +267,13 @@ func (o *PcloudCloudconnectionsDeleteBadRequest) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteBadRequest) GetPayload() *models.Error {
@@ -277,7 +285,7 @@ func (o *PcloudCloudconnectionsDeleteBadRequest) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -329,11 +337,13 @@ func (o *PcloudCloudconnectionsDeleteUnauthorized) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteUnauthorized) GetPayload() *models.Error {
@@ -345,7 +355,7 @@ func (o *PcloudCloudconnectionsDeleteUnauthorized) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -397,11 +407,13 @@ func (o *PcloudCloudconnectionsDeleteForbidden) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteForbidden) GetPayload() *models.Error {
@@ -413,7 +425,7 @@ func (o *PcloudCloudconnectionsDeleteForbidden) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -465,11 +477,13 @@ func (o *PcloudCloudconnectionsDeleteNotFound) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteNotFound) GetPayload() *models.Error {
@@ -481,7 +495,7 @@ func (o *PcloudCloudconnectionsDeleteNotFound) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -533,11 +547,13 @@ func (o *PcloudCloudconnectionsDeleteRequestTimeout) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteRequestTimeout) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteRequestTimeout  %+v", 408, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteRequestTimeout %s", 408, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteRequestTimeout) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteRequestTimeout  %+v", 408, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteRequestTimeout %s", 408, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteRequestTimeout) GetPayload() *models.Error {
@@ -549,7 +565,7 @@ func (o *PcloudCloudconnectionsDeleteRequestTimeout) readResponse(response runti
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -601,11 +617,13 @@ func (o *PcloudCloudconnectionsDeleteGone) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteGone %s", 410, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteGone) GetPayload() *models.Error {
@@ -617,7 +635,7 @@ func (o *PcloudCloudconnectionsDeleteGone) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -669,11 +687,13 @@ func (o *PcloudCloudconnectionsDeleteInternalServerError) Code() int {
 }
 
 func (o *PcloudCloudconnectionsDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/cloud-connections/{cloud_connection_id}][%d] pcloudCloudconnectionsDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudconnectionsDeleteInternalServerError) GetPayload() *models.Error {
@@ -685,7 +705,7 @@ func (o *PcloudCloudconnectionsDeleteInternalServerError) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

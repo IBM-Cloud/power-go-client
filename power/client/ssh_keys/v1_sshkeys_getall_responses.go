@@ -6,6 +6,8 @@ package ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1SshkeysGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1SshkeysGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1SshkeysGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1SshkeysGetallOK()
@@ -109,11 +111,13 @@ func (o *V1SshkeysGetallOK) Code() int {
 }
 
 func (o *V1SshkeysGetallOK) Error() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallOK %s", 200, payload)
 }
 
 func (o *V1SshkeysGetallOK) String() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallOK %s", 200, payload)
 }
 
 func (o *V1SshkeysGetallOK) GetPayload() *models.WorkspaceSSHKeys {
@@ -125,7 +129,7 @@ func (o *V1SshkeysGetallOK) readResponse(response runtime.ClientResponse, consum
 	o.Payload = new(models.WorkspaceSSHKeys)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *V1SshkeysGetallBadRequest) Code() int {
 }
 
 func (o *V1SshkeysGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysGetallBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *V1SshkeysGetallBadRequest) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *V1SshkeysGetallUnauthorized) Code() int {
 }
 
 func (o *V1SshkeysGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysGetallUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *V1SshkeysGetallUnauthorized) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *V1SshkeysGetallForbidden) Code() int {
 }
 
 func (o *V1SshkeysGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysGetallForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *V1SshkeysGetallForbidden) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *V1SshkeysGetallNotFound) Code() int {
 }
 
 func (o *V1SshkeysGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysGetallNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *V1SshkeysGetallNotFound) readResponse(response runtime.ClientResponse, 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *V1SshkeysGetallInternalServerError) Code() int {
 }
 
 func (o *V1SshkeysGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/ssh-keys][%d] v1SshkeysGetallInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysGetallInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *V1SshkeysGetallInternalServerError) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

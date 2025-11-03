@@ -6,6 +6,8 @@ package p_cloud_storage_tiers
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudCloudinstancesStoragetiersGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudCloudinstancesStoragetiersGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudCloudinstancesStoragetiersGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudCloudinstancesStoragetiersGetallOK()
@@ -109,11 +111,13 @@ func (o *PcloudCloudinstancesStoragetiersGetallOK) Code() int {
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallOK %s", 200, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallOK) GetPayload() models.RegionStorageTiers {
@@ -123,7 +127,7 @@ func (o *PcloudCloudinstancesStoragetiersGetallOK) GetPayload() models.RegionSto
 func (o *PcloudCloudinstancesStoragetiersGetallOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -175,11 +179,13 @@ func (o *PcloudCloudinstancesStoragetiersGetallBadRequest) Code() int {
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallBadRequest) GetPayload() *models.Error {
@@ -191,7 +197,7 @@ func (o *PcloudCloudinstancesStoragetiersGetallBadRequest) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -243,11 +249,13 @@ func (o *PcloudCloudinstancesStoragetiersGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallUnauthorized) GetPayload() *models.Error {
@@ -259,7 +267,7 @@ func (o *PcloudCloudinstancesStoragetiersGetallUnauthorized) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -311,11 +319,13 @@ func (o *PcloudCloudinstancesStoragetiersGetallForbidden) Code() int {
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallForbidden) GetPayload() *models.Error {
@@ -327,7 +337,7 @@ func (o *PcloudCloudinstancesStoragetiersGetallForbidden) readResponse(response 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -379,11 +389,13 @@ func (o *PcloudCloudinstancesStoragetiersGetallNotFound) Code() int {
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallNotFound) GetPayload() *models.Error {
@@ -395,7 +407,7 @@ func (o *PcloudCloudinstancesStoragetiersGetallNotFound) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -447,11 +459,13 @@ func (o *PcloudCloudinstancesStoragetiersGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/storage-tiers][%d] pcloudCloudinstancesStoragetiersGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudCloudinstancesStoragetiersGetallInternalServerError) GetPayload() *models.Error {
@@ -463,7 +477,7 @@ func (o *PcloudCloudinstancesStoragetiersGetallInternalServerError) readResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

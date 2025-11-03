@@ -21,7 +21,7 @@ import (
 type NetworkSecurityGroupRuleProtocolTCPFlag struct {
 
 	// TCP flag
-	// Enum: [syn ack fin rst]
+	// Enum: ["syn","ack","fin","rst"]
 	Flag string `json:"flag,omitempty"`
 }
 
@@ -39,7 +39,7 @@ func (m *NetworkSecurityGroupRuleProtocolTCPFlag) Validate(formats strfmt.Regist
 	return nil
 }
 
-var networkSecurityGroupRuleProtocolTcpFlagTypeFlagPropEnum []interface{}
+var networkSecurityGroupRuleProtocolTcpFlagTypeFlagPropEnum []any
 
 func init() {
 	var res []string

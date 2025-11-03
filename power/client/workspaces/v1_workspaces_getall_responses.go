@@ -6,6 +6,8 @@ package workspaces
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1WorkspacesGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1WorkspacesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1WorkspacesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1WorkspacesGetallOK()
@@ -103,11 +105,13 @@ func (o *V1WorkspacesGetallOK) Code() int {
 }
 
 func (o *V1WorkspacesGetallOK) Error() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallOK %s", 200, payload)
 }
 
 func (o *V1WorkspacesGetallOK) String() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallOK %s", 200, payload)
 }
 
 func (o *V1WorkspacesGetallOK) GetPayload() *models.Workspaces {
@@ -119,7 +123,7 @@ func (o *V1WorkspacesGetallOK) readResponse(response runtime.ClientResponse, con
 	o.Payload = new(models.Workspaces)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *V1WorkspacesGetallUnauthorized) Code() int {
 }
 
 func (o *V1WorkspacesGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *V1WorkspacesGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *V1WorkspacesGetallUnauthorized) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *V1WorkspacesGetallUnauthorized) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *V1WorkspacesGetallForbidden) Code() int {
 }
 
 func (o *V1WorkspacesGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallForbidden %s", 403, payload)
 }
 
 func (o *V1WorkspacesGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallForbidden %s", 403, payload)
 }
 
 func (o *V1WorkspacesGetallForbidden) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *V1WorkspacesGetallForbidden) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *V1WorkspacesGetallTooManyRequests) Code() int {
 }
 
 func (o *V1WorkspacesGetallTooManyRequests) Error() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallTooManyRequests %s", 429, payload)
 }
 
 func (o *V1WorkspacesGetallTooManyRequests) String() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallTooManyRequests %s", 429, payload)
 }
 
 func (o *V1WorkspacesGetallTooManyRequests) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *V1WorkspacesGetallTooManyRequests) readResponse(response runtime.Client
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *V1WorkspacesGetallInternalServerError) Code() int {
 }
 
 func (o *V1WorkspacesGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *V1WorkspacesGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /v1/workspaces][%d] v1WorkspacesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *V1WorkspacesGetallInternalServerError) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *V1WorkspacesGetallInternalServerError) readResponse(response runtime.Cl
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
