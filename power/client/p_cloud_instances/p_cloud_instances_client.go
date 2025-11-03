@@ -62,6 +62,8 @@ type ClientService interface {
 
 	PcloudCloudinstancesPut(params *PcloudCloudinstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesPutOK, error)
 
+	PcloudCloudinstancesSharedImagesPut(params *PcloudCloudinstancesSharedImagesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSharedImagesPutOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -194,6 +196,50 @@ func (a *Client) PcloudCloudinstancesPut(params *PcloudCloudinstancesPutParams, 
 	//
 	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudCloudinstancesSharedImagesPut updates shared image settings for a cloud instance
+*/
+func (a *Client) PcloudCloudinstancesSharedImagesPut(params *PcloudCloudinstancesSharedImagesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSharedImagesPutOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudCloudinstancesSharedImagesPutParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.cloudinstances.shared-images.put",
+		Method:             "PUT",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/shared-images",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudCloudinstancesSharedImagesPutReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudCloudinstancesSharedImagesPutOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.shared-images.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
