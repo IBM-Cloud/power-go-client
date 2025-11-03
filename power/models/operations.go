@@ -29,7 +29,7 @@ type Operations struct {
 	OperatingMode string `json:"operatingMode,omitempty"`
 
 	// Name of the job task to execute
-	// Enum: ["consoleservice","dston","dumprestart","iopdump","iopreset","remotedstoff","remotedston","retrydump"]
+	// Enum: ["dston","retrydump","consoleservice","iopreset","remotedstoff","remotedston","iopdump","dumprestart"]
 	Task string `json:"task,omitempty"`
 }
 
