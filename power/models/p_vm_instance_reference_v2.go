@@ -81,6 +81,9 @@ type PVMInstanceReferenceV2 struct {
 
 	// Information about Virtual Serial Number assigned to the PVM Instance
 	VirtualSerialNumber *GetServerVirtualSerialNumber `json:"virtualSerialNumber,omitempty"`
+
+	// List of vPMEM volumes attached to this PVM Instance
+	VpmemVolumes []*VPMemVolumeReference `json:"vpmemVolumes,omitempty"`
 }
 
 // Validate validates this p VM instance reference v2
@@ -152,6 +155,10 @@ func (m *PVMInstanceReferenceV2) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateVirtualSerialNumber(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateVpmemVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -495,6 +502,36 @@ func (m *PVMInstanceReferenceV2) validateVirtualSerialNumber(formats strfmt.Regi
 	return nil
 }
 
+func (m *PVMInstanceReferenceV2) validateVpmemVolumes(formats strfmt.Registry) error {
+	if swag.IsZero(m.VpmemVolumes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+		if swag.IsZero(m.VpmemVolumes[i]) { // not required
+			continue
+		}
+
+		if m.VpmemVolumes[i] != nil {
+			if err := m.VpmemVolumes[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
 // ContextValidate validate this p VM instance reference v2 based on the context it is used
 func (m *PVMInstanceReferenceV2) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -544,6 +581,10 @@ func (m *PVMInstanceReferenceV2) ContextValidate(ctx context.Context, formats st
 	}
 
 	if err := m.contextValidateVirtualSerialNumber(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateVpmemVolumes(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -833,6 +874,35 @@ func (m *PVMInstanceReferenceV2) contextValidateVirtualSerialNumber(ctx context.
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceReferenceV2) contextValidateVpmemVolumes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.VpmemVolumes); i++ {
+
+		if m.VpmemVolumes[i] != nil {
+
+			if swag.IsZero(m.VpmemVolumes[i]) { // not required
+				return nil
+			}
+
+			if err := m.VpmemVolumes[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("vpmemVolumes" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil
