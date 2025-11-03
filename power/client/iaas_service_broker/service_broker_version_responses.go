@@ -6,6 +6,8 @@ package iaas_service_broker
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerVersionReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerVersionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerVersionReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerVersionOK()
@@ -103,11 +105,13 @@ func (o *ServiceBrokerVersionOK) Code() int {
 }
 
 func (o *ServiceBrokerVersionOK) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerVersionOK) String() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerVersionOK) GetPayload() *models.Version {
@@ -119,7 +123,7 @@ func (o *ServiceBrokerVersionOK) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.Version)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -171,11 +175,13 @@ func (o *ServiceBrokerVersionBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerVersionBadRequest) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerVersionBadRequest) String() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerVersionBadRequest) GetPayload() *models.Error {
@@ -187,7 +193,7 @@ func (o *ServiceBrokerVersionBadRequest) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -239,11 +245,13 @@ func (o *ServiceBrokerVersionUnauthorized) Code() int {
 }
 
 func (o *ServiceBrokerVersionUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerVersionUnauthorized) String() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionUnauthorized %s", 401, payload)
 }
 
 func (o *ServiceBrokerVersionUnauthorized) GetPayload() *models.Error {
@@ -255,7 +263,7 @@ func (o *ServiceBrokerVersionUnauthorized) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -307,11 +315,13 @@ func (o *ServiceBrokerVersionForbidden) Code() int {
 }
 
 func (o *ServiceBrokerVersionForbidden) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerVersionForbidden) String() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionForbidden %s", 403, payload)
 }
 
 func (o *ServiceBrokerVersionForbidden) GetPayload() *models.Error {
@@ -323,7 +333,7 @@ func (o *ServiceBrokerVersionForbidden) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -375,11 +385,13 @@ func (o *ServiceBrokerVersionNotFound) Code() int {
 }
 
 func (o *ServiceBrokerVersionNotFound) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerVersionNotFound) String() string {
-	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/version][%d] serviceBrokerVersionNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerVersionNotFound) GetPayload() *models.Error {
@@ -391,7 +403,7 @@ func (o *ServiceBrokerVersionNotFound) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

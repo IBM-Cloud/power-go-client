@@ -6,6 +6,8 @@ package p_cloud_pod_capacity
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudPodcapacityGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudPodcapacityGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudPodcapacityGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudPodcapacityGetOK()
@@ -109,11 +111,13 @@ func (o *PcloudPodcapacityGetOK) Code() int {
 }
 
 func (o *PcloudPodcapacityGetOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK %s", 200, payload)
 }
 
 func (o *PcloudPodcapacityGetOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetOK %s", 200, payload)
 }
 
 func (o *PcloudPodcapacityGetOK) GetPayload() *models.PodCapacity {
@@ -125,7 +129,7 @@ func (o *PcloudPodcapacityGetOK) readResponse(response runtime.ClientResponse, c
 	o.Payload = new(models.PodCapacity)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *PcloudPodcapacityGetBadRequest) Code() int {
 }
 
 func (o *PcloudPodcapacityGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudPodcapacityGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetBadRequest %s", 400, payload)
 }
 
 func (o *PcloudPodcapacityGetBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *PcloudPodcapacityGetBadRequest) readResponse(response runtime.ClientRes
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *PcloudPodcapacityGetUnauthorized) Code() int {
 }
 
 func (o *PcloudPodcapacityGetUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudPodcapacityGetUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudPodcapacityGetUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *PcloudPodcapacityGetUnauthorized) readResponse(response runtime.ClientR
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *PcloudPodcapacityGetForbidden) Code() int {
 }
 
 func (o *PcloudPodcapacityGetForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudPodcapacityGetForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetForbidden %s", 403, payload)
 }
 
 func (o *PcloudPodcapacityGetForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *PcloudPodcapacityGetForbidden) readResponse(response runtime.ClientResp
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *PcloudPodcapacityGetNotFound) Code() int {
 }
 
 func (o *PcloudPodcapacityGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudPodcapacityGetNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetNotFound %s", 404, payload)
 }
 
 func (o *PcloudPodcapacityGetNotFound) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *PcloudPodcapacityGetNotFound) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *PcloudPodcapacityGetInternalServerError) Code() int {
 }
 
 func (o *PcloudPodcapacityGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudPodcapacityGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/pod-capacity][%d] pcloudPodcapacityGetInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudPodcapacityGetInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *PcloudPodcapacityGetInternalServerError) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

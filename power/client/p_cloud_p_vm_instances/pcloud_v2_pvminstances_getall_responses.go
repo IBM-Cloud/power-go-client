@@ -6,6 +6,8 @@ package p_cloud_p_vm_instances
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type PcloudV2PvminstancesGetallReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *PcloudV2PvminstancesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *PcloudV2PvminstancesGetallReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewPcloudV2PvminstancesGetallOK()
@@ -115,11 +117,13 @@ func (o *PcloudV2PvminstancesGetallOK) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallOK) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallOK %s", 200, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallOK) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallOK %s", 200, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallOK) GetPayload() *models.PVMInstancesV2 {
@@ -131,7 +135,7 @@ func (o *PcloudV2PvminstancesGetallOK) readResponse(response runtime.ClientRespo
 	o.Payload = new(models.PVMInstancesV2)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -183,11 +187,13 @@ func (o *PcloudV2PvminstancesGetallBadRequest) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallBadRequest) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallBadRequest) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallBadRequest %s", 400, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallBadRequest) GetPayload() *models.Error {
@@ -199,7 +205,7 @@ func (o *PcloudV2PvminstancesGetallBadRequest) readResponse(response runtime.Cli
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -251,11 +257,13 @@ func (o *PcloudV2PvminstancesGetallUnauthorized) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallUnauthorized) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallUnauthorized) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallUnauthorized %s", 401, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallUnauthorized) GetPayload() *models.Error {
@@ -267,7 +275,7 @@ func (o *PcloudV2PvminstancesGetallUnauthorized) readResponse(response runtime.C
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -319,11 +327,13 @@ func (o *PcloudV2PvminstancesGetallForbidden) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallForbidden) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallForbidden) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallForbidden %s", 403, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallForbidden) GetPayload() *models.Error {
@@ -335,7 +345,7 @@ func (o *PcloudV2PvminstancesGetallForbidden) readResponse(response runtime.Clie
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -387,11 +397,13 @@ func (o *PcloudV2PvminstancesGetallNotFound) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallNotFound) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallNotFound) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallNotFound %s", 404, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallNotFound) GetPayload() *models.Error {
@@ -403,7 +415,7 @@ func (o *PcloudV2PvminstancesGetallNotFound) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -455,11 +467,13 @@ func (o *PcloudV2PvminstancesGetallRequestTimeout) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallRequestTimeout) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallRequestTimeout  %+v", 408, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallRequestTimeout %s", 408, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallRequestTimeout) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallRequestTimeout  %+v", 408, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallRequestTimeout %s", 408, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallRequestTimeout) GetPayload() *models.Error {
@@ -471,7 +485,7 @@ func (o *PcloudV2PvminstancesGetallRequestTimeout) readResponse(response runtime
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -523,11 +537,13 @@ func (o *PcloudV2PvminstancesGetallInternalServerError) Code() int {
 }
 
 func (o *PcloudV2PvminstancesGetallInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallInternalServerError) String() string {
-	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances][%d] pcloudV2PvminstancesGetallInternalServerError %s", 500, payload)
 }
 
 func (o *PcloudV2PvminstancesGetallInternalServerError) GetPayload() *models.Error {
@@ -539,7 +555,7 @@ func (o *PcloudV2PvminstancesGetallInternalServerError) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -46,7 +47,7 @@ type SAPProfile struct {
 	Saps int64 `json:"saps"`
 
 	// Required smt mode for that profile
-	// Enum: [4 8]
+	// Enum: [4,8]
 	SmtMode int64 `json:"smtMode"`
 
 	// List of supported systems
@@ -54,7 +55,7 @@ type SAPProfile struct {
 
 	// Type of profile
 	// Required: true
-	// Enum: [balanced compute memory ultra-memory small sap-rise sap-rise-app]
+	// Enum: ["balanced","compute","memory","ultra-memory","small","sap-rise","sap-rise-app"]
 	Type *string `json:"type"`
 
 	// vpmem volume
@@ -138,7 +139,7 @@ func (m *SAPProfile) validateProfileID(formats strfmt.Registry) error {
 	return nil
 }
 
-var sAPProfileTypeSmtModePropEnum []interface{}
+var sAPProfileTypeSmtModePropEnum []any
 
 func init() {
 	var res []int64
@@ -171,7 +172,7 @@ func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
 	return nil
 }
 
-var sAPProfileTypeTypePropEnum []interface{}
+var sAPProfileTypeTypePropEnum []any
 
 func init() {
 	var res []string
@@ -236,11 +237,15 @@ func (m *SAPProfile) validateVpmemVolume(formats strfmt.Registry) error {
 
 	if m.VpmemVolume != nil {
 		if err := m.VpmemVolume.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("vpmemVolume")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("vpmemVolume")
 			}
+
 			return err
 		}
 	}
@@ -271,11 +276,15 @@ func (m *SAPProfile) contextValidateVpmemVolume(ctx context.Context, formats str
 		}
 
 		if err := m.VpmemVolume.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("vpmemVolume")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("vpmemVolume")
 			}
+
 			return err
 		}
 	}

@@ -6,6 +6,8 @@ package internal_operations_v_p_mem_volumes
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type InternalV1OperationsVpmemVolumesPostReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *InternalV1OperationsVpmemVolumesPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *InternalV1OperationsVpmemVolumesPostReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 201:
 		result := NewInternalV1OperationsVpmemVolumesPostCreated()
@@ -109,11 +111,13 @@ func (o *InternalV1OperationsVpmemVolumesPostCreated) Code() int {
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostCreated) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostCreated) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostCreated  %+v", 201, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostCreated %s", 201, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostCreated) GetPayload() *models.InternalOperationsResponse {
@@ -125,7 +129,7 @@ func (o *InternalV1OperationsVpmemVolumesPostCreated) readResponse(response runt
 	o.Payload = new(models.InternalOperationsResponse)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -177,11 +181,13 @@ func (o *InternalV1OperationsVpmemVolumesPostBadRequest) Code() int {
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostBadRequest) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostBadRequest) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostBadRequest %s", 400, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostBadRequest) GetPayload() *models.Error {
@@ -193,7 +199,7 @@ func (o *InternalV1OperationsVpmemVolumesPostBadRequest) readResponse(response r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -245,11 +251,13 @@ func (o *InternalV1OperationsVpmemVolumesPostUnauthorized) Code() int {
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostUnauthorized) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostUnauthorized) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostUnauthorized %s", 401, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostUnauthorized) GetPayload() *models.Error {
@@ -261,7 +269,7 @@ func (o *InternalV1OperationsVpmemVolumesPostUnauthorized) readResponse(response
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -313,11 +321,13 @@ func (o *InternalV1OperationsVpmemVolumesPostForbidden) Code() int {
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostForbidden) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostForbidden) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostForbidden %s", 403, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostForbidden) GetPayload() *models.Error {
@@ -329,7 +339,7 @@ func (o *InternalV1OperationsVpmemVolumesPostForbidden) readResponse(response ru
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -381,11 +391,13 @@ func (o *InternalV1OperationsVpmemVolumesPostTooManyRequests) Code() int {
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostTooManyRequests) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostTooManyRequests) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostTooManyRequests  %+v", 429, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostTooManyRequests %s", 429, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostTooManyRequests) GetPayload() *models.Error {
@@ -397,7 +409,7 @@ func (o *InternalV1OperationsVpmemVolumesPostTooManyRequests) readResponse(respo
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -449,11 +461,13 @@ func (o *InternalV1OperationsVpmemVolumesPostInternalServerError) Code() int {
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostInternalServerError) Error() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostInternalServerError) String() string {
-	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /internal/v1/operations/vpmem-volumes][%d] internalV1OperationsVpmemVolumesPostInternalServerError %s", 500, payload)
 }
 
 func (o *InternalV1OperationsVpmemVolumesPostInternalServerError) GetPayload() *models.Error {
@@ -465,7 +479,7 @@ func (o *InternalV1OperationsVpmemVolumesPostInternalServerError) readResponse(r
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

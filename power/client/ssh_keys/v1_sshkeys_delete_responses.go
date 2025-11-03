@@ -6,6 +6,8 @@ package ssh_keys
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type V1SshkeysDeleteReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *V1SshkeysDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *V1SshkeysDeleteReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewV1SshkeysDeleteOK()
@@ -115,11 +117,13 @@ func (o *V1SshkeysDeleteOK) Code() int {
 }
 
 func (o *V1SshkeysDeleteOK) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK %s", 200, payload)
 }
 
 func (o *V1SshkeysDeleteOK) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteOK %s", 200, payload)
 }
 
 func (o *V1SshkeysDeleteOK) GetPayload() models.Object {
@@ -129,7 +133,7 @@ func (o *V1SshkeysDeleteOK) GetPayload() models.Object {
 func (o *V1SshkeysDeleteOK) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	// response payload
-	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -181,11 +185,13 @@ func (o *V1SshkeysDeleteBadRequest) Code() int {
 }
 
 func (o *V1SshkeysDeleteBadRequest) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysDeleteBadRequest) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteBadRequest %s", 400, payload)
 }
 
 func (o *V1SshkeysDeleteBadRequest) GetPayload() *models.Error {
@@ -197,7 +203,7 @@ func (o *V1SshkeysDeleteBadRequest) readResponse(response runtime.ClientResponse
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -249,11 +255,13 @@ func (o *V1SshkeysDeleteUnauthorized) Code() int {
 }
 
 func (o *V1SshkeysDeleteUnauthorized) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysDeleteUnauthorized) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized  %+v", 401, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteUnauthorized %s", 401, payload)
 }
 
 func (o *V1SshkeysDeleteUnauthorized) GetPayload() *models.Error {
@@ -265,7 +273,7 @@ func (o *V1SshkeysDeleteUnauthorized) readResponse(response runtime.ClientRespon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -317,11 +325,13 @@ func (o *V1SshkeysDeleteForbidden) Code() int {
 }
 
 func (o *V1SshkeysDeleteForbidden) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysDeleteForbidden) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden  %+v", 403, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteForbidden %s", 403, payload)
 }
 
 func (o *V1SshkeysDeleteForbidden) GetPayload() *models.Error {
@@ -333,7 +343,7 @@ func (o *V1SshkeysDeleteForbidden) readResponse(response runtime.ClientResponse,
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -385,11 +395,13 @@ func (o *V1SshkeysDeleteNotFound) Code() int {
 }
 
 func (o *V1SshkeysDeleteNotFound) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysDeleteNotFound) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteNotFound %s", 404, payload)
 }
 
 func (o *V1SshkeysDeleteNotFound) GetPayload() *models.Error {
@@ -401,7 +413,7 @@ func (o *V1SshkeysDeleteNotFound) readResponse(response runtime.ClientResponse, 
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -453,11 +465,13 @@ func (o *V1SshkeysDeleteGone) Code() int {
 }
 
 func (o *V1SshkeysDeleteGone) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone %s", 410, payload)
 }
 
 func (o *V1SshkeysDeleteGone) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone  %+v", 410, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteGone %s", 410, payload)
 }
 
 func (o *V1SshkeysDeleteGone) GetPayload() *models.Error {
@@ -469,7 +483,7 @@ func (o *V1SshkeysDeleteGone) readResponse(response runtime.ClientResponse, cons
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -521,11 +535,13 @@ func (o *V1SshkeysDeleteInternalServerError) Code() int {
 }
 
 func (o *V1SshkeysDeleteInternalServerError) Error() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysDeleteInternalServerError) String() string {
-	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /v1/ssh-keys/{sshkey_id}][%d] v1SshkeysDeleteInternalServerError %s", 500, payload)
 }
 
 func (o *V1SshkeysDeleteInternalServerError) GetPayload() *models.Error {
@@ -537,7 +553,7 @@ func (o *V1SshkeysDeleteInternalServerError) readResponse(response runtime.Clien
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

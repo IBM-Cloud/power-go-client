@@ -6,6 +6,8 @@ package open_stacks
 // Editing this file might prove futile when you re-run the swagger generate command
 
 import (
+	"encoding/json"
+	stderrors "errors"
 	"fmt"
 	"io"
 
@@ -21,7 +23,7 @@ type ServiceBrokerOpenstacksHostsGetReader struct {
 }
 
 // ReadResponse reads a server response into the received o.
-func (o *ServiceBrokerOpenstacksHostsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (interface{}, error) {
+func (o *ServiceBrokerOpenstacksHostsGetReader) ReadResponse(response runtime.ClientResponse, consumer runtime.Consumer) (any, error) {
 	switch response.Code() {
 	case 200:
 		result := NewServiceBrokerOpenstacksHostsGetOK()
@@ -97,11 +99,13 @@ func (o *ServiceBrokerOpenstacksHostsGetOK) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetOK) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetOK) String() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetOK  %+v", 200, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetOK %s", 200, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetOK) GetPayload() *models.HostInfo {
@@ -113,7 +117,7 @@ func (o *ServiceBrokerOpenstacksHostsGetOK) readResponse(response runtime.Client
 	o.Payload = new(models.HostInfo)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -165,11 +169,13 @@ func (o *ServiceBrokerOpenstacksHostsGetBadRequest) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetBadRequest) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetBadRequest) String() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetBadRequest  %+v", 400, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetBadRequest %s", 400, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetBadRequest) GetPayload() *models.Error {
@@ -181,7 +187,7 @@ func (o *ServiceBrokerOpenstacksHostsGetBadRequest) readResponse(response runtim
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -233,11 +239,13 @@ func (o *ServiceBrokerOpenstacksHostsGetNotFound) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetNotFound) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetNotFound) String() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetNotFound  %+v", 404, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetNotFound %s", 404, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetNotFound) GetPayload() *models.Error {
@@ -249,7 +257,7 @@ func (o *ServiceBrokerOpenstacksHostsGetNotFound) readResponse(response runtime.
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -301,11 +309,13 @@ func (o *ServiceBrokerOpenstacksHostsGetInternalServerError) Code() int {
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetInternalServerError) Error() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetInternalServerError) String() string {
-	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetInternalServerError  %+v", 500, o.Payload)
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /broker/v1/openstacks/{openstack_id}/hosts/{hostname}][%d] serviceBrokerOpenstacksHostsGetInternalServerError %s", 500, payload)
 }
 
 func (o *ServiceBrokerOpenstacksHostsGetInternalServerError) GetPayload() *models.Error {
@@ -317,7 +327,7 @@ func (o *ServiceBrokerOpenstacksHostsGetInternalServerError) readResponse(respon
 	o.Payload = new(models.Error)
 
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && err != io.EOF {
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 

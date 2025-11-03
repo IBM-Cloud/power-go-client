@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -24,11 +25,11 @@ type NetworkReference struct {
 	AccessConfig AccessConfig `json:"accessConfig,omitempty"`
 
 	// Indicates if the network is advertised externally of the workspace to PER and\or peer networks
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	Advertise string `json:"advertise,omitempty"`
 
 	// Indicates if the ARP broadcast is enabled
-	// Enum: [enable disable]
+	// Enum: ["enable","disable"]
 	ArpBroadcast string `json:"arpBroadcast,omitempty"`
 
 	// crn
@@ -62,7 +63,7 @@ type NetworkReference struct {
 
 	// Type of Network - 'vlan' (private network) 'pub-vlan' (public network) 'dhcp-vlan' (for satellite locations only)
 	// Required: true
-	// Enum: [vlan pub-vlan dhcp-vlan]
+	// Enum: ["vlan","pub-vlan","dhcp-vlan"]
 	Type *string `json:"type"`
 
 	// VLAN ID
@@ -126,18 +127,22 @@ func (m *NetworkReference) validateAccessConfig(formats strfmt.Registry) error {
 	}
 
 	if err := m.AccessConfig.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("accessConfig")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("accessConfig")
 		}
+
 		return err
 	}
 
 	return nil
 }
 
-var networkReferenceTypeAdvertisePropEnum []interface{}
+var networkReferenceTypeAdvertisePropEnum []any
 
 func init() {
 	var res []string
@@ -179,7 +184,7 @@ func (m *NetworkReference) validateAdvertise(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkReferenceTypeArpBroadcastPropEnum []interface{}
+var networkReferenceTypeArpBroadcastPropEnum []any
 
 func init() {
 	var res []string
@@ -227,11 +232,15 @@ func (m *NetworkReference) validateCrn(formats strfmt.Registry) error {
 	}
 
 	if err := m.Crn.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
@@ -281,7 +290,7 @@ func (m *NetworkReference) validateNetworkID(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkReferenceTypeTypePropEnum []interface{}
+var networkReferenceTypeTypePropEnum []any
 
 func init() {
 	var res []string
@@ -361,11 +370,15 @@ func (m *NetworkReference) contextValidateAccessConfig(ctx context.Context, form
 	}
 
 	if err := m.AccessConfig.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("accessConfig")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("accessConfig")
 		}
+
 		return err
 	}
 
@@ -379,11 +392,15 @@ func (m *NetworkReference) contextValidateCrn(ctx context.Context, formats strfm
 	}
 
 	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("crn")
 		}
+
 		return err
 	}
 
