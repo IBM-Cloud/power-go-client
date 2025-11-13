@@ -23,7 +23,7 @@ type VPMemVolumeCreate struct {
 	// Required: true
 	// Max Length: 20
 	// Min Length: 1
-	// Pattern: ^[a-zA-Z0-9-_]+$
+	// Pattern: ^[a-zA-Z0-9][a-zA-Z0-9-_]*$
 	Name *string `json:"name"`
 
 	// Volume size (GB)
@@ -64,7 +64,7 @@ func (m *VPMemVolumeCreate) validateName(formats strfmt.Registry) error {
 		return err
 	}
 
-	if err := validate.Pattern("name", "body", *m.Name, `^[a-zA-Z0-9-_]+$`); err != nil {
+	if err := validate.Pattern("name", "body", *m.Name, `^[a-zA-Z0-9][a-zA-Z0-9-_]*$`); err != nil {
 		return err
 	}
 
