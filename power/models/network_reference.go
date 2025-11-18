@@ -8,7 +8,6 @@ package models
 import (
 	"context"
 	"encoding/json"
-	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -91,18 +90,6 @@ func (m *NetworkReference) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateAdvertise(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateArpBroadcast(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateCrn(formats); err != nil {
-		res = append(res, err)
-	}
-
 	if err := m.validateHref(formats); err != nil {
 		res = append(res, err)
 	}
@@ -139,120 +126,11 @@ func (m *NetworkReference) validateAccessConfig(formats strfmt.Registry) error {
 	}
 
 	if err := m.AccessConfig.Validate(formats); err != nil {
-		ve := new(errors.Validation)
-		if stderrors.As(err, &ve) {
+		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accessConfig")
-		}
-		ce := new(errors.CompositeError)
-		if stderrors.As(err, &ce) {
+		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("accessConfig")
 		}
-
-		return err
-	}
-
-	return nil
-}
-
-var networkReferenceTypeAdvertisePropEnum []any
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["enable","disable"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		networkReferenceTypeAdvertisePropEnum = append(networkReferenceTypeAdvertisePropEnum, v)
-	}
-}
-
-const (
-
-	// NetworkReferenceAdvertiseEnable captures enum value "enable"
-	NetworkReferenceAdvertiseEnable string = "enable"
-
-	// NetworkReferenceAdvertiseDisable captures enum value "disable"
-	NetworkReferenceAdvertiseDisable string = "disable"
-)
-
-// prop value enum
-func (m *NetworkReference) validateAdvertiseEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, networkReferenceTypeAdvertisePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *NetworkReference) validateAdvertise(formats strfmt.Registry) error {
-	if swag.IsZero(m.Advertise) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateAdvertiseEnum("advertise", "body", m.Advertise); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-var networkReferenceTypeArpBroadcastPropEnum []any
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["enable","disable"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		networkReferenceTypeArpBroadcastPropEnum = append(networkReferenceTypeArpBroadcastPropEnum, v)
-	}
-}
-
-const (
-
-	// NetworkReferenceArpBroadcastEnable captures enum value "enable"
-	NetworkReferenceArpBroadcastEnable string = "enable"
-
-	// NetworkReferenceArpBroadcastDisable captures enum value "disable"
-	NetworkReferenceArpBroadcastDisable string = "disable"
-)
-
-// prop value enum
-func (m *NetworkReference) validateArpBroadcastEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, networkReferenceTypeArpBroadcastPropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *NetworkReference) validateArpBroadcast(formats strfmt.Registry) error {
-	if swag.IsZero(m.ArpBroadcast) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateArpBroadcastEnum("arpBroadcast", "body", m.ArpBroadcast); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *NetworkReference) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
-		return nil
-	}
-
-	if err := m.Crn.Validate(formats); err != nil {
-		ve := new(errors.Validation)
-		if stderrors.As(err, &ve) {
-			return ve.ValidateName("crn")
-		}
-		ce := new(errors.CompositeError)
-		if stderrors.As(err, &ce) {
-			return ce.ValidateName("crn")
-		}
-
 		return err
 	}
 
@@ -403,7 +281,7 @@ func (m *NetworkReference) validateNetworkID(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkReferenceTypeTypePropEnum []any
+var networkReferenceTypeTypePropEnum []interface{}
 
 func init() {
 	var res []string
@@ -470,10 +348,6 @@ func (m *NetworkReference) ContextValidate(ctx context.Context, formats strfmt.R
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateCrn(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
@@ -487,15 +361,11 @@ func (m *NetworkReference) contextValidateAccessConfig(ctx context.Context, form
 	}
 
 	if err := m.AccessConfig.ContextValidate(ctx, formats); err != nil {
-		ve := new(errors.Validation)
-		if stderrors.As(err, &ve) {
+		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("accessConfig")
-		}
-		ce := new(errors.CompositeError)
-		if stderrors.As(err, &ce) {
+		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("accessConfig")
 		}
-
 		return err
 	}
 
@@ -509,15 +379,11 @@ func (m *NetworkReference) contextValidateCrn(ctx context.Context, formats strfm
 	}
 
 	if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-		ve := new(errors.Validation)
-		if stderrors.As(err, &ve) {
+		if ve, ok := err.(*errors.Validation); ok {
 			return ve.ValidateName("crn")
-		}
-		ce := new(errors.CompositeError)
-		if stderrors.As(err, &ce) {
+		} else if ce, ok := err.(*errors.CompositeError); ok {
 			return ce.ValidateName("crn")
 		}
-
 		return err
 	}
 

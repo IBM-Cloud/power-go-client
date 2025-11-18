@@ -61,15 +61,6 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateCrn(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateHostGroup(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUserTags(formats); err != nil {
 	if err := m.validateHostGroup(formats); err != nil {
 		res = append(res, err)
 	}
@@ -144,15 +135,13 @@ func (m *Host) validateUserTags(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if m.Hostgroup != nil {
-		if err := m.UserTags.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("userTags")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("userTags")
-			}
-			return err
+	if err := m.UserTags.Validate(formats); err != nil {
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
 		}
+		return err
 	}
 
 	return nil
@@ -171,10 +160,6 @@ func (m *Host) ContextValidate(ctx context.Context, formats strfmt.Registry) err
 	}
 
 	if err := m.contextValidateHostGroup(ctx, formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -204,26 +189,6 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 			}
 			return err
 		}
-	}
-
-	return nil
-}
-
-func (m *Host) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
-
-	if m.Hostgroup != nil {
-
-		if swag.IsZero(m.Crn) { // not required
-			return nil
-		}
-
-		if err := m.Crn.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
-			return ve.ValidateName("crn")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
-			return ce.ValidateName("crn")
-		}
-		return err
 	}
 
 	return nil
@@ -271,13 +236,12 @@ func (m *Host) contextValidateHostGroup(ctx context.Context, formats strfmt.Regi
 func (m *Host) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
-				return ve.ValidateName("userTags")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
-				return ce.ValidateName("userTags")
-			}
-			return err
+		if ve, ok := err.(*errors.Validation); ok {
+			return ve.ValidateName("userTags")
+		} else if ce, ok := err.(*errors.CompositeError); ok {
+			return ce.ValidateName("userTags")
 		}
+		return err
 	}
 
 	return nil

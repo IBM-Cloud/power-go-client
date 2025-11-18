@@ -66,8 +66,6 @@ type ClientService interface {
 
 	PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error)
 
-	PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error)
-
 	PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error)
 
 	PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error)
@@ -83,7 +81,7 @@ type ClientService interface {
 PcloudPvminstancesVirtualserialnumberDelete unassigns virtual serial number from a p VM instance
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberDeleteParams()
 	}
@@ -103,22 +101,17 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvmin
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudPvminstancesVirtualserialnumberDeleteAccepted)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.virtualserialnumber.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -127,7 +120,7 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvmin
 PcloudPvminstancesVirtualserialnumberGet gets a p VM instance s virtual serial number information
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberGetParams()
 	}
@@ -147,22 +140,17 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminsta
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudPvminstancesVirtualserialnumberGetOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.virtualserialnumber.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -171,7 +159,7 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminsta
 PcloudPvminstancesVirtualserialnumberPost assigns virtual serial number to a p VM instance
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberPostParams()
 	}
@@ -191,22 +179,17 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminst
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudPvminstancesVirtualserialnumberPostAccepted)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.virtualserialnumber.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -215,7 +198,7 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminst
 PcloudPvminstancesVirtualserialnumberPut updates a virtual serial number
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberPutParams()
 	}
@@ -235,67 +218,19 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminsta
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, nil, err
 	}
-
-	// several success responses have to be checked
 	switch value := result.(type) {
 	case *PcloudPvminstancesVirtualserialnumberPutOK:
 		return value, nil, nil
 	case *PcloudPvminstancesVirtualserialnumberPutAccepted:
 		return nil, value, nil
 	}
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for p_cloud_virtual_serial_number: API contract not enforced by server. Client expected to get an error, but got: %T", result)
-	panic(msg)
-}
-
-/*
-PcloudVirtualserialnumberDelete unreserves a retained virtual serial number
-*/
-func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error) {
-	// NOTE: parameters are not validated before sending
-	if params == nil {
-		params = NewPcloudVirtualserialnumberDeleteParams()
-	}
-	op := &runtime.ClientOperation{
-		ID:                 "pcloud.virtualserialnumber.delete",
-		Method:             "DELETE",
-		PathPattern:        "/v1/virtual-serial-number/{virtual_serial_number}",
-		ProducesMediaTypes: []string{"application/json"},
-		ConsumesMediaTypes: []string{"application/json"},
-		Schemes:            []string{"http"},
-		Params:             params,
-		Reader:             &PcloudVirtualserialnumberDeleteReader{formats: a.formats},
-		AuthInfo:           authInfo,
-		Context:            params.Context,
-		Client:             params.HTTPClient,
-	}
-	for _, opt := range opts {
-		opt(op)
-	}
-	result, err := a.transport.Submit(op)
-	if err != nil {
-		return nil, err
-	}
-
-	// only one success response has to be checked
-	success, ok := result.(*PcloudVirtualserialnumberDeleteOK)
-	if ok {
-		return success, nil
-	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
-	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
@@ -342,7 +277,7 @@ func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumb
 PcloudVirtualserialnumberGet gets information for a virtual serial number
 */
 func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberGetParams()
 	}
@@ -362,22 +297,17 @@ func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberG
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudVirtualserialnumberGetOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -386,7 +316,7 @@ func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberG
 PcloudVirtualserialnumberGetall lists all utilized and retained v s ns
 */
 func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberGetallParams()
 	}
@@ -406,22 +336,17 @@ func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumb
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudVirtualserialnumberGetallOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -430,7 +355,7 @@ func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumb
 PcloudVirtualserialnumberPut updates description of a reserved virtual serial number
 */
 func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberPutParams()
 	}
@@ -450,22 +375,17 @@ func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberP
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudVirtualserialnumberPutOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
@@ -474,7 +394,7 @@ func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberP
 PcloudVirtualserialnumberSoftwaretiersGetall lists supported software tiers i b mi licensing
 */
 func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirtualserialnumberSoftwaretiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberSoftwaretiersGetallOK, error) {
-	// NOTE: parameters are not validated before sending
+	// TODO: Validate the params before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberSoftwaretiersGetallParams()
 	}
@@ -494,22 +414,17 @@ func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirt
 	for _, opt := range opts {
 		opt(op)
 	}
+
 	result, err := a.transport.Submit(op)
 	if err != nil {
 		return nil, err
 	}
-
-	// only one success response has to be checked
 	success, ok := result.(*PcloudVirtualserialnumberSoftwaretiersGetallOK)
 	if ok {
 		return success, nil
 	}
-
-	// unexpected success response.
-
-	// no default response is defined.
-	//
-	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	// unexpected success response
+	// safeguard: normally, absent a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.virtualserialnumber.softwaretiers.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }

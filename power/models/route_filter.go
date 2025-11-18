@@ -37,7 +37,7 @@ type RouteFilter struct {
 	// * deny: deny
 	//
 	// Required: true
-	// Enum: [allow deny]
+	// Enum: ["allow","deny"]
 	Action *string `json:"action"`
 
 	// time stamp for create route filter
@@ -49,7 +49,7 @@ type RouteFilter struct {
 	// * export - export the routes
 	//
 	// Required: true
-	// Enum: [import export]
+	// Enum: ["import","export"]
 	Direction *string `json:"direction"`
 
 	// error description
@@ -74,7 +74,7 @@ type RouteFilter struct {
 	// status of the route filter
 	// Example: active
 	// Required: true
-	// Enum: [active configuring removing error updating]
+	// Enum: ["active","configuring","removing","error","updating"]
 	State *string `json:"state"`
 }
 
@@ -91,10 +91,6 @@ func (m *RouteFilter) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateAction(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateCreationDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -216,15 +212,6 @@ func (m *RouteFilter) validateCreationDate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RouteFilter) validateCreationDate(formats strfmt.Registry) error {
-
-	if err := validate.Required("creationDate", "body", m.CreationDate); err != nil {
-		return err
-	}
-
-	return nil
-}
-
 var routeFilterTypeDirectionPropEnum []interface{}
 
 func init() {
@@ -262,15 +249,6 @@ func (m *RouteFilter) validateDirection(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateDirectionEnum("direction", "body", *m.Direction); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *RouteFilter) validateError(formats strfmt.Registry) error {
-
-	if err := validate.Required("error", "body", m.Error); err != nil {
 		return err
 	}
 
