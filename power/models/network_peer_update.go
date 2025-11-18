@@ -94,7 +94,7 @@ func (m *NetworkPeerUpdate) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkPeerUpdateTypeDefaultExportRouteFilterPropEnum []interface{}
+var networkPeerUpdateTypeDefaultExportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -136,7 +136,7 @@ func (m *NetworkPeerUpdate) validateDefaultExportRouteFilter(formats strfmt.Regi
 	return nil
 }
 
-var networkPeerUpdateTypeDefaultImportRouteFilterPropEnum []interface{}
+var networkPeerUpdateTypeDefaultImportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -178,7 +178,7 @@ func (m *NetworkPeerUpdate) validateDefaultImportRouteFilter(formats strfmt.Regi
 	return nil
 }
 
-var networkPeerUpdateTypeTypePropEnum []interface{}
+var networkPeerUpdateTypeTypePropEnum []any
 
 func init() {
 	var res []string

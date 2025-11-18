@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 	"strconv"
 
 	"github.com/go-openapi/errors"
@@ -219,7 +220,7 @@ func (m *NetworkPeer) validateCustomerCidr(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkPeerTypeDefaultExportRouteFilterPropEnum []interface{}
+var networkPeerTypeDefaultExportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -262,7 +263,7 @@ func (m *NetworkPeer) validateDefaultExportRouteFilter(formats strfmt.Registry) 
 	return nil
 }
 
-var networkPeerTypeDefaultImportRouteFilterPropEnum []interface{}
+var networkPeerTypeDefaultImportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -327,11 +328,15 @@ func (m *NetworkPeer) validateExportRouteFilters(formats strfmt.Registry) error 
 
 		if m.ExportRouteFilters[i] != nil {
 			if err := m.ExportRouteFilters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -381,11 +386,15 @@ func (m *NetworkPeer) validateImportRouteFilters(formats strfmt.Registry) error 
 
 		if m.ImportRouteFilters[i] != nil {
 			if err := m.ImportRouteFilters[i].Validate(formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -413,7 +422,7 @@ func (m *NetworkPeer) validatePeerInterfaceID(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkPeerTypeStatePropEnum []interface{}
+var networkPeerTypeStatePropEnum []any
 
 func init() {
 	var res []string
@@ -465,7 +474,7 @@ func (m *NetworkPeer) validateState(formats strfmt.Registry) error {
 	return nil
 }
 
-var networkPeerTypeTypePropEnum []interface{}
+var networkPeerTypeTypePropEnum []any
 
 func init() {
 	var res []string
@@ -552,11 +561,15 @@ func (m *NetworkPeer) contextValidateExportRouteFilters(ctx context.Context, for
 			}
 
 			if err := m.ExportRouteFilters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("exportRouteFilters" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}
@@ -577,11 +590,15 @@ func (m *NetworkPeer) contextValidateImportRouteFilters(ctx context.Context, for
 			}
 
 			if err := m.ImportRouteFilters[i].ContextValidate(ctx, formats); err != nil {
-				if ve, ok := err.(*errors.Validation); ok {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
 					return ve.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
-				} else if ce, ok := err.(*errors.CompositeError); ok {
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
 					return ce.ValidateName("importRouteFilters" + "." + strconv.Itoa(i))
 				}
+
 				return err
 			}
 		}

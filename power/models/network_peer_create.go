@@ -147,7 +147,7 @@ func (m *NetworkPeerCreate) validateCustomerCidr(formats strfmt.Registry) error 
 	return nil
 }
 
-var networkPeerCreateTypeDefaultExportRouteFilterPropEnum []interface{}
+var networkPeerCreateTypeDefaultExportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -189,7 +189,7 @@ func (m *NetworkPeerCreate) validateDefaultExportRouteFilter(formats strfmt.Regi
 	return nil
 }
 
-var networkPeerCreateTypeDefaultImportRouteFilterPropEnum []interface{}
+var networkPeerCreateTypeDefaultImportRouteFilterPropEnum []any
 
 func init() {
 	var res []string
@@ -267,7 +267,7 @@ func (m *NetworkPeerCreate) validatePeerInterfaceID(formats strfmt.Registry) err
 	return nil
 }
 
-var networkPeerCreateTypeTypePropEnum []interface{}
+var networkPeerCreateTypeTypePropEnum []any
 
 func init() {
 	var res []string

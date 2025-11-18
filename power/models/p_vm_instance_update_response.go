@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -80,18 +81,22 @@ func (m *PVMInstanceUpdateResponse) validatePinPolicy(formats strfmt.Registry) e
 	}
 
 	if err := m.PinPolicy.Validate(formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("pinPolicy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("pinPolicy")
 		}
+
 		return err
 	}
 
 	return nil
 }
 
-var pVmInstanceUpdateResponseTypeProcTypePropEnum []interface{}
+var pVmInstanceUpdateResponseTypeProcTypePropEnum []any
 
 func init() {
 	var res []string
@@ -143,11 +148,15 @@ func (m *PVMInstanceUpdateResponse) validateVirtualCores(formats strfmt.Registry
 
 	if m.VirtualCores != nil {
 		if err := m.VirtualCores.Validate(formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("virtualCores")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("virtualCores")
 			}
+
 			return err
 		}
 	}
@@ -180,11 +189,15 @@ func (m *PVMInstanceUpdateResponse) contextValidatePinPolicy(ctx context.Context
 	}
 
 	if err := m.PinPolicy.ContextValidate(ctx, formats); err != nil {
-		if ve, ok := err.(*errors.Validation); ok {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
 			return ve.ValidateName("pinPolicy")
-		} else if ce, ok := err.(*errors.CompositeError); ok {
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
 			return ce.ValidateName("pinPolicy")
 		}
+
 		return err
 	}
 
@@ -200,11 +213,15 @@ func (m *PVMInstanceUpdateResponse) contextValidateVirtualCores(ctx context.Cont
 		}
 
 		if err := m.VirtualCores.ContextValidate(ctx, formats); err != nil {
-			if ve, ok := err.(*errors.Validation); ok {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
 				return ve.ValidateName("virtualCores")
-			} else if ce, ok := err.(*errors.CompositeError); ok {
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
 				return ce.ValidateName("virtualCores")
 			}
+
 			return err
 		}
 	}

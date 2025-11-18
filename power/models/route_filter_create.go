@@ -126,7 +126,7 @@ func (m *RouteFilterCreate) validateLE(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeFilterCreateTypeActionPropEnum []interface{}
+var routeFilterCreateTypeActionPropEnum []any
 
 func init() {
 	var res []string
@@ -168,7 +168,7 @@ func (m *RouteFilterCreate) validateAction(formats strfmt.Registry) error {
 	return nil
 }
 
-var routeFilterCreateTypeDirectionPropEnum []interface{}
+var routeFilterCreateTypeDirectionPropEnum []any
 
 func init() {
 	var res []string

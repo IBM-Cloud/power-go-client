@@ -104,7 +104,7 @@ func (m *PeerInterface) validatePeerInterfaceID(formats strfmt.Registry) error {
 	return nil
 }
 
-var peerInterfaceTypePeerTypePropEnum []interface{}
+var peerInterfaceTypePeerTypePropEnum []any
 
 func init() {
 	var res []string
