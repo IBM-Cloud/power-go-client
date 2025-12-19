@@ -46,6 +46,10 @@ type PVMInstanceUpdate struct {
 	// Number of processors allocated
 	Processors float64 `json:"processors,omitempty"`
 
+	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
+	// Enum: ["fail","warn","none"]
+	SapHANAAffinityAction *string `json:"sapHANAAffinityAction,omitempty"`
+
 	// If an SAP pvm-instance, the SAP profile ID to switch to (only while shutdown)
 	SapProfileID string `json:"sapProfileID,omitempty"`
 
@@ -75,6 +79,10 @@ func (m *PVMInstanceUpdate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateProcType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSapHANAAffinityAction(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -175,6 +183,51 @@ func (m *PVMInstanceUpdate) validateProcType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateProcTypeEnum("procType", "body", m.ProcType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var pVmInstanceUpdateTypeSapHANAAffinityActionPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["fail","warn","none"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceUpdateTypeSapHANAAffinityActionPropEnum = append(pVmInstanceUpdateTypeSapHANAAffinityActionPropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceUpdateSapHANAAffinityActionFail captures enum value "fail"
+	PVMInstanceUpdateSapHANAAffinityActionFail string = "fail"
+
+	// PVMInstanceUpdateSapHANAAffinityActionWarn captures enum value "warn"
+	PVMInstanceUpdateSapHANAAffinityActionWarn string = "warn"
+
+	// PVMInstanceUpdateSapHANAAffinityActionNone captures enum value "none"
+	PVMInstanceUpdateSapHANAAffinityActionNone string = "none"
+)
+
+// prop value enum
+func (m *PVMInstanceUpdate) validateSapHANAAffinityActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceUpdateTypeSapHANAAffinityActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceUpdate) validateSapHANAAffinityAction(formats strfmt.Registry) error {
+	if swag.IsZero(m.SapHANAAffinityAction) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSapHANAAffinityActionEnum("sapHANAAffinityAction", "body", *m.SapHANAAffinityAction); err != nil {
 		return err
 	}
 
