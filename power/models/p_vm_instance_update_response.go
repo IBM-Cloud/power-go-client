@@ -40,6 +40,12 @@ type PVMInstanceUpdateResponse struct {
 	// Number of processors allocated
 	Processors float64 `json:"processors,omitempty"`
 
+	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
+	SapHANAAffinityAction *string `json:"sapHANAAffinityAction,omitempty"`
+
+	// Indicates whether the SAP HANA PVM instance is adhering to the specified NUMA affinity requirement
+	SapHANAAffinityComplianceStatus *string `json:"sapHANAAffinityComplianceStatus,omitempty"`
+
 	// Name of the server
 	ServerName string `json:"serverName,omitempty"`
 

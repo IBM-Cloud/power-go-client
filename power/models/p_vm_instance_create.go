@@ -87,6 +87,10 @@ type PVMInstanceCreate struct {
 	// Indicates the replication site of the boot volume
 	ReplicationSites []string `json:"replicationSites"`
 
+	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
+	// Enum: ["fail","warn","none"]
+	SapHANAAffinityAction *string `json:"sapHANAAffinityAction,omitempty"`
+
 	// Name of the server to create
 	// Required: true
 	ServerName *string `json:"serverName"`
@@ -180,6 +184,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateReplicants(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSapHANAAffinityAction(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -465,6 +473,51 @@ func (m *PVMInstanceCreate) validateReplicants(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Minimum("replicants", "body", *m.Replicants, 1, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var pVmInstanceCreateTypeSapHANAAffinityActionPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["fail","warn","none"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceCreateTypeSapHANAAffinityActionPropEnum = append(pVmInstanceCreateTypeSapHANAAffinityActionPropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceCreateSapHANAAffinityActionFail captures enum value "fail"
+	PVMInstanceCreateSapHANAAffinityActionFail string = "fail"
+
+	// PVMInstanceCreateSapHANAAffinityActionWarn captures enum value "warn"
+	PVMInstanceCreateSapHANAAffinityActionWarn string = "warn"
+
+	// PVMInstanceCreateSapHANAAffinityActionNone captures enum value "none"
+	PVMInstanceCreateSapHANAAffinityActionNone string = "none"
+)
+
+// prop value enum
+func (m *PVMInstanceCreate) validateSapHANAAffinityActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceCreateTypeSapHANAAffinityActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceCreate) validateSapHANAAffinityAction(formats strfmt.Registry) error {
+	if swag.IsZero(m.SapHANAAffinityAction) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSapHANAAffinityActionEnum("sapHANAAffinityAction", "body", *m.SapHANAAffinityAction); err != nil {
 		return err
 	}
 
