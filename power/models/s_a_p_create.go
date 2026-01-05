@@ -7,6 +7,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	stderrors "errors"
 	"strconv"
 
@@ -61,6 +62,10 @@ type SAPCreate struct {
 
 	// Indicates the replication site of the boot volume
 	ReplicationSites []string `json:"replicationSites"`
+
+	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
+	// Enum: ["fail","warn","none"]
+	SapHANAAffinityAction *string `json:"sapHANAAffinityAction,omitempty"`
 
 	// The name of the SSH Key to provide to the server for authenticating
 	SSHKeyName string `json:"sshKeyName,omitempty"`
@@ -122,6 +127,10 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateProfileID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSapHANAAffinityAction(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -266,6 +275,51 @@ func (m *SAPCreate) validateProfileID(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("profileID", "body", *m.ProfileID, `^[\s]*[A-Za-z][A-Za-z0-9\-]{3,}$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var sAPCreateTypeSapHANAAffinityActionPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["fail","warn","none"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		sAPCreateTypeSapHANAAffinityActionPropEnum = append(sAPCreateTypeSapHANAAffinityActionPropEnum, v)
+	}
+}
+
+const (
+
+	// SAPCreateSapHANAAffinityActionFail captures enum value "fail"
+	SAPCreateSapHANAAffinityActionFail string = "fail"
+
+	// SAPCreateSapHANAAffinityActionWarn captures enum value "warn"
+	SAPCreateSapHANAAffinityActionWarn string = "warn"
+
+	// SAPCreateSapHANAAffinityActionNone captures enum value "none"
+	SAPCreateSapHANAAffinityActionNone string = "none"
+)
+
+// prop value enum
+func (m *SAPCreate) validateSapHANAAffinityActionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, sAPCreateTypeSapHANAAffinityActionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SAPCreate) validateSapHANAAffinityAction(formats strfmt.Registry) error {
+	if swag.IsZero(m.SapHANAAffinityAction) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateSapHANAAffinityActionEnum("sapHANAAffinityAction", "body", *m.SapHANAAffinityAction); err != nil {
 		return err
 	}
 
