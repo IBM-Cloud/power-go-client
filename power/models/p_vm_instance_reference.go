@@ -116,6 +116,9 @@ type PVMInstanceReference struct {
 	// Required: true
 	PvmInstanceID *string `json:"pvmInstanceID"`
 
+	// Indicates whether the SAP HANA PVM instance is adhering to the specified NUMA affinity requirement
+	SapHANAAffinityComplianceStatus *string `json:"sapHANAAffinityComplianceStatus,omitempty"`
+
 	// If this is an SAP pvm-instance the profile reference will link to the SAP profile
 	SapProfile *SAPProfileReference `json:"sapProfile,omitempty"`
 
