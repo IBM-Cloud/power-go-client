@@ -21,6 +21,9 @@ import (
 // swagger:model SAPProfile
 type SAPProfile struct {
 
+	// Accelerated SAP Application Performance Standard
+	Asaps int64 `json:"asaps,omitempty"`
+
 	// Has certification been performed on profile
 	// Required: true
 	Certified *bool `json:"certified"`
