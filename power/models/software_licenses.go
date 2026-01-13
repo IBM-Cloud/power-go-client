@@ -23,8 +23,14 @@ type SoftwareLicenses struct {
 	// IBMi Cloud Storage Solution
 	IbmiDBQ *bool `json:"ibmiDBQ,omitempty"`
 
-	// IBMi Power High Availability
+	// IBMi Power High Availability IASP Management Software License
 	IbmiPHA *bool `json:"ibmiPHA,omitempty"`
+
+	// IBMi Power High Availability Full System Manager (FSM) Software License
+	IbmiPHAFSM *bool `json:"ibmiPHAFSM,omitempty"`
+
+	// Number of IBMi Power High Availability Full System Manager (FSM) Managed Servers
+	IbmiPHAFSMCount int64 `json:"ibmiPHAFSMCount,omitempty"`
 
 	// IBMi Rational Dev Studio
 	IbmiRDS *bool `json:"ibmiRDS,omitempty"`
