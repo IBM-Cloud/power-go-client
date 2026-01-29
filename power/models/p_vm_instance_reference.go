@@ -116,6 +116,9 @@ type PVMInstanceReference struct {
 	// Required: true
 	PvmInstanceID *string `json:"pvmInstanceID"`
 
+	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
+	SapHANAAffinityAction *string `json:"sapHANAAffinityAction,omitempty"`
+
 	// Indicates whether the SAP HANA PVM instance is adhering to the specified NUMA affinity requirement
 	SapHANAAffinityComplianceStatus *string `json:"sapHANAAffinityComplianceStatus,omitempty"`
 
