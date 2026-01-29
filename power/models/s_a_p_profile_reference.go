@@ -26,9 +26,6 @@ type SAPProfileReference struct {
 	// SAP Profile ID
 	// Required: true
 	ProfileID *string `json:"profileID"`
-
-	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
-	SapHANAAffinityAction *string `json:"sapHANAAffinityAction,omitempty"`
 }
 
 // Validate validates this s a p profile reference
