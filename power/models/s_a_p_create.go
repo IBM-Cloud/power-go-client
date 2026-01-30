@@ -25,6 +25,9 @@ type SAPCreate struct {
 	// Indicates if the boot volume should be replication enabled or not
 	BootVolumeReplicationEnabled *bool `json:"bootVolumeReplicationEnabled,omitempty"`
 
+	// default IAM trusted profile to use for this virtual server instance
+	DefaultTrustedProfile *TrustedProfile `json:"defaultTrustedProfile,omitempty"`
+
 	// The deployment of a dedicated host
 	DeploymentTarget *DeploymentTarget `json:"deploymentTarget,omitempty"`
 
@@ -37,6 +40,9 @@ type SAPCreate struct {
 
 	// instances
 	Instances *PVMInstanceMultiCreate `json:"instances,omitempty"`
+
+	// The metadata service configuration
+	MetadataService *MetadataService `json:"metadataService,omitempty"`
 
 	// Name of the sap pvm-instance
 	// Required: true
@@ -102,6 +108,10 @@ type SAPCreate struct {
 func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateDefaultTrustedProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDeploymentTarget(formats); err != nil {
 		res = append(res, err)
 	}
@@ -111,6 +121,10 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateInstances(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadataService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -149,6 +163,29 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SAPCreate) validateDefaultTrustedProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		return nil
+	}
+
+	if m.DefaultTrustedProfile != nil {
+		if err := m.DefaultTrustedProfile.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("defaultTrustedProfile")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("defaultTrustedProfile")
+			}
+
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -198,6 +235,29 @@ func (m *SAPCreate) validateInstances(formats strfmt.Registry) error {
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
 				return ce.ValidateName("instances")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SAPCreate) validateMetadataService(formats strfmt.Registry) error {
+	if swag.IsZero(m.MetadataService) { // not required
+		return nil
+	}
+
+	if m.MetadataService != nil {
+		if err := m.MetadataService.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("metadataService")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("metadataService")
 			}
 
 			return err
@@ -404,11 +464,19 @@ func (m *SAPCreate) validateVpmemVolumes(formats strfmt.Registry) error {
 func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateDefaultTrustedProfile(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateDeploymentTarget(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateInstances(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetadataService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -435,6 +503,31 @@ func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *SAPCreate) contextValidateDefaultTrustedProfile(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultTrustedProfile != nil {
+
+		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+			return nil
+		}
+
+		if err := m.DefaultTrustedProfile.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("defaultTrustedProfile")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("defaultTrustedProfile")
+			}
+
+			return err
+		}
+	}
+
 	return nil
 }
 
@@ -479,6 +572,31 @@ func (m *SAPCreate) contextValidateInstances(ctx context.Context, formats strfmt
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
 				return ce.ValidateName("instances")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *SAPCreate) contextValidateMetadataService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MetadataService != nil {
+
+		if swag.IsZero(m.MetadataService) { // not required
+			return nil
+		}
+
+		if err := m.MetadataService.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("metadataService")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("metadataService")
 			}
 
 			return err
