@@ -38,6 +38,9 @@ type PVMInstanceReference struct {
 	// ID of the dedicated host where the PVM Instance is running, if applicable
 	DedicatedHostID string `json:"dedicatedHostID,omitempty"`
 
+	// default IAM trusted profile to use for this virtual server instance
+	DefaultTrustedProfile *TrustedProfile `json:"defaultTrustedProfile,omitempty"`
+
 	// Size of allocated disk (in GB)
 	// Required: true
 	DiskSize *float64 `json:"diskSize"`
@@ -74,6 +77,9 @@ type PVMInstanceReference struct {
 	// Amount of memory allocated (in GB)
 	// Required: true
 	Memory *float64 `json:"memory"`
+
+	// The metadata service configuration
+	MetadataService *MetadataService `json:"metadataService,omitempty"`
 
 	// Minimum amount of memory that can be allocated (in GB, for resize)
 	Minmem float64 `json:"minmem,omitempty"`
@@ -197,6 +203,10 @@ func (m *PVMInstanceReference) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDefaultTrustedProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDiskSize(formats); err != nil {
 		res = append(res, err)
 	}
@@ -218,6 +228,10 @@ func (m *PVMInstanceReference) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMemory(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadataService(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -369,6 +383,29 @@ func (m *PVMInstanceReference) validateCrn(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *PVMInstanceReference) validateDefaultTrustedProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		return nil
+	}
+
+	if m.DefaultTrustedProfile != nil {
+		if err := m.DefaultTrustedProfile.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("defaultTrustedProfile")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("defaultTrustedProfile")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *PVMInstanceReference) validateDiskSize(formats strfmt.Registry) error {
 
 	if err := validate.Required("diskSize", "body", m.DiskSize); err != nil {
@@ -446,6 +483,29 @@ func (m *PVMInstanceReference) validateMemory(formats strfmt.Registry) error {
 
 	if err := validate.Required("memory", "body", m.Memory); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceReference) validateMetadataService(formats strfmt.Registry) error {
+	if swag.IsZero(m.MetadataService) { // not required
+		return nil
+	}
+
+	if m.MetadataService != nil {
+		if err := m.MetadataService.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("metadataService")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("metadataService")
+			}
+
+			return err
+		}
 	}
 
 	return nil
@@ -756,11 +816,19 @@ func (m *PVMInstanceReference) ContextValidate(ctx context.Context, formats strf
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDefaultTrustedProfile(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateFault(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
 	if err := m.contextValidateHealth(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetadataService(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -874,6 +942,31 @@ func (m *PVMInstanceReference) contextValidateCrn(ctx context.Context, formats s
 	return nil
 }
 
+func (m *PVMInstanceReference) contextValidateDefaultTrustedProfile(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultTrustedProfile != nil {
+
+		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+			return nil
+		}
+
+		if err := m.DefaultTrustedProfile.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("defaultTrustedProfile")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("defaultTrustedProfile")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *PVMInstanceReference) contextValidateFault(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.Fault != nil {
@@ -915,6 +1008,31 @@ func (m *PVMInstanceReference) contextValidateHealth(ctx context.Context, format
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
 				return ce.ValidateName("health")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceReference) contextValidateMetadataService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MetadataService != nil {
+
+		if swag.IsZero(m.MetadataService) { // not required
+			return nil
+		}
+
+		if err := m.MetadataService.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("metadataService")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("metadataService")
 			}
 
 			return err

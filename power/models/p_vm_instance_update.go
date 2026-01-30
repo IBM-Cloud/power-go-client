@@ -24,11 +24,17 @@ type PVMInstanceUpdate struct {
 	// Cloud Initialization Volume operations
 	CloudInitialization *CloudInitialization `json:"cloudInitialization,omitempty"`
 
+	// default IAM trusted profile to use for this virtual server instance
+	DefaultTrustedProfile *UpdateTrustedProfile `json:"defaultTrustedProfile,omitempty"`
+
 	// The VTL license repository capacity TB value
 	LicenseRepositoryCapacity int64 `json:"licenseRepositoryCapacity,omitempty"`
 
 	// Amount of memory allocated (in GB)
 	Memory float64 `json:"memory,omitempty"`
+
+	// The metadata service configuration
+	MetadataService *MetadataService `json:"metadataService,omitempty"`
 
 	// (deprecated - replaced by pinPolicy) Indicates if the server is allowed to migrate between hosts
 	Migratable *bool `json:"migratable,omitempty"`
@@ -74,6 +80,14 @@ func (m *PVMInstanceUpdate) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateDefaultTrustedProfile(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateMetadataService(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validatePinPolicy(formats); err != nil {
 		res = append(res, err)
 	}
@@ -114,6 +128,52 @@ func (m *PVMInstanceUpdate) validateCloudInitialization(formats strfmt.Registry)
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
 				return ce.ValidateName("cloudInitialization")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceUpdate) validateDefaultTrustedProfile(formats strfmt.Registry) error {
+	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		return nil
+	}
+
+	if m.DefaultTrustedProfile != nil {
+		if err := m.DefaultTrustedProfile.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("defaultTrustedProfile")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("defaultTrustedProfile")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceUpdate) validateMetadataService(formats strfmt.Registry) error {
+	if swag.IsZero(m.MetadataService) { // not required
+		return nil
+	}
+
+	if m.MetadataService != nil {
+		if err := m.MetadataService.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("metadataService")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("metadataService")
 			}
 
 			return err
@@ -288,6 +348,14 @@ func (m *PVMInstanceUpdate) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateDefaultTrustedProfile(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateMetadataService(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidatePinPolicy(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -322,6 +390,56 @@ func (m *PVMInstanceUpdate) contextValidateCloudInitialization(ctx context.Conte
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
 				return ce.ValidateName("cloudInitialization")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceUpdate) contextValidateDefaultTrustedProfile(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.DefaultTrustedProfile != nil {
+
+		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+			return nil
+		}
+
+		if err := m.DefaultTrustedProfile.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("defaultTrustedProfile")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("defaultTrustedProfile")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceUpdate) contextValidateMetadataService(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.MetadataService != nil {
+
+		if swag.IsZero(m.MetadataService) { // not required
+			return nil
+		}
+
+		if err := m.MetadataService.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("metadataService")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("metadataService")
 			}
 
 			return err
