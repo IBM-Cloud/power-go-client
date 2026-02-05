@@ -24,10 +24,10 @@ type PVMInstanceUpdateResponse struct {
 	// default IAM trusted profile to use for this virtual server instance
 	DefaultTrustedProfile *UpdateTrustedProfile `json:"defaultTrustedProfile,omitempty"`
 
-	// The VTL license repository capacity TB value
+	// The VTL license repository capacity TiB value
 	LicenseRepositoryCapacity int64 `json:"licenseRepositoryCapacity,omitempty"`
 
-	// Amount of memory allocated (in GB)
+	// Amount of memory allocated (in GiB)
 	Memory float64 `json:"memory,omitempty"`
 
 	// The metadata service configuration
