@@ -8,8 +8,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SoftwareLicenses software licenses
@@ -30,6 +32,7 @@ type SoftwareLicenses struct {
 	IbmiPHAFSM *bool `json:"ibmiPHAFSM,omitempty"`
 
 	// Number of IBMi Power High Availability Full System Manager (FSM) Managed Servers
+	// Maximum: 4000
 	IbmiPHAFSMCount int64 `json:"ibmiPHAFSMCount,omitempty"`
 
 	// IBMi Rational Dev Studio
@@ -41,6 +44,27 @@ type SoftwareLicenses struct {
 
 // Validate validates this software licenses
 func (m *SoftwareLicenses) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateIbmiPHAFSMCount(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SoftwareLicenses) validateIbmiPHAFSMCount(formats strfmt.Registry) error {
+	if swag.IsZero(m.IbmiPHAFSMCount) { // not required
+		return nil
+	}
+
+	if err := validate.MaximumInt("ibmiPHAFSMCount", "body", m.IbmiPHAFSMCount, 4000, false); err != nil {
+		return err
+	}
+
 	return nil
 }
 
