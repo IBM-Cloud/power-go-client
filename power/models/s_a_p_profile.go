@@ -38,7 +38,7 @@ type SAPProfile struct {
 	// Requires full system for deployment
 	FullSystemProfile bool `json:"fullSystemProfile"`
 
-	// Amount of memory (in GB)
+	// Amount of memory (in GiB)
 	// Required: true
 	Memory *int64 `json:"memory"`
 

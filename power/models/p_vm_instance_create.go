@@ -41,10 +41,10 @@ type PVMInstanceCreate struct {
 	// The name of the SSH key pair provided to the server for authenticating users (looked up in the tenant's list of keys)
 	KeyPairName string `json:"keyPairName,omitempty"`
 
-	// The VTL license repository capacity TB value
+	// The VTL license repository capacity TiB value
 	LicenseRepositoryCapacity int64 `json:"licenseRepositoryCapacity,omitempty"`
 
-	// Amount of memory allocated (in GB)
+	// Amount of memory allocated (in GiB)
 	// Required: true
 	Memory *float64 `json:"memory"`
 

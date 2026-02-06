@@ -41,7 +41,7 @@ type PVMInstanceReference struct {
 	// default IAM trusted profile to use for this virtual server instance
 	DefaultTrustedProfile *TrustedProfile `json:"defaultTrustedProfile,omitempty"`
 
-	// Size of allocated disk (in GB)
+	// Size of allocated disk (in GiB)
 	// Required: true
 	DiskSize *float64 `json:"diskSize"`
 
@@ -65,23 +65,23 @@ type PVMInstanceReference struct {
 	// Required: true
 	ImageID *string `json:"imageID"`
 
-	// The VTL license repository capacity TB value
+	// The VTL license repository capacity TiB value
 	LicenseRepositoryCapacity int64 `json:"licenseRepositoryCapacity,omitempty"`
 
-	// Maximum amount of memory that can be allocated (in GB, for resize)
+	// Maximum amount of memory that can be allocated (in GiB, for resize)
 	Maxmem float64 `json:"maxmem,omitempty"`
 
 	// Maximum number of processors that can be allocated (for resize)
 	Maxproc float64 `json:"maxproc,omitempty"`
 
-	// Amount of memory allocated (in GB)
+	// Amount of memory allocated (in GiB)
 	// Required: true
 	Memory *float64 `json:"memory"`
 
 	// The metadata service configuration
 	MetadataService *MetadataService `json:"metadataService,omitempty"`
 
-	// Minimum amount of memory that can be allocated (in GB, for resize)
+	// Minimum amount of memory that can be allocated (in GiB, for resize)
 	Minmem float64 `json:"minmem,omitempty"`
 
 	// Minimum number of processors that can be allocated (for resize)
