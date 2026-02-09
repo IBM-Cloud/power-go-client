@@ -31,7 +31,7 @@ type PVMInstanceUpdateResponse struct {
 	Memory float64 `json:"memory,omitempty"`
 
 	// The metadata service configuration
-	MetadataService *MetadataService `json:"metadataService,omitempty"`
+	MetadataService *UpdateMetadataService `json:"metadataService,omitempty"`
 
 	// pin policy
 	PinPolicy PinPolicy `json:"pinPolicy,omitempty"`

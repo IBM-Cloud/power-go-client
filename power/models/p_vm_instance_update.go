@@ -34,7 +34,7 @@ type PVMInstanceUpdate struct {
 	Memory float64 `json:"memory,omitempty"`
 
 	// The metadata service configuration
-	MetadataService *MetadataService `json:"metadataService,omitempty"`
+	MetadataService *UpdateMetadataService `json:"metadataService,omitempty"`
 
 	// (deprecated - replaced by pinPolicy) Indicates if the server is allowed to migrate between hosts
 	Migratable *bool `json:"migratable,omitempty"`
