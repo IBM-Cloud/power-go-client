@@ -36,7 +36,7 @@ type NetworkReference struct {
 	Crn CRN `json:"crn,omitempty"`
 
 	// DHCP Managed Network
-	DhcpManaged bool `json:"dhcpManaged,omitempty"`
+	DhcpManaged bool `json:"dhcpManaged"`
 
 	// Link to Network resource
 	// Required: true

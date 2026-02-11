@@ -44,7 +44,7 @@ type Network struct {
 	Crn CRN `json:"crn,omitempty"`
 
 	// DHCP Managed Network
-	DhcpManaged bool `json:"dhcpManaged,omitempty"`
+	DhcpManaged bool `json:"dhcpManaged"`
 
 	// DNS Servers
 	// Required: true
