@@ -30,6 +30,9 @@ type ExportImage struct {
 	// Create a checksum filename
 	Checksum bool `json:"checksum,omitempty"`
 
+	// S3 compatible endpoint URL
+	Endpoint string `json:"endpoint,omitempty"`
+
 	// Cloud Object Storage Region; required for IBM COS
 	Region string `json:"region,omitempty"`
 

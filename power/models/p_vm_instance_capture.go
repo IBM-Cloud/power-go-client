@@ -48,6 +48,9 @@ type PVMInstanceCapture struct {
 	// Cloud Storage Secret key
 	CloudStorageSecretKey string `json:"cloudStorageSecretKey,omitempty"`
 
+	// S3 compatible endpoint URL
+	Endpoint string `json:"endpoint,omitempty"`
+
 	// user tags
 	UserTags Tags `json:"userTags,omitempty"`
 }
