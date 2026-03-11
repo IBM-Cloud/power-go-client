@@ -32,6 +32,9 @@ type CreateCosImageImportJob struct {
 	// Import and Check checksum file
 	Checksum bool `json:"checksum,omitempty"`
 
+	// S3 compatible endpoint URL
+	Endpoint string `json:"endpoint,omitempty"`
+
 	// Cloud Object Storage image filename
 	// Required: true
 	ImageFilename *string `json:"imageFilename"`
@@ -48,8 +51,7 @@ type CreateCosImageImportJob struct {
 	OsType string `json:"osType,omitempty"`
 
 	// Cloud Object Storage region
-	// Required: true
-	Region *string `json:"region"`
+	Region string `json:"region,omitempty"`
 
 	// Cloud Object Storage secret key; required for buckets with private access
 	SecretKey string `json:"secretKey,omitempty"`
@@ -92,10 +94,6 @@ func (m *CreateCosImageImportJob) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOsType(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateRegion(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -247,15 +245,6 @@ func (m *CreateCosImageImportJob) validateOsType(formats strfmt.Registry) error 
 
 	// value enum
 	if err := m.validateOsTypeEnum("osType", "body", m.OsType); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *CreateCosImageImportJob) validateRegion(formats strfmt.Registry) error {
-
-	if err := validate.Required("region", "body", m.Region); err != nil {
 		return err
 	}
 
