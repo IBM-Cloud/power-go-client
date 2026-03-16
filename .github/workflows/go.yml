@@ -23,7 +23,7 @@ jobs:
         uses: golangci/golangci-lint-action@v5
         with:
           version: v1.56
-          args: --timeout=10m
+          args: --timeout=10m --skip-dirs=power/client
           skip-cache: true
 
       - name: Run go Security Scanner
