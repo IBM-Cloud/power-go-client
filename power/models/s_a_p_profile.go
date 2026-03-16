@@ -22,7 +22,7 @@ import (
 type SAPProfile struct {
 
 	// Accelerated SAP Application Performance Standard
-	Asaps int64 `json:"asaps,omitempty"`
+	Asaps int64 `json:"asaps"`
 
 	// Has certification been performed on profile
 	// Required: true
