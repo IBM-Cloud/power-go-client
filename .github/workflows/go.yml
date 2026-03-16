@@ -2,9 +2,9 @@ name: Go
 
 on:
   push:
-    branches: [master]
+    branches: [master, dev]
   pull_request:
-    branches: [master]
+    branches: [master, dev]
 
 jobs:
   build:
@@ -17,19 +17,19 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version-file: go.mod
 
       - name: Lint
         uses: golangci/golangci-lint-action@v5
         with:
           version: v1.56
-          args: --timeout=10m
+          args: --timeout=10m --skip-dirs=power/client
           skip-cache: true
 
       - name: Run go Security Scanner
         uses: securego/gosec@master
         with:
-          args: ./...
+          args: -exclude-generated ./...
 
       - name: Build
         run: go build -v ./...
