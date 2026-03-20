@@ -25,6 +25,9 @@ type PVMInstance struct {
 	// (deprecated - replaced by networks) The list of addresses and their network information
 	Addresses []*PVMInstanceNetwork `json:"addresses"`
 
+	// if set to false, automated remote restart is disabled for the VM
+	AllowRemoteRestart bool `json:"allowRemoteRestart,omitempty"`
+
 	// Console language and code
 	ConsoleLanguage *ConsoleLanguage `json:"consoleLanguage,omitempty"`
 
