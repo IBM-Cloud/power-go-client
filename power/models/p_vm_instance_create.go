@@ -22,6 +22,9 @@ import (
 // swagger:model PVMInstanceCreate
 type PVMInstanceCreate struct {
 
+	// if set to false, automated remote restart is disabled for the VM
+	AllowRemoteRestart *bool `json:"allowRemoteRestart,omitempty"`
+
 	// Indicates if the boot volume should be replication enabled or not
 	BootVolumeReplicationEnabled *bool `json:"bootVolumeReplicationEnabled,omitempty"`
 
