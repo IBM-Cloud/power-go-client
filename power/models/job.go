@@ -8,6 +8,7 @@ package models
 import (
 	"context"
 	stderrors "errors"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -19,6 +20,9 @@ import (
 //
 // swagger:model Job
 type Job struct {
+
+	// list of actions for the job
+	Actions []*ActionDetail `json:"actions"`
 
 	// create timestamp for the job
 	// Format: date-time
@@ -32,6 +36,9 @@ type Job struct {
 	// Required: true
 	Operation *Operation `json:"operation"`
 
+	// percentage of completed tasks for this job
+	PercentCompletion int64 `json:"percentCompletion,omitempty"`
+
 	// status
 	// Required: true
 	Status *Status `json:"status"`
@@ -40,6 +47,10 @@ type Job struct {
 // Validate validates this job
 func (m *Job) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateActions(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateCreateTimestamp(formats); err != nil {
 		res = append(res, err)
@@ -60,6 +71,36 @@ func (m *Job) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Job) validateActions(formats strfmt.Registry) error {
+	if swag.IsZero(m.Actions) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.Actions); i++ {
+		if swag.IsZero(m.Actions[i]) { // not required
+			continue
+		}
+
+		if m.Actions[i] != nil {
+			if err := m.Actions[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("actions" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("actions" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
@@ -136,6 +177,10 @@ func (m *Job) validateStatus(formats strfmt.Registry) error {
 func (m *Job) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateActions(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateOperation(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -147,6 +192,35 @@ func (m *Job) ContextValidate(ctx context.Context, formats strfmt.Registry) erro
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *Job) contextValidateActions(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.Actions); i++ {
+
+		if m.Actions[i] != nil {
+
+			if swag.IsZero(m.Actions[i]) { // not required
+				return nil
+			}
+
+			if err := m.Actions[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("actions" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("actions" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 
