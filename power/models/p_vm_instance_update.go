@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceUpdate
 type PVMInstanceUpdate struct {
 
+	// if set to false, automated remote restart is disabled for the VM
+	AllowRemoteRestart *bool `json:"allowRemoteRestart,omitempty"`
+
 	// Cloud Initialization Volume operations
 	CloudInitialization *CloudInitialization `json:"cloudInitialization,omitempty"`
 

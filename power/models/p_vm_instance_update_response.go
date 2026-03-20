@@ -21,6 +21,9 @@ import (
 // swagger:model PVMInstanceUpdateResponse
 type PVMInstanceUpdateResponse struct {
 
+	// if set to false, automated remote restart is disabled for the VM
+	AllowRemoteRestart bool `json:"allowRemoteRestart,omitempty"`
+
 	// default IAM trusted profile to use for this virtual server instance
 	DefaultTrustedProfile *UpdateTrustedProfile `json:"defaultTrustedProfile,omitempty"`
 
