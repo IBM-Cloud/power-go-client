@@ -21,8 +21,7 @@ type TargetTrustedProfile struct {
 
 	// The CRN for the trusted profile
 	// Max Length: 512
-	// Min Length: 17
-	// Pattern: ^crn:v[0-9]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]*:([a-z]\/[a-z0-9-]+)?:[a-z0-9-]*:[a-z0-9-]*:[a-zA-Z0-9-_\.\/]*$
+	// Pattern: ^(crn:v[0-9]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]*:([a-z]\/[a-z0-9-]+)?:[a-z0-9-]*:[a-z0-9-]*:[a-zA-Z0-9-_\.\/]*)?$
 	Crn *string `json:"crn,omitempty"`
 
 	// Unique identifier for the trusted profile
@@ -54,15 +53,11 @@ func (m *TargetTrustedProfile) validateCrn(formats strfmt.Registry) error {
 		return nil
 	}
 
-	if err := validate.MinLength("crn", "body", *m.Crn, 17); err != nil {
-		return err
-	}
-
 	if err := validate.MaxLength("crn", "body", *m.Crn, 512); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("crn", "body", *m.Crn, `^crn:v[0-9]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]*:([a-z]\/[a-z0-9-]+)?:[a-z0-9-]*:[a-z0-9-]*:[a-zA-Z0-9-_\.\/]*$`); err != nil {
+	if err := validate.Pattern("crn", "body", *m.Crn, `^(crn:v[0-9]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]+:[a-z0-9-]*:([a-z]\/[a-z0-9-]+)?:[a-z0-9-]*:[a-z0-9-]*:[a-zA-Z0-9-_\.\/]*)?$`); err != nil {
 		return err
 	}
 
