@@ -64,33 +64,33 @@ func TestNetwork(t *testing.T) {
 	require.Equal(t, createNetResp.Mtu, utl.NetworkMtu)
 	require.Equal(t, createNetResp.AccessConfig, utl.NetworkAccessConfig)
 
-	// CREATE Port
-	portBody := &models.NetworkPortCreate{
-		Description: "Network Port",
+	// CREATE Network Interface (replacing deprecated CreatePort)
+	netIntBody := &models.NetworkInterfaceCreate{
+		Name: "Network Interface",
 	}
-	createPortResp, err := networkClient.CreatePort(NetworkID, portBody)
+	createNetIntResp, err := networkClient.CreateNetworkInterface(NetworkID, netIntBody)
 	require.Nil(t, err)
-	portID := *createPortResp.PortID
-	utl.TestMessage("CREATE Network Port", portID, *createPortResp)
+	netIntID := *createNetIntResp.ID
+	utl.TestMessage("CREATE Network Interface", netIntID, *createNetIntResp)
 
-	// DELETE Port
+	// DELETE Network Interface (replacing deprecated DeletePort)
 	defer func() {
-		err = networkClient.DeletePort(NetworkID, portID)
+		err = networkClient.DeleteNetworkInterface(NetworkID, netIntID)
 		require.Nil(t, err)
-		utl.TestMessage("DELETE Network: "+NetworkID+" Port", portID, nil)
+		utl.TestMessage("DELETE Network: "+NetworkID+" Interface", netIntID, nil)
 	}()
 
-	// GET Port
-	getPortResp, err := networkClient.GetPort(NetworkID, portID)
+	// GET Network Interface (replacing deprecated GetPort)
+	getNetIntResp, err := networkClient.GetNetworkInterface(NetworkID, netIntID)
 	require.Nil(t, err)
-	utl.TestMessage("GET Network ", NetworkID+" Port "+portID, *getPortResp)
+	utl.TestMessage("GET Network ", NetworkID+" Interface "+netIntID, *getNetIntResp)
 	// verify variables match
-	require.Equal(t, *createPortResp.Description, "Network Port")
+	require.Equal(t, *createNetIntResp.Name, "Network Interface")
 
-	// GET ALL Ports
-	getAllPortResp, err := networkClient.GetAllPorts(NetworkID)
+	// GET ALL Network Interfaces (replacing deprecated GetAllPorts)
+	getAllNetIntResp, err := networkClient.GetAllNetworkInterfaces(NetworkID)
 	require.Nil(t, err)
-	utl.TestMessage("GET ALL Network Ports", NetworkID, *getAllPortResp)
+	utl.TestMessage("GET ALL Network Interfaces", NetworkID, *getAllNetIntResp)
 
 	// GET Public Networks
 	getPublicResp, err := networkClient.GetAllPublic()

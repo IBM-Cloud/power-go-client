@@ -64,9 +64,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPINetworkClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	body := &models.NetworkCreate{
 		Type:         &netType,
 		Name:         name,
@@ -114,28 +111,29 @@ func main() {
 	}
 	log.Printf("***************[4]****************** %+v \n", *getpubResp)
 
-	portBody := &models.NetworkPortCreate{
-		Description: "Network Port",
+	// Using network interface methods instead of deprecated port methods
+	netIntBody := &models.NetworkInterfaceCreate{
+		Name: "Network Interface",
 	}
-	createPortResp, err := powerClient.CreatePort(networkID, portBody)
+	createNetIntResp, err := powerClient.CreateNetworkInterface(networkID, netIntBody)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[5]****************** %+v \n", *createPortResp)
+	log.Printf("***************[5]****************** %+v \n", *createNetIntResp)
 
-	getPortResp, err := powerClient.GetPort(networkID, *createPortResp.PortID)
+	getNetIntResp, err := powerClient.GetNetworkInterface(networkID, *createNetIntResp.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[6]****************** %+v \n", *getPortResp)
+	log.Printf("***************[6]****************** %+v \n", *getNetIntResp)
 
-	getallPortResp, err := powerClient.GetAllPorts(networkID)
+	getallNetIntResp, err := powerClient.GetAllNetworkInterfaces(networkID)
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Printf("***************[7]****************** %+v \n", *getallPortResp)
+	log.Printf("***************[7]****************** %+v \n", *getallNetIntResp)
 
-	err = powerClient.DeletePort(networkID, *createPortResp.PortID)
+	err = powerClient.DeleteNetworkInterface(networkID, *createNetIntResp.ID)
 	if err != nil {
 		log.Fatal(err)
 	}
