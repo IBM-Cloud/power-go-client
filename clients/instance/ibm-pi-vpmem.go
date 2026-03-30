@@ -77,7 +77,7 @@ func (f *IBMPIVPMEMClient) GetAllPvmVpmemVolumes(pvminstanceID string) (*models.
 }
 
 // PvmInstance update VPMEM volume
-func (f *IBMPIVolumeClient) UpdatePvmVpmemVolume(pvminstanceID, vpmemVolumeID string, body *models.VPMemVolumeUpdate) error {
+func (f *IBMPIVPMEMClient) UpdatePvmVpmemVolume(pvminstanceID, vpmemVolumeID string, body *models.VPMemVolumeUpdate) error {
 	params := p_cloud_v_p_mem_volumes.NewPcloudPvminstancesVpmemVolumesPutParams().WithContext(f.ctx).WithTimeout(helpers.PIUpdateTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(pvminstanceID).WithVpmemVolumeID(vpmemVolumeID).WithBody(body)
 	resp, err := f.session.Power.PCloudvpMemVolumes.PcloudPvminstancesVpmemVolumesPut(params, f.session.AuthInfo(f.cloudInstanceID))
