@@ -104,7 +104,7 @@ func SDKFailWithAPIError(err error, origErr error) error {
 		if apierr.Code == 429 {
 			return fmt.Errorf("error: Rate Limited. Please try again later.")
 		}
-		if apierr.Code >= 500 {
+		if apierr.IsServerError() {
 			return fmt.Errorf("error: %w The server has encountered an unexpected error and is unable to fulfill the request", err)
 		}
 	}
