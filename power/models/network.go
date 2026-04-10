@@ -40,12 +40,15 @@ type Network struct {
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
-	// DHCP Managed Network
+	// DHCP Enabled Network
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
 
 	// DNS Servers
 	// Required: true
 	DNSServers []string `json:"dnsServers"`
+
+	// DHCP Enabled Network
+	EnableDHCP bool `json:"enableDHCP"`
 
 	// Gateway IP Address
 	Gateway string `json:"gateway,omitempty"`
