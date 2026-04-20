@@ -23,7 +23,7 @@ type PVMInstanceReference struct {
 	Addresses []*PVMInstanceNetwork `json:"addresses"`
 
 	// if set to false, automated remote restart is disabled for the VM
-	AllowRemoteRestart bool `json:"allowRemoteRestart,omitempty"`
+	AllowRemoteRestart *bool `json:"allowRemoteRestart,omitempty"`
 
 	// Console language and code
 	ConsoleLanguage *ConsoleLanguage `json:"consoleLanguage,omitempty"`
