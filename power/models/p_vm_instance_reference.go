@@ -108,7 +108,7 @@ type PVMInstanceReference struct {
 
 	// Processor type (dedicated, shared, capped)
 	// Required: true
-	// Enum: ["dedicated","shared","capped"]
+	// Enum: ["dedicated","shared","capped",""]
 	ProcType *string `json:"procType"`
 
 	// Number of processors allocated
@@ -554,7 +554,7 @@ var pVmInstanceReferenceTypeProcTypePropEnum []any
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["dedicated","shared","capped"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["dedicated","shared","capped",""]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -572,6 +572,9 @@ const (
 
 	// PVMInstanceReferenceProcTypeCapped captures enum value "capped"
 	PVMInstanceReferenceProcTypeCapped string = "capped"
+
+	// PVMInstanceReferenceProcTypeEmpty captures enum value ""
+	PVMInstanceReferenceProcTypeEmpty string = ""
 )
 
 // prop value enum
