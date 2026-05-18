@@ -11,13 +11,10 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// TargetTrustedProfile trusted profile associated with the VM. Specify one of crn, id, or an account/name pair.
+// TargetTrustedProfile trusted profile associated with the VM. Specify one of crn, id or name
 //
 // swagger:model TargetTrustedProfile
 type TargetTrustedProfile struct {
-
-	// account ID where the trusted profile is located (also requires name)
-	Account *string `json:"account,omitempty"`
 
 	// The CRN for the trusted profile
 	// Max Length: 512
@@ -29,7 +26,7 @@ type TargetTrustedProfile struct {
 	// Pattern: ^(Profile-[-0-9a-z_]+)?$
 	ID *string `json:"id,omitempty"`
 
-	// name of the trusted profile (also requires account)
+	// name of the trusted profile (requires the trusted profile read IAM action when used with autolink)
 	Name *string `json:"name,omitempty"`
 }
 
