@@ -32,6 +32,9 @@ type SAPProfile struct {
 	// System to use if not provided
 	DefaultSystem string `json:"defaultSystem,omitempty"`
 
+	// Profile is deprecated
+	Deprecated bool `json:"deprecated"`
+
 	// Requires full system for deployment
 	FullSystemProfile bool `json:"fullSystemProfile"`
 
