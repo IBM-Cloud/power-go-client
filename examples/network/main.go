@@ -36,7 +36,7 @@ func main() {
 	name := " < NAME OF THE network > "
 	netType := "vlan"
 	cidr := "10.243.65.0/24"
-	dnsServers := make([]string, 0)
+	dnsServers := make([]string, 1)
 	dnsServers[0] = "127.0.0.1"
 	gateway, startIP, endIP := generateIPData(cidr)
 	jumbo := false
@@ -79,7 +79,7 @@ func main() {
 		body.Gateway = gateway
 		body.Cidr = cidr
 	}
-	if dnsServers != nil {
+	if len(dnsServers) > 0 {
 		body.DNSServers = dnsServers
 	}
 	createRespOk, err := powerClient.Create(body)
