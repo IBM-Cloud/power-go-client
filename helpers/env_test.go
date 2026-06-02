@@ -6,7 +6,7 @@ import (
 )
 
 func TestEnvFallBack(t *testing.T) {
-	os.Setenv("MY_ENV_VAR", "hello")
+	_ = os.Setenv("MY_ENV_VAR", "hello")
 	type args struct {
 		envs         []string
 		defaultValue string
@@ -56,7 +56,7 @@ func TestGetPowerEndPoint(t *testing.T) {
 }
 
 func TestGetPowerEndPointFromEnv(t *testing.T) {
-	os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "dal.power-iaas.cloud.ibm.com")
+	_ = os.Setenv("IBMCLOUD_POWER_API_ENDPOINT", "dal.power-iaas.cloud.ibm.com")
 	type args struct {
 		region string
 	}
