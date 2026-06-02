@@ -36,7 +36,7 @@ func main() {
 	name := " < NAME OF THE network > "
 	netType := "vlan"
 	cidr := "10.243.65.0/24"
-	dnsServers := make([]string, 1)
+	dnsServers := make([]string, 0)
 	dnsServers[0] = "127.0.0.1"
 	gateway, startIP, endIP := generateIPData(cidr)
 	jumbo := false
