@@ -79,7 +79,7 @@ func main() {
 		body.Gateway = gateway
 		body.Cidr = cidr
 	}
-	if dnsServers != nil {
+	if len(dnsServers) > 0 {
 		body.DNSServers = dnsServers
 	}
 	createRespOk, err := powerClient.Create(body)

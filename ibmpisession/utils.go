@@ -102,7 +102,7 @@ func costructRegionFromZone(zone string) string {
 func SDKFailWithAPIError(err error, origErr error) error {
 	if apierr, ok := err.(*runtime.APIError); ok {
 		if apierr.Code == 429 {
-			return fmt.Errorf("error: Rate Limited. Please try again later.")
+			return fmt.Errorf("error: Rate Limited. Please try again later")
 		}
 		if apierr.IsServerError() {
 			return fmt.Errorf("error: %w The server has encountered an unexpected error and is unable to fulfill the request", err)

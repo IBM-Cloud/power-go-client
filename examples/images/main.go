@@ -102,7 +102,7 @@ func main() {
 		imageCheck, err := powerClient.IsVTLImage(testVtlId)
 
 		msg := fmt.Sprintf("IsVtlImage returned true for vtl image with ID %s", testVtlId)
-		if imageCheck == false {
+		if !imageCheck {
 			msg = fmt.Sprintf("IsVtlImage returned false for image with ID %s. Error: %s", testVtlId, err)
 		}
 		log.Printf("***************[7]****************** %s \n\n", msg)
