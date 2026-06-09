@@ -9,11 +9,19 @@ updates:
     directory: /
     schedule:
       interval: daily
-    branches:
-      - "master"
-      - "dev"
+    target-branch: master
     assignees:
-      - Alexander-Kita
+      - r-patange
+      - ismirlia
+      - michaelkad
+
+  - package-ecosystem: gomod
+    directory: /
+    schedule:
+      interval: daily
+    target-branch: dev
+    assignees:
+      - r-patange
       - ismirlia
       - michaelkad
 
@@ -21,10 +29,18 @@ updates:
     directory: /
     schedule:
       interval: weekly
-    branches:
-      - "master"
-      - "dev"
+    target-branch: master
     assignees:
-      - Alexander-Kita
+      - r-patange
+      - ismirlia
+      - michaelkad
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    target-branch: dev
+    assignees:
+      - r-patange
       - ismirlia
       - michaelkad
