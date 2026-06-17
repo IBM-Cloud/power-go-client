@@ -53,6 +53,8 @@ type ClientOption func(*runtime.ClientOperation)
 
 // ClientService is the interface for Client methods
 type ClientService interface {
+	PcloudCloudinstancesSnapshotsClone(params *PcloudCloudinstancesSnapshotsCloneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSnapshotsCloneAccepted, error)
+
 	PcloudCloudinstancesSnapshotsDelete(params *PcloudCloudinstancesSnapshotsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSnapshotsDeleteAccepted, error)
 
 	PcloudCloudinstancesSnapshotsGet(params *PcloudCloudinstancesSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSnapshotsGetOK, error)
@@ -61,7 +63,55 @@ type ClientService interface {
 
 	PcloudCloudinstancesSnapshotsPut(params *PcloudCloudinstancesSnapshotsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSnapshotsPutOK, error)
 
+	PcloudV2CloudinstancesSnapshotsGet(params *PcloudV2CloudinstancesSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2CloudinstancesSnapshotsGetOK, error)
+
+	PcloudV2CloudinstancesSnapshotsGetall(params *PcloudV2CloudinstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2CloudinstancesSnapshotsGetallOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
+}
+
+/*
+PcloudCloudinstancesSnapshotsClone clones an instance snapshot
+*/
+func (a *Client) PcloudCloudinstancesSnapshotsClone(params *PcloudCloudinstancesSnapshotsCloneParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSnapshotsCloneAccepted, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudCloudinstancesSnapshotsCloneParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.cloudinstances.snapshots.clone",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}/clone",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudCloudinstancesSnapshotsCloneReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudCloudinstancesSnapshotsCloneAccepted)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.snapshots.clone: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
 }
 
 /*
@@ -237,6 +287,94 @@ func (a *Client) PcloudCloudinstancesSnapshotsPut(params *PcloudCloudinstancesSn
 	//
 	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.cloudinstances.snapshots.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudV2CloudinstancesSnapshotsGet gets the detail of a v2 snapshot
+*/
+func (a *Client) PcloudV2CloudinstancesSnapshotsGet(params *PcloudV2CloudinstancesSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2CloudinstancesSnapshotsGetOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudV2CloudinstancesSnapshotsGetParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.v2.cloudinstances.snapshots.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2CloudinstancesSnapshotsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudV2CloudinstancesSnapshotsGetOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.v2.cloudinstances.snapshots.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudV2CloudinstancesSnapshotsGetall lists all p VM instance v2 snapshots for this cloud instance
+*/
+func (a *Client) PcloudV2CloudinstancesSnapshotsGetall(params *PcloudV2CloudinstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2CloudinstancesSnapshotsGetallOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudV2CloudinstancesSnapshotsGetallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.v2.cloudinstances.snapshots.getall",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/snapshots",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2CloudinstancesSnapshotsGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudV2CloudinstancesSnapshotsGetallOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.v2.cloudinstances.snapshots.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
