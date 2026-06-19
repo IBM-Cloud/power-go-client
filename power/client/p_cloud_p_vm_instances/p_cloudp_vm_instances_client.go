@@ -97,6 +97,10 @@ type ClientService interface {
 
 	PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesGetallOK, error)
 
+	PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error)
+
+	PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -1073,6 +1077,94 @@ func (a *Client) PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallPa
 	//
 	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.v2.pvminstances.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudV2PvminstancesSnapshotsGetall gets all snapshots for this p VM instance
+*/
+func (a *Client) PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudV2PvminstancesSnapshotsGetallParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.v2.pvminstances.snapshots.getall",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2PvminstancesSnapshotsGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudV2PvminstancesSnapshotsGetallOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.v2.pvminstances.snapshots.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudV2PvminstancesSnapshotsPost creates a v2 p VM instance snapshot
+*/
+func (a *Client) PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudV2PvminstancesSnapshotsPostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.v2.pvminstances.snapshots.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/snapshots",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudV2PvminstancesSnapshotsPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudV2PvminstancesSnapshotsPostAccepted)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.v2.pvminstances.snapshots.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
