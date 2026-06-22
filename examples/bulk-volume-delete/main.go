@@ -63,9 +63,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClientVolume := v.NewIBMPIVolumeClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	bodyVolume := &models.CreateDataVolume{
 		Name:               &name,
 		Size:               &size,

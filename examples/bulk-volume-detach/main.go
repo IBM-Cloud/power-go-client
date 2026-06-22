@@ -73,9 +73,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClientVolume := v.NewIBMPIVolumeClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	bodyVolume := &models.CreateDataVolume{
 		Name:               &name,
 		Size:               &size,
@@ -118,9 +115,6 @@ func main() {
 	log.Printf("***************[4]****************** %+v \n", *getResp2)
 
 	powerClientVM := v.NewIBMPIInstanceClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	bodyVM := &models.PVMInstanceCreate{
 		ImageID:    &imageID,
 		NetworkIDs: []string{networkID},

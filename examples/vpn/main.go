@@ -55,17 +55,8 @@ func main() {
 		log.Fatal(err)
 	}
 	vpnClient := v.NewIBMPIVpnConnectionClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	vpnPolicyClient := v.NewIBMPIVpnPolicyClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	jobClient := v.NewIBMPIJobClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	// Create and Get IKE Policy
 	var dhGroup, version int64 = 1, 1

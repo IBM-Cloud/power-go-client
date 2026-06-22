@@ -44,9 +44,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIDisasterRecoveryLocationClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	getResp, err := powerClient.Get()
 	if err != nil {

@@ -47,9 +47,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIKeyClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	getAllResp, err := powerClient.GetAll()
 	if err != nil {
