@@ -3,7 +3,7 @@ module github.com/IBM-Cloud/power-go-client
 go 1.25.2
 
 require (
-	github.com/IBM/go-sdk-core/v5 v5.21.2
+	github.com/IBM/go-sdk-core/v5 v5.21.4
 	github.com/IBM/platform-services-go-sdk v0.91.0
 	github.com/apparentlymart/go-cidr v1.1.0
 	github.com/go-openapi/errors v0.22.7
@@ -46,7 +46,7 @@ require (
 	golang.org/x/crypto v0.45.0 // indirect
 	golang.org/x/net v0.47.0 // indirect
 	golang.org/x/sync v0.18.0 // indirect
-	golang.org/x/sys v0.38.0 // indirect
+	golang.org/x/sys v0.44.0 // indirect
 	golang.org/x/text v0.31.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	sigs.k8s.io/yaml v1.6.0 // indirect
