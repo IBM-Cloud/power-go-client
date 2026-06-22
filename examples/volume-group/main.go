@@ -48,9 +48,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIVolumeGroupClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	body := &models.VolumeGroupCreate{
 		Name:      vgname,

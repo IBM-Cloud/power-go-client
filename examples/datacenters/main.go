@@ -42,9 +42,6 @@ func main() {
 	}
 
 	powerClient := v.NewIBMPIDatacenterClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	getDatacenter, err := powerClient.Get("dal12")
 	if err != nil {
 		log.Fatal(err)

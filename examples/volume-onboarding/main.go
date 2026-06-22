@@ -49,9 +49,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIVolumeOnboardingClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	auxVols := []*models.AuxiliaryVolumeForOnboarding{}
 	auxVols = append(auxVols, &models.AuxiliaryVolumeForOnboarding{

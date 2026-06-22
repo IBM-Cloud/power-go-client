@@ -47,9 +47,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIImageClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	body := &models.CreateImage{
 		ImageName: name,

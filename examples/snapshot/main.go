@@ -48,9 +48,6 @@ func main() {
 	}
 
 	powerClient := v.NewIBMPIInstanceClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	snapshotBody := &models.SnapshotCreate{Name: &snap_name, Description: description}
 	createRespSnapOk, err := powerClient.CreatePvmSnapShot(instance_id, snapshotBody)
@@ -60,9 +57,6 @@ func main() {
 	log.Printf("***************[1]****************** %+v \n", *createRespSnapOk)
 
 	powerSnapClient := v.NewIBMPISnapshotClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	getAllSnapResp, err := powerSnapClient.GetAll()
 	if err != nil {

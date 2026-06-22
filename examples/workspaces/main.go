@@ -41,9 +41,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIWorkspacesClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	getWorkspace, err := powerClient.Get(piID)
 	if err != nil {
 		log.Fatal(err)

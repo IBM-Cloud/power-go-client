@@ -44,9 +44,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIHostGroupsClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	getAllAvailableHost, err := powerClient.GetAvailableHosts()
 	if err != nil {

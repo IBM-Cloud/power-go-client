@@ -55,9 +55,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIInstanceClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	body := &models.PVMInstanceCreate{
 		ImageID:     &imageID,

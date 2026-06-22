@@ -52,13 +52,7 @@ func main() {
 		log.Fatal(err)
 	}
 	ccClient := v.NewIBMPICloudConnectionClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 	jobClient := v.NewIBMPIJobClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	body := &models.CloudConnectionCreate{
 		Name:  &name,

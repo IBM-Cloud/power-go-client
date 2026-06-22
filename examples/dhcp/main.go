@@ -44,9 +44,6 @@ func main() {
 		log.Fatal(err)
 	}
 	powerClient := v.NewIBMPIDhcpClient(context.Background(), session, piID)
-	if err != nil {
-		log.Fatal(err)
-	}
 
 	dhcpServer, err := powerClient.Create(&models.DHCPServerCreate{})
 	if err != nil {
