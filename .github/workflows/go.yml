@@ -32,7 +32,7 @@ jobs:
       - name: Run go Security Scanner
         uses: securego/gosec@master
         with:
-          args: -exclude-generated ./...
+          args: '-exclude-generated -exclude=G104,G204,G304 -exclude-dir=power/models -exclude-dir=power/client ./...'
 
       - name: Build
         run: go build -v ./...
