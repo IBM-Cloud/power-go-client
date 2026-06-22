@@ -20,6 +20,9 @@ type SnapshotCreateResponse struct {
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
+	// ID of the job created to track the progress of the snapshot operation
+	JobID string `json:"jobID,omitempty"`
+
 	// ID of the PVM instance snapshot
 	// Required: true
 	SnapshotID *string `json:"snapshotID"`
