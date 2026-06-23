@@ -48,7 +48,7 @@ type Network struct {
 	DNSServers []string `json:"dnsServers"`
 
 	// DHCP Enabled Network
-	EnableDHCP bool `json:"enableDHCP"`
+	EnableDHCP bool `json:"enableDHCP,omitempty"`
 
 	// Gateway IP Address
 	Gateway string `json:"gateway,omitempty"`

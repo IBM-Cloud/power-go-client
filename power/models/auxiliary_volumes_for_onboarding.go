@@ -22,7 +22,7 @@ type AuxiliaryVolumesForOnboarding struct {
 	// Required: true
 	AuxiliaryVolumes []*AuxiliaryVolumeForOnboarding `json:"auxiliaryVolumes"`
 
-	// CRN of source ServiceBroker instance from where auxiliary volumes need to be onboarded
+	// The CRN of the workspace in which the primary volume is located
 	// Required: true
 	SourceCRN *string `json:"sourceCRN"`
 }
