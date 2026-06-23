@@ -21,9 +21,15 @@ type CapabilitiesDetails struct {
 	// Required: true
 	DisasterRecovery *DisasterRecovery `json:"disasterRecovery"`
 
+	// Regional Snapshot Capability Information
+	RegionalSnapshots *RegionalSnapshots `json:"regionalSnapshots,omitempty"`
+
 	// Datacenter System Types Information
 	// Required: true
 	SupportedSystems *SupportedSystems `json:"supportedSystems"`
+
+	// Zonal Snapshot Capability Information
+	ZonalSnapshots *ZonalSnapshots `json:"zonalSnapshots,omitempty"`
 }
 
 // Validate validates this capabilities details
@@ -34,7 +40,15 @@ func (m *CapabilitiesDetails) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateRegionalSnapshots(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSupportedSystems(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateZonalSnapshots(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -68,6 +82,29 @@ func (m *CapabilitiesDetails) validateDisasterRecovery(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *CapabilitiesDetails) validateRegionalSnapshots(formats strfmt.Registry) error {
+	if swag.IsZero(m.RegionalSnapshots) { // not required
+		return nil
+	}
+
+	if m.RegionalSnapshots != nil {
+		if err := m.RegionalSnapshots.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("regionalSnapshots")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("regionalSnapshots")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *CapabilitiesDetails) validateSupportedSystems(formats strfmt.Registry) error {
 
 	if err := validate.Required("supportedSystems", "body", m.SupportedSystems); err != nil {
@@ -92,6 +129,29 @@ func (m *CapabilitiesDetails) validateSupportedSystems(formats strfmt.Registry) 
 	return nil
 }
 
+func (m *CapabilitiesDetails) validateZonalSnapshots(formats strfmt.Registry) error {
+	if swag.IsZero(m.ZonalSnapshots) { // not required
+		return nil
+	}
+
+	if m.ZonalSnapshots != nil {
+		if err := m.ZonalSnapshots.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("zonalSnapshots")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("zonalSnapshots")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
 // ContextValidate validate this capabilities details based on the context it is used
 func (m *CapabilitiesDetails) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -100,7 +160,15 @@ func (m *CapabilitiesDetails) ContextValidate(ctx context.Context, formats strfm
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateRegionalSnapshots(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateSupportedSystems(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateZonalSnapshots(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -131,6 +199,31 @@ func (m *CapabilitiesDetails) contextValidateDisasterRecovery(ctx context.Contex
 	return nil
 }
 
+func (m *CapabilitiesDetails) contextValidateRegionalSnapshots(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.RegionalSnapshots != nil {
+
+		if swag.IsZero(m.RegionalSnapshots) { // not required
+			return nil
+		}
+
+		if err := m.RegionalSnapshots.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("regionalSnapshots")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("regionalSnapshots")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
 func (m *CapabilitiesDetails) contextValidateSupportedSystems(ctx context.Context, formats strfmt.Registry) error {
 
 	if m.SupportedSystems != nil {
@@ -143,6 +236,31 @@ func (m *CapabilitiesDetails) contextValidateSupportedSystems(ctx context.Contex
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
 				return ce.ValidateName("supportedSystems")
+			}
+
+			return err
+		}
+	}
+
+	return nil
+}
+
+func (m *CapabilitiesDetails) contextValidateZonalSnapshots(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.ZonalSnapshots != nil {
+
+		if swag.IsZero(m.ZonalSnapshots) { // not required
+			return nil
+		}
+
+		if err := m.ZonalSnapshots.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("zonalSnapshots")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("zonalSnapshots")
 			}
 
 			return err
