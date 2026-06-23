@@ -36,7 +36,7 @@ type NetworkReference struct {
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
 
 	// DHCP Enabled Network
-	EnableDHCP bool `json:"enableDHCP"`
+	EnableDHCP bool `json:"enableDHCP,omitempty"`
 
 	// Link to Network resource
 	// Required: true
