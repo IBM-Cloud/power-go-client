@@ -6,7 +6,7 @@ require (
 	github.com/IBM/go-sdk-core/v5 v5.22.0
 	github.com/IBM/platform-services-go-sdk v0.99.2
 	github.com/apparentlymart/go-cidr v1.1.0
-	github.com/go-openapi/errors v0.22.7
+	github.com/go-openapi/errors v0.22.8
 	github.com/go-openapi/runtime v0.28.0
 	github.com/go-openapi/strfmt v0.26.3
 	github.com/go-openapi/swag v0.23.1
