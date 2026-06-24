@@ -45,11 +45,11 @@ type PVMInstanceUpdate struct {
 	// Preferred processor compatibility mode
 	PreferredProcessorCompatibilityMode string `json:"preferredProcessorCompatibilityMode,omitempty"`
 
-	// Processor type (dedicated, shared, capped)
+	// Processor type (dedicated, shared, capped). When changing processor type without specifying processors, the system automatically converts the current core allocation. For dedicated to shared or capped conversion, the system reduces cores by 0.75 (for example, 1 dedicated core becomes 0.25 shared cores, 3 dedicated cores becomes 2.25 shared cores). For shared or capped to dedicated conversion, the system uses the VM's virtual cores as the new dedicated core count. To override this automatic conversion, explicitly provide the processors value.
 	// Enum: ["dedicated","shared","capped"]
 	ProcType string `json:"procType,omitempty"`
 
-	// Number of processors allocated
+	// Number of processors allocated. When omitted during a procType change, the system automatically converts the current core count (see procType for conversion details). When explicitly provided, this value overrides automatic conversion.
 	Processors float64 `json:"processors,omitempty"`
 
 	// Defines the enforcement action when NUMA affinity for the PVM instance is not satisfied
