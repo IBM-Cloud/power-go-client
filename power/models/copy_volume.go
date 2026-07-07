@@ -19,18 +19,18 @@ type CopyVolume struct {
 
 	// The CRN of the copy volume
 	// Required: true
-	CloneVolumeCRN *CRN `json:"cloneVolumeCRN"`
+	CopyVolumeCRN *CRN `json:"copyVolumeCRN"`
 
 	// The ID of the copy volume
 	// Required: true
-	CloneVolumeID *string `json:"cloneVolumeID"`
+	CopyVolumeID *string `json:"copyVolumeID"`
 
 	// The Name of the copy volume
 	// Required: true
-	CloneVolumeName *string `json:"cloneVolumeName"`
+	CopyVolumeName *string `json:"copyVolumeName"`
 
 	// User tags associated with the copy volume
-	CloneVolumeUserTags Tags `json:"cloneVolumeUserTags,omitempty"`
+	CopyVolumeUserTags Tags `json:"copyVolumeUserTags,omitempty"`
 
 	// The CRN of the source volume
 	// Required: true
@@ -41,19 +41,19 @@ type CopyVolume struct {
 func (m *CopyVolume) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateCloneVolumeCRN(formats); err != nil {
+	if err := m.validateCopyVolumeCRN(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateCloneVolumeID(formats); err != nil {
+	if err := m.validateCopyVolumeID(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateCloneVolumeName(formats); err != nil {
+	if err := m.validateCopyVolumeName(formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.validateCloneVolumeUserTags(formats); err != nil {
+	if err := m.validateCopyVolumeUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -67,21 +67,21 @@ func (m *CopyVolume) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *CopyVolume) validateCloneVolumeCRN(formats strfmt.Registry) error {
+func (m *CopyVolume) validateCopyVolumeCRN(formats strfmt.Registry) error {
 
-	if err := validate.Required("cloneVolumeCRN", "body", m.CloneVolumeCRN); err != nil {
+	if err := validate.Required("copyVolumeCRN", "body", m.CopyVolumeCRN); err != nil {
 		return err
 	}
 
-	if m.CloneVolumeCRN != nil {
-		if err := m.CloneVolumeCRN.Validate(formats); err != nil {
+	if m.CopyVolumeCRN != nil {
+		if err := m.CopyVolumeCRN.Validate(formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("cloneVolumeCRN")
+				return ve.ValidateName("copyVolumeCRN")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("cloneVolumeCRN")
+				return ce.ValidateName("copyVolumeCRN")
 			}
 
 			return err
@@ -91,37 +91,37 @@ func (m *CopyVolume) validateCloneVolumeCRN(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *CopyVolume) validateCloneVolumeID(formats strfmt.Registry) error {
+func (m *CopyVolume) validateCopyVolumeID(formats strfmt.Registry) error {
 
-	if err := validate.Required("cloneVolumeID", "body", m.CloneVolumeID); err != nil {
+	if err := validate.Required("copyVolumeID", "body", m.CopyVolumeID); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *CopyVolume) validateCloneVolumeName(formats strfmt.Registry) error {
+func (m *CopyVolume) validateCopyVolumeName(formats strfmt.Registry) error {
 
-	if err := validate.Required("cloneVolumeName", "body", m.CloneVolumeName); err != nil {
+	if err := validate.Required("copyVolumeName", "body", m.CopyVolumeName); err != nil {
 		return err
 	}
 
 	return nil
 }
 
-func (m *CopyVolume) validateCloneVolumeUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.CloneVolumeUserTags) { // not required
+func (m *CopyVolume) validateCopyVolumeUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.CopyVolumeUserTags) { // not required
 		return nil
 	}
 
-	if err := m.CloneVolumeUserTags.Validate(formats); err != nil {
+	if err := m.CopyVolumeUserTags.Validate(formats); err != nil {
 		ve := new(errors.Validation)
 		if stderrors.As(err, &ve) {
-			return ve.ValidateName("cloneVolumeUserTags")
+			return ve.ValidateName("copyVolumeUserTags")
 		}
 		ce := new(errors.CompositeError)
 		if stderrors.As(err, &ce) {
-			return ce.ValidateName("cloneVolumeUserTags")
+			return ce.ValidateName("copyVolumeUserTags")
 		}
 
 		return err
@@ -158,11 +158,11 @@ func (m *CopyVolume) validateSrcVolumeCRN(formats strfmt.Registry) error {
 func (m *CopyVolume) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateCloneVolumeCRN(ctx, formats); err != nil {
+	if err := m.contextValidateCopyVolumeCRN(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateCloneVolumeUserTags(ctx, formats); err != nil {
+	if err := m.contextValidateCopyVolumeUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -176,18 +176,18 @@ func (m *CopyVolume) ContextValidate(ctx context.Context, formats strfmt.Registr
 	return nil
 }
 
-func (m *CopyVolume) contextValidateCloneVolumeCRN(ctx context.Context, formats strfmt.Registry) error {
+func (m *CopyVolume) contextValidateCopyVolumeCRN(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.CloneVolumeCRN != nil {
+	if m.CopyVolumeCRN != nil {
 
-		if err := m.CloneVolumeCRN.ContextValidate(ctx, formats); err != nil {
+		if err := m.CopyVolumeCRN.ContextValidate(ctx, formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("cloneVolumeCRN")
+				return ve.ValidateName("copyVolumeCRN")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("cloneVolumeCRN")
+				return ce.ValidateName("copyVolumeCRN")
 			}
 
 			return err
@@ -197,16 +197,16 @@ func (m *CopyVolume) contextValidateCloneVolumeCRN(ctx context.Context, formats 
 	return nil
 }
 
-func (m *CopyVolume) contextValidateCloneVolumeUserTags(ctx context.Context, formats strfmt.Registry) error {
+func (m *CopyVolume) contextValidateCopyVolumeUserTags(ctx context.Context, formats strfmt.Registry) error {
 
-	if err := m.CloneVolumeUserTags.ContextValidate(ctx, formats); err != nil {
+	if err := m.CopyVolumeUserTags.ContextValidate(ctx, formats); err != nil {
 		ve := new(errors.Validation)
 		if stderrors.As(err, &ve) {
-			return ve.ValidateName("cloneVolumeUserTags")
+			return ve.ValidateName("copyVolumeUserTags")
 		}
 		ce := new(errors.CompositeError)
 		if stderrors.As(err, &ce) {
-			return ce.ValidateName("cloneVolumeUserTags")
+			return ce.ValidateName("copyVolumeUserTags")
 		}
 
 		return err
