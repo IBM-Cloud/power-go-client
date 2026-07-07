@@ -20,7 +20,7 @@ type BulkNaming struct {
 	// Required: true
 	BaseName *string `json:"baseName"`
 
-	// Each cloned volume name will be appended by a unique suffix. Up to 40 chars and be one of; "DATE-TIME", "VOLUME-NAME", or "5-RANDOM-DIGITS". If DATE-TIME is specified, then the current UTC date and time will be used in the format (yyyy-mm-dd:hh:mm:ss.nnn). If VOLUME-NAME is specified, then the source volume name will be used, truncated at 40 chars. If 5-RANDOM-DIGITS is specified, then a random 5-digit number will be generated.
+	// Each cloned volume name will be appended by a unique suffix. Up to 40 chars and be one of; "DATE-TIME", "VOLUME-NAME", or "5-RANDOM-DIGITS". If DATE-TIME is specified, then the current UTC date and time will be used in the format (yyyy-mm-dd_hh-mm-ss.nnn). If VOLUME-NAME is specified, then the source volume name will be used, truncated at 40 chars. If 5-RANDOM-DIGITS is specified, then a random 5-digit number will be generated.
 	// Required: true
 	UniqueSuffix *string `json:"uniqueSuffix"`
 }
