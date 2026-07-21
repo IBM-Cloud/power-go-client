@@ -5,6 +5,7 @@ package models
 import (
 	"context"
 	stderrors "errors"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -20,6 +21,9 @@ type RemotePeerSnapshot struct {
 	// Date when the remote peer snapshot completed
 	// Format: date-time
 	CompletionDate strfmt.DateTime `json:"completionDate,omitempty"`
+
+	// List of copy volumes created for the remote peer snapshot. Valid only for a zonal or regional instance snapshot.
+	CopyVolumes []*CopyVolume `json:"copyVolumes,omitempty"`
 
 	// CRN of the remote peer snapshot.
 	// Required: true
@@ -42,6 +46,10 @@ func (m *RemotePeerSnapshot) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateCompletionDate(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateCopyVolumes(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -70,6 +78,36 @@ func (m *RemotePeerSnapshot) validateCompletionDate(formats strfmt.Registry) err
 
 	if err := validate.FormatOf("completionDate", "body", "date-time", m.CompletionDate.String(), formats); err != nil {
 		return err
+	}
+
+	return nil
+}
+
+func (m *RemotePeerSnapshot) validateCopyVolumes(formats strfmt.Registry) error {
+	if swag.IsZero(m.CopyVolumes) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.CopyVolumes); i++ {
+		if swag.IsZero(m.CopyVolumes[i]) { // not required
+			continue
+		}
+
+		if m.CopyVolumes[i] != nil {
+			if err := m.CopyVolumes[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("copyVolumes" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("copyVolumes" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -121,6 +159,10 @@ func (m *RemotePeerSnapshot) validateStatus(formats strfmt.Registry) error {
 func (m *RemotePeerSnapshot) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.contextValidateCopyVolumes(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateCrn(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -128,6 +170,35 @@ func (m *RemotePeerSnapshot) ContextValidate(ctx context.Context, formats strfmt
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+func (m *RemotePeerSnapshot) contextValidateCopyVolumes(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.CopyVolumes); i++ {
+
+		if m.CopyVolumes[i] != nil {
+
+			if swag.IsZero(m.CopyVolumes[i]) { // not required
+				return nil
+			}
+
+			if err := m.CopyVolumes[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("copyVolumes" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("copyVolumes" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
+	}
+
 	return nil
 }
 

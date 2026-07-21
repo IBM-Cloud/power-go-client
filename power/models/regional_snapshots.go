@@ -10,6 +10,7 @@ import (
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // RegionalSnapshots regional snapshots
@@ -18,15 +19,21 @@ import (
 type RegionalSnapshots struct {
 
 	// Regional snapshots enabled
-	Enabled bool `json:"enabled,omitempty"`
+	// Required: true
+	Enabled *bool `json:"enabled"`
 
 	// List of paired regional sites and the associated storage pools
+	// Required: true
 	RegionalSites []*RegionalSite `json:"regionalSites"`
 }
 
 // Validate validates this regional snapshots
 func (m *RegionalSnapshots) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateEnabled(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateRegionalSites(formats); err != nil {
 		res = append(res, err)
@@ -38,9 +45,19 @@ func (m *RegionalSnapshots) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *RegionalSnapshots) validateEnabled(formats strfmt.Registry) error {
+
+	if err := validate.Required("enabled", "body", m.Enabled); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *RegionalSnapshots) validateRegionalSites(formats strfmt.Registry) error {
-	if swag.IsZero(m.RegionalSites) { // not required
-		return nil
+
+	if err := validate.Required("regionalSites", "body", m.RegionalSites); err != nil {
+		return err
 	}
 
 	for i := 0; i < len(m.RegionalSites); i++ {
