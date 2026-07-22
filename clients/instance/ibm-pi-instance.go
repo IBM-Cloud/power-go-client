@@ -236,22 +236,6 @@ func (f *IBMPIInstanceClient) CreatePvmSnapShot(id string, body *models.Snapshot
 	return snapshotpostaccepted.Payload, nil
 }
 
-// Create a Clone of an Instance
-func (f *IBMPIInstanceClient) CreateClone(id string, body *models.PVMInstanceClone) (*models.PVMInstance, error) {
-	params := p_cloud_p_vm_instances.NewPcloudPvminstancesClonePostParams().
-		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
-		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
-		WithBody(body)
-	clonePost, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesClonePost(params, f.session.AuthInfo(f.cloudInstanceID))
-	if err != nil {
-		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to create the clone of the pvm instance %s: %w", id, err))
-	}
-	if clonePost == nil || clonePost.Payload == nil {
-		return nil, fmt.Errorf("failed to create the clone of the pvm instance %s", id)
-	}
-	return clonePost.Payload, nil
-}
-
 // Get an Instance's Snapshots
 func (f *IBMPIInstanceClient) GetSnapShotVM(id string) (*models.Snapshots, error) {
 	params := p_cloud_p_vm_instances.NewPcloudPvminstancesSnapshotsGetallParams().
