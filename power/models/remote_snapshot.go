@@ -12,33 +12,33 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// RegionalSnapshot regional snapshot
+// RemoteSnapshot remote snapshot
 //
-// swagger:model RegionalSnapshot
-type RegionalSnapshot struct {
+// swagger:model RemoteSnapshot
+type RemoteSnapshot struct {
 
-	// Description of the regional snapshot
+	// Description of the remote snapshot
 	// Max Length: 255
 	Description string `json:"description,omitempty"`
 
-	// Name of the regional snapshot
+	// Name of the remote snapshot
 	// Required: true
 	// Max Length: 120
 	// Pattern: ^[a-zA-Z0-9_.-]+$
 	Name *string `json:"name"`
 
-	// Indicates whether or not any user supplied tags will be propagated to the copy volumes of the regional snapshot.
+	// Indicates whether or not any user supplied tags will be propagated to the copy volumes of the remote snapshot.
 	PropagateUserTags *bool `json:"propagateUserTags,omitempty"`
 
-	// User supplied tags that will be associated with the regional snapshot.
+	// User supplied tags that will be associated with the remote snapshot.
 	UserTags Tags `json:"userTags,omitempty"`
 
-	// CRN of the user's workspace in the remote regional data center that will own the regional snapshot data. Required if the user has multiple workspaces in the remote regional data center.
+	// CRN of the user's workspace in the remote data center that will own the remote snapshot data. Required if the user has multiple workspaces in the remote data center.
 	WorkspaceCRN CRN `json:"workspaceCRN,omitempty"`
 }
 
-// Validate validates this regional snapshot
-func (m *RegionalSnapshot) Validate(formats strfmt.Registry) error {
+// Validate validates this remote snapshot
+func (m *RemoteSnapshot) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDescription(formats); err != nil {
@@ -63,7 +63,7 @@ func (m *RegionalSnapshot) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RegionalSnapshot) validateDescription(formats strfmt.Registry) error {
+func (m *RemoteSnapshot) validateDescription(formats strfmt.Registry) error {
 	if swag.IsZero(m.Description) { // not required
 		return nil
 	}
@@ -75,7 +75,7 @@ func (m *RegionalSnapshot) validateDescription(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RegionalSnapshot) validateName(formats strfmt.Registry) error {
+func (m *RemoteSnapshot) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
@@ -92,7 +92,7 @@ func (m *RegionalSnapshot) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RegionalSnapshot) validateUserTags(formats strfmt.Registry) error {
+func (m *RemoteSnapshot) validateUserTags(formats strfmt.Registry) error {
 	if swag.IsZero(m.UserTags) { // not required
 		return nil
 	}
@@ -113,7 +113,7 @@ func (m *RegionalSnapshot) validateUserTags(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *RegionalSnapshot) validateWorkspaceCRN(formats strfmt.Registry) error {
+func (m *RemoteSnapshot) validateWorkspaceCRN(formats strfmt.Registry) error {
 	if swag.IsZero(m.WorkspaceCRN) { // not required
 		return nil
 	}
@@ -134,8 +134,8 @@ func (m *RegionalSnapshot) validateWorkspaceCRN(formats strfmt.Registry) error {
 	return nil
 }
 
-// ContextValidate validate this regional snapshot based on the context it is used
-func (m *RegionalSnapshot) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+// ContextValidate validate this remote snapshot based on the context it is used
+func (m *RemoteSnapshot) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.contextValidateUserTags(ctx, formats); err != nil {
@@ -152,7 +152,7 @@ func (m *RegionalSnapshot) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *RegionalSnapshot) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+func (m *RemoteSnapshot) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
 
 	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
 		ve := new(errors.Validation)
@@ -170,7 +170,7 @@ func (m *RegionalSnapshot) contextValidateUserTags(ctx context.Context, formats 
 	return nil
 }
 
-func (m *RegionalSnapshot) contextValidateWorkspaceCRN(ctx context.Context, formats strfmt.Registry) error {
+func (m *RemoteSnapshot) contextValidateWorkspaceCRN(ctx context.Context, formats strfmt.Registry) error {
 
 	if swag.IsZero(m.WorkspaceCRN) { // not required
 		return nil
@@ -193,7 +193,7 @@ func (m *RegionalSnapshot) contextValidateWorkspaceCRN(ctx context.Context, form
 }
 
 // MarshalBinary interface implementation
-func (m *RegionalSnapshot) MarshalBinary() ([]byte, error) {
+func (m *RemoteSnapshot) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
@@ -201,8 +201,8 @@ func (m *RegionalSnapshot) MarshalBinary() ([]byte, error) {
 }
 
 // UnmarshalBinary interface implementation
-func (m *RegionalSnapshot) UnmarshalBinary(b []byte) error {
-	var res RegionalSnapshot
+func (m *RemoteSnapshot) UnmarshalBinary(b []byte) error {
+	var res RemoteSnapshot
 	if err := swag.ReadJSON(b, &res); err != nil {
 		return err
 	}

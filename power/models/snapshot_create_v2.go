@@ -18,8 +18,9 @@ import (
 // swagger:model SnapshotCreateV2
 type SnapshotCreateV2 struct {
 
-	// Indicates whether or not to add a regional snapshot. Only valid when creating a zonal type instance snapshot.
-	AddRegionalSnapshot *bool `json:"addRegionalSnapshot,omitempty"`
+	// Indicates if a remote snapshot is requested. Optional. Defaults to 'no' if not provided.
+	// Enum: ["no","regional"]
+	AddRemoteSnapshot *string `json:"addRemoteSnapshot,omitempty"`
 
 	// Description of the instance snapshot
 	// Max Length: 255
@@ -34,8 +35,8 @@ type SnapshotCreateV2 struct {
 	// Indicates whether or not any user supplied tags will be propagated to the zonal instance snapshot copy volumes. Only valid when creating a zonal type instance snapshot.
 	PropagateUserTags *bool `json:"propagateUserTags,omitempty"`
 
-	// Regional snapshot specific data. Only valid when adding a zonal instance snapshot with a regional snapshot. Required when adding a zonal instance snapshot with a regional snapshot.
-	RegionalSnapshot *RegionalSnapshot `json:"regionalSnapshot,omitempty"`
+	// Remote snapshot specific data. Only valid when adding a zonal instance snapshot with a remote snapshot. Required when adding a zonal instance snapshot with a remote snapshot.
+	RemoteSnapshot *RemoteSnapshot `json:"remoteSnapshot,omitempty"`
 
 	// type of instance snapshot to create. Optional. Defaults to 'in-place' if not provided.
 	// Enum: ["in-place","zonal"]
@@ -52,6 +53,10 @@ type SnapshotCreateV2 struct {
 func (m *SnapshotCreateV2) Validate(formats strfmt.Registry) error {
 	var res []error
 
+	if err := m.validateAddRemoteSnapshot(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateDescription(formats); err != nil {
 		res = append(res, err)
 	}
@@ -60,7 +65,7 @@ func (m *SnapshotCreateV2) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateRegionalSnapshot(formats); err != nil {
+	if err := m.validateRemoteSnapshot(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -75,6 +80,48 @@ func (m *SnapshotCreateV2) Validate(formats strfmt.Registry) error {
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var snapshotCreateV2TypeAddRemoteSnapshotPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["no","regional"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		snapshotCreateV2TypeAddRemoteSnapshotPropEnum = append(snapshotCreateV2TypeAddRemoteSnapshotPropEnum, v)
+	}
+}
+
+const (
+
+	// SnapshotCreateV2AddRemoteSnapshotNo captures enum value "no"
+	SnapshotCreateV2AddRemoteSnapshotNo string = "no"
+
+	// SnapshotCreateV2AddRemoteSnapshotRegional captures enum value "regional"
+	SnapshotCreateV2AddRemoteSnapshotRegional string = "regional"
+)
+
+// prop value enum
+func (m *SnapshotCreateV2) validateAddRemoteSnapshotEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, snapshotCreateV2TypeAddRemoteSnapshotPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SnapshotCreateV2) validateAddRemoteSnapshot(formats strfmt.Registry) error {
+	if swag.IsZero(m.AddRemoteSnapshot) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateAddRemoteSnapshotEnum("addRemoteSnapshot", "body", *m.AddRemoteSnapshot); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -107,20 +154,20 @@ func (m *SnapshotCreateV2) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SnapshotCreateV2) validateRegionalSnapshot(formats strfmt.Registry) error {
-	if swag.IsZero(m.RegionalSnapshot) { // not required
+func (m *SnapshotCreateV2) validateRemoteSnapshot(formats strfmt.Registry) error {
+	if swag.IsZero(m.RemoteSnapshot) { // not required
 		return nil
 	}
 
-	if m.RegionalSnapshot != nil {
-		if err := m.RegionalSnapshot.Validate(formats); err != nil {
+	if m.RemoteSnapshot != nil {
+		if err := m.RemoteSnapshot.Validate(formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("regionalSnapshot")
+				return ve.ValidateName("remoteSnapshot")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("regionalSnapshot")
+				return ce.ValidateName("remoteSnapshot")
 			}
 
 			return err
@@ -197,7 +244,7 @@ func (m *SnapshotCreateV2) validateUserTags(formats strfmt.Registry) error {
 func (m *SnapshotCreateV2) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateRegionalSnapshot(ctx, formats); err != nil {
+	if err := m.contextValidateRemoteSnapshot(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -211,22 +258,22 @@ func (m *SnapshotCreateV2) ContextValidate(ctx context.Context, formats strfmt.R
 	return nil
 }
 
-func (m *SnapshotCreateV2) contextValidateRegionalSnapshot(ctx context.Context, formats strfmt.Registry) error {
+func (m *SnapshotCreateV2) contextValidateRemoteSnapshot(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.RegionalSnapshot != nil {
+	if m.RemoteSnapshot != nil {
 
-		if swag.IsZero(m.RegionalSnapshot) { // not required
+		if swag.IsZero(m.RemoteSnapshot) { // not required
 			return nil
 		}
 
-		if err := m.RegionalSnapshot.ContextValidate(ctx, formats); err != nil {
+		if err := m.RemoteSnapshot.ContextValidate(ctx, formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("regionalSnapshot")
+				return ve.ValidateName("remoteSnapshot")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("regionalSnapshot")
+				return ce.ValidateName("remoteSnapshot")
 			}
 
 			return err
