@@ -22,7 +22,7 @@ type RemotePeerSnapshot struct {
 	// Format: date-time
 	CompletionDate strfmt.DateTime `json:"completionDate,omitempty"`
 
-	// List of copy volumes created for the remote peer snapshot. Valid only for a zonal or regional instance snapshot.
+	// List of copy volumes created for the remote peer snapshot. Valid only for a zonal and regional instance snapshots.
 	CopyVolumes []*CopyVolume `json:"copyVolumes,omitempty"`
 
 	// CRN of the remote peer snapshot.

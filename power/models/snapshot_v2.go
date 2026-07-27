@@ -28,7 +28,7 @@ type SnapshotV2 struct {
 	// Format: date-time
 	CompletionDate strfmt.DateTime `json:"completionDate,omitempty"`
 
-	// List of copy volumes created for the zonal or regional instance snapshot. Valid only for a zonal or regional instance snapshot.
+	// List of copy volumes created for the zonal or regional instance snapshot. Valid only for a zonal and regional instance snapshots.
 	CopyVolumes []*CopyVolume `json:"copyVolumes,omitempty"`
 
 	// Creation Date
@@ -64,7 +64,7 @@ type SnapshotV2 struct {
 	// Required: true
 	PvmInstanceID *string `json:"pvmInstanceID"`
 
-	// Information about the remote peer snapshot. Valid only for or zonal instance snapshots with a regional snapshot and regional snapshots. For zonal instance snapshot, this is the information about the remote regional instance snapshot. For regional instance snapshot, this is the information about the remote zonal instance snapshot.
+	// Information about the remote peer snapshot. Valid only for or zonal instance snapshots with a remote peer snapshot and regional snapshots. For zonal instance snapshot, this is the information about the remote regional instance snapshot. For regional instance snapshot, this is the information about the remote zonal instance snapshot.
 	RemotePeerSnapshot *RemotePeerSnapshot `json:"remotePeerSnapshot,omitempty"`
 
 	// ID of the PVM instance snapshot
@@ -80,6 +80,9 @@ type SnapshotV2 struct {
 	// Type of instance snapshot
 	// Required: true
 	Type *string `json:"type"`
+
+	// user tags
+	UserTags Tags `json:"userTags,omitempty"`
 
 	// A map of volume snapshots included in the PVM instance snapshot
 	VolumeSnapshots map[string]string `json:"volumeSnapshots,omitempty"`
@@ -130,6 +133,10 @@ func (m *SnapshotV2) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateUserTags(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -312,6 +319,27 @@ func (m *SnapshotV2) validateType(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SnapshotV2) validateUserTags(formats strfmt.Registry) error {
+	if swag.IsZero(m.UserTags) { // not required
+		return nil
+	}
+
+	if err := m.UserTags.Validate(formats); err != nil {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
+			return ve.ValidateName("userTags")
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
+			return ce.ValidateName("userTags")
+		}
+
+		return err
+	}
+
+	return nil
+}
+
 // ContextValidate validate this snapshot v2 based on the context it is used
 func (m *SnapshotV2) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
@@ -329,6 +357,10 @@ func (m *SnapshotV2) ContextValidate(ctx context.Context, formats strfmt.Registr
 	}
 
 	if err := m.contextValidateRemotePeerSnapshot(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.contextValidateUserTags(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -429,6 +461,24 @@ func (m *SnapshotV2) contextValidateRemotePeerSnapshot(ctx context.Context, form
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *SnapshotV2) contextValidateUserTags(ctx context.Context, formats strfmt.Registry) error {
+
+	if err := m.UserTags.ContextValidate(ctx, formats); err != nil {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
+			return ve.ValidateName("userTags")
+		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
+			return ce.ValidateName("userTags")
+		}
+
+		return err
 	}
 
 	return nil
