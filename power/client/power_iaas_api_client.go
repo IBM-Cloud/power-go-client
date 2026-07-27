@@ -38,6 +38,7 @@ import (
 	"github.com/IBM-Cloud/power-go-client/power/client/network_security_groups"
 	"github.com/IBM-Cloud/power-go-client/power/client/networks"
 	"github.com/IBM-Cloud/power-go-client/power/client/open_stacks"
+	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_async_jobs"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_cloud_connections"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_disaster_recovery"
 	"github.com/IBM-Cloud/power-go-client/power/client/p_cloud_events"
@@ -151,6 +152,7 @@ func New(transport runtime.ClientTransport, formats strfmt.Registry) *PowerIaasA
 	cli.NetworkSecurityGroups = network_security_groups.New(transport, formats)
 	cli.Networks = networks.New(transport, formats)
 	cli.OpenStacks = open_stacks.New(transport, formats)
+	cli.PCloudAsyncJobs = p_cloud_async_jobs.New(transport, formats)
 	cli.PCloudCloudConnections = p_cloud_cloud_connections.New(transport, formats)
 	cli.PCloudDisasterRecovery = p_cloud_disaster_recovery.New(transport, formats)
 	cli.PCloudEvents = p_cloud_events.New(transport, formats)
@@ -295,6 +297,8 @@ type PowerIaasAPI struct {
 
 	OpenStacks open_stacks.ClientService
 
+	PCloudAsyncJobs p_cloud_async_jobs.ClientService
+
 	PCloudCloudConnections p_cloud_cloud_connections.ClientService
 
 	PCloudDisasterRecovery p_cloud_disaster_recovery.ClientService
@@ -408,6 +412,7 @@ func (c *PowerIaasAPI) SetTransport(transport runtime.ClientTransport) {
 	c.NetworkSecurityGroups.SetTransport(transport)
 	c.Networks.SetTransport(transport)
 	c.OpenStacks.SetTransport(transport)
+	c.PCloudAsyncJobs.SetTransport(transport)
 	c.PCloudCloudConnections.SetTransport(transport)
 	c.PCloudDisasterRecovery.SetTransport(transport)
 	c.PCloudEvents.SetTransport(transport)
