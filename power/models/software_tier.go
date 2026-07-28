@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// SoftwareTier Software tier (IBMi licensing)
+// SoftwareTier IBMi licensing software tier for the VSI.
 //
 // swagger:model SoftwareTier
 type SoftwareTier string
