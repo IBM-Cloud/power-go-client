@@ -83,11 +83,15 @@ type ClientService interface {
 
 	PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPutAccepted, error)
 
+	PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error)
+
 	PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error)
 
 	PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsPostAccepted, error)
 
 	PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error)
+
+	PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error)
 
 	PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCaptureGetOK, error)
 
@@ -771,6 +775,52 @@ func (a *Client) PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, auth
 }
 
 /*
+PcloudPvminstancesShelvePost shelves a virtual server instance v s i
+
+Shelve a VSI to reduce resource consumption. The instance configuration will be preserved and can be unshelved later.
+*/
+func (a *Client) PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesShelvePostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.shelve.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/shelve",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesShelvePostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesShelvePostAccepted)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.shelve.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
 PcloudPvminstancesSnapshotsGetall gets all snapshots for this p VM instance
 */
 func (a *Client) PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error) {
@@ -899,6 +949,52 @@ func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstanc
 	//
 	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.snapshots.restore.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+PcloudPvminstancesUnshelvePost unshelves a virtual server instance v s i
+
+Unshelve a previously shelved VSI to restore it to active state.
+*/
+func (a *Client) PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesUnshelvePostParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.unshelve.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/unshelve",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesUnshelvePostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesUnshelvePostAccepted)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.unshelve.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 
