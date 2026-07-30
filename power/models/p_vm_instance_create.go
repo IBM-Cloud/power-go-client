@@ -127,7 +127,7 @@ type PVMInstanceCreate struct {
 	// Storage type for server deployment; if storageType is not provided the storage type will default to 'tier3'.
 	StorageType string `json:"storageType,omitempty"`
 
-	// System type used to host the instance
+	// System type used to host the instance; use GET /v1/datacenters to retrieve supported system types for a location.
 	SysType string `json:"sysType,omitempty"`
 
 	// Cloud init user defined data; For FLS, only cloud-config user-data is supported and data must not be compressed or exceed 63K
