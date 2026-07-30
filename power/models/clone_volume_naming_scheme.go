@@ -5,6 +5,7 @@ package models
 import (
 	"context"
 	stderrors "errors"
+	"strconv"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -20,7 +21,7 @@ type CloneVolumeNamingScheme struct {
 	BulkNaming *BulkNaming `json:"bulkNaming,omitempty"`
 
 	// A list of source to clone volume names
-	VolumeNaming *VolumeNaming `json:"volumeNaming,omitempty"`
+	VolumeNaming []*VolumeNaming `json:"volumeNaming,omitempty"`
 }
 
 // Validate validates this clone volume naming scheme
@@ -69,19 +70,26 @@ func (m *CloneVolumeNamingScheme) validateVolumeNaming(formats strfmt.Registry) 
 		return nil
 	}
 
-	if m.VolumeNaming != nil {
-		if err := m.VolumeNaming.Validate(formats); err != nil {
-			ve := new(errors.Validation)
-			if stderrors.As(err, &ve) {
-				return ve.ValidateName("volumeNaming")
-			}
-			ce := new(errors.CompositeError)
-			if stderrors.As(err, &ce) {
-				return ce.ValidateName("volumeNaming")
-			}
-
-			return err
+	for i := 0; i < len(m.VolumeNaming); i++ {
+		if swag.IsZero(m.VolumeNaming[i]) { // not required
+			continue
 		}
+
+		if m.VolumeNaming[i] != nil {
+			if err := m.VolumeNaming[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("volumeNaming" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("volumeNaming" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -132,24 +140,28 @@ func (m *CloneVolumeNamingScheme) contextValidateBulkNaming(ctx context.Context,
 
 func (m *CloneVolumeNamingScheme) contextValidateVolumeNaming(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.VolumeNaming != nil {
+	for i := 0; i < len(m.VolumeNaming); i++ {
 
-		if swag.IsZero(m.VolumeNaming) { // not required
-			return nil
-		}
+		if m.VolumeNaming[i] != nil {
 
-		if err := m.VolumeNaming.ContextValidate(ctx, formats); err != nil {
-			ve := new(errors.Validation)
-			if stderrors.As(err, &ve) {
-				return ve.ValidateName("volumeNaming")
-			}
-			ce := new(errors.CompositeError)
-			if stderrors.As(err, &ce) {
-				return ce.ValidateName("volumeNaming")
+			if swag.IsZero(m.VolumeNaming[i]) { // not required
+				return nil
 			}
 
-			return err
+			if err := m.VolumeNaming[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("volumeNaming" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("volumeNaming" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
 		}
+
 	}
 
 	return nil

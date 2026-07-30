@@ -56,13 +56,11 @@ type SnapshotV2 struct {
 	// Snapshot completion percentage
 	PercentComplete int64 `json:"percentComplete,omitempty"`
 
-	// PCloud PVM Instance CRN
-	// Required: true
-	PvmInstanceCRN *CRN `json:"pvmInstanceCRN"`
+	// CRN of the PVM Instance the instance snapshot is for.
+	PvmInstanceCRN CRN `json:"pvmInstanceCRN,omitempty"`
 
-	// PCloud PVM Instance ID
-	// Required: true
-	PvmInstanceID *string `json:"pvmInstanceID"`
+	// ID of the PVM Instance the instance snapshot is for. Not valid for remote regional instance snapshots.
+	PvmInstanceID string `json:"pvmInstanceID,omitempty"`
 
 	// Information about the remote peer snapshot. Valid only for or zonal instance snapshots with a remote peer snapshot and regional snapshots. For zonal instance snapshot, this is the information about the remote regional instance snapshot. For regional instance snapshot, this is the information about the remote zonal instance snapshot.
 	RemotePeerSnapshot *RemotePeerSnapshot `json:"remotePeerSnapshot,omitempty"`
@@ -117,10 +115,6 @@ func (m *SnapshotV2) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validatePvmInstanceCRN(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validatePvmInstanceID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -246,32 +240,20 @@ func (m *SnapshotV2) validateName(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validatePvmInstanceCRN(formats strfmt.Registry) error {
-
-	if err := validate.Required("pvmInstanceCRN", "body", m.PvmInstanceCRN); err != nil {
-		return err
+	if swag.IsZero(m.PvmInstanceCRN) { // not required
+		return nil
 	}
 
-	if m.PvmInstanceCRN != nil {
-		if err := m.PvmInstanceCRN.Validate(formats); err != nil {
-			ve := new(errors.Validation)
-			if stderrors.As(err, &ve) {
-				return ve.ValidateName("pvmInstanceCRN")
-			}
-			ce := new(errors.CompositeError)
-			if stderrors.As(err, &ce) {
-				return ce.ValidateName("pvmInstanceCRN")
-			}
-
-			return err
+	if err := m.PvmInstanceCRN.Validate(formats); err != nil {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
+			return ve.ValidateName("pvmInstanceCRN")
 		}
-	}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
+			return ce.ValidateName("pvmInstanceCRN")
+		}
 
-	return nil
-}
-
-func (m *SnapshotV2) validatePvmInstanceID(formats strfmt.Registry) error {
-
-	if err := validate.Required("pvmInstanceID", "body", m.PvmInstanceID); err != nil {
 		return err
 	}
 
@@ -422,20 +404,21 @@ func (m *SnapshotV2) contextValidateCrn(ctx context.Context, formats strfmt.Regi
 
 func (m *SnapshotV2) contextValidatePvmInstanceCRN(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.PvmInstanceCRN != nil {
+	if swag.IsZero(m.PvmInstanceCRN) { // not required
+		return nil
+	}
 
-		if err := m.PvmInstanceCRN.ContextValidate(ctx, formats); err != nil {
-			ve := new(errors.Validation)
-			if stderrors.As(err, &ve) {
-				return ve.ValidateName("pvmInstanceCRN")
-			}
-			ce := new(errors.CompositeError)
-			if stderrors.As(err, &ce) {
-				return ce.ValidateName("pvmInstanceCRN")
-			}
-
-			return err
+	if err := m.PvmInstanceCRN.ContextValidate(ctx, formats); err != nil {
+		ve := new(errors.Validation)
+		if stderrors.As(err, &ve) {
+			return ve.ValidateName("pvmInstanceCRN")
 		}
+		ce := new(errors.CompositeError)
+		if stderrors.As(err, &ce) {
+			return ce.ValidateName("pvmInstanceCRN")
+		}
+
+		return err
 	}
 
 	return nil

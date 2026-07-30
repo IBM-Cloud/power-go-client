@@ -34,11 +34,15 @@ type RemotePeerSnapshot struct {
 	ID *string `json:"id"`
 
 	// Name of the remote peer snapshot
-	Name string `json:"name,omitempty"`
+	// Required: true
+	Name *string `json:"name"`
 
 	// status of the remote peer snapshot
 	// Required: true
 	Status *string `json:"status"`
+
+	// Detailed information for the remote peer snapshot
+	StatusDetail string `json:"statusDetail,omitempty"`
 }
 
 // Validate validates this remote peer snapshot
@@ -58,6 +62,10 @@ func (m *RemotePeerSnapshot) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateName(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -140,6 +148,15 @@ func (m *RemotePeerSnapshot) validateCrn(formats strfmt.Registry) error {
 func (m *RemotePeerSnapshot) validateID(formats strfmt.Registry) error {
 
 	if err := validate.Required("id", "body", m.ID); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *RemotePeerSnapshot) validateName(formats strfmt.Registry) error {
+
+	if err := validate.Required("name", "body", m.Name); err != nil {
 		return err
 	}
 

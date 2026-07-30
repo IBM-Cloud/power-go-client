@@ -16,13 +16,12 @@ import (
 // swagger:model BulkNaming
 type BulkNaming struct {
 
-	// Each cloned volume will use the base name, prefixed with "clone-". Base name max 40 chars and can be one of; “VSI-NAME”, "SNAPSHOT-NAME", or a “user supplied name". If VSI-NAME is specified, up to the 1st 40 chars of VSI name will be used. If SNAPSHOT-NAME is specified, up to the 1st 40 chars of the snapshot will be used.
+	// Bulk naming will consist of 4 parts. The 1st part will be the prefix "clone-". The 2nd part will be the user supplied baseName. The 3rd part is an optional user selected suffix.  The 4th and final part will be a dash (-) plus an ascending sequence number, starting with 1. If the VOLUME-NAME is selected for the 2nd part baseName, then part 4 will only be added if the volume name will not be unique.
 	// Required: true
 	BaseName *string `json:"baseName"`
 
-	// Each cloned volume name will be appended by a unique suffix. Up to 40 chars and be one of; "DATE-TIME", "VOLUME-NAME", or "5-RANDOM-DIGITS". If DATE-TIME is specified, then the current UTC date and time will be used in the format (yyyy-mm-dd_hh-mm-ss.nnn). If VOLUME-NAME is specified, then the source volume name will be used, truncated at 40 chars. If 5-RANDOM-DIGITS is specified, then a random 5-digit number will be generated.
-	// Required: true
-	UniqueSuffix *string `json:"uniqueSuffix"`
+	// Each cloned volume name may be appended by an optional suffix. A suffix can be one of; "DATE-TIME" or "5-RANDOM-DIGITS". If DATE-TIME is specified, then the current UTC date and time will be used in the format (yyyy-mm-dd_hh-mm-ss.nnn). If 5-RANDOM-DIGITS is specified, then a random 5-digit number will be generated.
+	Suffix string `json:"suffix,omitempty"`
 }
 
 // Validate validates this bulk naming
@@ -30,10 +29,6 @@ func (m *BulkNaming) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateBaseName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateUniqueSuffix(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -46,15 +41,6 @@ func (m *BulkNaming) Validate(formats strfmt.Registry) error {
 func (m *BulkNaming) validateBaseName(formats strfmt.Registry) error {
 
 	if err := validate.Required("baseName", "body", m.BaseName); err != nil {
-		return err
-	}
-
-	return nil
-}
-
-func (m *BulkNaming) validateUniqueSuffix(formats strfmt.Registry) error {
-
-	if err := validate.Required("uniqueSuffix", "body", m.UniqueSuffix); err != nil {
 		return err
 	}
 
