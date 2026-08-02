@@ -163,7 +163,7 @@ type PVMInstanceReference struct {
 	// Storage type of the deployment storage pool
 	StorageType string `json:"storageType,omitempty"`
 
-	// System type used to host the instance
+	// System type used to host the instance; use GET /v1/datacenters to retrieve supported system types for a location.
 	SysType string `json:"sysType,omitempty"`
 
 	// Represents the task state of a virtual machine (VM).

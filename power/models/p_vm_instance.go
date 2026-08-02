@@ -170,7 +170,7 @@ type PVMInstance struct {
 	// Required: true
 	StorageType *string `json:"storageType"`
 
-	// System type used to host the instance
+	// System type used to host the instance; use GET /v1/datacenters to retrieve supported system types for a location.
 	SysType string `json:"sysType,omitempty"`
 
 	// Represents the task state of a virtual machine (VM).

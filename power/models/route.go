@@ -66,7 +66,7 @@ type Route struct {
 
 	// The state of the route
 	// Required: true
-	// Enum: ["defined","deployed","disabled","error","deploying","undeploying","deleting"]
+	// Enum: ["defined","deployed","disabled","error","deploying","undeploying","deleting","updating"]
 	State *string `json:"state"`
 
 	// user tags
@@ -360,7 +360,7 @@ var routeTypeStatePropEnum []any
 
 func init() {
 	var res []string
-	if err := json.Unmarshal([]byte(`["defined","deployed","disabled","error","deploying","undeploying","deleting"]`), &res); err != nil {
+	if err := json.Unmarshal([]byte(`["defined","deployed","disabled","error","deploying","undeploying","deleting","updating"]`), &res); err != nil {
 		panic(err)
 	}
 	for _, v := range res {
@@ -390,6 +390,9 @@ const (
 
 	// RouteStateDeleting captures enum value "deleting"
 	RouteStateDeleting string = "deleting"
+
+	// RouteStateUpdating captures enum value "updating"
+	RouteStateUpdating string = "updating"
 )
 
 // prop value enum
