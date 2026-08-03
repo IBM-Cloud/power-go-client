@@ -153,3 +153,64 @@ func (f *IBMPISnapshotClient) V1SnapshotsGetall() (*models.SnapshotList, error) 
 	}
 	return resp.Payload, nil
 }
+
+// V2Create creates a V2 PVM instance snapshot
+func (f *IBMPISnapshotClient) V2Create(pvmInstanceID string, body *models.SnapshotCreateV2) (*models.SnapshotCreateResponse, error) {
+	params := p_cloud_p_vm_instances.NewPcloudV2PvminstancesSnapshotsPostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(pvmInstanceID).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudV2PvminstancesSnapshotsPost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Create V2 PI Snapshot for instance %s: %w", pvmInstanceID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Create V2 PI Snapshot for instance %s", pvmInstanceID)
+	}
+	return resp.Payload, nil
+}
+
+// V2Get gets a V2 PVM instance snapshot by snapshot ID
+func (f *IBMPISnapshotClient) V2Get(snapshotID string) (*models.SnapshotV2, error) {
+	params := p_cloud_snapshots.NewPcloudV2CloudinstancesSnapshotsGetParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithSnapshotID(snapshotID)
+	resp, err := f.session.Power.PCloudSnapshots.PcloudV2CloudinstancesSnapshotsGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get V2 PI Snapshot %s: %w", snapshotID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get V2 PI Snapshot %s", snapshotID)
+	}
+	return resp.Payload, nil
+}
+
+// V2GetAll gets all V2 PVM instance snapshots for a cloud instance
+func (f *IBMPISnapshotClient) V2GetAll() (*models.SnapshotsV2, error) {
+	params := p_cloud_snapshots.NewPcloudV2CloudinstancesSnapshotsGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID)
+	resp, err := f.session.Power.PCloudSnapshots.PcloudV2CloudinstancesSnapshotsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all V2 PI Snapshots: %w", err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get all V2 PI Snapshots")
+	}
+	return resp.Payload, nil
+}
+
+// V2PVMInstanceGetAll gets all V2 snapshots scoped to a specific PVM instance
+func (f *IBMPISnapshotClient) V2PVMInstanceGetAll(pvmInstanceID string) (*models.SnapshotsV2, error) {
+	params := p_cloud_p_vm_instances.NewPcloudV2PvminstancesSnapshotsGetallParams().
+		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(pvmInstanceID)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudV2PvminstancesSnapshotsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all V2 PI Snapshots for instance %s: %w", pvmInstanceID, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Get all V2 PI Snapshots for instance %s", pvmInstanceID)
+	}
+	return resp.Payload, nil
+}
