@@ -65,6 +65,8 @@ type ClientService interface {
 
 	V1RoutesReportGet(params *V1RoutesReportGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesReportGetOK, error)
 
+	V1RoutesRouteSwitchEnabled(params *V1RoutesRouteSwitchEnabledParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesRouteSwitchEnabledOK, error)
+
 	SetTransport(transport runtime.ClientTransport)
 }
 
@@ -329,6 +331,50 @@ func (a *Client) V1RoutesReportGet(params *V1RoutesReportGetParams, authInfo run
 	//
 	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for v1.routes.report.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+/*
+V1RoutesRouteSwitchEnabled atomicallies enable one route and disable another
+*/
+func (a *Client) V1RoutesRouteSwitchEnabled(params *V1RoutesRouteSwitchEnabledParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesRouteSwitchEnabledOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewV1RoutesRouteSwitchEnabledParams()
+	}
+	op := &runtime.ClientOperation{
+		ID:                 "v1.routes.route.switchEnabled",
+		Method:             "POST",
+		PathPattern:        "/v1/routes/{route_id}/switch-enabled",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &V1RoutesRouteSwitchEnabledReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Context:            params.Context,
+		Client:             params.HTTPClient,
+	}
+	for _, opt := range opts {
+		opt(op)
+	}
+	result, err := a.transport.Submit(op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*V1RoutesRouteSwitchEnabledOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for v1.routes.route.switchEnabled: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

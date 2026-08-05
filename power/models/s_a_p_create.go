@@ -66,6 +66,10 @@ type SAPCreate struct {
 	// Pattern: ^[\s]*[A-Za-z][A-Za-z0-9\-]{3,}$
 	ProfileID *string `json:"profileID"`
 
+	// Indicates if the sap instance should be created on a storage pool that supports replicated instance snapshots. 'none' indicates support not needed; 'zonal_only' indicates support needed for only zonal instance snapshots; 'zonal_with_regional' indicates support needed for both zonal and regional instance snapshots.
+	// Enum: ["none","zonal_only","zonal_with_regional"]
+	ReplicatedSnapshotSupport *string `json:"replicatedSnapshotSupport,omitempty"`
+
 	// Indicates the replication site of the boot volume
 	ReplicationSites []string `json:"replicationSites"`
 
@@ -141,6 +145,10 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateProfileID(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateReplicatedSnapshotSupport(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -335,6 +343,51 @@ func (m *SAPCreate) validateProfileID(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Pattern("profileID", "body", *m.ProfileID, `^[\s]*[A-Za-z][A-Za-z0-9\-]{3,}$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var sAPCreateTypeReplicatedSnapshotSupportPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["none","zonal_only","zonal_with_regional"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		sAPCreateTypeReplicatedSnapshotSupportPropEnum = append(sAPCreateTypeReplicatedSnapshotSupportPropEnum, v)
+	}
+}
+
+const (
+
+	// SAPCreateReplicatedSnapshotSupportNone captures enum value "none"
+	SAPCreateReplicatedSnapshotSupportNone string = "none"
+
+	// SAPCreateReplicatedSnapshotSupportZonalOnly captures enum value "zonal_only"
+	SAPCreateReplicatedSnapshotSupportZonalOnly string = "zonal_only"
+
+	// SAPCreateReplicatedSnapshotSupportZonalWithRegional captures enum value "zonal_with_regional"
+	SAPCreateReplicatedSnapshotSupportZonalWithRegional string = "zonal_with_regional"
+)
+
+// prop value enum
+func (m *SAPCreate) validateReplicatedSnapshotSupportEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, sAPCreateTypeReplicatedSnapshotSupportPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *SAPCreate) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
+	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateReplicatedSnapshotSupportEnum("replicatedSnapshotSupport", "body", *m.ReplicatedSnapshotSupport); err != nil {
 		return err
 	}
 

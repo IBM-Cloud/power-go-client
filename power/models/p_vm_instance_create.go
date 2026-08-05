@@ -90,6 +90,10 @@ type PVMInstanceCreate struct {
 	// Minimum: 1
 	Replicants *float64 `json:"replicants,omitempty"`
 
+	// Indicates if the pvm instance should be created on a storage pool that supports replicated instance snapshots; 'none' indicates support not needed; 'zonal_only' indicates support needed for only zonal instance snapshots; 'zonal_with_regional' indicates support needed for both zonal and regional instance snapshots.
+	// Enum: ["none","zonal_only","zonal_with_regional"]
+	ReplicatedSnapshotSupport *string `json:"replicatedSnapshotSupport,omitempty"`
+
 	// Indicates the replication site of the boot volume
 	ReplicationSites []string `json:"replicationSites"`
 
@@ -198,6 +202,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateReplicants(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateReplicatedSnapshotSupport(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -533,6 +541,51 @@ func (m *PVMInstanceCreate) validateReplicants(formats strfmt.Registry) error {
 	}
 
 	if err := validate.Minimum("replicants", "body", *m.Replicants, 1, false); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var pVmInstanceCreateTypeReplicatedSnapshotSupportPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["none","zonal_only","zonal_with_regional"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceCreateTypeReplicatedSnapshotSupportPropEnum = append(pVmInstanceCreateTypeReplicatedSnapshotSupportPropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceCreateReplicatedSnapshotSupportNone captures enum value "none"
+	PVMInstanceCreateReplicatedSnapshotSupportNone string = "none"
+
+	// PVMInstanceCreateReplicatedSnapshotSupportZonalOnly captures enum value "zonal_only"
+	PVMInstanceCreateReplicatedSnapshotSupportZonalOnly string = "zonal_only"
+
+	// PVMInstanceCreateReplicatedSnapshotSupportZonalWithRegional captures enum value "zonal_with_regional"
+	PVMInstanceCreateReplicatedSnapshotSupportZonalWithRegional string = "zonal_with_regional"
+)
+
+// prop value enum
+func (m *PVMInstanceCreate) validateReplicatedSnapshotSupportEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceCreateTypeReplicatedSnapshotSupportPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceCreate) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
+	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateReplicatedSnapshotSupportEnum("replicatedSnapshotSupport", "body", *m.ReplicatedSnapshotSupport); err != nil {
 		return err
 	}
 
