@@ -46,6 +46,10 @@ type CreateImage struct {
 	// Cloud Storage Region; only required to access IBM Cloud Storage
 	Region string `json:"region,omitempty"`
 
+	// Indicates if the image is required to be created in a storage pool that support replication instance snapshots; required if pvm instance need to be on a storage pool that supports replicated instance snapshots. 'none' indicates support not needed; 'zonal_only' indicates support needed for only zonal instance snapshots; 'zonal_with_regional' indicates support needed for both zonal and regional instance snapshots.
+	// Enum: ["none","zonal_only","zonal_with_regional"]
+	ReplicatedSnapshotSupport *string `json:"replicatedSnapshotSupport,omitempty"`
+
 	// Cloud Storage secret key; required for import image
 	SecretKey string `json:"secretKey,omitempty"`
 
@@ -71,6 +75,10 @@ func (m *CreateImage) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateOsType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateReplicatedSnapshotSupport(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -134,6 +142,51 @@ func (m *CreateImage) validateOsType(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateOsTypeEnum("osType", "body", m.OsType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var createImageTypeReplicatedSnapshotSupportPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["none","zonal_only","zonal_with_regional"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createImageTypeReplicatedSnapshotSupportPropEnum = append(createImageTypeReplicatedSnapshotSupportPropEnum, v)
+	}
+}
+
+const (
+
+	// CreateImageReplicatedSnapshotSupportNone captures enum value "none"
+	CreateImageReplicatedSnapshotSupportNone string = "none"
+
+	// CreateImageReplicatedSnapshotSupportZonalOnly captures enum value "zonal_only"
+	CreateImageReplicatedSnapshotSupportZonalOnly string = "zonal_only"
+
+	// CreateImageReplicatedSnapshotSupportZonalWithRegional captures enum value "zonal_with_regional"
+	CreateImageReplicatedSnapshotSupportZonalWithRegional string = "zonal_with_regional"
+)
+
+// prop value enum
+func (m *CreateImage) validateReplicatedSnapshotSupportEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, createImageTypeReplicatedSnapshotSupportPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateImage) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
+	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateReplicatedSnapshotSupportEnum("replicatedSnapshotSupport", "body", *m.ReplicatedSnapshotSupport); err != nil {
 		return err
 	}
 

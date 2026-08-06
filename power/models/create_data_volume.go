@@ -41,7 +41,11 @@ type CreateDataVolume struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// Indicates if the volume should be replication enabled or not
+	// Indicates if the volume is required to be created in a storage pool that support replication instance snapshots; 'none' indicates support not needed; 'zonal_only' indicates support needed for only zonal instance snapshots; 'zonal_with_regional' indicates support needed for both zonal and regional instance snapshots; Not valid if replicationEnabled requested.
+	// Enum: ["none","zonal_only","zonal_with_regional"]
+	ReplicatedSnapshotSupport *string `json:"replicatedSnapshotSupport,omitempty"`
+
+	// Indicates if the volume should be replication enabled or not.
 	ReplicationEnabled *bool `json:"replicationEnabled,omitempty"`
 
 	// List of replication site for volume replication
@@ -70,6 +74,10 @@ func (m *CreateDataVolume) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateReplicatedSnapshotSupport(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -132,6 +140,51 @@ func (m *CreateDataVolume) validateAffinityPolicy(formats strfmt.Registry) error
 func (m *CreateDataVolume) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var createDataVolumeTypeReplicatedSnapshotSupportPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["none","zonal_only","zonal_with_regional"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createDataVolumeTypeReplicatedSnapshotSupportPropEnum = append(createDataVolumeTypeReplicatedSnapshotSupportPropEnum, v)
+	}
+}
+
+const (
+
+	// CreateDataVolumeReplicatedSnapshotSupportNone captures enum value "none"
+	CreateDataVolumeReplicatedSnapshotSupportNone string = "none"
+
+	// CreateDataVolumeReplicatedSnapshotSupportZonalOnly captures enum value "zonal_only"
+	CreateDataVolumeReplicatedSnapshotSupportZonalOnly string = "zonal_only"
+
+	// CreateDataVolumeReplicatedSnapshotSupportZonalWithRegional captures enum value "zonal_with_regional"
+	CreateDataVolumeReplicatedSnapshotSupportZonalWithRegional string = "zonal_with_regional"
+)
+
+// prop value enum
+func (m *CreateDataVolume) validateReplicatedSnapshotSupportEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, createDataVolumeTypeReplicatedSnapshotSupportPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateDataVolume) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
+	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateReplicatedSnapshotSupportEnum("replicatedSnapshotSupport", "body", *m.ReplicatedSnapshotSupport); err != nil {
 		return err
 	}
 

@@ -17,7 +17,7 @@ import (
 // swagger:model CloneVolumeNamingScheme
 type CloneVolumeNamingScheme struct {
 
-	// bulk naming will consist of 4 parts. The 1st part will be the prefix "clone-". The 2nd part will be the user supplied baseName. The 3rd part will be  the user supplied uniqueSuffix. The 4th and final part will be a dash (-) plus an asc seq
+	// Bulk naming will consist of 4 parts. The 1st part will be the prefix "clone-". The 2nd part will be the user supplied baseName. The 3rd part is an optional user selected suffix.  The 4th and final part will be a dash (-) plus an ascending sequence number, starting with 1. If the VOLUME-NAME is selected for the 2nd part baseName, then part 4 will only be added if the volume name will not be unique.
 	BulkNaming *BulkNaming `json:"bulkNaming,omitempty"`
 
 	// A list of source to clone volume names
