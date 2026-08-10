@@ -297,3 +297,31 @@ func (f *IBMPIInstanceClient) DeleteNetwork(id, networkID string, body *models.P
 	}
 	return nil
 }
+
+// Shelve an Instance
+func (f *IBMPIInstanceClient) Shelve(id string) error {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesShelvePostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
+	_, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesShelvePost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf("failed to Shelve PVM Instance %s :%w", id, err)
+	}
+	return nil
+}
+
+// Unshelve an Instance
+func (f *IBMPIInstanceClient) Unshelve(id string, body *models.PVMInstanceUnshelve) (*models.PVMInstance, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesUnshelvePostParams().
+		WithContext(f.ctx).WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesUnshelvePost(params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Unshelve PVM Instance %s :%w", id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to Unshelve PVM Instance %s", id)
+	}
+	return resp.Payload, nil
+}
