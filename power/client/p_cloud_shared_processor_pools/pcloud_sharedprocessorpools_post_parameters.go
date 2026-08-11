@@ -62,7 +62,7 @@ type PcloudSharedprocessorpoolsPostParams struct {
 
 	/* Body.
 
-	   Parameters for the creation of a new Shared Processor Pool
+	   The shared processor pool creation parameters.
 	*/
 	Body *models.SharedProcessorPoolCreate
 

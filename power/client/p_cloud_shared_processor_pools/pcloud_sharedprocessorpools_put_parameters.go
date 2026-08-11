@@ -62,7 +62,7 @@ type PcloudSharedprocessorpoolsPutParams struct {
 
 	/* Body.
 
-	   Parameters for the update of a Shared Processor Pool
+	   The shared processor pool update parameters.
 	*/
 	Body *models.SharedProcessorPoolUpdate
 
@@ -74,7 +74,7 @@ type PcloudSharedprocessorpoolsPutParams struct {
 
 	/* SharedProcessorPoolID.
 
-	   Shared Processor Pool ID or Name
+	   The unique identifier or name of the shared processor pool.
 	*/
 	SharedProcessorPoolID string
 

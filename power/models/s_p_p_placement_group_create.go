@@ -18,14 +18,14 @@ import (
 // swagger:model SPPPlacementGroupCreate
 type SPPPlacementGroupCreate struct {
 
-	// The name of the Shared Processor Pool Placement Group; minimum of 2 characters, maximum of 12, the only special character allowed is the underscore '_'.
+	// The name of the shared processor pool placement group.
 	// Required: true
 	// Max Length: 12
 	// Min Length: 2
 	// Pattern: ^[a-zA-Z0-9_]+$
 	Name *string `json:"name"`
 
-	// The placement group policy
+	// The placement policy for the placement group.
 	// Required: true
 	// Enum: ["affinity","anti-affinity"]
 	Policy *string `json:"policy"`

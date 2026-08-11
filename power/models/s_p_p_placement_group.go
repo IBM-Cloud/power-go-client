@@ -20,18 +20,18 @@ type SPPPlacementGroup struct {
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
-	// The id of the Shared Processor Pool Placement Group
+	// The unique identifier of the shared processor pool placement group.
 	// Required: true
 	ID *string `json:"id"`
 
-	// The list of Shared Processor Pool names that are a member of the Shared Processor Pool Placement Group
+	// The list of shared processor pool names that are members of this placement group.
 	MemberSharedProcessorPools []string `json:"memberSharedProcessorPools"`
 
-	// The name of the Shared Processor Pool Placement Group
+	// The name of the placement group.
 	// Required: true
 	Name *string `json:"name"`
 
-	// The Shared Processor Pool Placement Group policy
+	// The placement policy of the placement group.
 	// Required: true
 	Policy *string `json:"policy"`
 

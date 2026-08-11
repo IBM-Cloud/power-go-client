@@ -5,8 +5,10 @@ package models
 import (
 	"context"
 
+	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // SharedProcessorPoolUpdate shared processor pool update
@@ -14,15 +16,47 @@ import (
 // swagger:model SharedProcessorPoolUpdate
 type SharedProcessorPoolUpdate struct {
 
-	// The new name for the Shared Processor Pool; minumum of 2 characters, maximum of 12, the only special character allowed is the underscore '_'.
+	// The new name for the shared processor pool.
+	// Max Length: 12
+	// Min Length: 2
+	// Pattern: ^[a-zA-Z0-9_]+$
 	Name string `json:"name,omitempty"`
 
-	// The amount of reserved processor cores for the Shared Processor Pool; only integers allowed, no fractional values; the amount can be increased (dependent on available resources) or decreased (dependent on currently allocated resources)
+	// The number of processor cores to reserve for the shared processor pool. The value cannot be decreased below the pool's currently allocated cores. Increasing the value is subject to available capacity on the host.
 	ReservedCores *int64 `json:"reservedCores,omitempty"`
 }
 
 // Validate validates this shared processor pool update
 func (m *SharedProcessorPoolUpdate) Validate(formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
+	}
+	return nil
+}
+
+func (m *SharedProcessorPoolUpdate) validateName(formats strfmt.Registry) error {
+	if swag.IsZero(m.Name) { // not required
+		return nil
+	}
+
+	if err := validate.MinLength("name", "body", m.Name, 2); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", m.Name, 12); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("name", "body", m.Name, `^[a-zA-Z0-9_]+$`); err != nil {
+		return err
+	}
+
 	return nil
 }
 

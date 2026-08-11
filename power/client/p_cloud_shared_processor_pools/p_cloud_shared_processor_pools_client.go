@@ -67,7 +67,9 @@ type ClientService interface {
 }
 
 /*
-PcloudSharedprocessorpoolsDelete deletes a shared processor pool from a cloud instance
+PcloudSharedprocessorpoolsDelete deletes a shared processor pool
+
+Deletes a shared processor pool (SPP) from the specified workspace. The pool must have no virtual server instances deployed before it can be deleted.
 */
 func (a *Client) PcloudSharedprocessorpoolsDelete(params *PcloudSharedprocessorpoolsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -111,7 +113,9 @@ func (a *Client) PcloudSharedprocessorpoolsDelete(params *PcloudSharedprocessorp
 }
 
 /*
-PcloudSharedprocessorpoolsGet gets the detail of a shared processor pool for a cloud instance
+PcloudSharedprocessorpoolsGet gets a shared processor pool
+
+Retrieves the details of a shared processor pool (SPP) in the specified workspace.
 */
 func (a *Client) PcloudSharedprocessorpoolsGet(params *PcloudSharedprocessorpoolsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -155,7 +159,9 @@ func (a *Client) PcloudSharedprocessorpoolsGet(params *PcloudSharedprocessorpool
 }
 
 /*
-PcloudSharedprocessorpoolsGetall gets the list of shared processor pools for a cloud instance
+PcloudSharedprocessorpoolsGetall lists all shared processor pools
+
+Lists all shared processor pools belonging to the specified workspace.
 */
 func (a *Client) PcloudSharedprocessorpoolsGetall(params *PcloudSharedprocessorpoolsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -200,6 +206,8 @@ func (a *Client) PcloudSharedprocessorpoolsGetall(params *PcloudSharedprocessorp
 
 /*
 PcloudSharedprocessorpoolsPost creates a new shared processor pool
+
+Creates a new shared processor pool (SPP) in the specified workspace.
 */
 func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -243,7 +251,9 @@ func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoo
 }
 
 /*
-PcloudSharedprocessorpoolsPut updates a shared processor pool for a cloud instance
+PcloudSharedprocessorpoolsPut updates a shared processor pool
+
+Updates the name or reserved core count of a shared processor pool (SPP) in the specified workspace.
 */
 func (a *Client) PcloudSharedprocessorpoolsPut(params *PcloudSharedprocessorpoolsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPutOK, error) {
 	// NOTE: parameters are not validated before sending
