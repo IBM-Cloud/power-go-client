@@ -17,7 +17,7 @@ import (
 // swagger:model SharedProcessorPools
 type SharedProcessorPools struct {
 
-	// list of Shared Processor Pools
+	// The list of shared processor pools in the workspace.
 	SharedProcessorPools []*SharedProcessorPool `json:"sharedProcessorPools"`
 }
 

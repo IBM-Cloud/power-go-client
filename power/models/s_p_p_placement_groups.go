@@ -17,7 +17,7 @@ import (
 // swagger:model SPPPlacementGroups
 type SPPPlacementGroups struct {
 
-	// list of Shared Processor Pool Placement Groups
+	// The list of shared processor pool placement groups in the workspace.
 	SppPlacementGroups []*SPPPlacementGroup `json:"sppPlacementGroups"`
 }
 

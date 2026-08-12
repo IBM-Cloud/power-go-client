@@ -66,7 +66,7 @@ type PcloudSharedprocessorpoolsDeleteParams struct {
 
 	/* SharedProcessorPoolID.
 
-	   Shared Processor Pool ID or Name
+	   The unique identifier or name of the shared processor pool.
 	*/
 	SharedProcessorPoolID string
 

@@ -18,7 +18,7 @@ import (
 // swagger:model SharedProcessorPoolDetail
 type SharedProcessorPoolDetail struct {
 
-	// list of servers deployed in the Shared Processor Pool
+	// The list of virtual server instances (VSIs) deployed in the shared processor pool (SPP).
 	// Required: true
 	Servers []*SharedProcessorPoolServer `json:"servers"`
 

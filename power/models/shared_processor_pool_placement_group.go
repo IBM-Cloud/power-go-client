@@ -16,15 +16,15 @@ import (
 // swagger:model SharedProcessorPoolPlacementGroup
 type SharedProcessorPoolPlacementGroup struct {
 
-	// The id of the Shared Processor Pool Placement Group
+	// The unique identifier of the shared processor pool placement group.
 	// Required: true
 	ID *string `json:"id"`
 
-	// The name of the Shared Processor Pool Placement Group
+	// The name of the shared processor pool placement group.
 	// Required: true
 	Name *string `json:"name"`
 
-	// The Shared Processor Pool Placement Group policy
+	// The policy of the shared processor pool placement group.
 	// Required: true
 	Policy *string `json:"policy"`
 }

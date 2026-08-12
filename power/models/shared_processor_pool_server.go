@@ -14,28 +14,28 @@ import (
 // swagger:model SharedProcessorPoolServer
 type SharedProcessorPoolServer struct {
 
-	// The amount of cpus for the server
+	// The number of CPUs for the VSI.
 	Cpus float64 `json:"Cpus,omitempty"`
 
-	// Identifies if uncapped or not
+	// Indicates whether the VSI is uncapped.
 	Uncapped bool `json:"Uncapped,omitempty"`
 
-	// Availability zone for the server
+	// The availability zone of the VSI.
 	AvailabilityZone string `json:"availabilityZone,omitempty"`
 
-	// The server ID
+	// The unique identifier of the virtual server instance (VSI).
 	ID string `json:"id,omitempty"`
 
-	// The amount of memory for the server
+	// The amount of memory of the VSI, in mebibytes (MiB).
 	Memory int64 `json:"memory,omitempty"`
 
-	// The server name
+	// The name of the VSI.
 	Name string `json:"name,omitempty"`
 
-	// Status of the server
+	// The status of the VSI.
 	Status string `json:"status,omitempty"`
 
-	// The amout of vcpus for the server
+	// The number of virtual CPUs for the VSI.
 	Vcpus int64 `json:"vcpus,omitempty"`
 }
 

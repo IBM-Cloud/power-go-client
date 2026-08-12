@@ -69,7 +69,9 @@ type ClientService interface {
 }
 
 /*
-PcloudSppplacementgroupsDelete deletes a shared processor pool placement group from a cloud instance
+PcloudSppplacementgroupsDelete deletes a shared processor pool placement group
+
+Deletes a shared processor pool placement group from the specified workspace. The placement group must have no member shared processor pools before it can be deleted.
 */
 func (a *Client) PcloudSppplacementgroupsDelete(params *PcloudSppplacementgroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -113,7 +115,9 @@ func (a *Client) PcloudSppplacementgroupsDelete(params *PcloudSppplacementgroups
 }
 
 /*
-PcloudSppplacementgroupsGet gets the detail of a shared processor pool placement group for a cloud instance
+PcloudSppplacementgroupsGet gets a shared processor pool placement group
+
+Retrieves the details of a shared processor pool placement group in the specified workspace.
 */
 func (a *Client) PcloudSppplacementgroupsGet(params *PcloudSppplacementgroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -157,7 +161,9 @@ func (a *Client) PcloudSppplacementgroupsGet(params *PcloudSppplacementgroupsGet
 }
 
 /*
-PcloudSppplacementgroupsGetall gets the list of shared processor pool placement groups for a cloud instance
+PcloudSppplacementgroupsGetall lists all shared processor pool placement groups
+
+Lists all shared processor pool placement groups in the specified workspace.
 */
 func (a *Client) PcloudSppplacementgroupsGetall(params *PcloudSppplacementgroupsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -201,7 +207,9 @@ func (a *Client) PcloudSppplacementgroupsGetall(params *PcloudSppplacementgroups
 }
 
 /*
-PcloudSppplacementgroupsMembersDelete deletes shared processor pool member from a shared processor pool placement group
+PcloudSppplacementgroupsMembersDelete removes a member from a shared processor pool placement group
+
+Removes a shared processor pool from the specified placement group.
 */
 func (a *Client) PcloudSppplacementgroupsMembersDelete(params *PcloudSppplacementgroupsMembersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsMembersDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -245,7 +253,9 @@ func (a *Client) PcloudSppplacementgroupsMembersDelete(params *PcloudSppplacemen
 }
 
 /*
-PcloudSppplacementgroupsMembersPost adds shared processor pool as a member of a shared processor pool placement group
+PcloudSppplacementgroupsMembersPost adds a member to a shared processor pool placement group
+
+Adds a shared processor pool as a member of the specified placement group.
 */
 func (a *Client) PcloudSppplacementgroupsMembersPost(params *PcloudSppplacementgroupsMembersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsMembersPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -289,7 +299,9 @@ func (a *Client) PcloudSppplacementgroupsMembersPost(params *PcloudSppplacementg
 }
 
 /*
-PcloudSppplacementgroupsPost creates a new shared processor pool placement group
+PcloudSppplacementgroupsPost creates a shared processor pool placement group
+
+Creates a new shared processor pool placement group in the specified workspace.
 */
 func (a *Client) PcloudSppplacementgroupsPost(params *PcloudSppplacementgroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsPostOK, error) {
 	// NOTE: parameters are not validated before sending

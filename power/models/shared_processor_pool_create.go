@@ -17,21 +17,24 @@ import (
 // swagger:model SharedProcessorPoolCreate
 type SharedProcessorPoolCreate struct {
 
-	// The host group; a host from the group will be automatically selected based on available resources
+	// The host group identifier; a system type name or a dedicated host group ID. A host from the group is automatically selected based on available resources, unless `hostID` is also provided to target a specific host within a dedicated host group. For example, `s922` or `c3a5119c-65b5-4eb3-9b4a-6d840912c0cf`.
 	// Required: true
 	HostGroup *string `json:"hostGroup"`
 
-	// The host id of a host in a host group (only available for dedicated hosts)
+	// The unique identifier of a host in a dedicated host group. Only available for dedicated hosts.
 	HostID string `json:"hostID,omitempty"`
 
-	// The name of the Shared Processor Pool; minumum of 2 characters, maximum of 12, the only special character allowed is the underscore '_'.
+	// The name of the shared processor pool.
 	// Required: true
+	// Max Length: 12
+	// Min Length: 2
+	// Pattern: ^[a-zA-Z0-9_]+$
 	Name *string `json:"name"`
 
-	// The ID of the placement group
+	// The unique identifier of the placement group.
 	PlacementGroupID string `json:"placementGroupID,omitempty"`
 
-	// The amount of reserved processor cores for the Shared Processor Pool; only integers allowed, no fractional values
+	// The number of processor cores to reserve for the shared processor pool.
 	// Required: true
 	ReservedCores *int64 `json:"reservedCores"`
 
@@ -77,6 +80,18 @@ func (m *SharedProcessorPoolCreate) validateHostGroup(formats strfmt.Registry) e
 func (m *SharedProcessorPoolCreate) validateName(formats strfmt.Registry) error {
 
 	if err := validate.Required("name", "body", m.Name); err != nil {
+		return err
+	}
+
+	if err := validate.MinLength("name", "body", *m.Name, 2); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("name", "body", *m.Name, 12); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("name", "body", *m.Name, `^[a-zA-Z0-9_]+$`); err != nil {
 		return err
 	}
 

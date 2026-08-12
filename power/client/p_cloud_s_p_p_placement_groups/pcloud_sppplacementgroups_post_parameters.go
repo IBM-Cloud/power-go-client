@@ -62,7 +62,7 @@ type PcloudSppplacementgroupsPostParams struct {
 
 	/* Body.
 
-	   Parameters for the creation of a Shared Processor Pool Placement Group
+	   The shared processor pool placement group creation parameters.
 	*/
 	Body *models.SPPPlacementGroupCreate
 

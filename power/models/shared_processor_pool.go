@@ -18,49 +18,49 @@ import (
 // swagger:model SharedProcessorPool
 type SharedProcessorPool struct {
 
-	// The amount of allocated processor cores for the Shared Processor Pool
+	// The number of allocated processor cores for the shared processor pool.
 	// Required: true
 	AllocatedCores *float64 `json:"allocatedCores"`
 
-	// The amount of available processor cores for the Shared Processor Pool
+	// The number of available processor cores for the shared processor pool.
 	// Required: true
 	AvailableCores *float64 `json:"availableCores"`
 
-	// The creation time of the Shared Processor Pool
+	// The date and time the shared processor pool was created.
 	// Format: date-time
 	CreationDate *strfmt.DateTime `json:"creationDate,omitempty"`
 
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
-	// ID of the dedicated host where the Shared Processor Pool resides, if applicable
+	// The unique identifier of the dedicated host where the shared processor pool resides, if applicable.
 	DedicatedHostID string `json:"dedicatedHostID,omitempty"`
 
-	// The host group the host belongs to
+	// The host group that the host belongs to.
 	HostGroup string `json:"hostGroup,omitempty"`
 
-	// The ID of the host where the Shared Processor Pool resides
+	// The identifier of the host where the shared processor pool resides.
 	HostID int64 `json:"hostID,omitempty"`
 
-	// The id of the Shared Processor Pool
+	// The unique identifier of the shared processor pool.
 	// Required: true
 	ID *string `json:"id"`
 
-	// The name of the Shared Processor Pool
+	// The name of the shared processor pool.
 	// Required: true
 	Name *string `json:"name"`
 
-	// The amount of reserved processor cores for the Shared Processor Pool
+	// The number of reserved processor cores for the shared processor pool.
 	// Required: true
 	ReservedCores *int64 `json:"reservedCores"`
 
-	// list of Shared Processor Pool Placement Groups
+	// The list of placement groups the shared processor pool is a member of.
 	SharedProcessorPoolPlacementGroups []*SharedProcessorPoolPlacementGroup `json:"sharedProcessorPoolPlacementGroups"`
 
-	// The status of the Shared Processor Pool
+	// The status of the shared processor pool.
 	Status string `json:"status,omitempty"`
 
-	// The status details of the Shared Processor Pool
+	// Additional details about the status of the shared processor pool.
 	StatusDetail string `json:"statusDetail,omitempty"`
 
 	// user tags
