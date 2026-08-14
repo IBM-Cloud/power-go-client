@@ -4,11 +4,13 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PVMInstanceUnshelve p VM instance unshelve
@@ -22,8 +24,15 @@ type PVMInstanceUnshelve struct {
 	// Amount of memory to allocate (in GiB).
 	Memory *float64 `json:"memory,omitempty"`
 
+	// The placement group for the VSI.
+	PlacementGroup *string `json:"placementGroup,omitempty"`
+
 	// Preferred processor compatibility mode.
 	PreferredProcessorCompatibilityMode *string `json:"preferredProcessorCompatibilityMode,omitempty"`
+
+	// Processor type (dedicated, shared, capped). When changing processor type without specifying processors, the system automatically converts the current core allocation, similar to how it is done when updating an existing VSI.
+	// Enum: ["dedicated","shared","capped"]
+	ProcType *string `json:"procType,omitempty"`
 
 	// Number of processors to allocate.
 	Processors *float64 `json:"processors,omitempty"`
@@ -49,6 +58,10 @@ func (m *PVMInstanceUnshelve) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateDeploymentTarget(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateProcType(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -84,6 +97,51 @@ func (m *PVMInstanceUnshelve) validateDeploymentTarget(formats strfmt.Registry) 
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+var pVmInstanceUnshelveTypeProcTypePropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["dedicated","shared","capped"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceUnshelveTypeProcTypePropEnum = append(pVmInstanceUnshelveTypeProcTypePropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceUnshelveProcTypeDedicated captures enum value "dedicated"
+	PVMInstanceUnshelveProcTypeDedicated string = "dedicated"
+
+	// PVMInstanceUnshelveProcTypeShared captures enum value "shared"
+	PVMInstanceUnshelveProcTypeShared string = "shared"
+
+	// PVMInstanceUnshelveProcTypeCapped captures enum value "capped"
+	PVMInstanceUnshelveProcTypeCapped string = "capped"
+)
+
+// prop value enum
+func (m *PVMInstanceUnshelve) validateProcTypeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceUnshelveTypeProcTypePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceUnshelve) validateProcType(formats strfmt.Registry) error {
+	if swag.IsZero(m.ProcType) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateProcTypeEnum("procType", "body", *m.ProcType); err != nil {
+		return err
 	}
 
 	return nil
