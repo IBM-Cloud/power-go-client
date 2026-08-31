@@ -17,6 +17,12 @@ type PVMInstanceNetwork struct {
 	// The external ip address (for pub-vlan networks)
 	ExternalIP string `json:"externalIP,omitempty"`
 
+	// Bandwidth in Gbps of the external network interface
+	ExternalNetworkInterfaceBandwidth int64 `json:"externalNetworkInterfaceBandwidth,omitempty"`
+
+	// CRN of the attached VPC Virtual Network Interface
+	ExternalNetworkInterfaceCRN string `json:"externalNetworkInterfaceCRN,omitempty"`
+
 	// Link to PVM Instance Network
 	Href string `json:"href,omitempty"`
 
@@ -44,7 +50,7 @@ type PVMInstanceNetwork struct {
 	// Links to the network security groups that the network interface is a member of
 	NetworkSecurityGroupsHref []string `json:"networkSecurityGroupsHref,omitempty"`
 
-	// The address type (fixed or dynamic)
+	// The address type (fixed, dynamic, or externalFixed)
 	Type string `json:"type,omitempty"`
 
 	// The version of the information provided

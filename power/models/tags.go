@@ -26,6 +26,10 @@ func (m Tags) Validate(formats strfmt.Registry) error {
 		return err
 	}
 
+	if err := validate.UniqueItems("", "body", m); err != nil {
+		return err
+	}
+
 	for i := 0; i < len(m); i++ {
 
 		if err := validate.MaxLength(strconv.Itoa(i), "body", m[i], 128); err != nil {

@@ -16,14 +16,21 @@ import (
 // swagger:model PVMInstanceAddNetwork
 type PVMInstanceAddNetwork struct {
 
-	// The requested ip address of this network interface
+	// Bandwidth in Gbps for the external network interface. Valid range is 1 to 100. Only valid when externalNetworkInterfaceCRN is specified.
+	// Maximum: 100
+	// Minimum: 1
+	ExternalNetworkInterfaceBandwidth int64 `json:"externalNetworkInterfaceBandwidth,omitempty"`
+
+	// CRN of the VPC Virtual Network Interface to attach. Required if networkID is not specified. Cannot be combined with networkID.
+	ExternalNetworkInterfaceCRN string `json:"externalNetworkInterfaceCRN,omitempty"`
+
+	// The requested ip address of this network interface. Only valid when networkID is specified.
 	IPAddress string `json:"ipAddress,omitempty"`
 
-	// ID of the network
-	// Required: true
-	NetworkID *string `json:"networkID"`
+	// ID of the network. Required if externalNetworkInterfaceCRN is not specified. Cannot be combined with externalNetworkInterfaceCRN.
+	NetworkID string `json:"networkID,omitempty"`
 
-	// Network security groups that the network interface is a member of. There is a limit of 1 network security group in the array. If not specified, default network security group is used.
+	// Network security groups that the network interface is a member of. There is a limit of 1 network security group in the array. If not specified, default network security group is used. Only valid when networkID is specified.
 	NetworkSecurityGroupIDs []string `json:"networkSecurityGroupIDs"`
 }
 
@@ -31,7 +38,7 @@ type PVMInstanceAddNetwork struct {
 func (m *PVMInstanceAddNetwork) Validate(formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.validateNetworkID(formats); err != nil {
+	if err := m.validateExternalNetworkInterfaceBandwidth(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -41,9 +48,16 @@ func (m *PVMInstanceAddNetwork) Validate(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PVMInstanceAddNetwork) validateNetworkID(formats strfmt.Registry) error {
+func (m *PVMInstanceAddNetwork) validateExternalNetworkInterfaceBandwidth(formats strfmt.Registry) error {
+	if swag.IsZero(m.ExternalNetworkInterfaceBandwidth) { // not required
+		return nil
+	}
 
-	if err := validate.Required("networkID", "body", m.NetworkID); err != nil {
+	if err := validate.MinimumInt("externalNetworkInterfaceBandwidth", "body", m.ExternalNetworkInterfaceBandwidth, 1, false); err != nil {
+		return err
+	}
+
+	if err := validate.MaximumInt("externalNetworkInterfaceBandwidth", "body", m.ExternalNetworkInterfaceBandwidth, 100, false); err != nil {
 		return err
 	}
 
