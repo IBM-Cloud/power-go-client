@@ -11,22 +11,18 @@ import (
 	"github.com/go-openapi/validate"
 )
 
-// UpdateMetadataService The metadata service configuration after update.
+// UpdateMetadataService The metadata service configuration
 //
 // swagger:model UpdateMetadataService
 type UpdateMetadataService struct {
 
-	// Indicates whether the metadata service endpoint will be available to the virtual server instance.
+	// Indicates whether the metadata service endpoint will be available to the virtual server
 	// Required: true
 	Enabled *bool `json:"enabled"`
 
-	// When true, allow the metadata service to be disabled while the VSI is active.
+	// when true, allow the metadata service to be disabled while the VM is active.
 	//
 	ForceDisable bool `json:"forceDisable,omitempty"`
-
-	// When true, allow the metadata service to be enabled while the VSI is active. The user is responsible for manually configuring networking on the VSI after the update. Only supported on Linux VSIs.
-	//
-	ForceEnable bool `json:"forceEnable,omitempty"`
 }
 
 // Validate validates this update metadata service
