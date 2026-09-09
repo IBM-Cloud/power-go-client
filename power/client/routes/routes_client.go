@@ -335,7 +335,7 @@ func (a *Client) V1RoutesReportGet(params *V1RoutesReportGetParams, authInfo run
 }
 
 /*
-V1RoutesRouteSwitchEnabled atomicallies enable one route and disable another
+V1RoutesRouteSwitchEnabled atomicallies enable one network route and disable another route in the same region and in the same account this is useful for failover situations where users only need to call this API instead of two separate p u t API calls to enable and disable the routes
 */
 func (a *Client) V1RoutesRouteSwitchEnabled(params *V1RoutesRouteSwitchEnabledParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesRouteSwitchEnabledOK, error) {
 	// NOTE: parameters are not validated before sending
