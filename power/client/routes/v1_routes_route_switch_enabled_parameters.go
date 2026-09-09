@@ -62,7 +62,7 @@ type V1RoutesRouteSwitchEnabledParams struct {
 
 	/* Body.
 
-	   Parameters to atomically enable one route and disable another
+	   Parameters to atomically enable one route and disable another in the same region and in the same account
 	*/
 	Body *models.RouteSwitchEnabledRequest
 
