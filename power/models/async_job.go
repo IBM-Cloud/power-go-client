@@ -48,6 +48,9 @@ type AsyncJob struct {
 	// Format: date-time
 	LastUpdateDate strfmt.DateTime `json:"lastUpdateDate,omitempty"`
 
+	// Input values of the operation being tracked by the job
+	OutputValues map[string]any `json:"outputValues,omitempty"`
+
 	// ID of the parent async job
 	ParentAsyncJobID string `json:"parentAsyncJobID,omitempty"`
 
