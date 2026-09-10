@@ -61,7 +61,7 @@ type V1WorkspacesGetallParams struct {
 
 	/* TgwByPassEnabled.
 
-	   Enable transit gateway bypass for the workspace list (default=false)
+	   Enable transit gateway bypass for the workspace list and get single workspace (default=false)
 	*/
 	TgwByPassEnabled *bool
 
