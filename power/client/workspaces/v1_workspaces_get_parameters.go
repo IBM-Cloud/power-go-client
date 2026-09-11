@@ -11,6 +11,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
+	"github.com/go-openapi/swag"
 )
 
 // NewV1WorkspacesGetParams creates a new V1WorkspacesGetParams object,
@@ -63,6 +64,12 @@ type V1WorkspacesGetParams struct {
 	   the CRN of the workspace
 	*/
 	CRN *string
+
+	/* TgwByPassEnabled.
+
+	   Enable transit gateway bypass for the workspace list and get single workspace (default=false)
+	*/
+	TgwByPassEnabled *bool
 
 	/* WorkspaceID.
 
@@ -134,6 +141,17 @@ func (o *V1WorkspacesGetParams) SetCRN(cRN *string) {
 	o.CRN = cRN
 }
 
+// WithTgwByPassEnabled adds the tgwByPassEnabled to the v1 workspaces get params
+func (o *V1WorkspacesGetParams) WithTgwByPassEnabled(tgwByPassEnabled *bool) *V1WorkspacesGetParams {
+	o.SetTgwByPassEnabled(tgwByPassEnabled)
+	return o
+}
+
+// SetTgwByPassEnabled adds the tgwByPassEnabled to the v1 workspaces get params
+func (o *V1WorkspacesGetParams) SetTgwByPassEnabled(tgwByPassEnabled *bool) {
+	o.TgwByPassEnabled = tgwByPassEnabled
+}
+
 // WithWorkspaceID adds the workspaceID to the v1 workspaces get params
 func (o *V1WorkspacesGetParams) WithWorkspaceID(workspaceID string) *V1WorkspacesGetParams {
 	o.SetWorkspaceID(workspaceID)
@@ -158,6 +176,23 @@ func (o *V1WorkspacesGetParams) WriteToRequest(r runtime.ClientRequest, reg strf
 		// header param CRN
 		if err := r.SetHeaderParam("CRN", *o.CRN); err != nil {
 			return err
+		}
+	}
+
+	if o.TgwByPassEnabled != nil {
+
+		// query param tgwByPassEnabled
+		var qrTgwByPassEnabled bool
+
+		if o.TgwByPassEnabled != nil {
+			qrTgwByPassEnabled = *o.TgwByPassEnabled
+		}
+		qTgwByPassEnabled := swag.FormatBool(qrTgwByPassEnabled)
+		if qTgwByPassEnabled != "" {
+
+			if err := r.SetQueryParam("tgwByPassEnabled", qTgwByPassEnabled); err != nil {
+				return err
+			}
 		}
 	}
 
