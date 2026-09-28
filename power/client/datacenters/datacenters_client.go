@@ -65,7 +65,13 @@ type ClientService interface {
 }
 
 /*
-V1DatacentersGet gets a datacenter s information and capabilities
+	V1DatacentersGet gets a datacenter s information and capabilities
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, opts ...ClientOption) (*V1DatacentersGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -108,7 +114,13 @@ func (a *Client) V1DatacentersGet(params *V1DatacentersGetParams, opts ...Client
 }
 
 /*
-V1DatacentersGetall gets all datacenters information and capabilities
+	V1DatacentersGetall gets all datacenters information and capabilities
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...ClientOption) (*V1DatacentersGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -151,7 +163,13 @@ func (a *Client) V1DatacentersGetall(params *V1DatacentersGetallParams, opts ...
 }
 
 /*
-V1DatacentersPrivateGet gets a private datacenter s information and capabilities
+	V1DatacentersPrivateGet gets a private datacenter s information and capabilities
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1DatacentersPrivateGet(params *V1DatacentersPrivateGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersPrivateGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -195,7 +213,13 @@ func (a *Client) V1DatacentersPrivateGet(params *V1DatacentersPrivateGetParams, 
 }
 
 /*
-V1DatacentersPrivateGetall gets private datacenter information and capabilities
+	V1DatacentersPrivateGetall gets private datacenter information and capabilities
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1DatacentersPrivateGetall(params *V1DatacentersPrivateGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1DatacentersPrivateGetallOK, error) {
 	// NOTE: parameters are not validated before sending

@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsNetworksDelete deletes a network c r n
+	InternalV1OperationsNetworksDelete deletes a network c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsNetworksDelete(params *InternalV1OperationsNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsNetworksDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsNetworksDelete(params *InternalV1Operations
 }
 
 /*
-InternalV1OperationsNetworksPost creates a c r n for a network
+	InternalV1OperationsNetworksPost creates a c r n for a network
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsNetworksPost(params *InternalV1OperationsNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsNetworksPostCreated, error) {
 	// NOTE: parameters are not validated before sending

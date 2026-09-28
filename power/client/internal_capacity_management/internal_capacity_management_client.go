@@ -59,7 +59,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1CapacityManagementPut enables or disable capacity on a system type
+	InternalV1CapacityManagementPut enables or disable capacity on a system type
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1CapacityManagementPut(params *InternalV1CapacityManagementPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1CapacityManagementPutOK, error) {
 	// NOTE: parameters are not validated before sending

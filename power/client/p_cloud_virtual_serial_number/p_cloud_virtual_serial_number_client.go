@@ -75,7 +75,13 @@ type ClientService interface {
 }
 
 /*
-PcloudPvminstancesVirtualserialnumberDelete unassigns virtual serial number from a p VM instance
+	PcloudPvminstancesVirtualserialnumberDelete unassigns virtual serial number from a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -119,7 +125,13 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvmin
 }
 
 /*
-PcloudPvminstancesVirtualserialnumberGet gets a p VM instance s virtual serial number information
+	PcloudPvminstancesVirtualserialnumberGet gets a p VM instance s virtual serial number information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -163,7 +175,13 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminsta
 }
 
 /*
-PcloudPvminstancesVirtualserialnumberPost assigns virtual serial number to a p VM instance
+	PcloudPvminstancesVirtualserialnumberPost assigns virtual serial number to a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -207,7 +225,13 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminst
 }
 
 /*
-PcloudPvminstancesVirtualserialnumberPut updates a virtual serial number
+	PcloudPvminstancesVirtualserialnumberPut updates a virtual serial number
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -251,7 +275,13 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminsta
 }
 
 /*
-PcloudVirtualserialnumberDelete unreserves a retained virtual serial number
+	PcloudVirtualserialnumberDelete unreserves a retained virtual serial number
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -295,7 +325,13 @@ func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumb
 }
 
 /*
-PcloudVirtualserialnumberGet gets information for a virtual serial number
+	PcloudVirtualserialnumberGet gets information for a virtual serial number
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -339,7 +375,13 @@ func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberG
 }
 
 /*
-PcloudVirtualserialnumberGetall lists all utilized and retained v s ns
+	PcloudVirtualserialnumberGetall lists all utilized and retained v s ns
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -383,7 +425,13 @@ func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumb
 }
 
 /*
-PcloudVirtualserialnumberPut updates description of a reserved virtual serial number
+	PcloudVirtualserialnumberPut updates description of a reserved virtual serial number
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -427,7 +475,13 @@ func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberP
 }
 
 /*
-PcloudVirtualserialnumberSoftwaretiersGetall lists supported software tiers i b mi licensing
+	PcloudVirtualserialnumberSoftwaretiersGetall lists supported software tiers i b mi licensing
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirtualserialnumberSoftwaretiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberSoftwaretiersGetallOK, error) {
 	// NOTE: parameters are not validated before sending

@@ -77,7 +77,13 @@ type ClientService interface {
 }
 
 /*
-V1AvailableHosts lists all the hosts that can be reserved
+	V1AvailableHosts lists all the hosts that can be reserved
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1AvailableHosts(params *V1AvailableHostsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1AvailableHostsOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -121,7 +127,13 @@ func (a *Client) V1AvailableHosts(params *V1AvailableHostsParams, authInfo runti
 }
 
 /*
-V1HostGroupsGet gets the list of host groups for the workspace
+	V1HostGroupsGet gets the list of host groups for the workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostGroupsGet(params *V1HostGroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostGroupsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -165,7 +177,13 @@ func (a *Client) V1HostGroupsGet(params *V1HostGroupsGetParams, authInfo runtime
 }
 
 /*
-V1HostGroupsIDGet gets the details of a host group
+	V1HostGroupsIDGet gets the details of a host group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostGroupsIDGet(params *V1HostGroupsIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostGroupsIDGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -209,7 +227,13 @@ func (a *Client) V1HostGroupsIDGet(params *V1HostGroupsIDGetParams, authInfo run
 }
 
 /*
-V1HostGroupsIDPut shares unshare a host group with another workspace
+	V1HostGroupsIDPut shares unshare a host group with another workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostGroupsIDPut(params *V1HostGroupsIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostGroupsIDPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -253,7 +277,13 @@ func (a *Client) V1HostGroupsIDPut(params *V1HostGroupsIDPutParams, authInfo run
 }
 
 /*
-V1HostGroupsPost creates a host group with one or more host
+	V1HostGroupsPost creates a host group with one or more host
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 5 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostGroupsPost(params *V1HostGroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostGroupsPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -297,7 +327,13 @@ func (a *Client) V1HostGroupsPost(params *V1HostGroupsPostParams, authInfo runti
 }
 
 /*
-V1HostsGet gets the list of all the hosts the workspace has access to
+	V1HostsGet gets the list of all the hosts the workspace has access to
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostsGet(params *V1HostsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -341,7 +377,13 @@ func (a *Client) V1HostsGet(params *V1HostsGetParams, authInfo runtime.ClientAut
 }
 
 /*
-V1HostsIDDelete releases a host from its host group
+	V1HostsIDDelete releases a host from its host group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostsIDDelete(params *V1HostsIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostsIDDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -385,7 +427,13 @@ func (a *Client) V1HostsIDDelete(params *V1HostsIDDeleteParams, authInfo runtime
 }
 
 /*
-V1HostsIDGet gets the details about a host
+	V1HostsIDGet gets the details about a host
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostsIDGet(params *V1HostsIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostsIDGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -429,7 +477,13 @@ func (a *Client) V1HostsIDGet(params *V1HostsIDGetParams, authInfo runtime.Clien
 }
 
 /*
-V1HostsIDPut modifies the display name of a host
+	V1HostsIDPut modifies the display name of a host
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostsIDPut(params *V1HostsIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostsIDPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -473,7 +527,13 @@ func (a *Client) V1HostsIDPut(params *V1HostsIDPutParams, authInfo runtime.Clien
 }
 
 /*
-V1HostsPost adds new host s to an existing host group
+	V1HostsPost adds new host s to an existing host group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1HostsPost(params *V1HostsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1HostsPostCreated, error) {
 	// NOTE: parameters are not validated before sending

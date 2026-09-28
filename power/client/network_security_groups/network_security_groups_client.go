@@ -81,7 +81,13 @@ type ClientService interface {
 }
 
 /*
-V1NetworkSecurityGroupsActionPost performs a network security groups action enable disable on a workspace on enablement a default network security group is created to allow all traffic for all active network iterfaces
+	V1NetworkSecurityGroupsActionPost performs a network security groups action enable disable on a workspace on enablement a default network security group is created to allow all traffic for all active network iterfaces
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsActionPost(params *V1NetworkSecurityGroupsActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsActionPostOK, *V1NetworkSecurityGroupsActionPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -125,7 +131,13 @@ func (a *Client) V1NetworkSecurityGroupsActionPost(params *V1NetworkSecurityGrou
 }
 
 /*
-V1NetworkSecurityGroupsIDDelete deletes a network security group from a workspace
+	V1NetworkSecurityGroupsIDDelete deletes a network security group from a workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsIDDelete(params *V1NetworkSecurityGroupsIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -169,7 +181,13 @@ func (a *Client) V1NetworkSecurityGroupsIDDelete(params *V1NetworkSecurityGroups
 }
 
 /*
-V1NetworkSecurityGroupsIDGet gets the detail of a network security group
+	V1NetworkSecurityGroupsIDGet gets the detail of a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsIDGet(params *V1NetworkSecurityGroupsIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -213,7 +231,13 @@ func (a *Client) V1NetworkSecurityGroupsIDGet(params *V1NetworkSecurityGroupsIDG
 }
 
 /*
-V1NetworkSecurityGroupsIDPost clones a network security group
+	V1NetworkSecurityGroupsIDPost clones a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsIDPost(params *V1NetworkSecurityGroupsIDPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -257,7 +281,13 @@ func (a *Client) V1NetworkSecurityGroupsIDPost(params *V1NetworkSecurityGroupsID
 }
 
 /*
-V1NetworkSecurityGroupsIDPut updates a network security group
+	V1NetworkSecurityGroupsIDPut updates a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsIDPut(params *V1NetworkSecurityGroupsIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsIDPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -301,7 +331,13 @@ func (a *Client) V1NetworkSecurityGroupsIDPut(params *V1NetworkSecurityGroupsIDP
 }
 
 /*
-V1NetworkSecurityGroupsList gets the list of network security groups for a workspace
+	V1NetworkSecurityGroupsList gets the list of network security groups for a workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsList(params *V1NetworkSecurityGroupsListParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsListOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -345,7 +381,13 @@ func (a *Client) V1NetworkSecurityGroupsList(params *V1NetworkSecurityGroupsList
 }
 
 /*
-V1NetworkSecurityGroupsMembersDelete deletes the member from a network security group
+	V1NetworkSecurityGroupsMembersDelete deletes the member from a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsMembersDelete(params *V1NetworkSecurityGroupsMembersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsMembersDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -389,7 +431,13 @@ func (a *Client) V1NetworkSecurityGroupsMembersDelete(params *V1NetworkSecurityG
 }
 
 /*
-V1NetworkSecurityGroupsMembersPost adds a member to a network security group
+	V1NetworkSecurityGroupsMembersPost adds a member to a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsMembersPost(params *V1NetworkSecurityGroupsMembersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsMembersPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -433,7 +481,13 @@ func (a *Client) V1NetworkSecurityGroupsMembersPost(params *V1NetworkSecurityGro
 }
 
 /*
-V1NetworkSecurityGroupsMoveMemberPost moves a network security group member to another network security group
+	V1NetworkSecurityGroupsMoveMemberPost moves a network security group member to another network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsMoveMemberPost(params *V1NetworkSecurityGroupsMoveMemberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsMoveMemberPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -477,7 +531,13 @@ func (a *Client) V1NetworkSecurityGroupsMoveMemberPost(params *V1NetworkSecurity
 }
 
 /*
-V1NetworkSecurityGroupsPost creates a new network security group
+	V1NetworkSecurityGroupsPost creates a new network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsPost(params *V1NetworkSecurityGroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsPostOK, *V1NetworkSecurityGroupsPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -521,7 +581,13 @@ func (a *Client) V1NetworkSecurityGroupsPost(params *V1NetworkSecurityGroupsPost
 }
 
 /*
-V1NetworkSecurityGroupsRulesDelete deletes the rule from a network security group
+	V1NetworkSecurityGroupsRulesDelete deletes the rule from a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsRulesDelete(params *V1NetworkSecurityGroupsRulesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsRulesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -565,7 +631,13 @@ func (a *Client) V1NetworkSecurityGroupsRulesDelete(params *V1NetworkSecurityGro
 }
 
 /*
-V1NetworkSecurityGroupsRulesPost adds a rule to a network security group
+	V1NetworkSecurityGroupsRulesPost adds a rule to a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkSecurityGroupsRulesPost(params *V1NetworkSecurityGroupsRulesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkSecurityGroupsRulesPostOK, error) {
 	// NOTE: parameters are not validated before sending

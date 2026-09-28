@@ -71,7 +71,13 @@ type ClientService interface {
 }
 
 /*
-V1NetworkAddressGroupsGet gets the list of network address groups for a workspace
+	V1NetworkAddressGroupsGet gets the list of network address groups for a workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsGet(params *V1NetworkAddressGroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -115,7 +121,13 @@ func (a *Client) V1NetworkAddressGroupsGet(params *V1NetworkAddressGroupsGetPara
 }
 
 /*
-V1NetworkAddressGroupsIDDelete deletes a network address group from a workspace
+	V1NetworkAddressGroupsIDDelete deletes a network address group from a workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsIDDelete(params *V1NetworkAddressGroupsIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsIDDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -159,7 +171,13 @@ func (a *Client) V1NetworkAddressGroupsIDDelete(params *V1NetworkAddressGroupsID
 }
 
 /*
-V1NetworkAddressGroupsIDGet gets the detail of a network address group
+	V1NetworkAddressGroupsIDGet gets the detail of a network address group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsIDGet(params *V1NetworkAddressGroupsIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsIDGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -203,7 +221,13 @@ func (a *Client) V1NetworkAddressGroupsIDGet(params *V1NetworkAddressGroupsIDGet
 }
 
 /*
-V1NetworkAddressGroupsIDPut updates a network address group
+	V1NetworkAddressGroupsIDPut updates a network address group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsIDPut(params *V1NetworkAddressGroupsIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsIDPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -247,7 +271,13 @@ func (a *Client) V1NetworkAddressGroupsIDPut(params *V1NetworkAddressGroupsIDPut
 }
 
 /*
-V1NetworkAddressGroupsMembersDelete deletes the member from a network address group
+	V1NetworkAddressGroupsMembersDelete deletes the member from a network address group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsMembersDelete(params *V1NetworkAddressGroupsMembersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsMembersDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -291,7 +321,13 @@ func (a *Client) V1NetworkAddressGroupsMembersDelete(params *V1NetworkAddressGro
 }
 
 /*
-V1NetworkAddressGroupsMembersPost adds a member to a network address group
+	V1NetworkAddressGroupsMembersPost adds a member to a network address group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsMembersPost(params *V1NetworkAddressGroupsMembersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsMembersPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -335,7 +371,13 @@ func (a *Client) V1NetworkAddressGroupsMembersPost(params *V1NetworkAddressGroup
 }
 
 /*
-V1NetworkAddressGroupsPost creates a new network address group
+	V1NetworkAddressGroupsPost creates a new network address group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkAddressGroupsPost(params *V1NetworkAddressGroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkAddressGroupsPostOK, *V1NetworkAddressGroupsPostCreated, error) {
 	// NOTE: parameters are not validated before sending

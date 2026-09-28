@@ -63,7 +63,13 @@ type ClientService interface {
 }
 
 /*
-PcloudSapGet gets the information on an s a p profile
+	PcloudSapGet gets the information on an s a p profile
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSapGet(params *PcloudSapGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSapGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -107,7 +113,13 @@ func (a *Client) PcloudSapGet(params *PcloudSapGetParams, authInfo runtime.Clien
 }
 
 /*
-PcloudSapGetall gets list of s a p profiles
+	PcloudSapGetall gets list of s a p profiles
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSapGetall(params *PcloudSapGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSapGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -151,7 +163,13 @@ func (a *Client) PcloudSapGetall(params *PcloudSapGetallParams, authInfo runtime
 }
 
 /*
-PcloudSapPost creates a new s a p p VM instance
+	PcloudSapPost creates a new s a p p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSapPost(params *PcloudSapPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSapPostOK, *PcloudSapPostCreated, *PcloudSapPostAccepted, error) {
 	// NOTE: parameters are not validated before sending

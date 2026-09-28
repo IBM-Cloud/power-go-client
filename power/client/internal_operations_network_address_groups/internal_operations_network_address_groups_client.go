@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsNetworkaddressgroupsDelete deletes a network address group c r n
+	InternalV1OperationsNetworkaddressgroupsDelete deletes a network address group c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsNetworkaddressgroupsDelete(params *InternalV1OperationsNetworkaddressgroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsNetworkaddressgroupsDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsNetworkaddressgroupsDelete(params *Internal
 }
 
 /*
-InternalV1OperationsNetworkaddressgroupsPost creates a c r n for a network address group
+	InternalV1OperationsNetworkaddressgroupsPost creates a c r n for a network address group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsNetworkaddressgroupsPost(params *InternalV1OperationsNetworkaddressgroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsNetworkaddressgroupsPostCreated, error) {
 	// NOTE: parameters are not validated before sending

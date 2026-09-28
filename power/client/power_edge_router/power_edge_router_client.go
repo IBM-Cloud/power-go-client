@@ -59,7 +59,13 @@ type ClientService interface {
 }
 
 /*
-V1PoweredgerouterActionPost performs a power edge router action migrate start migrate validate on a workspace
+	V1PoweredgerouterActionPost performs a power edge router action migrate start migrate validate on a workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1PoweredgerouterActionPost(params *V1PoweredgerouterActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1PoweredgerouterActionPostOK, error) {
 	// NOTE: parameters are not validated before sending

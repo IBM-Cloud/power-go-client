@@ -71,7 +71,13 @@ type ClientService interface {
 }
 
 /*
-V1RoutesDelete deletes a route
+	V1RoutesDelete deletes a route
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 50 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesDelete(params *V1RoutesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -115,7 +121,13 @@ func (a *Client) V1RoutesDelete(params *V1RoutesDeleteParams, authInfo runtime.C
 }
 
 /*
-V1RoutesGet gets a route s information
+	V1RoutesGet gets a route s information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesGet(params *V1RoutesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -159,7 +171,13 @@ func (a *Client) V1RoutesGet(params *V1RoutesGetParams, authInfo runtime.ClientA
 }
 
 /*
-V1RoutesGetall gets all routes in the workspace
+	V1RoutesGetall gets all routes in the workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesGetall(params *V1RoutesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -203,7 +221,13 @@ func (a *Client) V1RoutesGetall(params *V1RoutesGetallParams, authInfo runtime.C
 }
 
 /*
-V1RoutesPost performs a route creation
+	V1RoutesPost performs a route creation
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesPost(params *V1RoutesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -247,7 +271,13 @@ func (a *Client) V1RoutesPost(params *V1RoutesPostParams, authInfo runtime.Clien
 }
 
 /*
-V1RoutesPut updates a route s information
+	V1RoutesPut updates a route s information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 30 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesPut(params *V1RoutesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -291,7 +321,13 @@ func (a *Client) V1RoutesPut(params *V1RoutesPutParams, authInfo runtime.ClientA
 }
 
 /*
-V1RoutesReportGet gets the route report for a workspace
+	V1RoutesReportGet gets the route report for a workspace
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesReportGet(params *V1RoutesReportGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesReportGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -335,7 +371,13 @@ func (a *Client) V1RoutesReportGet(params *V1RoutesReportGetParams, authInfo run
 }
 
 /*
-V1RoutesRouteSwitchEnabled atomicallies enable one network route and disable another route in the same region and in the same account this is useful for failover situations where users only need to call this API instead of two separate p u t API calls to enable and disable the routes
+	V1RoutesRouteSwitchEnabled atomicallies enable one network route and disable another route in the same region and in the same account this is useful for failover situations where users only need to call this API instead of two separate p u t API calls to enable and disable the routes
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1RoutesRouteSwitchEnabled(params *V1RoutesRouteSwitchEnabledParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1RoutesRouteSwitchEnabledOK, error) {
 	// NOTE: parameters are not validated before sending

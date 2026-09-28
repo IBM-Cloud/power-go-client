@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-PcloudEventsGet gets a single event
+	PcloudEventsGet gets a single event
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudEventsGet(params *PcloudEventsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudEventsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) PcloudEventsGet(params *PcloudEventsGetParams, authInfo runtime
 }
 
 /*
-PcloudEventsGetquery gets events from this cloud instance since a specific timestamp
+	PcloudEventsGetquery gets events from this cloud instance since a specific timestamp
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudEventsGetquery(params *PcloudEventsGetqueryParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudEventsGetqueryOK, error) {
 	// NOTE: parameters are not validated before sending

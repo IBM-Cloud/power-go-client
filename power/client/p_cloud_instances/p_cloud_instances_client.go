@@ -65,7 +65,13 @@ type ClientService interface {
 }
 
 /*
-PcloudCloudinstancesDelete deletes a power cloud instance
+	PcloudCloudinstancesDelete deletes a power cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesDelete(params *PcloudCloudinstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -109,7 +115,13 @@ func (a *Client) PcloudCloudinstancesDelete(params *PcloudCloudinstancesDeletePa
 }
 
 /*
-PcloudCloudinstancesGet gets a cloud instance s current state information
+	PcloudCloudinstancesGet gets a cloud instance s current state information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesGet(params *PcloudCloudinstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -153,7 +165,13 @@ func (a *Client) PcloudCloudinstancesGet(params *PcloudCloudinstancesGetParams, 
 }
 
 /*
-PcloudCloudinstancesPut updates upgrade a cloud instance
+	PcloudCloudinstancesPut updates upgrade a cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesPut(params *PcloudCloudinstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -197,7 +215,13 @@ func (a *Client) PcloudCloudinstancesPut(params *PcloudCloudinstancesPutParams, 
 }
 
 /*
-PcloudCloudinstancesSharedImagesPut updates shared image settings for a cloud instance
+	PcloudCloudinstancesSharedImagesPut updates shared image settings for a cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesSharedImagesPut(params *PcloudCloudinstancesSharedImagesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesSharedImagesPutOK, error) {
 	// NOTE: parameters are not validated before sending

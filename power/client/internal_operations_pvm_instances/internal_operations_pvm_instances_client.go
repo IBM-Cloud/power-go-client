@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsPvminstancesDelete deletes a p VM instance c r n
+	InternalV1OperationsPvminstancesDelete deletes a p VM instance c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsPvminstancesDelete(params *InternalV1OperationsPvminstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsPvminstancesDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsPvminstancesDelete(params *InternalV1Operat
 }
 
 /*
-InternalV1OperationsPvminstancesPost creates a c r n for a p VM instance
+	InternalV1OperationsPvminstancesPost creates a c r n for a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsPvminstancesPost(params *InternalV1OperationsPvminstancesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsPvminstancesPostCreated, error) {
 	// NOTE: parameters are not validated before sending

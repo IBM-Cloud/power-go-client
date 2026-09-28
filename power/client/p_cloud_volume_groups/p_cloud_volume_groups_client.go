@@ -77,9 +77,14 @@ type ClientService interface {
 }
 
 /*
-PcloudVolumegroupsActionPost performs an action on a volume group
+	PcloudVolumegroupsActionPost performs an action on a volume group
 
-Corresponding actions are 'start', 'stop', 'reset'
+	Corresponding actions are 'start', 'stop', 'reset'
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsActionPost(params *PcloudVolumegroupsActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsActionPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -123,7 +128,13 @@ func (a *Client) PcloudVolumegroupsActionPost(params *PcloudVolumegroupsActionPo
 }
 
 /*
-PcloudVolumegroupsDelete deletes a cloud instance volume group
+	PcloudVolumegroupsDelete deletes a cloud instance volume group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsDelete(params *PcloudVolumegroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -167,7 +178,13 @@ func (a *Client) PcloudVolumegroupsDelete(params *PcloudVolumegroupsDeleteParams
 }
 
 /*
-PcloudVolumegroupsGet gets volume group
+	PcloudVolumegroupsGet gets volume group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsGet(params *PcloudVolumegroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -211,7 +228,13 @@ func (a *Client) PcloudVolumegroupsGet(params *PcloudVolumegroupsGetParams, auth
 }
 
 /*
-PcloudVolumegroupsGetDetails gets volume group details
+	PcloudVolumegroupsGetDetails gets volume group details
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsGetDetails(params *PcloudVolumegroupsGetDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsGetDetailsOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -255,7 +278,13 @@ func (a *Client) PcloudVolumegroupsGetDetails(params *PcloudVolumegroupsGetDetai
 }
 
 /*
-PcloudVolumegroupsGetall gets all volume groups
+	PcloudVolumegroupsGetall gets all volume groups
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsGetall(params *PcloudVolumegroupsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -299,7 +328,13 @@ func (a *Client) PcloudVolumegroupsGetall(params *PcloudVolumegroupsGetallParams
 }
 
 /*
-PcloudVolumegroupsGetallDetails gets all volume groups with details
+	PcloudVolumegroupsGetallDetails gets all volume groups with details
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsGetallDetails(params *PcloudVolumegroupsGetallDetailsParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsGetallDetailsOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -343,7 +378,13 @@ func (a *Client) PcloudVolumegroupsGetallDetails(params *PcloudVolumegroupsGetal
 }
 
 /*
-PcloudVolumegroupsPost creates a new volume group
+	PcloudVolumegroupsPost creates a new volume group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsPost(params *PcloudVolumegroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsPostAccepted, *PcloudVolumegroupsPostPartialContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -387,7 +428,13 @@ func (a *Client) PcloudVolumegroupsPost(params *PcloudVolumegroupsPostParams, au
 }
 
 /*
-PcloudVolumegroupsPut updates the volume group
+	PcloudVolumegroupsPut updates the volume group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsPut(params *PcloudVolumegroupsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -431,7 +478,13 @@ func (a *Client) PcloudVolumegroupsPut(params *PcloudVolumegroupsPutParams, auth
 }
 
 /*
-PcloudVolumegroupsRemoteCopyRelationshipsGet gets remote copy relationships of the volume belonging to volume group
+	PcloudVolumegroupsRemoteCopyRelationshipsGet gets remote copy relationships of the volume belonging to volume group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsRemoteCopyRelationshipsGet(params *PcloudVolumegroupsRemoteCopyRelationshipsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsRemoteCopyRelationshipsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -475,7 +528,13 @@ func (a *Client) PcloudVolumegroupsRemoteCopyRelationshipsGet(params *PcloudVolu
 }
 
 /*
-PcloudVolumegroupsStorageDetailsGet gets storage details of volume group
+	PcloudVolumegroupsStorageDetailsGet gets storage details of volume group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumegroupsStorageDetailsGet(params *PcloudVolumegroupsStorageDetailsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumegroupsStorageDetailsGetOK, error) {
 	// NOTE: parameters are not validated before sending

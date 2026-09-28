@@ -107,9 +107,14 @@ type ClientService interface {
 }
 
 /*
-PcloudPvminstancesActionPost performs an action on a p VM instance
+	PcloudPvminstancesActionPost performs an action on a p VM instance
 
-Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
+	Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesActionPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -158,6 +163,11 @@ func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPo
 	This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture.
 
 >*Note*: Support for this API is available till Oct 2022.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesCapturePostOK, *PcloudPvminstancesCapturePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -201,7 +211,13 @@ func (a *Client) PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapture
 }
 
 /*
-PcloudPvminstancesConsoleGet lists all console languages
+	PcloudPvminstancesConsoleGet lists all console languages
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsoleGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -245,7 +261,13 @@ func (a *Client) PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleG
 }
 
 /*
-PcloudPvminstancesConsolePost generates the no v n c console URL
+	PcloudPvminstancesConsolePost generates the no v n c console URL
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -289,7 +311,13 @@ func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsole
 }
 
 /*
-PcloudPvminstancesConsolePut updates p VM instance console language code
+	PcloudPvminstancesConsolePut updates p VM instance console language code
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsolePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -333,7 +361,13 @@ func (a *Client) PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsoleP
 }
 
 /*
-PcloudPvminstancesDelete deletes a p cloud p VM instance
+	PcloudPvminstancesDelete deletes a p cloud p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesDelete(params *PcloudPvminstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -377,7 +411,13 @@ func (a *Client) PcloudPvminstancesDelete(params *PcloudPvminstancesDeleteParams
 }
 
 /*
-PcloudPvminstancesGet gets a p VM instance s current state or information
+	PcloudPvminstancesGet gets a p VM instance s current state or information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesGet(params *PcloudPvminstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -421,7 +461,13 @@ func (a *Client) PcloudPvminstancesGet(params *PcloudPvminstancesGetParams, auth
 }
 
 /*
-PcloudPvminstancesGetall gets all the pvm instances for this cloud instance
+	PcloudPvminstancesGetall gets all the pvm instances for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesGetall(params *PcloudPvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -465,7 +511,13 @@ func (a *Client) PcloudPvminstancesGetall(params *PcloudPvminstancesGetallParams
 }
 
 /*
-PcloudPvminstancesNetworksDelete removes all address of network from a p VM instance
+	PcloudPvminstancesNetworksDelete removes all address of network from a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -509,7 +561,13 @@ func (a *Client) PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetw
 }
 
 /*
-PcloudPvminstancesNetworksGet gets a p VM instance s network information
+	PcloudPvminstancesNetworksGet gets a p VM instance s network information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesNetworksGet(params *PcloudPvminstancesNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -553,7 +611,13 @@ func (a *Client) PcloudPvminstancesNetworksGet(params *PcloudPvminstancesNetwork
 }
 
 /*
-PcloudPvminstancesNetworksGetall gets all networks for this p VM instance
+	PcloudPvminstancesNetworksGetall gets all networks for this p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesNetworksGetall(params *PcloudPvminstancesNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -597,7 +661,13 @@ func (a *Client) PcloudPvminstancesNetworksGetall(params *PcloudPvminstancesNetw
 }
 
 /*
-PcloudPvminstancesNetworksPost performs network addition
+	PcloudPvminstancesNetworksPost performs network addition
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesNetworksPost(params *PcloudPvminstancesNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -641,7 +711,13 @@ func (a *Client) PcloudPvminstancesNetworksPost(params *PcloudPvminstancesNetwor
 }
 
 /*
-PcloudPvminstancesOperationsPost performs an operation on a p VM instance
+	PcloudPvminstancesOperationsPost performs an operation on a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesOperationsPost(params *PcloudPvminstancesOperationsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesOperationsPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -685,7 +761,13 @@ func (a *Client) PcloudPvminstancesOperationsPost(params *PcloudPvminstancesOper
 }
 
 /*
-PcloudPvminstancesPost creates a new power VM instance
+	PcloudPvminstancesPost creates a new power VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesPost(params *PcloudPvminstancesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPostOK, *PcloudPvminstancesPostCreated, *PcloudPvminstancesPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -731,7 +813,13 @@ func (a *Client) PcloudPvminstancesPost(params *PcloudPvminstancesPostParams, au
 }
 
 /*
-PcloudPvminstancesPut updates a p cloud p VM instance
+	PcloudPvminstancesPut updates a p cloud p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -775,9 +863,14 @@ func (a *Client) PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, auth
 }
 
 /*
-PcloudPvminstancesShelvePost shelves a virtual server instance v s i
+	PcloudPvminstancesShelvePost shelves a virtual server instance v s i
 
-Shelve a VSI to reduce resource consumption. The instance configuration will be preserved and can be unshelved later.
+	Shelve a VSI to reduce resource consumption. The instance configuration will be preserved and can be unshelved later.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -821,7 +914,13 @@ func (a *Client) PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePo
 }
 
 /*
-PcloudPvminstancesSnapshotsGetall gets all snapshots for this p VM instance
+	PcloudPvminstancesSnapshotsGetall gets all snapshots for this p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -865,7 +964,13 @@ func (a *Client) PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSna
 }
 
 /*
-PcloudPvminstancesSnapshotsPost creates a p VM instance snapshot
+	PcloudPvminstancesSnapshotsPost creates a p VM instance snapshot
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -909,7 +1014,13 @@ func (a *Client) PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnaps
 }
 
 /*
-PcloudPvminstancesSnapshotsRestorePost restores a p VM instance snapshot
+	PcloudPvminstancesSnapshotsRestorePost restores a p VM instance snapshot
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -953,9 +1064,14 @@ func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstanc
 }
 
 /*
-PcloudPvminstancesUnshelvePost unshelves a virtual server instance v s i
+	PcloudPvminstancesUnshelvePost unshelves a virtual server instance v s i
 
-Unshelve a previously shelved VSI to restore it to active state.
+	Unshelve a previously shelved VSI to restore it to active state.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -999,7 +1115,13 @@ func (a *Client) PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshel
 }
 
 /*
-PcloudV2PvminstancesCaptureGet gets detail of last capture job
+	PcloudV2PvminstancesCaptureGet gets detail of last capture job
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCaptureGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1043,7 +1165,13 @@ func (a *Client) PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCapt
 }
 
 /*
-PcloudV2PvminstancesCapturePost adds a capture pvm instance to the jobs queue
+	PcloudV2PvminstancesCapturePost adds a capture pvm instance to the jobs queue
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCapturePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -1087,7 +1215,13 @@ func (a *Client) PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCap
 }
 
 /*
-PcloudV2PvminstancesGetall gets all the pvm instances for this cloud instance
+	PcloudV2PvminstancesGetall gets all the pvm instances for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1131,7 +1265,13 @@ func (a *Client) PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallPa
 }
 
 /*
-PcloudV2PvminstancesSnapshotsGetall gets all snapshots for this p VM instance
+	PcloudV2PvminstancesSnapshotsGetall gets all snapshots for this p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1175,7 +1315,13 @@ func (a *Client) PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2Pvminstance
 }
 
 /*
-PcloudV2PvminstancesSnapshotsPost creates a v2 p VM instance snapshot
+	PcloudV2PvminstancesSnapshotsPost creates a v2 p VM instance snapshot
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending

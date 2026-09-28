@@ -67,7 +67,13 @@ type ClientService interface {
 }
 
 /*
-PcloudTenantsSshkeysDelete deletes a tenant s SSH key
+	PcloudTenantsSshkeysDelete deletes a tenant s SSH key
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsSshkeysDelete(params *PcloudTenantsSshkeysDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsSshkeysDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -111,7 +117,13 @@ func (a *Client) PcloudTenantsSshkeysDelete(params *PcloudTenantsSshkeysDeletePa
 }
 
 /*
-PcloudTenantsSshkeysGet gets a tenant s SSH key by name
+	PcloudTenantsSshkeysGet gets a tenant s SSH key by name
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsSshkeysGet(params *PcloudTenantsSshkeysGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsSshkeysGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -155,7 +167,13 @@ func (a *Client) PcloudTenantsSshkeysGet(params *PcloudTenantsSshkeysGetParams, 
 }
 
 /*
-PcloudTenantsSshkeysGetall lists a tenant s SSH keys
+	PcloudTenantsSshkeysGetall lists a tenant s SSH keys
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsSshkeysGetall(params *PcloudTenantsSshkeysGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsSshkeysGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -199,7 +217,13 @@ func (a *Client) PcloudTenantsSshkeysGetall(params *PcloudTenantsSshkeysGetallPa
 }
 
 /*
-PcloudTenantsSshkeysPost adds a new SSH key to the tenant
+	PcloudTenantsSshkeysPost adds a new SSH key to the tenant
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsSshkeysPost(params *PcloudTenantsSshkeysPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsSshkeysPostOK, *PcloudTenantsSshkeysPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -243,7 +267,13 @@ func (a *Client) PcloudTenantsSshkeysPost(params *PcloudTenantsSshkeysPostParams
 }
 
 /*
-PcloudTenantsSshkeysPut updates an SSH key
+	PcloudTenantsSshkeysPut updates an SSH key
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsSshkeysPut(params *PcloudTenantsSshkeysPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsSshkeysPutOK, error) {
 	// NOTE: parameters are not validated before sending

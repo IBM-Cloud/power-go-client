@@ -72,6 +72,11 @@ type ClientService interface {
 The API v1/volume-snapshots has replaced this endpoint.
 
 View the usage of a snapshot. The snapshot may take time sync because the data is cached.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1SnapshotsGet(params *V1SnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -122,6 +127,11 @@ func (a *Client) V1SnapshotsGet(params *V1SnapshotsGetParams, authInfo runtime.C
 The API v1/volume-snapshots has replaced this endpoint.
 
 View the usage of snapshots on the workspace. The snapshots may take time sync because the data is cached.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1SnapshotsGetall(params *V1SnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1SnapshotsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -165,9 +175,14 @@ func (a *Client) V1SnapshotsGetall(params *V1SnapshotsGetallParams, authInfo run
 }
 
 /*
-V1VolumeSnapshotsGet gets the detail of a volume snapshot
+	V1VolumeSnapshotsGet gets the detail of a volume snapshot
 
-View the usage of a snapshot. The snapshot may take time sync because the data is cached.
+	View the usage of a snapshot. The snapshot may take time sync because the data is cached.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 60 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1VolumeSnapshotsGet(params *V1VolumeSnapshotsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1VolumeSnapshotsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -211,9 +226,14 @@ func (a *Client) V1VolumeSnapshotsGet(params *V1VolumeSnapshotsGetParams, authIn
 }
 
 /*
-V1VolumeSnapshotsGetall gets the list of volume snapshots on a workspace
+	V1VolumeSnapshotsGetall gets the list of volume snapshots on a workspace
 
-View the usage of volume snapshots on the workspace. The volume snapshots may take time sync because the data is cached.
+	View the usage of volume snapshots on the workspace. The volume snapshots may take time sync because the data is cached.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 60 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1VolumeSnapshotsGetall(params *V1VolumeSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1VolumeSnapshotsGetallOK, error) {
 	// NOTE: parameters are not validated before sending

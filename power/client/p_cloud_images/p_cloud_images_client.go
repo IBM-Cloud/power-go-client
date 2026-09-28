@@ -83,7 +83,13 @@ type ClientService interface {
 }
 
 /*
-PcloudCloudinstancesImagesDelete deletes an image from a cloud instance
+	PcloudCloudinstancesImagesDelete deletes an image from a cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesImagesDelete(params *PcloudCloudinstancesImagesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesImagesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -132,6 +138,11 @@ func (a *Client) PcloudCloudinstancesImagesDelete(params *PcloudCloudinstancesIm
 	This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/images/{image_id}/export.
 
 >*Note*: Support for this API is available till Oct 2022.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesImagesExportPost(params *PcloudCloudinstancesImagesExportPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesImagesExportPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -175,7 +186,13 @@ func (a *Client) PcloudCloudinstancesImagesExportPost(params *PcloudCloudinstanc
 }
 
 /*
-PcloudCloudinstancesImagesGet detaileds info of an image
+	PcloudCloudinstancesImagesGet detaileds info of an image
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesImagesGet(params *PcloudCloudinstancesImagesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesImagesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -219,7 +236,13 @@ func (a *Client) PcloudCloudinstancesImagesGet(params *PcloudCloudinstancesImage
 }
 
 /*
-PcloudCloudinstancesImagesGetall lists all images for this cloud instance
+	PcloudCloudinstancesImagesGetall lists all images for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesImagesGetall(params *PcloudCloudinstancesImagesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesImagesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -263,7 +286,13 @@ func (a *Client) PcloudCloudinstancesImagesGetall(params *PcloudCloudinstancesIm
 }
 
 /*
-PcloudCloudinstancesImagesPost creates a new image from available images
+	PcloudCloudinstancesImagesPost creates a new image from available images
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesImagesPost(params *PcloudCloudinstancesImagesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesImagesPostOK, *PcloudCloudinstancesImagesPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -307,7 +336,13 @@ func (a *Client) PcloudCloudinstancesImagesPost(params *PcloudCloudinstancesImag
 }
 
 /*
-PcloudCloudinstancesStockimagesGet detaileds info of an available stock image
+	PcloudCloudinstancesStockimagesGet detaileds info of an available stock image
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesStockimagesGet(params *PcloudCloudinstancesStockimagesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesStockimagesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -351,7 +386,13 @@ func (a *Client) PcloudCloudinstancesStockimagesGet(params *PcloudCloudinstances
 }
 
 /*
-PcloudCloudinstancesStockimagesGetall lists all available stock images
+	PcloudCloudinstancesStockimagesGetall lists all available stock images
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesStockimagesGetall(params *PcloudCloudinstancesStockimagesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesStockimagesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -400,6 +441,11 @@ func (a *Client) PcloudCloudinstancesStockimagesGetall(params *PcloudCloudinstan
 	This API is deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images/{image_id}.
 
 >*Note*: Support for this API will be available till 31st March 2023.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudImagesGet(params *PcloudImagesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudImagesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -448,6 +494,11 @@ func (a *Client) PcloudImagesGet(params *PcloudImagesGetParams, authInfo runtime
 	This API is deprecated for /pcloud/v1/cloud-instances/{cloud_instance_id}/stock-images.
 
 >*Note*: Support for this API will be available till 31st March 2023.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudImagesGetall(params *PcloudImagesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudImagesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -491,7 +542,13 @@ func (a *Client) PcloudImagesGetall(params *PcloudImagesGetallParams, authInfo r
 }
 
 /*
-PcloudV1CloudinstancesCosimagesGet gets detail of last cos image import job
+	PcloudV1CloudinstancesCosimagesGet gets detail of last cos image import job
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV1CloudinstancesCosimagesGet(params *PcloudV1CloudinstancesCosimagesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesCosimagesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -535,7 +592,13 @@ func (a *Client) PcloudV1CloudinstancesCosimagesGet(params *PcloudV1Cloudinstanc
 }
 
 /*
-PcloudV1CloudinstancesCosimagesPost creates an cos image import job
+	PcloudV1CloudinstancesCosimagesPost creates an cos image import job
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV1CloudinstancesCosimagesPost(params *PcloudV1CloudinstancesCosimagesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesCosimagesPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -579,7 +642,13 @@ func (a *Client) PcloudV1CloudinstancesCosimagesPost(params *PcloudV1Cloudinstan
 }
 
 /*
-PcloudV2ImagesExportGet gets detail of last image export job
+	PcloudV2ImagesExportGet gets detail of last image export job
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2ImagesExportGet(params *PcloudV2ImagesExportGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2ImagesExportGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -623,7 +692,13 @@ func (a *Client) PcloudV2ImagesExportGet(params *PcloudV2ImagesExportGetParams, 
 }
 
 /*
-PcloudV2ImagesExportPost adds image export job to the jobs queue
+	PcloudV2ImagesExportPost adds image export job to the jobs queue
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2ImagesExportPost(params *PcloudV2ImagesExportPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2ImagesExportPostAccepted, error) {
 	// NOTE: parameters are not validated before sending

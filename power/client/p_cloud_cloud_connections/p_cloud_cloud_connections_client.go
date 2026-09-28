@@ -73,7 +73,13 @@ type ClientService interface {
 }
 
 /*
-PcloudCloudconnectionsDelete deletes a cloud connection
+	PcloudCloudconnectionsDelete deletes a cloud connection
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsDelete(params *PcloudCloudconnectionsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsDeleteOK, *PcloudCloudconnectionsDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -117,7 +123,13 @@ func (a *Client) PcloudCloudconnectionsDelete(params *PcloudCloudconnectionsDele
 }
 
 /*
-PcloudCloudconnectionsGet gets a cloud connection s state information
+	PcloudCloudconnectionsGet gets a cloud connection s state information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsGet(params *PcloudCloudconnectionsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -161,7 +173,13 @@ func (a *Client) PcloudCloudconnectionsGet(params *PcloudCloudconnectionsGetPara
 }
 
 /*
-PcloudCloudconnectionsGetall gets all cloud connections in this cloud instance
+	PcloudCloudconnectionsGetall gets all cloud connections in this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsGetall(params *PcloudCloudconnectionsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -205,7 +223,13 @@ func (a *Client) PcloudCloudconnectionsGetall(params *PcloudCloudconnectionsGeta
 }
 
 /*
-PcloudCloudconnectionsNetworksDelete detaches a network from a cloud connection
+	PcloudCloudconnectionsNetworksDelete detaches a network from a cloud connection
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsNetworksDelete(params *PcloudCloudconnectionsNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsNetworksDeleteOK, *PcloudCloudconnectionsNetworksDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -249,7 +273,13 @@ func (a *Client) PcloudCloudconnectionsNetworksDelete(params *PcloudCloudconnect
 }
 
 /*
-PcloudCloudconnectionsNetworksPut attaches a network to the cloud connection
+	PcloudCloudconnectionsNetworksPut attaches a network to the cloud connection
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsNetworksPut(params *PcloudCloudconnectionsNetworksPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsNetworksPutOK, *PcloudCloudconnectionsNetworksPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -293,7 +323,13 @@ func (a *Client) PcloudCloudconnectionsNetworksPut(params *PcloudCloudconnection
 }
 
 /*
-PcloudCloudconnectionsPost creates a new cloud connection
+	PcloudCloudconnectionsPost creates a new cloud connection
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsPost(params *PcloudCloudconnectionsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsPostOK, *PcloudCloudconnectionsPostCreated, *PcloudCloudconnectionsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -339,7 +375,13 @@ func (a *Client) PcloudCloudconnectionsPost(params *PcloudCloudconnectionsPostPa
 }
 
 /*
-PcloudCloudconnectionsPut updates a cloud connection
+	PcloudCloudconnectionsPut updates a cloud connection
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsPut(params *PcloudCloudconnectionsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsPutOK, *PcloudCloudconnectionsPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -383,7 +425,13 @@ func (a *Client) PcloudCloudconnectionsPut(params *PcloudCloudconnectionsPutPara
 }
 
 /*
-PcloudCloudconnectionsVirtualprivatecloudsGetall gets all virtual private cloud connections in this cloud instance
+	PcloudCloudconnectionsVirtualprivatecloudsGetall gets all virtual private cloud connections in this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudconnectionsVirtualprivatecloudsGetall(params *PcloudCloudconnectionsVirtualprivatecloudsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudconnectionsVirtualprivatecloudsGetallOK, error) {
 	// NOTE: parameters are not validated before sending

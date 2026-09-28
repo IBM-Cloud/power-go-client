@@ -79,9 +79,14 @@ type ClientService interface {
 }
 
 /*
-PcloudVpnconnectionsDelete deletes v p n connection
+	PcloudVpnconnectionsDelete deletes v p n connection
 
-Delete VPN Connection (by its identifier)
+	Delete VPN Connection (by its identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsDelete(params *PcloudVpnconnectionsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -125,9 +130,14 @@ func (a *Client) PcloudVpnconnectionsDelete(params *PcloudVpnconnectionsDeletePa
 }
 
 /*
-PcloudVpnconnectionsGet gets v p n connection
+	PcloudVpnconnectionsGet gets v p n connection
 
-Get a VPN Connection
+	Get a VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsGet(params *PcloudVpnconnectionsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -171,9 +181,14 @@ func (a *Client) PcloudVpnconnectionsGet(params *PcloudVpnconnectionsGetParams, 
 }
 
 /*
-PcloudVpnconnectionsGetall gets all v p n connections
+	PcloudVpnconnectionsGetall gets all v p n connections
 
-Get all VPN Connections
+	Get all VPN Connections
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsGetall(params *PcloudVpnconnectionsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -217,9 +232,14 @@ func (a *Client) PcloudVpnconnectionsGetall(params *PcloudVpnconnectionsGetallPa
 }
 
 /*
-PcloudVpnconnectionsNetworksDelete detaches network
+	PcloudVpnconnectionsNetworksDelete detaches network
 
-Detach network from a specific VPN Connection
+	Detach network from a specific VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsNetworksDelete(params *PcloudVpnconnectionsNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsNetworksDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -263,9 +283,14 @@ func (a *Client) PcloudVpnconnectionsNetworksDelete(params *PcloudVpnconnections
 }
 
 /*
-PcloudVpnconnectionsNetworksGet gets attached networks
+	PcloudVpnconnectionsNetworksGet gets attached networks
 
-Get a list of network IDs attached to a VPN Connection
+	Get a list of network IDs attached to a VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsNetworksGet(params *PcloudVpnconnectionsNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsNetworksGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -309,9 +334,14 @@ func (a *Client) PcloudVpnconnectionsNetworksGet(params *PcloudVpnconnectionsNet
 }
 
 /*
-PcloudVpnconnectionsNetworksPut attaches network
+	PcloudVpnconnectionsNetworksPut attaches network
 
-Attach a network to a VPN Connection
+	Attach a network to a VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsNetworksPut(params *PcloudVpnconnectionsNetworksPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsNetworksPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -355,9 +385,14 @@ func (a *Client) PcloudVpnconnectionsNetworksPut(params *PcloudVpnconnectionsNet
 }
 
 /*
-PcloudVpnconnectionsPeersubnetsDelete detaches peer subnet
+	PcloudVpnconnectionsPeersubnetsDelete detaches peer subnet
 
-Detach peer subnet from a VPN Connection
+	Detach peer subnet from a VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsPeersubnetsDelete(params *PcloudVpnconnectionsPeersubnetsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsPeersubnetsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -401,9 +436,14 @@ func (a *Client) PcloudVpnconnectionsPeersubnetsDelete(params *PcloudVpnconnecti
 }
 
 /*
-PcloudVpnconnectionsPeersubnetsGet gets peer subnets
+	PcloudVpnconnectionsPeersubnetsGet gets peer subnets
 
-Get a list of peer subnets attached to a specific VPN Connection
+	Get a list of peer subnets attached to a specific VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsPeersubnetsGet(params *PcloudVpnconnectionsPeersubnetsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsPeersubnetsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -447,9 +487,14 @@ func (a *Client) PcloudVpnconnectionsPeersubnetsGet(params *PcloudVpnconnections
 }
 
 /*
-PcloudVpnconnectionsPeersubnetsPut attaches peer subnet
+	PcloudVpnconnectionsPeersubnetsPut attaches peer subnet
 
-Attach peer subnet to a VPN Connection
+	Attach peer subnet to a VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsPeersubnetsPut(params *PcloudVpnconnectionsPeersubnetsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsPeersubnetsPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -493,9 +538,14 @@ func (a *Client) PcloudVpnconnectionsPeersubnetsPut(params *PcloudVpnconnections
 }
 
 /*
-PcloudVpnconnectionsPost creates v p n connection
+	PcloudVpnconnectionsPost creates v p n connection
 
-Create a new VPN Connection
+	Create a new VPN Connection
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsPost(params *PcloudVpnconnectionsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -539,9 +589,14 @@ func (a *Client) PcloudVpnconnectionsPost(params *PcloudVpnconnectionsPostParams
 }
 
 /*
-PcloudVpnconnectionsPut updates v p n connection
+	PcloudVpnconnectionsPut updates v p n connection
 
-update a VPN Connection (by its identifier)
+	update a VPN Connection (by its identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVpnconnectionsPut(params *PcloudVpnconnectionsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVpnconnectionsPutOK, error) {
 	// NOTE: parameters are not validated before sending

@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsDedicatedhostsDelete deletes a dedicated host c r n
+	InternalV1OperationsDedicatedhostsDelete deletes a dedicated host c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsDedicatedhostsDelete(params *InternalV1OperationsDedicatedhostsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsDedicatedhostsDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsDedicatedhostsDelete(params *InternalV1Oper
 }
 
 /*
-InternalV1OperationsDedicatedhostsPost creates a c r n for a dedicated host
+	InternalV1OperationsDedicatedhostsPost creates a c r n for a dedicated host
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsDedicatedhostsPost(params *InternalV1OperationsDedicatedhostsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsDedicatedhostsPostCreated, error) {
 	// NOTE: parameters are not validated before sending

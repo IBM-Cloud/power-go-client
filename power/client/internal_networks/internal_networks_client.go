@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1NetworksActionPost networks action service
+	InternalV1NetworksActionPost networks action service
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1NetworksActionPost(params *InternalV1NetworksActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1NetworksActionPost(params *InternalV1NetworksActionPo
 }
 
 /*
-InternalV1NetworksActionStatusGet gets status of the workspace from powerns and cloudant database
+	InternalV1NetworksActionStatusGet gets status of the workspace from powerns and cloudant database
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1NetworksActionStatusGet(params *InternalV1NetworksActionStatusGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionStatusGetOK, error) {
 	// NOTE: parameters are not validated before sending
