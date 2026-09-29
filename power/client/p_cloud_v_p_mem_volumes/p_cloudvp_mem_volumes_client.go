@@ -67,9 +67,14 @@ type ClientService interface {
 }
 
 /*
-PcloudPvminstancesVpmemVolumesDelete deletes a v p m e m volume attached to this p VM instance
+	PcloudPvminstancesVpmemVolumesDelete deletes a v p m e m volume attached to this p VM instance
 
-vPMEM volumes of PVM Instances using SAP profiles will return carved out memory. Other cases are a reduction from total memory.
+	vPMEM volumes of PVM Instances using SAP profiles will return carved out memory. Other cases are a reduction from total memory.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesDelete(params *PcloudPvminstancesVpmemVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -113,7 +118,13 @@ func (a *Client) PcloudPvminstancesVpmemVolumesDelete(params *PcloudPvminstances
 }
 
 /*
-PcloudPvminstancesVpmemVolumesGet gets information about a v p m e m volume
+	PcloudPvminstancesVpmemVolumesGet gets information about a v p m e m volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesGet(params *PcloudPvminstancesVpmemVolumesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -157,7 +168,13 @@ func (a *Client) PcloudPvminstancesVpmemVolumesGet(params *PcloudPvminstancesVpm
 }
 
 /*
-PcloudPvminstancesVpmemVolumesGetall lists all v p m e m volumes attached to this p VM instance
+	PcloudPvminstancesVpmemVolumesGetall lists all v p m e m volumes attached to this p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesGetall(params *PcloudPvminstancesVpmemVolumesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -201,9 +218,14 @@ func (a *Client) PcloudPvminstancesVpmemVolumesGetall(params *PcloudPvminstances
 }
 
 /*
-PcloudPvminstancesVpmemVolumesPost creates a v p m e m volume to be attached to this p VM instance
+	PcloudPvminstancesVpmemVolumesPost creates a v p m e m volume to be attached to this p VM instance
 
-vPMEM volumes of PVM Instances using SAP profiles will be carved out of profile total memory. Other cases are in addition to total memory.
+	vPMEM volumes of PVM Instances using SAP profiles will be carved out of profile total memory. Other cases are in addition to total memory.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesPost(params *PcloudPvminstancesVpmemVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -247,7 +269,13 @@ func (a *Client) PcloudPvminstancesVpmemVolumesPost(params *PcloudPvminstancesVp
 }
 
 /*
-PcloudPvminstancesVpmemVolumesPut updates a v p m e m volume attached to this p VM instance
+	PcloudPvminstancesVpmemVolumesPut updates a v p m e m volume attached to this p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVpmemVolumesPut(params *PcloudPvminstancesVpmemVolumesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVpmemVolumesPutOK, error) {
 	// NOTE: parameters are not validated before sending

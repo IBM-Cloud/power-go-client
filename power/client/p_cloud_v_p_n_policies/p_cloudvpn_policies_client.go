@@ -77,9 +77,14 @@ type ClientService interface {
 }
 
 /*
-PcloudIkepoliciesDelete deletes i k e policy
+	PcloudIkepoliciesDelete deletes i k e policy
 
-Delete an IKE Policy (by its unique identifier)
+	Delete an IKE Policy (by its unique identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIkepoliciesDelete(params *PcloudIkepoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -123,9 +128,14 @@ func (a *Client) PcloudIkepoliciesDelete(params *PcloudIkepoliciesDeleteParams, 
 }
 
 /*
-PcloudIkepoliciesGet gets the specified i k e policy
+	PcloudIkepoliciesGet gets the specified i k e policy
 
-Get an IKE Policy (by its unique identifier)
+	Get an IKE Policy (by its unique identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIkepoliciesGet(params *PcloudIkepoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -169,9 +179,14 @@ func (a *Client) PcloudIkepoliciesGet(params *PcloudIkepoliciesGetParams, authIn
 }
 
 /*
-PcloudIkepoliciesGetall gets all i k e policies
+	PcloudIkepoliciesGetall gets all i k e policies
 
-List all IKE Policies with all attributes
+	List all IKE Policies with all attributes
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIkepoliciesGetall(params *PcloudIkepoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -215,9 +230,14 @@ func (a *Client) PcloudIkepoliciesGetall(params *PcloudIkepoliciesGetallParams, 
 }
 
 /*
-PcloudIkepoliciesPost adds i k e policy
+	PcloudIkepoliciesPost adds i k e policy
 
-Add a new IKE Policy
+	Add a new IKE Policy
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIkepoliciesPost(params *PcloudIkepoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -261,9 +281,14 @@ func (a *Client) PcloudIkepoliciesPost(params *PcloudIkepoliciesPostParams, auth
 }
 
 /*
-PcloudIkepoliciesPut updates i k e policy
+	PcloudIkepoliciesPut updates i k e policy
 
-update an IKE Policy (by its unique identifier)
+	update an IKE Policy (by its unique identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIkepoliciesPut(params *PcloudIkepoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -307,9 +332,14 @@ func (a *Client) PcloudIkepoliciesPut(params *PcloudIkepoliciesPutParams, authIn
 }
 
 /*
-PcloudIpsecpoliciesDelete deletes IP sec policy
+	PcloudIpsecpoliciesDelete deletes IP sec policy
 
-Delete an IPSec Policy (by its unique identifier)
+	Delete an IPSec Policy (by its unique identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIpsecpoliciesDelete(params *PcloudIpsecpoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -353,9 +383,14 @@ func (a *Client) PcloudIpsecpoliciesDelete(params *PcloudIpsecpoliciesDeletePara
 }
 
 /*
-PcloudIpsecpoliciesGet gets the specified IP sec policy
+	PcloudIpsecpoliciesGet gets the specified IP sec policy
 
-Get an IPSec Policy (by its unique identifier)
+	Get an IPSec Policy (by its unique identifier)
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIpsecpoliciesGet(params *PcloudIpsecpoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -399,9 +434,14 @@ func (a *Client) PcloudIpsecpoliciesGet(params *PcloudIpsecpoliciesGetParams, au
 }
 
 /*
-PcloudIpsecpoliciesGetall gets all IP sec policies
+	PcloudIpsecpoliciesGetall gets all IP sec policies
 
-Get all IPSec Policies with all their attributes
+	Get all IPSec Policies with all their attributes
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIpsecpoliciesGetall(params *PcloudIpsecpoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -445,9 +485,14 @@ func (a *Client) PcloudIpsecpoliciesGetall(params *PcloudIpsecpoliciesGetallPara
 }
 
 /*
-PcloudIpsecpoliciesPost adds IP sec policy
+	PcloudIpsecpoliciesPost adds IP sec policy
 
-Add a new IPSec Policy
+	Add a new IPSec Policy
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIpsecpoliciesPost(params *PcloudIpsecpoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -491,9 +536,14 @@ func (a *Client) PcloudIpsecpoliciesPost(params *PcloudIpsecpoliciesPostParams, 
 }
 
 /*
-PcloudIpsecpoliciesPut updates IP sec policy
+	PcloudIpsecpoliciesPut updates IP sec policy
 
-update an IPSec Policy
+	update an IPSec Policy
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudIpsecpoliciesPut(params *PcloudIpsecpoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPutOK, error) {
 	// NOTE: parameters are not validated before sending

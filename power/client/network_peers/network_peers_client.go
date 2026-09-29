@@ -75,7 +75,13 @@ type ClientService interface {
 }
 
 /*
-V1NetworkPeersGetall gets the list of network peers
+	V1NetworkPeersGetall gets the list of network peers
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -119,7 +125,13 @@ func (a *Client) V1NetworkPeersGetall(params *V1NetworkPeersGetallParams, authIn
 }
 
 /*
-V1NetworkPeersIDDelete deletes a network peer
+	V1NetworkPeersIDDelete deletes a network peer
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -163,7 +175,13 @@ func (a *Client) V1NetworkPeersIDDelete(params *V1NetworkPeersIDDeleteParams, au
 }
 
 /*
-V1NetworkPeersIDGet gets the details of a network peer
+	V1NetworkPeersIDGet gets the details of a network peer
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -207,7 +225,13 @@ func (a *Client) V1NetworkPeersIDGet(params *V1NetworkPeersIDGetParams, authInfo
 }
 
 /*
-V1NetworkPeersIDPut updates a network peer
+	V1NetworkPeersIDPut updates a network peer
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersIDPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -251,7 +275,13 @@ func (a *Client) V1NetworkPeersIDPut(params *V1NetworkPeersIDPutParams, authInfo
 }
 
 /*
-V1NetworkPeersInterfacesGetall gets the list of interfaces for network peer
+	V1NetworkPeersInterfacesGetall gets the list of interfaces for network peer
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersInterfacesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -295,7 +325,13 @@ func (a *Client) V1NetworkPeersInterfacesGetall(params *V1NetworkPeersInterfaces
 }
 
 /*
-V1NetworkPeersPost creates a new network peer
+	V1NetworkPeersPost creates a new network peer
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersPost(params *V1NetworkPeersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -339,7 +375,13 @@ func (a *Client) V1NetworkPeersPost(params *V1NetworkPeersPostParams, authInfo r
 }
 
 /*
-V1NetworkPeersRouteFilterIDDelete deletes a route filter
+	V1NetworkPeersRouteFilterIDDelete deletes a route filter
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersRouteFilterIDDelete(params *V1NetworkPeersRouteFilterIDDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFilterIDDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -383,7 +425,13 @@ func (a *Client) V1NetworkPeersRouteFilterIDDelete(params *V1NetworkPeersRouteFi
 }
 
 /*
-V1NetworkPeersRouteFilterIDGet gets the details of a route filter
+	V1NetworkPeersRouteFilterIDGet gets the details of a route filter
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilterIDGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFilterIDGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -427,7 +475,13 @@ func (a *Client) V1NetworkPeersRouteFilterIDGet(params *V1NetworkPeersRouteFilte
 }
 
 /*
-V1NetworkPeersRouteFiltersPost creates a new route filter
+	V1NetworkPeersRouteFiltersPost creates a new route filter
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworkPeersRouteFiltersPost(params *V1NetworkPeersRouteFiltersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworkPeersRouteFiltersPostOK, error) {
 	// NOTE: parameters are not validated before sending

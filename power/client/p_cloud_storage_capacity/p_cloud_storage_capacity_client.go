@@ -65,7 +65,13 @@ type ClientService interface {
 }
 
 /*
-PcloudStoragecapacityPoolsGet storages capacity for a storage pool in a region
+	PcloudStoragecapacityPoolsGet storages capacity for a storage pool in a region
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudStoragecapacityPoolsGet(params *PcloudStoragecapacityPoolsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudStoragecapacityPoolsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -109,7 +115,13 @@ func (a *Client) PcloudStoragecapacityPoolsGet(params *PcloudStoragecapacityPool
 }
 
 /*
-PcloudStoragecapacityPoolsGetall storages capacity for all available storage pools in a region
+	PcloudStoragecapacityPoolsGetall storages capacity for all available storage pools in a region
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudStoragecapacityPoolsGetall(params *PcloudStoragecapacityPoolsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudStoragecapacityPoolsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -153,7 +165,13 @@ func (a *Client) PcloudStoragecapacityPoolsGetall(params *PcloudStoragecapacityP
 }
 
 /*
-PcloudStoragecapacityTypesGet storages capacity for a storage type in a region
+	PcloudStoragecapacityTypesGet storages capacity for a storage type in a region
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudStoragecapacityTypesGet(params *PcloudStoragecapacityTypesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudStoragecapacityTypesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -197,7 +215,13 @@ func (a *Client) PcloudStoragecapacityTypesGet(params *PcloudStoragecapacityType
 }
 
 /*
-PcloudStoragecapacityTypesGetall storages capacity for all available storage types in a region
+	PcloudStoragecapacityTypesGetall storages capacity for all available storage types in a region
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudStoragecapacityTypesGetall(params *PcloudStoragecapacityTypesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudStoragecapacityTypesGetallOK, error) {
 	// NOTE: parameters are not validated before sending

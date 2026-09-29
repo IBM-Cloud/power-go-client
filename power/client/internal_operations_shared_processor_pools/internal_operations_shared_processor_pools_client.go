@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsSharedprocessorpoolsDelete deletes a shared processor pool c r n
+	InternalV1OperationsSharedprocessorpoolsDelete deletes a shared processor pool c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsSharedprocessorpoolsDelete(params *InternalV1OperationsSharedprocessorpoolsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsSharedprocessorpoolsDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsSharedprocessorpoolsDelete(params *Internal
 }
 
 /*
-InternalV1OperationsSharedprocessorpoolsPost creates a c r n for a shared processor pool
+	InternalV1OperationsSharedprocessorpoolsPost creates a c r n for a shared processor pool
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsSharedprocessorpoolsPost(params *InternalV1OperationsSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsSharedprocessorpoolsPostCreated, error) {
 	// NOTE: parameters are not validated before sending

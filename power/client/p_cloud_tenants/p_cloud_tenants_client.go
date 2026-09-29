@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-PcloudTenantsGet gets a tenant s current state information
+	PcloudTenantsGet gets a tenant s current state information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsGet(params *PcloudTenantsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) PcloudTenantsGet(params *PcloudTenantsGetParams, authInfo runti
 }
 
 /*
-PcloudTenantsPut updates a tenant
+	PcloudTenantsPut updates a tenant
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTenantsPut(params *PcloudTenantsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTenantsPutOK, error) {
 	// NOTE: parameters are not validated before sending

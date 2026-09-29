@@ -63,7 +63,13 @@ type ClientService interface {
 }
 
 /*
-PcloudCloudinstancesJobsDelete deletes a cloud instance job
+	PcloudCloudinstancesJobsDelete deletes a cloud instance job
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesJobsDelete(params *PcloudCloudinstancesJobsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesJobsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -107,7 +113,13 @@ func (a *Client) PcloudCloudinstancesJobsDelete(params *PcloudCloudinstancesJobs
 }
 
 /*
-PcloudCloudinstancesJobsGet lists the detail of a job
+	PcloudCloudinstancesJobsGet lists the detail of a job
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesJobsGet(params *PcloudCloudinstancesJobsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesJobsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -151,7 +163,13 @@ func (a *Client) PcloudCloudinstancesJobsGet(params *PcloudCloudinstancesJobsGet
 }
 
 /*
-PcloudCloudinstancesJobsGetall lists up to the last 5 jobs initiated by the cloud instance
+	PcloudCloudinstancesJobsGetall lists up to the last 5 jobs initiated by the cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesJobsGetall(params *PcloudCloudinstancesJobsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesJobsGetallOK, error) {
 	// NOTE: parameters are not validated before sending

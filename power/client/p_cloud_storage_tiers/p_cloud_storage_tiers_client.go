@@ -59,7 +59,13 @@ type ClientService interface {
 }
 
 /*
-PcloudCloudinstancesStoragetiersGetall lists all supported storage tiers for this cloud instance
+	PcloudCloudinstancesStoragetiersGetall lists all supported storage tiers for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesStoragetiersGetall(params *PcloudCloudinstancesStoragetiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesStoragetiersGetallOK, error) {
 	// NOTE: parameters are not validated before sending

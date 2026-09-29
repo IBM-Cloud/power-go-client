@@ -115,7 +115,13 @@ type ClientService interface {
 }
 
 /*
-PcloudCloudinstancesVolumesFlashCopyMappingsGet gets a list of flashcopy mappings of a given volume
+	PcloudCloudinstancesVolumesFlashCopyMappingsGet gets a list of flashcopy mappings of a given volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesFlashCopyMappingsGet(params *PcloudCloudinstancesVolumesFlashCopyMappingsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesFlashCopyMappingsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -159,7 +165,13 @@ func (a *Client) PcloudCloudinstancesVolumesFlashCopyMappingsGet(params *PcloudC
 }
 
 /*
-PcloudCloudinstancesVolumesActionPost performs an action on a volume
+	PcloudCloudinstancesVolumesActionPost performs an action on a volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesActionPost(params *PcloudCloudinstancesVolumesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesActionPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -203,7 +215,13 @@ func (a *Client) PcloudCloudinstancesVolumesActionPost(params *PcloudCloudinstan
 }
 
 /*
-PcloudCloudinstancesVolumesDelete deletes a cloud instance volume
+	PcloudCloudinstancesVolumesDelete deletes a cloud instance volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesDelete(params *PcloudCloudinstancesVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -247,7 +265,13 @@ func (a *Client) PcloudCloudinstancesVolumesDelete(params *PcloudCloudinstancesV
 }
 
 /*
-PcloudCloudinstancesVolumesGet detaileds info of a volume
+	PcloudCloudinstancesVolumesGet detaileds info of a volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesGet(params *PcloudCloudinstancesVolumesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -291,7 +315,13 @@ func (a *Client) PcloudCloudinstancesVolumesGet(params *PcloudCloudinstancesVolu
 }
 
 /*
-PcloudCloudinstancesVolumesGetall lists all volumes for this cloud instance
+	PcloudCloudinstancesVolumesGetall lists all volumes for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesGetall(params *PcloudCloudinstancesVolumesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -335,7 +365,13 @@ func (a *Client) PcloudCloudinstancesVolumesGetall(params *PcloudCloudinstancesV
 }
 
 /*
-PcloudCloudinstancesVolumesPost creates a new data volume
+	PcloudCloudinstancesVolumesPost creates a new data volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesPost(params *PcloudCloudinstancesVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -379,7 +415,13 @@ func (a *Client) PcloudCloudinstancesVolumesPost(params *PcloudCloudinstancesVol
 }
 
 /*
-PcloudCloudinstancesVolumesPut updates a cloud instance volume
+	PcloudCloudinstancesVolumesPut updates a cloud instance volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesPut(params *PcloudCloudinstancesVolumesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -423,7 +465,13 @@ func (a *Client) PcloudCloudinstancesVolumesPut(params *PcloudCloudinstancesVolu
 }
 
 /*
-PcloudCloudinstancesVolumesRemoteCopyRelationshipGet gets remote copy relationship of a volume
+	PcloudCloudinstancesVolumesRemoteCopyRelationshipGet gets remote copy relationship of a volume
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudCloudinstancesVolumesRemoteCopyRelationshipGet(params *PcloudCloudinstancesVolumesRemoteCopyRelationshipGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudCloudinstancesVolumesRemoteCopyRelationshipGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -467,7 +515,13 @@ func (a *Client) PcloudCloudinstancesVolumesRemoteCopyRelationshipGet(params *Pc
 }
 
 /*
-PcloudPvminstancesVolumesDelete detaches a volume from a p VM instance
+	PcloudPvminstancesVolumesDelete detaches a volume from a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVolumesDelete(params *PcloudPvminstancesVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -511,7 +565,13 @@ func (a *Client) PcloudPvminstancesVolumesDelete(params *PcloudPvminstancesVolum
 }
 
 /*
-PcloudPvminstancesVolumesGet detaileds info of a volume attached to a p VM instance
+	PcloudPvminstancesVolumesGet detaileds info of a volume attached to a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVolumesGet(params *PcloudPvminstancesVolumesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -555,7 +615,13 @@ func (a *Client) PcloudPvminstancesVolumesGet(params *PcloudPvminstancesVolumesG
 }
 
 /*
-PcloudPvminstancesVolumesGetall lists all volumes attached to a p VM instance
+	PcloudPvminstancesVolumesGetall lists all volumes attached to a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVolumesGetall(params *PcloudPvminstancesVolumesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -604,6 +670,11 @@ func (a *Client) PcloudPvminstancesVolumesGetall(params *PcloudPvminstancesVolum
 	Attach a volume to a PVMInstance.
 
 >**Note**: Recommended for attaching data volumes. In the case of VMRM, it is recommended to use the 'Attach all volumes to a PVM instance' API for attaching the first boot volume.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVolumesPost(params *PcloudPvminstancesVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -647,7 +718,13 @@ func (a *Client) PcloudPvminstancesVolumesPost(params *PcloudPvminstancesVolumes
 }
 
 /*
-PcloudPvminstancesVolumesPut updates a volume attached to a p VM instance
+	PcloudPvminstancesVolumesPut updates a volume attached to a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVolumesPut(params *PcloudPvminstancesVolumesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -696,6 +773,11 @@ func (a *Client) PcloudPvminstancesVolumesPut(params *PcloudPvminstancesVolumesP
 	Set the PVMInstance volume as the boot volume.
 
 >**Note**: If a non-bootable volume is provided, it will be converted to a bootable volume and then attached.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPvminstancesVolumesSetbootPut(params *PcloudPvminstancesVolumesSetbootPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVolumesSetbootPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -739,7 +821,13 @@ func (a *Client) PcloudPvminstancesVolumesSetbootPut(params *PcloudPvminstancesV
 }
 
 /*
-PcloudV2PvminstancesVolumesDelete detaches multiple volumes from a p VM instance
+	PcloudV2PvminstancesVolumesDelete detaches multiple volumes from a p VM instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesVolumesDelete(params *PcloudV2PvminstancesVolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesVolumesDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -788,6 +876,11 @@ func (a *Client) PcloudV2PvminstancesVolumesDelete(params *PcloudV2PvminstancesV
 	Attach all volumes to a PVMInstance.
 
 >**Note**: In the case of VMRM, if a single volume ID is provided in the 'volumeIDs' field, that volume will be converted to a bootable volume and then attached.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2PvminstancesVolumesPost(params *PcloudV2PvminstancesVolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesVolumesPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -831,7 +924,13 @@ func (a *Client) PcloudV2PvminstancesVolumesPost(params *PcloudV2PvminstancesVol
 }
 
 /*
-PcloudV2VolumesClonePost creates a volume clone for specified volumes
+	PcloudV2VolumesClonePost creates a volume clone for specified volumes
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumesClonePost(params *PcloudV2VolumesClonePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesClonePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -875,7 +974,13 @@ func (a *Client) PcloudV2VolumesClonePost(params *PcloudV2VolumesClonePostParams
 }
 
 /*
-PcloudV2VolumesClonetasksGet gets the status of a volumes clone request for the specified clone task ID
+	PcloudV2VolumesClonetasksGet gets the status of a volumes clone request for the specified clone task ID
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumesClonetasksGet(params *PcloudV2VolumesClonetasksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesClonetasksGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -919,7 +1024,13 @@ func (a *Client) PcloudV2VolumesClonetasksGet(params *PcloudV2VolumesClonetasksG
 }
 
 /*
-PcloudV2VolumesDelete deletes all volumes
+	PcloudV2VolumesDelete deletes all volumes
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumesDelete(params *PcloudV2VolumesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesDeleteAccepted, *PcloudV2VolumesDeletePartialContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -963,7 +1074,13 @@ func (a *Client) PcloudV2VolumesDelete(params *PcloudV2VolumesDeleteParams, auth
 }
 
 /*
-PcloudV2VolumesGetall lists specified volumes for this cloud instance
+	PcloudV2VolumesGetall lists specified volumes for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumesGetall(params *PcloudV2VolumesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1007,7 +1124,13 @@ func (a *Client) PcloudV2VolumesGetall(params *PcloudV2VolumesGetallParams, auth
 }
 
 /*
-PcloudV2VolumesPost creates multiple data volumes from a single definition
+	PcloudV2VolumesPost creates multiple data volumes from a single definition
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumesPost(params *PcloudV2VolumesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -1051,9 +1174,14 @@ func (a *Client) PcloudV2VolumesPost(params *PcloudV2VolumesPostParams, authInfo
 }
 
 /*
-PcloudV2VolumescloneCancelPost cancels a volumes clone request
+	PcloudV2VolumescloneCancelPost cancels a volumes clone request
 
-Initiates the cleanup action that performs the cleanup of the preparatory clones and snapshot volumes.
+	Initiates the cleanup action that performs the cleanup of the preparatory clones and snapshot volumes.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumescloneCancelPost(params *PcloudV2VolumescloneCancelPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneCancelPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -1097,7 +1225,13 @@ func (a *Client) PcloudV2VolumescloneCancelPost(params *PcloudV2VolumescloneCanc
 }
 
 /*
-PcloudV2VolumescloneDelete deletes a volumes clone request
+	PcloudV2VolumescloneDelete deletes a volumes clone request
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumescloneDelete(params *PcloudV2VolumescloneDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1141,9 +1275,14 @@ func (a *Client) PcloudV2VolumescloneDelete(params *PcloudV2VolumescloneDeletePa
 }
 
 /*
-PcloudV2VolumescloneExecutePost initiates the execute action for a volumes clone request
+	PcloudV2VolumescloneExecutePost initiates the execute action for a volumes clone request
 
-Execute action creates the cloned volumes using the volume snapshots.
+	Execute action creates the cloned volumes using the volume snapshots.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumescloneExecutePost(params *PcloudV2VolumescloneExecutePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneExecutePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -1187,7 +1326,13 @@ func (a *Client) PcloudV2VolumescloneExecutePost(params *PcloudV2VolumescloneExe
 }
 
 /*
-PcloudV2VolumescloneGet gets the details for a volumes clone request
+	PcloudV2VolumescloneGet gets the details for a volumes clone request
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumescloneGet(params *PcloudV2VolumescloneGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1231,7 +1376,13 @@ func (a *Client) PcloudV2VolumescloneGet(params *PcloudV2VolumescloneGetParams, 
 }
 
 /*
-PcloudV2VolumescloneGetall gets the list of volumes clone request for a cloud instance
+	PcloudV2VolumescloneGetall gets the list of volumes clone request for a cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumescloneGetall(params *PcloudV2VolumescloneGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1283,6 +1434,11 @@ Requires a minimum of one volume to be in the `in-use` state.
 Requires a unique volumes clone name.
 Prepare action does the preparatory work for creating the snapshot volumes.
 >**Note**: If there is an existing prepare, user cannot trigger another prepare for the same set of volumes. Prepare should be followed by start and execute. If existing prepare does not have to be used then it should be first cancelled before the next prepare operation.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumesclonePost(params *PcloudV2VolumesclonePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumesclonePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -1326,9 +1482,14 @@ func (a *Client) PcloudV2VolumesclonePost(params *PcloudV2VolumesclonePostParams
 }
 
 /*
-PcloudV2VolumescloneStartPost initiates the start action for a volumes clone request
+	PcloudV2VolumescloneStartPost initiates the start action for a volumes clone request
 
-Start action starts the consistency group to initiate the flash copy.
+	Start action starts the consistency group to initiate the flash copy.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV2VolumescloneStartPost(params *PcloudV2VolumescloneStartPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2VolumescloneStartPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -1377,6 +1538,11 @@ func (a *Client) PcloudV2VolumescloneStartPost(params *PcloudV2VolumescloneStart
 	This API is deprecated, use v2 clone API to perform the volume clone.
 
 >*Note*: Support for this API will be available till 31st March 2023.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumesClonePost(params *PcloudVolumesClonePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumesClonePostOK, error) {
 	// NOTE: parameters are not validated before sending

@@ -77,7 +77,13 @@ type ClientService interface {
 }
 
 /*
-PcloudNetworksDelete deletes a network
+	PcloudNetworksDelete deletes a network
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksDelete(params *PcloudNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -121,7 +127,13 @@ func (a *Client) PcloudNetworksDelete(params *PcloudNetworksDeleteParams, authIn
 }
 
 /*
-PcloudNetworksGet gets a network s current state information
+	PcloudNetworksGet gets a network s current state information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksGet(params *PcloudNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -165,7 +177,13 @@ func (a *Client) PcloudNetworksGet(params *PcloudNetworksGetParams, authInfo run
 }
 
 /*
-PcloudNetworksGetall gets all networks in this cloud instance
+	PcloudNetworksGetall gets all networks in this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksGetall(params *PcloudNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -209,9 +227,14 @@ func (a *Client) PcloudNetworksGetall(params *PcloudNetworksGetallParams, authIn
 }
 
 /*
-PcloudNetworksPortsDelete deletes a network port
+	PcloudNetworksPortsDelete deletes a network port
 
-This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
+	This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPortsDelete(params *PcloudNetworksPortsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -255,9 +278,14 @@ func (a *Client) PcloudNetworksPortsDelete(params *PcloudNetworksPortsDeletePara
 }
 
 /*
-PcloudNetworksPortsGet gets a port s information
+	PcloudNetworksPortsGet gets a port s information
 
-This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
+	This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPortsGet(params *PcloudNetworksPortsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -301,9 +329,14 @@ func (a *Client) PcloudNetworksPortsGet(params *PcloudNetworksPortsGetParams, au
 }
 
 /*
-PcloudNetworksPortsGetall gets all ports for this network
+	PcloudNetworksPortsGetall gets all ports for this network
 
-This API is deprecated for /v1/networks/{network_id}/network-interfaces.
+	This API is deprecated for /v1/networks/{network_id}/network-interfaces.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPortsGetall(params *PcloudNetworksPortsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -347,9 +380,14 @@ func (a *Client) PcloudNetworksPortsGetall(params *PcloudNetworksPortsGetallPara
 }
 
 /*
-PcloudNetworksPortsPost performs port addition deletion and listing
+	PcloudNetworksPortsPost performs port addition deletion and listing
 
-This API is deprecated for /v1/networks/{network_id}/network-interfaces.
+	This API is deprecated for /v1/networks/{network_id}/network-interfaces.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPortsPost(params *PcloudNetworksPortsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -393,9 +431,14 @@ func (a *Client) PcloudNetworksPortsPost(params *PcloudNetworksPortsPostParams, 
 }
 
 /*
-PcloudNetworksPortsPut updates a port s information
+	PcloudNetworksPortsPut updates a port s information
 
-This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
+	This API is deprecated for /v1/networks/{network_id}/network-interfaces/{network_interface_id}.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPortsPut(params *PcloudNetworksPortsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPortsPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -439,7 +482,13 @@ func (a *Client) PcloudNetworksPortsPut(params *PcloudNetworksPortsPutParams, au
 }
 
 /*
-PcloudNetworksPost creates a new network
+	PcloudNetworksPost creates a new network
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPost(params *PcloudNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPostOK, *PcloudNetworksPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -483,7 +532,13 @@ func (a *Client) PcloudNetworksPost(params *PcloudNetworksPostParams, authInfo r
 }
 
 /*
-PcloudNetworksPut updates a network
+	PcloudNetworksPut updates a network
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudNetworksPut(params *PcloudNetworksPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudNetworksPutOK, error) {
 	// NOTE: parameters are not validated before sending

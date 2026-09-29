@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsImagesDelete deletes an image c r n
+	InternalV1OperationsImagesDelete deletes an image c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsImagesDelete(params *InternalV1OperationsImagesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsImagesDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsImagesDelete(params *InternalV1OperationsIm
 }
 
 /*
-InternalV1OperationsImagesPost creates a c r n for an image
+	InternalV1OperationsImagesPost creates a c r n for an image
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsImagesPost(params *InternalV1OperationsImagesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsImagesPostCreated, error) {
 	// NOTE: parameters are not validated before sending

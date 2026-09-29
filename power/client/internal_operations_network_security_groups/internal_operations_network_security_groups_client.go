@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1OperationsNetworksecuritygroupsDelete deletes a network security group c r n
+	InternalV1OperationsNetworksecuritygroupsDelete deletes a network security group c r n
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsNetworksecuritygroupsDelete(params *InternalV1OperationsNetworksecuritygroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsNetworksecuritygroupsDeleteNoContent, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) InternalV1OperationsNetworksecuritygroupsDelete(params *Interna
 }
 
 /*
-InternalV1OperationsNetworksecuritygroupsPost creates a c r n for a network security group
+	InternalV1OperationsNetworksecuritygroupsPost creates a c r n for a network security group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1OperationsNetworksecuritygroupsPost(params *InternalV1OperationsNetworksecuritygroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1OperationsNetworksecuritygroupsPostCreated, error) {
 	// NOTE: parameters are not validated before sending

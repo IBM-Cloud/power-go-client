@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-PcloudV1CloudinstancesAsyncjobsGet gets an asynchronous job of the cloud instance
+	PcloudV1CloudinstancesAsyncjobsGet gets an asynchronous job of the cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV1CloudinstancesAsyncjobsGet(params *PcloudV1CloudinstancesAsyncjobsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) PcloudV1CloudinstancesAsyncjobsGet(params *PcloudV1Cloudinstanc
 }
 
 /*
-PcloudV1CloudinstancesAsyncjobsGetall gets all asynchronous jobs of the cloud instance
+	PcloudV1CloudinstancesAsyncjobsGetall gets all asynchronous jobs of the cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudV1CloudinstancesAsyncjobsGetall(params *PcloudV1CloudinstancesAsyncjobsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetallOK, error) {
 	// NOTE: parameters are not validated before sending

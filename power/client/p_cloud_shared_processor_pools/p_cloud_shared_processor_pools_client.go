@@ -67,9 +67,14 @@ type ClientService interface {
 }
 
 /*
-PcloudSharedprocessorpoolsDelete deletes a shared processor pool
+	PcloudSharedprocessorpoolsDelete deletes a shared processor pool
 
-Deletes a shared processor pool (SPP) from the specified workspace. The pool must have no virtual server instances deployed before it can be deleted.
+	Deletes a shared processor pool (SPP) from the specified workspace. The pool must have no virtual server instances deployed before it can be deleted.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSharedprocessorpoolsDelete(params *PcloudSharedprocessorpoolsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -113,9 +118,14 @@ func (a *Client) PcloudSharedprocessorpoolsDelete(params *PcloudSharedprocessorp
 }
 
 /*
-PcloudSharedprocessorpoolsGet gets a shared processor pool
+	PcloudSharedprocessorpoolsGet gets a shared processor pool
 
-Retrieves the details of a shared processor pool (SPP) in the specified workspace.
+	Retrieves the details of a shared processor pool (SPP) in the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSharedprocessorpoolsGet(params *PcloudSharedprocessorpoolsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -159,9 +169,14 @@ func (a *Client) PcloudSharedprocessorpoolsGet(params *PcloudSharedprocessorpool
 }
 
 /*
-PcloudSharedprocessorpoolsGetall lists all shared processor pools
+	PcloudSharedprocessorpoolsGetall lists all shared processor pools
 
-Lists all shared processor pools belonging to the specified workspace.
+	Lists all shared processor pools belonging to the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSharedprocessorpoolsGetall(params *PcloudSharedprocessorpoolsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -205,9 +220,14 @@ func (a *Client) PcloudSharedprocessorpoolsGetall(params *PcloudSharedprocessorp
 }
 
 /*
-PcloudSharedprocessorpoolsPost creates a new shared processor pool
+	PcloudSharedprocessorpoolsPost creates a new shared processor pool
 
-Creates a new shared processor pool (SPP) in the specified workspace.
+	Creates a new shared processor pool (SPP) in the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 5 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoolsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -251,9 +271,14 @@ func (a *Client) PcloudSharedprocessorpoolsPost(params *PcloudSharedprocessorpoo
 }
 
 /*
-PcloudSharedprocessorpoolsPut updates a shared processor pool
+	PcloudSharedprocessorpoolsPut updates a shared processor pool
 
-Updates the name or reserved core count of a shared processor pool (SPP) in the specified workspace.
+	Updates the name or reserved core count of a shared processor pool (SPP) in the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSharedprocessorpoolsPut(params *PcloudSharedprocessorpoolsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSharedprocessorpoolsPutOK, error) {
 	// NOTE: parameters are not validated before sending

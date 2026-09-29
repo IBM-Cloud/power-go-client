@@ -59,7 +59,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1TransitgatewayGet gets the cloud instance transit gateway information
+	InternalV1TransitgatewayGet gets the cloud instance transit gateway information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1TransitgatewayGet(params *InternalV1TransitgatewayGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1TransitgatewayGetOK, error) {
 	// NOTE: parameters are not validated before sending

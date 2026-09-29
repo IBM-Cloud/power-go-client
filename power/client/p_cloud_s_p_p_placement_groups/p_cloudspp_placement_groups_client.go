@@ -69,9 +69,14 @@ type ClientService interface {
 }
 
 /*
-PcloudSppplacementgroupsDelete deletes a shared processor pool placement group
+	PcloudSppplacementgroupsDelete deletes a shared processor pool placement group
 
-Deletes a shared processor pool placement group from the specified workspace. The placement group must have no member shared processor pools before it can be deleted.
+	Deletes a shared processor pool placement group from the specified workspace. The placement group must have no member shared processor pools before it can be deleted.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSppplacementgroupsDelete(params *PcloudSppplacementgroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -115,9 +120,14 @@ func (a *Client) PcloudSppplacementgroupsDelete(params *PcloudSppplacementgroups
 }
 
 /*
-PcloudSppplacementgroupsGet gets a shared processor pool placement group
+	PcloudSppplacementgroupsGet gets a shared processor pool placement group
 
-Retrieves the details of a shared processor pool placement group in the specified workspace.
+	Retrieves the details of a shared processor pool placement group in the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSppplacementgroupsGet(params *PcloudSppplacementgroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -161,9 +171,14 @@ func (a *Client) PcloudSppplacementgroupsGet(params *PcloudSppplacementgroupsGet
 }
 
 /*
-PcloudSppplacementgroupsGetall lists all shared processor pool placement groups
+	PcloudSppplacementgroupsGetall lists all shared processor pool placement groups
 
-Lists all shared processor pool placement groups in the specified workspace.
+	Lists all shared processor pool placement groups in the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSppplacementgroupsGetall(params *PcloudSppplacementgroupsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -207,9 +222,14 @@ func (a *Client) PcloudSppplacementgroupsGetall(params *PcloudSppplacementgroups
 }
 
 /*
-PcloudSppplacementgroupsMembersDelete removes a member from a shared processor pool placement group
+	PcloudSppplacementgroupsMembersDelete removes a member from a shared processor pool placement group
 
-Removes a shared processor pool from the specified placement group.
+	Removes a shared processor pool from the specified placement group.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSppplacementgroupsMembersDelete(params *PcloudSppplacementgroupsMembersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsMembersDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -253,9 +273,14 @@ func (a *Client) PcloudSppplacementgroupsMembersDelete(params *PcloudSppplacemen
 }
 
 /*
-PcloudSppplacementgroupsMembersPost adds a member to a shared processor pool placement group
+	PcloudSppplacementgroupsMembersPost adds a member to a shared processor pool placement group
 
-Adds a shared processor pool as a member of the specified placement group.
+	Adds a shared processor pool as a member of the specified placement group.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSppplacementgroupsMembersPost(params *PcloudSppplacementgroupsMembersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsMembersPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -299,9 +324,14 @@ func (a *Client) PcloudSppplacementgroupsMembersPost(params *PcloudSppplacementg
 }
 
 /*
-PcloudSppplacementgroupsPost creates a shared processor pool placement group
+	PcloudSppplacementgroupsPost creates a shared processor pool placement group
 
-Creates a new shared processor pool placement group in the specified workspace.
+	Creates a new shared processor pool placement group in the specified workspace.
+
+This endpoint is subject to rate-limiting policies to ensure platform stability.
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudSppplacementgroupsPost(params *PcloudSppplacementgroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudSppplacementgroupsPostOK, error) {
 	// NOTE: parameters are not validated before sending

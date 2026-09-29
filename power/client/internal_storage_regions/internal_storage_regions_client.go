@@ -67,7 +67,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1StorageRegionsStoragePoolsGet gets the settings for given pool name
+	InternalV1StorageRegionsStoragePoolsGet gets the settings for given pool name
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1StorageRegionsStoragePoolsGet(params *InternalV1StorageRegionsStoragePoolsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1StorageRegionsStoragePoolsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -111,7 +117,13 @@ func (a *Client) InternalV1StorageRegionsStoragePoolsGet(params *InternalV1Stora
 }
 
 /*
-InternalV1StorageRegionsStoragePoolsGetall gets the current storage pools settings for a region zone
+	InternalV1StorageRegionsStoragePoolsGetall gets the current storage pools settings for a region zone
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1StorageRegionsStoragePoolsGetall(params *InternalV1StorageRegionsStoragePoolsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1StorageRegionsStoragePoolsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -155,7 +167,13 @@ func (a *Client) InternalV1StorageRegionsStoragePoolsGetall(params *InternalV1St
 }
 
 /*
-InternalV1StorageRegionsStoragePoolsPut updates the settings for given pool name
+	InternalV1StorageRegionsStoragePoolsPut updates the settings for given pool name
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1StorageRegionsStoragePoolsPut(params *InternalV1StorageRegionsStoragePoolsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1StorageRegionsStoragePoolsPutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -199,7 +217,13 @@ func (a *Client) InternalV1StorageRegionsStoragePoolsPut(params *InternalV1Stora
 }
 
 /*
-InternalV1StorageRegionsThresholdsGet gets the current default threshold settings for a region zone
+	InternalV1StorageRegionsThresholdsGet gets the current default threshold settings for a region zone
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1StorageRegionsThresholdsGet(params *InternalV1StorageRegionsThresholdsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1StorageRegionsThresholdsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -243,7 +267,13 @@ func (a *Client) InternalV1StorageRegionsThresholdsGet(params *InternalV1Storage
 }
 
 /*
-InternalV1StorageRegionsThresholdsPut updates a default threshold setting for a region zone
+	InternalV1StorageRegionsThresholdsPut updates a default threshold setting for a region zone
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1StorageRegionsThresholdsPut(params *InternalV1StorageRegionsThresholdsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1StorageRegionsThresholdsPutAccepted, error) {
 	// NOTE: parameters are not validated before sending

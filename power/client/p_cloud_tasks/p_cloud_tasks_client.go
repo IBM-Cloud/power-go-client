@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-PcloudTasksDelete deletes a task
+	PcloudTasksDelete deletes a task
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTasksDelete(params *PcloudTasksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTasksDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) PcloudTasksDelete(params *PcloudTasksDeleteParams, authInfo run
 }
 
 /*
-PcloudTasksGet gets a task
+	PcloudTasksGet gets a task
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudTasksGet(params *PcloudTasksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudTasksGetOK, error) {
 	// NOTE: parameters are not validated before sending

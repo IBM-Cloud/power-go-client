@@ -65,7 +65,13 @@ type ClientService interface {
 }
 
 /*
-PcloudDhcpDelete deletes d h c p server open shift internal use only
+	PcloudDhcpDelete deletes d h c p server open shift internal use only
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudDhcpDelete(params *PcloudDhcpDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
@@ -109,7 +115,13 @@ func (a *Client) PcloudDhcpDelete(params *PcloudDhcpDeleteParams, authInfo runti
 }
 
 /*
-PcloudDhcpGet gets d h c p server information open shift internal use only
+	PcloudDhcpGet gets d h c p server information open shift internal use only
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudDhcpGet(params *PcloudDhcpGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -153,7 +165,13 @@ func (a *Client) PcloudDhcpGet(params *PcloudDhcpGetParams, authInfo runtime.Cli
 }
 
 /*
-PcloudDhcpGetall gets all d h c p servers information open shift internal use only
+	PcloudDhcpGetall gets all d h c p servers information open shift internal use only
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudDhcpGetall(params *PcloudDhcpGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -197,7 +215,13 @@ func (a *Client) PcloudDhcpGetall(params *PcloudDhcpGetallParams, authInfo runti
 }
 
 /*
-PcloudDhcpPost creates a d h c p server open shift internal use only
+	PcloudDhcpPost creates a d h c p server open shift internal use only
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudDhcpPost(params *PcloudDhcpPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudDhcpPostAccepted, error) {
 	// NOTE: parameters are not validated before sending

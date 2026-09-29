@@ -61,7 +61,13 @@ type ClientService interface {
 }
 
 /*
-PcloudLocationsSnapshotrecoveryGet gets the snapshot recovery site details for the current location
+	PcloudLocationsSnapshotrecoveryGet gets the snapshot recovery site details for the current location
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudLocationsSnapshotrecoveryGet(params *PcloudLocationsSnapshotrecoveryGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -105,7 +111,13 @@ func (a *Client) PcloudLocationsSnapshotrecoveryGet(params *PcloudLocationsSnaps
 }
 
 /*
-PcloudLocationsSnapshotrecoveryGetall gets all snapshot recovery locations supported by power virtual server
+	PcloudLocationsSnapshotrecoveryGetall gets all snapshot recovery locations supported by power virtual server
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudLocationsSnapshotrecoveryGetall(params *PcloudLocationsSnapshotrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetallOK, error) {
 	// NOTE: parameters are not validated before sending

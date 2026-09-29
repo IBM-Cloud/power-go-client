@@ -67,7 +67,13 @@ type ClientService interface {
 }
 
 /*
-V1NetworksNetworkInterfacesDelete deletes a network interface
+	V1NetworksNetworkInterfacesDelete deletes a network interface
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworksNetworkInterfacesDelete(params *V1NetworksNetworkInterfacesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworksNetworkInterfacesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -111,7 +117,13 @@ func (a *Client) V1NetworksNetworkInterfacesDelete(params *V1NetworksNetworkInte
 }
 
 /*
-V1NetworksNetworkInterfacesGet gets a network interface s information
+	V1NetworksNetworkInterfacesGet gets a network interface s information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworksNetworkInterfacesGet(params *V1NetworksNetworkInterfacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworksNetworkInterfacesGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -155,7 +167,13 @@ func (a *Client) V1NetworksNetworkInterfacesGet(params *V1NetworksNetworkInterfa
 }
 
 /*
-V1NetworksNetworkInterfacesGetall gets all network interfaces for this network
+	V1NetworksNetworkInterfacesGetall gets all network interfaces for this network
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworksNetworkInterfacesGetall(params *V1NetworksNetworkInterfacesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworksNetworkInterfacesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -199,7 +217,13 @@ func (a *Client) V1NetworksNetworkInterfacesGetall(params *V1NetworksNetworkInte
 }
 
 /*
-V1NetworksNetworkInterfacesPost creates a network interface
+	V1NetworksNetworkInterfacesPost creates a network interface
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworksNetworkInterfacesPost(params *V1NetworksNetworkInterfacesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworksNetworkInterfacesPostCreated, error) {
 	// NOTE: parameters are not validated before sending
@@ -243,7 +267,13 @@ func (a *Client) V1NetworksNetworkInterfacesPost(params *V1NetworksNetworkInterf
 }
 
 /*
-V1NetworksNetworkInterfacesPut updates a network interface s information
+	V1NetworksNetworkInterfacesPut updates a network interface s information
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 90 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) V1NetworksNetworkInterfacesPut(params *V1NetworksNetworkInterfacesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*V1NetworksNetworkInterfacesPutOK, error) {
 	// NOTE: parameters are not validated before sending

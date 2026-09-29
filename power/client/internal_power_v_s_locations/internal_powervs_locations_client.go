@@ -65,7 +65,13 @@ type ClientService interface {
 }
 
 /*
-InternalV1PowervsLocationsActivatePut activates a power v s on prem location
+	InternalV1PowervsLocationsActivatePut activates a power v s on prem location
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1PowervsLocationsActivatePut(params *InternalV1PowervsLocationsActivatePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsActivatePutOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -109,7 +115,13 @@ func (a *Client) InternalV1PowervsLocationsActivatePut(params *InternalV1Powervs
 }
 
 /*
-InternalV1PowervsLocationsTagDelete deletes a power satellite tag
+	InternalV1PowervsLocationsTagDelete deletes a power satellite tag
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1PowervsLocationsTagDelete(params *InternalV1PowervsLocationsTagDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsTagDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -153,7 +165,13 @@ func (a *Client) InternalV1PowervsLocationsTagDelete(params *InternalV1PowervsLo
 }
 
 /*
-InternalV1PowervsLocationsTagPost adds a power satellite tag
+	InternalV1PowervsLocationsTagPost adds a power satellite tag
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1PowervsLocationsTagPost(params *InternalV1PowervsLocationsTagPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsTagPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -197,7 +215,13 @@ func (a *Client) InternalV1PowervsLocationsTagPost(params *InternalV1PowervsLoca
 }
 
 /*
-InternalV1PowervsLocationsTransitgatewayGet gets list of p e r enabled power v s locations
+	InternalV1PowervsLocationsTransitgatewayGet gets list of p e r enabled power v s locations
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) InternalV1PowervsLocationsTransitgatewayGet(params *InternalV1PowervsLocationsTransitgatewayGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowervsLocationsTransitgatewayGetOK, error) {
 	// NOTE: parameters are not validated before sending

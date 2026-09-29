@@ -69,7 +69,13 @@ type ClientService interface {
 }
 
 /*
-PcloudPlacementgroupsDelete deletes server placement group
+	PcloudPlacementgroupsDelete deletes server placement group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPlacementgroupsDelete(params *PcloudPlacementgroupsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPlacementgroupsDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -113,7 +119,13 @@ func (a *Client) PcloudPlacementgroupsDelete(params *PcloudPlacementgroupsDelete
 }
 
 /*
-PcloudPlacementgroupsGet gets server placement group detail
+	PcloudPlacementgroupsGet gets server placement group detail
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPlacementgroupsGet(params *PcloudPlacementgroupsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPlacementgroupsGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -157,7 +169,13 @@ func (a *Client) PcloudPlacementgroupsGet(params *PcloudPlacementgroupsGetParams
 }
 
 /*
-PcloudPlacementgroupsGetall gets all server placement groups
+	PcloudPlacementgroupsGetall gets all server placement groups
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPlacementgroupsGetall(params *PcloudPlacementgroupsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPlacementgroupsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -201,7 +219,13 @@ func (a *Client) PcloudPlacementgroupsGetall(params *PcloudPlacementgroupsGetall
 }
 
 /*
-PcloudPlacementgroupsMembersDelete removes server from placement group
+	PcloudPlacementgroupsMembersDelete removes server from placement group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPlacementgroupsMembersDelete(params *PcloudPlacementgroupsMembersDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPlacementgroupsMembersDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -245,7 +269,13 @@ func (a *Client) PcloudPlacementgroupsMembersDelete(params *PcloudPlacementgroup
 }
 
 /*
-PcloudPlacementgroupsMembersPost adds server to placement group
+	PcloudPlacementgroupsMembersPost adds server to placement group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPlacementgroupsMembersPost(params *PcloudPlacementgroupsMembersPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPlacementgroupsMembersPostOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -289,7 +319,13 @@ func (a *Client) PcloudPlacementgroupsMembersPost(params *PcloudPlacementgroupsM
 }
 
 /*
-PcloudPlacementgroupsPost creates a new server placement group
+	PcloudPlacementgroupsPost creates a new server placement group
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudPlacementgroupsPost(params *PcloudPlacementgroupsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPlacementgroupsPostOK, error) {
 	// NOTE: parameters are not validated before sending

@@ -63,7 +63,13 @@ type ClientService interface {
 }
 
 /*
-PcloudVolumeOnboardingGet gets the information of volume onboarding operation
+	PcloudVolumeOnboardingGet gets the information of volume onboarding operation
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumeOnboardingGet(params *PcloudVolumeOnboardingGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumeOnboardingGetOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -107,7 +113,13 @@ func (a *Client) PcloudVolumeOnboardingGet(params *PcloudVolumeOnboardingGetPara
 }
 
 /*
-PcloudVolumeOnboardingGetall lists all volume onboardings for this cloud instance
+	PcloudVolumeOnboardingGetall lists all volume onboardings for this cloud instance
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumeOnboardingGetall(params *PcloudVolumeOnboardingGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumeOnboardingGetallOK, error) {
 	// NOTE: parameters are not validated before sending
@@ -151,7 +163,13 @@ func (a *Client) PcloudVolumeOnboardingGetall(params *PcloudVolumeOnboardingGeta
 }
 
 /*
-PcloudVolumeOnboardingPost onboards auxiliary volumes to target site
+	PcloudVolumeOnboardingPost onboards auxiliary volumes to target site
+
+	This endpoint is subject to rate-limiting policies to ensure platform stability.
+
+Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+Scope: Tracked by user session (bearer token)
+Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
 */
 func (a *Client) PcloudVolumeOnboardingPost(params *PcloudVolumeOnboardingPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVolumeOnboardingPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
