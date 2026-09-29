@@ -24,9 +24,9 @@ type SnapshotV2 struct {
 	// The aggregated storage for the instance snapshot for each storage tier
 	AggregatedSnapshotUsage map[string]float64 `json:"aggregatedSnapshotUsage,omitempty"`
 
-	// Date when the instance snapshot completed
+	// Date when the instance snapshot completed. This will represent the date when in-place and zonal instance snapshots complete.  For a zonal instance snapshot with a remote peer instance snapshot, this will represent when both instance snapshots have completed.
 	// Format: date-time
-	CompletionDate strfmt.DateTime `json:"completionDate,omitempty"`
+	CompletionDate *strfmt.DateTime `json:"completionDate,omitempty"`
 
 	// List of copy volumes created for the zonal or regional instance snapshot. Valid only for a zonal and regional instance snapshots.
 	CopyVolumes []*CopyVolume `json:"copyVolumes,omitempty"`
@@ -47,7 +47,7 @@ type SnapshotV2 struct {
 
 	// Last Update Date
 	// Format: date-time
-	LastUpdateDate strfmt.DateTime `json:"lastUpdateDate,omitempty"`
+	LastUpdateDate *strfmt.DateTime `json:"lastUpdateDate,omitempty"`
 
 	// Name of the PVM instance snapshot
 	// Required: true
@@ -64,6 +64,10 @@ type SnapshotV2 struct {
 
 	// Information about the remote peer snapshot. Valid only for or zonal instance snapshots with a remote peer snapshot and regional snapshots. For zonal instance snapshot, this is the information about the remote regional instance snapshot. For regional instance snapshot, this is the information about the remote zonal instance snapshot.
 	RemotePeerSnapshot *RemotePeerSnapshot `json:"remotePeerSnapshot,omitempty"`
+
+	// After the given date, safe for applications to resume their workloads on the given snapshot volumes.
+	// Format: date-time
+	SafeToUnquiesceDate *strfmt.DateTime `json:"safeToUnquiesceDate,omitempty"`
 
 	// ID of the PVM instance snapshot
 	// Required: true
@@ -84,6 +88,10 @@ type SnapshotV2 struct {
 
 	// A map of volume snapshots included in the PVM instance snapshot
 	VolumeSnapshots map[string]string `json:"volumeSnapshots,omitempty"`
+
+	// Date when the zonal instance snapshot completed.
+	// Format: date-time
+	ZonalCompletionDate *strfmt.DateTime `json:"zonalCompletionDate,omitempty"`
 }
 
 // Validate validates this snapshot v2
@@ -122,6 +130,10 @@ func (m *SnapshotV2) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateSafeToUnquiesceDate(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.validateSnapshotID(formats); err != nil {
 		res = append(res, err)
 	}
@@ -131,6 +143,10 @@ func (m *SnapshotV2) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateUserTags(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateZonalCompletionDate(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -283,6 +299,18 @@ func (m *SnapshotV2) validateRemotePeerSnapshot(formats strfmt.Registry) error {
 	return nil
 }
 
+func (m *SnapshotV2) validateSafeToUnquiesceDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.SafeToUnquiesceDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("safeToUnquiesceDate", "body", "date-time", m.SafeToUnquiesceDate.String(), formats); err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func (m *SnapshotV2) validateSnapshotID(formats strfmt.Registry) error {
 
 	if err := validate.Required("snapshotID", "body", m.SnapshotID); err != nil {
@@ -316,6 +344,18 @@ func (m *SnapshotV2) validateUserTags(formats strfmt.Registry) error {
 			return ce.ValidateName("userTags")
 		}
 
+		return err
+	}
+
+	return nil
+}
+
+func (m *SnapshotV2) validateZonalCompletionDate(formats strfmt.Registry) error {
+	if swag.IsZero(m.ZonalCompletionDate) { // not required
+		return nil
+	}
+
+	if err := validate.FormatOf("zonalCompletionDate", "body", "date-time", m.ZonalCompletionDate.String(), formats); err != nil {
 		return err
 	}
 
