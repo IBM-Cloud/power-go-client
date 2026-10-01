@@ -8,9 +8,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
+
+	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudNetworksGetReader is a Reader for the PcloudNetworksGet structure.
@@ -73,9 +74,11 @@ func NewPcloudNetworksGetOK() *PcloudNetworksGetOK {
 	return &PcloudNetworksGetOK{}
 }
 
-// PcloudNetworksGetOK describes a response with status code 200, with default header values.
-//
-// OK
+/*
+PcloudNetworksGetOK describes a response with status code 200, with default header values.
+
+OK
+*/
 type PcloudNetworksGetOK struct {
 	Payload *models.Network
 }
@@ -141,9 +144,11 @@ func NewPcloudNetworksGetBadRequest() *PcloudNetworksGetBadRequest {
 	return &PcloudNetworksGetBadRequest{}
 }
 
-// PcloudNetworksGetBadRequest describes a response with status code 400, with default header values.
-//
-// Bad Request
+/*
+PcloudNetworksGetBadRequest describes a response with status code 400, with default header values.
+
+Bad Request
+*/
 type PcloudNetworksGetBadRequest struct {
 	Payload *models.Error
 }
@@ -209,9 +214,11 @@ func NewPcloudNetworksGetUnauthorized() *PcloudNetworksGetUnauthorized {
 	return &PcloudNetworksGetUnauthorized{}
 }
 
-// PcloudNetworksGetUnauthorized describes a response with status code 401, with default header values.
-//
-// Unauthorized
+/*
+PcloudNetworksGetUnauthorized describes a response with status code 401, with default header values.
+
+Unauthorized
+*/
 type PcloudNetworksGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -277,9 +284,11 @@ func NewPcloudNetworksGetForbidden() *PcloudNetworksGetForbidden {
 	return &PcloudNetworksGetForbidden{}
 }
 
-// PcloudNetworksGetForbidden describes a response with status code 403, with default header values.
-//
-// Forbidden
+/*
+PcloudNetworksGetForbidden describes a response with status code 403, with default header values.
+
+Forbidden
+*/
 type PcloudNetworksGetForbidden struct {
 	Payload *models.Error
 }
@@ -345,9 +354,11 @@ func NewPcloudNetworksGetNotFound() *PcloudNetworksGetNotFound {
 	return &PcloudNetworksGetNotFound{}
 }
 
-// PcloudNetworksGetNotFound describes a response with status code 404, with default header values.
-//
-// Not Found
+/*
+PcloudNetworksGetNotFound describes a response with status code 404, with default header values.
+
+Not Found
+*/
 type PcloudNetworksGetNotFound struct {
 	Payload *models.Error
 }
@@ -413,9 +424,11 @@ func NewPcloudNetworksGetConflict() *PcloudNetworksGetConflict {
 	return &PcloudNetworksGetConflict{}
 }
 
-// PcloudNetworksGetConflict describes a response with status code 409, with default header values.
-//
-// Conflict
+/*
+PcloudNetworksGetConflict describes a response with status code 409, with default header values.
+
+Conflict
+*/
 type PcloudNetworksGetConflict struct {
 	Payload *models.Error
 }
@@ -481,9 +494,11 @@ func NewPcloudNetworksGetInternalServerError() *PcloudNetworksGetInternalServerE
 	return &PcloudNetworksGetInternalServerError{}
 }
 
-// PcloudNetworksGetInternalServerError describes a response with status code 500, with default header values.
-//
-// Internal Server Error
+/*
+PcloudNetworksGetInternalServerError describes a response with status code 500, with default header values.
+
+Internal Server Error
+*/
 type PcloudNetworksGetInternalServerError struct {
 	Payload *models.Error
 }
