@@ -21,6 +21,19 @@ type PVMInstanceAction struct {
 	// Required: true
 	// Enum: ["dhcp-ip-sync","dumprestart","hard-reboot","immediate-shutdown","reset-state","soft-reboot","start","stop"]
 	Action *string `json:"action"`
+
+	// CHAP authentication username for iSCSI D-mode IPL; only applicable when action is 'start'; co-required with chapSecret.
+	// Max Length: 32
+	// Min Length: 1
+	// Pattern: ^[\x00-\x7F]{1,32}$
+	ChapName string `json:"chapName,omitempty"`
+
+	// CHAP authentication secret/password for iSCSI D-mode IPL; only applicable when action is 'start'; co-required with chapName.
+	// Max Length: 32
+	// Min Length: 12
+	// Pattern: ^[\x00-\x7F]{12,32}$
+	// Format: password
+	ChapSecret strfmt.Password `json:"chapSecret,omitempty"`
 }
 
 // Validate validates this p VM instance action
@@ -28,6 +41,14 @@ func (m *PVMInstanceAction) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateAction(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateChapName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateChapSecret(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -92,6 +113,50 @@ func (m *PVMInstanceAction) validateAction(formats strfmt.Registry) error {
 
 	// value enum
 	if err := m.validateActionEnum("action", "body", *m.Action); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceAction) validateChapName(formats strfmt.Registry) error {
+	if swag.IsZero(m.ChapName) { // not required
+		return nil
+	}
+
+	if err := validate.MinLength("chapName", "body", m.ChapName, 1); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("chapName", "body", m.ChapName, 32); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("chapName", "body", m.ChapName, `^[\x00-\x7F]{1,32}$`); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceAction) validateChapSecret(formats strfmt.Registry) error {
+	if swag.IsZero(m.ChapSecret) { // not required
+		return nil
+	}
+
+	if err := validate.MinLength("chapSecret", "body", m.ChapSecret.String(), 12); err != nil {
+		return err
+	}
+
+	if err := validate.MaxLength("chapSecret", "body", m.ChapSecret.String(), 32); err != nil {
+		return err
+	}
+
+	if err := validate.Pattern("chapSecret", "body", m.ChapSecret.String(), `^[\x00-\x7F]{12,32}$`); err != nil {
+		return err
+	}
+
+	if err := validate.FormatOf("chapSecret", "body", "password", m.ChapSecret.String(), formats); err != nil {
 		return err
 	}
 
