@@ -8,7 +8,7 @@ require (
 	github.com/apparentlymart/go-cidr v1.1.1
 	github.com/go-openapi/errors v0.22.9
 	github.com/go-openapi/runtime v0.28.0
-	github.com/go-openapi/strfmt v0.27.2
+	github.com/go-openapi/strfmt v0.27.3
 	github.com/go-openapi/swag v0.23.1
 	github.com/go-openapi/validate v0.24.0
 	github.com/stretchr/testify v1.12.1
