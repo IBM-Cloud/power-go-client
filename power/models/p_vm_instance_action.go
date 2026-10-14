@@ -33,7 +33,7 @@ type PVMInstanceAction struct {
 	// Min Length: 12
 	// Pattern: ^[\x00-\x7F]{12,32}$
 	// Format: password
-	ChapSecret strfmt.Password `json:"chapSecret,omitempty"`
+	ChapPassword strfmt.Password `json:"chap_password,omitempty"`
 }
 
 // Validate validates this p VM instance action
@@ -48,7 +48,7 @@ func (m *PVMInstanceAction) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateChapSecret(formats); err != nil {
+	if err := m.validateChapPassword(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -139,24 +139,24 @@ func (m *PVMInstanceAction) validateChapName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PVMInstanceAction) validateChapSecret(formats strfmt.Registry) error {
-	if swag.IsZero(m.ChapSecret) { // not required
+func (m *PVMInstanceAction) validateChapPassword(formats strfmt.Registry) error {
+	if swag.IsZero(m.ChapPassword) { // not required
 		return nil
 	}
 
-	if err := validate.MinLength("chapSecret", "body", m.ChapSecret.String(), 12); err != nil {
+	if err := validate.MinLength("chap_password", "body", m.ChapPassword.String(), 12); err != nil {
 		return err
 	}
 
-	if err := validate.MaxLength("chapSecret", "body", m.ChapSecret.String(), 32); err != nil {
+	if err := validate.MaxLength("chap_password", "body", m.ChapPassword.String(), 32); err != nil {
 		return err
 	}
 
-	if err := validate.Pattern("chapSecret", "body", m.ChapSecret.String(), `^[\x00-\x7F]{12,32}$`); err != nil {
+	if err := validate.Pattern("chap_password", "body", m.ChapPassword.String(), `^[\x00-\x7F]{12,32}$`); err != nil {
 		return err
 	}
 
-	if err := validate.FormatOf("chapSecret", "body", "password", m.ChapSecret.String(), formats); err != nil {
+	if err := validate.FormatOf("chap_password", "body", "password", m.ChapPassword.String(), formats); err != nil {
 		return err
 	}
 
