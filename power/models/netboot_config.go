@@ -4,27 +4,20 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
-// NetbootConfig Network boot configuration used for D-Mode IPL. Not used for other boot modes.
+// NetbootConfig Network boot configuration used for D-Mode IPL. Not used for other boot modes. Exactly one of 'iscsi' or 'nfs' must be provided.
 //
 // swagger:model NetbootConfig
 type NetbootConfig struct {
 
 	// iscsi
 	Iscsi *ISCSINetbootConfig `json:"iscsi,omitempty"`
-
-	// Network boot mode selection.
-	// Required: true
-	// Enum: ["iscsi","nfs"]
-	NetBootMode *string `json:"netBootMode"`
 
 	// nfs
 	Nfs *NFSNetbootConfig `json:"nfs,omitempty"`
@@ -35,10 +28,6 @@ func (m *NetbootConfig) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateIscsi(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNetBootMode(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -70,49 +59,6 @@ func (m *NetbootConfig) validateIscsi(formats strfmt.Registry) error {
 
 			return err
 		}
-	}
-
-	return nil
-}
-
-var netbootConfigTypeNetBootModePropEnum []any
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["iscsi","nfs"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		netbootConfigTypeNetBootModePropEnum = append(netbootConfigTypeNetBootModePropEnum, v)
-	}
-}
-
-const (
-
-	// NetbootConfigNetBootModeIscsi captures enum value "iscsi"
-	NetbootConfigNetBootModeIscsi string = "iscsi"
-
-	// NetbootConfigNetBootModeNfs captures enum value "nfs"
-	NetbootConfigNetBootModeNfs string = "nfs"
-)
-
-// prop value enum
-func (m *NetbootConfig) validateNetBootModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, netbootConfigTypeNetBootModePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *NetbootConfig) validateNetBootMode(formats strfmt.Registry) error {
-
-	if err := validate.Required("netBootMode", "body", m.NetBootMode); err != nil {
-		return err
-	}
-
-	// value enum
-	if err := m.validateNetBootModeEnum("netBootMode", "body", *m.NetBootMode); err != nil {
-		return err
 	}
 
 	return nil
