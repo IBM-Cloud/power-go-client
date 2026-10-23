@@ -4,13 +4,11 @@ package models
 
 import (
 	"context"
-	"encoding/json"
 	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
-	"github.com/go-openapi/validate"
 )
 
 // PVMInstanceNetbootConfig Current network boot configuration stored on the VSI.
@@ -21,10 +19,6 @@ type PVMInstanceNetbootConfig struct {
 	// iscsi
 	Iscsi *ISCSINetbootConfigView `json:"iscsi,omitempty"`
 
-	// Configured network boot mode.
-	// Enum: ["iscsi","nfs"]
-	NetBootMode string `json:"netBootMode,omitempty"`
-
 	// nfs
 	Nfs *NFSNetbootConfig `json:"nfs,omitempty"`
 }
@@ -34,10 +28,6 @@ func (m *PVMInstanceNetbootConfig) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	if err := m.validateIscsi(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateNetBootMode(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -69,48 +59,6 @@ func (m *PVMInstanceNetbootConfig) validateIscsi(formats strfmt.Registry) error 
 
 			return err
 		}
-	}
-
-	return nil
-}
-
-var pVmInstanceNetbootConfigTypeNetBootModePropEnum []any
-
-func init() {
-	var res []string
-	if err := json.Unmarshal([]byte(`["iscsi","nfs"]`), &res); err != nil {
-		panic(err)
-	}
-	for _, v := range res {
-		pVmInstanceNetbootConfigTypeNetBootModePropEnum = append(pVmInstanceNetbootConfigTypeNetBootModePropEnum, v)
-	}
-}
-
-const (
-
-	// PVMInstanceNetbootConfigNetBootModeIscsi captures enum value "iscsi"
-	PVMInstanceNetbootConfigNetBootModeIscsi string = "iscsi"
-
-	// PVMInstanceNetbootConfigNetBootModeNfs captures enum value "nfs"
-	PVMInstanceNetbootConfigNetBootModeNfs string = "nfs"
-)
-
-// prop value enum
-func (m *PVMInstanceNetbootConfig) validateNetBootModeEnum(path, location string, value string) error {
-	if err := validate.EnumCase(path, location, value, pVmInstanceNetbootConfigTypeNetBootModePropEnum, true); err != nil {
-		return err
-	}
-	return nil
-}
-
-func (m *PVMInstanceNetbootConfig) validateNetBootMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.NetBootMode) { // not required
-		return nil
-	}
-
-	// value enum
-	if err := m.validateNetBootModeEnum("netBootMode", "body", m.NetBootMode); err != nil {
-		return err
 	}
 
 	return nil

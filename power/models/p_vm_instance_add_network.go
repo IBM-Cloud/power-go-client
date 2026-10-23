@@ -27,7 +27,7 @@ type PVMInstanceAddNetwork struct {
 	// The requested ip address of this network interface. Only valid when networkID is specified.
 	IPAddress string `json:"ipAddress,omitempty"`
 
-	// ID of the network. Required if externalNetworkInterfaceCRN is not specified. Cannot be combined with externalNetworkInterfaceCRN.
+	// ID of the network.
 	NetworkID string `json:"networkID,omitempty"`
 
 	// Network security groups that the network interface is a member of. There is a limit of 1 network security group in the array. If not specified, default network security group is used. Only valid when networkID is specified.
