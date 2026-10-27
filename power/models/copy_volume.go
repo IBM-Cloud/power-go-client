@@ -35,6 +35,10 @@ type CopyVolume struct {
 	// The CRN of the source volume
 	// Required: true
 	SrcVolumeCRN *CRN `json:"srcVolumeCRN"`
+
+	// The ID of the source volume
+	// Required: true
+	SrcVolumeID *string `json:"srcVolumeID"`
 }
 
 // Validate validates this copy volume
@@ -58,6 +62,10 @@ func (m *CopyVolume) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateSrcVolumeCRN(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateSrcVolumeID(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -149,6 +157,15 @@ func (m *CopyVolume) validateSrcVolumeCRN(formats strfmt.Registry) error {
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *CopyVolume) validateSrcVolumeID(formats strfmt.Registry) error {
+
+	if err := validate.Required("srcVolumeID", "body", m.SrcVolumeID); err != nil {
+		return err
 	}
 
 	return nil

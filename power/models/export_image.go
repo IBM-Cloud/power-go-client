@@ -4,6 +4,7 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -31,6 +32,7 @@ type ExportImage struct {
 	Endpoint string `json:"endpoint,omitempty"`
 
 	// Cloud Object Storage Region; required for IBM COS
+	// Enum: ["au-syd","br-sao","ca-tor","che01","eu-de","eu-es","eu-gb","in-che","in-mum","jp-osa","jp-tok","us-east","us-south"]
 	Region string `json:"region,omitempty"`
 
 	// Cloud Object Storage Secret key
@@ -46,6 +48,10 @@ func (m *ExportImage) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateBucketName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegion(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -67,6 +73,81 @@ func (m *ExportImage) validateAccessKey(formats strfmt.Registry) error {
 func (m *ExportImage) validateBucketName(formats strfmt.Registry) error {
 
 	if err := validate.Required("bucketName", "body", m.BucketName); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var exportImageTypeRegionPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["au-syd","br-sao","ca-tor","che01","eu-de","eu-es","eu-gb","in-che","in-mum","jp-osa","jp-tok","us-east","us-south"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		exportImageTypeRegionPropEnum = append(exportImageTypeRegionPropEnum, v)
+	}
+}
+
+const (
+
+	// ExportImageRegionAuDashSyd captures enum value "au-syd"
+	ExportImageRegionAuDashSyd string = "au-syd"
+
+	// ExportImageRegionBrDashSao captures enum value "br-sao"
+	ExportImageRegionBrDashSao string = "br-sao"
+
+	// ExportImageRegionCaDashTor captures enum value "ca-tor"
+	ExportImageRegionCaDashTor string = "ca-tor"
+
+	// ExportImageRegionChe01 captures enum value "che01"
+	ExportImageRegionChe01 string = "che01"
+
+	// ExportImageRegionEuDashDe captures enum value "eu-de"
+	ExportImageRegionEuDashDe string = "eu-de"
+
+	// ExportImageRegionEuDashEs captures enum value "eu-es"
+	ExportImageRegionEuDashEs string = "eu-es"
+
+	// ExportImageRegionEuDashGb captures enum value "eu-gb"
+	ExportImageRegionEuDashGb string = "eu-gb"
+
+	// ExportImageRegionInDashChe captures enum value "in-che"
+	ExportImageRegionInDashChe string = "in-che"
+
+	// ExportImageRegionInDashMum captures enum value "in-mum"
+	ExportImageRegionInDashMum string = "in-mum"
+
+	// ExportImageRegionJpDashOsa captures enum value "jp-osa"
+	ExportImageRegionJpDashOsa string = "jp-osa"
+
+	// ExportImageRegionJpDashTok captures enum value "jp-tok"
+	ExportImageRegionJpDashTok string = "jp-tok"
+
+	// ExportImageRegionUsDashEast captures enum value "us-east"
+	ExportImageRegionUsDashEast string = "us-east"
+
+	// ExportImageRegionUsDashSouth captures enum value "us-south"
+	ExportImageRegionUsDashSouth string = "us-south"
+)
+
+// prop value enum
+func (m *ExportImage) validateRegionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, exportImageTypeRegionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *ExportImage) validateRegion(formats strfmt.Registry) error {
+	if swag.IsZero(m.Region) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateRegionEnum("region", "body", m.Region); err != nil {
 		return err
 	}
 

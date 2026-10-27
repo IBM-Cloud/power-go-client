@@ -51,6 +51,7 @@ type CreateCosImageImportJob struct {
 	OsType string `json:"osType,omitempty"`
 
 	// Cloud Object Storage region
+	// Enum: ["au-syd","br-sao","ca-tor","che01","eu-de","eu-es","eu-gb","in-che","in-mum","jp-osa","jp-tok","us-east","us-south"]
 	Region string `json:"region,omitempty"`
 
 	// Indicates if the image is required to be created in a storage pool that support replication instance snapshots; required if pvm instance need to be on a storage pool that supports replicated instance snapshots. 'none' indicates support not needed; 'zonal_only' indicates support needed for only zonal instance snapshots; 'zonal_with_regional' indicates support needed for both zonal and regional instance snapshots.
@@ -98,6 +99,10 @@ func (m *CreateCosImageImportJob) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateOsType(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateRegion(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -253,6 +258,81 @@ func (m *CreateCosImageImportJob) validateOsType(formats strfmt.Registry) error 
 
 	// value enum
 	if err := m.validateOsTypeEnum("osType", "body", m.OsType); err != nil {
+		return err
+	}
+
+	return nil
+}
+
+var createCosImageImportJobTypeRegionPropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["au-syd","br-sao","ca-tor","che01","eu-de","eu-es","eu-gb","in-che","in-mum","jp-osa","jp-tok","us-east","us-south"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		createCosImageImportJobTypeRegionPropEnum = append(createCosImageImportJobTypeRegionPropEnum, v)
+	}
+}
+
+const (
+
+	// CreateCosImageImportJobRegionAuDashSyd captures enum value "au-syd"
+	CreateCosImageImportJobRegionAuDashSyd string = "au-syd"
+
+	// CreateCosImageImportJobRegionBrDashSao captures enum value "br-sao"
+	CreateCosImageImportJobRegionBrDashSao string = "br-sao"
+
+	// CreateCosImageImportJobRegionCaDashTor captures enum value "ca-tor"
+	CreateCosImageImportJobRegionCaDashTor string = "ca-tor"
+
+	// CreateCosImageImportJobRegionChe01 captures enum value "che01"
+	CreateCosImageImportJobRegionChe01 string = "che01"
+
+	// CreateCosImageImportJobRegionEuDashDe captures enum value "eu-de"
+	CreateCosImageImportJobRegionEuDashDe string = "eu-de"
+
+	// CreateCosImageImportJobRegionEuDashEs captures enum value "eu-es"
+	CreateCosImageImportJobRegionEuDashEs string = "eu-es"
+
+	// CreateCosImageImportJobRegionEuDashGb captures enum value "eu-gb"
+	CreateCosImageImportJobRegionEuDashGb string = "eu-gb"
+
+	// CreateCosImageImportJobRegionInDashChe captures enum value "in-che"
+	CreateCosImageImportJobRegionInDashChe string = "in-che"
+
+	// CreateCosImageImportJobRegionInDashMum captures enum value "in-mum"
+	CreateCosImageImportJobRegionInDashMum string = "in-mum"
+
+	// CreateCosImageImportJobRegionJpDashOsa captures enum value "jp-osa"
+	CreateCosImageImportJobRegionJpDashOsa string = "jp-osa"
+
+	// CreateCosImageImportJobRegionJpDashTok captures enum value "jp-tok"
+	CreateCosImageImportJobRegionJpDashTok string = "jp-tok"
+
+	// CreateCosImageImportJobRegionUsDashEast captures enum value "us-east"
+	CreateCosImageImportJobRegionUsDashEast string = "us-east"
+
+	// CreateCosImageImportJobRegionUsDashSouth captures enum value "us-south"
+	CreateCosImageImportJobRegionUsDashSouth string = "us-south"
+)
+
+// prop value enum
+func (m *CreateCosImageImportJob) validateRegionEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, createCosImageImportJobTypeRegionPropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *CreateCosImageImportJob) validateRegion(formats strfmt.Registry) error {
+	if swag.IsZero(m.Region) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateRegionEnum("region", "body", m.Region); err != nil {
 		return err
 	}
 

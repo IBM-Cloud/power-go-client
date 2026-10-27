@@ -22,7 +22,7 @@ type PVMInstanceAction struct {
 	// Enum: ["dhcp-ip-sync","dumprestart","hard-reboot","immediate-shutdown","reset-state","soft-reboot","start","stop"]
 	Action *string `json:"action"`
 
-	// CHAP authentication username for iSCSI D-mode IPL; only applicable when action is 'start'; co-required with chapSecret.
+	// CHAP authentication username for iSCSI D-mode IPL; only applicable when action is 'start'; co-required with chap_password.
 	// Max Length: 32
 	// Min Length: 1
 	// Pattern: ^[\x00-\x7F]{1,32}$

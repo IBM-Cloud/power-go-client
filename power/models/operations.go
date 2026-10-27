@@ -22,8 +22,8 @@ type Operations struct {
 	// Enum: ["a","b","c","d"]
 	BootMode string `json:"bootMode,omitempty"`
 
-	// netboot
-	Netboot *NetbootConfig `json:"netboot,omitempty"`
+	// net boot
+	NetBoot *NetbootConfig `json:"netBoot,omitempty"`
 
 	// Name of the server operating mode
 	// Enum: ["normal","manual"]
@@ -42,7 +42,7 @@ func (m *Operations) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateNetboot(formats); err != nil {
+	if err := m.validateNetBoot(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -108,20 +108,20 @@ func (m *Operations) validateBootMode(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *Operations) validateNetboot(formats strfmt.Registry) error {
-	if swag.IsZero(m.Netboot) { // not required
+func (m *Operations) validateNetBoot(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetBoot) { // not required
 		return nil
 	}
 
-	if m.Netboot != nil {
-		if err := m.Netboot.Validate(formats); err != nil {
+	if m.NetBoot != nil {
+		if err := m.NetBoot.Validate(formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("netboot")
+				return ve.ValidateName("netBoot")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("netboot")
+				return ce.ValidateName("netBoot")
 			}
 
 			return err
@@ -237,7 +237,7 @@ func (m *Operations) validateTask(formats strfmt.Registry) error {
 func (m *Operations) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
 	var res []error
 
-	if err := m.contextValidateNetboot(ctx, formats); err != nil {
+	if err := m.contextValidateNetBoot(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -247,22 +247,22 @@ func (m *Operations) ContextValidate(ctx context.Context, formats strfmt.Registr
 	return nil
 }
 
-func (m *Operations) contextValidateNetboot(ctx context.Context, formats strfmt.Registry) error {
+func (m *Operations) contextValidateNetBoot(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Netboot != nil {
+	if m.NetBoot != nil {
 
-		if swag.IsZero(m.Netboot) { // not required
+		if swag.IsZero(m.NetBoot) { // not required
 			return nil
 		}
 
-		if err := m.Netboot.ContextValidate(ctx, formats); err != nil {
+		if err := m.NetBoot.ContextValidate(ctx, formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("netboot")
+				return ve.ValidateName("netBoot")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("netboot")
+				return ce.ValidateName("netBoot")
 			}
 
 			return err
