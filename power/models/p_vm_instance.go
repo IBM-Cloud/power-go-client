@@ -89,8 +89,8 @@ type PVMInstance struct {
 	// Minimum number of processors that can be allocated (for resize)
 	Minproc float64 `json:"minproc,omitempty"`
 
-	// netboot
-	Netboot *PVMInstanceNetbootConfig `json:"netboot,omitempty"`
+	// net boot
+	NetBoot *PVMInstanceNetbootConfig `json:"netBoot,omitempty"`
 
 	// (deprecated - replaced by networks) List of Network IDs
 	// Required: true
@@ -248,7 +248,7 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateNetboot(formats); err != nil {
+	if err := m.validateNetBoot(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -535,20 +535,20 @@ func (m *PVMInstance) validateMetadataService(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PVMInstance) validateNetboot(formats strfmt.Registry) error {
-	if swag.IsZero(m.Netboot) { // not required
+func (m *PVMInstance) validateNetBoot(formats strfmt.Registry) error {
+	if swag.IsZero(m.NetBoot) { // not required
 		return nil
 	}
 
-	if m.Netboot != nil {
-		if err := m.Netboot.Validate(formats); err != nil {
+	if m.NetBoot != nil {
+		if err := m.NetBoot.Validate(formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("netboot")
+				return ve.ValidateName("netBoot")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("netboot")
+				return ce.ValidateName("netBoot")
 			}
 
 			return err
@@ -930,7 +930,7 @@ func (m *PVMInstance) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
-	if err := m.contextValidateNetboot(ctx, formats); err != nil {
+	if err := m.contextValidateNetBoot(ctx, formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -1148,22 +1148,22 @@ func (m *PVMInstance) contextValidateMetadataService(ctx context.Context, format
 	return nil
 }
 
-func (m *PVMInstance) contextValidateNetboot(ctx context.Context, formats strfmt.Registry) error {
+func (m *PVMInstance) contextValidateNetBoot(ctx context.Context, formats strfmt.Registry) error {
 
-	if m.Netboot != nil {
+	if m.NetBoot != nil {
 
-		if swag.IsZero(m.Netboot) { // not required
+		if swag.IsZero(m.NetBoot) { // not required
 			return nil
 		}
 
-		if err := m.Netboot.ContextValidate(ctx, formats); err != nil {
+		if err := m.NetBoot.ContextValidate(ctx, formats); err != nil {
 			ve := new(errors.Validation)
 			if stderrors.As(err, &ve) {
-				return ve.ValidateName("netboot")
+				return ve.ValidateName("netBoot")
 			}
 			ce := new(errors.CompositeError)
 			if stderrors.As(err, &ce) {
-				return ce.ValidateName("netboot")
+				return ce.ValidateName("netBoot")
 			}
 
 			return err

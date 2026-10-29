@@ -4,11 +4,13 @@ package models
 
 import (
 	"context"
+	"encoding/json"
 	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag"
+	"github.com/go-openapi/validate"
 )
 
 // PVMInstanceNetbootConfig Current network boot configuration stored on the VSI.
@@ -16,16 +18,28 @@ import (
 // swagger:model PVMInstanceNetbootConfig
 type PVMInstanceNetbootConfig struct {
 
+	// Name of the server boot mode a(Boot from disk using copy A), b(Boot from disk using copy B), c(Reserved for IBM lab use only), d(Boot from media/drives)
+	// Enum: ["a","b","c","d"]
+	BootMode string `json:"bootMode,omitempty"`
+
 	// iscsi
 	Iscsi *ISCSINetbootConfigView `json:"iscsi,omitempty"`
 
 	// nfs
 	Nfs *NFSNetbootConfig `json:"nfs,omitempty"`
+
+	// Name of the server operating mode
+	// Enum: ["normal","manual"]
+	OperatingMode string `json:"operatingMode,omitempty"`
 }
 
 // Validate validates this p VM instance netboot config
 func (m *PVMInstanceNetbootConfig) Validate(formats strfmt.Registry) error {
 	var res []error
+
+	if err := m.validateBootMode(formats); err != nil {
+		res = append(res, err)
+	}
 
 	if err := m.validateIscsi(formats); err != nil {
 		res = append(res, err)
@@ -35,9 +49,61 @@ func (m *PVMInstanceNetbootConfig) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
+	if err := m.validateOperatingMode(formats); err != nil {
+		res = append(res, err)
+	}
+
 	if len(res) > 0 {
 		return errors.CompositeValidationError(res...)
 	}
+	return nil
+}
+
+var pVmInstanceNetbootConfigTypeBootModePropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["a","b","c","d"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceNetbootConfigTypeBootModePropEnum = append(pVmInstanceNetbootConfigTypeBootModePropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceNetbootConfigBootModeA captures enum value "a"
+	PVMInstanceNetbootConfigBootModeA string = "a"
+
+	// PVMInstanceNetbootConfigBootModeB captures enum value "b"
+	PVMInstanceNetbootConfigBootModeB string = "b"
+
+	// PVMInstanceNetbootConfigBootModeC captures enum value "c"
+	PVMInstanceNetbootConfigBootModeC string = "c"
+
+	// PVMInstanceNetbootConfigBootModeD captures enum value "d"
+	PVMInstanceNetbootConfigBootModeD string = "d"
+)
+
+// prop value enum
+func (m *PVMInstanceNetbootConfig) validateBootModeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceNetbootConfigTypeBootModePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceNetbootConfig) validateBootMode(formats strfmt.Registry) error {
+	if swag.IsZero(m.BootMode) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateBootModeEnum("bootMode", "body", m.BootMode); err != nil {
+		return err
+	}
+
 	return nil
 }
 
@@ -82,6 +148,48 @@ func (m *PVMInstanceNetbootConfig) validateNfs(formats strfmt.Registry) error {
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+var pVmInstanceNetbootConfigTypeOperatingModePropEnum []any
+
+func init() {
+	var res []string
+	if err := json.Unmarshal([]byte(`["normal","manual"]`), &res); err != nil {
+		panic(err)
+	}
+	for _, v := range res {
+		pVmInstanceNetbootConfigTypeOperatingModePropEnum = append(pVmInstanceNetbootConfigTypeOperatingModePropEnum, v)
+	}
+}
+
+const (
+
+	// PVMInstanceNetbootConfigOperatingModeNormal captures enum value "normal"
+	PVMInstanceNetbootConfigOperatingModeNormal string = "normal"
+
+	// PVMInstanceNetbootConfigOperatingModeManual captures enum value "manual"
+	PVMInstanceNetbootConfigOperatingModeManual string = "manual"
+)
+
+// prop value enum
+func (m *PVMInstanceNetbootConfig) validateOperatingModeEnum(path, location string, value string) error {
+	if err := validate.EnumCase(path, location, value, pVmInstanceNetbootConfigTypeOperatingModePropEnum, true); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (m *PVMInstanceNetbootConfig) validateOperatingMode(formats strfmt.Registry) error {
+	if swag.IsZero(m.OperatingMode) { // not required
+		return nil
+	}
+
+	// value enum
+	if err := m.validateOperatingModeEnum("operatingMode", "body", m.OperatingMode); err != nil {
+		return err
 	}
 
 	return nil
