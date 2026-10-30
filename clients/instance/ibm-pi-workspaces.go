@@ -42,14 +42,14 @@ func NewIBMPIWorkspacesClient(ctx context.Context, sess *ibmpisession.IBMPISessi
 
 // Get a workspace
 func (f *IBMPIWorkspacesClient) Get(cloudInstanceID string) (*models.Workspace, error) {
-	params := workspaces.NewV1WorkspacesGetParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).WithWorkspaceID(cloudInstanceID)
+	params := workspaces.NewV1WorkspacesGetParams().WithTimeout(helpers.PIGetTimeOut).WithWorkspaceID(cloudInstanceID)
 	var authInfo runtime.ClientAuthInfoWriter
 	if f.session.IsOnPrem() {
 		authInfo = f.session.AuthInfo(f.cloudInstanceID)
 	} else {
 		authInfo = f.session.AuthInfoV2()
 	}
-	resp, err := f.session.Power.Workspaces.V1WorkspacesGet(params, authInfo)
+	resp, err := f.session.Power.Workspaces.V1WorkspacesGetContext(f.ctx, params, authInfo)
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf(errors.GetWorkspaceOperationFailed, f.cloudInstanceID, err))
 	}
@@ -64,8 +64,8 @@ func (f *IBMPIWorkspacesClient) GetAll() (*models.Workspaces, error) {
 	if f.session.IsOnPrem() {
 		return nil, fmt.Errorf(helpers.NotOnPremSupported)
 	}
-	params := workspaces.NewV1WorkspacesGetallParams().WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
-	resp, err := f.session.Power.Workspaces.V1WorkspacesGetall(params, f.session.AuthInfoV2())
+	params := workspaces.NewV1WorkspacesGetallParams().WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.session.Power.Workspaces.V1WorkspacesGetallContext(f.ctx, params, f.session.AuthInfoV2())
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all Workspaces: %w", err))
 	}

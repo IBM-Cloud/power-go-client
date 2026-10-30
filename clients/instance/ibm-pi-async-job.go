@@ -28,10 +28,10 @@ func NewIBMPIAsyncJobClient(ctx context.Context, sess *ibmpisession.IBMPISession
 // Get gets an asynchronous job of the cloud instance
 func (f *IBMPIAsyncJobClient) Get(asyncJobID string) (*models.AsyncJob, error) {
 	params := p_cloud_async_jobs.NewPcloudV1CloudinstancesAsyncjobsGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID).
 		WithAsyncJobID(asyncJobID)
-	resp, err := f.session.Power.PCloudAsyncJobs.PcloudV1CloudinstancesAsyncjobsGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.PCloudAsyncJobs.PcloudV1CloudinstancesAsyncjobsGetContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get PI Async Job %s: %w", asyncJobID, err))
 	}
@@ -44,9 +44,9 @@ func (f *IBMPIAsyncJobClient) Get(asyncJobID string) (*models.AsyncJob, error) {
 // GetAll gets all asynchronous jobs of the cloud instance
 func (f *IBMPIAsyncJobClient) GetAll() (*models.AsyncJobs, error) {
 	params := p_cloud_async_jobs.NewPcloudV1CloudinstancesAsyncjobsGetallParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudAsyncJobs.PcloudV1CloudinstancesAsyncjobsGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.PCloudAsyncJobs.PcloudV1CloudinstancesAsyncjobsGetallContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all PI Async Jobs: %w", err))
 	}
