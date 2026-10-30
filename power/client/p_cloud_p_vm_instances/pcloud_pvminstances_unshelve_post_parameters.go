@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudPvminstancesUnshelvePostParams creates a new PcloudPvminstancesUnshelvePostParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudPvminstancesUnshelvePostParams() *PcloudPvminstancesUnshelvePostParams {
-	return &PcloudPvminstancesUnshelvePostParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudPvminstancesUnshelvePostParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudPvminstancesUnshelvePostParamsWithTimeout creates a new PcloudPvminstancesUnshelvePostParams object
 // with the ability to set a timeout on a request.
 func NewPcloudPvminstancesUnshelvePostParamsWithTimeout(timeout time.Duration) *PcloudPvminstancesUnshelvePostParams {
 	return &PcloudPvminstancesUnshelvePostParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudPvminstancesUnshelvePostParamsWithContext creates a new PcloudPvminstancesUnshelvePostParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudPvminstancesUnshelvePostParams].
 func NewPcloudPvminstancesUnshelvePostParamsWithContext(ctx context.Context) *PcloudPvminstancesUnshelvePostParams {
 	return &PcloudPvminstancesUnshelvePostParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,27 +63,24 @@ PcloudPvminstancesUnshelvePostParams contains all the parameters to send to the 
 */
 type PcloudPvminstancesUnshelvePostParams struct {
 
-	/* Body.
-
-	   Parameters for unshelving the VSI.
-	*/
+	// Body.
+	//
+	// Parameters for unshelving the VSI.
 	Body *models.PVMInstanceUnshelve
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	/* PvmInstanceID.
-
-	   PCloud PVM Instance ID
-	*/
+	// PvmInstanceID.
+	//
+	// PCloud PVM Instance ID
 	PvmInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud pvminstances unshelve post params (not the query body).
@@ -98,76 +98,79 @@ func (o *PcloudPvminstancesUnshelvePostParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud pvminstances unshelve post params
+// WithTimeout adds the timeout to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) WithTimeout(timeout time.Duration) *PcloudPvminstancesUnshelvePostParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud pvminstances unshelve post params
+// SetTimeout adds the timeout to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud pvminstances unshelve post params
+// WithContext adds the context to the pcloud pvminstances unshelve post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudPvminstancesUnshelvePostParams].
 func (o *PcloudPvminstancesUnshelvePostParams) WithContext(ctx context.Context) *PcloudPvminstancesUnshelvePostParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud pvminstances unshelve post params
+// SetContext adds the context to the pcloud pvminstances unshelve post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudPvminstancesUnshelvePostParams].
 func (o *PcloudPvminstancesUnshelvePostParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud pvminstances unshelve post params
+// WithHTTPClient adds the HTTPClient to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) WithHTTPClient(client *http.Client) *PcloudPvminstancesUnshelvePostParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud pvminstances unshelve post params
+// SetHTTPClient adds the HTTPClient to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the pcloud pvminstances unshelve post params
+// WithBody adds the body to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) WithBody(body *models.PVMInstanceUnshelve) *PcloudPvminstancesUnshelvePostParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the pcloud pvminstances unshelve post params
+// SetBody adds the body to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) SetBody(body *models.PVMInstanceUnshelve) {
 	o.Body = body
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud pvminstances unshelve post params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) WithCloudInstanceID(cloudInstanceID string) *PcloudPvminstancesUnshelvePostParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud pvminstances unshelve post params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WithPvmInstanceID adds the pvmInstanceID to the pcloud pvminstances unshelve post params
+// WithPvmInstanceID adds the pvmInstanceID to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) WithPvmInstanceID(pvmInstanceID string) *PcloudPvminstancesUnshelvePostParams {
 	o.SetPvmInstanceID(pvmInstanceID)
 	return o
 }
 
-// SetPvmInstanceID adds the pvmInstanceId to the pcloud pvminstances unshelve post params
+// SetPvmInstanceID adds the pvmInstanceId to the pcloud pvminstances unshelve post params.
 func (o *PcloudPvminstancesUnshelvePostParams) SetPvmInstanceID(pvmInstanceID string) {
 	o.PvmInstanceID = pvmInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudPvminstancesUnshelvePostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1OperationsImagesDeleteReader is a Reader for the InternalV1OperationsImagesDelete structure.
@@ -80,11 +79,9 @@ func NewInternalV1OperationsImagesDeleteNoContent() *InternalV1OperationsImagesD
 	return &InternalV1OperationsImagesDeleteNoContent{}
 }
 
-/*
-InternalV1OperationsImagesDeleteNoContent describes a response with status code 204, with default header values.
-
-Deleted
-*/
+// InternalV1OperationsImagesDeleteNoContent describes a response with status code 204, with default header values.
+//
+// Deleted
 type InternalV1OperationsImagesDeleteNoContent struct {
 }
 
@@ -136,11 +133,9 @@ func NewInternalV1OperationsImagesDeleteBadRequest() *InternalV1OperationsImages
 	return &InternalV1OperationsImagesDeleteBadRequest{}
 }
 
-/*
-InternalV1OperationsImagesDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1OperationsImagesDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1OperationsImagesDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewInternalV1OperationsImagesDeleteUnauthorized() *InternalV1OperationsImag
 	return &InternalV1OperationsImagesDeleteUnauthorized{}
 }
 
-/*
-InternalV1OperationsImagesDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1OperationsImagesDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1OperationsImagesDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewInternalV1OperationsImagesDeleteForbidden() *InternalV1OperationsImagesD
 	return &InternalV1OperationsImagesDeleteForbidden{}
 }
 
-/*
-InternalV1OperationsImagesDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1OperationsImagesDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1OperationsImagesDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewInternalV1OperationsImagesDeleteNotFound() *InternalV1OperationsImagesDe
 	return &InternalV1OperationsImagesDeleteNotFound{}
 }
 
-/*
-InternalV1OperationsImagesDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1OperationsImagesDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1OperationsImagesDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewInternalV1OperationsImagesDeleteGone() *InternalV1OperationsImagesDelete
 	return &InternalV1OperationsImagesDeleteGone{}
 }
 
-/*
-InternalV1OperationsImagesDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// InternalV1OperationsImagesDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type InternalV1OperationsImagesDeleteGone struct {
 	Payload *models.Error
 }
@@ -486,11 +473,9 @@ func NewInternalV1OperationsImagesDeleteTooManyRequests() *InternalV1OperationsI
 	return &InternalV1OperationsImagesDeleteTooManyRequests{}
 }
 
-/*
-InternalV1OperationsImagesDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// InternalV1OperationsImagesDeleteTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type InternalV1OperationsImagesDeleteTooManyRequests struct {
 	Payload *models.Error
 }
@@ -556,11 +541,9 @@ func NewInternalV1OperationsImagesDeleteInternalServerError() *InternalV1Operati
 	return &InternalV1OperationsImagesDeleteInternalServerError{}
 }
 
-/*
-InternalV1OperationsImagesDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1OperationsImagesDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1OperationsImagesDeleteInternalServerError struct {
 	Payload *models.Error
 }

@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // HostGroupShareOp Operation updating the sharing status (mutually exclusive)
@@ -39,12 +40,12 @@ func (m *HostGroupShareOp) Validate(formats strfmt.Registry) error {
 }
 
 func (m *HostGroupShareOp) validateAdd(formats strfmt.Registry) error {
-	if swag.IsZero(m.Add) { // not required
+	if typeutils.IsZero(m.Add) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Add); i++ {
-		if swag.IsZero(m.Add[i]) { // not required
+		if typeutils.IsZero(m.Add[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *HostGroupShareOp) contextValidateAdd(ctx context.Context, formats strfm
 
 		if m.Add[i] != nil {
 
-			if swag.IsZero(m.Add[i]) { // not required
+			if typeutils.IsZero(m.Add[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *HostGroupShareOp) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *HostGroupShareOp) UnmarshalBinary(b []byte) error {
 	var res HostGroupShareOp
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

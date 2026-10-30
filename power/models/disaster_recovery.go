@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -68,7 +69,7 @@ func (m *DisasterRecovery) validateAsynchronousReplication(formats strfmt.Regist
 }
 
 func (m *DisasterRecovery) validateSynchronousReplication(formats strfmt.Registry) error {
-	if swag.IsZero(m.SynchronousReplication) { // not required
+	if typeutils.IsZero(m.SynchronousReplication) { // not required
 		return nil
 	}
 
@@ -133,7 +134,7 @@ func (m *DisasterRecovery) contextValidateSynchronousReplication(ctx context.Con
 
 	if m.SynchronousReplication != nil {
 
-		if swag.IsZero(m.SynchronousReplication) { // not required
+		if typeutils.IsZero(m.SynchronousReplication) { // not required
 			return nil
 		}
 
@@ -159,13 +160,13 @@ func (m *DisasterRecovery) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *DisasterRecovery) UnmarshalBinary(b []byte) error {
 	var res DisasterRecovery
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

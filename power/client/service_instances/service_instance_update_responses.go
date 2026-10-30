@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceInstanceUpdateReader is a Reader for the ServiceInstanceUpdate structure.
@@ -74,11 +73,9 @@ func NewServiceInstanceUpdateOK() *ServiceInstanceUpdateOK {
 	return &ServiceInstanceUpdateOK{}
 }
 
-/*
-ServiceInstanceUpdateOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceInstanceUpdateOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceInstanceUpdateOK struct {
 	Payload *models.ServiceInstanceUpdate
 }
@@ -144,11 +141,9 @@ func NewServiceInstanceUpdateAccepted() *ServiceInstanceUpdateAccepted {
 	return &ServiceInstanceUpdateAccepted{}
 }
 
-/*
-ServiceInstanceUpdateAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// ServiceInstanceUpdateAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type ServiceInstanceUpdateAccepted struct {
 	Payload *models.ServiceInstanceAsyncOperation
 }
@@ -214,11 +209,9 @@ func NewServiceInstanceUpdateBadRequest() *ServiceInstanceUpdateBadRequest {
 	return &ServiceInstanceUpdateBadRequest{}
 }
 
-/*
-ServiceInstanceUpdateBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceInstanceUpdateBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceInstanceUpdateBadRequest struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewServiceInstanceUpdateUnauthorized() *ServiceInstanceUpdateUnauthorized {
 	return &ServiceInstanceUpdateUnauthorized{}
 }
 
-/*
-ServiceInstanceUpdateUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceInstanceUpdateUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceInstanceUpdateUnauthorized struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewServiceInstanceUpdateForbidden() *ServiceInstanceUpdateForbidden {
 	return &ServiceInstanceUpdateForbidden{}
 }
 
-/*
-ServiceInstanceUpdateForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceInstanceUpdateForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceInstanceUpdateForbidden struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewServiceInstanceUpdateNotFound() *ServiceInstanceUpdateNotFound {
 	return &ServiceInstanceUpdateNotFound{}
 }
 
-/*
-ServiceInstanceUpdateNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceInstanceUpdateNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceInstanceUpdateNotFound struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewServiceInstanceUpdateUnprocessableEntity() *ServiceInstanceUpdateUnproce
 	return &ServiceInstanceUpdateUnprocessableEntity{}
 }
 
-/*
-ServiceInstanceUpdateUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable entity
-*/
+// ServiceInstanceUpdateUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable entity
 type ServiceInstanceUpdateUnprocessableEntity struct {
 	Payload *models.Error
 }

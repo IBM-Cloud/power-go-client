@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1WorkspacesGetallReader is a Reader for the V1WorkspacesGetall structure.
@@ -62,11 +61,9 @@ func NewV1WorkspacesGetallOK() *V1WorkspacesGetallOK {
 	return &V1WorkspacesGetallOK{}
 }
 
-/*
-V1WorkspacesGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1WorkspacesGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1WorkspacesGetallOK struct {
 	Payload *models.Workspaces
 }
@@ -132,11 +129,9 @@ func NewV1WorkspacesGetallUnauthorized() *V1WorkspacesGetallUnauthorized {
 	return &V1WorkspacesGetallUnauthorized{}
 }
 
-/*
-V1WorkspacesGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1WorkspacesGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1WorkspacesGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -202,11 +197,9 @@ func NewV1WorkspacesGetallForbidden() *V1WorkspacesGetallForbidden {
 	return &V1WorkspacesGetallForbidden{}
 }
 
-/*
-V1WorkspacesGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1WorkspacesGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1WorkspacesGetallForbidden struct {
 	Payload *models.Error
 }
@@ -272,11 +265,9 @@ func NewV1WorkspacesGetallTooManyRequests() *V1WorkspacesGetallTooManyRequests {
 	return &V1WorkspacesGetallTooManyRequests{}
 }
 
-/*
-V1WorkspacesGetallTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// V1WorkspacesGetallTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type V1WorkspacesGetallTooManyRequests struct {
 	Payload *models.Error
 }
@@ -342,11 +333,9 @@ func NewV1WorkspacesGetallInternalServerError() *V1WorkspacesGetallInternalServe
 	return &V1WorkspacesGetallInternalServerError{}
 }
 
-/*
-V1WorkspacesGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1WorkspacesGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1WorkspacesGetallInternalServerError struct {
 	Payload *models.Error
 }

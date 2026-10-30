@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -44,7 +45,7 @@ func (m *NetworkInterfaces) validateInterfaces(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Interfaces); i++ {
-		if swag.IsZero(m.Interfaces[i]) { // not required
+		if typeutils.IsZero(m.Interfaces[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *NetworkInterfaces) contextValidateInterfaces(ctx context.Context, forma
 
 		if m.Interfaces[i] != nil {
 
-			if swag.IsZero(m.Interfaces[i]) { // not required
+			if typeutils.IsZero(m.Interfaces[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *NetworkInterfaces) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkInterfaces) UnmarshalBinary(b []byte) error {
 	var res NetworkInterfaces
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

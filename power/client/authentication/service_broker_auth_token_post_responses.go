@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerAuthTokenPostReader is a Reader for the ServiceBrokerAuthTokenPost structure.
@@ -74,11 +73,9 @@ func NewServiceBrokerAuthTokenPostOK() *ServiceBrokerAuthTokenPostOK {
 	return &ServiceBrokerAuthTokenPostOK{}
 }
 
-/*
-ServiceBrokerAuthTokenPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerAuthTokenPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerAuthTokenPostOK struct {
 	Payload *models.Token
 }
@@ -144,11 +141,9 @@ func NewServiceBrokerAuthTokenPostBadRequest() *ServiceBrokerAuthTokenPostBadReq
 	return &ServiceBrokerAuthTokenPostBadRequest{}
 }
 
-/*
-ServiceBrokerAuthTokenPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerAuthTokenPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerAuthTokenPostBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewServiceBrokerAuthTokenPostUnauthorized() *ServiceBrokerAuthTokenPostUnau
 	return &ServiceBrokerAuthTokenPostUnauthorized{}
 }
 
-/*
-ServiceBrokerAuthTokenPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerAuthTokenPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerAuthTokenPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewServiceBrokerAuthTokenPostForbidden() *ServiceBrokerAuthTokenPostForbidd
 	return &ServiceBrokerAuthTokenPostForbidden{}
 }
 
-/*
-ServiceBrokerAuthTokenPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerAuthTokenPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerAuthTokenPostForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewServiceBrokerAuthTokenPostNotFound() *ServiceBrokerAuthTokenPostNotFound
 	return &ServiceBrokerAuthTokenPostNotFound{}
 }
 
-/*
-ServiceBrokerAuthTokenPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerAuthTokenPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerAuthTokenPostNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewServiceBrokerAuthTokenPostTooManyRequests() *ServiceBrokerAuthTokenPostT
 	return &ServiceBrokerAuthTokenPostTooManyRequests{}
 }
 
-/*
-ServiceBrokerAuthTokenPostTooManyRequests describes a response with status code 429, with default header values.
-
-Polling too frequently
-*/
+// ServiceBrokerAuthTokenPostTooManyRequests describes a response with status code 429, with default header values.
+//
+// Polling too frequently
 type ServiceBrokerAuthTokenPostTooManyRequests struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewServiceBrokerAuthTokenPostInternalServerError() *ServiceBrokerAuthTokenP
 	return &ServiceBrokerAuthTokenPostInternalServerError{}
 }
 
-/*
-ServiceBrokerAuthTokenPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerAuthTokenPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerAuthTokenPostInternalServerError struct {
 	Payload *models.Error
 }

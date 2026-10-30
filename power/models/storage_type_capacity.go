@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // StorageTypeCapacity Storage type capacity
@@ -46,7 +47,7 @@ func (m *StorageTypeCapacity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *StorageTypeCapacity) validateMaximumStorageAllocation(formats strfmt.Registry) error {
-	if swag.IsZero(m.MaximumStorageAllocation) { // not required
+	if typeutils.IsZero(m.MaximumStorageAllocation) { // not required
 		return nil
 	}
 
@@ -69,12 +70,12 @@ func (m *StorageTypeCapacity) validateMaximumStorageAllocation(formats strfmt.Re
 }
 
 func (m *StorageTypeCapacity) validateStoragePoolsCapacity(formats strfmt.Registry) error {
-	if swag.IsZero(m.StoragePoolsCapacity) { // not required
+	if typeutils.IsZero(m.StoragePoolsCapacity) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.StoragePoolsCapacity); i++ {
-		if swag.IsZero(m.StoragePoolsCapacity[i]) { // not required
+		if typeutils.IsZero(m.StoragePoolsCapacity[i]) { // not required
 			continue
 		}
 
@@ -120,7 +121,7 @@ func (m *StorageTypeCapacity) contextValidateMaximumStorageAllocation(ctx contex
 
 	if m.MaximumStorageAllocation != nil {
 
-		if swag.IsZero(m.MaximumStorageAllocation) { // not required
+		if typeutils.IsZero(m.MaximumStorageAllocation) { // not required
 			return nil
 		}
 
@@ -147,7 +148,7 @@ func (m *StorageTypeCapacity) contextValidateStoragePoolsCapacity(ctx context.Co
 
 		if m.StoragePoolsCapacity[i] != nil {
 
-			if swag.IsZero(m.StoragePoolsCapacity[i]) { // not required
+			if typeutils.IsZero(m.StoragePoolsCapacity[i]) { // not required
 				return nil
 			}
 
@@ -175,13 +176,13 @@ func (m *StorageTypeCapacity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *StorageTypeCapacity) UnmarshalBinary(b []byte) error {
 	var res StorageTypeCapacity
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

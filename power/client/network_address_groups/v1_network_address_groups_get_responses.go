@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1NetworkAddressGroupsGetReader is a Reader for the V1NetworkAddressGroupsGet structure.
@@ -68,11 +67,9 @@ func NewV1NetworkAddressGroupsGetOK() *V1NetworkAddressGroupsGetOK {
 	return &V1NetworkAddressGroupsGetOK{}
 }
 
-/*
-V1NetworkAddressGroupsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1NetworkAddressGroupsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1NetworkAddressGroupsGetOK struct {
 	Payload *models.NetworkAddressGroups
 }
@@ -138,11 +135,9 @@ func NewV1NetworkAddressGroupsGetBadRequest() *V1NetworkAddressGroupsGetBadReque
 	return &V1NetworkAddressGroupsGetBadRequest{}
 }
 
-/*
-V1NetworkAddressGroupsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1NetworkAddressGroupsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1NetworkAddressGroupsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewV1NetworkAddressGroupsGetUnauthorized() *V1NetworkAddressGroupsGetUnauth
 	return &V1NetworkAddressGroupsGetUnauthorized{}
 }
 
-/*
-V1NetworkAddressGroupsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1NetworkAddressGroupsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1NetworkAddressGroupsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewV1NetworkAddressGroupsGetForbidden() *V1NetworkAddressGroupsGetForbidden
 	return &V1NetworkAddressGroupsGetForbidden{}
 }
 
-/*
-V1NetworkAddressGroupsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1NetworkAddressGroupsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1NetworkAddressGroupsGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewV1NetworkAddressGroupsGetNotFound() *V1NetworkAddressGroupsGetNotFound {
 	return &V1NetworkAddressGroupsGetNotFound{}
 }
 
-/*
-V1NetworkAddressGroupsGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1NetworkAddressGroupsGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1NetworkAddressGroupsGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewV1NetworkAddressGroupsGetInternalServerError() *V1NetworkAddressGroupsGe
 	return &V1NetworkAddressGroupsGetInternalServerError{}
 }
 
-/*
-V1NetworkAddressGroupsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1NetworkAddressGroupsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1NetworkAddressGroupsGetInternalServerError struct {
 	Payload *models.Error
 }

@@ -10,7 +10,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -95,7 +96,7 @@ func (m *NetworkUpdate) validateAdvertiseEnum(path, location string, value strin
 }
 
 func (m *NetworkUpdate) validateAdvertise(formats strfmt.Registry) error {
-	if swag.IsZero(m.Advertise) { // not required
+	if typeutils.IsZero(m.Advertise) { // not required
 		return nil
 	}
 
@@ -137,7 +138,7 @@ func (m *NetworkUpdate) validateArpBroadcastEnum(path, location string, value st
 }
 
 func (m *NetworkUpdate) validateArpBroadcast(formats strfmt.Registry) error {
-	if swag.IsZero(m.ArpBroadcast) { // not required
+	if typeutils.IsZero(m.ArpBroadcast) { // not required
 		return nil
 	}
 
@@ -150,12 +151,12 @@ func (m *NetworkUpdate) validateArpBroadcast(formats strfmt.Registry) error {
 }
 
 func (m *NetworkUpdate) validateIPAddressRanges(formats strfmt.Registry) error {
-	if swag.IsZero(m.IPAddressRanges) { // not required
+	if typeutils.IsZero(m.IPAddressRanges) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.IPAddressRanges); i++ {
-		if swag.IsZero(m.IPAddressRanges[i]) { // not required
+		if typeutils.IsZero(m.IPAddressRanges[i]) { // not required
 			continue
 		}
 
@@ -199,7 +200,7 @@ func (m *NetworkUpdate) contextValidateIPAddressRanges(ctx context.Context, form
 
 		if m.IPAddressRanges[i] != nil {
 
-			if swag.IsZero(m.IPAddressRanges[i]) { // not required
+			if typeutils.IsZero(m.IPAddressRanges[i]) { // not required
 				return nil
 			}
 
@@ -227,13 +228,13 @@ func (m *NetworkUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkUpdate) UnmarshalBinary(b []byte) error {
 	var res NetworkUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

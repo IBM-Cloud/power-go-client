@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesShelvePostReader is a Reader for the PcloudPvminstancesShelvePost structure.
@@ -74,11 +73,9 @@ func NewPcloudPvminstancesShelvePostAccepted() *PcloudPvminstancesShelvePostAcce
 	return &PcloudPvminstancesShelvePostAccepted{}
 }
 
-/*
-PcloudPvminstancesShelvePostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudPvminstancesShelvePostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudPvminstancesShelvePostAccepted struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudPvminstancesShelvePostBadRequest() *PcloudPvminstancesShelvePostBa
 	return &PcloudPvminstancesShelvePostBadRequest{}
 }
 
-/*
-PcloudPvminstancesShelvePostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesShelvePostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesShelvePostBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudPvminstancesShelvePostUnauthorized() *PcloudPvminstancesShelvePost
 	return &PcloudPvminstancesShelvePostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesShelvePostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesShelvePostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesShelvePostUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudPvminstancesShelvePostForbidden() *PcloudPvminstancesShelvePostFor
 	return &PcloudPvminstancesShelvePostForbidden{}
 }
 
-/*
-PcloudPvminstancesShelvePostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesShelvePostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesShelvePostForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudPvminstancesShelvePostNotFound() *PcloudPvminstancesShelvePostNotF
 	return &PcloudPvminstancesShelvePostNotFound{}
 }
 
-/*
-PcloudPvminstancesShelvePostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesShelvePostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesShelvePostNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudPvminstancesShelvePostConflict() *PcloudPvminstancesShelvePostConf
 	return &PcloudPvminstancesShelvePostConflict{}
 }
 
-/*
-PcloudPvminstancesShelvePostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesShelvePostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesShelvePostConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudPvminstancesShelvePostInternalServerError() *PcloudPvminstancesShe
 	return &PcloudPvminstancesShelvePostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesShelvePostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesShelvePostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesShelvePostInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // InternalCloudantStatus internal cloudant status
@@ -50,7 +51,7 @@ func (m *InternalCloudantStatus) Validate(formats strfmt.Registry) error {
 }
 
 func (m *InternalCloudantStatus) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -71,7 +72,7 @@ func (m *InternalCloudantStatus) validateCrn(formats strfmt.Registry) error {
 }
 
 func (m *InternalCloudantStatus) validatePowerEdgeRouterDetails(formats strfmt.Registry) error {
-	if swag.IsZero(m.PowerEdgeRouterDetails) { // not required
+	if typeutils.IsZero(m.PowerEdgeRouterDetails) { // not required
 		return nil
 	}
 
@@ -113,7 +114,7 @@ func (m *InternalCloudantStatus) ContextValidate(ctx context.Context, formats st
 
 func (m *InternalCloudantStatus) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -137,7 +138,7 @@ func (m *InternalCloudantStatus) contextValidatePowerEdgeRouterDetails(ctx conte
 
 	if m.PowerEdgeRouterDetails != nil {
 
-		if swag.IsZero(m.PowerEdgeRouterDetails) { // not required
+		if typeutils.IsZero(m.PowerEdgeRouterDetails) { // not required
 			return nil
 		}
 
@@ -163,13 +164,13 @@ func (m *InternalCloudantStatus) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalCloudantStatus) UnmarshalBinary(b []byte) error {
 	var res InternalCloudantStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

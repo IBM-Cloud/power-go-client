@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerSwaggerspecReader is a Reader for the ServiceBrokerSwaggerspec structure.
@@ -62,11 +61,9 @@ func NewServiceBrokerSwaggerspecOK() *ServiceBrokerSwaggerspecOK {
 	return &ServiceBrokerSwaggerspecOK{}
 }
 
-/*
-ServiceBrokerSwaggerspecOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerSwaggerspecOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerSwaggerspecOK struct {
 	Payload models.Object
 }
@@ -130,11 +127,9 @@ func NewServiceBrokerSwaggerspecBadRequest() *ServiceBrokerSwaggerspecBadRequest
 	return &ServiceBrokerSwaggerspecBadRequest{}
 }
 
-/*
-ServiceBrokerSwaggerspecBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerSwaggerspecBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerSwaggerspecBadRequest struct {
 	Payload *models.Error
 }
@@ -200,11 +195,9 @@ func NewServiceBrokerSwaggerspecUnauthorized() *ServiceBrokerSwaggerspecUnauthor
 	return &ServiceBrokerSwaggerspecUnauthorized{}
 }
 
-/*
-ServiceBrokerSwaggerspecUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerSwaggerspecUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerSwaggerspecUnauthorized struct {
 	Payload *models.Error
 }
@@ -270,11 +263,9 @@ func NewServiceBrokerSwaggerspecForbidden() *ServiceBrokerSwaggerspecForbidden {
 	return &ServiceBrokerSwaggerspecForbidden{}
 }
 
-/*
-ServiceBrokerSwaggerspecForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerSwaggerspecForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerSwaggerspecForbidden struct {
 	Payload *models.Error
 }
@@ -340,11 +331,9 @@ func NewServiceBrokerSwaggerspecNotFound() *ServiceBrokerSwaggerspecNotFound {
 	return &ServiceBrokerSwaggerspecNotFound{}
 }
 
-/*
-ServiceBrokerSwaggerspecNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerSwaggerspecNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerSwaggerspecNotFound struct {
 	Payload *models.Error
 }

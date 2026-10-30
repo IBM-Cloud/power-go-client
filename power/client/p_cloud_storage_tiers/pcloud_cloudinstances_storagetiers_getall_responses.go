@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesStoragetiersGetallReader is a Reader for the PcloudCloudinstancesStoragetiersGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudCloudinstancesStoragetiersGetallOK() *PcloudCloudinstancesStoraget
 	return &PcloudCloudinstancesStoragetiersGetallOK{}
 }
 
-/*
-PcloudCloudinstancesStoragetiersGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesStoragetiersGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesStoragetiersGetallOK struct {
 	Payload models.RegionStorageTiers
 }
@@ -136,11 +133,9 @@ func NewPcloudCloudinstancesStoragetiersGetallBadRequest() *PcloudCloudinstances
 	return &PcloudCloudinstancesStoragetiersGetallBadRequest{}
 }
 
-/*
-PcloudCloudinstancesStoragetiersGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesStoragetiersGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesStoragetiersGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewPcloudCloudinstancesStoragetiersGetallUnauthorized() *PcloudCloudinstanc
 	return &PcloudCloudinstancesStoragetiersGetallUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesStoragetiersGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesStoragetiersGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesStoragetiersGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewPcloudCloudinstancesStoragetiersGetallForbidden() *PcloudCloudinstancesS
 	return &PcloudCloudinstancesStoragetiersGetallForbidden{}
 }
 
-/*
-PcloudCloudinstancesStoragetiersGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesStoragetiersGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesStoragetiersGetallForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewPcloudCloudinstancesStoragetiersGetallNotFound() *PcloudCloudinstancesSt
 	return &PcloudCloudinstancesStoragetiersGetallNotFound{}
 }
 
-/*
-PcloudCloudinstancesStoragetiersGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesStoragetiersGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesStoragetiersGetallNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewPcloudCloudinstancesStoragetiersGetallInternalServerError() *PcloudCloud
 	return &PcloudCloudinstancesStoragetiersGetallInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesStoragetiersGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesStoragetiersGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesStoragetiersGetallInternalServerError struct {
 	Payload *models.Error
 }

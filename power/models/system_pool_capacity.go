@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -103,12 +104,12 @@ func (m *SystemPoolCapacity) validateMemory(formats strfmt.Registry) error {
 }
 
 func (m *SystemPoolCapacity) validateSystems(formats strfmt.Registry) error {
-	if swag.IsZero(m.Systems) { // not required
+	if typeutils.IsZero(m.Systems) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Systems); i++ {
-		if swag.IsZero(m.Systems[i]) { // not required
+		if typeutils.IsZero(m.Systems[i]) { // not required
 			continue
 		}
 
@@ -188,7 +189,7 @@ func (m *SystemPoolCapacity) contextValidateSystems(ctx context.Context, formats
 
 		if m.Systems[i] != nil {
 
-			if swag.IsZero(m.Systems[i]) { // not required
+			if typeutils.IsZero(m.Systems[i]) { // not required
 				return nil
 			}
 
@@ -216,13 +217,13 @@ func (m *SystemPoolCapacity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SystemPoolCapacity) UnmarshalBinary(b []byte) error {
 	var res SystemPoolCapacity
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

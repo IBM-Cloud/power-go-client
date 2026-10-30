@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // NetworkAddressGroups network address groups
@@ -36,12 +37,12 @@ func (m *NetworkAddressGroups) Validate(formats strfmt.Registry) error {
 }
 
 func (m *NetworkAddressGroups) validateNetworkAddressGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.NetworkAddressGroups) { // not required
+	if typeutils.IsZero(m.NetworkAddressGroups) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.NetworkAddressGroups); i++ {
-		if swag.IsZero(m.NetworkAddressGroups[i]) { // not required
+		if typeutils.IsZero(m.NetworkAddressGroups[i]) { // not required
 			continue
 		}
 
@@ -85,7 +86,7 @@ func (m *NetworkAddressGroups) contextValidateNetworkAddressGroups(ctx context.C
 
 		if m.NetworkAddressGroups[i] != nil {
 
-			if swag.IsZero(m.NetworkAddressGroups[i]) { // not required
+			if typeutils.IsZero(m.NetworkAddressGroups[i]) { // not required
 				return nil
 			}
 
@@ -113,13 +114,13 @@ func (m *NetworkAddressGroups) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkAddressGroups) UnmarshalBinary(b []byte) error {
 	var res NetworkAddressGroups
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

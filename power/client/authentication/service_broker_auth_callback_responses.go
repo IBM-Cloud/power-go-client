@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerAuthCallbackReader is a Reader for the ServiceBrokerAuthCallback structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerAuthCallbackOK() *ServiceBrokerAuthCallbackOK {
 	return &ServiceBrokerAuthCallbackOK{}
 }
 
-/*
-ServiceBrokerAuthCallbackOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerAuthCallbackOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerAuthCallbackOK struct {
 	Payload *models.AccessToken
 }
@@ -138,11 +135,9 @@ func NewServiceBrokerAuthCallbackBadRequest() *ServiceBrokerAuthCallbackBadReque
 	return &ServiceBrokerAuthCallbackBadRequest{}
 }
 
-/*
-ServiceBrokerAuthCallbackBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerAuthCallbackBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerAuthCallbackBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceBrokerAuthCallbackUnauthorized() *ServiceBrokerAuthCallbackUnauth
 	return &ServiceBrokerAuthCallbackUnauthorized{}
 }
 
-/*
-ServiceBrokerAuthCallbackUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerAuthCallbackUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerAuthCallbackUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceBrokerAuthCallbackForbidden() *ServiceBrokerAuthCallbackForbidden
 	return &ServiceBrokerAuthCallbackForbidden{}
 }
 
-/*
-ServiceBrokerAuthCallbackForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerAuthCallbackForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerAuthCallbackForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceBrokerAuthCallbackNotFound() *ServiceBrokerAuthCallbackNotFound {
 	return &ServiceBrokerAuthCallbackNotFound{}
 }
 
-/*
-ServiceBrokerAuthCallbackNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerAuthCallbackNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerAuthCallbackNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceBrokerAuthCallbackInternalServerError() *ServiceBrokerAuthCallbac
 	return &ServiceBrokerAuthCallbackInternalServerError{}
 }
 
-/*
-ServiceBrokerAuthCallbackInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerAuthCallbackInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerAuthCallbackInternalServerError struct {
 	Payload *models.Error
 }

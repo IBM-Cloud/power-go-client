@@ -9,7 +9,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // DHCPServers The list of DHCP Servers
@@ -22,7 +22,7 @@ func (m DHCPServers) Validate(formats strfmt.Registry) error {
 	var res []error
 
 	for i := 0; i < len(m); i++ {
-		if swag.IsZero(m[i]) { // not required
+		if typeutils.IsZero(m[i]) { // not required
 			continue
 		}
 
@@ -57,7 +57,7 @@ func (m DHCPServers) ContextValidate(ctx context.Context, formats strfmt.Registr
 
 		if m[i] != nil {
 
-			if swag.IsZero(m[i]) { // not required
+			if typeutils.IsZero(m[i]) { // not required
 				return nil
 			}
 

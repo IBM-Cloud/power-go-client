@@ -7,7 +7,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -68,7 +69,7 @@ func (m *FlashCopyMapping) validateFlashCopyName(formats strfmt.Registry) error 
 }
 
 func (m *FlashCopyMapping) validateStartTime(formats strfmt.Registry) error {
-	if swag.IsZero(m.StartTime) { // not required
+	if typeutils.IsZero(m.StartTime) { // not required
 		return nil
 	}
 
@@ -80,7 +81,7 @@ func (m *FlashCopyMapping) validateStartTime(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this flash copy mapping based on context it is used
-func (m *FlashCopyMapping) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *FlashCopyMapping) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -89,13 +90,13 @@ func (m *FlashCopyMapping) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *FlashCopyMapping) UnmarshalBinary(b []byte) error {
 	var res FlashCopyMapping
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

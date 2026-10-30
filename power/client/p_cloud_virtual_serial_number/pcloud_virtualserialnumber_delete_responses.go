@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVirtualserialnumberDeleteReader is a Reader for the PcloudVirtualserialnumberDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudVirtualserialnumberDeleteOK() *PcloudVirtualserialnumberDeleteOK {
 	return &PcloudVirtualserialnumberDeleteOK{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudVirtualserialnumberDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudVirtualserialnumberDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudVirtualserialnumberDeleteBadRequest() *PcloudVirtualserialnumberDe
 	return &PcloudVirtualserialnumberDeleteBadRequest{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVirtualserialnumberDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVirtualserialnumberDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudVirtualserialnumberDeleteUnauthorized() *PcloudVirtualserialnumber
 	return &PcloudVirtualserialnumberDeleteUnauthorized{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVirtualserialnumberDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVirtualserialnumberDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudVirtualserialnumberDeleteForbidden() *PcloudVirtualserialnumberDel
 	return &PcloudVirtualserialnumberDeleteForbidden{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVirtualserialnumberDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVirtualserialnumberDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudVirtualserialnumberDeleteNotFound() *PcloudVirtualserialnumberDele
 	return &PcloudVirtualserialnumberDeleteNotFound{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVirtualserialnumberDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVirtualserialnumberDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudVirtualserialnumberDeleteGone() *PcloudVirtualserialnumberDeleteGo
 	return &PcloudVirtualserialnumberDeleteGone{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// PcloudVirtualserialnumberDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type PcloudVirtualserialnumberDeleteGone struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudVirtualserialnumberDeleteInternalServerError() *PcloudVirtualseria
 	return &PcloudVirtualserialnumberDeleteInternalServerError{}
 }
 
-/*
-PcloudVirtualserialnumberDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVirtualserialnumberDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVirtualserialnumberDeleteInternalServerError struct {
 	Payload *models.Error
 }

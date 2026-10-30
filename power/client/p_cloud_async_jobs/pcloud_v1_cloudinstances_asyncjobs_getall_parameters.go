@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudV1CloudinstancesAsyncjobsGetallParams() *PcloudV1CloudinstancesAsyncjobsGetallParams {
-	return &PcloudV1CloudinstancesAsyncjobsGetallParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudV1CloudinstancesAsyncjobsGetallParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudV1CloudinstancesAsyncjobsGetallParamsWithTimeout creates a new PcloudV1CloudinstancesAsyncjobsGetallParams object
 // with the ability to set a timeout on a request.
 func NewPcloudV1CloudinstancesAsyncjobsGetallParamsWithTimeout(timeout time.Duration) *PcloudV1CloudinstancesAsyncjobsGetallParams {
 	return &PcloudV1CloudinstancesAsyncjobsGetallParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudV1CloudinstancesAsyncjobsGetallParamsWithContext creates a new PcloudV1CloudinstancesAsyncjobsGetallParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV1CloudinstancesAsyncjobsGetallParams].
 func NewPcloudV1CloudinstancesAsyncjobsGetallParamsWithContext(ctx context.Context) *PcloudV1CloudinstancesAsyncjobsGetallParams {
 	return &PcloudV1CloudinstancesAsyncjobsGetallParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -58,15 +62,14 @@ PcloudV1CloudinstancesAsyncjobsGetallParams contains all the parameters to send 
 */
 type PcloudV1CloudinstancesAsyncjobsGetallParams struct {
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud v1 cloudinstances asyncjobs getall params (not the query body).
@@ -84,54 +87,57 @@ func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs getall params
+// WithTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs getall params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) WithTimeout(timeout time.Duration) *PcloudV1CloudinstancesAsyncjobsGetallParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs getall params
+// SetTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs getall params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud v1 cloudinstances asyncjobs getall params
+// WithContext adds the context to the pcloud v1 cloudinstances asyncjobs getall params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV1CloudinstancesAsyncjobsGetallParams].
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) WithContext(ctx context.Context) *PcloudV1CloudinstancesAsyncjobsGetallParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud v1 cloudinstances asyncjobs getall params
+// SetContext adds the context to the pcloud v1 cloudinstances asyncjobs getall params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV1CloudinstancesAsyncjobsGetallParams].
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs getall params
+// WithHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs getall params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) WithHTTPClient(client *http.Client) *PcloudV1CloudinstancesAsyncjobsGetallParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs getall params
+// SetHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs getall params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud v1 cloudinstances asyncjobs getall params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud v1 cloudinstances asyncjobs getall params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) WithCloudInstanceID(cloudInstanceID string) *PcloudV1CloudinstancesAsyncjobsGetallParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud v1 cloudinstances asyncjobs getall params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud v1 cloudinstances asyncjobs getall params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudV1CloudinstancesAsyncjobsGetallParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

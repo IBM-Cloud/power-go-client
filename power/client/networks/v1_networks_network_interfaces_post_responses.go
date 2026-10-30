@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1NetworksNetworkInterfacesPostReader is a Reader for the V1NetworksNetworkInterfacesPost structure.
@@ -80,11 +79,9 @@ func NewV1NetworksNetworkInterfacesPostCreated() *V1NetworksNetworkInterfacesPos
 	return &V1NetworksNetworkInterfacesPostCreated{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// V1NetworksNetworkInterfacesPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type V1NetworksNetworkInterfacesPostCreated struct {
 	Payload *models.NetworkInterface
 }
@@ -150,11 +147,9 @@ func NewV1NetworksNetworkInterfacesPostBadRequest() *V1NetworksNetworkInterfaces
 	return &V1NetworksNetworkInterfacesPostBadRequest{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1NetworksNetworkInterfacesPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1NetworksNetworkInterfacesPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewV1NetworksNetworkInterfacesPostUnauthorized() *V1NetworksNetworkInterfac
 	return &V1NetworksNetworkInterfacesPostUnauthorized{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1NetworksNetworkInterfacesPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1NetworksNetworkInterfacesPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewV1NetworksNetworkInterfacesPostForbidden() *V1NetworksNetworkInterfacesP
 	return &V1NetworksNetworkInterfacesPostForbidden{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1NetworksNetworkInterfacesPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1NetworksNetworkInterfacesPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewV1NetworksNetworkInterfacesPostNotFound() *V1NetworksNetworkInterfacesPo
 	return &V1NetworksNetworkInterfacesPostNotFound{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1NetworksNetworkInterfacesPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1NetworksNetworkInterfacesPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewV1NetworksNetworkInterfacesPostConflict() *V1NetworksNetworkInterfacesPo
 	return &V1NetworksNetworkInterfacesPostConflict{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1NetworksNetworkInterfacesPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1NetworksNetworkInterfacesPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewV1NetworksNetworkInterfacesPostUnprocessableEntity() *V1NetworksNetworkI
 	return &V1NetworksNetworkInterfacesPostUnprocessableEntity{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// V1NetworksNetworkInterfacesPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type V1NetworksNetworkInterfacesPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewV1NetworksNetworkInterfacesPostInternalServerError() *V1NetworksNetworkI
 	return &V1NetworksNetworkInterfacesPostInternalServerError{}
 }
 
-/*
-V1NetworksNetworkInterfacesPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1NetworksNetworkInterfacesPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1NetworksNetworkInterfacesPostInternalServerError struct {
 	Payload *models.Error
 }

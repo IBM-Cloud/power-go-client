@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudTenantsPutReader is a Reader for the PcloudTenantsPut structure.
@@ -74,11 +73,9 @@ func NewPcloudTenantsPutOK() *PcloudTenantsPutOK {
 	return &PcloudTenantsPutOK{}
 }
 
-/*
-PcloudTenantsPutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudTenantsPutOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudTenantsPutOK struct {
 	Payload *models.Tenant
 }
@@ -144,11 +141,9 @@ func NewPcloudTenantsPutBadRequest() *PcloudTenantsPutBadRequest {
 	return &PcloudTenantsPutBadRequest{}
 }
 
-/*
-PcloudTenantsPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudTenantsPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudTenantsPutBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudTenantsPutUnauthorized() *PcloudTenantsPutUnauthorized {
 	return &PcloudTenantsPutUnauthorized{}
 }
 
-/*
-PcloudTenantsPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudTenantsPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudTenantsPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudTenantsPutForbidden() *PcloudTenantsPutForbidden {
 	return &PcloudTenantsPutForbidden{}
 }
 
-/*
-PcloudTenantsPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudTenantsPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudTenantsPutForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudTenantsPutNotFound() *PcloudTenantsPutNotFound {
 	return &PcloudTenantsPutNotFound{}
 }
 
-/*
-PcloudTenantsPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudTenantsPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudTenantsPutNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudTenantsPutUnprocessableEntity() *PcloudTenantsPutUnprocessableEnti
 	return &PcloudTenantsPutUnprocessableEntity{}
 }
 
-/*
-PcloudTenantsPutUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudTenantsPutUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudTenantsPutUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudTenantsPutInternalServerError() *PcloudTenantsPutInternalServerErr
 	return &PcloudTenantsPutInternalServerError{}
 }
 
-/*
-PcloudTenantsPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudTenantsPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudTenantsPutInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1PowervsLocationsTransitgatewayGetReader is a Reader for the InternalV1PowervsLocationsTransitgatewayGet structure.
@@ -50,11 +49,9 @@ func NewInternalV1PowervsLocationsTransitgatewayGetOK() *InternalV1PowervsLocati
 	return &InternalV1PowervsLocationsTransitgatewayGetOK{}
 }
 
-/*
-InternalV1PowervsLocationsTransitgatewayGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1PowervsLocationsTransitgatewayGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1PowervsLocationsTransitgatewayGetOK struct {
 	Payload *models.TransitGatewayLocations
 }
@@ -120,11 +117,9 @@ func NewInternalV1PowervsLocationsTransitgatewayGetForbidden() *InternalV1Powerv
 	return &InternalV1PowervsLocationsTransitgatewayGetForbidden{}
 }
 
-/*
-InternalV1PowervsLocationsTransitgatewayGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1PowervsLocationsTransitgatewayGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1PowervsLocationsTransitgatewayGetForbidden struct {
 	Payload *models.Error
 }
@@ -190,11 +185,9 @@ func NewInternalV1PowervsLocationsTransitgatewayGetInternalServerError() *Intern
 	return &InternalV1PowervsLocationsTransitgatewayGetInternalServerError{}
 }
 
-/*
-InternalV1PowervsLocationsTransitgatewayGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1PowervsLocationsTransitgatewayGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1PowervsLocationsTransitgatewayGetInternalServerError struct {
 	Payload *models.Error
 }

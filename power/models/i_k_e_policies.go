@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -44,7 +45,7 @@ func (m *IKEPolicies) validateIkePolicies(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.IkePolicies); i++ {
-		if swag.IsZero(m.IkePolicies[i]) { // not required
+		if typeutils.IsZero(m.IkePolicies[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *IKEPolicies) contextValidateIkePolicies(ctx context.Context, formats st
 
 		if m.IkePolicies[i] != nil {
 
-			if swag.IsZero(m.IkePolicies[i]) { // not required
+			if typeutils.IsZero(m.IkePolicies[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *IKEPolicies) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *IKEPolicies) UnmarshalBinary(b []byte) error {
 	var res IKEPolicies
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

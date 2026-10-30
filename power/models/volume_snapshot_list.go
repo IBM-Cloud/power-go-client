@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // VolumeSnapshotList volume snapshot list
@@ -36,12 +37,12 @@ func (m *VolumeSnapshotList) Validate(formats strfmt.Registry) error {
 }
 
 func (m *VolumeSnapshotList) validateVolumeSnapshots(formats strfmt.Registry) error {
-	if swag.IsZero(m.VolumeSnapshots) { // not required
+	if typeutils.IsZero(m.VolumeSnapshots) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.VolumeSnapshots); i++ {
-		if swag.IsZero(m.VolumeSnapshots[i]) { // not required
+		if typeutils.IsZero(m.VolumeSnapshots[i]) { // not required
 			continue
 		}
 
@@ -85,7 +86,7 @@ func (m *VolumeSnapshotList) contextValidateVolumeSnapshots(ctx context.Context,
 
 		if m.VolumeSnapshots[i] != nil {
 
-			if swag.IsZero(m.VolumeSnapshots[i]) { // not required
+			if typeutils.IsZero(m.VolumeSnapshots[i]) { // not required
 				return nil
 			}
 
@@ -113,13 +114,13 @@ func (m *VolumeSnapshotList) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *VolumeSnapshotList) UnmarshalBinary(b []byte) error {
 	var res VolumeSnapshotList
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

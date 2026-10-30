@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewInternalV1NetworksActionPostParams creates a new InternalV1NetworksActionPostParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewInternalV1NetworksActionPostParams() *InternalV1NetworksActionPostParams {
-	return &InternalV1NetworksActionPostParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewInternalV1NetworksActionPostParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewInternalV1NetworksActionPostParamsWithTimeout creates a new InternalV1NetworksActionPostParams object
 // with the ability to set a timeout on a request.
 func NewInternalV1NetworksActionPostParamsWithTimeout(timeout time.Duration) *InternalV1NetworksActionPostParams {
 	return &InternalV1NetworksActionPostParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewInternalV1NetworksActionPostParamsWithContext creates a new InternalV1NetworksActionPostParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1NetworksActionPostParams].
 func NewInternalV1NetworksActionPostParamsWithContext(ctx context.Context) *InternalV1NetworksActionPostParams {
 	return &InternalV1NetworksActionPostParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,21 +63,19 @@ InternalV1NetworksActionPostParams contains all the parameters to send to the AP
 */
 type InternalV1NetworksActionPostParams struct {
 
-	/* CRN.
-
-	   the CRN of the workspace
-	*/
+	// CRN.
+	//
+	// the CRN of the workspace
 	CRN string
 
-	/* Body.
-
-	   Parameters for network action service
-	*/
+	// Body.
+	//
+	// Parameters for network action service
 	Body *models.InternalNetworksActionRequest
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the internal v1 networks action post params (not the query body).
@@ -92,65 +93,68 @@ func (o *InternalV1NetworksActionPostParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the internal v1 networks action post params
+// WithTimeout adds the timeout to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) WithTimeout(timeout time.Duration) *InternalV1NetworksActionPostParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the internal v1 networks action post params
+// SetTimeout adds the timeout to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the internal v1 networks action post params
+// WithContext adds the context to the internal v1 networks action post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1NetworksActionPostParams].
 func (o *InternalV1NetworksActionPostParams) WithContext(ctx context.Context) *InternalV1NetworksActionPostParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the internal v1 networks action post params
+// SetContext adds the context to the internal v1 networks action post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1NetworksActionPostParams].
 func (o *InternalV1NetworksActionPostParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the internal v1 networks action post params
+// WithHTTPClient adds the HTTPClient to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) WithHTTPClient(client *http.Client) *InternalV1NetworksActionPostParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the internal v1 networks action post params
+// SetHTTPClient adds the HTTPClient to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCRN adds the cRN to the internal v1 networks action post params
+// WithCRN adds the cRN to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) WithCRN(cRN string) *InternalV1NetworksActionPostParams {
 	o.SetCRN(cRN)
 	return o
 }
 
-// SetCRN adds the cRN to the internal v1 networks action post params
+// SetCRN adds the cRN to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) SetCRN(cRN string) {
 	o.CRN = cRN
 }
 
-// WithBody adds the body to the internal v1 networks action post params
+// WithBody adds the body to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) WithBody(body *models.InternalNetworksActionRequest) *InternalV1NetworksActionPostParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the internal v1 networks action post params
+// SetBody adds the body to the internal v1 networks action post params.
 func (o *InternalV1NetworksActionPostParams) SetBody(body *models.InternalNetworksActionRequest) {
 	o.Body = body
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *InternalV1NetworksActionPostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

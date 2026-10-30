@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesNetworksPostReader is a Reader for the PcloudPvminstancesNetworksPost structure.
@@ -52,6 +51,12 @@ func (o *PcloudPvminstancesNetworksPostReader) ReadResponse(response runtime.Cli
 			return nil, err
 		}
 		return nil, result
+	case 405:
+		result := NewPcloudPvminstancesNetworksPostMethodNotAllowed()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 409:
 		result := NewPcloudPvminstancesNetworksPostConflict()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -80,11 +85,9 @@ func NewPcloudPvminstancesNetworksPostCreated() *PcloudPvminstancesNetworksPostC
 	return &PcloudPvminstancesNetworksPostCreated{}
 }
 
-/*
-PcloudPvminstancesNetworksPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// PcloudPvminstancesNetworksPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type PcloudPvminstancesNetworksPostCreated struct {
 	Payload *models.PVMInstanceNetwork
 }
@@ -150,11 +153,9 @@ func NewPcloudPvminstancesNetworksPostBadRequest() *PcloudPvminstancesNetworksPo
 	return &PcloudPvminstancesNetworksPostBadRequest{}
 }
 
-/*
-PcloudPvminstancesNetworksPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesNetworksPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesNetworksPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +221,9 @@ func NewPcloudPvminstancesNetworksPostUnauthorized() *PcloudPvminstancesNetworks
 	return &PcloudPvminstancesNetworksPostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesNetworksPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesNetworksPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesNetworksPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +289,9 @@ func NewPcloudPvminstancesNetworksPostForbidden() *PcloudPvminstancesNetworksPos
 	return &PcloudPvminstancesNetworksPostForbidden{}
 }
 
-/*
-PcloudPvminstancesNetworksPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesNetworksPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesNetworksPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +357,9 @@ func NewPcloudPvminstancesNetworksPostNotFound() *PcloudPvminstancesNetworksPost
 	return &PcloudPvminstancesNetworksPostNotFound{}
 }
 
-/*
-PcloudPvminstancesNetworksPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesNetworksPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesNetworksPostNotFound struct {
 	Payload *models.Error
 }
@@ -425,16 +420,82 @@ func (o *PcloudPvminstancesNetworksPostNotFound) readResponse(response runtime.C
 	return nil
 }
 
+// NewPcloudPvminstancesNetworksPostMethodNotAllowed creates a PcloudPvminstancesNetworksPostMethodNotAllowed with default headers values
+func NewPcloudPvminstancesNetworksPostMethodNotAllowed() *PcloudPvminstancesNetworksPostMethodNotAllowed {
+	return &PcloudPvminstancesNetworksPostMethodNotAllowed{}
+}
+
+// PcloudPvminstancesNetworksPostMethodNotAllowed describes a response with status code 405, with default header values.
+//
+// Method Not Allowed
+type PcloudPvminstancesNetworksPostMethodNotAllowed struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud pvminstances networks post method not allowed response has a 2xx status code
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud pvminstances networks post method not allowed response has a 3xx status code
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud pvminstances networks post method not allowed response has a 4xx status code
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud pvminstances networks post method not allowed response has a 5xx status code
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud pvminstances networks post method not allowed response a status code equal to that given
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) IsCode(code int) bool {
+	return code == 405
+}
+
+// Code gets the status code for the pcloud pvminstances networks post method not allowed response
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) Code() int {
+	return 405
+}
+
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostMethodNotAllowed %s", 405, payload)
+}
+
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/networks][%d] pcloudPvminstancesNetworksPostMethodNotAllowed %s", 405, payload)
+}
+
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudPvminstancesNetworksPostMethodNotAllowed) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+		return err
+	}
+
+	return nil
+}
+
 // NewPcloudPvminstancesNetworksPostConflict creates a PcloudPvminstancesNetworksPostConflict with default headers values
 func NewPcloudPvminstancesNetworksPostConflict() *PcloudPvminstancesNetworksPostConflict {
 	return &PcloudPvminstancesNetworksPostConflict{}
 }
 
-/*
-PcloudPvminstancesNetworksPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesNetworksPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesNetworksPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +561,9 @@ func NewPcloudPvminstancesNetworksPostUnprocessableEntity() *PcloudPvminstancesN
 	return &PcloudPvminstancesNetworksPostUnprocessableEntity{}
 }
 
-/*
-PcloudPvminstancesNetworksPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudPvminstancesNetworksPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudPvminstancesNetworksPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +629,9 @@ func NewPcloudPvminstancesNetworksPostInternalServerError() *PcloudPvminstancesN
 	return &PcloudPvminstancesNetworksPostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesNetworksPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesNetworksPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesNetworksPostInternalServerError struct {
 	Payload *models.Error
 }

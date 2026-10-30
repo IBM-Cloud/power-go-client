@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudDhcpDeleteReader is a Reader for the PcloudDhcpDelete structure.
@@ -62,11 +61,9 @@ func NewPcloudDhcpDeleteAccepted() *PcloudDhcpDeleteAccepted {
 	return &PcloudDhcpDeleteAccepted{}
 }
 
-/*
-PcloudDhcpDeleteAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudDhcpDeleteAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudDhcpDeleteAccepted struct {
 	Payload models.Object
 }
@@ -130,11 +127,9 @@ func NewPcloudDhcpDeleteBadRequest() *PcloudDhcpDeleteBadRequest {
 	return &PcloudDhcpDeleteBadRequest{}
 }
 
-/*
-PcloudDhcpDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudDhcpDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudDhcpDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -200,11 +195,9 @@ func NewPcloudDhcpDeleteForbidden() *PcloudDhcpDeleteForbidden {
 	return &PcloudDhcpDeleteForbidden{}
 }
 
-/*
-PcloudDhcpDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudDhcpDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudDhcpDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -270,11 +263,9 @@ func NewPcloudDhcpDeleteNotFound() *PcloudDhcpDeleteNotFound {
 	return &PcloudDhcpDeleteNotFound{}
 }
 
-/*
-PcloudDhcpDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudDhcpDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudDhcpDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -340,11 +331,9 @@ func NewPcloudDhcpDeleteInternalServerError() *PcloudDhcpDeleteInternalServerErr
 	return &PcloudDhcpDeleteInternalServerError{}
 }
 
-/*
-PcloudDhcpDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudDhcpDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudDhcpDeleteInternalServerError struct {
 	Payload *models.Error
 }

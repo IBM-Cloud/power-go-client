@@ -9,7 +9,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // InternalNetworkResourceStatusArray the resource types to retrieve status for
@@ -22,7 +22,7 @@ func (m InternalNetworkResourceStatusArray) Validate(formats strfmt.Registry) er
 	var res []error
 
 	for i := 0; i < len(m); i++ {
-		if swag.IsZero(m[i]) { // not required
+		if typeutils.IsZero(m[i]) { // not required
 			continue
 		}
 
@@ -57,7 +57,7 @@ func (m InternalNetworkResourceStatusArray) ContextValidate(ctx context.Context,
 
 		if m[i] != nil {
 
-			if swag.IsZero(m[i]) { // not required
+			if typeutils.IsZero(m[i]) { // not required
 				return nil
 			}
 

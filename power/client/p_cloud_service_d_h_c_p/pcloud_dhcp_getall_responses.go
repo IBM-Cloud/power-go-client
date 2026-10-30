@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudDhcpGetallReader is a Reader for the PcloudDhcpGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudDhcpGetallOK() *PcloudDhcpGetallOK {
 	return &PcloudDhcpGetallOK{}
 }
 
-/*
-PcloudDhcpGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudDhcpGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudDhcpGetallOK struct {
 	Payload models.DHCPServers
 }
@@ -136,11 +133,9 @@ func NewPcloudDhcpGetallBadRequest() *PcloudDhcpGetallBadRequest {
 	return &PcloudDhcpGetallBadRequest{}
 }
 
-/*
-PcloudDhcpGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudDhcpGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudDhcpGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewPcloudDhcpGetallUnauthorized() *PcloudDhcpGetallUnauthorized {
 	return &PcloudDhcpGetallUnauthorized{}
 }
 
-/*
-PcloudDhcpGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudDhcpGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudDhcpGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewPcloudDhcpGetallForbidden() *PcloudDhcpGetallForbidden {
 	return &PcloudDhcpGetallForbidden{}
 }
 
-/*
-PcloudDhcpGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudDhcpGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudDhcpGetallForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewPcloudDhcpGetallNotFound() *PcloudDhcpGetallNotFound {
 	return &PcloudDhcpGetallNotFound{}
 }
 
-/*
-PcloudDhcpGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudDhcpGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudDhcpGetallNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewPcloudDhcpGetallInternalServerError() *PcloudDhcpGetallInternalServerErr
 	return &PcloudDhcpGetallInternalServerError{}
 }
 
-/*
-PcloudDhcpGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudDhcpGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudDhcpGetallInternalServerError struct {
 	Payload *models.Error
 }

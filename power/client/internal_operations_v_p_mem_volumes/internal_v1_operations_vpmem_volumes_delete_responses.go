@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1OperationsVpmemVolumesDeleteReader is a Reader for the InternalV1OperationsVpmemVolumesDelete structure.
@@ -80,11 +79,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteNoContent() *InternalV1OperationsV
 	return &InternalV1OperationsVpmemVolumesDeleteNoContent{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteNoContent describes a response with status code 204, with default header values.
-
-Deleted
-*/
+// InternalV1OperationsVpmemVolumesDeleteNoContent describes a response with status code 204, with default header values.
+//
+// Deleted
 type InternalV1OperationsVpmemVolumesDeleteNoContent struct {
 }
 
@@ -136,11 +133,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteBadRequest() *InternalV1Operations
 	return &InternalV1OperationsVpmemVolumesDeleteBadRequest{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1OperationsVpmemVolumesDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1OperationsVpmemVolumesDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteUnauthorized() *InternalV1Operatio
 	return &InternalV1OperationsVpmemVolumesDeleteUnauthorized{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1OperationsVpmemVolumesDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1OperationsVpmemVolumesDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteForbidden() *InternalV1OperationsV
 	return &InternalV1OperationsVpmemVolumesDeleteForbidden{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1OperationsVpmemVolumesDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1OperationsVpmemVolumesDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteNotFound() *InternalV1OperationsVp
 	return &InternalV1OperationsVpmemVolumesDeleteNotFound{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1OperationsVpmemVolumesDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1OperationsVpmemVolumesDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteGone() *InternalV1OperationsVpmemV
 	return &InternalV1OperationsVpmemVolumesDeleteGone{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// InternalV1OperationsVpmemVolumesDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type InternalV1OperationsVpmemVolumesDeleteGone struct {
 	Payload *models.Error
 }
@@ -486,11 +473,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteTooManyRequests() *InternalV1Opera
 	return &InternalV1OperationsVpmemVolumesDeleteTooManyRequests{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// InternalV1OperationsVpmemVolumesDeleteTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type InternalV1OperationsVpmemVolumesDeleteTooManyRequests struct {
 	Payload *models.Error
 }
@@ -556,11 +541,9 @@ func NewInternalV1OperationsVpmemVolumesDeleteInternalServerError() *InternalV1O
 	return &InternalV1OperationsVpmemVolumesDeleteInternalServerError{}
 }
 
-/*
-InternalV1OperationsVpmemVolumesDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1OperationsVpmemVolumesDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1OperationsVpmemVolumesDeleteInternalServerError struct {
 	Payload *models.Error
 }

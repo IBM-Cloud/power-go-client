@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -44,7 +45,7 @@ func (m *PVMInstances) validatePvmInstances(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.PvmInstances); i++ {
-		if swag.IsZero(m.PvmInstances[i]) { // not required
+		if typeutils.IsZero(m.PvmInstances[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *PVMInstances) contextValidatePvmInstances(ctx context.Context, formats 
 
 		if m.PvmInstances[i] != nil {
 
-			if swag.IsZero(m.PvmInstances[i]) { // not required
+			if typeutils.IsZero(m.PvmInstances[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *PVMInstances) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstances) UnmarshalBinary(b []byte) error {
 	var res PVMInstances
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

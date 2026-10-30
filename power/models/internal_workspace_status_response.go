@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // InternalWorkspaceStatusResponse internal workspace status response
@@ -45,7 +46,7 @@ func (m *InternalWorkspaceStatusResponse) Validate(formats strfmt.Registry) erro
 }
 
 func (m *InternalWorkspaceStatusResponse) validateCloudantStatus(formats strfmt.Registry) error {
-	if swag.IsZero(m.CloudantStatus) { // not required
+	if typeutils.IsZero(m.CloudantStatus) { // not required
 		return nil
 	}
 
@@ -68,7 +69,7 @@ func (m *InternalWorkspaceStatusResponse) validateCloudantStatus(formats strfmt.
 }
 
 func (m *InternalWorkspaceStatusResponse) validatePowernsStatus(formats strfmt.Registry) error {
-	if swag.IsZero(m.PowernsStatus) { // not required
+	if typeutils.IsZero(m.PowernsStatus) { // not required
 		return nil
 	}
 
@@ -112,7 +113,7 @@ func (m *InternalWorkspaceStatusResponse) contextValidateCloudantStatus(ctx cont
 
 	if m.CloudantStatus != nil {
 
-		if swag.IsZero(m.CloudantStatus) { // not required
+		if typeutils.IsZero(m.CloudantStatus) { // not required
 			return nil
 		}
 
@@ -137,7 +138,7 @@ func (m *InternalWorkspaceStatusResponse) contextValidatePowernsStatus(ctx conte
 
 	if m.PowernsStatus != nil {
 
-		if swag.IsZero(m.PowernsStatus) { // not required
+		if typeutils.IsZero(m.PowernsStatus) { // not required
 			return nil
 		}
 
@@ -163,13 +164,13 @@ func (m *InternalWorkspaceStatusResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalWorkspaceStatusResponse) UnmarshalBinary(b []byte) error {
 	var res InternalWorkspaceStatusResponse
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

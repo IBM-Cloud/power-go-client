@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerStoragetypesGetReader is a Reader for the ServiceBrokerStoragetypesGet structure.
@@ -74,11 +73,9 @@ func NewServiceBrokerStoragetypesGetOK() *ServiceBrokerStoragetypesGetOK {
 	return &ServiceBrokerStoragetypesGetOK{}
 }
 
-/*
-ServiceBrokerStoragetypesGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerStoragetypesGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerStoragetypesGetOK struct {
 	Payload models.StorageTypes
 }
@@ -142,11 +139,9 @@ func NewServiceBrokerStoragetypesGetBadRequest() *ServiceBrokerStoragetypesGetBa
 	return &ServiceBrokerStoragetypesGetBadRequest{}
 }
 
-/*
-ServiceBrokerStoragetypesGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerStoragetypesGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerStoragetypesGetBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewServiceBrokerStoragetypesGetUnauthorized() *ServiceBrokerStoragetypesGet
 	return &ServiceBrokerStoragetypesGetUnauthorized{}
 }
 
-/*
-ServiceBrokerStoragetypesGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerStoragetypesGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerStoragetypesGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewServiceBrokerStoragetypesGetForbidden() *ServiceBrokerStoragetypesGetFor
 	return &ServiceBrokerStoragetypesGetForbidden{}
 }
 
-/*
-ServiceBrokerStoragetypesGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerStoragetypesGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerStoragetypesGetForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewServiceBrokerStoragetypesGetNotFound() *ServiceBrokerStoragetypesGetNotF
 	return &ServiceBrokerStoragetypesGetNotFound{}
 }
 
-/*
-ServiceBrokerStoragetypesGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerStoragetypesGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerStoragetypesGetNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewServiceBrokerStoragetypesGetUnprocessableEntity() *ServiceBrokerStoraget
 	return &ServiceBrokerStoragetypesGetUnprocessableEntity{}
 }
 
-/*
-ServiceBrokerStoragetypesGetUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// ServiceBrokerStoragetypesGetUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type ServiceBrokerStoragetypesGetUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewServiceBrokerStoragetypesGetInternalServerError() *ServiceBrokerStoraget
 	return &ServiceBrokerStoragetypesGetInternalServerError{}
 }
 
-/*
-ServiceBrokerStoragetypesGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerStoragetypesGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerStoragetypesGetInternalServerError struct {
 	Payload *models.Error
 }

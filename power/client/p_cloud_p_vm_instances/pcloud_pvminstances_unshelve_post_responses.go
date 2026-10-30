@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesUnshelvePostReader is a Reader for the PcloudPvminstancesUnshelvePost structure.
@@ -74,13 +73,11 @@ func NewPcloudPvminstancesUnshelvePostAccepted() *PcloudPvminstancesUnshelvePost
 	return &PcloudPvminstancesUnshelvePostAccepted{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudPvminstancesUnshelvePostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudPvminstancesUnshelvePostAccepted struct {
-	Payload *models.PVMInstance
+	Payload models.Object
 }
 
 // IsSuccess returns true when this pcloud pvminstances unshelve post accepted response has a 2xx status code
@@ -123,16 +120,14 @@ func (o *PcloudPvminstancesUnshelvePostAccepted) String() string {
 	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/unshelve][%d] pcloudPvminstancesUnshelvePostAccepted %s", 202, payload)
 }
 
-func (o *PcloudPvminstancesUnshelvePostAccepted) GetPayload() *models.PVMInstance {
+func (o *PcloudPvminstancesUnshelvePostAccepted) GetPayload() models.Object {
 	return o.Payload
 }
 
 func (o *PcloudPvminstancesUnshelvePostAccepted) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
-	o.Payload = new(models.PVMInstance)
-
 	// response payload
-	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+	if err := consumer.Consume(response.Body(), &o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
 		return err
 	}
 
@@ -144,11 +139,9 @@ func NewPcloudPvminstancesUnshelvePostBadRequest() *PcloudPvminstancesUnshelvePo
 	return &PcloudPvminstancesUnshelvePostBadRequest{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesUnshelvePostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesUnshelvePostBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +207,9 @@ func NewPcloudPvminstancesUnshelvePostUnauthorized() *PcloudPvminstancesUnshelve
 	return &PcloudPvminstancesUnshelvePostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesUnshelvePostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesUnshelvePostUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +275,9 @@ func NewPcloudPvminstancesUnshelvePostForbidden() *PcloudPvminstancesUnshelvePos
 	return &PcloudPvminstancesUnshelvePostForbidden{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesUnshelvePostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesUnshelvePostForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +343,9 @@ func NewPcloudPvminstancesUnshelvePostNotFound() *PcloudPvminstancesUnshelvePost
 	return &PcloudPvminstancesUnshelvePostNotFound{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesUnshelvePostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesUnshelvePostNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +411,9 @@ func NewPcloudPvminstancesUnshelvePostConflict() *PcloudPvminstancesUnshelvePost
 	return &PcloudPvminstancesUnshelvePostConflict{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesUnshelvePostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesUnshelvePostConflict struct {
 	Payload *models.Error
 }
@@ -494,11 +479,9 @@ func NewPcloudPvminstancesUnshelvePostInternalServerError() *PcloudPvminstancesU
 	return &PcloudPvminstancesUnshelvePostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesUnshelvePostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesUnshelvePostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesUnshelvePostInternalServerError struct {
 	Payload *models.Error
 }

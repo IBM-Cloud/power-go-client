@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVolumegroupsDeleteReader is a Reader for the PcloudVolumegroupsDelete structure.
@@ -68,11 +67,9 @@ func NewPcloudVolumegroupsDeleteAccepted() *PcloudVolumegroupsDeleteAccepted {
 	return &PcloudVolumegroupsDeleteAccepted{}
 }
 
-/*
-PcloudVolumegroupsDeleteAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudVolumegroupsDeleteAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudVolumegroupsDeleteAccepted struct {
 	Payload models.Object
 }
@@ -136,11 +133,9 @@ func NewPcloudVolumegroupsDeleteBadRequest() *PcloudVolumegroupsDeleteBadRequest
 	return &PcloudVolumegroupsDeleteBadRequest{}
 }
 
-/*
-PcloudVolumegroupsDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVolumegroupsDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVolumegroupsDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewPcloudVolumegroupsDeleteUnauthorized() *PcloudVolumegroupsDeleteUnauthor
 	return &PcloudVolumegroupsDeleteUnauthorized{}
 }
 
-/*
-PcloudVolumegroupsDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVolumegroupsDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVolumegroupsDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewPcloudVolumegroupsDeleteForbidden() *PcloudVolumegroupsDeleteForbidden {
 	return &PcloudVolumegroupsDeleteForbidden{}
 }
 
-/*
-PcloudVolumegroupsDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVolumegroupsDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVolumegroupsDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewPcloudVolumegroupsDeleteNotFound() *PcloudVolumegroupsDeleteNotFound {
 	return &PcloudVolumegroupsDeleteNotFound{}
 }
 
-/*
-PcloudVolumegroupsDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVolumegroupsDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVolumegroupsDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewPcloudVolumegroupsDeleteInternalServerError() *PcloudVolumegroupsDeleteI
 	return &PcloudVolumegroupsDeleteInternalServerError{}
 }
 
-/*
-PcloudVolumegroupsDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVolumegroupsDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVolumegroupsDeleteInternalServerError struct {
 	Payload *models.Error
 }

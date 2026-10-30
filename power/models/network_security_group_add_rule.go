@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -126,7 +127,7 @@ func (m *NetworkSecurityGroupAddRule) validateAction(formats strfmt.Registry) er
 }
 
 func (m *NetworkSecurityGroupAddRule) validateDestinationPort(formats strfmt.Registry) error {
-	if swag.IsZero(m.DestinationPort) { // not required
+	if typeutils.IsZero(m.DestinationPort) { // not required
 		return nil
 	}
 
@@ -149,7 +150,7 @@ func (m *NetworkSecurityGroupAddRule) validateDestinationPort(formats strfmt.Reg
 }
 
 func (m *NetworkSecurityGroupAddRule) validateDestinationPorts(formats strfmt.Registry) error {
-	if swag.IsZero(m.DestinationPorts) { // not required
+	if typeutils.IsZero(m.DestinationPorts) { // not required
 		return nil
 	}
 
@@ -220,7 +221,7 @@ func (m *NetworkSecurityGroupAddRule) validateRemote(formats strfmt.Registry) er
 }
 
 func (m *NetworkSecurityGroupAddRule) validateSourcePort(formats strfmt.Registry) error {
-	if swag.IsZero(m.SourcePort) { // not required
+	if typeutils.IsZero(m.SourcePort) { // not required
 		return nil
 	}
 
@@ -243,7 +244,7 @@ func (m *NetworkSecurityGroupAddRule) validateSourcePort(formats strfmt.Registry
 }
 
 func (m *NetworkSecurityGroupAddRule) validateSourcePorts(formats strfmt.Registry) error {
-	if swag.IsZero(m.SourcePorts) { // not required
+	if typeutils.IsZero(m.SourcePorts) { // not required
 		return nil
 	}
 
@@ -303,7 +304,7 @@ func (m *NetworkSecurityGroupAddRule) contextValidateDestinationPort(ctx context
 
 	if m.DestinationPort != nil {
 
-		if swag.IsZero(m.DestinationPort) { // not required
+		if typeutils.IsZero(m.DestinationPort) { // not required
 			return nil
 		}
 
@@ -328,7 +329,7 @@ func (m *NetworkSecurityGroupAddRule) contextValidateDestinationPorts(ctx contex
 
 	if m.DestinationPorts != nil {
 
-		if swag.IsZero(m.DestinationPorts) { // not required
+		if typeutils.IsZero(m.DestinationPorts) { // not required
 			return nil
 		}
 
@@ -395,7 +396,7 @@ func (m *NetworkSecurityGroupAddRule) contextValidateSourcePort(ctx context.Cont
 
 	if m.SourcePort != nil {
 
-		if swag.IsZero(m.SourcePort) { // not required
+		if typeutils.IsZero(m.SourcePort) { // not required
 			return nil
 		}
 
@@ -420,7 +421,7 @@ func (m *NetworkSecurityGroupAddRule) contextValidateSourcePorts(ctx context.Con
 
 	if m.SourcePorts != nil {
 
-		if swag.IsZero(m.SourcePorts) { // not required
+		if typeutils.IsZero(m.SourcePorts) { // not required
 			return nil
 		}
 
@@ -446,13 +447,13 @@ func (m *NetworkSecurityGroupAddRule) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkSecurityGroupAddRule) UnmarshalBinary(b []byte) error {
 	var res NetworkSecurityGroupAddRule
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

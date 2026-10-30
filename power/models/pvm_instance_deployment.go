@@ -8,7 +8,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -93,7 +93,7 @@ func (m *PvmInstanceDeployment) validateProcessorMode(formats strfmt.Registry) e
 }
 
 // ContextValidate validates this pvm instance deployment based on context it is used
-func (m *PvmInstanceDeployment) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *PvmInstanceDeployment) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -102,13 +102,13 @@ func (m *PvmInstanceDeployment) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PvmInstanceDeployment) UnmarshalBinary(b []byte) error {
 	var res PvmInstanceDeployment
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

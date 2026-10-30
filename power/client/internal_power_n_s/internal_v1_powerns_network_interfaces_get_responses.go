@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1PowernsNetworkInterfacesGetReader is a Reader for the InternalV1PowernsNetworkInterfacesGet structure.
@@ -44,11 +43,9 @@ func NewInternalV1PowernsNetworkInterfacesGetOK() *InternalV1PowernsNetworkInter
 	return &InternalV1PowernsNetworkInterfacesGetOK{}
 }
 
-/*
-InternalV1PowernsNetworkInterfacesGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1PowernsNetworkInterfacesGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1PowernsNetworkInterfacesGetOK struct {
 	Payload models.PnsRegionZoneNetifs
 }
@@ -112,11 +109,9 @@ func NewInternalV1PowernsNetworkInterfacesGetForbidden() *InternalV1PowernsNetwo
 	return &InternalV1PowernsNetworkInterfacesGetForbidden{}
 }
 
-/*
-InternalV1PowernsNetworkInterfacesGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1PowernsNetworkInterfacesGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1PowernsNetworkInterfacesGetForbidden struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudTenantsSshkeysDeleteReader is a Reader for the PcloudTenantsSshkeysDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudTenantsSshkeysDeleteOK() *PcloudTenantsSshkeysDeleteOK {
 	return &PcloudTenantsSshkeysDeleteOK{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudTenantsSshkeysDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudTenantsSshkeysDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudTenantsSshkeysDeleteBadRequest() *PcloudTenantsSshkeysDeleteBadReq
 	return &PcloudTenantsSshkeysDeleteBadRequest{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudTenantsSshkeysDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudTenantsSshkeysDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudTenantsSshkeysDeleteUnauthorized() *PcloudTenantsSshkeysDeleteUnau
 	return &PcloudTenantsSshkeysDeleteUnauthorized{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudTenantsSshkeysDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudTenantsSshkeysDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudTenantsSshkeysDeleteForbidden() *PcloudTenantsSshkeysDeleteForbidd
 	return &PcloudTenantsSshkeysDeleteForbidden{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudTenantsSshkeysDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudTenantsSshkeysDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudTenantsSshkeysDeleteNotFound() *PcloudTenantsSshkeysDeleteNotFound
 	return &PcloudTenantsSshkeysDeleteNotFound{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudTenantsSshkeysDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudTenantsSshkeysDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudTenantsSshkeysDeleteGone() *PcloudTenantsSshkeysDeleteGone {
 	return &PcloudTenantsSshkeysDeleteGone{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// PcloudTenantsSshkeysDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type PcloudTenantsSshkeysDeleteGone struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudTenantsSshkeysDeleteInternalServerError() *PcloudTenantsSshkeysDel
 	return &PcloudTenantsSshkeysDeleteInternalServerError{}
 }
 
-/*
-PcloudTenantsSshkeysDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudTenantsSshkeysDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudTenantsSshkeysDeleteInternalServerError struct {
 	Payload *models.Error
 }

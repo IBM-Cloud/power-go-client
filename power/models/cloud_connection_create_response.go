@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // CloudConnectionCreateResponse cloud connection create response
@@ -25,7 +26,7 @@ type CloudConnectionCreateResponse struct {
 func (m *CloudConnectionCreateResponse) UnmarshalJSON(raw []byte) error {
 	// AO0
 	var aO0 CloudConnection
-	if err := swag.ReadJSON(raw, &aO0); err != nil {
+	if err := jsonutils.ReadJSON(raw, &aO0); err != nil {
 		return err
 	}
 	m.CloudConnection = aO0
@@ -34,7 +35,7 @@ func (m *CloudConnectionCreateResponse) UnmarshalJSON(raw []byte) error {
 	var propsCloudConnectionCreateResponse struct {
 		JobRef *JobReference `json:"jobRef,omitempty"`
 	}
-	if err := swag.ReadJSON(raw, &propsCloudConnectionCreateResponse); err != nil {
+	if err := jsonutils.ReadJSON(raw, &propsCloudConnectionCreateResponse); err != nil {
 		return err
 	}
 	m.JobRef = propsCloudConnectionCreateResponse.JobRef
@@ -46,7 +47,7 @@ func (m *CloudConnectionCreateResponse) UnmarshalJSON(raw []byte) error {
 func (m CloudConnectionCreateResponse) MarshalJSON() ([]byte, error) {
 	_parts := make([][]byte, 0, 1)
 
-	aO0, err := swag.WriteJSON(m.CloudConnection)
+	aO0, err := jsonutils.WriteJSON(m.CloudConnection)
 	if err != nil {
 		return nil, err
 	}
@@ -58,12 +59,12 @@ func (m CloudConnectionCreateResponse) MarshalJSON() ([]byte, error) {
 	}
 	propsCloudConnectionCreateResponse.JobRef = m.JobRef
 
-	jsonDataPropsCloudConnectionCreateResponse, errCloudConnectionCreateResponse := swag.WriteJSON(propsCloudConnectionCreateResponse)
+	jsonDataPropsCloudConnectionCreateResponse, errCloudConnectionCreateResponse := jsonutils.WriteJSON(propsCloudConnectionCreateResponse)
 	if errCloudConnectionCreateResponse != nil {
 		return nil, errCloudConnectionCreateResponse
 	}
 	_parts = append(_parts, jsonDataPropsCloudConnectionCreateResponse)
-	return swag.ConcatJSON(_parts...), nil
+	return jsonutils.ConcatJSON(_parts...), nil
 }
 
 // Validate validates this cloud connection create response
@@ -86,7 +87,7 @@ func (m *CloudConnectionCreateResponse) Validate(formats strfmt.Registry) error 
 }
 
 func (m *CloudConnectionCreateResponse) validateJobRef(formats strfmt.Registry) error {
-	if swag.IsZero(m.JobRef) { // not required
+	if typeutils.IsZero(m.JobRef) { // not required
 		return nil
 	}
 
@@ -131,7 +132,7 @@ func (m *CloudConnectionCreateResponse) contextValidateJobRef(ctx context.Contex
 
 	if m.JobRef != nil {
 
-		if swag.IsZero(m.JobRef) { // not required
+		if typeutils.IsZero(m.JobRef) { // not required
 			return nil
 		}
 
@@ -157,13 +158,13 @@ func (m *CloudConnectionCreateResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloudConnectionCreateResponse) UnmarshalBinary(b []byte) error {
 	var res CloudConnectionCreateResponse
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1StorageRegionsStoragePoolsGetallReader is a Reader for the InternalV1StorageRegionsStoragePoolsGetall structure.
@@ -62,11 +61,9 @@ func NewInternalV1StorageRegionsStoragePoolsGetallOK() *InternalV1StorageRegions
 	return &InternalV1StorageRegionsStoragePoolsGetallOK{}
 }
 
-/*
-InternalV1StorageRegionsStoragePoolsGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1StorageRegionsStoragePoolsGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1StorageRegionsStoragePoolsGetallOK struct {
 	Payload models.StoragePools
 }
@@ -130,11 +127,9 @@ func NewInternalV1StorageRegionsStoragePoolsGetallUnauthorized() *InternalV1Stor
 	return &InternalV1StorageRegionsStoragePoolsGetallUnauthorized{}
 }
 
-/*
-InternalV1StorageRegionsStoragePoolsGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1StorageRegionsStoragePoolsGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1StorageRegionsStoragePoolsGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -200,11 +195,9 @@ func NewInternalV1StorageRegionsStoragePoolsGetallForbidden() *InternalV1Storage
 	return &InternalV1StorageRegionsStoragePoolsGetallForbidden{}
 }
 
-/*
-InternalV1StorageRegionsStoragePoolsGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1StorageRegionsStoragePoolsGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1StorageRegionsStoragePoolsGetallForbidden struct {
 	Payload *models.Error
 }
@@ -270,11 +263,9 @@ func NewInternalV1StorageRegionsStoragePoolsGetallNotFound() *InternalV1StorageR
 	return &InternalV1StorageRegionsStoragePoolsGetallNotFound{}
 }
 
-/*
-InternalV1StorageRegionsStoragePoolsGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1StorageRegionsStoragePoolsGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1StorageRegionsStoragePoolsGetallNotFound struct {
 	Payload *models.Error
 }
@@ -340,11 +331,9 @@ func NewInternalV1StorageRegionsStoragePoolsGetallInternalServerError() *Interna
 	return &InternalV1StorageRegionsStoragePoolsGetallInternalServerError{}
 }
 
-/*
-InternalV1StorageRegionsStoragePoolsGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1StorageRegionsStoragePoolsGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1StorageRegionsStoragePoolsGetallInternalServerError struct {
 	Payload *models.Error
 }

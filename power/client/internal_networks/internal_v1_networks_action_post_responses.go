@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1NetworksActionPostReader is a Reader for the InternalV1NetworksActionPost structure.
@@ -74,11 +73,9 @@ func NewInternalV1NetworksActionPostOK() *InternalV1NetworksActionPostOK {
 	return &InternalV1NetworksActionPostOK{}
 }
 
-/*
-InternalV1NetworksActionPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1NetworksActionPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1NetworksActionPostOK struct {
 	Payload models.InternalNetworksActionResponse
 }
@@ -142,11 +139,9 @@ func NewInternalV1NetworksActionPostBadRequest() *InternalV1NetworksActionPostBa
 	return &InternalV1NetworksActionPostBadRequest{}
 }
 
-/*
-InternalV1NetworksActionPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1NetworksActionPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1NetworksActionPostBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewInternalV1NetworksActionPostUnauthorized() *InternalV1NetworksActionPost
 	return &InternalV1NetworksActionPostUnauthorized{}
 }
 
-/*
-InternalV1NetworksActionPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1NetworksActionPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1NetworksActionPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewInternalV1NetworksActionPostForbidden() *InternalV1NetworksActionPostFor
 	return &InternalV1NetworksActionPostForbidden{}
 }
 
-/*
-InternalV1NetworksActionPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1NetworksActionPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1NetworksActionPostForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewInternalV1NetworksActionPostNotFound() *InternalV1NetworksActionPostNotF
 	return &InternalV1NetworksActionPostNotFound{}
 }
 
-/*
-InternalV1NetworksActionPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1NetworksActionPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1NetworksActionPostNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewInternalV1NetworksActionPostConflict() *InternalV1NetworksActionPostConf
 	return &InternalV1NetworksActionPostConflict{}
 }
 
-/*
-InternalV1NetworksActionPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// InternalV1NetworksActionPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type InternalV1NetworksActionPostConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewInternalV1NetworksActionPostInternalServerError() *InternalV1NetworksAct
 	return &InternalV1NetworksActionPostInternalServerError{}
 }
 
-/*
-InternalV1NetworksActionPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1NetworksActionPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1NetworksActionPostInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudNetworksGetallReader is a Reader for the PcloudNetworksGetall structure.
@@ -52,6 +51,12 @@ func (o *PcloudNetworksGetallReader) ReadResponse(response runtime.ClientRespons
 			return nil, err
 		}
 		return nil, result
+	case 409:
+		result := NewPcloudNetworksGetallConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudNetworksGetallInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -68,11 +73,9 @@ func NewPcloudNetworksGetallOK() *PcloudNetworksGetallOK {
 	return &PcloudNetworksGetallOK{}
 }
 
-/*
-PcloudNetworksGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudNetworksGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudNetworksGetallOK struct {
 	Payload *models.Networks
 }
@@ -138,11 +141,9 @@ func NewPcloudNetworksGetallBadRequest() *PcloudNetworksGetallBadRequest {
 	return &PcloudNetworksGetallBadRequest{}
 }
 
-/*
-PcloudNetworksGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudNetworksGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudNetworksGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +209,9 @@ func NewPcloudNetworksGetallUnauthorized() *PcloudNetworksGetallUnauthorized {
 	return &PcloudNetworksGetallUnauthorized{}
 }
 
-/*
-PcloudNetworksGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudNetworksGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudNetworksGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +277,9 @@ func NewPcloudNetworksGetallForbidden() *PcloudNetworksGetallForbidden {
 	return &PcloudNetworksGetallForbidden{}
 }
 
-/*
-PcloudNetworksGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudNetworksGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudNetworksGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +345,9 @@ func NewPcloudNetworksGetallNotFound() *PcloudNetworksGetallNotFound {
 	return &PcloudNetworksGetallNotFound{}
 }
 
-/*
-PcloudNetworksGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudNetworksGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudNetworksGetallNotFound struct {
 	Payload *models.Error
 }
@@ -413,16 +408,82 @@ func (o *PcloudNetworksGetallNotFound) readResponse(response runtime.ClientRespo
 	return nil
 }
 
+// NewPcloudNetworksGetallConflict creates a PcloudNetworksGetallConflict with default headers values
+func NewPcloudNetworksGetallConflict() *PcloudNetworksGetallConflict {
+	return &PcloudNetworksGetallConflict{}
+}
+
+// PcloudNetworksGetallConflict describes a response with status code 409, with default header values.
+//
+// Conflict
+type PcloudNetworksGetallConflict struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud networks getall conflict response has a 2xx status code
+func (o *PcloudNetworksGetallConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud networks getall conflict response has a 3xx status code
+func (o *PcloudNetworksGetallConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud networks getall conflict response has a 4xx status code
+func (o *PcloudNetworksGetallConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud networks getall conflict response has a 5xx status code
+func (o *PcloudNetworksGetallConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud networks getall conflict response a status code equal to that given
+func (o *PcloudNetworksGetallConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the pcloud networks getall conflict response
+func (o *PcloudNetworksGetallConflict) Code() int {
+	return 409
+}
+
+func (o *PcloudNetworksGetallConflict) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks][%d] pcloudNetworksGetallConflict %s", 409, payload)
+}
+
+func (o *PcloudNetworksGetallConflict) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[GET /pcloud/v1/cloud-instances/{cloud_instance_id}/networks][%d] pcloudNetworksGetallConflict %s", 409, payload)
+}
+
+func (o *PcloudNetworksGetallConflict) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudNetworksGetallConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+		return err
+	}
+
+	return nil
+}
+
 // NewPcloudNetworksGetallInternalServerError creates a PcloudNetworksGetallInternalServerError with default headers values
 func NewPcloudNetworksGetallInternalServerError() *PcloudNetworksGetallInternalServerError {
 	return &PcloudNetworksGetallInternalServerError{}
 }
 
-/*
-PcloudNetworksGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudNetworksGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudNetworksGetallInternalServerError struct {
 	Payload *models.Error
 }

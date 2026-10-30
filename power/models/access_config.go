@@ -85,6 +85,6 @@ func (m AccessConfig) Validate(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this access config based on context it is used
-func (m AccessConfig) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m AccessConfig) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }

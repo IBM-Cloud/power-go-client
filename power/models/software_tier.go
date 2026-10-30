@@ -76,6 +76,6 @@ func (m SoftwareTier) Validate(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this software tier based on context it is used
-func (m SoftwareTier) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m SoftwareTier) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }

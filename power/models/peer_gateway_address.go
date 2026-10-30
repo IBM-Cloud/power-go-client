@@ -31,6 +31,6 @@ func (m PeerGatewayAddress) Validate(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this peer gateway address based on context it is used
-func (m PeerGatewayAddress) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m PeerGatewayAddress) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }

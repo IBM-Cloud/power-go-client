@@ -14,11 +14,11 @@ import (
 type InstanceCapability bool
 
 // Validate validates this instance capability
-func (m InstanceCapability) Validate(formats strfmt.Registry) error {
+func (m InstanceCapability) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this instance capability based on context it is used
-func (m InstanceCapability) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m InstanceCapability) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }

@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // NetworkAddressTranslation [DEPRECATED] Contains the Network Address Translation Details
@@ -22,12 +22,12 @@ type NetworkAddressTranslation struct {
 }
 
 // Validate validates this network address translation
-func (m *NetworkAddressTranslation) Validate(formats strfmt.Registry) error {
+func (m *NetworkAddressTranslation) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this network address translation based on context it is used
-func (m *NetworkAddressTranslation) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *NetworkAddressTranslation) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *NetworkAddressTranslation) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkAddressTranslation) UnmarshalBinary(b []byte) error {
 	var res NetworkAddressTranslation
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

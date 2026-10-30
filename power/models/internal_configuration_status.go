@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // InternalConfigurationStatus internal configuration status
@@ -23,12 +23,12 @@ type InternalConfigurationStatus struct {
 }
 
 // Validate validates this internal configuration status
-func (m *InternalConfigurationStatus) Validate(formats strfmt.Registry) error {
+func (m *InternalConfigurationStatus) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this internal configuration status based on context it is used
-func (m *InternalConfigurationStatus) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *InternalConfigurationStatus) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -37,13 +37,13 @@ func (m *InternalConfigurationStatus) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalConfigurationStatus) UnmarshalBinary(b []byte) error {
 	var res InternalConfigurationStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

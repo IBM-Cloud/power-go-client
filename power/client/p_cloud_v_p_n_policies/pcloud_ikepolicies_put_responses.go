@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudIkepoliciesPutReader is a Reader for the PcloudIkepoliciesPut structure.
@@ -74,11 +73,9 @@ func NewPcloudIkepoliciesPutOK() *PcloudIkepoliciesPutOK {
 	return &PcloudIkepoliciesPutOK{}
 }
 
-/*
-PcloudIkepoliciesPutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudIkepoliciesPutOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudIkepoliciesPutOK struct {
 	Payload *models.IKEPolicy
 }
@@ -144,11 +141,9 @@ func NewPcloudIkepoliciesPutBadRequest() *PcloudIkepoliciesPutBadRequest {
 	return &PcloudIkepoliciesPutBadRequest{}
 }
 
-/*
-PcloudIkepoliciesPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudIkepoliciesPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudIkepoliciesPutBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudIkepoliciesPutUnauthorized() *PcloudIkepoliciesPutUnauthorized {
 	return &PcloudIkepoliciesPutUnauthorized{}
 }
 
-/*
-PcloudIkepoliciesPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudIkepoliciesPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudIkepoliciesPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudIkepoliciesPutForbidden() *PcloudIkepoliciesPutForbidden {
 	return &PcloudIkepoliciesPutForbidden{}
 }
 
-/*
-PcloudIkepoliciesPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudIkepoliciesPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudIkepoliciesPutForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudIkepoliciesPutNotFound() *PcloudIkepoliciesPutNotFound {
 	return &PcloudIkepoliciesPutNotFound{}
 }
 
-/*
-PcloudIkepoliciesPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudIkepoliciesPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudIkepoliciesPutNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudIkepoliciesPutUnprocessableEntity() *PcloudIkepoliciesPutUnprocess
 	return &PcloudIkepoliciesPutUnprocessableEntity{}
 }
 
-/*
-PcloudIkepoliciesPutUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudIkepoliciesPutUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudIkepoliciesPutUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudIkepoliciesPutInternalServerError() *PcloudIkepoliciesPutInternalS
 	return &PcloudIkepoliciesPutInternalServerError{}
 }
 
-/*
-PcloudIkepoliciesPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudIkepoliciesPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudIkepoliciesPutInternalServerError struct {
 	Payload *models.Error
 }

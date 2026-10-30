@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -83,7 +84,7 @@ func (m *PVMInstanceV2NetworkPort) validateIPProtocolEnum(path, location string,
 }
 
 func (m *PVMInstanceV2NetworkPort) validateIPProtocol(formats strfmt.Registry) error {
-	if swag.IsZero(m.IPProtocol) { // not required
+	if typeutils.IsZero(m.IPProtocol) { // not required
 		return nil
 	}
 
@@ -125,7 +126,7 @@ func (m *PVMInstanceV2NetworkPort) validateTypeEnum(path, location string, value
 }
 
 func (m *PVMInstanceV2NetworkPort) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(m.Type) { // not required
+	if typeutils.IsZero(m.Type) { // not required
 		return nil
 	}
 
@@ -138,7 +139,7 @@ func (m *PVMInstanceV2NetworkPort) validateType(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this p VM instance v2 network port based on context it is used
-func (m *PVMInstanceV2NetworkPort) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *PVMInstanceV2NetworkPort) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -147,13 +148,13 @@ func (m *PVMInstanceV2NetworkPort) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceV2NetworkPort) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceV2NetworkPort
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

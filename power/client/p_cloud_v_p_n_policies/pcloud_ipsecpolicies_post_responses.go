@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudIpsecpoliciesPostReader is a Reader for the PcloudIpsecpoliciesPost structure.
@@ -80,11 +79,9 @@ func NewPcloudIpsecpoliciesPostOK() *PcloudIpsecpoliciesPostOK {
 	return &PcloudIpsecpoliciesPostOK{}
 }
 
-/*
-PcloudIpsecpoliciesPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudIpsecpoliciesPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudIpsecpoliciesPostOK struct {
 	Payload *models.IPSecPolicy
 }
@@ -150,11 +147,9 @@ func NewPcloudIpsecpoliciesPostBadRequest() *PcloudIpsecpoliciesPostBadRequest {
 	return &PcloudIpsecpoliciesPostBadRequest{}
 }
 
-/*
-PcloudIpsecpoliciesPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudIpsecpoliciesPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudIpsecpoliciesPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudIpsecpoliciesPostUnauthorized() *PcloudIpsecpoliciesPostUnauthoriz
 	return &PcloudIpsecpoliciesPostUnauthorized{}
 }
 
-/*
-PcloudIpsecpoliciesPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudIpsecpoliciesPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudIpsecpoliciesPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudIpsecpoliciesPostForbidden() *PcloudIpsecpoliciesPostForbidden {
 	return &PcloudIpsecpoliciesPostForbidden{}
 }
 
-/*
-PcloudIpsecpoliciesPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudIpsecpoliciesPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudIpsecpoliciesPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudIpsecpoliciesPostNotFound() *PcloudIpsecpoliciesPostNotFound {
 	return &PcloudIpsecpoliciesPostNotFound{}
 }
 
-/*
-PcloudIpsecpoliciesPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudIpsecpoliciesPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudIpsecpoliciesPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudIpsecpoliciesPostConflict() *PcloudIpsecpoliciesPostConflict {
 	return &PcloudIpsecpoliciesPostConflict{}
 }
 
-/*
-PcloudIpsecpoliciesPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudIpsecpoliciesPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudIpsecpoliciesPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudIpsecpoliciesPostUnprocessableEntity() *PcloudIpsecpoliciesPostUnp
 	return &PcloudIpsecpoliciesPostUnprocessableEntity{}
 }
 
-/*
-PcloudIpsecpoliciesPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudIpsecpoliciesPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudIpsecpoliciesPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudIpsecpoliciesPostInternalServerError() *PcloudIpsecpoliciesPostInt
 	return &PcloudIpsecpoliciesPostInternalServerError{}
 }
 
-/*
-PcloudIpsecpoliciesPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudIpsecpoliciesPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudIpsecpoliciesPostInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1WorkspacesGetReader is a Reader for the V1WorkspacesGet structure.
@@ -74,11 +73,9 @@ func NewV1WorkspacesGetOK() *V1WorkspacesGetOK {
 	return &V1WorkspacesGetOK{}
 }
 
-/*
-V1WorkspacesGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1WorkspacesGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1WorkspacesGetOK struct {
 	Payload *models.Workspace
 }
@@ -144,11 +141,9 @@ func NewV1WorkspacesGetBadRequest() *V1WorkspacesGetBadRequest {
 	return &V1WorkspacesGetBadRequest{}
 }
 
-/*
-V1WorkspacesGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1WorkspacesGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1WorkspacesGetBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewV1WorkspacesGetUnauthorized() *V1WorkspacesGetUnauthorized {
 	return &V1WorkspacesGetUnauthorized{}
 }
 
-/*
-V1WorkspacesGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1WorkspacesGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1WorkspacesGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewV1WorkspacesGetForbidden() *V1WorkspacesGetForbidden {
 	return &V1WorkspacesGetForbidden{}
 }
 
-/*
-V1WorkspacesGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1WorkspacesGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1WorkspacesGetForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewV1WorkspacesGetNotFound() *V1WorkspacesGetNotFound {
 	return &V1WorkspacesGetNotFound{}
 }
 
-/*
-V1WorkspacesGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1WorkspacesGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1WorkspacesGetNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewV1WorkspacesGetTooManyRequests() *V1WorkspacesGetTooManyRequests {
 	return &V1WorkspacesGetTooManyRequests{}
 }
 
-/*
-V1WorkspacesGetTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// V1WorkspacesGetTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type V1WorkspacesGetTooManyRequests struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewV1WorkspacesGetInternalServerError() *V1WorkspacesGetInternalServerError
 	return &V1WorkspacesGetInternalServerError{}
 }
 
-/*
-V1WorkspacesGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1WorkspacesGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1WorkspacesGetInternalServerError struct {
 	Payload *models.Error
 }

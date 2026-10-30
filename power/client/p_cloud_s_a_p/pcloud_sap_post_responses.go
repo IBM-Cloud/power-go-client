@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSapPostReader is a Reader for the PcloudSapPost structure.
@@ -92,11 +91,9 @@ func NewPcloudSapPostOK() *PcloudSapPostOK {
 	return &PcloudSapPostOK{}
 }
 
-/*
-PcloudSapPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSapPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSapPostOK struct {
 	Payload models.PVMInstanceList
 }
@@ -160,11 +157,9 @@ func NewPcloudSapPostCreated() *PcloudSapPostCreated {
 	return &PcloudSapPostCreated{}
 }
 
-/*
-PcloudSapPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// PcloudSapPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type PcloudSapPostCreated struct {
 	Payload models.PVMInstanceList
 }
@@ -228,11 +223,9 @@ func NewPcloudSapPostAccepted() *PcloudSapPostAccepted {
 	return &PcloudSapPostAccepted{}
 }
 
-/*
-PcloudSapPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudSapPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudSapPostAccepted struct {
 	Payload models.PVMInstanceList
 }
@@ -296,11 +289,9 @@ func NewPcloudSapPostBadRequest() *PcloudSapPostBadRequest {
 	return &PcloudSapPostBadRequest{}
 }
 
-/*
-PcloudSapPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSapPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSapPostBadRequest struct {
 	Payload *models.Error
 }
@@ -366,11 +357,9 @@ func NewPcloudSapPostUnauthorized() *PcloudSapPostUnauthorized {
 	return &PcloudSapPostUnauthorized{}
 }
 
-/*
-PcloudSapPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSapPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSapPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -436,11 +425,9 @@ func NewPcloudSapPostForbidden() *PcloudSapPostForbidden {
 	return &PcloudSapPostForbidden{}
 }
 
-/*
-PcloudSapPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSapPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSapPostForbidden struct {
 	Payload *models.Error
 }
@@ -506,11 +493,9 @@ func NewPcloudSapPostNotFound() *PcloudSapPostNotFound {
 	return &PcloudSapPostNotFound{}
 }
 
-/*
-PcloudSapPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSapPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSapPostNotFound struct {
 	Payload *models.Error
 }
@@ -576,11 +561,9 @@ func NewPcloudSapPostConflict() *PcloudSapPostConflict {
 	return &PcloudSapPostConflict{}
 }
 
-/*
-PcloudSapPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudSapPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudSapPostConflict struct {
 	Payload *models.Error
 }
@@ -646,11 +629,9 @@ func NewPcloudSapPostUnprocessableEntity() *PcloudSapPostUnprocessableEntity {
 	return &PcloudSapPostUnprocessableEntity{}
 }
 
-/*
-PcloudSapPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudSapPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudSapPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -716,11 +697,9 @@ func NewPcloudSapPostInternalServerError() *PcloudSapPostInternalServerError {
 	return &PcloudSapPostInternalServerError{}
 }
 
-/*
-PcloudSapPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSapPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSapPostInternalServerError struct {
 	Payload *models.Error
 }

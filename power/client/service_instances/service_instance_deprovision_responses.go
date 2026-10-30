@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceInstanceDeprovisionReader is a Reader for the ServiceInstanceDeprovision structure.
@@ -80,11 +79,9 @@ func NewServiceInstanceDeprovisionOK() *ServiceInstanceDeprovisionOK {
 	return &ServiceInstanceDeprovisionOK{}
 }
 
-/*
-ServiceInstanceDeprovisionOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceInstanceDeprovisionOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceInstanceDeprovisionOK struct {
 	Payload models.Object
 }
@@ -148,11 +145,9 @@ func NewServiceInstanceDeprovisionAccepted() *ServiceInstanceDeprovisionAccepted
 	return &ServiceInstanceDeprovisionAccepted{}
 }
 
-/*
-ServiceInstanceDeprovisionAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// ServiceInstanceDeprovisionAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type ServiceInstanceDeprovisionAccepted struct {
 	Payload *models.AsyncOperation
 }
@@ -218,11 +213,9 @@ func NewServiceInstanceDeprovisionBadRequest() *ServiceInstanceDeprovisionBadReq
 	return &ServiceInstanceDeprovisionBadRequest{}
 }
 
-/*
-ServiceInstanceDeprovisionBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceInstanceDeprovisionBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceInstanceDeprovisionBadRequest struct {
 	Payload *models.Error
 }
@@ -288,11 +281,9 @@ func NewServiceInstanceDeprovisionUnauthorized() *ServiceInstanceDeprovisionUnau
 	return &ServiceInstanceDeprovisionUnauthorized{}
 }
 
-/*
-ServiceInstanceDeprovisionUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceInstanceDeprovisionUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceInstanceDeprovisionUnauthorized struct {
 	Payload *models.Error
 }
@@ -358,11 +349,9 @@ func NewServiceInstanceDeprovisionForbidden() *ServiceInstanceDeprovisionForbidd
 	return &ServiceInstanceDeprovisionForbidden{}
 }
 
-/*
-ServiceInstanceDeprovisionForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceInstanceDeprovisionForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceInstanceDeprovisionForbidden struct {
 	Payload *models.Error
 }
@@ -428,11 +417,9 @@ func NewServiceInstanceDeprovisionNotFound() *ServiceInstanceDeprovisionNotFound
 	return &ServiceInstanceDeprovisionNotFound{}
 }
 
-/*
-ServiceInstanceDeprovisionNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceInstanceDeprovisionNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceInstanceDeprovisionNotFound struct {
 	Payload *models.Error
 }
@@ -498,11 +485,9 @@ func NewServiceInstanceDeprovisionGone() *ServiceInstanceDeprovisionGone {
 	return &ServiceInstanceDeprovisionGone{}
 }
 
-/*
-ServiceInstanceDeprovisionGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// ServiceInstanceDeprovisionGone describes a response with status code 410, with default header values.
+//
+// Gone
 type ServiceInstanceDeprovisionGone struct {
 	Payload *models.Error
 }
@@ -568,11 +553,9 @@ func NewServiceInstanceDeprovisionUnprocessableEntity() *ServiceInstanceDeprovis
 	return &ServiceInstanceDeprovisionUnprocessableEntity{}
 }
 
-/*
-ServiceInstanceDeprovisionUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// ServiceInstanceDeprovisionUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type ServiceInstanceDeprovisionUnprocessableEntity struct {
 	Payload *models.Error
 }
