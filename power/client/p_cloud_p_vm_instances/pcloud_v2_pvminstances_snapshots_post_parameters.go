@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudV2PvminstancesSnapshotsPostParams creates a new PcloudV2PvminstancesSnapshotsPostParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudV2PvminstancesSnapshotsPostParams() *PcloudV2PvminstancesSnapshotsPostParams {
-	return &PcloudV2PvminstancesSnapshotsPostParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudV2PvminstancesSnapshotsPostParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudV2PvminstancesSnapshotsPostParamsWithTimeout creates a new PcloudV2PvminstancesSnapshotsPostParams object
 // with the ability to set a timeout on a request.
 func NewPcloudV2PvminstancesSnapshotsPostParamsWithTimeout(timeout time.Duration) *PcloudV2PvminstancesSnapshotsPostParams {
 	return &PcloudV2PvminstancesSnapshotsPostParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudV2PvminstancesSnapshotsPostParamsWithContext creates a new PcloudV2PvminstancesSnapshotsPostParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2PvminstancesSnapshotsPostParams].
 func NewPcloudV2PvminstancesSnapshotsPostParamsWithContext(ctx context.Context) *PcloudV2PvminstancesSnapshotsPostParams {
 	return &PcloudV2PvminstancesSnapshotsPostParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,27 +63,24 @@ PcloudV2PvminstancesSnapshotsPostParams contains all the parameters to send to t
 */
 type PcloudV2PvminstancesSnapshotsPostParams struct {
 
-	/* Body.
-
-	   PVM V2 Instance snapshot create parameters
-	*/
+	// Body.
+	//
+	// PVM V2 Instance snapshot create parameters
 	Body *models.SnapshotCreateV2
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	/* PvmInstanceID.
-
-	   PCloud PVM Instance ID
-	*/
+	// PvmInstanceID.
+	//
+	// PCloud PVM Instance ID
 	PvmInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud v2 pvminstances snapshots post params (not the query body).
@@ -98,76 +98,79 @@ func (o *PcloudV2PvminstancesSnapshotsPostParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud v2 pvminstances snapshots post params
+// WithTimeout adds the timeout to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WithTimeout(timeout time.Duration) *PcloudV2PvminstancesSnapshotsPostParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud v2 pvminstances snapshots post params
+// SetTimeout adds the timeout to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud v2 pvminstances snapshots post params
+// WithContext adds the context to the pcloud v2 pvminstances snapshots post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2PvminstancesSnapshotsPostParams].
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WithContext(ctx context.Context) *PcloudV2PvminstancesSnapshotsPostParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud v2 pvminstances snapshots post params
+// SetContext adds the context to the pcloud v2 pvminstances snapshots post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2PvminstancesSnapshotsPostParams].
 func (o *PcloudV2PvminstancesSnapshotsPostParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots post params
+// WithHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WithHTTPClient(client *http.Client) *PcloudV2PvminstancesSnapshotsPostParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots post params
+// SetHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the pcloud v2 pvminstances snapshots post params
+// WithBody adds the body to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WithBody(body *models.SnapshotCreateV2) *PcloudV2PvminstancesSnapshotsPostParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the pcloud v2 pvminstances snapshots post params
+// SetBody adds the body to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) SetBody(body *models.SnapshotCreateV2) {
 	o.Body = body
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud v2 pvminstances snapshots post params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WithCloudInstanceID(cloudInstanceID string) *PcloudV2PvminstancesSnapshotsPostParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud v2 pvminstances snapshots post params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WithPvmInstanceID adds the pvmInstanceID to the pcloud v2 pvminstances snapshots post params
+// WithPvmInstanceID adds the pvmInstanceID to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WithPvmInstanceID(pvmInstanceID string) *PcloudV2PvminstancesSnapshotsPostParams {
 	o.SetPvmInstanceID(pvmInstanceID)
 	return o
 }
 
-// SetPvmInstanceID adds the pvmInstanceId to the pcloud v2 pvminstances snapshots post params
+// SetPvmInstanceID adds the pvmInstanceId to the pcloud v2 pvminstances snapshots post params.
 func (o *PcloudV2PvminstancesSnapshotsPostParams) SetPvmInstanceID(pvmInstanceID string) {
 	o.PvmInstanceID = pvmInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudV2PvminstancesSnapshotsPostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

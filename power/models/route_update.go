@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -105,7 +106,7 @@ func (m *RouteUpdate) validateActionEnum(path, location string, value string) er
 }
 
 func (m *RouteUpdate) validateAction(formats strfmt.Registry) error {
-	if swag.IsZero(m.Action) { // not required
+	if typeutils.IsZero(m.Action) { // not required
 		return nil
 	}
 
@@ -147,7 +148,7 @@ func (m *RouteUpdate) validateAdvertiseEnum(path, location string, value string)
 }
 
 func (m *RouteUpdate) validateAdvertise(formats strfmt.Registry) error {
-	if swag.IsZero(m.Advertise) { // not required
+	if typeutils.IsZero(m.Advertise) { // not required
 		return nil
 	}
 
@@ -186,7 +187,7 @@ func (m *RouteUpdate) validateDestinationTypeEnum(path, location string, value s
 }
 
 func (m *RouteUpdate) validateDestinationType(formats strfmt.Registry) error {
-	if swag.IsZero(m.DestinationType) { // not required
+	if typeutils.IsZero(m.DestinationType) { // not required
 		return nil
 	}
 
@@ -199,7 +200,7 @@ func (m *RouteUpdate) validateDestinationType(formats strfmt.Registry) error {
 }
 
 func (m *RouteUpdate) validateName(formats strfmt.Registry) error {
-	if swag.IsZero(m.Name) { // not required
+	if typeutils.IsZero(m.Name) { // not required
 		return nil
 	}
 
@@ -241,7 +242,7 @@ func (m *RouteUpdate) validateNextHopTypeEnum(path, location string, value strin
 }
 
 func (m *RouteUpdate) validateNextHopType(formats strfmt.Registry) error {
-	if swag.IsZero(m.NextHopType) { // not required
+	if typeutils.IsZero(m.NextHopType) { // not required
 		return nil
 	}
 
@@ -254,7 +255,7 @@ func (m *RouteUpdate) validateNextHopType(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this route update based on context it is used
-func (m *RouteUpdate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *RouteUpdate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -263,13 +264,13 @@ func (m *RouteUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RouteUpdate) UnmarshalBinary(b []byte) error {
 	var res RouteUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

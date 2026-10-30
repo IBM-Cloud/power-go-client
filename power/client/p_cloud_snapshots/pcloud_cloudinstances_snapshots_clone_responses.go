@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesSnapshotsCloneReader is a Reader for the PcloudCloudinstancesSnapshotsClone structure.
@@ -80,11 +79,9 @@ func NewPcloudCloudinstancesSnapshotsCloneAccepted() *PcloudCloudinstancesSnapsh
 	return &PcloudCloudinstancesSnapshotsCloneAccepted{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudCloudinstancesSnapshotsCloneAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudCloudinstancesSnapshotsCloneAccepted struct {
 	Payload *models.CloneSnapshotResponse
 }
@@ -150,11 +147,9 @@ func NewPcloudCloudinstancesSnapshotsCloneBadRequest() *PcloudCloudinstancesSnap
 	return &PcloudCloudinstancesSnapshotsCloneBadRequest{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesSnapshotsCloneBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesSnapshotsCloneBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudCloudinstancesSnapshotsCloneUnauthorized() *PcloudCloudinstancesSn
 	return &PcloudCloudinstancesSnapshotsCloneUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesSnapshotsCloneUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesSnapshotsCloneUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudCloudinstancesSnapshotsCloneForbidden() *PcloudCloudinstancesSnaps
 	return &PcloudCloudinstancesSnapshotsCloneForbidden{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesSnapshotsCloneForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesSnapshotsCloneForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudCloudinstancesSnapshotsCloneNotFound() *PcloudCloudinstancesSnapsh
 	return &PcloudCloudinstancesSnapshotsCloneNotFound{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesSnapshotsCloneNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesSnapshotsCloneNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudCloudinstancesSnapshotsCloneConflict() *PcloudCloudinstancesSnapsh
 	return &PcloudCloudinstancesSnapshotsCloneConflict{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudCloudinstancesSnapshotsCloneConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudCloudinstancesSnapshotsCloneConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudCloudinstancesSnapshotsCloneInternalServerError() *PcloudCloudinst
 	return &PcloudCloudinstancesSnapshotsCloneInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesSnapshotsCloneInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesSnapshotsCloneInternalServerError struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudCloudinstancesSnapshotsCloneGatewayTimeout() *PcloudCloudinstances
 	return &PcloudCloudinstancesSnapshotsCloneGatewayTimeout{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsCloneGatewayTimeout describes a response with status code 504, with default header values.
-
-Gateway Timeout
-*/
+// PcloudCloudinstancesSnapshotsCloneGatewayTimeout describes a response with status code 504, with default header values.
+//
+// Gateway Timeout
 type PcloudCloudinstancesSnapshotsCloneGatewayTimeout struct {
 	Payload *models.Error
 }

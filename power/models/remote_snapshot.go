@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -64,7 +65,7 @@ func (m *RemoteSnapshot) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RemoteSnapshot) validateDescription(formats strfmt.Registry) error {
-	if swag.IsZero(m.Description) { // not required
+	if typeutils.IsZero(m.Description) { // not required
 		return nil
 	}
 
@@ -93,7 +94,7 @@ func (m *RemoteSnapshot) validateName(formats strfmt.Registry) error {
 }
 
 func (m *RemoteSnapshot) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -114,7 +115,7 @@ func (m *RemoteSnapshot) validateUserTags(formats strfmt.Registry) error {
 }
 
 func (m *RemoteSnapshot) validateWorkspaceCRN(formats strfmt.Registry) error {
-	if swag.IsZero(m.WorkspaceCRN) { // not required
+	if typeutils.IsZero(m.WorkspaceCRN) { // not required
 		return nil
 	}
 
@@ -172,7 +173,7 @@ func (m *RemoteSnapshot) contextValidateUserTags(ctx context.Context, formats st
 
 func (m *RemoteSnapshot) contextValidateWorkspaceCRN(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.WorkspaceCRN) { // not required
+	if typeutils.IsZero(m.WorkspaceCRN) { // not required
 		return nil
 	}
 
@@ -197,13 +198,13 @@ func (m *RemoteSnapshot) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RemoteSnapshot) UnmarshalBinary(b []byte) error {
 	var res RemoteSnapshot
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

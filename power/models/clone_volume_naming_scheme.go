@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // CloneVolumeNamingScheme clone volume naming scheme
@@ -43,7 +44,7 @@ func (m *CloneVolumeNamingScheme) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CloneVolumeNamingScheme) validateBulkNaming(formats strfmt.Registry) error {
-	if swag.IsZero(m.BulkNaming) { // not required
+	if typeutils.IsZero(m.BulkNaming) { // not required
 		return nil
 	}
 
@@ -66,12 +67,12 @@ func (m *CloneVolumeNamingScheme) validateBulkNaming(formats strfmt.Registry) er
 }
 
 func (m *CloneVolumeNamingScheme) validateVolumeNaming(formats strfmt.Registry) error {
-	if swag.IsZero(m.VolumeNaming) { // not required
+	if typeutils.IsZero(m.VolumeNaming) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.VolumeNaming); i++ {
-		if swag.IsZero(m.VolumeNaming[i]) { // not required
+		if typeutils.IsZero(m.VolumeNaming[i]) { // not required
 			continue
 		}
 
@@ -117,7 +118,7 @@ func (m *CloneVolumeNamingScheme) contextValidateBulkNaming(ctx context.Context,
 
 	if m.BulkNaming != nil {
 
-		if swag.IsZero(m.BulkNaming) { // not required
+		if typeutils.IsZero(m.BulkNaming) { // not required
 			return nil
 		}
 
@@ -144,7 +145,7 @@ func (m *CloneVolumeNamingScheme) contextValidateVolumeNaming(ctx context.Contex
 
 		if m.VolumeNaming[i] != nil {
 
-			if swag.IsZero(m.VolumeNaming[i]) { // not required
+			if typeutils.IsZero(m.VolumeNaming[i]) { // not required
 				return nil
 			}
 
@@ -172,13 +173,13 @@ func (m *CloneVolumeNamingScheme) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloneVolumeNamingScheme) UnmarshalBinary(b []byte) error {
 	var res CloneVolumeNamingScheme
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

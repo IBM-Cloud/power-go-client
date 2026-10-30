@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBindingGetReader is a Reader for the ServiceBindingGet structure.
@@ -62,11 +61,9 @@ func NewServiceBindingGetOK() *ServiceBindingGetOK {
 	return &ServiceBindingGetOK{}
 }
 
-/*
-ServiceBindingGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBindingGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBindingGetOK struct {
 	Payload *models.ServiceBindingResource
 }
@@ -132,11 +129,9 @@ func NewServiceBindingGetBadRequest() *ServiceBindingGetBadRequest {
 	return &ServiceBindingGetBadRequest{}
 }
 
-/*
-ServiceBindingGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBindingGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBindingGetBadRequest struct {
 	Payload *models.Error
 }
@@ -202,11 +197,9 @@ func NewServiceBindingGetUnauthorized() *ServiceBindingGetUnauthorized {
 	return &ServiceBindingGetUnauthorized{}
 }
 
-/*
-ServiceBindingGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBindingGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBindingGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -272,11 +265,9 @@ func NewServiceBindingGetForbidden() *ServiceBindingGetForbidden {
 	return &ServiceBindingGetForbidden{}
 }
 
-/*
-ServiceBindingGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBindingGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBindingGetForbidden struct {
 	Payload *models.Error
 }
@@ -342,11 +333,9 @@ func NewServiceBindingGetNotFound() *ServiceBindingGetNotFound {
 	return &ServiceBindingGetNotFound{}
 }
 
-/*
-ServiceBindingGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBindingGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBindingGetNotFound struct {
 	Payload *models.Error
 }

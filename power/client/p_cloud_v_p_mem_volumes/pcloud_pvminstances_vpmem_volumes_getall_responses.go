@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesVpmemVolumesGetallReader is a Reader for the PcloudPvminstancesVpmemVolumesGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudPvminstancesVpmemVolumesGetallOK() *PcloudPvminstancesVpmemVolumes
 	return &PcloudPvminstancesVpmemVolumesGetallOK{}
 }
 
-/*
-PcloudPvminstancesVpmemVolumesGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudPvminstancesVpmemVolumesGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudPvminstancesVpmemVolumesGetallOK struct {
 	Payload *models.VPMemVolumes
 }
@@ -138,11 +135,9 @@ func NewPcloudPvminstancesVpmemVolumesGetallBadRequest() *PcloudPvminstancesVpme
 	return &PcloudPvminstancesVpmemVolumesGetallBadRequest{}
 }
 
-/*
-PcloudPvminstancesVpmemVolumesGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesVpmemVolumesGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesVpmemVolumesGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudPvminstancesVpmemVolumesGetallUnauthorized() *PcloudPvminstancesVp
 	return &PcloudPvminstancesVpmemVolumesGetallUnauthorized{}
 }
 
-/*
-PcloudPvminstancesVpmemVolumesGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesVpmemVolumesGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesVpmemVolumesGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudPvminstancesVpmemVolumesGetallForbidden() *PcloudPvminstancesVpmem
 	return &PcloudPvminstancesVpmemVolumesGetallForbidden{}
 }
 
-/*
-PcloudPvminstancesVpmemVolumesGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesVpmemVolumesGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesVpmemVolumesGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudPvminstancesVpmemVolumesGetallNotFound() *PcloudPvminstancesVpmemV
 	return &PcloudPvminstancesVpmemVolumesGetallNotFound{}
 }
 
-/*
-PcloudPvminstancesVpmemVolumesGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesVpmemVolumesGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesVpmemVolumesGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudPvminstancesVpmemVolumesGetallInternalServerError() *PcloudPvminst
 	return &PcloudPvminstancesVpmemVolumesGetallInternalServerError{}
 }
 
-/*
-PcloudPvminstancesVpmemVolumesGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesVpmemVolumesGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesVpmemVolumesGetallInternalServerError struct {
 	Payload *models.Error
 }

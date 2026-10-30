@@ -10,7 +10,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -118,7 +119,7 @@ func (m *NetworkCreate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreate) validateAccessConfig(formats strfmt.Registry) error {
-	if swag.IsZero(m.AccessConfig) { // not required
+	if typeutils.IsZero(m.AccessConfig) { // not required
 		return nil
 	}
 
@@ -168,7 +169,7 @@ func (m *NetworkCreate) validateAdvertiseEnum(path, location string, value strin
 }
 
 func (m *NetworkCreate) validateAdvertise(formats strfmt.Registry) error {
-	if swag.IsZero(m.Advertise) { // not required
+	if typeutils.IsZero(m.Advertise) { // not required
 		return nil
 	}
 
@@ -210,7 +211,7 @@ func (m *NetworkCreate) validateArpBroadcastEnum(path, location string, value st
 }
 
 func (m *NetworkCreate) validateArpBroadcast(formats strfmt.Registry) error {
-	if swag.IsZero(m.ArpBroadcast) { // not required
+	if typeutils.IsZero(m.ArpBroadcast) { // not required
 		return nil
 	}
 
@@ -223,12 +224,12 @@ func (m *NetworkCreate) validateArpBroadcast(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreate) validateIPAddressRanges(formats strfmt.Registry) error {
-	if swag.IsZero(m.IPAddressRanges) { // not required
+	if typeutils.IsZero(m.IPAddressRanges) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.IPAddressRanges); i++ {
-		if swag.IsZero(m.IPAddressRanges[i]) { // not required
+		if typeutils.IsZero(m.IPAddressRanges[i]) { // not required
 			continue
 		}
 
@@ -253,7 +254,7 @@ func (m *NetworkCreate) validateIPAddressRanges(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreate) validateMtu(formats strfmt.Registry) error {
-	if swag.IsZero(m.Mtu) { // not required
+	if typeutils.IsZero(m.Mtu) { // not required
 		return nil
 	}
 
@@ -269,7 +270,7 @@ func (m *NetworkCreate) validateMtu(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreate) validateName(formats strfmt.Registry) error {
-	if swag.IsZero(m.Name) { // not required
+	if typeutils.IsZero(m.Name) { // not required
 		return nil
 	}
 
@@ -285,7 +286,7 @@ func (m *NetworkCreate) validateName(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreate) validatePeer(formats strfmt.Registry) error {
-	if swag.IsZero(m.Peer) { // not required
+	if typeutils.IsZero(m.Peer) { // not required
 		return nil
 	}
 
@@ -351,7 +352,7 @@ func (m *NetworkCreate) validateType(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreate) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -399,7 +400,7 @@ func (m *NetworkCreate) ContextValidate(ctx context.Context, formats strfmt.Regi
 
 func (m *NetworkCreate) contextValidateAccessConfig(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.AccessConfig) { // not required
+	if typeutils.IsZero(m.AccessConfig) { // not required
 		return nil
 	}
 
@@ -425,7 +426,7 @@ func (m *NetworkCreate) contextValidateIPAddressRanges(ctx context.Context, form
 
 		if m.IPAddressRanges[i] != nil {
 
-			if swag.IsZero(m.IPAddressRanges[i]) { // not required
+			if typeutils.IsZero(m.IPAddressRanges[i]) { // not required
 				return nil
 			}
 
@@ -452,7 +453,7 @@ func (m *NetworkCreate) contextValidatePeer(ctx context.Context, formats strfmt.
 
 	if m.Peer != nil {
 
-		if swag.IsZero(m.Peer) { // not required
+		if typeutils.IsZero(m.Peer) { // not required
 			return nil
 		}
 
@@ -496,13 +497,13 @@ func (m *NetworkCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkCreate) UnmarshalBinary(b []byte) error {
 	var res NetworkCreate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

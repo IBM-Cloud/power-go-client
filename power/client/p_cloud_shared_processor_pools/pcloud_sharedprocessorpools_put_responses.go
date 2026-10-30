@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSharedprocessorpoolsPutReader is a Reader for the PcloudSharedprocessorpoolsPut structure.
@@ -68,11 +67,9 @@ func NewPcloudSharedprocessorpoolsPutOK() *PcloudSharedprocessorpoolsPutOK {
 	return &PcloudSharedprocessorpoolsPutOK{}
 }
 
-/*
-PcloudSharedprocessorpoolsPutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSharedprocessorpoolsPutOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSharedprocessorpoolsPutOK struct {
 	Payload *models.SharedProcessorPool
 }
@@ -138,11 +135,9 @@ func NewPcloudSharedprocessorpoolsPutBadRequest() *PcloudSharedprocessorpoolsPut
 	return &PcloudSharedprocessorpoolsPutBadRequest{}
 }
 
-/*
-PcloudSharedprocessorpoolsPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSharedprocessorpoolsPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSharedprocessorpoolsPutBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudSharedprocessorpoolsPutUnauthorized() *PcloudSharedprocessorpoolsP
 	return &PcloudSharedprocessorpoolsPutUnauthorized{}
 }
 
-/*
-PcloudSharedprocessorpoolsPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSharedprocessorpoolsPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSharedprocessorpoolsPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudSharedprocessorpoolsPutForbidden() *PcloudSharedprocessorpoolsPutF
 	return &PcloudSharedprocessorpoolsPutForbidden{}
 }
 
-/*
-PcloudSharedprocessorpoolsPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSharedprocessorpoolsPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSharedprocessorpoolsPutForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudSharedprocessorpoolsPutNotFound() *PcloudSharedprocessorpoolsPutNo
 	return &PcloudSharedprocessorpoolsPutNotFound{}
 }
 
-/*
-PcloudSharedprocessorpoolsPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSharedprocessorpoolsPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSharedprocessorpoolsPutNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudSharedprocessorpoolsPutInternalServerError() *PcloudSharedprocesso
 	return &PcloudSharedprocessorpoolsPutInternalServerError{}
 }
 
-/*
-PcloudSharedprocessorpoolsPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSharedprocessorpoolsPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSharedprocessorpoolsPutInternalServerError struct {
 	Payload *models.Error
 }

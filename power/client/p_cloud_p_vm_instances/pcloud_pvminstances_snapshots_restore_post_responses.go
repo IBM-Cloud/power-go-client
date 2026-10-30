@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesSnapshotsRestorePostReader is a Reader for the PcloudPvminstancesSnapshotsRestorePost structure.
@@ -74,11 +73,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostAccepted() *PcloudPvminstancesSnap
 	return &PcloudPvminstancesSnapshotsRestorePostAccepted{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudPvminstancesSnapshotsRestorePostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudPvminstancesSnapshotsRestorePostAccepted struct {
 	Payload *models.Snapshot
 }
@@ -144,11 +141,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostBadRequest() *PcloudPvminstancesSn
 	return &PcloudPvminstancesSnapshotsRestorePostBadRequest{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesSnapshotsRestorePostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesSnapshotsRestorePostBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostUnauthorized() *PcloudPvminstances
 	return &PcloudPvminstancesSnapshotsRestorePostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesSnapshotsRestorePostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesSnapshotsRestorePostUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostForbidden() *PcloudPvminstancesSna
 	return &PcloudPvminstancesSnapshotsRestorePostForbidden{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesSnapshotsRestorePostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesSnapshotsRestorePostForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostNotFound() *PcloudPvminstancesSnap
 	return &PcloudPvminstancesSnapshotsRestorePostNotFound{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesSnapshotsRestorePostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesSnapshotsRestorePostNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostConflict() *PcloudPvminstancesSnap
 	return &PcloudPvminstancesSnapshotsRestorePostConflict{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesSnapshotsRestorePostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesSnapshotsRestorePostConflict struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudPvminstancesSnapshotsRestorePostInternalServerError() *PcloudPvmin
 	return &PcloudPvminstancesSnapshotsRestorePostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesSnapshotsRestorePostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesSnapshotsRestorePostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesSnapshotsRestorePostInternalServerError struct {
 	Payload *models.Error
 }

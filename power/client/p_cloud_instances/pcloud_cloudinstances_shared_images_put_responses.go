@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesSharedImagesPutReader is a Reader for the PcloudCloudinstancesSharedImagesPut structure.
@@ -80,11 +79,9 @@ func NewPcloudCloudinstancesSharedImagesPutOK() *PcloudCloudinstancesSharedImage
 	return &PcloudCloudinstancesSharedImagesPutOK{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesSharedImagesPutOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesSharedImagesPutOK struct {
 	Payload *models.CloudInstanceSharedImagesResponse
 }
@@ -150,11 +147,9 @@ func NewPcloudCloudinstancesSharedImagesPutBadRequest() *PcloudCloudinstancesSha
 	return &PcloudCloudinstancesSharedImagesPutBadRequest{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesSharedImagesPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesSharedImagesPutBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudCloudinstancesSharedImagesPutUnauthorized() *PcloudCloudinstancesS
 	return &PcloudCloudinstancesSharedImagesPutUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesSharedImagesPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesSharedImagesPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudCloudinstancesSharedImagesPutForbidden() *PcloudCloudinstancesShar
 	return &PcloudCloudinstancesSharedImagesPutForbidden{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesSharedImagesPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesSharedImagesPutForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudCloudinstancesSharedImagesPutNotFound() *PcloudCloudinstancesShare
 	return &PcloudCloudinstancesSharedImagesPutNotFound{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesSharedImagesPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesSharedImagesPutNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudCloudinstancesSharedImagesPutConflict() *PcloudCloudinstancesShare
 	return &PcloudCloudinstancesSharedImagesPutConflict{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudCloudinstancesSharedImagesPutConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudCloudinstancesSharedImagesPutConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudCloudinstancesSharedImagesPutUnprocessableEntity() *PcloudCloudins
 	return &PcloudCloudinstancesSharedImagesPutUnprocessableEntity{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudCloudinstancesSharedImagesPutUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudCloudinstancesSharedImagesPutUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudCloudinstancesSharedImagesPutInternalServerError() *PcloudCloudins
 	return &PcloudCloudinstancesSharedImagesPutInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesSharedImagesPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesSharedImagesPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesSharedImagesPutInternalServerError struct {
 	Payload *models.Error
 }

@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudV2CloudinstancesSnapshotsGetallParams() *PcloudV2CloudinstancesSnapshotsGetallParams {
-	return &PcloudV2CloudinstancesSnapshotsGetallParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudV2CloudinstancesSnapshotsGetallParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudV2CloudinstancesSnapshotsGetallParamsWithTimeout creates a new PcloudV2CloudinstancesSnapshotsGetallParams object
 // with the ability to set a timeout on a request.
 func NewPcloudV2CloudinstancesSnapshotsGetallParamsWithTimeout(timeout time.Duration) *PcloudV2CloudinstancesSnapshotsGetallParams {
 	return &PcloudV2CloudinstancesSnapshotsGetallParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudV2CloudinstancesSnapshotsGetallParamsWithContext creates a new PcloudV2CloudinstancesSnapshotsGetallParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2CloudinstancesSnapshotsGetallParams].
 func NewPcloudV2CloudinstancesSnapshotsGetallParamsWithContext(ctx context.Context) *PcloudV2CloudinstancesSnapshotsGetallParams {
 	return &PcloudV2CloudinstancesSnapshotsGetallParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -58,15 +62,14 @@ PcloudV2CloudinstancesSnapshotsGetallParams contains all the parameters to send 
 */
 type PcloudV2CloudinstancesSnapshotsGetallParams struct {
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud v2 cloudinstances snapshots getall params (not the query body).
@@ -84,54 +87,57 @@ func (o *PcloudV2CloudinstancesSnapshotsGetallParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud v2 cloudinstances snapshots getall params
+// WithTimeout adds the timeout to the pcloud v2 cloudinstances snapshots getall params.
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) WithTimeout(timeout time.Duration) *PcloudV2CloudinstancesSnapshotsGetallParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud v2 cloudinstances snapshots getall params
+// SetTimeout adds the timeout to the pcloud v2 cloudinstances snapshots getall params.
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud v2 cloudinstances snapshots getall params
+// WithContext adds the context to the pcloud v2 cloudinstances snapshots getall params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2CloudinstancesSnapshotsGetallParams].
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) WithContext(ctx context.Context) *PcloudV2CloudinstancesSnapshotsGetallParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud v2 cloudinstances snapshots getall params
+// SetContext adds the context to the pcloud v2 cloudinstances snapshots getall params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2CloudinstancesSnapshotsGetallParams].
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud v2 cloudinstances snapshots getall params
+// WithHTTPClient adds the HTTPClient to the pcloud v2 cloudinstances snapshots getall params.
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) WithHTTPClient(client *http.Client) *PcloudV2CloudinstancesSnapshotsGetallParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud v2 cloudinstances snapshots getall params
+// SetHTTPClient adds the HTTPClient to the pcloud v2 cloudinstances snapshots getall params.
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud v2 cloudinstances snapshots getall params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud v2 cloudinstances snapshots getall params.
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) WithCloudInstanceID(cloudInstanceID string) *PcloudV2CloudinstancesSnapshotsGetallParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud v2 cloudinstances snapshots getall params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud v2 cloudinstances snapshots getall params.
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudV2CloudinstancesSnapshotsGetallParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

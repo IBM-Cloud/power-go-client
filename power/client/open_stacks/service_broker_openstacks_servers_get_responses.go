@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerOpenstacksServersGetReader is a Reader for the ServiceBrokerOpenstacksServersGet structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerOpenstacksServersGetOK() *ServiceBrokerOpenstacksServersGet
 	return &ServiceBrokerOpenstacksServersGetOK{}
 }
 
-/*
-ServiceBrokerOpenstacksServersGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerOpenstacksServersGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerOpenstacksServersGetOK struct {
 	Payload *models.HostPVMInstance
 }
@@ -138,11 +135,9 @@ func NewServiceBrokerOpenstacksServersGetBadRequest() *ServiceBrokerOpenstacksSe
 	return &ServiceBrokerOpenstacksServersGetBadRequest{}
 }
 
-/*
-ServiceBrokerOpenstacksServersGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerOpenstacksServersGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerOpenstacksServersGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceBrokerOpenstacksServersGetUnauthorized() *ServiceBrokerOpenstacks
 	return &ServiceBrokerOpenstacksServersGetUnauthorized{}
 }
 
-/*
-ServiceBrokerOpenstacksServersGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerOpenstacksServersGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerOpenstacksServersGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceBrokerOpenstacksServersGetForbidden() *ServiceBrokerOpenstacksSer
 	return &ServiceBrokerOpenstacksServersGetForbidden{}
 }
 
-/*
-ServiceBrokerOpenstacksServersGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerOpenstacksServersGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerOpenstacksServersGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceBrokerOpenstacksServersGetNotFound() *ServiceBrokerOpenstacksServ
 	return &ServiceBrokerOpenstacksServersGetNotFound{}
 }
 
-/*
-ServiceBrokerOpenstacksServersGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerOpenstacksServersGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerOpenstacksServersGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceBrokerOpenstacksServersGetInternalServerError() *ServiceBrokerOpe
 	return &ServiceBrokerOpenstacksServersGetInternalServerError{}
 }
 
-/*
-ServiceBrokerOpenstacksServersGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerOpenstacksServersGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerOpenstacksServersGetInternalServerError struct {
 	Payload *models.Error
 }

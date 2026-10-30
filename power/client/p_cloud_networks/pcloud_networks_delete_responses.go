@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudNetworksDeleteReader is a Reader for the PcloudNetworksDelete structure.
@@ -80,11 +79,9 @@ func NewPcloudNetworksDeleteOK() *PcloudNetworksDeleteOK {
 	return &PcloudNetworksDeleteOK{}
 }
 
-/*
-PcloudNetworksDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudNetworksDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudNetworksDeleteOK struct {
 	Payload models.Object
 }
@@ -148,11 +145,9 @@ func NewPcloudNetworksDeleteBadRequest() *PcloudNetworksDeleteBadRequest {
 	return &PcloudNetworksDeleteBadRequest{}
 }
 
-/*
-PcloudNetworksDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudNetworksDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudNetworksDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -218,11 +213,9 @@ func NewPcloudNetworksDeleteUnauthorized() *PcloudNetworksDeleteUnauthorized {
 	return &PcloudNetworksDeleteUnauthorized{}
 }
 
-/*
-PcloudNetworksDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudNetworksDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudNetworksDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -288,11 +281,9 @@ func NewPcloudNetworksDeleteForbidden() *PcloudNetworksDeleteForbidden {
 	return &PcloudNetworksDeleteForbidden{}
 }
 
-/*
-PcloudNetworksDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudNetworksDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudNetworksDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -358,11 +349,9 @@ func NewPcloudNetworksDeleteNotFound() *PcloudNetworksDeleteNotFound {
 	return &PcloudNetworksDeleteNotFound{}
 }
 
-/*
-PcloudNetworksDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudNetworksDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudNetworksDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -428,11 +417,9 @@ func NewPcloudNetworksDeleteConflict() *PcloudNetworksDeleteConflict {
 	return &PcloudNetworksDeleteConflict{}
 }
 
-/*
-PcloudNetworksDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudNetworksDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudNetworksDeleteConflict struct {
 	Payload *models.Error
 }
@@ -498,11 +485,9 @@ func NewPcloudNetworksDeleteGone() *PcloudNetworksDeleteGone {
 	return &PcloudNetworksDeleteGone{}
 }
 
-/*
-PcloudNetworksDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// PcloudNetworksDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type PcloudNetworksDeleteGone struct {
 	Payload *models.Error
 }
@@ -568,11 +553,9 @@ func NewPcloudNetworksDeleteInternalServerError() *PcloudNetworksDeleteInternalS
 	return &PcloudNetworksDeleteInternalServerError{}
 }
 
-/*
-PcloudNetworksDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudNetworksDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudNetworksDeleteInternalServerError struct {
 	Payload *models.Error
 }

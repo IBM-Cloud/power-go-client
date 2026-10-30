@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudCloudinstancesSnapshotsCloneParams creates a new PcloudCloudinstancesSnapshotsCloneParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudCloudinstancesSnapshotsCloneParams() *PcloudCloudinstancesSnapshotsCloneParams {
-	return &PcloudCloudinstancesSnapshotsCloneParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudCloudinstancesSnapshotsCloneParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudCloudinstancesSnapshotsCloneParamsWithTimeout creates a new PcloudCloudinstancesSnapshotsCloneParams object
 // with the ability to set a timeout on a request.
 func NewPcloudCloudinstancesSnapshotsCloneParamsWithTimeout(timeout time.Duration) *PcloudCloudinstancesSnapshotsCloneParams {
 	return &PcloudCloudinstancesSnapshotsCloneParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudCloudinstancesSnapshotsCloneParamsWithContext creates a new PcloudCloudinstancesSnapshotsCloneParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudCloudinstancesSnapshotsCloneParams].
 func NewPcloudCloudinstancesSnapshotsCloneParamsWithContext(ctx context.Context) *PcloudCloudinstancesSnapshotsCloneParams {
 	return &PcloudCloudinstancesSnapshotsCloneParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,27 +63,24 @@ PcloudCloudinstancesSnapshotsCloneParams contains all the parameters to send to 
 */
 type PcloudCloudinstancesSnapshotsCloneParams struct {
 
-	/* Body.
-
-	   PVM Instance snapshot clone parameters
-	*/
+	// Body.
+	//
+	// PVM Instance snapshot clone parameters
 	Body *models.CloneSnapshotRequest
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	/* SnapshotID.
-
-	   PVM Instance snapshot id
-	*/
+	// SnapshotID.
+	//
+	// PVM Instance snapshot id
 	SnapshotID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud cloudinstances snapshots clone params (not the query body).
@@ -98,76 +98,79 @@ func (o *PcloudCloudinstancesSnapshotsCloneParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud cloudinstances snapshots clone params
+// WithTimeout adds the timeout to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WithTimeout(timeout time.Duration) *PcloudCloudinstancesSnapshotsCloneParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud cloudinstances snapshots clone params
+// SetTimeout adds the timeout to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud cloudinstances snapshots clone params
+// WithContext adds the context to the pcloud cloudinstances snapshots clone params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudCloudinstancesSnapshotsCloneParams].
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WithContext(ctx context.Context) *PcloudCloudinstancesSnapshotsCloneParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud cloudinstances snapshots clone params
+// SetContext adds the context to the pcloud cloudinstances snapshots clone params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudCloudinstancesSnapshotsCloneParams].
 func (o *PcloudCloudinstancesSnapshotsCloneParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud cloudinstances snapshots clone params
+// WithHTTPClient adds the HTTPClient to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WithHTTPClient(client *http.Client) *PcloudCloudinstancesSnapshotsCloneParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud cloudinstances snapshots clone params
+// SetHTTPClient adds the HTTPClient to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the pcloud cloudinstances snapshots clone params
+// WithBody adds the body to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WithBody(body *models.CloneSnapshotRequest) *PcloudCloudinstancesSnapshotsCloneParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the pcloud cloudinstances snapshots clone params
+// SetBody adds the body to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) SetBody(body *models.CloneSnapshotRequest) {
 	o.Body = body
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud cloudinstances snapshots clone params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WithCloudInstanceID(cloudInstanceID string) *PcloudCloudinstancesSnapshotsCloneParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud cloudinstances snapshots clone params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WithSnapshotID adds the snapshotID to the pcloud cloudinstances snapshots clone params
+// WithSnapshotID adds the snapshotID to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WithSnapshotID(snapshotID string) *PcloudCloudinstancesSnapshotsCloneParams {
 	o.SetSnapshotID(snapshotID)
 	return o
 }
 
-// SetSnapshotID adds the snapshotId to the pcloud cloudinstances snapshots clone params
+// SetSnapshotID adds the snapshotId to the pcloud cloudinstances snapshots clone params.
 func (o *PcloudCloudinstancesSnapshotsCloneParams) SetSnapshotID(snapshotID string) {
 	o.SnapshotID = snapshotID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudCloudinstancesSnapshotsCloneParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

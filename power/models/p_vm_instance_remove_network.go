@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // PVMInstanceRemoveNetwork p VM instance remove network
@@ -19,12 +19,12 @@ type PVMInstanceRemoveNetwork struct {
 }
 
 // Validate validates this p VM instance remove network
-func (m *PVMInstanceRemoveNetwork) Validate(formats strfmt.Registry) error {
+func (m *PVMInstanceRemoveNetwork) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this p VM instance remove network based on context it is used
-func (m *PVMInstanceRemoveNetwork) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *PVMInstanceRemoveNetwork) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -33,13 +33,13 @@ func (m *PVMInstanceRemoveNetwork) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceRemoveNetwork) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceRemoveNetwork
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

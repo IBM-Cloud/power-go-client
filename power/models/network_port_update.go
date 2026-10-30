@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // NetworkPortUpdate network port update
@@ -22,12 +22,12 @@ type NetworkPortUpdate struct {
 }
 
 // Validate validates this network port update
-func (m *NetworkPortUpdate) Validate(formats strfmt.Registry) error {
+func (m *NetworkPortUpdate) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this network port update based on context it is used
-func (m *NetworkPortUpdate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *NetworkPortUpdate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *NetworkPortUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkPortUpdate) UnmarshalBinary(b []byte) error {
 	var res NetworkPortUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

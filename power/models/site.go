@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // Site site
@@ -42,12 +43,12 @@ func (m *Site) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Site) validateReplicationPoolMap(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicationPoolMap) { // not required
+	if typeutils.IsZero(m.ReplicationPoolMap) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.ReplicationPoolMap); i++ {
-		if swag.IsZero(m.ReplicationPoolMap[i]) { // not required
+		if typeutils.IsZero(m.ReplicationPoolMap[i]) { // not required
 			continue
 		}
 
@@ -91,7 +92,7 @@ func (m *Site) contextValidateReplicationPoolMap(ctx context.Context, formats st
 
 		if m.ReplicationPoolMap[i] != nil {
 
-			if swag.IsZero(m.ReplicationPoolMap[i]) { // not required
+			if typeutils.IsZero(m.ReplicationPoolMap[i]) { // not required
 				return nil
 			}
 
@@ -119,13 +120,13 @@ func (m *Site) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Site) UnmarshalBinary(b []byte) error {
 	var res Site
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

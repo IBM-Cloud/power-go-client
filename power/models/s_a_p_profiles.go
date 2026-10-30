@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -44,7 +45,7 @@ func (m *SAPProfiles) validateProfiles(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Profiles); i++ {
-		if swag.IsZero(m.Profiles[i]) { // not required
+		if typeutils.IsZero(m.Profiles[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *SAPProfiles) contextValidateProfiles(ctx context.Context, formats strfm
 
 		if m.Profiles[i] != nil {
 
-			if swag.IsZero(m.Profiles[i]) { // not required
+			if typeutils.IsZero(m.Profiles[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *SAPProfiles) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SAPProfiles) UnmarshalBinary(b []byte) error {
 	var res SAPProfiles
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

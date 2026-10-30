@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudPvminstancesVpmemVolumesPutParams creates a new PcloudPvminstancesVpmemVolumesPutParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudPvminstancesVpmemVolumesPutParams() *PcloudPvminstancesVpmemVolumesPutParams {
-	return &PcloudPvminstancesVpmemVolumesPutParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudPvminstancesVpmemVolumesPutParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudPvminstancesVpmemVolumesPutParamsWithTimeout creates a new PcloudPvminstancesVpmemVolumesPutParams object
 // with the ability to set a timeout on a request.
 func NewPcloudPvminstancesVpmemVolumesPutParamsWithTimeout(timeout time.Duration) *PcloudPvminstancesVpmemVolumesPutParams {
 	return &PcloudPvminstancesVpmemVolumesPutParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudPvminstancesVpmemVolumesPutParamsWithContext creates a new PcloudPvminstancesVpmemVolumesPutParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudPvminstancesVpmemVolumesPutParams].
 func NewPcloudPvminstancesVpmemVolumesPutParamsWithContext(ctx context.Context) *PcloudPvminstancesVpmemVolumesPutParams {
 	return &PcloudPvminstancesVpmemVolumesPutParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,33 +63,29 @@ PcloudPvminstancesVpmemVolumesPutParams contains all the parameters to send to t
 */
 type PcloudPvminstancesVpmemVolumesPutParams struct {
 
-	/* Body.
-
-	   Parameters to update a vPMEM volume
-	*/
+	// Body.
+	//
+	// Parameters to update a vPMEM volume
 	Body *models.VPMemVolumeUpdate
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	/* PvmInstanceID.
-
-	   PCloud PVM Instance ID
-	*/
+	// PvmInstanceID.
+	//
+	// PCloud PVM Instance ID
 	PvmInstanceID string
 
-	/* VpmemVolumeID.
-
-	   vPMEM Volume ID
-	*/
+	// VpmemVolumeID.
+	//
+	// vPMEM Volume ID
 	VpmemVolumeID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud pvminstances vpmem volumes put params (not the query body).
@@ -104,87 +103,90 @@ func (o *PcloudPvminstancesVpmemVolumesPutParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud pvminstances vpmem volumes put params
+// WithTimeout adds the timeout to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithTimeout(timeout time.Duration) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud pvminstances vpmem volumes put params
+// SetTimeout adds the timeout to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud pvminstances vpmem volumes put params
+// WithContext adds the context to the pcloud pvminstances vpmem volumes put params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudPvminstancesVpmemVolumesPutParams].
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithContext(ctx context.Context) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud pvminstances vpmem volumes put params
+// SetContext adds the context to the pcloud pvminstances vpmem volumes put params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudPvminstancesVpmemVolumesPutParams].
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud pvminstances vpmem volumes put params
+// WithHTTPClient adds the HTTPClient to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithHTTPClient(client *http.Client) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud pvminstances vpmem volumes put params
+// SetHTTPClient adds the HTTPClient to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the pcloud pvminstances vpmem volumes put params
+// WithBody adds the body to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithBody(body *models.VPMemVolumeUpdate) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the pcloud pvminstances vpmem volumes put params
+// SetBody adds the body to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetBody(body *models.VPMemVolumeUpdate) {
 	o.Body = body
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud pvminstances vpmem volumes put params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithCloudInstanceID(cloudInstanceID string) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud pvminstances vpmem volumes put params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WithPvmInstanceID adds the pvmInstanceID to the pcloud pvminstances vpmem volumes put params
+// WithPvmInstanceID adds the pvmInstanceID to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithPvmInstanceID(pvmInstanceID string) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetPvmInstanceID(pvmInstanceID)
 	return o
 }
 
-// SetPvmInstanceID adds the pvmInstanceId to the pcloud pvminstances vpmem volumes put params
+// SetPvmInstanceID adds the pvmInstanceId to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetPvmInstanceID(pvmInstanceID string) {
 	o.PvmInstanceID = pvmInstanceID
 }
 
-// WithVpmemVolumeID adds the vpmemVolumeID to the pcloud pvminstances vpmem volumes put params
+// WithVpmemVolumeID adds the vpmemVolumeID to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WithVpmemVolumeID(vpmemVolumeID string) *PcloudPvminstancesVpmemVolumesPutParams {
 	o.SetVpmemVolumeID(vpmemVolumeID)
 	return o
 }
 
-// SetVpmemVolumeID adds the vpmemVolumeId to the pcloud pvminstances vpmem volumes put params
+// SetVpmemVolumeID adds the vpmemVolumeId to the pcloud pvminstances vpmem volumes put params.
 func (o *PcloudPvminstancesVpmemVolumesPutParams) SetVpmemVolumeID(vpmemVolumeID string) {
 	o.VpmemVolumeID = vpmemVolumeID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudPvminstancesVpmemVolumesPutParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

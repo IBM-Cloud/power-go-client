@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1PrometheusMetricsGetReader is a Reader for the InternalV1PrometheusMetricsGet structure.
@@ -56,11 +55,9 @@ func NewInternalV1PrometheusMetricsGetOK() *InternalV1PrometheusMetricsGetOK {
 	return &InternalV1PrometheusMetricsGetOK{}
 }
 
-/*
-InternalV1PrometheusMetricsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1PrometheusMetricsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1PrometheusMetricsGetOK struct {
 	Payload string
 }
@@ -124,11 +121,9 @@ func NewInternalV1PrometheusMetricsGetUnauthorized() *InternalV1PrometheusMetric
 	return &InternalV1PrometheusMetricsGetUnauthorized{}
 }
 
-/*
-InternalV1PrometheusMetricsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1PrometheusMetricsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1PrometheusMetricsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -194,11 +189,9 @@ func NewInternalV1PrometheusMetricsGetForbidden() *InternalV1PrometheusMetricsGe
 	return &InternalV1PrometheusMetricsGetForbidden{}
 }
 
-/*
-InternalV1PrometheusMetricsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1PrometheusMetricsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1PrometheusMetricsGetForbidden struct {
 	Payload *models.Error
 }
@@ -264,11 +257,9 @@ func NewInternalV1PrometheusMetricsGetInternalServerError() *InternalV1Prometheu
 	return &InternalV1PrometheusMetricsGetInternalServerError{}
 }
 
-/*
-InternalV1PrometheusMetricsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1PrometheusMetricsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1PrometheusMetricsGetInternalServerError struct {
 	Payload *models.Error
 }

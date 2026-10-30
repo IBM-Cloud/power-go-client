@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -45,7 +45,7 @@ func (m *RouteSwitchEnabledRequest) validateDisabledRouteCRN(formats strfmt.Regi
 }
 
 // ContextValidate validates this route switch enabled request based on context it is used
-func (m *RouteSwitchEnabledRequest) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *RouteSwitchEnabledRequest) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -54,13 +54,13 @@ func (m *RouteSwitchEnabledRequest) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RouteSwitchEnabledRequest) UnmarshalBinary(b []byte) error {
 	var res RouteSwitchEnabledRequest
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

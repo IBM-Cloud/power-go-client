@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -53,7 +53,7 @@ func (m *UpdateMetadataService) validateEnabled(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this update metadata service based on context it is used
-func (m *UpdateMetadataService) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *UpdateMetadataService) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -62,13 +62,13 @@ func (m *UpdateMetadataService) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *UpdateMetadataService) UnmarshalBinary(b []byte) error {
 	var res UpdateMetadataService
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

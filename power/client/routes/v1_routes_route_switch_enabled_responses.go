@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1RoutesRouteSwitchEnabledReader is a Reader for the V1RoutesRouteSwitchEnabled structure.
@@ -80,11 +79,9 @@ func NewV1RoutesRouteSwitchEnabledOK() *V1RoutesRouteSwitchEnabledOK {
 	return &V1RoutesRouteSwitchEnabledOK{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1RoutesRouteSwitchEnabledOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1RoutesRouteSwitchEnabledOK struct {
 	Payload *models.SwitchEnabledRoutes
 }
@@ -150,11 +147,9 @@ func NewV1RoutesRouteSwitchEnabledBadRequest() *V1RoutesRouteSwitchEnabledBadReq
 	return &V1RoutesRouteSwitchEnabledBadRequest{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1RoutesRouteSwitchEnabledBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1RoutesRouteSwitchEnabledBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewV1RoutesRouteSwitchEnabledUnauthorized() *V1RoutesRouteSwitchEnabledUnau
 	return &V1RoutesRouteSwitchEnabledUnauthorized{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1RoutesRouteSwitchEnabledUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1RoutesRouteSwitchEnabledUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewV1RoutesRouteSwitchEnabledForbidden() *V1RoutesRouteSwitchEnabledForbidd
 	return &V1RoutesRouteSwitchEnabledForbidden{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1RoutesRouteSwitchEnabledForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1RoutesRouteSwitchEnabledForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewV1RoutesRouteSwitchEnabledNotFound() *V1RoutesRouteSwitchEnabledNotFound
 	return &V1RoutesRouteSwitchEnabledNotFound{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1RoutesRouteSwitchEnabledNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1RoutesRouteSwitchEnabledNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewV1RoutesRouteSwitchEnabledConflict() *V1RoutesRouteSwitchEnabledConflict
 	return &V1RoutesRouteSwitchEnabledConflict{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1RoutesRouteSwitchEnabledConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1RoutesRouteSwitchEnabledConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewV1RoutesRouteSwitchEnabledUnprocessableEntity() *V1RoutesRouteSwitchEnab
 	return &V1RoutesRouteSwitchEnabledUnprocessableEntity{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// V1RoutesRouteSwitchEnabledUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type V1RoutesRouteSwitchEnabledUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewV1RoutesRouteSwitchEnabledInternalServerError() *V1RoutesRouteSwitchEnab
 	return &V1RoutesRouteSwitchEnabledInternalServerError{}
 }
 
-/*
-V1RoutesRouteSwitchEnabledInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1RoutesRouteSwitchEnabledInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1RoutesRouteSwitchEnabledInternalServerError struct {
 	Payload *models.Error
 }

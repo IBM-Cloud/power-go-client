@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerAuthRegistrationReader is a Reader for the ServiceBrokerAuthRegistration structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerAuthRegistrationOK() *ServiceBrokerAuthRegistrationOK {
 	return &ServiceBrokerAuthRegistrationOK{}
 }
 
-/*
-ServiceBrokerAuthRegistrationOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerAuthRegistrationOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerAuthRegistrationOK struct {
 	Payload *models.AccessToken
 }
@@ -138,11 +135,9 @@ func NewServiceBrokerAuthRegistrationBadRequest() *ServiceBrokerAuthRegistration
 	return &ServiceBrokerAuthRegistrationBadRequest{}
 }
 
-/*
-ServiceBrokerAuthRegistrationBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerAuthRegistrationBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerAuthRegistrationBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceBrokerAuthRegistrationUnauthorized() *ServiceBrokerAuthRegistrati
 	return &ServiceBrokerAuthRegistrationUnauthorized{}
 }
 
-/*
-ServiceBrokerAuthRegistrationUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerAuthRegistrationUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerAuthRegistrationUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceBrokerAuthRegistrationForbidden() *ServiceBrokerAuthRegistrationF
 	return &ServiceBrokerAuthRegistrationForbidden{}
 }
 
-/*
-ServiceBrokerAuthRegistrationForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerAuthRegistrationForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerAuthRegistrationForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceBrokerAuthRegistrationNotFound() *ServiceBrokerAuthRegistrationNo
 	return &ServiceBrokerAuthRegistrationNotFound{}
 }
 
-/*
-ServiceBrokerAuthRegistrationNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerAuthRegistrationNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerAuthRegistrationNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceBrokerAuthRegistrationInternalServerError() *ServiceBrokerAuthReg
 	return &ServiceBrokerAuthRegistrationInternalServerError{}
 }
 
-/*
-ServiceBrokerAuthRegistrationInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerAuthRegistrationInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerAuthRegistrationInternalServerError struct {
 	Payload *models.Error
 }

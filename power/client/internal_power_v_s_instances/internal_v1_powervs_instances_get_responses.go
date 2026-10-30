@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1PowervsInstancesGetReader is a Reader for the InternalV1PowervsInstancesGet structure.
@@ -50,11 +49,9 @@ func NewInternalV1PowervsInstancesGetOK() *InternalV1PowervsInstancesGetOK {
 	return &InternalV1PowervsInstancesGetOK{}
 }
 
-/*
-InternalV1PowervsInstancesGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1PowervsInstancesGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1PowervsInstancesGetOK struct {
 	Payload *models.PowerVSInstances
 }
@@ -120,11 +117,9 @@ func NewInternalV1PowervsInstancesGetForbidden() *InternalV1PowervsInstancesGetF
 	return &InternalV1PowervsInstancesGetForbidden{}
 }
 
-/*
-InternalV1PowervsInstancesGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1PowervsInstancesGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1PowervsInstancesGetForbidden struct {
 	Payload *models.Error
 }
@@ -190,11 +185,9 @@ func NewInternalV1PowervsInstancesGetInternalServerError() *InternalV1PowervsIns
 	return &InternalV1PowervsInstancesGetInternalServerError{}
 }
 
-/*
-InternalV1PowervsInstancesGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1PowervsInstancesGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1PowervsInstancesGetInternalServerError struct {
 	Payload *models.Error
 }

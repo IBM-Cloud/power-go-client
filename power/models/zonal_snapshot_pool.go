@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // ZonalSnapshotPool zonal snapshot pool
@@ -22,12 +22,12 @@ type ZonalSnapshotPool struct {
 }
 
 // Validate validates this zonal snapshot pool
-func (m *ZonalSnapshotPool) Validate(formats strfmt.Registry) error {
+func (m *ZonalSnapshotPool) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this zonal snapshot pool based on context it is used
-func (m *ZonalSnapshotPool) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *ZonalSnapshotPool) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *ZonalSnapshotPool) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *ZonalSnapshotPool) UnmarshalBinary(b []byte) error {
 	var res ZonalSnapshotPool
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

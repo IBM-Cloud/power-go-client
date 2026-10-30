@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSystempoolsGetReader is a Reader for the PcloudSystempoolsGet structure.
@@ -68,11 +67,9 @@ func NewPcloudSystempoolsGetOK() *PcloudSystempoolsGetOK {
 	return &PcloudSystempoolsGetOK{}
 }
 
-/*
-PcloudSystempoolsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSystempoolsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSystempoolsGetOK struct {
 	Payload models.SystemPools
 }
@@ -136,11 +133,9 @@ func NewPcloudSystempoolsGetBadRequest() *PcloudSystempoolsGetBadRequest {
 	return &PcloudSystempoolsGetBadRequest{}
 }
 
-/*
-PcloudSystempoolsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSystempoolsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSystempoolsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewPcloudSystempoolsGetUnauthorized() *PcloudSystempoolsGetUnauthorized {
 	return &PcloudSystempoolsGetUnauthorized{}
 }
 
-/*
-PcloudSystempoolsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSystempoolsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSystempoolsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewPcloudSystempoolsGetForbidden() *PcloudSystempoolsGetForbidden {
 	return &PcloudSystempoolsGetForbidden{}
 }
 
-/*
-PcloudSystempoolsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSystempoolsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSystempoolsGetForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewPcloudSystempoolsGetNotFound() *PcloudSystempoolsGetNotFound {
 	return &PcloudSystempoolsGetNotFound{}
 }
 
-/*
-PcloudSystempoolsGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSystempoolsGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSystempoolsGetNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewPcloudSystempoolsGetInternalServerError() *PcloudSystempoolsGetInternalS
 	return &PcloudSystempoolsGetInternalServerError{}
 }
 
-/*
-PcloudSystempoolsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSystempoolsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSystempoolsGetInternalServerError struct {
 	Payload *models.Error
 }

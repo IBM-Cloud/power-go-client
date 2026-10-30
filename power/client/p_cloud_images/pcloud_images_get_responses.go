@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudImagesGetReader is a Reader for the PcloudImagesGet structure.
@@ -68,11 +67,9 @@ func NewPcloudImagesGetOK() *PcloudImagesGetOK {
 	return &PcloudImagesGetOK{}
 }
 
-/*
-PcloudImagesGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudImagesGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudImagesGetOK struct {
 	Payload *models.Image
 }
@@ -138,11 +135,9 @@ func NewPcloudImagesGetBadRequest() *PcloudImagesGetBadRequest {
 	return &PcloudImagesGetBadRequest{}
 }
 
-/*
-PcloudImagesGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudImagesGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudImagesGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudImagesGetUnauthorized() *PcloudImagesGetUnauthorized {
 	return &PcloudImagesGetUnauthorized{}
 }
 
-/*
-PcloudImagesGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudImagesGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudImagesGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudImagesGetForbidden() *PcloudImagesGetForbidden {
 	return &PcloudImagesGetForbidden{}
 }
 
-/*
-PcloudImagesGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudImagesGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudImagesGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudImagesGetNotFound() *PcloudImagesGetNotFound {
 	return &PcloudImagesGetNotFound{}
 }
 
-/*
-PcloudImagesGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudImagesGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudImagesGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudImagesGetInternalServerError() *PcloudImagesGetInternalServerError
 	return &PcloudImagesGetInternalServerError{}
 }
 
-/*
-PcloudImagesGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudImagesGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudImagesGetInternalServerError struct {
 	Payload *models.Error
 }

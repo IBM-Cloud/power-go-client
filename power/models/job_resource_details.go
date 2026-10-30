@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // JobResourceDetails job resource details
@@ -26,12 +26,12 @@ type JobResourceDetails struct {
 }
 
 // Validate validates this job resource details
-func (m *JobResourceDetails) Validate(formats strfmt.Registry) error {
+func (m *JobResourceDetails) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this job resource details based on context it is used
-func (m *JobResourceDetails) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *JobResourceDetails) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -40,13 +40,13 @@ func (m *JobResourceDetails) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *JobResourceDetails) UnmarshalBinary(b []byte) error {
 	var res JobResourceDetails
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

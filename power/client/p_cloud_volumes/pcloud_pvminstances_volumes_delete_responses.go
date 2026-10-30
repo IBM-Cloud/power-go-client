@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesVolumesDeleteReader is a Reader for the PcloudPvminstancesVolumesDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudPvminstancesVolumesDeleteAccepted() *PcloudPvminstancesVolumesDele
 	return &PcloudPvminstancesVolumesDeleteAccepted{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudPvminstancesVolumesDeleteAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudPvminstancesVolumesDeleteAccepted struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudPvminstancesVolumesDeleteBadRequest() *PcloudPvminstancesVolumesDe
 	return &PcloudPvminstancesVolumesDeleteBadRequest{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesVolumesDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesVolumesDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudPvminstancesVolumesDeleteUnauthorized() *PcloudPvminstancesVolumes
 	return &PcloudPvminstancesVolumesDeleteUnauthorized{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesVolumesDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesVolumesDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudPvminstancesVolumesDeleteForbidden() *PcloudPvminstancesVolumesDel
 	return &PcloudPvminstancesVolumesDeleteForbidden{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesVolumesDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesVolumesDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudPvminstancesVolumesDeleteNotFound() *PcloudPvminstancesVolumesDele
 	return &PcloudPvminstancesVolumesDeleteNotFound{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesVolumesDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesVolumesDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudPvminstancesVolumesDeleteConflict() *PcloudPvminstancesVolumesDele
 	return &PcloudPvminstancesVolumesDeleteConflict{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesVolumesDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesVolumesDeleteConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudPvminstancesVolumesDeleteInternalServerError() *PcloudPvminstances
 	return &PcloudPvminstancesVolumesDeleteInternalServerError{}
 }
 
-/*
-PcloudPvminstancesVolumesDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesVolumesDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesVolumesDeleteInternalServerError struct {
 	Payload *models.Error
 }

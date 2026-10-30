@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1NetworkSecurityGroupsMembersPostReader is a Reader for the V1NetworkSecurityGroupsMembersPost structure.
@@ -80,11 +79,9 @@ func NewV1NetworkSecurityGroupsMembersPostOK() *V1NetworkSecurityGroupsMembersPo
 	return &V1NetworkSecurityGroupsMembersPostOK{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1NetworkSecurityGroupsMembersPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1NetworkSecurityGroupsMembersPostOK struct {
 	Payload *models.NetworkSecurityGroupMember
 }
@@ -150,11 +147,9 @@ func NewV1NetworkSecurityGroupsMembersPostBadRequest() *V1NetworkSecurityGroupsM
 	return &V1NetworkSecurityGroupsMembersPostBadRequest{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1NetworkSecurityGroupsMembersPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1NetworkSecurityGroupsMembersPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewV1NetworkSecurityGroupsMembersPostUnauthorized() *V1NetworkSecurityGroup
 	return &V1NetworkSecurityGroupsMembersPostUnauthorized{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1NetworkSecurityGroupsMembersPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1NetworkSecurityGroupsMembersPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewV1NetworkSecurityGroupsMembersPostForbidden() *V1NetworkSecurityGroupsMe
 	return &V1NetworkSecurityGroupsMembersPostForbidden{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1NetworkSecurityGroupsMembersPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1NetworkSecurityGroupsMembersPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewV1NetworkSecurityGroupsMembersPostNotFound() *V1NetworkSecurityGroupsMem
 	return &V1NetworkSecurityGroupsMembersPostNotFound{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1NetworkSecurityGroupsMembersPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1NetworkSecurityGroupsMembersPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewV1NetworkSecurityGroupsMembersPostConflict() *V1NetworkSecurityGroupsMem
 	return &V1NetworkSecurityGroupsMembersPostConflict{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1NetworkSecurityGroupsMembersPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1NetworkSecurityGroupsMembersPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewV1NetworkSecurityGroupsMembersPostUnprocessableEntity() *V1NetworkSecuri
 	return &V1NetworkSecurityGroupsMembersPostUnprocessableEntity{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// V1NetworkSecurityGroupsMembersPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type V1NetworkSecurityGroupsMembersPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewV1NetworkSecurityGroupsMembersPostInternalServerError() *V1NetworkSecuri
 	return &V1NetworkSecurityGroupsMembersPostInternalServerError{}
 }
 
-/*
-V1NetworkSecurityGroupsMembersPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1NetworkSecurityGroupsMembersPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1NetworkSecurityGroupsMembersPostInternalServerError struct {
 	Payload *models.Error
 }

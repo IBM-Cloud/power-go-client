@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -80,7 +81,7 @@ func (m *PVMInstanceUnshelve) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceUnshelve) validateDeploymentTarget(formats strfmt.Registry) error {
-	if swag.IsZero(m.DeploymentTarget) { // not required
+	if typeutils.IsZero(m.DeploymentTarget) { // not required
 		return nil
 	}
 
@@ -135,7 +136,7 @@ func (m *PVMInstanceUnshelve) validateProcTypeEnum(path, location string, value 
 }
 
 func (m *PVMInstanceUnshelve) validateProcType(formats strfmt.Registry) error {
-	if swag.IsZero(m.ProcType) { // not required
+	if typeutils.IsZero(m.ProcType) { // not required
 		return nil
 	}
 
@@ -148,7 +149,7 @@ func (m *PVMInstanceUnshelve) validateProcType(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceUnshelve) validateVirtualCores(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualCores) { // not required
+	if typeutils.IsZero(m.VirtualCores) { // not required
 		return nil
 	}
 
@@ -171,7 +172,7 @@ func (m *PVMInstanceUnshelve) validateVirtualCores(formats strfmt.Registry) erro
 }
 
 func (m *PVMInstanceUnshelve) validateVirtualSerialNumber(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualSerialNumber) { // not required
+	if typeutils.IsZero(m.VirtualSerialNumber) { // not required
 		return nil
 	}
 
@@ -219,7 +220,7 @@ func (m *PVMInstanceUnshelve) contextValidateDeploymentTarget(ctx context.Contex
 
 	if m.DeploymentTarget != nil {
 
-		if swag.IsZero(m.DeploymentTarget) { // not required
+		if typeutils.IsZero(m.DeploymentTarget) { // not required
 			return nil
 		}
 
@@ -244,7 +245,7 @@ func (m *PVMInstanceUnshelve) contextValidateVirtualCores(ctx context.Context, f
 
 	if m.VirtualCores != nil {
 
-		if swag.IsZero(m.VirtualCores) { // not required
+		if typeutils.IsZero(m.VirtualCores) { // not required
 			return nil
 		}
 
@@ -269,7 +270,7 @@ func (m *PVMInstanceUnshelve) contextValidateVirtualSerialNumber(ctx context.Con
 
 	if m.VirtualSerialNumber != nil {
 
-		if swag.IsZero(m.VirtualSerialNumber) { // not required
+		if typeutils.IsZero(m.VirtualSerialNumber) { // not required
 			return nil
 		}
 
@@ -295,13 +296,13 @@ func (m *PVMInstanceUnshelve) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceUnshelve) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceUnshelve
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

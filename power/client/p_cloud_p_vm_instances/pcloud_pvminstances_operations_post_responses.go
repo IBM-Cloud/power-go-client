@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesOperationsPostReader is a Reader for the PcloudPvminstancesOperationsPost structure.
@@ -80,11 +79,9 @@ func NewPcloudPvminstancesOperationsPostOK() *PcloudPvminstancesOperationsPostOK
 	return &PcloudPvminstancesOperationsPostOK{}
 }
 
-/*
-PcloudPvminstancesOperationsPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudPvminstancesOperationsPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudPvminstancesOperationsPostOK struct {
 	Payload models.Object
 }
@@ -148,11 +145,9 @@ func NewPcloudPvminstancesOperationsPostBadRequest() *PcloudPvminstancesOperatio
 	return &PcloudPvminstancesOperationsPostBadRequest{}
 }
 
-/*
-PcloudPvminstancesOperationsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesOperationsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesOperationsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -218,11 +213,9 @@ func NewPcloudPvminstancesOperationsPostUnauthorized() *PcloudPvminstancesOperat
 	return &PcloudPvminstancesOperationsPostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesOperationsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesOperationsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesOperationsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -288,11 +281,9 @@ func NewPcloudPvminstancesOperationsPostForbidden() *PcloudPvminstancesOperation
 	return &PcloudPvminstancesOperationsPostForbidden{}
 }
 
-/*
-PcloudPvminstancesOperationsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesOperationsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesOperationsPostForbidden struct {
 	Payload *models.Error
 }
@@ -358,11 +349,9 @@ func NewPcloudPvminstancesOperationsPostNotFound() *PcloudPvminstancesOperations
 	return &PcloudPvminstancesOperationsPostNotFound{}
 }
 
-/*
-PcloudPvminstancesOperationsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesOperationsPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesOperationsPostNotFound struct {
 	Payload *models.Error
 }
@@ -428,11 +417,9 @@ func NewPcloudPvminstancesOperationsPostConflict() *PcloudPvminstancesOperations
 	return &PcloudPvminstancesOperationsPostConflict{}
 }
 
-/*
-PcloudPvminstancesOperationsPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesOperationsPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesOperationsPostConflict struct {
 	Payload *models.Error
 }
@@ -498,11 +485,9 @@ func NewPcloudPvminstancesOperationsPostUnprocessableEntity() *PcloudPvminstance
 	return &PcloudPvminstancesOperationsPostUnprocessableEntity{}
 }
 
-/*
-PcloudPvminstancesOperationsPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudPvminstancesOperationsPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudPvminstancesOperationsPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -568,11 +553,9 @@ func NewPcloudPvminstancesOperationsPostInternalServerError() *PcloudPvminstance
 	return &PcloudPvminstancesOperationsPostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesOperationsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesOperationsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesOperationsPostInternalServerError struct {
 	Payload *models.Error
 }

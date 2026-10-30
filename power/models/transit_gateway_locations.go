@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -44,7 +45,7 @@ func (m *TransitGatewayLocations) validateTransitGatewayLocations(formats strfmt
 	}
 
 	for i := 0; i < len(m.TransitGatewayLocations); i++ {
-		if swag.IsZero(m.TransitGatewayLocations[i]) { // not required
+		if typeutils.IsZero(m.TransitGatewayLocations[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *TransitGatewayLocations) contextValidateTransitGatewayLocations(ctx con
 
 		if m.TransitGatewayLocations[i] != nil {
 
-			if swag.IsZero(m.TransitGatewayLocations[i]) { // not required
+			if typeutils.IsZero(m.TransitGatewayLocations[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *TransitGatewayLocations) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *TransitGatewayLocations) UnmarshalBinary(b []byte) error {
 	var res TransitGatewayLocations
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -10,7 +10,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -175,7 +176,7 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SAPCreate) validateDefaultTrustedProfile(formats strfmt.Registry) error {
-	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+	if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 		return nil
 	}
 
@@ -198,7 +199,7 @@ func (m *SAPCreate) validateDefaultTrustedProfile(formats strfmt.Registry) error
 }
 
 func (m *SAPCreate) validateDeploymentTarget(formats strfmt.Registry) error {
-	if swag.IsZero(m.DeploymentTarget) { // not required
+	if typeutils.IsZero(m.DeploymentTarget) { // not required
 		return nil
 	}
 
@@ -230,7 +231,7 @@ func (m *SAPCreate) validateImageID(formats strfmt.Registry) error {
 }
 
 func (m *SAPCreate) validateInstances(formats strfmt.Registry) error {
-	if swag.IsZero(m.Instances) { // not required
+	if typeutils.IsZero(m.Instances) { // not required
 		return nil
 	}
 
@@ -253,7 +254,7 @@ func (m *SAPCreate) validateInstances(formats strfmt.Registry) error {
 }
 
 func (m *SAPCreate) validateMetadataService(formats strfmt.Registry) error {
-	if swag.IsZero(m.MetadataService) { // not required
+	if typeutils.IsZero(m.MetadataService) { // not required
 		return nil
 	}
 
@@ -291,7 +292,7 @@ func (m *SAPCreate) validateNetworks(formats strfmt.Registry) error {
 	}
 
 	for i := 0; i < len(m.Networks); i++ {
-		if swag.IsZero(m.Networks[i]) { // not required
+		if typeutils.IsZero(m.Networks[i]) { // not required
 			continue
 		}
 
@@ -316,7 +317,7 @@ func (m *SAPCreate) validateNetworks(formats strfmt.Registry) error {
 }
 
 func (m *SAPCreate) validatePinPolicy(formats strfmt.Registry) error {
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -382,7 +383,7 @@ func (m *SAPCreate) validateReplicatedSnapshotSupportEnum(path, location string,
 }
 
 func (m *SAPCreate) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+	if typeutils.IsZero(m.ReplicatedSnapshotSupport) { // not required
 		return nil
 	}
 
@@ -427,7 +428,7 @@ func (m *SAPCreate) validateSapHANAAffinityActionEnum(path, location string, val
 }
 
 func (m *SAPCreate) validateSapHANAAffinityAction(formats strfmt.Registry) error {
-	if swag.IsZero(m.SapHANAAffinityAction) { // not required
+	if typeutils.IsZero(m.SapHANAAffinityAction) { // not required
 		return nil
 	}
 
@@ -440,7 +441,7 @@ func (m *SAPCreate) validateSapHANAAffinityAction(formats strfmt.Registry) error
 }
 
 func (m *SAPCreate) validateStorageAffinity(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageAffinity) { // not required
+	if typeutils.IsZero(m.StorageAffinity) { // not required
 		return nil
 	}
 
@@ -463,7 +464,7 @@ func (m *SAPCreate) validateStorageAffinity(formats strfmt.Registry) error {
 }
 
 func (m *SAPCreate) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -484,12 +485,12 @@ func (m *SAPCreate) validateUserTags(formats strfmt.Registry) error {
 }
 
 func (m *SAPCreate) validateVpmemVolumes(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpmemVolumes) { // not required
+	if typeutils.IsZero(m.VpmemVolumes) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.VpmemVolumes); i++ {
-		if swag.IsZero(m.VpmemVolumes[i]) { // not required
+		if typeutils.IsZero(m.VpmemVolumes[i]) { // not required
 			continue
 		}
 
@@ -563,7 +564,7 @@ func (m *SAPCreate) contextValidateDefaultTrustedProfile(ctx context.Context, fo
 
 	if m.DefaultTrustedProfile != nil {
 
-		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 			return nil
 		}
 
@@ -588,7 +589,7 @@ func (m *SAPCreate) contextValidateDeploymentTarget(ctx context.Context, formats
 
 	if m.DeploymentTarget != nil {
 
-		if swag.IsZero(m.DeploymentTarget) { // not required
+		if typeutils.IsZero(m.DeploymentTarget) { // not required
 			return nil
 		}
 
@@ -613,7 +614,7 @@ func (m *SAPCreate) contextValidateInstances(ctx context.Context, formats strfmt
 
 	if m.Instances != nil {
 
-		if swag.IsZero(m.Instances) { // not required
+		if typeutils.IsZero(m.Instances) { // not required
 			return nil
 		}
 
@@ -638,7 +639,7 @@ func (m *SAPCreate) contextValidateMetadataService(ctx context.Context, formats 
 
 	if m.MetadataService != nil {
 
-		if swag.IsZero(m.MetadataService) { // not required
+		if typeutils.IsZero(m.MetadataService) { // not required
 			return nil
 		}
 
@@ -665,7 +666,7 @@ func (m *SAPCreate) contextValidateNetworks(ctx context.Context, formats strfmt.
 
 		if m.Networks[i] != nil {
 
-			if swag.IsZero(m.Networks[i]) { // not required
+			if typeutils.IsZero(m.Networks[i]) { // not required
 				return nil
 			}
 
@@ -690,7 +691,7 @@ func (m *SAPCreate) contextValidateNetworks(ctx context.Context, formats strfmt.
 
 func (m *SAPCreate) contextValidatePinPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -714,7 +715,7 @@ func (m *SAPCreate) contextValidateStorageAffinity(ctx context.Context, formats 
 
 	if m.StorageAffinity != nil {
 
-		if swag.IsZero(m.StorageAffinity) { // not required
+		if typeutils.IsZero(m.StorageAffinity) { // not required
 			return nil
 		}
 
@@ -759,7 +760,7 @@ func (m *SAPCreate) contextValidateVpmemVolumes(ctx context.Context, formats str
 
 		if m.VpmemVolumes[i] != nil {
 
-			if swag.IsZero(m.VpmemVolumes[i]) { // not required
+			if typeutils.IsZero(m.VpmemVolumes[i]) { // not required
 				return nil
 			}
 
@@ -787,13 +788,13 @@ func (m *SAPCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SAPCreate) UnmarshalBinary(b []byte) error {
 	var res SAPCreate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

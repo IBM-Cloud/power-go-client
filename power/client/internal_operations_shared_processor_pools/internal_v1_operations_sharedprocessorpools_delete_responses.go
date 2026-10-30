@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1OperationsSharedprocessorpoolsDeleteReader is a Reader for the InternalV1OperationsSharedprocessorpoolsDelete structure.
@@ -80,11 +79,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteNoContent() *InternalV1Ope
 	return &InternalV1OperationsSharedprocessorpoolsDeleteNoContent{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteNoContent describes a response with status code 204, with default header values.
-
-Deleted
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteNoContent describes a response with status code 204, with default header values.
+//
+// Deleted
 type InternalV1OperationsSharedprocessorpoolsDeleteNoContent struct {
 }
 
@@ -136,11 +133,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteBadRequest() *InternalV1Op
 	return &InternalV1OperationsSharedprocessorpoolsDeleteBadRequest{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1OperationsSharedprocessorpoolsDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteUnauthorized() *InternalV1
 	return &InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1OperationsSharedprocessorpoolsDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteForbidden() *InternalV1Ope
 	return &InternalV1OperationsSharedprocessorpoolsDeleteForbidden{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1OperationsSharedprocessorpoolsDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteNotFound() *InternalV1Oper
 	return &InternalV1OperationsSharedprocessorpoolsDeleteNotFound{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1OperationsSharedprocessorpoolsDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteGone() *InternalV1Operatio
 	return &InternalV1OperationsSharedprocessorpoolsDeleteGone{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type InternalV1OperationsSharedprocessorpoolsDeleteGone struct {
 	Payload *models.Error
 }
@@ -486,11 +473,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests() *Interna
 	return &InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type InternalV1OperationsSharedprocessorpoolsDeleteTooManyRequests struct {
 	Payload *models.Error
 }
@@ -556,11 +541,9 @@ func NewInternalV1OperationsSharedprocessorpoolsDeleteInternalServerError() *Int
 	return &InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError{}
 }
 
-/*
-InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1OperationsSharedprocessorpoolsDeleteInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceInstanceGetReader is a Reader for the ServiceInstanceGet structure.
@@ -62,11 +61,9 @@ func NewServiceInstanceGetOK() *ServiceInstanceGetOK {
 	return &ServiceInstanceGetOK{}
 }
 
-/*
-ServiceInstanceGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceInstanceGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceInstanceGetOK struct {
 	Payload *models.ServiceInstanceResource
 }
@@ -132,11 +129,9 @@ func NewServiceInstanceGetBadRequest() *ServiceInstanceGetBadRequest {
 	return &ServiceInstanceGetBadRequest{}
 }
 
-/*
-ServiceInstanceGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceInstanceGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceInstanceGetBadRequest struct {
 	Payload *models.Error
 }
@@ -202,11 +197,9 @@ func NewServiceInstanceGetUnauthorized() *ServiceInstanceGetUnauthorized {
 	return &ServiceInstanceGetUnauthorized{}
 }
 
-/*
-ServiceInstanceGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceInstanceGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceInstanceGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -272,11 +265,9 @@ func NewServiceInstanceGetForbidden() *ServiceInstanceGetForbidden {
 	return &ServiceInstanceGetForbidden{}
 }
 
-/*
-ServiceInstanceGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceInstanceGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceInstanceGetForbidden struct {
 	Payload *models.Error
 }
@@ -342,11 +333,9 @@ func NewServiceInstanceGetNotFound() *ServiceInstanceGetNotFound {
 	return &ServiceInstanceGetNotFound{}
 }
 
-/*
-ServiceInstanceGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceInstanceGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceInstanceGetNotFound struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesSnapshotsGetallReader is a Reader for the PcloudCloudinstancesSnapshotsGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudCloudinstancesSnapshotsGetallOK() *PcloudCloudinstancesSnapshotsGe
 	return &PcloudCloudinstancesSnapshotsGetallOK{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesSnapshotsGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesSnapshotsGetallOK struct {
 	Payload *models.Snapshots
 }
@@ -138,11 +135,9 @@ func NewPcloudCloudinstancesSnapshotsGetallBadRequest() *PcloudCloudinstancesSna
 	return &PcloudCloudinstancesSnapshotsGetallBadRequest{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesSnapshotsGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesSnapshotsGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudCloudinstancesSnapshotsGetallUnauthorized() *PcloudCloudinstancesS
 	return &PcloudCloudinstancesSnapshotsGetallUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesSnapshotsGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesSnapshotsGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudCloudinstancesSnapshotsGetallForbidden() *PcloudCloudinstancesSnap
 	return &PcloudCloudinstancesSnapshotsGetallForbidden{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesSnapshotsGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesSnapshotsGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudCloudinstancesSnapshotsGetallNotFound() *PcloudCloudinstancesSnaps
 	return &PcloudCloudinstancesSnapshotsGetallNotFound{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesSnapshotsGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesSnapshotsGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudCloudinstancesSnapshotsGetallInternalServerError() *PcloudCloudins
 	return &PcloudCloudinstancesSnapshotsGetallInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesSnapshotsGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesSnapshotsGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesSnapshotsGetallInternalServerError struct {
 	Payload *models.Error
 }

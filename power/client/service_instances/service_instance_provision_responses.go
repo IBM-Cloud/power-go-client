@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceInstanceProvisionReader is a Reader for the ServiceInstanceProvision structure.
@@ -86,11 +85,9 @@ func NewServiceInstanceProvisionOK() *ServiceInstanceProvisionOK {
 	return &ServiceInstanceProvisionOK{}
 }
 
-/*
-ServiceInstanceProvisionOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceInstanceProvisionOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceInstanceProvisionOK struct {
 	Payload *models.ServiceInstanceProvision
 }
@@ -156,11 +153,9 @@ func NewServiceInstanceProvisionCreated() *ServiceInstanceProvisionCreated {
 	return &ServiceInstanceProvisionCreated{}
 }
 
-/*
-ServiceInstanceProvisionCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// ServiceInstanceProvisionCreated describes a response with status code 201, with default header values.
+//
+// Created
 type ServiceInstanceProvisionCreated struct {
 	Payload *models.ServiceInstanceProvision
 }
@@ -226,11 +221,9 @@ func NewServiceInstanceProvisionAccepted() *ServiceInstanceProvisionAccepted {
 	return &ServiceInstanceProvisionAccepted{}
 }
 
-/*
-ServiceInstanceProvisionAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// ServiceInstanceProvisionAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type ServiceInstanceProvisionAccepted struct {
 	Payload *models.ServiceInstanceAsyncOperation
 }
@@ -296,11 +289,9 @@ func NewServiceInstanceProvisionBadRequest() *ServiceInstanceProvisionBadRequest
 	return &ServiceInstanceProvisionBadRequest{}
 }
 
-/*
-ServiceInstanceProvisionBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceInstanceProvisionBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceInstanceProvisionBadRequest struct {
 	Payload *models.Error
 }
@@ -366,11 +357,9 @@ func NewServiceInstanceProvisionUnauthorized() *ServiceInstanceProvisionUnauthor
 	return &ServiceInstanceProvisionUnauthorized{}
 }
 
-/*
-ServiceInstanceProvisionUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceInstanceProvisionUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceInstanceProvisionUnauthorized struct {
 	Payload *models.Error
 }
@@ -436,11 +425,9 @@ func NewServiceInstanceProvisionForbidden() *ServiceInstanceProvisionForbidden {
 	return &ServiceInstanceProvisionForbidden{}
 }
 
-/*
-ServiceInstanceProvisionForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceInstanceProvisionForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceInstanceProvisionForbidden struct {
 	Payload *models.Error
 }
@@ -506,11 +493,9 @@ func NewServiceInstanceProvisionNotFound() *ServiceInstanceProvisionNotFound {
 	return &ServiceInstanceProvisionNotFound{}
 }
 
-/*
-ServiceInstanceProvisionNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceInstanceProvisionNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceInstanceProvisionNotFound struct {
 	Payload *models.Error
 }
@@ -576,11 +561,9 @@ func NewServiceInstanceProvisionConflict() *ServiceInstanceProvisionConflict {
 	return &ServiceInstanceProvisionConflict{}
 }
 
-/*
-ServiceInstanceProvisionConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// ServiceInstanceProvisionConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type ServiceInstanceProvisionConflict struct {
 	Payload *models.Error
 }
@@ -646,11 +629,9 @@ func NewServiceInstanceProvisionUnprocessableEntity() *ServiceInstanceProvisionU
 	return &ServiceInstanceProvisionUnprocessableEntity{}
 }
 
-/*
-ServiceInstanceProvisionUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// ServiceInstanceProvisionUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type ServiceInstanceProvisionUnprocessableEntity struct {
 	Payload *models.Error
 }

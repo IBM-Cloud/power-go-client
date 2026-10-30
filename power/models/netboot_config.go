@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // NetbootConfig Network boot configuration used for D-Mode IPL. Not used for other boot modes. Exactly one of 'iscsi' or 'nfs' must be provided.
@@ -42,7 +43,7 @@ func (m *NetbootConfig) Validate(formats strfmt.Registry) error {
 }
 
 func (m *NetbootConfig) validateIscsi(formats strfmt.Registry) error {
-	if swag.IsZero(m.Iscsi) { // not required
+	if typeutils.IsZero(m.Iscsi) { // not required
 		return nil
 	}
 
@@ -65,7 +66,7 @@ func (m *NetbootConfig) validateIscsi(formats strfmt.Registry) error {
 }
 
 func (m *NetbootConfig) validateNfs(formats strfmt.Registry) error {
-	if swag.IsZero(m.Nfs) { // not required
+	if typeutils.IsZero(m.Nfs) { // not required
 		return nil
 	}
 
@@ -109,7 +110,7 @@ func (m *NetbootConfig) contextValidateIscsi(ctx context.Context, formats strfmt
 
 	if m.Iscsi != nil {
 
-		if swag.IsZero(m.Iscsi) { // not required
+		if typeutils.IsZero(m.Iscsi) { // not required
 			return nil
 		}
 
@@ -134,7 +135,7 @@ func (m *NetbootConfig) contextValidateNfs(ctx context.Context, formats strfmt.R
 
 	if m.Nfs != nil {
 
-		if swag.IsZero(m.Nfs) { // not required
+		if typeutils.IsZero(m.Nfs) { // not required
 			return nil
 		}
 
@@ -160,13 +161,13 @@ func (m *NetbootConfig) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetbootConfig) UnmarshalBinary(b []byte) error {
 	var res NetbootConfig
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

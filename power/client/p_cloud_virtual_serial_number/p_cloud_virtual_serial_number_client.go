@@ -3,7 +3,9 @@
 package p_cloud_virtual_serial_number
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new p cloud virtual serial number API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new p cloud virtual serial number API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new p cloud virtual serial number API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,54 +44,113 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for p cloud virtual serial number API
-*/
+// Client for p cloud virtual serial number API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// PcloudPvminstancesVirtualserialnumberDelete unassign virtual serial number from a p VM instance.
 	PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error)
 
+	// PcloudPvminstancesVirtualserialnumberDeleteContext unassign virtual serial number from a p VM instance.
+	PcloudPvminstancesVirtualserialnumberDeleteContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error)
+
+	// PcloudPvminstancesVirtualserialnumberGet get a p VM instance s virtual serial number information.
 	PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error)
 
+	// PcloudPvminstancesVirtualserialnumberGetContext get a p VM instance s virtual serial number information.
+	PcloudPvminstancesVirtualserialnumberGetContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error)
+
+	// PcloudPvminstancesVirtualserialnumberPost assign virtual serial number to a p VM instance.
 	PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error)
 
+	// PcloudPvminstancesVirtualserialnumberPostContext assign virtual serial number to a p VM instance.
+	PcloudPvminstancesVirtualserialnumberPostContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error)
+
+	// PcloudPvminstancesVirtualserialnumberPut update a virtual serial number.
 	PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error)
 
+	// PcloudPvminstancesVirtualserialnumberPutContext update a virtual serial number.
+	PcloudPvminstancesVirtualserialnumberPutContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error)
+
+	// PcloudVirtualserialnumberDelete unreserve a retained virtual serial number.
 	PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error)
 
+	// PcloudVirtualserialnumberDeleteContext unreserve a retained virtual serial number.
+	PcloudVirtualserialnumberDeleteContext(ctx context.Context, params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error)
+
+	// PcloudVirtualserialnumberGet get information for a virtual serial number.
 	PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error)
 
+	// PcloudVirtualserialnumberGetContext get information for a virtual serial number.
+	PcloudVirtualserialnumberGetContext(ctx context.Context, params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error)
+
+	// PcloudVirtualserialnumberGetall list all utilized and retained v s ns.
 	PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error)
 
+	// PcloudVirtualserialnumberGetallContext list all utilized and retained v s ns.
+	PcloudVirtualserialnumberGetallContext(ctx context.Context, params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error)
+
+	// PcloudVirtualserialnumberPut update description of a reserved virtual serial number.
 	PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error)
 
+	// PcloudVirtualserialnumberPutContext update description of a reserved virtual serial number.
+	PcloudVirtualserialnumberPutContext(ctx context.Context, params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error)
+
+	// PcloudVirtualserialnumberSoftwaretiersGetall list supported software tiers i b mi licensing.
 	PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirtualserialnumberSoftwaretiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberSoftwaretiersGetallOK, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// PcloudVirtualserialnumberSoftwaretiersGetallContext list supported software tiers i b mi licensing.
+	PcloudVirtualserialnumberSoftwaretiersGetallContext(ctx context.Context, params *PcloudVirtualserialnumberSoftwaretiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberSoftwaretiersGetallOK, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	PcloudPvminstancesVirtualserialnumberDelete unassigns virtual serial number from a p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesVirtualserialnumberDelete unassigns virtual serial number from a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesVirtualserialnumberDeleteContext] instead.
 func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesVirtualserialnumberDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesVirtualserialnumberDeleteContext unassigns virtual serial number from a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesVirtualserialnumberDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesVirtualserialnumberDeleteContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberDeleteAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberDeleteParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.virtualserialnumber.delete",
 		Method:             "DELETE",
@@ -98,13 +161,14 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvmin
 		Params:             params,
 		Reader:             &PcloudPvminstancesVirtualserialnumberDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -124,20 +188,44 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberDelete(params *PcloudPvmin
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesVirtualserialnumberGet gets a p VM instance s virtual serial number information
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesVirtualserialnumberGet gets a p VM instance s virtual serial number information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesVirtualserialnumberGetContext] instead.
 func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesVirtualserialnumberGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesVirtualserialnumberGetContext gets a p VM instance s virtual serial number information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesVirtualserialnumberGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesVirtualserialnumberGetContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.virtualserialnumber.get",
 		Method:             "GET",
@@ -148,13 +236,14 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminsta
 		Params:             params,
 		Reader:             &PcloudPvminstancesVirtualserialnumberGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -174,20 +263,44 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberGet(params *PcloudPvminsta
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesVirtualserialnumberPost assigns virtual serial number to a p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesVirtualserialnumberPost assigns virtual serial number to a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesVirtualserialnumberPostContext] instead.
 func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesVirtualserialnumberPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesVirtualserialnumberPostContext assigns virtual serial number to a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesVirtualserialnumberPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesVirtualserialnumberPostContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.virtualserialnumber.post",
 		Method:             "POST",
@@ -198,13 +311,14 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminst
 		Params:             params,
 		Reader:             &PcloudPvminstancesVirtualserialnumberPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -224,20 +338,44 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPost(params *PcloudPvminst
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesVirtualserialnumberPut updates a virtual serial number
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesVirtualserialnumberPut updates a virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesVirtualserialnumberPutContext] instead.
 func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesVirtualserialnumberPutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesVirtualserialnumberPutContext updates a virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesVirtualserialnumberPutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesVirtualserialnumberPutContext(ctx context.Context, params *PcloudPvminstancesVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesVirtualserialnumberPutOK, *PcloudPvminstancesVirtualserialnumberPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesVirtualserialnumberPutParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.virtualserialnumber.put",
 		Method:             "PUT",
@@ -248,13 +386,14 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminsta
 		Params:             params,
 		Reader:             &PcloudPvminstancesVirtualserialnumberPutReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -274,20 +413,44 @@ func (a *Client) PcloudPvminstancesVirtualserialnumberPut(params *PcloudPvminsta
 	panic(msg)
 }
 
-/*
-	PcloudVirtualserialnumberDelete unreserves a retained virtual serial number
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudVirtualserialnumberDelete unreserves a retained virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudVirtualserialnumberDeleteContext] instead.
 func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudVirtualserialnumberDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudVirtualserialnumberDeleteContext unreserves a retained virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudVirtualserialnumberDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudVirtualserialnumberDeleteContext(ctx context.Context, params *PcloudVirtualserialnumberDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberDeleteParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.virtualserialnumber.delete",
 		Method:             "DELETE",
@@ -298,13 +461,14 @@ func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumb
 		Params:             params,
 		Reader:             &PcloudVirtualserialnumberDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -324,20 +488,44 @@ func (a *Client) PcloudVirtualserialnumberDelete(params *PcloudVirtualserialnumb
 	panic(msg)
 }
 
-/*
-	PcloudVirtualserialnumberGet gets information for a virtual serial number
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudVirtualserialnumberGet gets information for a virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudVirtualserialnumberGetContext] instead.
 func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudVirtualserialnumberGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudVirtualserialnumberGetContext gets information for a virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudVirtualserialnumberGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudVirtualserialnumberGetContext(ctx context.Context, params *PcloudVirtualserialnumberGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.virtualserialnumber.get",
 		Method:             "GET",
@@ -348,13 +536,14 @@ func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberG
 		Params:             params,
 		Reader:             &PcloudVirtualserialnumberGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -374,20 +563,44 @@ func (a *Client) PcloudVirtualserialnumberGet(params *PcloudVirtualserialnumberG
 	panic(msg)
 }
 
-/*
-	PcloudVirtualserialnumberGetall lists all utilized and retained v s ns
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudVirtualserialnumberGetall lists all utilized and retained v s ns.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudVirtualserialnumberGetallContext] instead.
 func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudVirtualserialnumberGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudVirtualserialnumberGetallContext lists all utilized and retained v s ns.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudVirtualserialnumberGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudVirtualserialnumberGetallContext(ctx context.Context, params *PcloudVirtualserialnumberGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.virtualserialnumber.getall",
 		Method:             "GET",
@@ -398,13 +611,14 @@ func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumb
 		Params:             params,
 		Reader:             &PcloudVirtualserialnumberGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -424,20 +638,44 @@ func (a *Client) PcloudVirtualserialnumberGetall(params *PcloudVirtualserialnumb
 	panic(msg)
 }
 
-/*
-	PcloudVirtualserialnumberPut updates description of a reserved virtual serial number
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudVirtualserialnumberPut updates description of a reserved virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudVirtualserialnumberPutContext] instead.
 func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudVirtualserialnumberPutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudVirtualserialnumberPutContext updates description of a reserved virtual serial number.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudVirtualserialnumberPutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudVirtualserialnumberPutContext(ctx context.Context, params *PcloudVirtualserialnumberPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberPutOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberPutParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.virtualserialnumber.put",
 		Method:             "PUT",
@@ -448,13 +686,14 @@ func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberP
 		Params:             params,
 		Reader:             &PcloudVirtualserialnumberPutReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -474,20 +713,44 @@ func (a *Client) PcloudVirtualserialnumberPut(params *PcloudVirtualserialnumberP
 	panic(msg)
 }
 
-/*
-	PcloudVirtualserialnumberSoftwaretiersGetall lists supported software tiers i b mi licensing
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudVirtualserialnumberSoftwaretiersGetall lists supported software tiers i b mi licensing.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudVirtualserialnumberSoftwaretiersGetallContext] instead.
 func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirtualserialnumberSoftwaretiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberSoftwaretiersGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudVirtualserialnumberSoftwaretiersGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudVirtualserialnumberSoftwaretiersGetallContext lists supported software tiers i b mi licensing.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudVirtualserialnumberSoftwaretiersGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetallContext(ctx context.Context, params *PcloudVirtualserialnumberSoftwaretiersGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudVirtualserialnumberSoftwaretiersGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudVirtualserialnumberSoftwaretiersGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.virtualserialnumber.softwaretiers.getall",
 		Method:             "GET",
@@ -498,13 +761,14 @@ func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirt
 		Params:             params,
 		Reader:             &PcloudVirtualserialnumberSoftwaretiersGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -525,6 +789,14 @@ func (a *Client) PcloudVirtualserialnumberSoftwaretiersGetall(params *PcloudVirt
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [PCloudVirtualSerialNumberParams].
+	ctx context.Context
 }

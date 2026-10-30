@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -75,7 +76,7 @@ func (m *Job) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Job) validateCreateTimestamp(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreateTimestamp) { // not required
+	if typeutils.IsZero(m.CreateTimestamp) { // not required
 		return nil
 	}
 
@@ -120,7 +121,7 @@ func (m *Job) validateOperation(formats strfmt.Registry) error {
 }
 
 func (m *Job) validateResources(formats strfmt.Registry) error {
-	if swag.IsZero(m.Resources) { // not required
+	if typeutils.IsZero(m.Resources) { // not required
 		return nil
 	}
 
@@ -167,7 +168,7 @@ func (m *Job) validateStatus(formats strfmt.Registry) error {
 }
 
 func (m *Job) validateWorkflow(formats strfmt.Registry) error {
-	if swag.IsZero(m.Workflow) { // not required
+	if typeutils.IsZero(m.Workflow) { // not required
 		return nil
 	}
 
@@ -240,7 +241,7 @@ func (m *Job) contextValidateResources(ctx context.Context, formats strfmt.Regis
 
 	if m.Resources != nil {
 
-		if swag.IsZero(m.Resources) { // not required
+		if typeutils.IsZero(m.Resources) { // not required
 			return nil
 		}
 
@@ -286,7 +287,7 @@ func (m *Job) contextValidateWorkflow(ctx context.Context, formats strfmt.Regist
 
 	if m.Workflow != nil {
 
-		if swag.IsZero(m.Workflow) { // not required
+		if typeutils.IsZero(m.Workflow) { // not required
 			return nil
 		}
 
@@ -312,13 +313,13 @@ func (m *Job) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Job) UnmarshalBinary(b []byte) error {
 	var res Job
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

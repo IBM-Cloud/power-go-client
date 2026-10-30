@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudLocationsSnapshotrecoveryGetParams() *PcloudLocationsSnapshotrecoveryGetParams {
-	return &PcloudLocationsSnapshotrecoveryGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudLocationsSnapshotrecoveryGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudLocationsSnapshotrecoveryGetParamsWithTimeout creates a new PcloudLocationsSnapshotrecoveryGetParams object
 // with the ability to set a timeout on a request.
 func NewPcloudLocationsSnapshotrecoveryGetParamsWithTimeout(timeout time.Duration) *PcloudLocationsSnapshotrecoveryGetParams {
 	return &PcloudLocationsSnapshotrecoveryGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudLocationsSnapshotrecoveryGetParamsWithContext creates a new PcloudLocationsSnapshotrecoveryGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudLocationsSnapshotrecoveryGetParams].
 func NewPcloudLocationsSnapshotrecoveryGetParamsWithContext(ctx context.Context) *PcloudLocationsSnapshotrecoveryGetParams {
 	return &PcloudLocationsSnapshotrecoveryGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -58,15 +62,14 @@ PcloudLocationsSnapshotrecoveryGetParams contains all the parameters to send to 
 */
 type PcloudLocationsSnapshotrecoveryGetParams struct {
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud locations snapshotrecovery get params (not the query body).
@@ -84,54 +87,57 @@ func (o *PcloudLocationsSnapshotrecoveryGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud locations snapshotrecovery get params
+// WithTimeout adds the timeout to the pcloud locations snapshotrecovery get params.
 func (o *PcloudLocationsSnapshotrecoveryGetParams) WithTimeout(timeout time.Duration) *PcloudLocationsSnapshotrecoveryGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud locations snapshotrecovery get params
+// SetTimeout adds the timeout to the pcloud locations snapshotrecovery get params.
 func (o *PcloudLocationsSnapshotrecoveryGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud locations snapshotrecovery get params
+// WithContext adds the context to the pcloud locations snapshotrecovery get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudLocationsSnapshotrecoveryGetParams].
 func (o *PcloudLocationsSnapshotrecoveryGetParams) WithContext(ctx context.Context) *PcloudLocationsSnapshotrecoveryGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud locations snapshotrecovery get params
+// SetContext adds the context to the pcloud locations snapshotrecovery get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudLocationsSnapshotrecoveryGetParams].
 func (o *PcloudLocationsSnapshotrecoveryGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud locations snapshotrecovery get params
+// WithHTTPClient adds the HTTPClient to the pcloud locations snapshotrecovery get params.
 func (o *PcloudLocationsSnapshotrecoveryGetParams) WithHTTPClient(client *http.Client) *PcloudLocationsSnapshotrecoveryGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud locations snapshotrecovery get params
+// SetHTTPClient adds the HTTPClient to the pcloud locations snapshotrecovery get params.
 func (o *PcloudLocationsSnapshotrecoveryGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud locations snapshotrecovery get params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud locations snapshotrecovery get params.
 func (o *PcloudLocationsSnapshotrecoveryGetParams) WithCloudInstanceID(cloudInstanceID string) *PcloudLocationsSnapshotrecoveryGetParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud locations snapshotrecovery get params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud locations snapshotrecovery get params.
 func (o *PcloudLocationsSnapshotrecoveryGetParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudLocationsSnapshotrecoveryGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

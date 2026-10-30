@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -51,7 +52,7 @@ func (m *UpdateStoragePool) Validate(formats strfmt.Registry) error {
 }
 
 func (m *UpdateStoragePool) validateOverrideThresholds(formats strfmt.Registry) error {
-	if swag.IsZero(m.OverrideThresholds) { // not required
+	if typeutils.IsZero(m.OverrideThresholds) { // not required
 		return nil
 	}
 
@@ -103,7 +104,7 @@ func (m *UpdateStoragePool) validateStateEnum(path, location string, value strin
 }
 
 func (m *UpdateStoragePool) validateState(formats strfmt.Registry) error {
-	if swag.IsZero(m.State) { // not required
+	if typeutils.IsZero(m.State) { // not required
 		return nil
 	}
 
@@ -133,7 +134,7 @@ func (m *UpdateStoragePool) contextValidateOverrideThresholds(ctx context.Contex
 
 	if m.OverrideThresholds != nil {
 
-		if swag.IsZero(m.OverrideThresholds) { // not required
+		if typeutils.IsZero(m.OverrideThresholds) { // not required
 			return nil
 		}
 
@@ -159,13 +160,13 @@ func (m *UpdateStoragePool) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *UpdateStoragePool) UnmarshalBinary(b []byte) error {
 	var res UpdateStoragePool
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

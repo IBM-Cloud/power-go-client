@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // SRC s r c
@@ -22,12 +22,12 @@ type SRC struct {
 }
 
 // Validate validates this s r c
-func (m *SRC) Validate(formats strfmt.Registry) error {
+func (m *SRC) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this s r c based on context it is used
-func (m *SRC) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *SRC) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *SRC) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SRC) UnmarshalBinary(b []byte) error {
 	var res SRC
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

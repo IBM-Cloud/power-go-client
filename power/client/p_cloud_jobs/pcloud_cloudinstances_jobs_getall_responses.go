@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesJobsGetallReader is a Reader for the PcloudCloudinstancesJobsGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudCloudinstancesJobsGetallOK() *PcloudCloudinstancesJobsGetallOK {
 	return &PcloudCloudinstancesJobsGetallOK{}
 }
 
-/*
-PcloudCloudinstancesJobsGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesJobsGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesJobsGetallOK struct {
 	Payload *models.Jobs
 }
@@ -138,11 +135,9 @@ func NewPcloudCloudinstancesJobsGetallBadRequest() *PcloudCloudinstancesJobsGeta
 	return &PcloudCloudinstancesJobsGetallBadRequest{}
 }
 
-/*
-PcloudCloudinstancesJobsGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesJobsGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesJobsGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudCloudinstancesJobsGetallUnauthorized() *PcloudCloudinstancesJobsGe
 	return &PcloudCloudinstancesJobsGetallUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesJobsGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesJobsGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesJobsGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudCloudinstancesJobsGetallForbidden() *PcloudCloudinstancesJobsGetal
 	return &PcloudCloudinstancesJobsGetallForbidden{}
 }
 
-/*
-PcloudCloudinstancesJobsGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesJobsGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesJobsGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudCloudinstancesJobsGetallNotFound() *PcloudCloudinstancesJobsGetall
 	return &PcloudCloudinstancesJobsGetallNotFound{}
 }
 
-/*
-PcloudCloudinstancesJobsGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesJobsGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesJobsGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudCloudinstancesJobsGetallInternalServerError() *PcloudCloudinstance
 	return &PcloudCloudinstancesJobsGetallInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesJobsGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesJobsGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesJobsGetallInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesVirtualserialnumberPostReader is a Reader for the PcloudPvminstancesVirtualserialnumberPost structure.
@@ -80,11 +79,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostAccepted() *PcloudPvminstancesV
 	return &PcloudPvminstancesVirtualserialnumberPostAccepted{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudPvminstancesVirtualserialnumberPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudPvminstancesVirtualserialnumberPostAccepted struct {
 	Payload *models.VirtualSerialNumber
 }
@@ -150,11 +147,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostBadRequest() *PcloudPvminstance
 	return &PcloudPvminstancesVirtualserialnumberPostBadRequest{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesVirtualserialnumberPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesVirtualserialnumberPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostUnauthorized() *PcloudPvminstan
 	return &PcloudPvminstancesVirtualserialnumberPostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesVirtualserialnumberPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesVirtualserialnumberPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostForbidden() *PcloudPvminstances
 	return &PcloudPvminstancesVirtualserialnumberPostForbidden{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesVirtualserialnumberPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesVirtualserialnumberPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostNotFound() *PcloudPvminstancesV
 	return &PcloudPvminstancesVirtualserialnumberPostNotFound{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesVirtualserialnumberPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesVirtualserialnumberPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostConflict() *PcloudPvminstancesV
 	return &PcloudPvminstancesVirtualserialnumberPostConflict{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesVirtualserialnumberPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesVirtualserialnumberPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostInternalServerError() *PcloudPv
 	return &PcloudPvminstancesVirtualserialnumberPostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesVirtualserialnumberPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesVirtualserialnumberPostInternalServerError struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudPvminstancesVirtualserialnumberPostGatewayTimeout() *PcloudPvminst
 	return &PcloudPvminstancesVirtualserialnumberPostGatewayTimeout{}
 }
 
-/*
-PcloudPvminstancesVirtualserialnumberPostGatewayTimeout describes a response with status code 504, with default header values.
-
-Gateway Timeout
-*/
+// PcloudPvminstancesVirtualserialnumberPostGatewayTimeout describes a response with status code 504, with default header values.
+//
+// Gateway Timeout
 type PcloudPvminstancesVirtualserialnumberPostGatewayTimeout struct {
 	Payload *models.Error
 }

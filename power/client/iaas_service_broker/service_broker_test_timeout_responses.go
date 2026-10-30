@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerTestTimeoutReader is a Reader for the ServiceBrokerTestTimeout structure.
@@ -62,11 +61,9 @@ func NewServiceBrokerTestTimeoutOK() *ServiceBrokerTestTimeoutOK {
 	return &ServiceBrokerTestTimeoutOK{}
 }
 
-/*
-ServiceBrokerTestTimeoutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerTestTimeoutOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerTestTimeoutOK struct {
 	Payload models.Object
 }
@@ -130,11 +127,9 @@ func NewServiceBrokerTestTimeoutBadRequest() *ServiceBrokerTestTimeoutBadRequest
 	return &ServiceBrokerTestTimeoutBadRequest{}
 }
 
-/*
-ServiceBrokerTestTimeoutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerTestTimeoutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerTestTimeoutBadRequest struct {
 	Payload *models.Error
 }
@@ -200,11 +195,9 @@ func NewServiceBrokerTestTimeoutUnauthorized() *ServiceBrokerTestTimeoutUnauthor
 	return &ServiceBrokerTestTimeoutUnauthorized{}
 }
 
-/*
-ServiceBrokerTestTimeoutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerTestTimeoutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerTestTimeoutUnauthorized struct {
 	Payload *models.Error
 }
@@ -270,11 +263,9 @@ func NewServiceBrokerTestTimeoutForbidden() *ServiceBrokerTestTimeoutForbidden {
 	return &ServiceBrokerTestTimeoutForbidden{}
 }
 
-/*
-ServiceBrokerTestTimeoutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerTestTimeoutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerTestTimeoutForbidden struct {
 	Payload *models.Error
 }
@@ -340,11 +331,9 @@ func NewServiceBrokerTestTimeoutNotFound() *ServiceBrokerTestTimeoutNotFound {
 	return &ServiceBrokerTestTimeoutNotFound{}
 }
 
-/*
-ServiceBrokerTestTimeoutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerTestTimeoutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerTestTimeoutNotFound struct {
 	Payload *models.Error
 }

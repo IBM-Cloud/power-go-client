@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewV1RoutesRouteSwitchEnabledParams creates a new V1RoutesRouteSwitchEnabledParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewV1RoutesRouteSwitchEnabledParams() *V1RoutesRouteSwitchEnabledParams {
-	return &V1RoutesRouteSwitchEnabledParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewV1RoutesRouteSwitchEnabledParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewV1RoutesRouteSwitchEnabledParamsWithTimeout creates a new V1RoutesRouteSwitchEnabledParams object
 // with the ability to set a timeout on a request.
 func NewV1RoutesRouteSwitchEnabledParamsWithTimeout(timeout time.Duration) *V1RoutesRouteSwitchEnabledParams {
 	return &V1RoutesRouteSwitchEnabledParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewV1RoutesRouteSwitchEnabledParamsWithContext creates a new V1RoutesRouteSwitchEnabledParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [V1RoutesRouteSwitchEnabledParams].
 func NewV1RoutesRouteSwitchEnabledParamsWithContext(ctx context.Context) *V1RoutesRouteSwitchEnabledParams {
 	return &V1RoutesRouteSwitchEnabledParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,21 +63,19 @@ V1RoutesRouteSwitchEnabledParams contains all the parameters to send to the API 
 */
 type V1RoutesRouteSwitchEnabledParams struct {
 
-	/* Body.
-
-	   Parameters to atomically enable one route and disable another in the same region and in the same account
-	*/
+	// Body.
+	//
+	// Parameters to atomically enable one route and disable another in the same region and in the same account
 	Body *models.RouteSwitchEnabledRequest
 
-	/* RouteID.
-
-	   Route ID
-	*/
+	// RouteID.
+	//
+	// Route ID
 	RouteID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the v1 routes route switch enabled params (not the query body).
@@ -92,65 +93,68 @@ func (o *V1RoutesRouteSwitchEnabledParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the v1 routes route switch enabled params
+// WithTimeout adds the timeout to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) WithTimeout(timeout time.Duration) *V1RoutesRouteSwitchEnabledParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the v1 routes route switch enabled params
+// SetTimeout adds the timeout to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the v1 routes route switch enabled params
+// WithContext adds the context to the v1 routes route switch enabled params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [V1RoutesRouteSwitchEnabledParams].
 func (o *V1RoutesRouteSwitchEnabledParams) WithContext(ctx context.Context) *V1RoutesRouteSwitchEnabledParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the v1 routes route switch enabled params
+// SetContext adds the context to the v1 routes route switch enabled params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [V1RoutesRouteSwitchEnabledParams].
 func (o *V1RoutesRouteSwitchEnabledParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the v1 routes route switch enabled params
+// WithHTTPClient adds the HTTPClient to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) WithHTTPClient(client *http.Client) *V1RoutesRouteSwitchEnabledParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the v1 routes route switch enabled params
+// SetHTTPClient adds the HTTPClient to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the v1 routes route switch enabled params
+// WithBody adds the body to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) WithBody(body *models.RouteSwitchEnabledRequest) *V1RoutesRouteSwitchEnabledParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the v1 routes route switch enabled params
+// SetBody adds the body to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) SetBody(body *models.RouteSwitchEnabledRequest) {
 	o.Body = body
 }
 
-// WithRouteID adds the routeID to the v1 routes route switch enabled params
+// WithRouteID adds the routeID to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) WithRouteID(routeID string) *V1RoutesRouteSwitchEnabledParams {
 	o.SetRouteID(routeID)
 	return o
 }
 
-// SetRouteID adds the routeId to the v1 routes route switch enabled params
+// SetRouteID adds the routeId to the v1 routes route switch enabled params.
 func (o *V1RoutesRouteSwitchEnabledParams) SetRouteID(routeID string) {
 	o.RouteID = routeID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *V1RoutesRouteSwitchEnabledParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

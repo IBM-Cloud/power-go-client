@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -70,7 +71,7 @@ func (m *TransitConnectionErrorItem) validateMessage(formats strfmt.Registry) er
 }
 
 func (m *TransitConnectionErrorItem) validateTarget(formats strfmt.Registry) error {
-	if swag.IsZero(m.Target) { // not required
+	if typeutils.IsZero(m.Target) { // not required
 		return nil
 	}
 
@@ -110,7 +111,7 @@ func (m *TransitConnectionErrorItem) contextValidateTarget(ctx context.Context, 
 
 	if m.Target != nil {
 
-		if swag.IsZero(m.Target) { // not required
+		if typeutils.IsZero(m.Target) { // not required
 			return nil
 		}
 
@@ -136,13 +137,13 @@ func (m *TransitConnectionErrorItem) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *TransitConnectionErrorItem) UnmarshalBinary(b []byte) error {
 	var res TransitConnectionErrorItem
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

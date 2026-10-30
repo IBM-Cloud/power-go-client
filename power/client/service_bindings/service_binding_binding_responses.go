@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBindingBindingReader is a Reader for the ServiceBindingBinding structure.
@@ -86,11 +85,9 @@ func NewServiceBindingBindingOK() *ServiceBindingBindingOK {
 	return &ServiceBindingBindingOK{}
 }
 
-/*
-ServiceBindingBindingOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBindingBindingOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBindingBindingOK struct {
 	Payload *models.ServiceBinding
 }
@@ -156,11 +153,9 @@ func NewServiceBindingBindingCreated() *ServiceBindingBindingCreated {
 	return &ServiceBindingBindingCreated{}
 }
 
-/*
-ServiceBindingBindingCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// ServiceBindingBindingCreated describes a response with status code 201, with default header values.
+//
+// Created
 type ServiceBindingBindingCreated struct {
 	Payload *models.ServiceBinding
 }
@@ -226,11 +221,9 @@ func NewServiceBindingBindingAccepted() *ServiceBindingBindingAccepted {
 	return &ServiceBindingBindingAccepted{}
 }
 
-/*
-ServiceBindingBindingAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// ServiceBindingBindingAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type ServiceBindingBindingAccepted struct {
 	Payload *models.AsyncOperation
 }
@@ -296,11 +289,9 @@ func NewServiceBindingBindingBadRequest() *ServiceBindingBindingBadRequest {
 	return &ServiceBindingBindingBadRequest{}
 }
 
-/*
-ServiceBindingBindingBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBindingBindingBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBindingBindingBadRequest struct {
 	Payload *models.Error
 }
@@ -366,11 +357,9 @@ func NewServiceBindingBindingUnauthorized() *ServiceBindingBindingUnauthorized {
 	return &ServiceBindingBindingUnauthorized{}
 }
 
-/*
-ServiceBindingBindingUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBindingBindingUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBindingBindingUnauthorized struct {
 	Payload *models.Error
 }
@@ -436,11 +425,9 @@ func NewServiceBindingBindingForbidden() *ServiceBindingBindingForbidden {
 	return &ServiceBindingBindingForbidden{}
 }
 
-/*
-ServiceBindingBindingForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBindingBindingForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBindingBindingForbidden struct {
 	Payload *models.Error
 }
@@ -506,11 +493,9 @@ func NewServiceBindingBindingNotFound() *ServiceBindingBindingNotFound {
 	return &ServiceBindingBindingNotFound{}
 }
 
-/*
-ServiceBindingBindingNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBindingBindingNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBindingBindingNotFound struct {
 	Payload *models.Error
 }
@@ -576,11 +561,9 @@ func NewServiceBindingBindingConflict() *ServiceBindingBindingConflict {
 	return &ServiceBindingBindingConflict{}
 }
 
-/*
-ServiceBindingBindingConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// ServiceBindingBindingConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type ServiceBindingBindingConflict struct {
 	Payload *models.Error
 }
@@ -646,11 +629,9 @@ func NewServiceBindingBindingUnprocessableEntity() *ServiceBindingBindingUnproce
 	return &ServiceBindingBindingUnprocessableEntity{}
 }
 
-/*
-ServiceBindingBindingUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// ServiceBindingBindingUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type ServiceBindingBindingUnprocessableEntity struct {
 	Payload *models.Error
 }

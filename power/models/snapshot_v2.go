@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -157,7 +158,7 @@ func (m *SnapshotV2) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateCompletionDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CompletionDate) { // not required
+	if typeutils.IsZero(m.CompletionDate) { // not required
 		return nil
 	}
 
@@ -169,12 +170,12 @@ func (m *SnapshotV2) validateCompletionDate(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateCopyVolumes(formats strfmt.Registry) error {
-	if swag.IsZero(m.CopyVolumes) { // not required
+	if typeutils.IsZero(m.CopyVolumes) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.CopyVolumes); i++ {
-		if swag.IsZero(m.CopyVolumes[i]) { // not required
+		if typeutils.IsZero(m.CopyVolumes[i]) { // not required
 			continue
 		}
 
@@ -199,7 +200,7 @@ func (m *SnapshotV2) validateCopyVolumes(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateCreationDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreationDate) { // not required
+	if typeutils.IsZero(m.CreationDate) { // not required
 		return nil
 	}
 
@@ -235,7 +236,7 @@ func (m *SnapshotV2) validateCrn(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateLastUpdateDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.LastUpdateDate) { // not required
+	if typeutils.IsZero(m.LastUpdateDate) { // not required
 		return nil
 	}
 
@@ -256,7 +257,7 @@ func (m *SnapshotV2) validateName(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validatePvmInstanceCRN(formats strfmt.Registry) error {
-	if swag.IsZero(m.PvmInstanceCRN) { // not required
+	if typeutils.IsZero(m.PvmInstanceCRN) { // not required
 		return nil
 	}
 
@@ -277,7 +278,7 @@ func (m *SnapshotV2) validatePvmInstanceCRN(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateRemotePeerSnapshot(formats strfmt.Registry) error {
-	if swag.IsZero(m.RemotePeerSnapshot) { // not required
+	if typeutils.IsZero(m.RemotePeerSnapshot) { // not required
 		return nil
 	}
 
@@ -300,7 +301,7 @@ func (m *SnapshotV2) validateRemotePeerSnapshot(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateSafeToUnquiesceDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.SafeToUnquiesceDate) { // not required
+	if typeutils.IsZero(m.SafeToUnquiesceDate) { // not required
 		return nil
 	}
 
@@ -330,7 +331,7 @@ func (m *SnapshotV2) validateType(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -351,7 +352,7 @@ func (m *SnapshotV2) validateUserTags(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV2) validateZonalCompletionDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.ZonalCompletionDate) { // not required
+	if typeutils.IsZero(m.ZonalCompletionDate) { // not required
 		return nil
 	}
 
@@ -398,7 +399,7 @@ func (m *SnapshotV2) contextValidateCopyVolumes(ctx context.Context, formats str
 
 		if m.CopyVolumes[i] != nil {
 
-			if swag.IsZero(m.CopyVolumes[i]) { // not required
+			if typeutils.IsZero(m.CopyVolumes[i]) { // not required
 				return nil
 			}
 
@@ -444,7 +445,7 @@ func (m *SnapshotV2) contextValidateCrn(ctx context.Context, formats strfmt.Regi
 
 func (m *SnapshotV2) contextValidatePvmInstanceCRN(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.PvmInstanceCRN) { // not required
+	if typeutils.IsZero(m.PvmInstanceCRN) { // not required
 		return nil
 	}
 
@@ -468,7 +469,7 @@ func (m *SnapshotV2) contextValidateRemotePeerSnapshot(ctx context.Context, form
 
 	if m.RemotePeerSnapshot != nil {
 
-		if swag.IsZero(m.RemotePeerSnapshot) { // not required
+		if typeutils.IsZero(m.RemotePeerSnapshot) { // not required
 			return nil
 		}
 
@@ -512,13 +513,13 @@ func (m *SnapshotV2) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SnapshotV2) UnmarshalBinary(b []byte) error {
 	var res SnapshotV2
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

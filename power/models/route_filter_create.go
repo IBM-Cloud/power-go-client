@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -92,7 +93,7 @@ func (m *RouteFilterCreate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RouteFilterCreate) validateGE(formats strfmt.Registry) error {
-	if swag.IsZero(m.GE) { // not required
+	if typeutils.IsZero(m.GE) { // not required
 		return nil
 	}
 
@@ -108,7 +109,7 @@ func (m *RouteFilterCreate) validateGE(formats strfmt.Registry) error {
 }
 
 func (m *RouteFilterCreate) validateLE(formats strfmt.Registry) error {
-	if swag.IsZero(m.LE) { // not required
+	if typeutils.IsZero(m.LE) { // not required
 		return nil
 	}
 
@@ -153,7 +154,7 @@ func (m *RouteFilterCreate) validateActionEnum(path, location string, value stri
 }
 
 func (m *RouteFilterCreate) validateAction(formats strfmt.Registry) error {
-	if swag.IsZero(m.Action) { // not required
+	if typeutils.IsZero(m.Action) { // not required
 		return nil
 	}
 
@@ -235,7 +236,7 @@ func (m *RouteFilterCreate) validatePrefix(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this route filter create based on context it is used
-func (m *RouteFilterCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *RouteFilterCreate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -244,13 +245,13 @@ func (m *RouteFilterCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RouteFilterCreate) UnmarshalBinary(b []byte) error {
 	var res RouteFilterCreate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

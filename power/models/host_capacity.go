@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // HostCapacity host capacity
@@ -42,7 +43,7 @@ func (m *HostCapacity) Validate(formats strfmt.Registry) error {
 }
 
 func (m *HostCapacity) validateCores(formats strfmt.Registry) error {
-	if swag.IsZero(m.Cores) { // not required
+	if typeutils.IsZero(m.Cores) { // not required
 		return nil
 	}
 
@@ -65,7 +66,7 @@ func (m *HostCapacity) validateCores(formats strfmt.Registry) error {
 }
 
 func (m *HostCapacity) validateMemory(formats strfmt.Registry) error {
-	if swag.IsZero(m.Memory) { // not required
+	if typeutils.IsZero(m.Memory) { // not required
 		return nil
 	}
 
@@ -109,7 +110,7 @@ func (m *HostCapacity) contextValidateCores(ctx context.Context, formats strfmt.
 
 	if m.Cores != nil {
 
-		if swag.IsZero(m.Cores) { // not required
+		if typeutils.IsZero(m.Cores) { // not required
 			return nil
 		}
 
@@ -134,7 +135,7 @@ func (m *HostCapacity) contextValidateMemory(ctx context.Context, formats strfmt
 
 	if m.Memory != nil {
 
-		if swag.IsZero(m.Memory) { // not required
+		if typeutils.IsZero(m.Memory) { // not required
 			return nil
 		}
 
@@ -160,13 +161,13 @@ func (m *HostCapacity) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *HostCapacity) UnmarshalBinary(b []byte) error {
 	var res HostCapacity
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

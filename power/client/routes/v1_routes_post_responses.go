@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1RoutesPostReader is a Reader for the V1RoutesPost structure.
@@ -80,11 +79,9 @@ func NewV1RoutesPostCreated() *V1RoutesPostCreated {
 	return &V1RoutesPostCreated{}
 }
 
-/*
-V1RoutesPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// V1RoutesPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type V1RoutesPostCreated struct {
 	Payload *models.Route
 }
@@ -150,11 +147,9 @@ func NewV1RoutesPostBadRequest() *V1RoutesPostBadRequest {
 	return &V1RoutesPostBadRequest{}
 }
 
-/*
-V1RoutesPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1RoutesPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1RoutesPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewV1RoutesPostUnauthorized() *V1RoutesPostUnauthorized {
 	return &V1RoutesPostUnauthorized{}
 }
 
-/*
-V1RoutesPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1RoutesPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1RoutesPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewV1RoutesPostForbidden() *V1RoutesPostForbidden {
 	return &V1RoutesPostForbidden{}
 }
 
-/*
-V1RoutesPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1RoutesPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1RoutesPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewV1RoutesPostNotFound() *V1RoutesPostNotFound {
 	return &V1RoutesPostNotFound{}
 }
 
-/*
-V1RoutesPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1RoutesPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1RoutesPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewV1RoutesPostConflict() *V1RoutesPostConflict {
 	return &V1RoutesPostConflict{}
 }
 
-/*
-V1RoutesPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1RoutesPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1RoutesPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewV1RoutesPostUnprocessableEntity() *V1RoutesPostUnprocessableEntity {
 	return &V1RoutesPostUnprocessableEntity{}
 }
 
-/*
-V1RoutesPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// V1RoutesPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type V1RoutesPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewV1RoutesPostInternalServerError() *V1RoutesPostInternalServerError {
 	return &V1RoutesPostInternalServerError{}
 }
 
-/*
-V1RoutesPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1RoutesPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1RoutesPostInternalServerError struct {
 	Payload *models.Error
 }

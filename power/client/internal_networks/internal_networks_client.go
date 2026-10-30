@@ -3,7 +3,9 @@
 package internal_networks
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new internal networks API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new internal networks API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new internal networks API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,40 +44,71 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for internal networks API
-*/
+// Client for internal networks API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// InternalV1NetworksActionPost network action service.
 	InternalV1NetworksActionPost(params *InternalV1NetworksActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionPostOK, error)
 
+	// InternalV1NetworksActionPostContext network action service.
+	InternalV1NetworksActionPostContext(ctx context.Context, params *InternalV1NetworksActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionPostOK, error)
+
+	// InternalV1NetworksActionStatusGet get status of the workspace from powerns and cloudant database.
 	InternalV1NetworksActionStatusGet(params *InternalV1NetworksActionStatusGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionStatusGetOK, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// InternalV1NetworksActionStatusGetContext get status of the workspace from powerns and cloudant database.
+	InternalV1NetworksActionStatusGetContext(ctx context.Context, params *InternalV1NetworksActionStatusGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionStatusGetOK, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	InternalV1NetworksActionPost networks action service
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// InternalV1NetworksActionPost networks action service.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.InternalV1NetworksActionPostContext] instead.
 func (a *Client) InternalV1NetworksActionPost(params *InternalV1NetworksActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionPostOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.InternalV1NetworksActionPostContext(ctx, params, authInfo, opts...)
+}
+
+// InternalV1NetworksActionPostContext networks action service.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [InternalV1NetworksActionPostParams.Context] with this method: it would be ignored.
+func (a *Client) InternalV1NetworksActionPostContext(ctx context.Context, params *InternalV1NetworksActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionPostOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1NetworksActionPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "internal.v1.networks.action.post",
 		Method:             "POST",
@@ -84,13 +119,14 @@ func (a *Client) InternalV1NetworksActionPost(params *InternalV1NetworksActionPo
 		Params:             params,
 		Reader:             &InternalV1NetworksActionPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -110,20 +146,44 @@ func (a *Client) InternalV1NetworksActionPost(params *InternalV1NetworksActionPo
 	panic(msg)
 }
 
-/*
-	InternalV1NetworksActionStatusGet gets status of the workspace from powerns and cloudant database
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// InternalV1NetworksActionStatusGet gets status of the workspace from powerns and cloudant database.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.InternalV1NetworksActionStatusGetContext] instead.
 func (a *Client) InternalV1NetworksActionStatusGet(params *InternalV1NetworksActionStatusGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionStatusGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.InternalV1NetworksActionStatusGetContext(ctx, params, authInfo, opts...)
+}
+
+// InternalV1NetworksActionStatusGetContext gets status of the workspace from powerns and cloudant database.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [InternalV1NetworksActionStatusGetParams.Context] with this method: it would be ignored.
+func (a *Client) InternalV1NetworksActionStatusGetContext(ctx context.Context, params *InternalV1NetworksActionStatusGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1NetworksActionStatusGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1NetworksActionStatusGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "internal.v1.networks.action.status.get",
 		Method:             "GET",
@@ -134,13 +194,14 @@ func (a *Client) InternalV1NetworksActionStatusGet(params *InternalV1NetworksAct
 		Params:             params,
 		Reader:             &InternalV1NetworksActionStatusGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -161,6 +222,14 @@ func (a *Client) InternalV1NetworksActionStatusGet(params *InternalV1NetworksAct
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [InternalNetworksParams].
+	ctx context.Context
 }

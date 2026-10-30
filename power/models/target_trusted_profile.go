@@ -7,7 +7,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -49,7 +50,7 @@ func (m *TargetTrustedProfile) Validate(formats strfmt.Registry) error {
 }
 
 func (m *TargetTrustedProfile) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -65,7 +66,7 @@ func (m *TargetTrustedProfile) validateCrn(formats strfmt.Registry) error {
 }
 
 func (m *TargetTrustedProfile) validateID(formats strfmt.Registry) error {
-	if swag.IsZero(m.ID) { // not required
+	if typeutils.IsZero(m.ID) { // not required
 		return nil
 	}
 
@@ -81,7 +82,7 @@ func (m *TargetTrustedProfile) validateID(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this target trusted profile based on context it is used
-func (m *TargetTrustedProfile) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *TargetTrustedProfile) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -90,13 +91,13 @@ func (m *TargetTrustedProfile) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *TargetTrustedProfile) UnmarshalBinary(b []byte) error {
 	var res TargetTrustedProfile
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

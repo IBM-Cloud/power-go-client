@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -113,7 +114,7 @@ func (m *SnapshotCreateV2) validateAddRemoteSnapshotEnum(path, location string, 
 }
 
 func (m *SnapshotCreateV2) validateAddRemoteSnapshot(formats strfmt.Registry) error {
-	if swag.IsZero(m.AddRemoteSnapshot) { // not required
+	if typeutils.IsZero(m.AddRemoteSnapshot) { // not required
 		return nil
 	}
 
@@ -126,7 +127,7 @@ func (m *SnapshotCreateV2) validateAddRemoteSnapshot(formats strfmt.Registry) er
 }
 
 func (m *SnapshotCreateV2) validateDescription(formats strfmt.Registry) error {
-	if swag.IsZero(m.Description) { // not required
+	if typeutils.IsZero(m.Description) { // not required
 		return nil
 	}
 
@@ -155,7 +156,7 @@ func (m *SnapshotCreateV2) validateName(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotCreateV2) validateRemoteSnapshot(formats strfmt.Registry) error {
-	if swag.IsZero(m.RemoteSnapshot) { // not required
+	if typeutils.IsZero(m.RemoteSnapshot) { // not required
 		return nil
 	}
 
@@ -207,7 +208,7 @@ func (m *SnapshotCreateV2) validateTypeEnum(path, location string, value string)
 }
 
 func (m *SnapshotCreateV2) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(m.Type) { // not required
+	if typeutils.IsZero(m.Type) { // not required
 		return nil
 	}
 
@@ -220,7 +221,7 @@ func (m *SnapshotCreateV2) validateType(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotCreateV2) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -262,7 +263,7 @@ func (m *SnapshotCreateV2) contextValidateRemoteSnapshot(ctx context.Context, fo
 
 	if m.RemoteSnapshot != nil {
 
-		if swag.IsZero(m.RemoteSnapshot) { // not required
+		if typeutils.IsZero(m.RemoteSnapshot) { // not required
 			return nil
 		}
 
@@ -306,13 +307,13 @@ func (m *SnapshotCreateV2) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SnapshotCreateV2) UnmarshalBinary(b []byte) error {
 	var res SnapshotCreateV2
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudIkepoliciesGetallReader is a Reader for the PcloudIkepoliciesGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudIkepoliciesGetallOK() *PcloudIkepoliciesGetallOK {
 	return &PcloudIkepoliciesGetallOK{}
 }
 
-/*
-PcloudIkepoliciesGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudIkepoliciesGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudIkepoliciesGetallOK struct {
 	Payload *models.IKEPolicies
 }
@@ -138,11 +135,9 @@ func NewPcloudIkepoliciesGetallBadRequest() *PcloudIkepoliciesGetallBadRequest {
 	return &PcloudIkepoliciesGetallBadRequest{}
 }
 
-/*
-PcloudIkepoliciesGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudIkepoliciesGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudIkepoliciesGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudIkepoliciesGetallUnauthorized() *PcloudIkepoliciesGetallUnauthoriz
 	return &PcloudIkepoliciesGetallUnauthorized{}
 }
 
-/*
-PcloudIkepoliciesGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudIkepoliciesGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudIkepoliciesGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudIkepoliciesGetallForbidden() *PcloudIkepoliciesGetallForbidden {
 	return &PcloudIkepoliciesGetallForbidden{}
 }
 
-/*
-PcloudIkepoliciesGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudIkepoliciesGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudIkepoliciesGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudIkepoliciesGetallNotFound() *PcloudIkepoliciesGetallNotFound {
 	return &PcloudIkepoliciesGetallNotFound{}
 }
 
-/*
-PcloudIkepoliciesGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudIkepoliciesGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudIkepoliciesGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudIkepoliciesGetallInternalServerError() *PcloudIkepoliciesGetallInt
 	return &PcloudIkepoliciesGetallInternalServerError{}
 }
 
-/*
-PcloudIkepoliciesGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudIkepoliciesGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudIkepoliciesGetallInternalServerError struct {
 	Payload *models.Error
 }

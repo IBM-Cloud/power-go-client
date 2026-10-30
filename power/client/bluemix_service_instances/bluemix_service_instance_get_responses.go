@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // BluemixServiceInstanceGetReader is a Reader for the BluemixServiceInstanceGet structure.
@@ -62,11 +61,9 @@ func NewBluemixServiceInstanceGetOK() *BluemixServiceInstanceGetOK {
 	return &BluemixServiceInstanceGetOK{}
 }
 
-/*
-BluemixServiceInstanceGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// BluemixServiceInstanceGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type BluemixServiceInstanceGetOK struct {
 	Payload *models.ServiceInstance
 }
@@ -132,11 +129,9 @@ func NewBluemixServiceInstanceGetBadRequest() *BluemixServiceInstanceGetBadReque
 	return &BluemixServiceInstanceGetBadRequest{}
 }
 
-/*
-BluemixServiceInstanceGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// BluemixServiceInstanceGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type BluemixServiceInstanceGetBadRequest struct {
 	Payload *models.Error
 }
@@ -202,11 +197,9 @@ func NewBluemixServiceInstanceGetUnauthorized() *BluemixServiceInstanceGetUnauth
 	return &BluemixServiceInstanceGetUnauthorized{}
 }
 
-/*
-BluemixServiceInstanceGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// BluemixServiceInstanceGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type BluemixServiceInstanceGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -272,11 +265,9 @@ func NewBluemixServiceInstanceGetForbidden() *BluemixServiceInstanceGetForbidden
 	return &BluemixServiceInstanceGetForbidden{}
 }
 
-/*
-BluemixServiceInstanceGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// BluemixServiceInstanceGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type BluemixServiceInstanceGetForbidden struct {
 	Payload *models.Error
 }
@@ -342,11 +333,9 @@ func NewBluemixServiceInstanceGetNotFound() *BluemixServiceInstanceGetNotFound {
 	return &BluemixServiceInstanceGetNotFound{}
 }
 
-/*
-BluemixServiceInstanceGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// BluemixServiceInstanceGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type BluemixServiceInstanceGetNotFound struct {
 	Payload *models.Error
 }

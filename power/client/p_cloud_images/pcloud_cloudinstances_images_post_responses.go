@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesImagesPostReader is a Reader for the PcloudCloudinstancesImagesPost structure.
@@ -86,11 +85,9 @@ func NewPcloudCloudinstancesImagesPostOK() *PcloudCloudinstancesImagesPostOK {
 	return &PcloudCloudinstancesImagesPostOK{}
 }
 
-/*
-PcloudCloudinstancesImagesPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesImagesPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesImagesPostOK struct {
 	Payload *models.Image
 }
@@ -156,11 +153,9 @@ func NewPcloudCloudinstancesImagesPostCreated() *PcloudCloudinstancesImagesPostC
 	return &PcloudCloudinstancesImagesPostCreated{}
 }
 
-/*
-PcloudCloudinstancesImagesPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// PcloudCloudinstancesImagesPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type PcloudCloudinstancesImagesPostCreated struct {
 	Payload *models.Image
 }
@@ -226,11 +221,9 @@ func NewPcloudCloudinstancesImagesPostBadRequest() *PcloudCloudinstancesImagesPo
 	return &PcloudCloudinstancesImagesPostBadRequest{}
 }
 
-/*
-PcloudCloudinstancesImagesPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesImagesPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesImagesPostBadRequest struct {
 	Payload *models.Error
 }
@@ -296,11 +289,9 @@ func NewPcloudCloudinstancesImagesPostUnauthorized() *PcloudCloudinstancesImages
 	return &PcloudCloudinstancesImagesPostUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesImagesPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesImagesPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesImagesPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -366,11 +357,9 @@ func NewPcloudCloudinstancesImagesPostForbidden() *PcloudCloudinstancesImagesPos
 	return &PcloudCloudinstancesImagesPostForbidden{}
 }
 
-/*
-PcloudCloudinstancesImagesPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesImagesPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesImagesPostForbidden struct {
 	Payload *models.Error
 }
@@ -436,11 +425,9 @@ func NewPcloudCloudinstancesImagesPostNotFound() *PcloudCloudinstancesImagesPost
 	return &PcloudCloudinstancesImagesPostNotFound{}
 }
 
-/*
-PcloudCloudinstancesImagesPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesImagesPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesImagesPostNotFound struct {
 	Payload *models.Error
 }
@@ -506,11 +493,9 @@ func NewPcloudCloudinstancesImagesPostConflict() *PcloudCloudinstancesImagesPost
 	return &PcloudCloudinstancesImagesPostConflict{}
 }
 
-/*
-PcloudCloudinstancesImagesPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudCloudinstancesImagesPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudCloudinstancesImagesPostConflict struct {
 	Payload *models.Error
 }
@@ -576,11 +561,9 @@ func NewPcloudCloudinstancesImagesPostUnprocessableEntity() *PcloudCloudinstance
 	return &PcloudCloudinstancesImagesPostUnprocessableEntity{}
 }
 
-/*
-PcloudCloudinstancesImagesPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudCloudinstancesImagesPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudCloudinstancesImagesPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -646,11 +629,9 @@ func NewPcloudCloudinstancesImagesPostInternalServerError() *PcloudCloudinstance
 	return &PcloudCloudinstancesImagesPostInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesImagesPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesImagesPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesImagesPostInternalServerError struct {
 	Payload *models.Error
 }
