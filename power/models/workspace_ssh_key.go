@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -82,7 +83,7 @@ func (m *WorkspaceSSHKey) Validate(formats strfmt.Registry) error {
 }
 
 func (m *WorkspaceSSHKey) validateCreationDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreationDate) { // not required
+	if typeutils.IsZero(m.CreationDate) { // not required
 		return nil
 	}
 
@@ -167,7 +168,7 @@ func (m *WorkspaceSSHKey) validateVisibilityEnum(path, location string, value st
 }
 
 func (m *WorkspaceSSHKey) validateVisibility(formats strfmt.Registry) error {
-	if swag.IsZero(m.Visibility) { // not required
+	if typeutils.IsZero(m.Visibility) { // not required
 		return nil
 	}
 
@@ -180,7 +181,7 @@ func (m *WorkspaceSSHKey) validateVisibility(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this workspace SSH key based on context it is used
-func (m *WorkspaceSSHKey) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *WorkspaceSSHKey) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -189,13 +190,13 @@ func (m *WorkspaceSSHKey) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *WorkspaceSSHKey) UnmarshalBinary(b []byte) error {
 	var res WorkspaceSSHKey
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

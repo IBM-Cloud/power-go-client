@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVolumegroupsPutReader is a Reader for the PcloudVolumegroupsPut structure.
@@ -80,11 +79,9 @@ func NewPcloudVolumegroupsPutAccepted() *PcloudVolumegroupsPutAccepted {
 	return &PcloudVolumegroupsPutAccepted{}
 }
 
-/*
-PcloudVolumegroupsPutAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudVolumegroupsPutAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudVolumegroupsPutAccepted struct {
 	Payload models.Object
 }
@@ -148,11 +145,9 @@ func NewPcloudVolumegroupsPutBadRequest() *PcloudVolumegroupsPutBadRequest {
 	return &PcloudVolumegroupsPutBadRequest{}
 }
 
-/*
-PcloudVolumegroupsPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVolumegroupsPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVolumegroupsPutBadRequest struct {
 	Payload *models.Error
 }
@@ -218,11 +213,9 @@ func NewPcloudVolumegroupsPutUnauthorized() *PcloudVolumegroupsPutUnauthorized {
 	return &PcloudVolumegroupsPutUnauthorized{}
 }
 
-/*
-PcloudVolumegroupsPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVolumegroupsPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVolumegroupsPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -288,11 +281,9 @@ func NewPcloudVolumegroupsPutForbidden() *PcloudVolumegroupsPutForbidden {
 	return &PcloudVolumegroupsPutForbidden{}
 }
 
-/*
-PcloudVolumegroupsPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVolumegroupsPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVolumegroupsPutForbidden struct {
 	Payload *models.Error
 }
@@ -358,11 +349,9 @@ func NewPcloudVolumegroupsPutNotFound() *PcloudVolumegroupsPutNotFound {
 	return &PcloudVolumegroupsPutNotFound{}
 }
 
-/*
-PcloudVolumegroupsPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVolumegroupsPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVolumegroupsPutNotFound struct {
 	Payload *models.Error
 }
@@ -428,11 +417,9 @@ func NewPcloudVolumegroupsPutConflict() *PcloudVolumegroupsPutConflict {
 	return &PcloudVolumegroupsPutConflict{}
 }
 
-/*
-PcloudVolumegroupsPutConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudVolumegroupsPutConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudVolumegroupsPutConflict struct {
 	Payload *models.Error
 }
@@ -498,11 +485,9 @@ func NewPcloudVolumegroupsPutUnprocessableEntity() *PcloudVolumegroupsPutUnproce
 	return &PcloudVolumegroupsPutUnprocessableEntity{}
 }
 
-/*
-PcloudVolumegroupsPutUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudVolumegroupsPutUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudVolumegroupsPutUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -568,11 +553,9 @@ func NewPcloudVolumegroupsPutInternalServerError() *PcloudVolumegroupsPutInterna
 	return &PcloudVolumegroupsPutInternalServerError{}
 }
 
-/*
-PcloudVolumegroupsPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVolumegroupsPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVolumegroupsPutInternalServerError struct {
 	Payload *models.Error
 }

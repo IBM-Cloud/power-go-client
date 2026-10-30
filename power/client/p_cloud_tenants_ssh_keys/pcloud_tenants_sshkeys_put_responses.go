@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudTenantsSshkeysPutReader is a Reader for the PcloudTenantsSshkeysPut structure.
@@ -74,11 +73,9 @@ func NewPcloudTenantsSshkeysPutOK() *PcloudTenantsSshkeysPutOK {
 	return &PcloudTenantsSshkeysPutOK{}
 }
 
-/*
-PcloudTenantsSshkeysPutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudTenantsSshkeysPutOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudTenantsSshkeysPutOK struct {
 	Payload *models.SSHKey
 }
@@ -144,11 +141,9 @@ func NewPcloudTenantsSshkeysPutBadRequest() *PcloudTenantsSshkeysPutBadRequest {
 	return &PcloudTenantsSshkeysPutBadRequest{}
 }
 
-/*
-PcloudTenantsSshkeysPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudTenantsSshkeysPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudTenantsSshkeysPutBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudTenantsSshkeysPutUnauthorized() *PcloudTenantsSshkeysPutUnauthoriz
 	return &PcloudTenantsSshkeysPutUnauthorized{}
 }
 
-/*
-PcloudTenantsSshkeysPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudTenantsSshkeysPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudTenantsSshkeysPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudTenantsSshkeysPutForbidden() *PcloudTenantsSshkeysPutForbidden {
 	return &PcloudTenantsSshkeysPutForbidden{}
 }
 
-/*
-PcloudTenantsSshkeysPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudTenantsSshkeysPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudTenantsSshkeysPutForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudTenantsSshkeysPutNotFound() *PcloudTenantsSshkeysPutNotFound {
 	return &PcloudTenantsSshkeysPutNotFound{}
 }
 
-/*
-PcloudTenantsSshkeysPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudTenantsSshkeysPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudTenantsSshkeysPutNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudTenantsSshkeysPutUnprocessableEntity() *PcloudTenantsSshkeysPutUnp
 	return &PcloudTenantsSshkeysPutUnprocessableEntity{}
 }
 
-/*
-PcloudTenantsSshkeysPutUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudTenantsSshkeysPutUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudTenantsSshkeysPutUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudTenantsSshkeysPutInternalServerError() *PcloudTenantsSshkeysPutInt
 	return &PcloudTenantsSshkeysPutInternalServerError{}
 }
 
-/*
-PcloudTenantsSshkeysPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudTenantsSshkeysPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudTenantsSshkeysPutInternalServerError struct {
 	Payload *models.Error
 }

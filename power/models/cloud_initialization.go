@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -66,7 +67,7 @@ func (m *CloudInitialization) validateVirtualOpticalDeviceEnum(path, location st
 }
 
 func (m *CloudInitialization) validateVirtualOpticalDevice(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualOpticalDevice) { // not required
+	if typeutils.IsZero(m.VirtualOpticalDevice) { // not required
 		return nil
 	}
 
@@ -79,7 +80,7 @@ func (m *CloudInitialization) validateVirtualOpticalDevice(formats strfmt.Regist
 }
 
 // ContextValidate validates this cloud initialization based on context it is used
-func (m *CloudInitialization) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *CloudInitialization) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -88,13 +89,13 @@ func (m *CloudInitialization) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloudInitialization) UnmarshalBinary(b []byte) error {
 	var res CloudInitialization
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

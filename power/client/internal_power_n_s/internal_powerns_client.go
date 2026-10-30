@@ -3,7 +3,9 @@
 package internal_power_n_s
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new internal power n s API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new internal power n s API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new internal power n s API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,40 +44,71 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for internal power n s API
-*/
+// Client for internal power n s API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// InternalV1PowernsNetworkInterfacesGet list all network interfaces in all accounts and all workspaces within the datacenter.
 	InternalV1PowernsNetworkInterfacesGet(params *InternalV1PowernsNetworkInterfacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworkInterfacesGetOK, error)
 
+	// InternalV1PowernsNetworkInterfacesGetContext list all network interfaces in all accounts and all workspaces within the datacenter.
+	InternalV1PowernsNetworkInterfacesGetContext(ctx context.Context, params *InternalV1PowernsNetworkInterfacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworkInterfacesGetOK, error)
+
+	// InternalV1PowernsNetworksGet list all networks in all accounts and all workspaces within the datacenter.
 	InternalV1PowernsNetworksGet(params *InternalV1PowernsNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworksGetOK, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// InternalV1PowernsNetworksGetContext list all networks in all accounts and all workspaces within the datacenter.
+	InternalV1PowernsNetworksGetContext(ctx context.Context, params *InternalV1PowernsNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworksGetOK, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	InternalV1PowernsNetworkInterfacesGet lists all network interfaces in all accounts and all workspaces within the datacenter
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// InternalV1PowernsNetworkInterfacesGet lists all network interfaces in all accounts and all workspaces within the datacenter.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.InternalV1PowernsNetworkInterfacesGetContext] instead.
 func (a *Client) InternalV1PowernsNetworkInterfacesGet(params *InternalV1PowernsNetworkInterfacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworkInterfacesGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.InternalV1PowernsNetworkInterfacesGetContext(ctx, params, authInfo, opts...)
+}
+
+// InternalV1PowernsNetworkInterfacesGetContext lists all network interfaces in all accounts and all workspaces within the datacenter.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [InternalV1PowernsNetworkInterfacesGetParams.Context] with this method: it would be ignored.
+func (a *Client) InternalV1PowernsNetworkInterfacesGetContext(ctx context.Context, params *InternalV1PowernsNetworkInterfacesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworkInterfacesGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1PowernsNetworkInterfacesGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "internal.v1.powerns.network.interfaces.get",
 		Method:             "GET",
@@ -84,13 +119,14 @@ func (a *Client) InternalV1PowernsNetworkInterfacesGet(params *InternalV1Powerns
 		Params:             params,
 		Reader:             &InternalV1PowernsNetworkInterfacesGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -110,20 +146,44 @@ func (a *Client) InternalV1PowernsNetworkInterfacesGet(params *InternalV1Powerns
 	panic(msg)
 }
 
-/*
-	InternalV1PowernsNetworksGet lists all networks in all accounts and all workspaces within the datacenter
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// InternalV1PowernsNetworksGet lists all networks in all accounts and all workspaces within the datacenter.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.InternalV1PowernsNetworksGetContext] instead.
 func (a *Client) InternalV1PowernsNetworksGet(params *InternalV1PowernsNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworksGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.InternalV1PowernsNetworksGetContext(ctx, params, authInfo, opts...)
+}
+
+// InternalV1PowernsNetworksGetContext lists all networks in all accounts and all workspaces within the datacenter.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [InternalV1PowernsNetworksGetParams.Context] with this method: it would be ignored.
+func (a *Client) InternalV1PowernsNetworksGetContext(ctx context.Context, params *InternalV1PowernsNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*InternalV1PowernsNetworksGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewInternalV1PowernsNetworksGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "internal.v1.powerns.networks.get",
 		Method:             "GET",
@@ -134,13 +194,14 @@ func (a *Client) InternalV1PowernsNetworksGet(params *InternalV1PowernsNetworksG
 		Params:             params,
 		Reader:             &InternalV1PowernsNetworksGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -161,6 +222,14 @@ func (a *Client) InternalV1PowernsNetworksGet(params *InternalV1PowernsNetworksG
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [InternalPowernsParams].
+	ctx context.Context
 }

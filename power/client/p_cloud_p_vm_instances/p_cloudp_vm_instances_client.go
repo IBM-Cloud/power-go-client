@@ -3,7 +3,9 @@
 package p_cloud_p_vm_instances
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new p cloud p vm instances API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new p cloud p vm instances API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new p cloud p vm instances API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,87 +44,213 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for p cloud p vm instances API
-*/
+// Client for p cloud p vm instances API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// PcloudPvminstancesActionPost perform an action on a p VM instance.
 	PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesActionPostOK, error)
 
+	// PcloudPvminstancesActionPostContext perform an action on a p VM instance.
+	PcloudPvminstancesActionPostContext(ctx context.Context, params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesActionPostOK, error)
+
+	// PcloudPvminstancesCapturePost capture a p VM instance and create a deployable image.
 	PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesCapturePostOK, *PcloudPvminstancesCapturePostAccepted, error)
 
+	// PcloudPvminstancesCapturePostContext capture a p VM instance and create a deployable image.
+	PcloudPvminstancesCapturePostContext(ctx context.Context, params *PcloudPvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesCapturePostOK, *PcloudPvminstancesCapturePostAccepted, error)
+
+	// PcloudPvminstancesConsoleGet list all console languages.
 	PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsoleGetOK, error)
 
+	// PcloudPvminstancesConsoleGetContext list all console languages.
+	PcloudPvminstancesConsoleGetContext(ctx context.Context, params *PcloudPvminstancesConsoleGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsoleGetOK, error)
+
+	// PcloudPvminstancesConsolePost generate the no v n c console URL.
 	PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePostCreated, error)
 
+	// PcloudPvminstancesConsolePostContext generate the no v n c console URL.
+	PcloudPvminstancesConsolePostContext(ctx context.Context, params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePostCreated, error)
+
+	// PcloudPvminstancesConsolePut update p VM instance console language code.
 	PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsolePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePutOK, error)
 
+	// PcloudPvminstancesConsolePutContext update p VM instance console language code.
+	PcloudPvminstancesConsolePutContext(ctx context.Context, params *PcloudPvminstancesConsolePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePutOK, error)
+
+	// PcloudPvminstancesDelete delete a p cloud p VM instance.
 	PcloudPvminstancesDelete(params *PcloudPvminstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesDeleteOK, error)
 
+	// PcloudPvminstancesDeleteContext delete a p cloud p VM instance.
+	PcloudPvminstancesDeleteContext(ctx context.Context, params *PcloudPvminstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesDeleteOK, error)
+
+	// PcloudPvminstancesGet get a p VM instance s current state or information.
 	PcloudPvminstancesGet(params *PcloudPvminstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetOK, error)
 
+	// PcloudPvminstancesGetContext get a p VM instance s current state or information.
+	PcloudPvminstancesGetContext(ctx context.Context, params *PcloudPvminstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetOK, error)
+
+	// PcloudPvminstancesGetall get all the pvm instances for this cloud instance.
 	PcloudPvminstancesGetall(params *PcloudPvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetallOK, error)
 
+	// PcloudPvminstancesGetallContext get all the pvm instances for this cloud instance.
+	PcloudPvminstancesGetallContext(ctx context.Context, params *PcloudPvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetallOK, error)
+
+	// PcloudPvminstancesNetworksDelete remove all address of network from a p VM instance.
 	PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksDeleteOK, error)
 
+	// PcloudPvminstancesNetworksDeleteContext remove all address of network from a p VM instance.
+	PcloudPvminstancesNetworksDeleteContext(ctx context.Context, params *PcloudPvminstancesNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksDeleteOK, error)
+
+	// PcloudPvminstancesNetworksGet get a p VM instance s network information.
 	PcloudPvminstancesNetworksGet(params *PcloudPvminstancesNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetOK, error)
 
+	// PcloudPvminstancesNetworksGetContext get a p VM instance s network information.
+	PcloudPvminstancesNetworksGetContext(ctx context.Context, params *PcloudPvminstancesNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetOK, error)
+
+	// PcloudPvminstancesNetworksGetall get all networks for this p VM instance.
 	PcloudPvminstancesNetworksGetall(params *PcloudPvminstancesNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetallOK, error)
 
+	// PcloudPvminstancesNetworksGetallContext get all networks for this p VM instance.
+	PcloudPvminstancesNetworksGetallContext(ctx context.Context, params *PcloudPvminstancesNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetallOK, error)
+
+	// PcloudPvminstancesNetworksPost perform network addition.
 	PcloudPvminstancesNetworksPost(params *PcloudPvminstancesNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksPostCreated, error)
 
+	// PcloudPvminstancesNetworksPostContext perform network addition.
+	PcloudPvminstancesNetworksPostContext(ctx context.Context, params *PcloudPvminstancesNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksPostCreated, error)
+
+	// PcloudPvminstancesOperationsPost perform an operation on a p VM instance.
 	PcloudPvminstancesOperationsPost(params *PcloudPvminstancesOperationsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesOperationsPostOK, error)
 
+	// PcloudPvminstancesOperationsPostContext perform an operation on a p VM instance.
+	PcloudPvminstancesOperationsPostContext(ctx context.Context, params *PcloudPvminstancesOperationsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesOperationsPostOK, error)
+
+	// PcloudPvminstancesPost create a new power VM instance.
 	PcloudPvminstancesPost(params *PcloudPvminstancesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPostOK, *PcloudPvminstancesPostCreated, *PcloudPvminstancesPostAccepted, error)
 
+	// PcloudPvminstancesPostContext create a new power VM instance.
+	PcloudPvminstancesPostContext(ctx context.Context, params *PcloudPvminstancesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPostOK, *PcloudPvminstancesPostCreated, *PcloudPvminstancesPostAccepted, error)
+
+	// PcloudPvminstancesPut update a p cloud p VM instance.
 	PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPutAccepted, error)
 
+	// PcloudPvminstancesPutContext update a p cloud p VM instance.
+	PcloudPvminstancesPutContext(ctx context.Context, params *PcloudPvminstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPutAccepted, error)
+
+	// PcloudPvminstancesShelvePost shelve a virtual server instance v s i.
 	PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error)
 
+	// PcloudPvminstancesShelvePostContext shelve a virtual server instance v s i.
+	PcloudPvminstancesShelvePostContext(ctx context.Context, params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error)
+
+	// PcloudPvminstancesSnapshotsGetall get all snapshots for this p VM instance.
 	PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error)
 
+	// PcloudPvminstancesSnapshotsGetallContext get all snapshots for this p VM instance.
+	PcloudPvminstancesSnapshotsGetallContext(ctx context.Context, params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error)
+
+	// PcloudPvminstancesSnapshotsPost create a p VM instance snapshot.
 	PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsPostAccepted, error)
 
+	// PcloudPvminstancesSnapshotsPostContext create a p VM instance snapshot.
+	PcloudPvminstancesSnapshotsPostContext(ctx context.Context, params *PcloudPvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsPostAccepted, error)
+
+	// PcloudPvminstancesSnapshotsRestorePost restore a p VM instance snapshot.
 	PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error)
 
+	// PcloudPvminstancesSnapshotsRestorePostContext restore a p VM instance snapshot.
+	PcloudPvminstancesSnapshotsRestorePostContext(ctx context.Context, params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error)
+
+	// PcloudPvminstancesUnshelvePost unshelve a virtual server instance v s i.
 	PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error)
 
+	// PcloudPvminstancesUnshelvePostContext unshelve a virtual server instance v s i.
+	PcloudPvminstancesUnshelvePostContext(ctx context.Context, params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error)
+
+	// PcloudV2PvminstancesCaptureGet get detail of last capture job.
 	PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCaptureGetOK, error)
 
+	// PcloudV2PvminstancesCaptureGetContext get detail of last capture job.
+	PcloudV2PvminstancesCaptureGetContext(ctx context.Context, params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCaptureGetOK, error)
+
+	// PcloudV2PvminstancesCapturePost add a capture pvm instance to the jobs queue.
 	PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCapturePostAccepted, error)
 
+	// PcloudV2PvminstancesCapturePostContext add a capture pvm instance to the jobs queue.
+	PcloudV2PvminstancesCapturePostContext(ctx context.Context, params *PcloudV2PvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCapturePostAccepted, error)
+
+	// PcloudV2PvminstancesGetall get all the pvm instances for this cloud instance.
 	PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesGetallOK, error)
 
+	// PcloudV2PvminstancesGetallContext get all the pvm instances for this cloud instance.
+	PcloudV2PvminstancesGetallContext(ctx context.Context, params *PcloudV2PvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesGetallOK, error)
+
+	// PcloudV2PvminstancesSnapshotsGetall get all snapshots for this p VM instance.
 	PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error)
 
+	// PcloudV2PvminstancesSnapshotsGetallContext get all snapshots for this p VM instance.
+	PcloudV2PvminstancesSnapshotsGetallContext(ctx context.Context, params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error)
+
+	// PcloudV2PvminstancesSnapshotsPost create a v2 p VM instance snapshot.
 	PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// PcloudV2PvminstancesSnapshotsPostContext create a v2 p VM instance snapshot.
+	PcloudV2PvminstancesSnapshotsPostContext(ctx context.Context, params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	PcloudPvminstancesActionPost performs an action on a p VM instance
-
-	Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesActionPost performs an action on a p VM instance.
+//
+// Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesActionPostContext] instead.
 func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesActionPostOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesActionPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesActionPostContext performs an action on a p VM instance.
+//
+// Corresponding actions are 'start', 'stop', 'reboot', 'immediate-shutdown', 'reset'
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesActionPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesActionPostContext(ctx context.Context, params *PcloudPvminstancesActionPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesActionPostOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesActionPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.action.post",
 		Method:             "POST",
@@ -131,13 +261,14 @@ func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPo
 		Params:             params,
 		Reader:             &PcloudPvminstancesActionPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -157,23 +288,52 @@ func (a *Client) PcloudPvminstancesActionPost(params *PcloudPvminstancesActionPo
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesCapturePost captures a p VM instance and create a deployable image
-
-	This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture.
-
->*Note*: Support for this API is available till Oct 2022.
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesCapturePost captures a p VM instance and create a deployable image.
+//
+// This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture.
+//
+// >*Note*: Support for this API is available till Oct 2022.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesCapturePostContext] instead.
 func (a *Client) PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesCapturePostOK, *PcloudPvminstancesCapturePostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesCapturePostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesCapturePostContext captures a p VM instance and create a deployable image.
+//
+// This API is deprecated for /pcloud/v2/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/capture.
+//
+// >*Note*: Support for this API is available till Oct 2022.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesCapturePostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesCapturePostContext(ctx context.Context, params *PcloudPvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesCapturePostOK, *PcloudPvminstancesCapturePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesCapturePostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.capture.post",
 		Method:             "POST",
@@ -184,13 +344,14 @@ func (a *Client) PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapture
 		Params:             params,
 		Reader:             &PcloudPvminstancesCapturePostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -210,20 +371,44 @@ func (a *Client) PcloudPvminstancesCapturePost(params *PcloudPvminstancesCapture
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesConsoleGet lists all console languages
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesConsoleGet lists all console languages.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesConsoleGetContext] instead.
 func (a *Client) PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsoleGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesConsoleGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesConsoleGetContext lists all console languages.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesConsoleGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesConsoleGetContext(ctx context.Context, params *PcloudPvminstancesConsoleGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsoleGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesConsoleGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.console.get",
 		Method:             "GET",
@@ -234,13 +419,14 @@ func (a *Client) PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleG
 		Params:             params,
 		Reader:             &PcloudPvminstancesConsoleGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -260,20 +446,44 @@ func (a *Client) PcloudPvminstancesConsoleGet(params *PcloudPvminstancesConsoleG
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesConsolePost generates the no v n c console URL
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesConsolePost generates the no v n c console URL.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesConsolePostContext] instead.
 func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePostCreated, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesConsolePostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesConsolePostContext generates the no v n c console URL.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesConsolePostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesConsolePostContext(ctx context.Context, params *PcloudPvminstancesConsolePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePostCreated, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesConsolePostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.console.post",
 		Method:             "POST",
@@ -284,13 +494,14 @@ func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsole
 		Params:             params,
 		Reader:             &PcloudPvminstancesConsolePostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -310,20 +521,44 @@ func (a *Client) PcloudPvminstancesConsolePost(params *PcloudPvminstancesConsole
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesConsolePut updates p VM instance console language code
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesConsolePut updates p VM instance console language code.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesConsolePutContext] instead.
 func (a *Client) PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsolePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePutOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesConsolePutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesConsolePutContext updates p VM instance console language code.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesConsolePutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesConsolePutContext(ctx context.Context, params *PcloudPvminstancesConsolePutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesConsolePutOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesConsolePutParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.console.put",
 		Method:             "PUT",
@@ -334,13 +569,14 @@ func (a *Client) PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsoleP
 		Params:             params,
 		Reader:             &PcloudPvminstancesConsolePutReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -360,20 +596,44 @@ func (a *Client) PcloudPvminstancesConsolePut(params *PcloudPvminstancesConsoleP
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesDelete deletes a p cloud p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesDelete deletes a p cloud p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesDeleteContext] instead.
 func (a *Client) PcloudPvminstancesDelete(params *PcloudPvminstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesDeleteOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesDeleteContext deletes a p cloud p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesDeleteContext(ctx context.Context, params *PcloudPvminstancesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesDeleteParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.delete",
 		Method:             "DELETE",
@@ -384,13 +644,14 @@ func (a *Client) PcloudPvminstancesDelete(params *PcloudPvminstancesDeleteParams
 		Params:             params,
 		Reader:             &PcloudPvminstancesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -410,20 +671,44 @@ func (a *Client) PcloudPvminstancesDelete(params *PcloudPvminstancesDeleteParams
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesGet gets a p VM instance s current state or information
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesGet gets a p VM instance s current state or information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesGetContext] instead.
 func (a *Client) PcloudPvminstancesGet(params *PcloudPvminstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesGetContext gets a p VM instance s current state or information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesGetContext(ctx context.Context, params *PcloudPvminstancesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.get",
 		Method:             "GET",
@@ -434,13 +719,14 @@ func (a *Client) PcloudPvminstancesGet(params *PcloudPvminstancesGetParams, auth
 		Params:             params,
 		Reader:             &PcloudPvminstancesGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -460,20 +746,44 @@ func (a *Client) PcloudPvminstancesGet(params *PcloudPvminstancesGetParams, auth
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesGetall gets all the pvm instances for this cloud instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesGetall gets all the pvm instances for this cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesGetallContext] instead.
 func (a *Client) PcloudPvminstancesGetall(params *PcloudPvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesGetallContext gets all the pvm instances for this cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesGetallContext(ctx context.Context, params *PcloudPvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.getall",
 		Method:             "GET",
@@ -484,13 +794,14 @@ func (a *Client) PcloudPvminstancesGetall(params *PcloudPvminstancesGetallParams
 		Params:             params,
 		Reader:             &PcloudPvminstancesGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -510,20 +821,44 @@ func (a *Client) PcloudPvminstancesGetall(params *PcloudPvminstancesGetallParams
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesNetworksDelete removes all address of network from a p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesNetworksDelete removes all address of network from a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworksDeleteContext] instead.
 func (a *Client) PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksDeleteOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworksDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworksDeleteContext removes all address of network from a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworksDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworksDeleteContext(ctx context.Context, params *PcloudPvminstancesNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesNetworksDeleteParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.networks.delete",
 		Method:             "DELETE",
@@ -534,13 +869,14 @@ func (a *Client) PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetw
 		Params:             params,
 		Reader:             &PcloudPvminstancesNetworksDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -560,20 +896,44 @@ func (a *Client) PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetw
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesNetworksGet gets a p VM instance s network information
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesNetworksGet gets a p VM instance s network information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworksGetContext] instead.
 func (a *Client) PcloudPvminstancesNetworksGet(params *PcloudPvminstancesNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworksGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworksGetContext gets a p VM instance s network information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworksGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworksGetContext(ctx context.Context, params *PcloudPvminstancesNetworksGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesNetworksGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.networks.get",
 		Method:             "GET",
@@ -584,13 +944,14 @@ func (a *Client) PcloudPvminstancesNetworksGet(params *PcloudPvminstancesNetwork
 		Params:             params,
 		Reader:             &PcloudPvminstancesNetworksGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -610,20 +971,44 @@ func (a *Client) PcloudPvminstancesNetworksGet(params *PcloudPvminstancesNetwork
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesNetworksGetall gets all networks for this p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesNetworksGetall gets all networks for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworksGetallContext] instead.
 func (a *Client) PcloudPvminstancesNetworksGetall(params *PcloudPvminstancesNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworksGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworksGetallContext gets all networks for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworksGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworksGetallContext(ctx context.Context, params *PcloudPvminstancesNetworksGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesNetworksGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.networks.getall",
 		Method:             "GET",
@@ -634,13 +1019,14 @@ func (a *Client) PcloudPvminstancesNetworksGetall(params *PcloudPvminstancesNetw
 		Params:             params,
 		Reader:             &PcloudPvminstancesNetworksGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -660,20 +1046,44 @@ func (a *Client) PcloudPvminstancesNetworksGetall(params *PcloudPvminstancesNetw
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesNetworksPost performs network addition
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesNetworksPost performs network addition.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworksPostContext] instead.
 func (a *Client) PcloudPvminstancesNetworksPost(params *PcloudPvminstancesNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksPostCreated, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworksPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworksPostContext performs network addition.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworksPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworksPostContext(ctx context.Context, params *PcloudPvminstancesNetworksPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksPostCreated, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesNetworksPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.networks.post",
 		Method:             "POST",
@@ -684,13 +1094,14 @@ func (a *Client) PcloudPvminstancesNetworksPost(params *PcloudPvminstancesNetwor
 		Params:             params,
 		Reader:             &PcloudPvminstancesNetworksPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -710,20 +1121,44 @@ func (a *Client) PcloudPvminstancesNetworksPost(params *PcloudPvminstancesNetwor
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesOperationsPost performs an operation on a p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesOperationsPost performs an operation on a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesOperationsPostContext] instead.
 func (a *Client) PcloudPvminstancesOperationsPost(params *PcloudPvminstancesOperationsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesOperationsPostOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesOperationsPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesOperationsPostContext performs an operation on a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesOperationsPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesOperationsPostContext(ctx context.Context, params *PcloudPvminstancesOperationsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesOperationsPostOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesOperationsPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.operations.post",
 		Method:             "POST",
@@ -734,13 +1169,14 @@ func (a *Client) PcloudPvminstancesOperationsPost(params *PcloudPvminstancesOper
 		Params:             params,
 		Reader:             &PcloudPvminstancesOperationsPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -760,20 +1196,44 @@ func (a *Client) PcloudPvminstancesOperationsPost(params *PcloudPvminstancesOper
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesPost creates a new power VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesPost creates a new power VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesPostContext] instead.
 func (a *Client) PcloudPvminstancesPost(params *PcloudPvminstancesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPostOK, *PcloudPvminstancesPostCreated, *PcloudPvminstancesPostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesPostContext creates a new power VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesPostContext(ctx context.Context, params *PcloudPvminstancesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPostOK, *PcloudPvminstancesPostCreated, *PcloudPvminstancesPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.post",
 		Method:             "POST",
@@ -784,13 +1244,14 @@ func (a *Client) PcloudPvminstancesPost(params *PcloudPvminstancesPostParams, au
 		Params:             params,
 		Reader:             &PcloudPvminstancesPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, nil, nil, err
 	}
@@ -812,20 +1273,44 @@ func (a *Client) PcloudPvminstancesPost(params *PcloudPvminstancesPostParams, au
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesPut updates a p cloud p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesPut updates a p cloud p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesPutContext] instead.
 func (a *Client) PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPutAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesPutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesPutContext updates a p cloud p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 10 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesPutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesPutContext(ctx context.Context, params *PcloudPvminstancesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesPutAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesPutParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.put",
 		Method:             "PUT",
@@ -836,13 +1321,14 @@ func (a *Client) PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, auth
 		Params:             params,
 		Reader:             &PcloudPvminstancesPutReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -862,21 +1348,48 @@ func (a *Client) PcloudPvminstancesPut(params *PcloudPvminstancesPutParams, auth
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesShelvePost shelves a virtual server instance v s i
-
-	Shelve a VSI to reduce resource consumption. The instance configuration will be preserved and can be unshelved later.
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesShelvePost shelves a virtual server instance v s i.
+//
+// Shelve a VSI to reduce resource consumption. The instance configuration will be preserved and can be unshelved later.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesShelvePostContext] instead.
 func (a *Client) PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesShelvePostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesShelvePostContext shelves a virtual server instance v s i.
+//
+// Shelve a VSI to reduce resource consumption. The instance configuration will be preserved and can be unshelved later.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesShelvePostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesShelvePostContext(ctx context.Context, params *PcloudPvminstancesShelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesShelvePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesShelvePostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.shelve.post",
 		Method:             "POST",
@@ -887,13 +1400,14 @@ func (a *Client) PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePo
 		Params:             params,
 		Reader:             &PcloudPvminstancesShelvePostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -913,20 +1427,44 @@ func (a *Client) PcloudPvminstancesShelvePost(params *PcloudPvminstancesShelvePo
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesSnapshotsGetall gets all snapshots for this p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 120 requests per 60 seconds (subject to an API specific rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesSnapshotsGetall gets all snapshots for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesSnapshotsGetallContext] instead.
 func (a *Client) PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesSnapshotsGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesSnapshotsGetallContext gets all snapshots for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesSnapshotsGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesSnapshotsGetallContext(ctx context.Context, params *PcloudPvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesSnapshotsGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.snapshots.getall",
 		Method:             "GET",
@@ -937,13 +1475,14 @@ func (a *Client) PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSna
 		Params:             params,
 		Reader:             &PcloudPvminstancesSnapshotsGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -963,20 +1502,44 @@ func (a *Client) PcloudPvminstancesSnapshotsGetall(params *PcloudPvminstancesSna
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesSnapshotsPost creates a p VM instance snapshot
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesSnapshotsPost creates a p VM instance snapshot.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesSnapshotsPostContext] instead.
 func (a *Client) PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsPostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesSnapshotsPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesSnapshotsPostContext creates a p VM instance snapshot.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesSnapshotsPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesSnapshotsPostContext(ctx context.Context, params *PcloudPvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesSnapshotsPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.snapshots.post",
 		Method:             "POST",
@@ -987,13 +1550,14 @@ func (a *Client) PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnaps
 		Params:             params,
 		Reader:             &PcloudPvminstancesSnapshotsPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1013,20 +1577,44 @@ func (a *Client) PcloudPvminstancesSnapshotsPost(params *PcloudPvminstancesSnaps
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesSnapshotsRestorePost restores a p VM instance snapshot
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesSnapshotsRestorePost restores a p VM instance snapshot.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesSnapshotsRestorePostContext] instead.
 func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesSnapshotsRestorePostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesSnapshotsRestorePostContext restores a p VM instance snapshot.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 40 requests per 60 seconds (subject to an API specific rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesSnapshotsRestorePostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesSnapshotsRestorePostContext(ctx context.Context, params *PcloudPvminstancesSnapshotsRestorePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesSnapshotsRestorePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesSnapshotsRestorePostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.snapshots.restore.post",
 		Method:             "POST",
@@ -1037,13 +1625,14 @@ func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstanc
 		Params:             params,
 		Reader:             &PcloudPvminstancesSnapshotsRestorePostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1063,21 +1652,48 @@ func (a *Client) PcloudPvminstancesSnapshotsRestorePost(params *PcloudPvminstanc
 	panic(msg)
 }
 
-/*
-	PcloudPvminstancesUnshelvePost unshelves a virtual server instance v s i
-
-	Unshelve a previously shelved VSI to restore it to active state.
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudPvminstancesUnshelvePost unshelves a virtual server instance v s i.
+//
+// Unshelve a previously shelved VSI to restore it to active state.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesUnshelvePostContext] instead.
 func (a *Client) PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesUnshelvePostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesUnshelvePostContext unshelves a virtual server instance v s i.
+//
+// Unshelve a previously shelved VSI to restore it to active state.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesUnshelvePostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesUnshelvePostContext(ctx context.Context, params *PcloudPvminstancesUnshelvePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesUnshelvePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudPvminstancesUnshelvePostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.pvminstances.unshelve.post",
 		Method:             "POST",
@@ -1088,13 +1704,14 @@ func (a *Client) PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshel
 		Params:             params,
 		Reader:             &PcloudPvminstancesUnshelvePostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1114,20 +1731,44 @@ func (a *Client) PcloudPvminstancesUnshelvePost(params *PcloudPvminstancesUnshel
 	panic(msg)
 }
 
-/*
-	PcloudV2PvminstancesCaptureGet gets detail of last capture job
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV2PvminstancesCaptureGet gets detail of last capture job.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV2PvminstancesCaptureGetContext] instead.
 func (a *Client) PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCaptureGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV2PvminstancesCaptureGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV2PvminstancesCaptureGetContext gets detail of last capture job.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV2PvminstancesCaptureGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV2PvminstancesCaptureGetContext(ctx context.Context, params *PcloudV2PvminstancesCaptureGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCaptureGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV2PvminstancesCaptureGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v2.pvminstances.capture.get",
 		Method:             "GET",
@@ -1138,13 +1779,14 @@ func (a *Client) PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCapt
 		Params:             params,
 		Reader:             &PcloudV2PvminstancesCaptureGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1164,20 +1806,44 @@ func (a *Client) PcloudV2PvminstancesCaptureGet(params *PcloudV2PvminstancesCapt
 	panic(msg)
 }
 
-/*
-	PcloudV2PvminstancesCapturePost adds a capture pvm instance to the jobs queue
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV2PvminstancesCapturePost adds a capture pvm instance to the jobs queue.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV2PvminstancesCapturePostContext] instead.
 func (a *Client) PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCapturePostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV2PvminstancesCapturePostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV2PvminstancesCapturePostContext adds a capture pvm instance to the jobs queue.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV2PvminstancesCapturePostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV2PvminstancesCapturePostContext(ctx context.Context, params *PcloudV2PvminstancesCapturePostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesCapturePostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV2PvminstancesCapturePostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v2.pvminstances.capture.post",
 		Method:             "POST",
@@ -1188,13 +1854,14 @@ func (a *Client) PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCap
 		Params:             params,
 		Reader:             &PcloudV2PvminstancesCapturePostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1214,20 +1881,44 @@ func (a *Client) PcloudV2PvminstancesCapturePost(params *PcloudV2PvminstancesCap
 	panic(msg)
 }
 
-/*
-	PcloudV2PvminstancesGetall gets all the pvm instances for this cloud instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV2PvminstancesGetall gets all the pvm instances for this cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV2PvminstancesGetallContext] instead.
 func (a *Client) PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV2PvminstancesGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV2PvminstancesGetallContext gets all the pvm instances for this cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV2PvminstancesGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV2PvminstancesGetallContext(ctx context.Context, params *PcloudV2PvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV2PvminstancesGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v2.pvminstances.getall",
 		Method:             "GET",
@@ -1238,13 +1929,14 @@ func (a *Client) PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallPa
 		Params:             params,
 		Reader:             &PcloudV2PvminstancesGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1264,20 +1956,44 @@ func (a *Client) PcloudV2PvminstancesGetall(params *PcloudV2PvminstancesGetallPa
 	panic(msg)
 }
 
-/*
-	PcloudV2PvminstancesSnapshotsGetall gets all snapshots for this p VM instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV2PvminstancesSnapshotsGetall gets all snapshots for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV2PvminstancesSnapshotsGetallContext] instead.
 func (a *Client) PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV2PvminstancesSnapshotsGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV2PvminstancesSnapshotsGetallContext gets all snapshots for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV2PvminstancesSnapshotsGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV2PvminstancesSnapshotsGetallContext(ctx context.Context, params *PcloudV2PvminstancesSnapshotsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV2PvminstancesSnapshotsGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v2.pvminstances.snapshots.getall",
 		Method:             "GET",
@@ -1288,13 +2004,14 @@ func (a *Client) PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2Pvminstance
 		Params:             params,
 		Reader:             &PcloudV2PvminstancesSnapshotsGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1314,20 +2031,44 @@ func (a *Client) PcloudV2PvminstancesSnapshotsGetall(params *PcloudV2Pvminstance
 	panic(msg)
 }
 
-/*
-	PcloudV2PvminstancesSnapshotsPost creates a v2 p VM instance snapshot
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV2PvminstancesSnapshotsPost creates a v2 p VM instance snapshot.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV2PvminstancesSnapshotsPostContext] instead.
 func (a *Client) PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV2PvminstancesSnapshotsPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV2PvminstancesSnapshotsPostContext creates a v2 p VM instance snapshot.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV2PvminstancesSnapshotsPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV2PvminstancesSnapshotsPostContext(ctx context.Context, params *PcloudV2PvminstancesSnapshotsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV2PvminstancesSnapshotsPostAccepted, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV2PvminstancesSnapshotsPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v2.pvminstances.snapshots.post",
 		Method:             "POST",
@@ -1338,13 +2079,14 @@ func (a *Client) PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesS
 		Params:             params,
 		Reader:             &PcloudV2PvminstancesSnapshotsPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -1365,6 +2107,14 @@ func (a *Client) PcloudV2PvminstancesSnapshotsPost(params *PcloudV2PvminstancesS
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [PCloudpVMInstancesParams].
+	ctx context.Context
 }

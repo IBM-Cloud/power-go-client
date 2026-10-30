@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesJobsDeleteReader is a Reader for the PcloudCloudinstancesJobsDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudCloudinstancesJobsDeleteOK() *PcloudCloudinstancesJobsDeleteOK {
 	return &PcloudCloudinstancesJobsDeleteOK{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesJobsDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesJobsDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudCloudinstancesJobsDeleteBadRequest() *PcloudCloudinstancesJobsDele
 	return &PcloudCloudinstancesJobsDeleteBadRequest{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesJobsDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesJobsDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudCloudinstancesJobsDeleteUnauthorized() *PcloudCloudinstancesJobsDe
 	return &PcloudCloudinstancesJobsDeleteUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesJobsDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesJobsDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudCloudinstancesJobsDeleteForbidden() *PcloudCloudinstancesJobsDelet
 	return &PcloudCloudinstancesJobsDeleteForbidden{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesJobsDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesJobsDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudCloudinstancesJobsDeleteNotFound() *PcloudCloudinstancesJobsDelete
 	return &PcloudCloudinstancesJobsDeleteNotFound{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesJobsDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesJobsDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudCloudinstancesJobsDeleteConflict() *PcloudCloudinstancesJobsDelete
 	return &PcloudCloudinstancesJobsDeleteConflict{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudCloudinstancesJobsDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudCloudinstancesJobsDeleteConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudCloudinstancesJobsDeleteInternalServerError() *PcloudCloudinstance
 	return &PcloudCloudinstancesJobsDeleteInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesJobsDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesJobsDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesJobsDeleteInternalServerError struct {
 	Payload *models.Error
 }

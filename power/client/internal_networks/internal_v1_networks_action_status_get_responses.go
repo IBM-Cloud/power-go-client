@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1NetworksActionStatusGetReader is a Reader for the InternalV1NetworksActionStatusGet structure.
@@ -74,11 +73,9 @@ func NewInternalV1NetworksActionStatusGetOK() *InternalV1NetworksActionStatusGet
 	return &InternalV1NetworksActionStatusGetOK{}
 }
 
-/*
-InternalV1NetworksActionStatusGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1NetworksActionStatusGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1NetworksActionStatusGetOK struct {
 	Payload models.InternalNetworksActionResponse
 }
@@ -142,11 +139,9 @@ func NewInternalV1NetworksActionStatusGetBadRequest() *InternalV1NetworksActionS
 	return &InternalV1NetworksActionStatusGetBadRequest{}
 }
 
-/*
-InternalV1NetworksActionStatusGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1NetworksActionStatusGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1NetworksActionStatusGetBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewInternalV1NetworksActionStatusGetUnauthorized() *InternalV1NetworksActio
 	return &InternalV1NetworksActionStatusGetUnauthorized{}
 }
 
-/*
-InternalV1NetworksActionStatusGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1NetworksActionStatusGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1NetworksActionStatusGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewInternalV1NetworksActionStatusGetForbidden() *InternalV1NetworksActionSt
 	return &InternalV1NetworksActionStatusGetForbidden{}
 }
 
-/*
-InternalV1NetworksActionStatusGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1NetworksActionStatusGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1NetworksActionStatusGetForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewInternalV1NetworksActionStatusGetNotFound() *InternalV1NetworksActionSta
 	return &InternalV1NetworksActionStatusGetNotFound{}
 }
 
-/*
-InternalV1NetworksActionStatusGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1NetworksActionStatusGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1NetworksActionStatusGetNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewInternalV1NetworksActionStatusGetConflict() *InternalV1NetworksActionSta
 	return &InternalV1NetworksActionStatusGetConflict{}
 }
 
-/*
-InternalV1NetworksActionStatusGetConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// InternalV1NetworksActionStatusGetConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type InternalV1NetworksActionStatusGetConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewInternalV1NetworksActionStatusGetInternalServerError() *InternalV1Networ
 	return &InternalV1NetworksActionStatusGetInternalServerError{}
 }
 
-/*
-InternalV1NetworksActionStatusGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1NetworksActionStatusGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1NetworksActionStatusGetInternalServerError struct {
 	Payload *models.Error
 }

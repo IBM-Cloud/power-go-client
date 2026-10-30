@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1OperationsNetworksecuritygroupsPostReader is a Reader for the InternalV1OperationsNetworksecuritygroupsPost structure.
@@ -68,11 +67,9 @@ func NewInternalV1OperationsNetworksecuritygroupsPostCreated() *InternalV1Operat
 	return &InternalV1OperationsNetworksecuritygroupsPostCreated{}
 }
 
-/*
-InternalV1OperationsNetworksecuritygroupsPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// InternalV1OperationsNetworksecuritygroupsPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type InternalV1OperationsNetworksecuritygroupsPostCreated struct {
 	Payload *models.InternalOperationsResponse
 }
@@ -138,11 +135,9 @@ func NewInternalV1OperationsNetworksecuritygroupsPostBadRequest() *InternalV1Ope
 	return &InternalV1OperationsNetworksecuritygroupsPostBadRequest{}
 }
 
-/*
-InternalV1OperationsNetworksecuritygroupsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1OperationsNetworksecuritygroupsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1OperationsNetworksecuritygroupsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewInternalV1OperationsNetworksecuritygroupsPostUnauthorized() *InternalV1O
 	return &InternalV1OperationsNetworksecuritygroupsPostUnauthorized{}
 }
 
-/*
-InternalV1OperationsNetworksecuritygroupsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1OperationsNetworksecuritygroupsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1OperationsNetworksecuritygroupsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewInternalV1OperationsNetworksecuritygroupsPostForbidden() *InternalV1Oper
 	return &InternalV1OperationsNetworksecuritygroupsPostForbidden{}
 }
 
-/*
-InternalV1OperationsNetworksecuritygroupsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1OperationsNetworksecuritygroupsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1OperationsNetworksecuritygroupsPostForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewInternalV1OperationsNetworksecuritygroupsPostTooManyRequests() *Internal
 	return &InternalV1OperationsNetworksecuritygroupsPostTooManyRequests{}
 }
 
-/*
-InternalV1OperationsNetworksecuritygroupsPostTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// InternalV1OperationsNetworksecuritygroupsPostTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type InternalV1OperationsNetworksecuritygroupsPostTooManyRequests struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewInternalV1OperationsNetworksecuritygroupsPostInternalServerError() *Inte
 	return &InternalV1OperationsNetworksecuritygroupsPostInternalServerError{}
 }
 
-/*
-InternalV1OperationsNetworksecuritygroupsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1OperationsNetworksecuritygroupsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1OperationsNetworksecuritygroupsPostInternalServerError struct {
 	Payload *models.Error
 }

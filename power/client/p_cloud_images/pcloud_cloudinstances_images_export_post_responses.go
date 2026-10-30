@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesImagesExportPostReader is a Reader for the PcloudCloudinstancesImagesExportPost structure.
@@ -74,11 +73,9 @@ func NewPcloudCloudinstancesImagesExportPostAccepted() *PcloudCloudinstancesImag
 	return &PcloudCloudinstancesImagesExportPostAccepted{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudCloudinstancesImagesExportPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudCloudinstancesImagesExportPostAccepted struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudCloudinstancesImagesExportPostBadRequest() *PcloudCloudinstancesIm
 	return &PcloudCloudinstancesImagesExportPostBadRequest{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesImagesExportPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesImagesExportPostBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudCloudinstancesImagesExportPostUnauthorized() *PcloudCloudinstances
 	return &PcloudCloudinstancesImagesExportPostUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesImagesExportPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesImagesExportPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudCloudinstancesImagesExportPostForbidden() *PcloudCloudinstancesIma
 	return &PcloudCloudinstancesImagesExportPostForbidden{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesImagesExportPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesImagesExportPostForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudCloudinstancesImagesExportPostNotFound() *PcloudCloudinstancesImag
 	return &PcloudCloudinstancesImagesExportPostNotFound{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesImagesExportPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesImagesExportPostNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudCloudinstancesImagesExportPostUnprocessableEntity() *PcloudCloudin
 	return &PcloudCloudinstancesImagesExportPostUnprocessableEntity{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudCloudinstancesImagesExportPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudCloudinstancesImagesExportPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudCloudinstancesImagesExportPostInternalServerError() *PcloudCloudin
 	return &PcloudCloudinstancesImagesExportPostInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesImagesExportPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesImagesExportPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesImagesExportPostInternalServerError struct {
 	Payload *models.Error
 }

@@ -7,7 +7,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -85,7 +86,7 @@ func (m *RemoteCopyRelationship) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RemoteCopyRelationship) validateFreezeTime(formats strfmt.Registry) error {
-	if swag.IsZero(m.FreezeTime) { // not required
+	if typeutils.IsZero(m.FreezeTime) { // not required
 		return nil
 	}
 
@@ -115,7 +116,7 @@ func (m *RemoteCopyRelationship) validateRemoteCopyID(formats strfmt.Registry) e
 }
 
 // ContextValidate validates this remote copy relationship based on context it is used
-func (m *RemoteCopyRelationship) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *RemoteCopyRelationship) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -124,13 +125,13 @@ func (m *RemoteCopyRelationship) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RemoteCopyRelationship) UnmarshalBinary(b []byte) error {
 	var res RemoteCopyRelationship
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

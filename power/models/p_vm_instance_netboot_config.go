@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -95,7 +96,7 @@ func (m *PVMInstanceNetbootConfig) validateBootModeEnum(path, location string, v
 }
 
 func (m *PVMInstanceNetbootConfig) validateBootMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.BootMode) { // not required
+	if typeutils.IsZero(m.BootMode) { // not required
 		return nil
 	}
 
@@ -108,7 +109,7 @@ func (m *PVMInstanceNetbootConfig) validateBootMode(formats strfmt.Registry) err
 }
 
 func (m *PVMInstanceNetbootConfig) validateIscsi(formats strfmt.Registry) error {
-	if swag.IsZero(m.Iscsi) { // not required
+	if typeutils.IsZero(m.Iscsi) { // not required
 		return nil
 	}
 
@@ -131,7 +132,7 @@ func (m *PVMInstanceNetbootConfig) validateIscsi(formats strfmt.Registry) error 
 }
 
 func (m *PVMInstanceNetbootConfig) validateNfs(formats strfmt.Registry) error {
-	if swag.IsZero(m.Nfs) { // not required
+	if typeutils.IsZero(m.Nfs) { // not required
 		return nil
 	}
 
@@ -183,7 +184,7 @@ func (m *PVMInstanceNetbootConfig) validateOperatingModeEnum(path, location stri
 }
 
 func (m *PVMInstanceNetbootConfig) validateOperatingMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.OperatingMode) { // not required
+	if typeutils.IsZero(m.OperatingMode) { // not required
 		return nil
 	}
 
@@ -217,7 +218,7 @@ func (m *PVMInstanceNetbootConfig) contextValidateIscsi(ctx context.Context, for
 
 	if m.Iscsi != nil {
 
-		if swag.IsZero(m.Iscsi) { // not required
+		if typeutils.IsZero(m.Iscsi) { // not required
 			return nil
 		}
 
@@ -242,7 +243,7 @@ func (m *PVMInstanceNetbootConfig) contextValidateNfs(ctx context.Context, forma
 
 	if m.Nfs != nil {
 
-		if swag.IsZero(m.Nfs) { // not required
+		if typeutils.IsZero(m.Nfs) { // not required
 			return nil
 		}
 
@@ -268,13 +269,13 @@ func (m *PVMInstanceNetbootConfig) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceNetbootConfig) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceNetbootConfig
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

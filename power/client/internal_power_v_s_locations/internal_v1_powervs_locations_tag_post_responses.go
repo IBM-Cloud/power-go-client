@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1PowervsLocationsTagPostReader is a Reader for the InternalV1PowervsLocationsTagPost structure.
@@ -62,11 +61,9 @@ func NewInternalV1PowervsLocationsTagPostOK() *InternalV1PowervsLocationsTagPost
 	return &InternalV1PowervsLocationsTagPostOK{}
 }
 
-/*
-InternalV1PowervsLocationsTagPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1PowervsLocationsTagPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1PowervsLocationsTagPostOK struct {
 }
 
@@ -118,11 +115,9 @@ func NewInternalV1PowervsLocationsTagPostBadRequest() *InternalV1PowervsLocation
 	return &InternalV1PowervsLocationsTagPostBadRequest{}
 }
 
-/*
-InternalV1PowervsLocationsTagPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1PowervsLocationsTagPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1PowervsLocationsTagPostBadRequest struct {
 	Payload *models.Error
 }
@@ -188,11 +183,9 @@ func NewInternalV1PowervsLocationsTagPostUnauthorized() *InternalV1PowervsLocati
 	return &InternalV1PowervsLocationsTagPostUnauthorized{}
 }
 
-/*
-InternalV1PowervsLocationsTagPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1PowervsLocationsTagPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1PowervsLocationsTagPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -258,11 +251,9 @@ func NewInternalV1PowervsLocationsTagPostUnprocessableEntity() *InternalV1Powerv
 	return &InternalV1PowervsLocationsTagPostUnprocessableEntity{}
 }
 
-/*
-InternalV1PowervsLocationsTagPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// InternalV1PowervsLocationsTagPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type InternalV1PowervsLocationsTagPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -328,11 +319,9 @@ func NewInternalV1PowervsLocationsTagPostInternalServerError() *InternalV1Powerv
 	return &InternalV1PowervsLocationsTagPostInternalServerError{}
 }
 
-/*
-InternalV1PowervsLocationsTagPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1PowervsLocationsTagPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1PowervsLocationsTagPostInternalServerError struct {
 	Payload *models.Error
 }

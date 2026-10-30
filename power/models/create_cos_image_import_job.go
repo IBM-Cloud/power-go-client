@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -154,7 +155,7 @@ func (m *CreateCosImageImportJob) validateBucketAccessEnum(path, location string
 }
 
 func (m *CreateCosImageImportJob) validateBucketAccess(formats strfmt.Registry) error {
-	if swag.IsZero(m.BucketAccess) { // not required
+	if typeutils.IsZero(m.BucketAccess) { // not required
 		return nil
 	}
 
@@ -194,7 +195,7 @@ func (m *CreateCosImageImportJob) validateImageName(formats strfmt.Registry) err
 }
 
 func (m *CreateCosImageImportJob) validateImportDetails(formats strfmt.Registry) error {
-	if swag.IsZero(m.ImportDetails) { // not required
+	if typeutils.IsZero(m.ImportDetails) { // not required
 		return nil
 	}
 
@@ -252,7 +253,7 @@ func (m *CreateCosImageImportJob) validateOsTypeEnum(path, location string, valu
 }
 
 func (m *CreateCosImageImportJob) validateOsType(formats strfmt.Registry) error {
-	if swag.IsZero(m.OsType) { // not required
+	if typeutils.IsZero(m.OsType) { // not required
 		return nil
 	}
 
@@ -327,7 +328,7 @@ func (m *CreateCosImageImportJob) validateRegionEnum(path, location string, valu
 }
 
 func (m *CreateCosImageImportJob) validateRegion(formats strfmt.Registry) error {
-	if swag.IsZero(m.Region) { // not required
+	if typeutils.IsZero(m.Region) { // not required
 		return nil
 	}
 
@@ -372,7 +373,7 @@ func (m *CreateCosImageImportJob) validateReplicatedSnapshotSupportEnum(path, lo
 }
 
 func (m *CreateCosImageImportJob) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+	if typeutils.IsZero(m.ReplicatedSnapshotSupport) { // not required
 		return nil
 	}
 
@@ -385,7 +386,7 @@ func (m *CreateCosImageImportJob) validateReplicatedSnapshotSupport(formats strf
 }
 
 func (m *CreateCosImageImportJob) validateStorageAffinity(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageAffinity) { // not required
+	if typeutils.IsZero(m.StorageAffinity) { // not required
 		return nil
 	}
 
@@ -408,7 +409,7 @@ func (m *CreateCosImageImportJob) validateStorageAffinity(formats strfmt.Registr
 }
 
 func (m *CreateCosImageImportJob) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -454,7 +455,7 @@ func (m *CreateCosImageImportJob) contextValidateImportDetails(ctx context.Conte
 
 	if m.ImportDetails != nil {
 
-		if swag.IsZero(m.ImportDetails) { // not required
+		if typeutils.IsZero(m.ImportDetails) { // not required
 			return nil
 		}
 
@@ -479,7 +480,7 @@ func (m *CreateCosImageImportJob) contextValidateStorageAffinity(ctx context.Con
 
 	if m.StorageAffinity != nil {
 
-		if swag.IsZero(m.StorageAffinity) { // not required
+		if typeutils.IsZero(m.StorageAffinity) { // not required
 			return nil
 		}
 
@@ -523,13 +524,13 @@ func (m *CreateCosImageImportJob) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CreateCosImageImportJob) UnmarshalBinary(b []byte) error {
 	var res CreateCosImageImportJob
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

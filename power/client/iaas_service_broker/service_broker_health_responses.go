@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerHealthReader is a Reader for the ServiceBrokerHealth structure.
@@ -62,11 +61,9 @@ func NewServiceBrokerHealthOK() *ServiceBrokerHealthOK {
 	return &ServiceBrokerHealthOK{}
 }
 
-/*
-ServiceBrokerHealthOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerHealthOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerHealthOK struct {
 	Payload *models.Health
 }
@@ -132,11 +129,9 @@ func NewServiceBrokerHealthBadRequest() *ServiceBrokerHealthBadRequest {
 	return &ServiceBrokerHealthBadRequest{}
 }
 
-/*
-ServiceBrokerHealthBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerHealthBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerHealthBadRequest struct {
 	Payload *models.Error
 }
@@ -202,11 +197,9 @@ func NewServiceBrokerHealthUnauthorized() *ServiceBrokerHealthUnauthorized {
 	return &ServiceBrokerHealthUnauthorized{}
 }
 
-/*
-ServiceBrokerHealthUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerHealthUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerHealthUnauthorized struct {
 	Payload *models.Error
 }
@@ -272,11 +265,9 @@ func NewServiceBrokerHealthForbidden() *ServiceBrokerHealthForbidden {
 	return &ServiceBrokerHealthForbidden{}
 }
 
-/*
-ServiceBrokerHealthForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerHealthForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerHealthForbidden struct {
 	Payload *models.Error
 }
@@ -342,11 +333,9 @@ func NewServiceBrokerHealthNotFound() *ServiceBrokerHealthNotFound {
 	return &ServiceBrokerHealthNotFound{}
 }
 
-/*
-ServiceBrokerHealthNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerHealthNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerHealthNotFound struct {
 	Payload *models.Error
 }

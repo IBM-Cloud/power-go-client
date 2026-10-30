@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1NetworkPeersGetallReader is a Reader for the V1NetworkPeersGetall structure.
@@ -74,11 +73,9 @@ func NewV1NetworkPeersGetallOK() *V1NetworkPeersGetallOK {
 	return &V1NetworkPeersGetallOK{}
 }
 
-/*
-V1NetworkPeersGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1NetworkPeersGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1NetworkPeersGetallOK struct {
 	Payload *models.NetworkPeers
 }
@@ -144,11 +141,9 @@ func NewV1NetworkPeersGetallBadRequest() *V1NetworkPeersGetallBadRequest {
 	return &V1NetworkPeersGetallBadRequest{}
 }
 
-/*
-V1NetworkPeersGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1NetworkPeersGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1NetworkPeersGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewV1NetworkPeersGetallUnauthorized() *V1NetworkPeersGetallUnauthorized {
 	return &V1NetworkPeersGetallUnauthorized{}
 }
 
-/*
-V1NetworkPeersGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1NetworkPeersGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1NetworkPeersGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewV1NetworkPeersGetallForbidden() *V1NetworkPeersGetallForbidden {
 	return &V1NetworkPeersGetallForbidden{}
 }
 
-/*
-V1NetworkPeersGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1NetworkPeersGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1NetworkPeersGetallForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewV1NetworkPeersGetallNotFound() *V1NetworkPeersGetallNotFound {
 	return &V1NetworkPeersGetallNotFound{}
 }
 
-/*
-V1NetworkPeersGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1NetworkPeersGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1NetworkPeersGetallNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewV1NetworkPeersGetallConflict() *V1NetworkPeersGetallConflict {
 	return &V1NetworkPeersGetallConflict{}
 }
 
-/*
-V1NetworkPeersGetallConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1NetworkPeersGetallConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1NetworkPeersGetallConflict struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewV1NetworkPeersGetallInternalServerError() *V1NetworkPeersGetallInternalS
 	return &V1NetworkPeersGetallInternalServerError{}
 }
 
-/*
-V1NetworkPeersGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1NetworkPeersGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1NetworkPeersGetallInternalServerError struct {
 	Payload *models.Error
 }

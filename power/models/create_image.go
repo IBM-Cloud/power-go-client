@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -136,7 +137,7 @@ func (m *CreateImage) validateOsTypeEnum(path, location string, value string) er
 }
 
 func (m *CreateImage) validateOsType(formats strfmt.Registry) error {
-	if swag.IsZero(m.OsType) { // not required
+	if typeutils.IsZero(m.OsType) { // not required
 		return nil
 	}
 
@@ -181,7 +182,7 @@ func (m *CreateImage) validateReplicatedSnapshotSupportEnum(path, location strin
 }
 
 func (m *CreateImage) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+	if typeutils.IsZero(m.ReplicatedSnapshotSupport) { // not required
 		return nil
 	}
 
@@ -237,7 +238,7 @@ func (m *CreateImage) validateSource(formats strfmt.Registry) error {
 }
 
 func (m *CreateImage) validateStorageAffinity(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageAffinity) { // not required
+	if typeutils.IsZero(m.StorageAffinity) { // not required
 		return nil
 	}
 
@@ -260,7 +261,7 @@ func (m *CreateImage) validateStorageAffinity(formats strfmt.Registry) error {
 }
 
 func (m *CreateImage) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -302,7 +303,7 @@ func (m *CreateImage) contextValidateStorageAffinity(ctx context.Context, format
 
 	if m.StorageAffinity != nil {
 
-		if swag.IsZero(m.StorageAffinity) { // not required
+		if typeutils.IsZero(m.StorageAffinity) { // not required
 			return nil
 		}
 
@@ -346,13 +347,13 @@ func (m *CreateImage) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CreateImage) UnmarshalBinary(b []byte) error {
 	var res CreateImage
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

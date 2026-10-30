@@ -3,7 +3,9 @@
 package p_cloud_v_p_n_policies
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new p cloud v p n policies API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new p cloud v p n policies API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new p cloud v p n policies API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,57 +44,123 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for p cloud v p n policies API
-*/
+// Client for p cloud v p n policies API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// PcloudIkepoliciesDelete delete i k e policy.
 	PcloudIkepoliciesDelete(params *PcloudIkepoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesDeleteOK, error)
 
+	// PcloudIkepoliciesDeleteContext delete i k e policy.
+	PcloudIkepoliciesDeleteContext(ctx context.Context, params *PcloudIkepoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesDeleteOK, error)
+
+	// PcloudIkepoliciesGet get the specified i k e policy.
 	PcloudIkepoliciesGet(params *PcloudIkepoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetOK, error)
 
+	// PcloudIkepoliciesGetContext get the specified i k e policy.
+	PcloudIkepoliciesGetContext(ctx context.Context, params *PcloudIkepoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetOK, error)
+
+	// PcloudIkepoliciesGetall get all i k e policies.
 	PcloudIkepoliciesGetall(params *PcloudIkepoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetallOK, error)
 
+	// PcloudIkepoliciesGetallContext get all i k e policies.
+	PcloudIkepoliciesGetallContext(ctx context.Context, params *PcloudIkepoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetallOK, error)
+
+	// PcloudIkepoliciesPost add i k e policy.
 	PcloudIkepoliciesPost(params *PcloudIkepoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPostOK, error)
 
+	// PcloudIkepoliciesPostContext add i k e policy.
+	PcloudIkepoliciesPostContext(ctx context.Context, params *PcloudIkepoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPostOK, error)
+
+	// PcloudIkepoliciesPut update i k e policy.
 	PcloudIkepoliciesPut(params *PcloudIkepoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPutOK, error)
 
+	// PcloudIkepoliciesPutContext update i k e policy.
+	PcloudIkepoliciesPutContext(ctx context.Context, params *PcloudIkepoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPutOK, error)
+
+	// PcloudIpsecpoliciesDelete delete IP sec policy.
 	PcloudIpsecpoliciesDelete(params *PcloudIpsecpoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesDeleteOK, error)
 
+	// PcloudIpsecpoliciesDeleteContext delete IP sec policy.
+	PcloudIpsecpoliciesDeleteContext(ctx context.Context, params *PcloudIpsecpoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesDeleteOK, error)
+
+	// PcloudIpsecpoliciesGet get the specified IP sec policy.
 	PcloudIpsecpoliciesGet(params *PcloudIpsecpoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetOK, error)
 
+	// PcloudIpsecpoliciesGetContext get the specified IP sec policy.
+	PcloudIpsecpoliciesGetContext(ctx context.Context, params *PcloudIpsecpoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetOK, error)
+
+	// PcloudIpsecpoliciesGetall get all IP sec policies.
 	PcloudIpsecpoliciesGetall(params *PcloudIpsecpoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetallOK, error)
 
+	// PcloudIpsecpoliciesGetallContext get all IP sec policies.
+	PcloudIpsecpoliciesGetallContext(ctx context.Context, params *PcloudIpsecpoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetallOK, error)
+
+	// PcloudIpsecpoliciesPost add IP sec policy.
 	PcloudIpsecpoliciesPost(params *PcloudIpsecpoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPostOK, error)
 
+	// PcloudIpsecpoliciesPostContext add IP sec policy.
+	PcloudIpsecpoliciesPostContext(ctx context.Context, params *PcloudIpsecpoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPostOK, error)
+
+	// PcloudIpsecpoliciesPut update IP sec policy.
 	PcloudIpsecpoliciesPut(params *PcloudIpsecpoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPutOK, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// PcloudIpsecpoliciesPutContext update IP sec policy.
+	PcloudIpsecpoliciesPutContext(ctx context.Context, params *PcloudIpsecpoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPutOK, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	PcloudIkepoliciesDelete deletes i k e policy
-
-	Delete an IKE Policy (by its unique identifier)
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIkepoliciesDelete deletes i k e policy.
+//
+// Delete an IKE Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIkepoliciesDeleteContext] instead.
 func (a *Client) PcloudIkepoliciesDelete(params *PcloudIkepoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesDeleteOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIkepoliciesDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIkepoliciesDeleteContext deletes i k e policy.
+//
+// Delete an IKE Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIkepoliciesDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIkepoliciesDeleteContext(ctx context.Context, params *PcloudIkepoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIkepoliciesDeleteParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ikepolicies.delete",
 		Method:             "DELETE",
@@ -101,13 +171,14 @@ func (a *Client) PcloudIkepoliciesDelete(params *PcloudIkepoliciesDeleteParams, 
 		Params:             params,
 		Reader:             &PcloudIkepoliciesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -127,21 +198,48 @@ func (a *Client) PcloudIkepoliciesDelete(params *PcloudIkepoliciesDeleteParams, 
 	panic(msg)
 }
 
-/*
-	PcloudIkepoliciesGet gets the specified i k e policy
-
-	Get an IKE Policy (by its unique identifier)
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIkepoliciesGet gets the specified i k e policy.
+//
+// Get an IKE Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIkepoliciesGetContext] instead.
 func (a *Client) PcloudIkepoliciesGet(params *PcloudIkepoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIkepoliciesGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIkepoliciesGetContext gets the specified i k e policy.
+//
+// Get an IKE Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIkepoliciesGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIkepoliciesGetContext(ctx context.Context, params *PcloudIkepoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIkepoliciesGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ikepolicies.get",
 		Method:             "GET",
@@ -152,13 +250,14 @@ func (a *Client) PcloudIkepoliciesGet(params *PcloudIkepoliciesGetParams, authIn
 		Params:             params,
 		Reader:             &PcloudIkepoliciesGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -178,21 +277,48 @@ func (a *Client) PcloudIkepoliciesGet(params *PcloudIkepoliciesGetParams, authIn
 	panic(msg)
 }
 
-/*
-	PcloudIkepoliciesGetall gets all i k e policies
-
-	List all IKE Policies with all attributes
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIkepoliciesGetall gets all i k e policies.
+//
+// # List all IKE Policies with all attributes
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIkepoliciesGetallContext] instead.
 func (a *Client) PcloudIkepoliciesGetall(params *PcloudIkepoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIkepoliciesGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIkepoliciesGetallContext gets all i k e policies.
+//
+// # List all IKE Policies with all attributes
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIkepoliciesGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIkepoliciesGetallContext(ctx context.Context, params *PcloudIkepoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIkepoliciesGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ikepolicies.getall",
 		Method:             "GET",
@@ -203,13 +329,14 @@ func (a *Client) PcloudIkepoliciesGetall(params *PcloudIkepoliciesGetallParams, 
 		Params:             params,
 		Reader:             &PcloudIkepoliciesGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -229,21 +356,48 @@ func (a *Client) PcloudIkepoliciesGetall(params *PcloudIkepoliciesGetallParams, 
 	panic(msg)
 }
 
-/*
-	PcloudIkepoliciesPost adds i k e policy
-
-	Add a new IKE Policy
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIkepoliciesPost adds i k e policy.
+//
+// # Add a new IKE Policy
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIkepoliciesPostContext] instead.
 func (a *Client) PcloudIkepoliciesPost(params *PcloudIkepoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPostOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIkepoliciesPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIkepoliciesPostContext adds i k e policy.
+//
+// # Add a new IKE Policy
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIkepoliciesPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIkepoliciesPostContext(ctx context.Context, params *PcloudIkepoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPostOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIkepoliciesPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ikepolicies.post",
 		Method:             "POST",
@@ -254,13 +408,14 @@ func (a *Client) PcloudIkepoliciesPost(params *PcloudIkepoliciesPostParams, auth
 		Params:             params,
 		Reader:             &PcloudIkepoliciesPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -280,21 +435,48 @@ func (a *Client) PcloudIkepoliciesPost(params *PcloudIkepoliciesPostParams, auth
 	panic(msg)
 }
 
-/*
-	PcloudIkepoliciesPut updates i k e policy
-
-	update an IKE Policy (by its unique identifier)
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIkepoliciesPut updates i k e policy.
+//
+// update an IKE Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIkepoliciesPutContext] instead.
 func (a *Client) PcloudIkepoliciesPut(params *PcloudIkepoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPutOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIkepoliciesPutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIkepoliciesPutContext updates i k e policy.
+//
+// update an IKE Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIkepoliciesPutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIkepoliciesPutContext(ctx context.Context, params *PcloudIkepoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIkepoliciesPutOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIkepoliciesPutParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ikepolicies.put",
 		Method:             "PUT",
@@ -305,13 +487,14 @@ func (a *Client) PcloudIkepoliciesPut(params *PcloudIkepoliciesPutParams, authIn
 		Params:             params,
 		Reader:             &PcloudIkepoliciesPutReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -331,21 +514,48 @@ func (a *Client) PcloudIkepoliciesPut(params *PcloudIkepoliciesPutParams, authIn
 	panic(msg)
 }
 
-/*
-	PcloudIpsecpoliciesDelete deletes IP sec policy
-
-	Delete an IPSec Policy (by its unique identifier)
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIpsecpoliciesDelete deletes IP sec policy.
+//
+// Delete an IPSec Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIpsecpoliciesDeleteContext] instead.
 func (a *Client) PcloudIpsecpoliciesDelete(params *PcloudIpsecpoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesDeleteOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIpsecpoliciesDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIpsecpoliciesDeleteContext deletes IP sec policy.
+//
+// Delete an IPSec Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIpsecpoliciesDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIpsecpoliciesDeleteContext(ctx context.Context, params *PcloudIpsecpoliciesDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesDeleteOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIpsecpoliciesDeleteParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ipsecpolicies.delete",
 		Method:             "DELETE",
@@ -356,13 +566,14 @@ func (a *Client) PcloudIpsecpoliciesDelete(params *PcloudIpsecpoliciesDeletePara
 		Params:             params,
 		Reader:             &PcloudIpsecpoliciesDeleteReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -382,21 +593,48 @@ func (a *Client) PcloudIpsecpoliciesDelete(params *PcloudIpsecpoliciesDeletePara
 	panic(msg)
 }
 
-/*
-	PcloudIpsecpoliciesGet gets the specified IP sec policy
-
-	Get an IPSec Policy (by its unique identifier)
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIpsecpoliciesGet gets the specified IP sec policy.
+//
+// Get an IPSec Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIpsecpoliciesGetContext] instead.
 func (a *Client) PcloudIpsecpoliciesGet(params *PcloudIpsecpoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIpsecpoliciesGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIpsecpoliciesGetContext gets the specified IP sec policy.
+//
+// Get an IPSec Policy (by its unique identifier)
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIpsecpoliciesGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIpsecpoliciesGetContext(ctx context.Context, params *PcloudIpsecpoliciesGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIpsecpoliciesGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ipsecpolicies.get",
 		Method:             "GET",
@@ -407,13 +645,14 @@ func (a *Client) PcloudIpsecpoliciesGet(params *PcloudIpsecpoliciesGetParams, au
 		Params:             params,
 		Reader:             &PcloudIpsecpoliciesGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -433,21 +672,48 @@ func (a *Client) PcloudIpsecpoliciesGet(params *PcloudIpsecpoliciesGetParams, au
 	panic(msg)
 }
 
-/*
-	PcloudIpsecpoliciesGetall gets all IP sec policies
-
-	Get all IPSec Policies with all their attributes
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIpsecpoliciesGetall gets all IP sec policies.
+//
+// # Get all IPSec Policies with all their attributes
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIpsecpoliciesGetallContext] instead.
 func (a *Client) PcloudIpsecpoliciesGetall(params *PcloudIpsecpoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIpsecpoliciesGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIpsecpoliciesGetallContext gets all IP sec policies.
+//
+// # Get all IPSec Policies with all their attributes
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIpsecpoliciesGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIpsecpoliciesGetallContext(ctx context.Context, params *PcloudIpsecpoliciesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIpsecpoliciesGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ipsecpolicies.getall",
 		Method:             "GET",
@@ -458,13 +724,14 @@ func (a *Client) PcloudIpsecpoliciesGetall(params *PcloudIpsecpoliciesGetallPara
 		Params:             params,
 		Reader:             &PcloudIpsecpoliciesGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -484,21 +751,48 @@ func (a *Client) PcloudIpsecpoliciesGetall(params *PcloudIpsecpoliciesGetallPara
 	panic(msg)
 }
 
-/*
-	PcloudIpsecpoliciesPost adds IP sec policy
-
-	Add a new IPSec Policy
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIpsecpoliciesPost adds IP sec policy.
+//
+// # Add a new IPSec Policy
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIpsecpoliciesPostContext] instead.
 func (a *Client) PcloudIpsecpoliciesPost(params *PcloudIpsecpoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPostOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIpsecpoliciesPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIpsecpoliciesPostContext adds IP sec policy.
+//
+// # Add a new IPSec Policy
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIpsecpoliciesPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIpsecpoliciesPostContext(ctx context.Context, params *PcloudIpsecpoliciesPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPostOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIpsecpoliciesPostParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ipsecpolicies.post",
 		Method:             "POST",
@@ -509,13 +803,14 @@ func (a *Client) PcloudIpsecpoliciesPost(params *PcloudIpsecpoliciesPostParams, 
 		Params:             params,
 		Reader:             &PcloudIpsecpoliciesPostReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -535,21 +830,48 @@ func (a *Client) PcloudIpsecpoliciesPost(params *PcloudIpsecpoliciesPostParams, 
 	panic(msg)
 }
 
-/*
-	PcloudIpsecpoliciesPut updates IP sec policy
-
-	update an IPSec Policy
-
-This endpoint is subject to rate-limiting policies to ensure platform stability.
-Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudIpsecpoliciesPut updates IP sec policy.
+//
+// update an IPSec Policy
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudIpsecpoliciesPutContext] instead.
 func (a *Client) PcloudIpsecpoliciesPut(params *PcloudIpsecpoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPutOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudIpsecpoliciesPutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudIpsecpoliciesPutContext updates IP sec policy.
+//
+// update an IPSec Policy
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 100 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudIpsecpoliciesPutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudIpsecpoliciesPutContext(ctx context.Context, params *PcloudIpsecpoliciesPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudIpsecpoliciesPutOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudIpsecpoliciesPutParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.ipsecpolicies.put",
 		Method:             "PUT",
@@ -560,13 +882,14 @@ func (a *Client) PcloudIpsecpoliciesPut(params *PcloudIpsecpoliciesPutParams, au
 		Params:             params,
 		Reader:             &PcloudIpsecpoliciesPutReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -587,6 +910,14 @@ func (a *Client) PcloudIpsecpoliciesPut(params *PcloudIpsecpoliciesPutParams, au
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [PCloudvpnPoliciesParams].
+	ctx context.Context
 }

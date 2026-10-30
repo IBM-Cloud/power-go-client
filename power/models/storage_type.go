@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -75,7 +76,7 @@ func (m *StorageType) validateStateEnum(path, location string, value string) err
 }
 
 func (m *StorageType) validateState(formats strfmt.Registry) error {
-	if swag.IsZero(m.State) { // not required
+	if typeutils.IsZero(m.State) { // not required
 		return nil
 	}
 
@@ -88,7 +89,7 @@ func (m *StorageType) validateState(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this storage type based on context it is used
-func (m *StorageType) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *StorageType) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -97,13 +98,13 @@ func (m *StorageType) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *StorageType) UnmarshalBinary(b []byte) error {
 	var res StorageType
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

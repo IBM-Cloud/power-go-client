@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSppplacementgroupsDeleteReader is a Reader for the PcloudSppplacementgroupsDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudSppplacementgroupsDeleteOK() *PcloudSppplacementgroupsDeleteOK {
 	return &PcloudSppplacementgroupsDeleteOK{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSppplacementgroupsDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSppplacementgroupsDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudSppplacementgroupsDeleteBadRequest() *PcloudSppplacementgroupsDele
 	return &PcloudSppplacementgroupsDeleteBadRequest{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSppplacementgroupsDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSppplacementgroupsDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudSppplacementgroupsDeleteUnauthorized() *PcloudSppplacementgroupsDe
 	return &PcloudSppplacementgroupsDeleteUnauthorized{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSppplacementgroupsDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSppplacementgroupsDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudSppplacementgroupsDeleteForbidden() *PcloudSppplacementgroupsDelet
 	return &PcloudSppplacementgroupsDeleteForbidden{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSppplacementgroupsDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSppplacementgroupsDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudSppplacementgroupsDeleteNotFound() *PcloudSppplacementgroupsDelete
 	return &PcloudSppplacementgroupsDeleteNotFound{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSppplacementgroupsDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSppplacementgroupsDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudSppplacementgroupsDeleteConflict() *PcloudSppplacementgroupsDelete
 	return &PcloudSppplacementgroupsDeleteConflict{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudSppplacementgroupsDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudSppplacementgroupsDeleteConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudSppplacementgroupsDeleteInternalServerError() *PcloudSppplacementg
 	return &PcloudSppplacementgroupsDeleteInternalServerError{}
 }
 
-/*
-PcloudSppplacementgroupsDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSppplacementgroupsDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSppplacementgroupsDeleteInternalServerError struct {
 	Payload *models.Error
 }

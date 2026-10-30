@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudV1CloudinstancesAsyncjobsGetParams() *PcloudV1CloudinstancesAsyncjobsGetParams {
-	return &PcloudV1CloudinstancesAsyncjobsGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudV1CloudinstancesAsyncjobsGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudV1CloudinstancesAsyncjobsGetParamsWithTimeout creates a new PcloudV1CloudinstancesAsyncjobsGetParams object
 // with the ability to set a timeout on a request.
 func NewPcloudV1CloudinstancesAsyncjobsGetParamsWithTimeout(timeout time.Duration) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	return &PcloudV1CloudinstancesAsyncjobsGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudV1CloudinstancesAsyncjobsGetParamsWithContext creates a new PcloudV1CloudinstancesAsyncjobsGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV1CloudinstancesAsyncjobsGetParams].
 func NewPcloudV1CloudinstancesAsyncjobsGetParamsWithContext(ctx context.Context) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	return &PcloudV1CloudinstancesAsyncjobsGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -58,21 +62,19 @@ PcloudV1CloudinstancesAsyncjobsGetParams contains all the parameters to send to 
 */
 type PcloudV1CloudinstancesAsyncjobsGetParams struct {
 
-	/* AsyncJobID.
-
-	   Async Job ID
-	*/
+	// AsyncJobID.
+	//
+	// Async Job ID
 	AsyncJobID string
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud v1 cloudinstances asyncjobs get params (not the query body).
@@ -90,65 +92,68 @@ func (o *PcloudV1CloudinstancesAsyncjobsGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs get params
+// WithTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) WithTimeout(timeout time.Duration) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs get params
+// SetTimeout adds the timeout to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud v1 cloudinstances asyncjobs get params
+// WithContext adds the context to the pcloud v1 cloudinstances asyncjobs get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV1CloudinstancesAsyncjobsGetParams].
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) WithContext(ctx context.Context) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud v1 cloudinstances asyncjobs get params
+// SetContext adds the context to the pcloud v1 cloudinstances asyncjobs get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV1CloudinstancesAsyncjobsGetParams].
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs get params
+// WithHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) WithHTTPClient(client *http.Client) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs get params
+// SetHTTPClient adds the HTTPClient to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithAsyncJobID adds the asyncJobID to the pcloud v1 cloudinstances asyncjobs get params
+// WithAsyncJobID adds the asyncJobID to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) WithAsyncJobID(asyncJobID string) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	o.SetAsyncJobID(asyncJobID)
 	return o
 }
 
-// SetAsyncJobID adds the asyncJobId to the pcloud v1 cloudinstances asyncjobs get params
+// SetAsyncJobID adds the asyncJobId to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) SetAsyncJobID(asyncJobID string) {
 	o.AsyncJobID = asyncJobID
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud v1 cloudinstances asyncjobs get params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) WithCloudInstanceID(cloudInstanceID string) *PcloudV1CloudinstancesAsyncjobsGetParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud v1 cloudinstances asyncjobs get params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud v1 cloudinstances asyncjobs get params.
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudV1CloudinstancesAsyncjobsGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

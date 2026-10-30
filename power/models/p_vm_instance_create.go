@@ -10,7 +10,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -256,7 +257,7 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceCreate) validateDefaultTrustedProfile(formats strfmt.Registry) error {
-	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+	if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 		return nil
 	}
 
@@ -279,7 +280,7 @@ func (m *PVMInstanceCreate) validateDefaultTrustedProfile(formats strfmt.Registr
 }
 
 func (m *PVMInstanceCreate) validateDeploymentTarget(formats strfmt.Registry) error {
-	if swag.IsZero(m.DeploymentTarget) { // not required
+	if typeutils.IsZero(m.DeploymentTarget) { // not required
 		return nil
 	}
 
@@ -320,7 +321,7 @@ func (m *PVMInstanceCreate) validateMemory(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceCreate) validateMetadataService(formats strfmt.Registry) error {
-	if swag.IsZero(m.MetadataService) { // not required
+	if typeutils.IsZero(m.MetadataService) { // not required
 		return nil
 	}
 
@@ -343,12 +344,12 @@ func (m *PVMInstanceCreate) validateMetadataService(formats strfmt.Registry) err
 }
 
 func (m *PVMInstanceCreate) validateNetworks(formats strfmt.Registry) error {
-	if swag.IsZero(m.Networks) { // not required
+	if typeutils.IsZero(m.Networks) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Networks); i++ {
-		if swag.IsZero(m.Networks[i]) { // not required
+		if typeutils.IsZero(m.Networks[i]) { // not required
 			continue
 		}
 
@@ -373,7 +374,7 @@ func (m *PVMInstanceCreate) validateNetworks(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceCreate) validatePinPolicy(formats strfmt.Registry) error {
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -481,7 +482,7 @@ func (m *PVMInstanceCreate) validateReplicantAffinityPolicyEnum(path, location s
 }
 
 func (m *PVMInstanceCreate) validateReplicantAffinityPolicy(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicantAffinityPolicy) { // not required
+	if typeutils.IsZero(m.ReplicantAffinityPolicy) { // not required
 		return nil
 	}
 
@@ -523,7 +524,7 @@ func (m *PVMInstanceCreate) validateReplicantNamingSchemeEnum(path, location str
 }
 
 func (m *PVMInstanceCreate) validateReplicantNamingScheme(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicantNamingScheme) { // not required
+	if typeutils.IsZero(m.ReplicantNamingScheme) { // not required
 		return nil
 	}
 
@@ -536,7 +537,7 @@ func (m *PVMInstanceCreate) validateReplicantNamingScheme(formats strfmt.Registr
 }
 
 func (m *PVMInstanceCreate) validateReplicants(formats strfmt.Registry) error {
-	if swag.IsZero(m.Replicants) { // not required
+	if typeutils.IsZero(m.Replicants) { // not required
 		return nil
 	}
 
@@ -580,7 +581,7 @@ func (m *PVMInstanceCreate) validateReplicatedSnapshotSupportEnum(path, location
 }
 
 func (m *PVMInstanceCreate) validateReplicatedSnapshotSupport(formats strfmt.Registry) error {
-	if swag.IsZero(m.ReplicatedSnapshotSupport) { // not required
+	if typeutils.IsZero(m.ReplicatedSnapshotSupport) { // not required
 		return nil
 	}
 
@@ -625,7 +626,7 @@ func (m *PVMInstanceCreate) validateSapHANAAffinityActionEnum(path, location str
 }
 
 func (m *PVMInstanceCreate) validateSapHANAAffinityAction(formats strfmt.Registry) error {
-	if swag.IsZero(m.SapHANAAffinityAction) { // not required
+	if typeutils.IsZero(m.SapHANAAffinityAction) { // not required
 		return nil
 	}
 
@@ -647,7 +648,7 @@ func (m *PVMInstanceCreate) validateServerName(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceCreate) validateSoftwareLicenses(formats strfmt.Registry) error {
-	if swag.IsZero(m.SoftwareLicenses) { // not required
+	if typeutils.IsZero(m.SoftwareLicenses) { // not required
 		return nil
 	}
 
@@ -670,7 +671,7 @@ func (m *PVMInstanceCreate) validateSoftwareLicenses(formats strfmt.Registry) er
 }
 
 func (m *PVMInstanceCreate) validateStorageAffinity(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageAffinity) { // not required
+	if typeutils.IsZero(m.StorageAffinity) { // not required
 		return nil
 	}
 
@@ -722,7 +723,7 @@ func (m *PVMInstanceCreate) validateStorageConnectionEnum(path, location string,
 }
 
 func (m *PVMInstanceCreate) validateStorageConnection(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageConnection) { // not required
+	if typeutils.IsZero(m.StorageConnection) { // not required
 		return nil
 	}
 
@@ -764,7 +765,7 @@ func (m *PVMInstanceCreate) validateStorageConnectionV2Enum(path, location strin
 }
 
 func (m *PVMInstanceCreate) validateStorageConnectionV2(formats strfmt.Registry) error {
-	if swag.IsZero(m.StorageConnectionV2) { // not required
+	if typeutils.IsZero(m.StorageConnectionV2) { // not required
 		return nil
 	}
 
@@ -777,7 +778,7 @@ func (m *PVMInstanceCreate) validateStorageConnectionV2(formats strfmt.Registry)
 }
 
 func (m *PVMInstanceCreate) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -798,7 +799,7 @@ func (m *PVMInstanceCreate) validateUserTags(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceCreate) validateVirtualCores(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualCores) { // not required
+	if typeutils.IsZero(m.VirtualCores) { // not required
 		return nil
 	}
 
@@ -821,7 +822,7 @@ func (m *PVMInstanceCreate) validateVirtualCores(formats strfmt.Registry) error 
 }
 
 func (m *PVMInstanceCreate) validateVirtualSerialNumber(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualSerialNumber) { // not required
+	if typeutils.IsZero(m.VirtualSerialNumber) { // not required
 		return nil
 	}
 
@@ -844,12 +845,12 @@ func (m *PVMInstanceCreate) validateVirtualSerialNumber(formats strfmt.Registry)
 }
 
 func (m *PVMInstanceCreate) validateVpmemVolumes(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpmemVolumes) { // not required
+	if typeutils.IsZero(m.VpmemVolumes) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.VpmemVolumes); i++ {
-		if swag.IsZero(m.VpmemVolumes[i]) { // not required
+		if typeutils.IsZero(m.VpmemVolumes[i]) { // not required
 			continue
 		}
 
@@ -931,7 +932,7 @@ func (m *PVMInstanceCreate) contextValidateDefaultTrustedProfile(ctx context.Con
 
 	if m.DefaultTrustedProfile != nil {
 
-		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 			return nil
 		}
 
@@ -956,7 +957,7 @@ func (m *PVMInstanceCreate) contextValidateDeploymentTarget(ctx context.Context,
 
 	if m.DeploymentTarget != nil {
 
-		if swag.IsZero(m.DeploymentTarget) { // not required
+		if typeutils.IsZero(m.DeploymentTarget) { // not required
 			return nil
 		}
 
@@ -981,7 +982,7 @@ func (m *PVMInstanceCreate) contextValidateMetadataService(ctx context.Context, 
 
 	if m.MetadataService != nil {
 
-		if swag.IsZero(m.MetadataService) { // not required
+		if typeutils.IsZero(m.MetadataService) { // not required
 			return nil
 		}
 
@@ -1008,7 +1009,7 @@ func (m *PVMInstanceCreate) contextValidateNetworks(ctx context.Context, formats
 
 		if m.Networks[i] != nil {
 
-			if swag.IsZero(m.Networks[i]) { // not required
+			if typeutils.IsZero(m.Networks[i]) { // not required
 				return nil
 			}
 
@@ -1033,7 +1034,7 @@ func (m *PVMInstanceCreate) contextValidateNetworks(ctx context.Context, formats
 
 func (m *PVMInstanceCreate) contextValidatePinPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -1057,7 +1058,7 @@ func (m *PVMInstanceCreate) contextValidateSoftwareLicenses(ctx context.Context,
 
 	if m.SoftwareLicenses != nil {
 
-		if swag.IsZero(m.SoftwareLicenses) { // not required
+		if typeutils.IsZero(m.SoftwareLicenses) { // not required
 			return nil
 		}
 
@@ -1082,7 +1083,7 @@ func (m *PVMInstanceCreate) contextValidateStorageAffinity(ctx context.Context, 
 
 	if m.StorageAffinity != nil {
 
-		if swag.IsZero(m.StorageAffinity) { // not required
+		if typeutils.IsZero(m.StorageAffinity) { // not required
 			return nil
 		}
 
@@ -1125,7 +1126,7 @@ func (m *PVMInstanceCreate) contextValidateVirtualCores(ctx context.Context, for
 
 	if m.VirtualCores != nil {
 
-		if swag.IsZero(m.VirtualCores) { // not required
+		if typeutils.IsZero(m.VirtualCores) { // not required
 			return nil
 		}
 
@@ -1150,7 +1151,7 @@ func (m *PVMInstanceCreate) contextValidateVirtualSerialNumber(ctx context.Conte
 
 	if m.VirtualSerialNumber != nil {
 
-		if swag.IsZero(m.VirtualSerialNumber) { // not required
+		if typeutils.IsZero(m.VirtualSerialNumber) { // not required
 			return nil
 		}
 
@@ -1177,7 +1178,7 @@ func (m *PVMInstanceCreate) contextValidateVpmemVolumes(ctx context.Context, for
 
 		if m.VpmemVolumes[i] != nil {
 
-			if swag.IsZero(m.VpmemVolumes[i]) { // not required
+			if typeutils.IsZero(m.VpmemVolumes[i]) { // not required
 				return nil
 			}
 
@@ -1205,13 +1206,13 @@ func (m *PVMInstanceCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceCreate) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceCreate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

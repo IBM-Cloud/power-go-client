@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1HostsIDDeleteReader is a Reader for the V1HostsIDDelete structure.
@@ -74,11 +73,9 @@ func NewV1HostsIDDeleteAccepted() *V1HostsIDDeleteAccepted {
 	return &V1HostsIDDeleteAccepted{}
 }
 
-/*
-V1HostsIDDeleteAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// V1HostsIDDeleteAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type V1HostsIDDeleteAccepted struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewV1HostsIDDeleteBadRequest() *V1HostsIDDeleteBadRequest {
 	return &V1HostsIDDeleteBadRequest{}
 }
 
-/*
-V1HostsIDDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1HostsIDDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1HostsIDDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewV1HostsIDDeleteUnauthorized() *V1HostsIDDeleteUnauthorized {
 	return &V1HostsIDDeleteUnauthorized{}
 }
 
-/*
-V1HostsIDDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1HostsIDDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1HostsIDDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewV1HostsIDDeleteForbidden() *V1HostsIDDeleteForbidden {
 	return &V1HostsIDDeleteForbidden{}
 }
 
-/*
-V1HostsIDDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1HostsIDDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1HostsIDDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewV1HostsIDDeleteNotFound() *V1HostsIDDeleteNotFound {
 	return &V1HostsIDDeleteNotFound{}
 }
 
-/*
-V1HostsIDDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1HostsIDDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1HostsIDDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewV1HostsIDDeleteInternalServerError() *V1HostsIDDeleteInternalServerError
 	return &V1HostsIDDeleteInternalServerError{}
 }
 
-/*
-V1HostsIDDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1HostsIDDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1HostsIDDeleteInternalServerError struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewV1HostsIDDeleteGatewayTimeout() *V1HostsIDDeleteGatewayTimeout {
 	return &V1HostsIDDeleteGatewayTimeout{}
 }
 
-/*
-V1HostsIDDeleteGatewayTimeout describes a response with status code 504, with default header values.
-
-Gateway Timeout. Request is still processing and taking longer than expected.
-*/
+// V1HostsIDDeleteGatewayTimeout describes a response with status code 504, with default header values.
+//
+// Gateway Timeout. Request is still processing and taking longer than expected.
 type V1HostsIDDeleteGatewayTimeout struct {
 	Payload *models.Error
 }

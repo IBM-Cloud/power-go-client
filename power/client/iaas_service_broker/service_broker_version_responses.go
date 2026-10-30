@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerVersionReader is a Reader for the ServiceBrokerVersion structure.
@@ -62,11 +61,9 @@ func NewServiceBrokerVersionOK() *ServiceBrokerVersionOK {
 	return &ServiceBrokerVersionOK{}
 }
 
-/*
-ServiceBrokerVersionOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerVersionOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerVersionOK struct {
 	Payload *models.Version
 }
@@ -132,11 +129,9 @@ func NewServiceBrokerVersionBadRequest() *ServiceBrokerVersionBadRequest {
 	return &ServiceBrokerVersionBadRequest{}
 }
 
-/*
-ServiceBrokerVersionBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerVersionBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerVersionBadRequest struct {
 	Payload *models.Error
 }
@@ -202,11 +197,9 @@ func NewServiceBrokerVersionUnauthorized() *ServiceBrokerVersionUnauthorized {
 	return &ServiceBrokerVersionUnauthorized{}
 }
 
-/*
-ServiceBrokerVersionUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerVersionUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerVersionUnauthorized struct {
 	Payload *models.Error
 }
@@ -272,11 +265,9 @@ func NewServiceBrokerVersionForbidden() *ServiceBrokerVersionForbidden {
 	return &ServiceBrokerVersionForbidden{}
 }
 
-/*
-ServiceBrokerVersionForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerVersionForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerVersionForbidden struct {
 	Payload *models.Error
 }
@@ -342,11 +333,9 @@ func NewServiceBrokerVersionNotFound() *ServiceBrokerVersionNotFound {
 	return &ServiceBrokerVersionNotFound{}
 }
 
-/*
-ServiceBrokerVersionNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerVersionNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerVersionNotFound struct {
 	Payload *models.Error
 }

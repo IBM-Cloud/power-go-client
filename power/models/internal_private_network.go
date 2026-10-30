@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // InternalPrivateNetwork internal private network
@@ -47,7 +48,7 @@ func (m *InternalPrivateNetwork) Validate(formats strfmt.Registry) error {
 }
 
 func (m *InternalPrivateNetwork) validateConfigurationStatus(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConfigurationStatus) { // not required
+	if typeutils.IsZero(m.ConfigurationStatus) { // not required
 		return nil
 	}
 
@@ -87,7 +88,7 @@ func (m *InternalPrivateNetwork) contextValidateConfigurationStatus(ctx context.
 
 	if m.ConfigurationStatus != nil {
 
-		if swag.IsZero(m.ConfigurationStatus) { // not required
+		if typeutils.IsZero(m.ConfigurationStatus) { // not required
 			return nil
 		}
 
@@ -113,13 +114,13 @@ func (m *InternalPrivateNetwork) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalPrivateNetwork) UnmarshalBinary(b []byte) error {
 	var res InternalPrivateNetwork
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

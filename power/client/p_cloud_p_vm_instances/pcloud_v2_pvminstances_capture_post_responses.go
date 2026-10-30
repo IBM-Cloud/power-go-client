@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudV2PvminstancesCapturePostReader is a Reader for the PcloudV2PvminstancesCapturePost structure.
@@ -80,11 +79,9 @@ func NewPcloudV2PvminstancesCapturePostAccepted() *PcloudV2PvminstancesCapturePo
 	return &PcloudV2PvminstancesCapturePostAccepted{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostAccepted describes a response with status code 202, with default header values.
-
-Accepted, pvm-instance capture successfully added to the jobs queue
-*/
+// PcloudV2PvminstancesCapturePostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted, pvm-instance capture successfully added to the jobs queue
 type PcloudV2PvminstancesCapturePostAccepted struct {
 	Payload *models.JobReference
 }
@@ -150,11 +147,9 @@ func NewPcloudV2PvminstancesCapturePostBadRequest() *PcloudV2PvminstancesCapture
 	return &PcloudV2PvminstancesCapturePostBadRequest{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudV2PvminstancesCapturePostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudV2PvminstancesCapturePostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudV2PvminstancesCapturePostUnauthorized() *PcloudV2PvminstancesCaptu
 	return &PcloudV2PvminstancesCapturePostUnauthorized{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudV2PvminstancesCapturePostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudV2PvminstancesCapturePostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudV2PvminstancesCapturePostForbidden() *PcloudV2PvminstancesCaptureP
 	return &PcloudV2PvminstancesCapturePostForbidden{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudV2PvminstancesCapturePostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudV2PvminstancesCapturePostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudV2PvminstancesCapturePostNotFound() *PcloudV2PvminstancesCapturePo
 	return &PcloudV2PvminstancesCapturePostNotFound{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudV2PvminstancesCapturePostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudV2PvminstancesCapturePostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudV2PvminstancesCapturePostConflict() *PcloudV2PvminstancesCapturePo
 	return &PcloudV2PvminstancesCapturePostConflict{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostConflict describes a response with status code 409, with default header values.
-
-Conflict, a conflict has prevented adding the pvm-instance capture job
-*/
+// PcloudV2PvminstancesCapturePostConflict describes a response with status code 409, with default header values.
+//
+// Conflict, a conflict has prevented adding the pvm-instance capture job
 type PcloudV2PvminstancesCapturePostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudV2PvminstancesCapturePostUnprocessableEntity() *PcloudV2Pvminstanc
 	return &PcloudV2PvminstancesCapturePostUnprocessableEntity{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudV2PvminstancesCapturePostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudV2PvminstancesCapturePostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudV2PvminstancesCapturePostInternalServerError() *PcloudV2Pvminstanc
 	return &PcloudV2PvminstancesCapturePostInternalServerError{}
 }
 
-/*
-PcloudV2PvminstancesCapturePostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudV2PvminstancesCapturePostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudV2PvminstancesCapturePostInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesNetworksPostReader is a Reader for the PcloudPvminstancesNetworksPost structure.
@@ -86,11 +85,9 @@ func NewPcloudPvminstancesNetworksPostCreated() *PcloudPvminstancesNetworksPostC
 	return &PcloudPvminstancesNetworksPostCreated{}
 }
 
-/*
-PcloudPvminstancesNetworksPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// PcloudPvminstancesNetworksPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type PcloudPvminstancesNetworksPostCreated struct {
 	Payload *models.PVMInstanceNetwork
 }
@@ -156,11 +153,9 @@ func NewPcloudPvminstancesNetworksPostBadRequest() *PcloudPvminstancesNetworksPo
 	return &PcloudPvminstancesNetworksPostBadRequest{}
 }
 
-/*
-PcloudPvminstancesNetworksPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesNetworksPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesNetworksPostBadRequest struct {
 	Payload *models.Error
 }
@@ -226,11 +221,9 @@ func NewPcloudPvminstancesNetworksPostUnauthorized() *PcloudPvminstancesNetworks
 	return &PcloudPvminstancesNetworksPostUnauthorized{}
 }
 
-/*
-PcloudPvminstancesNetworksPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesNetworksPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesNetworksPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -296,11 +289,9 @@ func NewPcloudPvminstancesNetworksPostForbidden() *PcloudPvminstancesNetworksPos
 	return &PcloudPvminstancesNetworksPostForbidden{}
 }
 
-/*
-PcloudPvminstancesNetworksPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesNetworksPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesNetworksPostForbidden struct {
 	Payload *models.Error
 }
@@ -366,11 +357,9 @@ func NewPcloudPvminstancesNetworksPostNotFound() *PcloudPvminstancesNetworksPost
 	return &PcloudPvminstancesNetworksPostNotFound{}
 }
 
-/*
-PcloudPvminstancesNetworksPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesNetworksPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesNetworksPostNotFound struct {
 	Payload *models.Error
 }
@@ -436,11 +425,9 @@ func NewPcloudPvminstancesNetworksPostMethodNotAllowed() *PcloudPvminstancesNetw
 	return &PcloudPvminstancesNetworksPostMethodNotAllowed{}
 }
 
-/*
-PcloudPvminstancesNetworksPostMethodNotAllowed describes a response with status code 405, with default header values.
-
-Method Not Allowed
-*/
+// PcloudPvminstancesNetworksPostMethodNotAllowed describes a response with status code 405, with default header values.
+//
+// Method Not Allowed
 type PcloudPvminstancesNetworksPostMethodNotAllowed struct {
 	Payload *models.Error
 }
@@ -506,11 +493,9 @@ func NewPcloudPvminstancesNetworksPostConflict() *PcloudPvminstancesNetworksPost
 	return &PcloudPvminstancesNetworksPostConflict{}
 }
 
-/*
-PcloudPvminstancesNetworksPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesNetworksPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesNetworksPostConflict struct {
 	Payload *models.Error
 }
@@ -576,11 +561,9 @@ func NewPcloudPvminstancesNetworksPostUnprocessableEntity() *PcloudPvminstancesN
 	return &PcloudPvminstancesNetworksPostUnprocessableEntity{}
 }
 
-/*
-PcloudPvminstancesNetworksPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudPvminstancesNetworksPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudPvminstancesNetworksPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -646,11 +629,9 @@ func NewPcloudPvminstancesNetworksPostInternalServerError() *PcloudPvminstancesN
 	return &PcloudPvminstancesNetworksPostInternalServerError{}
 }
 
-/*
-PcloudPvminstancesNetworksPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesNetworksPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesNetworksPostInternalServerError struct {
 	Payload *models.Error
 }

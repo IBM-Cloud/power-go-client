@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -80,7 +81,7 @@ func (m *RemotePeerSnapshot) Validate(formats strfmt.Registry) error {
 }
 
 func (m *RemotePeerSnapshot) validateCompletionDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CompletionDate) { // not required
+	if typeutils.IsZero(m.CompletionDate) { // not required
 		return nil
 	}
 
@@ -92,12 +93,12 @@ func (m *RemotePeerSnapshot) validateCompletionDate(formats strfmt.Registry) err
 }
 
 func (m *RemotePeerSnapshot) validateCopyVolumes(formats strfmt.Registry) error {
-	if swag.IsZero(m.CopyVolumes) { // not required
+	if typeutils.IsZero(m.CopyVolumes) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.CopyVolumes); i++ {
-		if swag.IsZero(m.CopyVolumes[i]) { // not required
+		if typeutils.IsZero(m.CopyVolumes[i]) { // not required
 			continue
 		}
 
@@ -196,7 +197,7 @@ func (m *RemotePeerSnapshot) contextValidateCopyVolumes(ctx context.Context, for
 
 		if m.CopyVolumes[i] != nil {
 
-			if swag.IsZero(m.CopyVolumes[i]) { // not required
+			if typeutils.IsZero(m.CopyVolumes[i]) { // not required
 				return nil
 			}
 
@@ -245,13 +246,13 @@ func (m *RemotePeerSnapshot) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *RemotePeerSnapshot) UnmarshalBinary(b []byte) error {
 	var res RemotePeerSnapshot
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

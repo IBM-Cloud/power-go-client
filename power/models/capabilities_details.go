@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -83,7 +84,7 @@ func (m *CapabilitiesDetails) validateDisasterRecovery(formats strfmt.Registry) 
 }
 
 func (m *CapabilitiesDetails) validateRegionalSnapshots(formats strfmt.Registry) error {
-	if swag.IsZero(m.RegionalSnapshots) { // not required
+	if typeutils.IsZero(m.RegionalSnapshots) { // not required
 		return nil
 	}
 
@@ -130,7 +131,7 @@ func (m *CapabilitiesDetails) validateSupportedSystems(formats strfmt.Registry) 
 }
 
 func (m *CapabilitiesDetails) validateZonalSnapshots(formats strfmt.Registry) error {
-	if swag.IsZero(m.ZonalSnapshots) { // not required
+	if typeutils.IsZero(m.ZonalSnapshots) { // not required
 		return nil
 	}
 
@@ -203,7 +204,7 @@ func (m *CapabilitiesDetails) contextValidateRegionalSnapshots(ctx context.Conte
 
 	if m.RegionalSnapshots != nil {
 
-		if swag.IsZero(m.RegionalSnapshots) { // not required
+		if typeutils.IsZero(m.RegionalSnapshots) { // not required
 			return nil
 		}
 
@@ -249,7 +250,7 @@ func (m *CapabilitiesDetails) contextValidateZonalSnapshots(ctx context.Context,
 
 	if m.ZonalSnapshots != nil {
 
-		if swag.IsZero(m.ZonalSnapshots) { // not required
+		if typeutils.IsZero(m.ZonalSnapshots) { // not required
 			return nil
 		}
 
@@ -275,13 +276,13 @@ func (m *CapabilitiesDetails) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CapabilitiesDetails) UnmarshalBinary(b []byte) error {
 	var res CapabilitiesDetails
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -131,12 +132,12 @@ func (m *AsyncJob) validateAction(formats strfmt.Registry) error {
 }
 
 func (m *AsyncJob) validateChildJobs(formats strfmt.Registry) error {
-	if swag.IsZero(m.ChildJobs) { // not required
+	if typeutils.IsZero(m.ChildJobs) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.ChildJobs); i++ {
-		if swag.IsZero(m.ChildJobs[i]) { // not required
+		if typeutils.IsZero(m.ChildJobs[i]) { // not required
 			continue
 		}
 
@@ -161,7 +162,7 @@ func (m *AsyncJob) validateChildJobs(formats strfmt.Registry) error {
 }
 
 func (m *AsyncJob) validateCompletionDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CompletionDate) { // not required
+	if typeutils.IsZero(m.CompletionDate) { // not required
 		return nil
 	}
 
@@ -195,7 +196,7 @@ func (m *AsyncJob) validateID(formats strfmt.Registry) error {
 }
 
 func (m *AsyncJob) validateLastUpdateDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.LastUpdateDate) { // not required
+	if typeutils.IsZero(m.LastUpdateDate) { // not required
 		return nil
 	}
 
@@ -262,7 +263,7 @@ func (m *AsyncJob) contextValidateChildJobs(ctx context.Context, formats strfmt.
 
 		if m.ChildJobs[i] != nil {
 
-			if swag.IsZero(m.ChildJobs[i]) { // not required
+			if typeutils.IsZero(m.ChildJobs[i]) { // not required
 				return nil
 			}
 
@@ -290,13 +291,13 @@ func (m *AsyncJob) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *AsyncJob) UnmarshalBinary(b []byte) error {
 	var res AsyncJob
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

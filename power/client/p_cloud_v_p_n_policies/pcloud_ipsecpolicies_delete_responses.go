@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudIpsecpoliciesDeleteReader is a Reader for the PcloudIpsecpoliciesDelete structure.
@@ -68,11 +67,9 @@ func NewPcloudIpsecpoliciesDeleteOK() *PcloudIpsecpoliciesDeleteOK {
 	return &PcloudIpsecpoliciesDeleteOK{}
 }
 
-/*
-PcloudIpsecpoliciesDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudIpsecpoliciesDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudIpsecpoliciesDeleteOK struct {
 	Payload models.Object
 }
@@ -136,11 +133,9 @@ func NewPcloudIpsecpoliciesDeleteBadRequest() *PcloudIpsecpoliciesDeleteBadReque
 	return &PcloudIpsecpoliciesDeleteBadRequest{}
 }
 
-/*
-PcloudIpsecpoliciesDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudIpsecpoliciesDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudIpsecpoliciesDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewPcloudIpsecpoliciesDeleteUnauthorized() *PcloudIpsecpoliciesDeleteUnauth
 	return &PcloudIpsecpoliciesDeleteUnauthorized{}
 }
 
-/*
-PcloudIpsecpoliciesDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudIpsecpoliciesDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudIpsecpoliciesDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewPcloudIpsecpoliciesDeleteForbidden() *PcloudIpsecpoliciesDeleteForbidden
 	return &PcloudIpsecpoliciesDeleteForbidden{}
 }
 
-/*
-PcloudIpsecpoliciesDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudIpsecpoliciesDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudIpsecpoliciesDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewPcloudIpsecpoliciesDeleteNotFound() *PcloudIpsecpoliciesDeleteNotFound {
 	return &PcloudIpsecpoliciesDeleteNotFound{}
 }
 
-/*
-PcloudIpsecpoliciesDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudIpsecpoliciesDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudIpsecpoliciesDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewPcloudIpsecpoliciesDeleteInternalServerError() *PcloudIpsecpoliciesDelet
 	return &PcloudIpsecpoliciesDeleteInternalServerError{}
 }
 
-/*
-PcloudIpsecpoliciesDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudIpsecpoliciesDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudIpsecpoliciesDeleteInternalServerError struct {
 	Payload *models.Error
 }

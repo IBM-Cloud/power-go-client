@@ -3,7 +3,9 @@
 package p_cloud_async_jobs
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new p cloud async jobs API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new p cloud async jobs API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new p cloud async jobs API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,40 +44,71 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for p cloud async jobs API
-*/
+// Client for p cloud async jobs API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// PcloudV1CloudinstancesAsyncjobsGet get an asynchronous job of the cloud instance.
 	PcloudV1CloudinstancesAsyncjobsGet(params *PcloudV1CloudinstancesAsyncjobsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetOK, error)
 
+	// PcloudV1CloudinstancesAsyncjobsGetContext get an asynchronous job of the cloud instance.
+	PcloudV1CloudinstancesAsyncjobsGetContext(ctx context.Context, params *PcloudV1CloudinstancesAsyncjobsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetOK, error)
+
+	// PcloudV1CloudinstancesAsyncjobsGetall get all asynchronous jobs of the cloud instance.
 	PcloudV1CloudinstancesAsyncjobsGetall(params *PcloudV1CloudinstancesAsyncjobsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetallOK, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// PcloudV1CloudinstancesAsyncjobsGetallContext get all asynchronous jobs of the cloud instance.
+	PcloudV1CloudinstancesAsyncjobsGetallContext(ctx context.Context, params *PcloudV1CloudinstancesAsyncjobsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetallOK, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	PcloudV1CloudinstancesAsyncjobsGet gets an asynchronous job of the cloud instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV1CloudinstancesAsyncjobsGet gets an asynchronous job of the cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV1CloudinstancesAsyncjobsGetContext] instead.
 func (a *Client) PcloudV1CloudinstancesAsyncjobsGet(params *PcloudV1CloudinstancesAsyncjobsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV1CloudinstancesAsyncjobsGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV1CloudinstancesAsyncjobsGetContext gets an asynchronous job of the cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV1CloudinstancesAsyncjobsGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV1CloudinstancesAsyncjobsGetContext(ctx context.Context, params *PcloudV1CloudinstancesAsyncjobsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV1CloudinstancesAsyncjobsGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v1.cloudinstances.asyncjobs.get",
 		Method:             "GET",
@@ -84,13 +119,14 @@ func (a *Client) PcloudV1CloudinstancesAsyncjobsGet(params *PcloudV1Cloudinstanc
 		Params:             params,
 		Reader:             &PcloudV1CloudinstancesAsyncjobsGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -110,20 +146,44 @@ func (a *Client) PcloudV1CloudinstancesAsyncjobsGet(params *PcloudV1Cloudinstanc
 	panic(msg)
 }
 
-/*
-	PcloudV1CloudinstancesAsyncjobsGetall gets all asynchronous jobs of the cloud instance
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudV1CloudinstancesAsyncjobsGetall gets all asynchronous jobs of the cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudV1CloudinstancesAsyncjobsGetallContext] instead.
 func (a *Client) PcloudV1CloudinstancesAsyncjobsGetall(params *PcloudV1CloudinstancesAsyncjobsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudV1CloudinstancesAsyncjobsGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudV1CloudinstancesAsyncjobsGetallContext gets all asynchronous jobs of the cloud instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudV1CloudinstancesAsyncjobsGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudV1CloudinstancesAsyncjobsGetallContext(ctx context.Context, params *PcloudV1CloudinstancesAsyncjobsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudV1CloudinstancesAsyncjobsGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudV1CloudinstancesAsyncjobsGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.v1.cloudinstances.asyncjobs.getall",
 		Method:             "GET",
@@ -134,13 +194,14 @@ func (a *Client) PcloudV1CloudinstancesAsyncjobsGetall(params *PcloudV1Cloudinst
 		Params:             params,
 		Reader:             &PcloudV1CloudinstancesAsyncjobsGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -161,6 +222,14 @@ func (a *Client) PcloudV1CloudinstancesAsyncjobsGetall(params *PcloudV1Cloudinst
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [PCloudAsyncJobsParams].
+	ctx context.Context
 }

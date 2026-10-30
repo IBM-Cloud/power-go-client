@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPlacementgroupsPostReader is a Reader for the PcloudPlacementgroupsPost structure.
@@ -80,11 +79,9 @@ func NewPcloudPlacementgroupsPostOK() *PcloudPlacementgroupsPostOK {
 	return &PcloudPlacementgroupsPostOK{}
 }
 
-/*
-PcloudPlacementgroupsPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudPlacementgroupsPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudPlacementgroupsPostOK struct {
 	Payload *models.PlacementGroup
 }
@@ -150,11 +147,9 @@ func NewPcloudPlacementgroupsPostBadRequest() *PcloudPlacementgroupsPostBadReque
 	return &PcloudPlacementgroupsPostBadRequest{}
 }
 
-/*
-PcloudPlacementgroupsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPlacementgroupsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPlacementgroupsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudPlacementgroupsPostUnauthorized() *PcloudPlacementgroupsPostUnauth
 	return &PcloudPlacementgroupsPostUnauthorized{}
 }
 
-/*
-PcloudPlacementgroupsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPlacementgroupsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPlacementgroupsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudPlacementgroupsPostForbidden() *PcloudPlacementgroupsPostForbidden
 	return &PcloudPlacementgroupsPostForbidden{}
 }
 
-/*
-PcloudPlacementgroupsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPlacementgroupsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPlacementgroupsPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudPlacementgroupsPostNotFound() *PcloudPlacementgroupsPostNotFound {
 	return &PcloudPlacementgroupsPostNotFound{}
 }
 
-/*
-PcloudPlacementgroupsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPlacementgroupsPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPlacementgroupsPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudPlacementgroupsPostConflict() *PcloudPlacementgroupsPostConflict {
 	return &PcloudPlacementgroupsPostConflict{}
 }
 
-/*
-PcloudPlacementgroupsPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPlacementgroupsPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPlacementgroupsPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudPlacementgroupsPostUnprocessableEntity() *PcloudPlacementgroupsPos
 	return &PcloudPlacementgroupsPostUnprocessableEntity{}
 }
 
-/*
-PcloudPlacementgroupsPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudPlacementgroupsPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudPlacementgroupsPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudPlacementgroupsPostInternalServerError() *PcloudPlacementgroupsPos
 	return &PcloudPlacementgroupsPostInternalServerError{}
 }
 
-/*
-PcloudPlacementgroupsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPlacementgroupsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPlacementgroupsPostInternalServerError struct {
 	Payload *models.Error
 }

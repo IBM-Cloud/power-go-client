@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesVolumesPostReader is a Reader for the PcloudCloudinstancesVolumesPost structure.
@@ -80,11 +79,9 @@ func NewPcloudCloudinstancesVolumesPostAccepted() *PcloudCloudinstancesVolumesPo
 	return &PcloudCloudinstancesVolumesPostAccepted{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudCloudinstancesVolumesPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudCloudinstancesVolumesPostAccepted struct {
 	Payload *models.Volume
 }
@@ -150,11 +147,9 @@ func NewPcloudCloudinstancesVolumesPostBadRequest() *PcloudCloudinstancesVolumes
 	return &PcloudCloudinstancesVolumesPostBadRequest{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesVolumesPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesVolumesPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudCloudinstancesVolumesPostUnauthorized() *PcloudCloudinstancesVolum
 	return &PcloudCloudinstancesVolumesPostUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesVolumesPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesVolumesPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudCloudinstancesVolumesPostForbidden() *PcloudCloudinstancesVolumesP
 	return &PcloudCloudinstancesVolumesPostForbidden{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesVolumesPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesVolumesPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudCloudinstancesVolumesPostNotFound() *PcloudCloudinstancesVolumesPo
 	return &PcloudCloudinstancesVolumesPostNotFound{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesVolumesPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesVolumesPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudCloudinstancesVolumesPostConflict() *PcloudCloudinstancesVolumesPo
 	return &PcloudCloudinstancesVolumesPostConflict{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudCloudinstancesVolumesPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudCloudinstancesVolumesPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudCloudinstancesVolumesPostUnprocessableEntity() *PcloudCloudinstanc
 	return &PcloudCloudinstancesVolumesPostUnprocessableEntity{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudCloudinstancesVolumesPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudCloudinstancesVolumesPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudCloudinstancesVolumesPostInternalServerError() *PcloudCloudinstanc
 	return &PcloudCloudinstancesVolumesPostInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesVolumesPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesVolumesPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesVolumesPostInternalServerError struct {
 	Payload *models.Error
 }

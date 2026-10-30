@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudLocationsSnapshotrecoveryGetReader is a Reader for the PcloudLocationsSnapshotrecoveryGet structure.
@@ -68,11 +67,9 @@ func NewPcloudLocationsSnapshotrecoveryGetOK() *PcloudLocationsSnapshotrecoveryG
 	return &PcloudLocationsSnapshotrecoveryGetOK{}
 }
 
-/*
-PcloudLocationsSnapshotrecoveryGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudLocationsSnapshotrecoveryGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudLocationsSnapshotrecoveryGetOK struct {
 	Payload *models.SnapshotRecoveryLocation
 }
@@ -138,11 +135,9 @@ func NewPcloudLocationsSnapshotrecoveryGetBadRequest() *PcloudLocationsSnapshotr
 	return &PcloudLocationsSnapshotrecoveryGetBadRequest{}
 }
 
-/*
-PcloudLocationsSnapshotrecoveryGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudLocationsSnapshotrecoveryGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudLocationsSnapshotrecoveryGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudLocationsSnapshotrecoveryGetUnauthorized() *PcloudLocationsSnapsho
 	return &PcloudLocationsSnapshotrecoveryGetUnauthorized{}
 }
 
-/*
-PcloudLocationsSnapshotrecoveryGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudLocationsSnapshotrecoveryGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudLocationsSnapshotrecoveryGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudLocationsSnapshotrecoveryGetForbidden() *PcloudLocationsSnapshotre
 	return &PcloudLocationsSnapshotrecoveryGetForbidden{}
 }
 
-/*
-PcloudLocationsSnapshotrecoveryGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudLocationsSnapshotrecoveryGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudLocationsSnapshotrecoveryGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudLocationsSnapshotrecoveryGetNotFound() *PcloudLocationsSnapshotrec
 	return &PcloudLocationsSnapshotrecoveryGetNotFound{}
 }
 
-/*
-PcloudLocationsSnapshotrecoveryGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudLocationsSnapshotrecoveryGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudLocationsSnapshotrecoveryGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudLocationsSnapshotrecoveryGetInternalServerError() *PcloudLocations
 	return &PcloudLocationsSnapshotrecoveryGetInternalServerError{}
 }
 
-/*
-PcloudLocationsSnapshotrecoveryGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudLocationsSnapshotrecoveryGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudLocationsSnapshotrecoveryGetInternalServerError struct {
 	Payload *models.Error
 }

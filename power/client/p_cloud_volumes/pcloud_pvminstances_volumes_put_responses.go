@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudPvminstancesVolumesPutReader is a Reader for the PcloudPvminstancesVolumesPut structure.
@@ -74,11 +73,9 @@ func NewPcloudPvminstancesVolumesPutOK() *PcloudPvminstancesVolumesPutOK {
 	return &PcloudPvminstancesVolumesPutOK{}
 }
 
-/*
-PcloudPvminstancesVolumesPutOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudPvminstancesVolumesPutOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudPvminstancesVolumesPutOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudPvminstancesVolumesPutBadRequest() *PcloudPvminstancesVolumesPutBa
 	return &PcloudPvminstancesVolumesPutBadRequest{}
 }
 
-/*
-PcloudPvminstancesVolumesPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudPvminstancesVolumesPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudPvminstancesVolumesPutBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudPvminstancesVolumesPutUnauthorized() *PcloudPvminstancesVolumesPut
 	return &PcloudPvminstancesVolumesPutUnauthorized{}
 }
 
-/*
-PcloudPvminstancesVolumesPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudPvminstancesVolumesPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudPvminstancesVolumesPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudPvminstancesVolumesPutForbidden() *PcloudPvminstancesVolumesPutFor
 	return &PcloudPvminstancesVolumesPutForbidden{}
 }
 
-/*
-PcloudPvminstancesVolumesPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudPvminstancesVolumesPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudPvminstancesVolumesPutForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudPvminstancesVolumesPutNotFound() *PcloudPvminstancesVolumesPutNotF
 	return &PcloudPvminstancesVolumesPutNotFound{}
 }
 
-/*
-PcloudPvminstancesVolumesPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudPvminstancesVolumesPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudPvminstancesVolumesPutNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudPvminstancesVolumesPutConflict() *PcloudPvminstancesVolumesPutConf
 	return &PcloudPvminstancesVolumesPutConflict{}
 }
 
-/*
-PcloudPvminstancesVolumesPutConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudPvminstancesVolumesPutConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudPvminstancesVolumesPutConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudPvminstancesVolumesPutInternalServerError() *PcloudPvminstancesVol
 	return &PcloudPvminstancesVolumesPutInternalServerError{}
 }
 
-/*
-PcloudPvminstancesVolumesPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudPvminstancesVolumesPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudPvminstancesVolumesPutInternalServerError struct {
 	Payload *models.Error
 }

@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // SnapshotRecoveryLocation snapshot recovery location
@@ -39,12 +40,12 @@ func (m *SnapshotRecoveryLocation) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotRecoveryLocation) validateZonalSnapshotPools(formats strfmt.Registry) error {
-	if swag.IsZero(m.ZonalSnapshotPools) { // not required
+	if typeutils.IsZero(m.ZonalSnapshotPools) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.ZonalSnapshotPools); i++ {
-		if swag.IsZero(m.ZonalSnapshotPools[i]) { // not required
+		if typeutils.IsZero(m.ZonalSnapshotPools[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *SnapshotRecoveryLocation) contextValidateZonalSnapshotPools(ctx context
 
 		if m.ZonalSnapshotPools[i] != nil {
 
-			if swag.IsZero(m.ZonalSnapshotPools[i]) { // not required
+			if typeutils.IsZero(m.ZonalSnapshotPools[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *SnapshotRecoveryLocation) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SnapshotRecoveryLocation) UnmarshalBinary(b []byte) error {
 	var res SnapshotRecoveryLocation
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

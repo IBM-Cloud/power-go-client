@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1NetworkSecurityGroupsIDDeleteReader is a Reader for the V1NetworkSecurityGroupsIDDelete structure.
@@ -74,11 +73,9 @@ func NewV1NetworkSecurityGroupsIDDeleteOK() *V1NetworkSecurityGroupsIDDeleteOK {
 	return &V1NetworkSecurityGroupsIDDeleteOK{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1NetworkSecurityGroupsIDDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1NetworkSecurityGroupsIDDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewV1NetworkSecurityGroupsIDDeleteBadRequest() *V1NetworkSecurityGroupsIDDe
 	return &V1NetworkSecurityGroupsIDDeleteBadRequest{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1NetworkSecurityGroupsIDDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1NetworkSecurityGroupsIDDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewV1NetworkSecurityGroupsIDDeleteUnauthorized() *V1NetworkSecurityGroupsID
 	return &V1NetworkSecurityGroupsIDDeleteUnauthorized{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1NetworkSecurityGroupsIDDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1NetworkSecurityGroupsIDDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewV1NetworkSecurityGroupsIDDeleteForbidden() *V1NetworkSecurityGroupsIDDel
 	return &V1NetworkSecurityGroupsIDDeleteForbidden{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1NetworkSecurityGroupsIDDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1NetworkSecurityGroupsIDDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewV1NetworkSecurityGroupsIDDeleteNotFound() *V1NetworkSecurityGroupsIDDele
 	return &V1NetworkSecurityGroupsIDDeleteNotFound{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1NetworkSecurityGroupsIDDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1NetworkSecurityGroupsIDDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewV1NetworkSecurityGroupsIDDeleteConflict() *V1NetworkSecurityGroupsIDDele
 	return &V1NetworkSecurityGroupsIDDeleteConflict{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1NetworkSecurityGroupsIDDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1NetworkSecurityGroupsIDDeleteConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewV1NetworkSecurityGroupsIDDeleteInternalServerError() *V1NetworkSecurityG
 	return &V1NetworkSecurityGroupsIDDeleteInternalServerError{}
 }
 
-/*
-V1NetworkSecurityGroupsIDDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1NetworkSecurityGroupsIDDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1NetworkSecurityGroupsIDDeleteInternalServerError struct {
 	Payload *models.Error
 }

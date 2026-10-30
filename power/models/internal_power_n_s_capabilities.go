@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // InternalPowerNSCapabilities internal power n s capabilities
@@ -35,7 +36,7 @@ func (m *InternalPowerNSCapabilities) Validate(formats strfmt.Registry) error {
 }
 
 func (m *InternalPowerNSCapabilities) validatePER(formats strfmt.Registry) error {
-	if swag.IsZero(m.PER) { // not required
+	if typeutils.IsZero(m.PER) { // not required
 		return nil
 	}
 
@@ -75,7 +76,7 @@ func (m *InternalPowerNSCapabilities) contextValidatePER(ctx context.Context, fo
 
 	if m.PER != nil {
 
-		if swag.IsZero(m.PER) { // not required
+		if typeutils.IsZero(m.PER) { // not required
 			return nil
 		}
 
@@ -101,13 +102,13 @@ func (m *InternalPowerNSCapabilities) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalPowerNSCapabilities) UnmarshalBinary(b []byte) error {
 	var res InternalPowerNSCapabilities
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res
@@ -142,7 +143,7 @@ func (m *InternalPowerNSCapabilitiesPER) Validate(formats strfmt.Registry) error
 }
 
 func (m *InternalPowerNSCapabilitiesPER) validateOperationalStatus(formats strfmt.Registry) error {
-	if swag.IsZero(m.OperationalStatus) { // not required
+	if typeutils.IsZero(m.OperationalStatus) { // not required
 		return nil
 	}
 
@@ -182,7 +183,7 @@ func (m *InternalPowerNSCapabilitiesPER) contextValidateOperationalStatus(ctx co
 
 	if m.OperationalStatus != nil {
 
-		if swag.IsZero(m.OperationalStatus) { // not required
+		if typeutils.IsZero(m.OperationalStatus) { // not required
 			return nil
 		}
 
@@ -208,13 +209,13 @@ func (m *InternalPowerNSCapabilitiesPER) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalPowerNSCapabilitiesPER) UnmarshalBinary(b []byte) error {
 	var res InternalPowerNSCapabilitiesPER
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res
@@ -245,7 +246,7 @@ func (m *InternalPowerNSCapabilitiesPEROperationalStatus) Validate(formats strfm
 }
 
 func (m *InternalPowerNSCapabilitiesPEROperationalStatus) validateConfigurationStatus(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConfigurationStatus) { // not required
+	if typeutils.IsZero(m.ConfigurationStatus) { // not required
 		return nil
 	}
 
@@ -285,7 +286,7 @@ func (m *InternalPowerNSCapabilitiesPEROperationalStatus) contextValidateConfigu
 
 	if m.ConfigurationStatus != nil {
 
-		if swag.IsZero(m.ConfigurationStatus) { // not required
+		if typeutils.IsZero(m.ConfigurationStatus) { // not required
 			return nil
 		}
 
@@ -311,13 +312,13 @@ func (m *InternalPowerNSCapabilitiesPEROperationalStatus) MarshalBinary() ([]byt
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalPowerNSCapabilitiesPEROperationalStatus) UnmarshalBinary(b []byte) error {
 	var res InternalPowerNSCapabilitiesPEROperationalStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

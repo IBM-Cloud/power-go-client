@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudV2PvminstancesSnapshotsPostReader is a Reader for the PcloudV2PvminstancesSnapshotsPost structure.
@@ -80,11 +79,9 @@ func NewPcloudV2PvminstancesSnapshotsPostAccepted() *PcloudV2PvminstancesSnapsho
 	return &PcloudV2PvminstancesSnapshotsPostAccepted{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudV2PvminstancesSnapshotsPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudV2PvminstancesSnapshotsPostAccepted struct {
 	Payload *models.SnapshotCreateResponse
 }
@@ -150,11 +147,9 @@ func NewPcloudV2PvminstancesSnapshotsPostBadRequest() *PcloudV2PvminstancesSnaps
 	return &PcloudV2PvminstancesSnapshotsPostBadRequest{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudV2PvminstancesSnapshotsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudV2PvminstancesSnapshotsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudV2PvminstancesSnapshotsPostUnauthorized() *PcloudV2PvminstancesSna
 	return &PcloudV2PvminstancesSnapshotsPostUnauthorized{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudV2PvminstancesSnapshotsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudV2PvminstancesSnapshotsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudV2PvminstancesSnapshotsPostForbidden() *PcloudV2PvminstancesSnapsh
 	return &PcloudV2PvminstancesSnapshotsPostForbidden{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudV2PvminstancesSnapshotsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudV2PvminstancesSnapshotsPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudV2PvminstancesSnapshotsPostNotFound() *PcloudV2PvminstancesSnapsho
 	return &PcloudV2PvminstancesSnapshotsPostNotFound{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudV2PvminstancesSnapshotsPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudV2PvminstancesSnapshotsPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudV2PvminstancesSnapshotsPostConflict() *PcloudV2PvminstancesSnapsho
 	return &PcloudV2PvminstancesSnapshotsPostConflict{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudV2PvminstancesSnapshotsPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudV2PvminstancesSnapshotsPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudV2PvminstancesSnapshotsPostInternalServerError() *PcloudV2Pvminsta
 	return &PcloudV2PvminstancesSnapshotsPostInternalServerError{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudV2PvminstancesSnapshotsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudV2PvminstancesSnapshotsPostInternalServerError struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudV2PvminstancesSnapshotsPostGatewayTimeout() *PcloudV2PvminstancesS
 	return &PcloudV2PvminstancesSnapshotsPostGatewayTimeout{}
 }
 
-/*
-PcloudV2PvminstancesSnapshotsPostGatewayTimeout describes a response with status code 504, with default header values.
-
-Gateway Timeout
-*/
+// PcloudV2PvminstancesSnapshotsPostGatewayTimeout describes a response with status code 504, with default header values.
+//
+// Gateway Timeout
 type PcloudV2PvminstancesSnapshotsPostGatewayTimeout struct {
 	Payload *models.Error
 }

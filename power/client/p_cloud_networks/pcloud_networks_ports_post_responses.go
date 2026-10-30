@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudNetworksPortsPostReader is a Reader for the PcloudNetworksPortsPost structure.
@@ -80,11 +79,9 @@ func NewPcloudNetworksPortsPostCreated() *PcloudNetworksPortsPostCreated {
 	return &PcloudNetworksPortsPostCreated{}
 }
 
-/*
-PcloudNetworksPortsPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// PcloudNetworksPortsPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type PcloudNetworksPortsPostCreated struct {
 	Payload *models.NetworkPort
 }
@@ -150,11 +147,9 @@ func NewPcloudNetworksPortsPostBadRequest() *PcloudNetworksPortsPostBadRequest {
 	return &PcloudNetworksPortsPostBadRequest{}
 }
 
-/*
-PcloudNetworksPortsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudNetworksPortsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudNetworksPortsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudNetworksPortsPostUnauthorized() *PcloudNetworksPortsPostUnauthoriz
 	return &PcloudNetworksPortsPostUnauthorized{}
 }
 
-/*
-PcloudNetworksPortsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudNetworksPortsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudNetworksPortsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudNetworksPortsPostForbidden() *PcloudNetworksPortsPostForbidden {
 	return &PcloudNetworksPortsPostForbidden{}
 }
 
-/*
-PcloudNetworksPortsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudNetworksPortsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudNetworksPortsPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudNetworksPortsPostNotFound() *PcloudNetworksPortsPostNotFound {
 	return &PcloudNetworksPortsPostNotFound{}
 }
 
-/*
-PcloudNetworksPortsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudNetworksPortsPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudNetworksPortsPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudNetworksPortsPostConflict() *PcloudNetworksPortsPostConflict {
 	return &PcloudNetworksPortsPostConflict{}
 }
 
-/*
-PcloudNetworksPortsPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudNetworksPortsPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudNetworksPortsPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudNetworksPortsPostUnprocessableEntity() *PcloudNetworksPortsPostUnp
 	return &PcloudNetworksPortsPostUnprocessableEntity{}
 }
 
-/*
-PcloudNetworksPortsPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudNetworksPortsPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudNetworksPortsPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudNetworksPortsPostInternalServerError() *PcloudNetworksPortsPostInt
 	return &PcloudNetworksPortsPostInternalServerError{}
 }
 
-/*
-PcloudNetworksPortsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudNetworksPortsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudNetworksPortsPostInternalServerError struct {
 	Payload *models.Error
 }

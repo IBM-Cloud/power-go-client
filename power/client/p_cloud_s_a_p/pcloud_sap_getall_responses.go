@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSapGetallReader is a Reader for the PcloudSapGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudSapGetallOK() *PcloudSapGetallOK {
 	return &PcloudSapGetallOK{}
 }
 
-/*
-PcloudSapGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSapGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSapGetallOK struct {
 	Payload *models.SAPProfiles
 }
@@ -138,11 +135,9 @@ func NewPcloudSapGetallBadRequest() *PcloudSapGetallBadRequest {
 	return &PcloudSapGetallBadRequest{}
 }
 
-/*
-PcloudSapGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSapGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSapGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudSapGetallUnauthorized() *PcloudSapGetallUnauthorized {
 	return &PcloudSapGetallUnauthorized{}
 }
 
-/*
-PcloudSapGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSapGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSapGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudSapGetallForbidden() *PcloudSapGetallForbidden {
 	return &PcloudSapGetallForbidden{}
 }
 
-/*
-PcloudSapGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSapGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSapGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudSapGetallNotFound() *PcloudSapGetallNotFound {
 	return &PcloudSapGetallNotFound{}
 }
 
-/*
-PcloudSapGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSapGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSapGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudSapGetallInternalServerError() *PcloudSapGetallInternalServerError
 	return &PcloudSapGetallInternalServerError{}
 }
 
-/*
-PcloudSapGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSapGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSapGetallInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // NetworkCreatePeer [DEPRECATED]
@@ -45,7 +46,7 @@ func (m *NetworkCreatePeer) Validate(formats strfmt.Registry) error {
 }
 
 func (m *NetworkCreatePeer) validateNetworkAddressTranslation(formats strfmt.Registry) error {
-	if swag.IsZero(m.NetworkAddressTranslation) { // not required
+	if typeutils.IsZero(m.NetworkAddressTranslation) { // not required
 		return nil
 	}
 
@@ -68,7 +69,7 @@ func (m *NetworkCreatePeer) validateNetworkAddressTranslation(formats strfmt.Reg
 }
 
 func (m *NetworkCreatePeer) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(m.Type) { // not required
+	if typeutils.IsZero(m.Type) { // not required
 		return nil
 	}
 
@@ -110,7 +111,7 @@ func (m *NetworkCreatePeer) contextValidateNetworkAddressTranslation(ctx context
 
 	if m.NetworkAddressTranslation != nil {
 
-		if swag.IsZero(m.NetworkAddressTranslation) { // not required
+		if typeutils.IsZero(m.NetworkAddressTranslation) { // not required
 			return nil
 		}
 
@@ -133,7 +134,7 @@ func (m *NetworkCreatePeer) contextValidateNetworkAddressTranslation(ctx context
 
 func (m *NetworkCreatePeer) contextValidateType(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Type) { // not required
+	if typeutils.IsZero(m.Type) { // not required
 		return nil
 	}
 
@@ -158,13 +159,13 @@ func (m *NetworkCreatePeer) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkCreatePeer) UnmarshalBinary(b []byte) error {
 	var res NetworkCreatePeer
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVirtualserialnumberSoftwaretiersGetallReader is a Reader for the PcloudVirtualserialnumberSoftwaretiersGetall structure.
@@ -62,11 +61,9 @@ func NewPcloudVirtualserialnumberSoftwaretiersGetallOK() *PcloudVirtualserialnum
 	return &PcloudVirtualserialnumberSoftwaretiersGetallOK{}
 }
 
-/*
-PcloudVirtualserialnumberSoftwaretiersGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudVirtualserialnumberSoftwaretiersGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudVirtualserialnumberSoftwaretiersGetallOK struct {
 	Payload models.SupportedSoftwareTierList
 }
@@ -130,11 +127,9 @@ func NewPcloudVirtualserialnumberSoftwaretiersGetallBadRequest() *PcloudVirtuals
 	return &PcloudVirtualserialnumberSoftwaretiersGetallBadRequest{}
 }
 
-/*
-PcloudVirtualserialnumberSoftwaretiersGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVirtualserialnumberSoftwaretiersGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVirtualserialnumberSoftwaretiersGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -200,11 +195,9 @@ func NewPcloudVirtualserialnumberSoftwaretiersGetallUnauthorized() *PcloudVirtua
 	return &PcloudVirtualserialnumberSoftwaretiersGetallUnauthorized{}
 }
 
-/*
-PcloudVirtualserialnumberSoftwaretiersGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVirtualserialnumberSoftwaretiersGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVirtualserialnumberSoftwaretiersGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -270,11 +263,9 @@ func NewPcloudVirtualserialnumberSoftwaretiersGetallForbidden() *PcloudVirtualse
 	return &PcloudVirtualserialnumberSoftwaretiersGetallForbidden{}
 }
 
-/*
-PcloudVirtualserialnumberSoftwaretiersGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVirtualserialnumberSoftwaretiersGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVirtualserialnumberSoftwaretiersGetallForbidden struct {
 	Payload *models.Error
 }
@@ -340,11 +331,9 @@ func NewPcloudVirtualserialnumberSoftwaretiersGetallInternalServerError() *Pclou
 	return &PcloudVirtualserialnumberSoftwaretiersGetallInternalServerError{}
 }
 
-/*
-PcloudVirtualserialnumberSoftwaretiersGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVirtualserialnumberSoftwaretiersGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVirtualserialnumberSoftwaretiersGetallInternalServerError struct {
 	Payload *models.Error
 }

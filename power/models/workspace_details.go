@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -85,7 +86,7 @@ func (m *WorkspaceDetails) validateCrn(formats strfmt.Registry) error {
 }
 
 func (m *WorkspaceDetails) validateNetworkSecurityGroups(formats strfmt.Registry) error {
-	if swag.IsZero(m.NetworkSecurityGroups) { // not required
+	if typeutils.IsZero(m.NetworkSecurityGroups) { // not required
 		return nil
 	}
 
@@ -108,7 +109,7 @@ func (m *WorkspaceDetails) validateNetworkSecurityGroups(formats strfmt.Registry
 }
 
 func (m *WorkspaceDetails) validatePowerEdgeRouter(formats strfmt.Registry) error {
-	if swag.IsZero(m.PowerEdgeRouter) { // not required
+	if typeutils.IsZero(m.PowerEdgeRouter) { // not required
 		return nil
 	}
 
@@ -152,7 +153,7 @@ func (m *WorkspaceDetails) contextValidateNetworkSecurityGroups(ctx context.Cont
 
 	if m.NetworkSecurityGroups != nil {
 
-		if swag.IsZero(m.NetworkSecurityGroups) { // not required
+		if typeutils.IsZero(m.NetworkSecurityGroups) { // not required
 			return nil
 		}
 
@@ -177,7 +178,7 @@ func (m *WorkspaceDetails) contextValidatePowerEdgeRouter(ctx context.Context, f
 
 	if m.PowerEdgeRouter != nil {
 
-		if swag.IsZero(m.PowerEdgeRouter) { // not required
+		if typeutils.IsZero(m.PowerEdgeRouter) { // not required
 			return nil
 		}
 
@@ -203,13 +204,13 @@ func (m *WorkspaceDetails) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *WorkspaceDetails) UnmarshalBinary(b []byte) error {
 	var res WorkspaceDetails
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

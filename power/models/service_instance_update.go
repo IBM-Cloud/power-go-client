@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // ServiceInstanceUpdate service instance update
@@ -22,12 +22,12 @@ type ServiceInstanceUpdate struct {
 }
 
 // Validate validates this service instance update
-func (m *ServiceInstanceUpdate) Validate(formats strfmt.Registry) error {
+func (m *ServiceInstanceUpdate) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this service instance update based on context it is used
-func (m *ServiceInstanceUpdate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *ServiceInstanceUpdate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *ServiceInstanceUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *ServiceInstanceUpdate) UnmarshalBinary(b []byte) error {
 	var res ServiceInstanceUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

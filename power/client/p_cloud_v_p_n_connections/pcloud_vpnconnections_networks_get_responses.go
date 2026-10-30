@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVpnconnectionsNetworksGetReader is a Reader for the PcloudVpnconnectionsNetworksGet structure.
@@ -68,11 +67,9 @@ func NewPcloudVpnconnectionsNetworksGetOK() *PcloudVpnconnectionsNetworksGetOK {
 	return &PcloudVpnconnectionsNetworksGetOK{}
 }
 
-/*
-PcloudVpnconnectionsNetworksGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudVpnconnectionsNetworksGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudVpnconnectionsNetworksGetOK struct {
 	Payload *models.NetworkIDs
 }
@@ -138,11 +135,9 @@ func NewPcloudVpnconnectionsNetworksGetBadRequest() *PcloudVpnconnectionsNetwork
 	return &PcloudVpnconnectionsNetworksGetBadRequest{}
 }
 
-/*
-PcloudVpnconnectionsNetworksGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVpnconnectionsNetworksGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVpnconnectionsNetworksGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudVpnconnectionsNetworksGetUnauthorized() *PcloudVpnconnectionsNetwo
 	return &PcloudVpnconnectionsNetworksGetUnauthorized{}
 }
 
-/*
-PcloudVpnconnectionsNetworksGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVpnconnectionsNetworksGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVpnconnectionsNetworksGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudVpnconnectionsNetworksGetForbidden() *PcloudVpnconnectionsNetworks
 	return &PcloudVpnconnectionsNetworksGetForbidden{}
 }
 
-/*
-PcloudVpnconnectionsNetworksGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVpnconnectionsNetworksGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVpnconnectionsNetworksGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudVpnconnectionsNetworksGetNotFound() *PcloudVpnconnectionsNetworksG
 	return &PcloudVpnconnectionsNetworksGetNotFound{}
 }
 
-/*
-PcloudVpnconnectionsNetworksGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVpnconnectionsNetworksGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVpnconnectionsNetworksGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudVpnconnectionsNetworksGetInternalServerError() *PcloudVpnconnectio
 	return &PcloudVpnconnectionsNetworksGetInternalServerError{}
 }
 
-/*
-PcloudVpnconnectionsNetworksGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVpnconnectionsNetworksGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVpnconnectionsNetworksGetInternalServerError struct {
 	Payload *models.Error
 }

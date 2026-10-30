@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -45,12 +46,12 @@ func (m *JobWorkflow) Validate(formats strfmt.Registry) error {
 }
 
 func (m *JobWorkflow) validateActions(formats strfmt.Registry) error {
-	if swag.IsZero(m.Actions) { // not required
+	if typeutils.IsZero(m.Actions) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Actions); i++ {
-		if swag.IsZero(m.Actions[i]) { // not required
+		if typeutils.IsZero(m.Actions[i]) { // not required
 			continue
 		}
 
@@ -103,7 +104,7 @@ func (m *JobWorkflow) contextValidateActions(ctx context.Context, formats strfmt
 
 		if m.Actions[i] != nil {
 
-			if swag.IsZero(m.Actions[i]) { // not required
+			if typeutils.IsZero(m.Actions[i]) { // not required
 				return nil
 			}
 
@@ -131,13 +132,13 @@ func (m *JobWorkflow) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *JobWorkflow) UnmarshalBinary(b []byte) error {
 	var res JobWorkflow
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

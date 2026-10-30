@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSppplacementgroupsMembersDeleteReader is a Reader for the PcloudSppplacementgroupsMembersDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudSppplacementgroupsMembersDeleteOK() *PcloudSppplacementgroupsMembe
 	return &PcloudSppplacementgroupsMembersDeleteOK{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSppplacementgroupsMembersDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSppplacementgroupsMembersDeleteOK struct {
 	Payload *models.SPPPlacementGroup
 }
@@ -144,11 +141,9 @@ func NewPcloudSppplacementgroupsMembersDeleteBadRequest() *PcloudSppplacementgro
 	return &PcloudSppplacementgroupsMembersDeleteBadRequest{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSppplacementgroupsMembersDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSppplacementgroupsMembersDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudSppplacementgroupsMembersDeleteUnauthorized() *PcloudSppplacementg
 	return &PcloudSppplacementgroupsMembersDeleteUnauthorized{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSppplacementgroupsMembersDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSppplacementgroupsMembersDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudSppplacementgroupsMembersDeleteForbidden() *PcloudSppplacementgrou
 	return &PcloudSppplacementgroupsMembersDeleteForbidden{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSppplacementgroupsMembersDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSppplacementgroupsMembersDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudSppplacementgroupsMembersDeleteNotFound() *PcloudSppplacementgroup
 	return &PcloudSppplacementgroupsMembersDeleteNotFound{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSppplacementgroupsMembersDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSppplacementgroupsMembersDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudSppplacementgroupsMembersDeleteConflict() *PcloudSppplacementgroup
 	return &PcloudSppplacementgroupsMembersDeleteConflict{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudSppplacementgroupsMembersDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudSppplacementgroupsMembersDeleteConflict struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudSppplacementgroupsMembersDeleteInternalServerError() *PcloudSpppla
 	return &PcloudSppplacementgroupsMembersDeleteInternalServerError{}
 }
 
-/*
-PcloudSppplacementgroupsMembersDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSppplacementgroupsMembersDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSppplacementgroupsMembersDeleteInternalServerError struct {
 	Payload *models.Error
 }

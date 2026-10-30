@@ -7,7 +7,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -45,7 +46,7 @@ func (m *PVMInstanceFault) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceFault) validateCreated(formats strfmt.Registry) error {
-	if swag.IsZero(m.Created) { // not required
+	if typeutils.IsZero(m.Created) { // not required
 		return nil
 	}
 
@@ -57,7 +58,7 @@ func (m *PVMInstanceFault) validateCreated(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this p VM instance fault based on context it is used
-func (m *PVMInstanceFault) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *PVMInstanceFault) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -66,13 +67,13 @@ func (m *PVMInstanceFault) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceFault) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceFault
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

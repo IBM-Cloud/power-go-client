@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // CloudConnectionEndpointVPC cloud connection endpoint v p c
@@ -39,12 +40,12 @@ func (m *CloudConnectionEndpointVPC) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CloudConnectionEndpointVPC) validateVpcs(formats strfmt.Registry) error {
-	if swag.IsZero(m.Vpcs) { // not required
+	if typeutils.IsZero(m.Vpcs) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Vpcs); i++ {
-		if swag.IsZero(m.Vpcs[i]) { // not required
+		if typeutils.IsZero(m.Vpcs[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *CloudConnectionEndpointVPC) contextValidateVpcs(ctx context.Context, fo
 
 		if m.Vpcs[i] != nil {
 
-			if swag.IsZero(m.Vpcs[i]) { // not required
+			if typeutils.IsZero(m.Vpcs[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *CloudConnectionEndpointVPC) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloudConnectionEndpointVPC) UnmarshalBinary(b []byte) error {
 	var res CloudConnectionEndpointVPC
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

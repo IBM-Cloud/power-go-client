@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // CloneSnapshotResponse clone snapshot response
@@ -39,12 +40,12 @@ func (m *CloneSnapshotResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *CloneSnapshotResponse) validateClonedVolumes(formats strfmt.Registry) error {
-	if swag.IsZero(m.ClonedVolumes) { // not required
+	if typeutils.IsZero(m.ClonedVolumes) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.ClonedVolumes); i++ {
-		if swag.IsZero(m.ClonedVolumes[i]) { // not required
+		if typeutils.IsZero(m.ClonedVolumes[i]) { // not required
 			continue
 		}
 
@@ -88,7 +89,7 @@ func (m *CloneSnapshotResponse) contextValidateClonedVolumes(ctx context.Context
 
 		if m.ClonedVolumes[i] != nil {
 
-			if swag.IsZero(m.ClonedVolumes[i]) { // not required
+			if typeutils.IsZero(m.ClonedVolumes[i]) { // not required
 				return nil
 			}
 
@@ -116,13 +117,13 @@ func (m *CloneSnapshotResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloneSnapshotResponse) UnmarshalBinary(b []byte) error {
 	var res CloneSnapshotResponse
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

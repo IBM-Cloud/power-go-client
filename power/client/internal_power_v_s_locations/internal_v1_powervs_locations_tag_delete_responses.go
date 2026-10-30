@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1PowervsLocationsTagDeleteReader is a Reader for the InternalV1PowervsLocationsTagDelete structure.
@@ -62,11 +61,9 @@ func NewInternalV1PowervsLocationsTagDeleteOK() *InternalV1PowervsLocationsTagDe
 	return &InternalV1PowervsLocationsTagDeleteOK{}
 }
 
-/*
-InternalV1PowervsLocationsTagDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1PowervsLocationsTagDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1PowervsLocationsTagDeleteOK struct {
 }
 
@@ -118,11 +115,9 @@ func NewInternalV1PowervsLocationsTagDeleteBadRequest() *InternalV1PowervsLocati
 	return &InternalV1PowervsLocationsTagDeleteBadRequest{}
 }
 
-/*
-InternalV1PowervsLocationsTagDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1PowervsLocationsTagDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1PowervsLocationsTagDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -188,11 +183,9 @@ func NewInternalV1PowervsLocationsTagDeleteUnauthorized() *InternalV1PowervsLoca
 	return &InternalV1PowervsLocationsTagDeleteUnauthorized{}
 }
 
-/*
-InternalV1PowervsLocationsTagDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1PowervsLocationsTagDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1PowervsLocationsTagDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -258,11 +251,9 @@ func NewInternalV1PowervsLocationsTagDeleteUnprocessableEntity() *InternalV1Powe
 	return &InternalV1PowervsLocationsTagDeleteUnprocessableEntity{}
 }
 
-/*
-InternalV1PowervsLocationsTagDeleteUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// InternalV1PowervsLocationsTagDeleteUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type InternalV1PowervsLocationsTagDeleteUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -328,11 +319,9 @@ func NewInternalV1PowervsLocationsTagDeleteInternalServerError() *InternalV1Powe
 	return &InternalV1PowervsLocationsTagDeleteInternalServerError{}
 }
 
-/*
-InternalV1PowervsLocationsTagDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1PowervsLocationsTagDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1PowervsLocationsTagDeleteInternalServerError struct {
 	Payload *models.Error
 }

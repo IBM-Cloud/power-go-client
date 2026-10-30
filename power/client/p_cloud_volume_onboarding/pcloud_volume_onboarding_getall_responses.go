@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVolumeOnboardingGetallReader is a Reader for the PcloudVolumeOnboardingGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudVolumeOnboardingGetallOK() *PcloudVolumeOnboardingGetallOK {
 	return &PcloudVolumeOnboardingGetallOK{}
 }
 
-/*
-PcloudVolumeOnboardingGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudVolumeOnboardingGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudVolumeOnboardingGetallOK struct {
 	Payload *models.VolumeOnboardings
 }
@@ -138,11 +135,9 @@ func NewPcloudVolumeOnboardingGetallBadRequest() *PcloudVolumeOnboardingGetallBa
 	return &PcloudVolumeOnboardingGetallBadRequest{}
 }
 
-/*
-PcloudVolumeOnboardingGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVolumeOnboardingGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVolumeOnboardingGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudVolumeOnboardingGetallUnauthorized() *PcloudVolumeOnboardingGetall
 	return &PcloudVolumeOnboardingGetallUnauthorized{}
 }
 
-/*
-PcloudVolumeOnboardingGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVolumeOnboardingGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVolumeOnboardingGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudVolumeOnboardingGetallForbidden() *PcloudVolumeOnboardingGetallFor
 	return &PcloudVolumeOnboardingGetallForbidden{}
 }
 
-/*
-PcloudVolumeOnboardingGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVolumeOnboardingGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVolumeOnboardingGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudVolumeOnboardingGetallNotFound() *PcloudVolumeOnboardingGetallNotF
 	return &PcloudVolumeOnboardingGetallNotFound{}
 }
 
-/*
-PcloudVolumeOnboardingGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVolumeOnboardingGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVolumeOnboardingGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudVolumeOnboardingGetallInternalServerError() *PcloudVolumeOnboardin
 	return &PcloudVolumeOnboardingGetallInternalServerError{}
 }
 
-/*
-PcloudVolumeOnboardingGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVolumeOnboardingGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVolumeOnboardingGetallInternalServerError struct {
 	Payload *models.Error
 }

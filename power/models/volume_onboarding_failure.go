@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // VolumeOnboardingFailure volume onboarding failure
@@ -22,12 +22,12 @@ type VolumeOnboardingFailure struct {
 }
 
 // Validate validates this volume onboarding failure
-func (m *VolumeOnboardingFailure) Validate(formats strfmt.Registry) error {
+func (m *VolumeOnboardingFailure) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this volume onboarding failure based on context it is used
-func (m *VolumeOnboardingFailure) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *VolumeOnboardingFailure) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *VolumeOnboardingFailure) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *VolumeOnboardingFailure) UnmarshalBinary(b []byte) error {
 	var res VolumeOnboardingFailure
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

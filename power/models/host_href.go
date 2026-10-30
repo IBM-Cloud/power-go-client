@@ -14,11 +14,11 @@ import (
 type HostHref string
 
 // Validate validates this host href
-func (m HostHref) Validate(formats strfmt.Registry) error {
+func (m HostHref) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this host href based on context it is used
-func (m HostHref) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m HostHref) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }

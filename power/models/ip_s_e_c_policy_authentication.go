@@ -74,6 +74,6 @@ func (m IPSECPolicyAuthentication) Validate(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this IP s e c policy authentication based on context it is used
-func (m IPSECPolicyAuthentication) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m IPSECPolicyAuthentication) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }

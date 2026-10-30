@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1TransitgatewayGetReader is a Reader for the InternalV1TransitgatewayGet structure.
@@ -44,11 +43,9 @@ func NewInternalV1TransitgatewayGetOK() *InternalV1TransitgatewayGetOK {
 	return &InternalV1TransitgatewayGetOK{}
 }
 
-/*
-InternalV1TransitgatewayGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// InternalV1TransitgatewayGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type InternalV1TransitgatewayGetOK struct {
 	Payload *models.TransitGatewayInstance
 }
@@ -114,11 +111,9 @@ func NewInternalV1TransitgatewayGetForbidden() *InternalV1TransitgatewayGetForbi
 	return &InternalV1TransitgatewayGetForbidden{}
 }
 
-/*
-InternalV1TransitgatewayGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1TransitgatewayGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1TransitgatewayGetForbidden struct {
 	Payload *models.Error
 }

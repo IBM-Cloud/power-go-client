@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -96,7 +97,7 @@ func (m *Operations) validateBootModeEnum(path, location string, value string) e
 }
 
 func (m *Operations) validateBootMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.BootMode) { // not required
+	if typeutils.IsZero(m.BootMode) { // not required
 		return nil
 	}
 
@@ -109,7 +110,7 @@ func (m *Operations) validateBootMode(formats strfmt.Registry) error {
 }
 
 func (m *Operations) validateNetBoot(formats strfmt.Registry) error {
-	if swag.IsZero(m.NetBoot) { // not required
+	if typeutils.IsZero(m.NetBoot) { // not required
 		return nil
 	}
 
@@ -161,7 +162,7 @@ func (m *Operations) validateOperatingModeEnum(path, location string, value stri
 }
 
 func (m *Operations) validateOperatingMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.OperatingMode) { // not required
+	if typeutils.IsZero(m.OperatingMode) { // not required
 		return nil
 	}
 
@@ -221,7 +222,7 @@ func (m *Operations) validateTaskEnum(path, location string, value string) error
 }
 
 func (m *Operations) validateTask(formats strfmt.Registry) error {
-	if swag.IsZero(m.Task) { // not required
+	if typeutils.IsZero(m.Task) { // not required
 		return nil
 	}
 
@@ -251,7 +252,7 @@ func (m *Operations) contextValidateNetBoot(ctx context.Context, formats strfmt.
 
 	if m.NetBoot != nil {
 
-		if swag.IsZero(m.NetBoot) { // not required
+		if typeutils.IsZero(m.NetBoot) { // not required
 			return nil
 		}
 
@@ -277,13 +278,13 @@ func (m *Operations) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Operations) UnmarshalBinary(b []byte) error {
 	var res Operations
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

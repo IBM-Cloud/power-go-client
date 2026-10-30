@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -121,7 +122,7 @@ func (m *NetworkPeerUpdate) validateDefaultExportRouteFilterEnum(path, location 
 }
 
 func (m *NetworkPeerUpdate) validateDefaultExportRouteFilter(formats strfmt.Registry) error {
-	if swag.IsZero(m.DefaultExportRouteFilter) { // not required
+	if typeutils.IsZero(m.DefaultExportRouteFilter) { // not required
 		return nil
 	}
 
@@ -163,7 +164,7 @@ func (m *NetworkPeerUpdate) validateDefaultImportRouteFilterEnum(path, location 
 }
 
 func (m *NetworkPeerUpdate) validateDefaultImportRouteFilter(formats strfmt.Registry) error {
-	if swag.IsZero(m.DefaultImportRouteFilter) { // not required
+	if typeutils.IsZero(m.DefaultImportRouteFilter) { // not required
 		return nil
 	}
 
@@ -202,7 +203,7 @@ func (m *NetworkPeerUpdate) validateTypeEnum(path, location string, value string
 }
 
 func (m *NetworkPeerUpdate) validateType(formats strfmt.Registry) error {
-	if swag.IsZero(m.Type) { // not required
+	if typeutils.IsZero(m.Type) { // not required
 		return nil
 	}
 
@@ -215,7 +216,7 @@ func (m *NetworkPeerUpdate) validateType(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this network peer update based on context it is used
-func (m *NetworkPeerUpdate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *NetworkPeerUpdate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -224,13 +225,13 @@ func (m *NetworkPeerUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkPeerUpdate) UnmarshalBinary(b []byte) error {
 	var res NetworkPeerUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -7,7 +7,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -41,7 +42,7 @@ func (m *SharedProcessorPoolUpdate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SharedProcessorPoolUpdate) validateName(formats strfmt.Registry) error {
-	if swag.IsZero(m.Name) { // not required
+	if typeutils.IsZero(m.Name) { // not required
 		return nil
 	}
 
@@ -61,7 +62,7 @@ func (m *SharedProcessorPoolUpdate) validateName(formats strfmt.Registry) error 
 }
 
 // ContextValidate validates this shared processor pool update based on context it is used
-func (m *SharedProcessorPoolUpdate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *SharedProcessorPoolUpdate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -70,13 +71,13 @@ func (m *SharedProcessorPoolUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SharedProcessorPoolUpdate) UnmarshalBinary(b []byte) error {
 	var res SharedProcessorPoolUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

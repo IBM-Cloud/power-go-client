@@ -3,7 +3,9 @@
 package p_cloud_snapshot_recovery
 
 import (
+	"context"
 	"fmt"
+	"time"
 
 	"github.com/go-openapi/runtime"
 	httptransport "github.com/go-openapi/runtime/client"
@@ -11,11 +13,12 @@ import (
 )
 
 // New creates a new p cloud snapshot recovery API client.
-func New(transport runtime.ClientTransport, formats strfmt.Registry) ClientService {
+func New(transport runtime.ContextualTransport, formats strfmt.Registry) ClientService {
 	return &Client{transport: transport, formats: formats}
 }
 
 // New creates a new p cloud snapshot recovery API client with basic auth credentials.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -29,6 +32,7 @@ func NewClientWithBasicAuth(host, basePath, scheme, user, password string) Clien
 }
 
 // New creates a new p cloud snapshot recovery API client with a bearer token for authentication.
+//
 // It takes the following parameters:
 // - host: http host (github.com).
 // - basePath: any base path for the API client ("/v1", "/v3").
@@ -40,40 +44,71 @@ func NewClientWithBearerToken(host, basePath, scheme, bearerToken string) Client
 	return &Client{transport: transport, formats: strfmt.Default}
 }
 
-/*
-Client for p cloud snapshot recovery API
-*/
+// Client for p cloud snapshot recovery API.
 type Client struct {
-	transport runtime.ClientTransport
+	transport runtime.ContextualTransport
 	formats   strfmt.Registry
 }
 
 // ClientOption may be used to customize the behavior of Client methods.
 type ClientOption func(*runtime.ClientOperation)
 
-// ClientService is the interface for Client methods
+// ClientService is the interface for Client methods.
 type ClientService interface {
+
+	// PcloudLocationsSnapshotrecoveryGet get the snapshot recovery site details for the current location.
 	PcloudLocationsSnapshotrecoveryGet(params *PcloudLocationsSnapshotrecoveryGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetOK, error)
 
+	// PcloudLocationsSnapshotrecoveryGetContext get the snapshot recovery site details for the current location.
+	PcloudLocationsSnapshotrecoveryGetContext(ctx context.Context, params *PcloudLocationsSnapshotrecoveryGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetOK, error)
+
+	// PcloudLocationsSnapshotrecoveryGetall get all snapshot recovery locations supported by power virtual server.
 	PcloudLocationsSnapshotrecoveryGetall(params *PcloudLocationsSnapshotrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetallOK, error)
 
-	SetTransport(transport runtime.ClientTransport)
+	// PcloudLocationsSnapshotrecoveryGetallContext get all snapshot recovery locations supported by power virtual server.
+	PcloudLocationsSnapshotrecoveryGetallContext(ctx context.Context, params *PcloudLocationsSnapshotrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetallOK, error)
+
+	SetTransport(transport runtime.ContextualTransport)
 }
 
-/*
-	PcloudLocationsSnapshotrecoveryGet gets the snapshot recovery site details for the current location
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudLocationsSnapshotrecoveryGet gets the snapshot recovery site details for the current location.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudLocationsSnapshotrecoveryGetContext] instead.
 func (a *Client) PcloudLocationsSnapshotrecoveryGet(params *PcloudLocationsSnapshotrecoveryGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudLocationsSnapshotrecoveryGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudLocationsSnapshotrecoveryGetContext gets the snapshot recovery site details for the current location.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudLocationsSnapshotrecoveryGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudLocationsSnapshotrecoveryGetContext(ctx context.Context, params *PcloudLocationsSnapshotrecoveryGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudLocationsSnapshotrecoveryGetParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.locations.snapshotrecovery.get",
 		Method:             "GET",
@@ -84,13 +119,14 @@ func (a *Client) PcloudLocationsSnapshotrecoveryGet(params *PcloudLocationsSnaps
 		Params:             params,
 		Reader:             &PcloudLocationsSnapshotrecoveryGetReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -110,20 +146,44 @@ func (a *Client) PcloudLocationsSnapshotrecoveryGet(params *PcloudLocationsSnaps
 	panic(msg)
 }
 
-/*
-	PcloudLocationsSnapshotrecoveryGetall gets all snapshot recovery locations supported by power virtual server
-
-	This endpoint is subject to rate-limiting policies to ensure platform stability.
-
-Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
-Scope: Tracked by user session (bearer token)
-Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
-*/
+// PcloudLocationsSnapshotrecoveryGetall gets all snapshot recovery locations supported by power virtual server.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudLocationsSnapshotrecoveryGetallContext] instead.
 func (a *Client) PcloudLocationsSnapshotrecoveryGetall(params *PcloudLocationsSnapshotrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudLocationsSnapshotrecoveryGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudLocationsSnapshotrecoveryGetallContext gets all snapshot recovery locations supported by power virtual server.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudLocationsSnapshotrecoveryGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudLocationsSnapshotrecoveryGetallContext(ctx context.Context, params *PcloudLocationsSnapshotrecoveryGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudLocationsSnapshotrecoveryGetallOK, error) {
 	// NOTE: parameters are not validated before sending
 	if params == nil {
 		params = NewPcloudLocationsSnapshotrecoveryGetallParams()
 	}
+
 	op := &runtime.ClientOperation{
 		ID:                 "pcloud.locations.snapshotrecovery.getall",
 		Method:             "GET",
@@ -134,13 +194,14 @@ func (a *Client) PcloudLocationsSnapshotrecoveryGetall(params *PcloudLocationsSn
 		Params:             params,
 		Reader:             &PcloudLocationsSnapshotrecoveryGetallReader{formats: a.formats},
 		AuthInfo:           authInfo,
-		Context:            params.Context,
 		Client:             params.HTTPClient,
 	}
+
 	for _, opt := range opts {
 		opt(op)
 	}
-	result, err := a.transport.Submit(op)
+
+	result, err := a.transport.SubmitContext(ctx, op)
 	if err != nil {
 		return nil, err
 	}
@@ -161,6 +222,14 @@ func (a *Client) PcloudLocationsSnapshotrecoveryGetall(params *PcloudLocationsSn
 }
 
 // SetTransport changes the transport on the client
-func (a *Client) SetTransport(transport runtime.ClientTransport) {
+func (a *Client) SetTransport(transport runtime.ContextualTransport) {
 	a.transport = transport
+}
+
+// innerParams captures internal fields so they don't conflict with user-supplied parameters.
+type innerParams struct {
+	timeout time.Duration
+
+	// Deprecated: use the operation call with context to pass the context instead of [PCloudSnapshotRecoveryParams].
+	ctx context.Context
 }

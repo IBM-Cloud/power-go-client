@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // InternalV1OperationsDedicatedhostsDeleteReader is a Reader for the InternalV1OperationsDedicatedhostsDelete structure.
@@ -80,11 +79,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteNoContent() *InternalV1Operation
 	return &InternalV1OperationsDedicatedhostsDeleteNoContent{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteNoContent describes a response with status code 204, with default header values.
-
-Deleted
-*/
+// InternalV1OperationsDedicatedhostsDeleteNoContent describes a response with status code 204, with default header values.
+//
+// Deleted
 type InternalV1OperationsDedicatedhostsDeleteNoContent struct {
 }
 
@@ -136,11 +133,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteBadRequest() *InternalV1Operatio
 	return &InternalV1OperationsDedicatedhostsDeleteBadRequest{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// InternalV1OperationsDedicatedhostsDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type InternalV1OperationsDedicatedhostsDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteUnauthorized() *InternalV1Operat
 	return &InternalV1OperationsDedicatedhostsDeleteUnauthorized{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// InternalV1OperationsDedicatedhostsDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type InternalV1OperationsDedicatedhostsDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteForbidden() *InternalV1Operation
 	return &InternalV1OperationsDedicatedhostsDeleteForbidden{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// InternalV1OperationsDedicatedhostsDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type InternalV1OperationsDedicatedhostsDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteNotFound() *InternalV1Operations
 	return &InternalV1OperationsDedicatedhostsDeleteNotFound{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// InternalV1OperationsDedicatedhostsDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type InternalV1OperationsDedicatedhostsDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteGone() *InternalV1OperationsDedi
 	return &InternalV1OperationsDedicatedhostsDeleteGone{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// InternalV1OperationsDedicatedhostsDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type InternalV1OperationsDedicatedhostsDeleteGone struct {
 	Payload *models.Error
 }
@@ -486,11 +473,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteTooManyRequests() *InternalV1Ope
 	return &InternalV1OperationsDedicatedhostsDeleteTooManyRequests{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// InternalV1OperationsDedicatedhostsDeleteTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type InternalV1OperationsDedicatedhostsDeleteTooManyRequests struct {
 	Payload *models.Error
 }
@@ -556,11 +541,9 @@ func NewInternalV1OperationsDedicatedhostsDeleteInternalServerError() *InternalV
 	return &InternalV1OperationsDedicatedhostsDeleteInternalServerError{}
 }
 
-/*
-InternalV1OperationsDedicatedhostsDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// InternalV1OperationsDedicatedhostsDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type InternalV1OperationsDedicatedhostsDeleteInternalServerError struct {
 	Payload *models.Error
 }

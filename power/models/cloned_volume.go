@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // ClonedVolume cloned volume
@@ -22,12 +22,12 @@ type ClonedVolume struct {
 }
 
 // Validate validates this cloned volume
-func (m *ClonedVolume) Validate(formats strfmt.Registry) error {
+func (m *ClonedVolume) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this cloned volume based on context it is used
-func (m *ClonedVolume) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *ClonedVolume) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *ClonedVolume) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *ClonedVolume) UnmarshalBinary(b []byte) error {
 	var res ClonedVolume
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

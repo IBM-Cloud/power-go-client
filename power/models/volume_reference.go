@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -226,7 +227,7 @@ func (m *VolumeReference) validateCreationDate(formats strfmt.Registry) error {
 }
 
 func (m *VolumeReference) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -256,7 +257,7 @@ func (m *VolumeReference) validateDiskType(formats strfmt.Registry) error {
 }
 
 func (m *VolumeReference) validateFreezeTime(formats strfmt.Registry) error {
-	if swag.IsZero(m.FreezeTime) { // not required
+	if typeutils.IsZero(m.FreezeTime) { // not required
 		return nil
 	}
 
@@ -328,7 +329,7 @@ func (m *VolumeReference) validatePrimaryRoleEnum(path, location string, value s
 }
 
 func (m *VolumeReference) validatePrimaryRole(formats strfmt.Registry) error {
-	if swag.IsZero(m.PrimaryRole) { // not required
+	if typeutils.IsZero(m.PrimaryRole) { // not required
 		return nil
 	}
 
@@ -368,7 +369,7 @@ func (m *VolumeReference) validateState(formats strfmt.Registry) error {
 }
 
 func (m *VolumeReference) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -426,7 +427,7 @@ func (m *VolumeReference) ContextValidate(ctx context.Context, formats strfmt.Re
 
 func (m *VolumeReference) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -469,13 +470,13 @@ func (m *VolumeReference) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *VolumeReference) UnmarshalBinary(b []byte) error {
 	var res VolumeReference
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

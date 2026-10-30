@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -72,7 +73,7 @@ func (m *NetworkSecurityGroupRuleProtocolTCPFlag) validateFlagEnum(path, locatio
 }
 
 func (m *NetworkSecurityGroupRuleProtocolTCPFlag) validateFlag(formats strfmt.Registry) error {
-	if swag.IsZero(m.Flag) { // not required
+	if typeutils.IsZero(m.Flag) { // not required
 		return nil
 	}
 
@@ -85,7 +86,7 @@ func (m *NetworkSecurityGroupRuleProtocolTCPFlag) validateFlag(formats strfmt.Re
 }
 
 // ContextValidate validates this network security group rule protocol Tcp flag based on context it is used
-func (m *NetworkSecurityGroupRuleProtocolTCPFlag) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *NetworkSecurityGroupRuleProtocolTCPFlag) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -94,13 +95,13 @@ func (m *NetworkSecurityGroupRuleProtocolTCPFlag) MarshalBinary() ([]byte, error
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkSecurityGroupRuleProtocolTCPFlag) UnmarshalBinary(b []byte) error {
 	var res NetworkSecurityGroupRuleProtocolTCPFlag
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

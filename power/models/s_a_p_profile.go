@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -163,7 +164,7 @@ func (m *SAPProfile) validateSmtModeEnum(path, location string, value int64) err
 }
 
 func (m *SAPProfile) validateSmtMode(formats strfmt.Registry) error {
-	if swag.IsZero(m.SmtMode) { // not required
+	if typeutils.IsZero(m.SmtMode) { // not required
 		return nil
 	}
 
@@ -234,7 +235,7 @@ func (m *SAPProfile) validateType(formats strfmt.Registry) error {
 }
 
 func (m *SAPProfile) validateVpmemVolume(formats strfmt.Registry) error {
-	if swag.IsZero(m.VpmemVolume) { // not required
+	if typeutils.IsZero(m.VpmemVolume) { // not required
 		return nil
 	}
 
@@ -274,7 +275,7 @@ func (m *SAPProfile) contextValidateVpmemVolume(ctx context.Context, formats str
 
 	if m.VpmemVolume != nil {
 
-		if swag.IsZero(m.VpmemVolume) { // not required
+		if typeutils.IsZero(m.VpmemVolume) { // not required
 			return nil
 		}
 
@@ -300,13 +301,13 @@ func (m *SAPProfile) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SAPProfile) UnmarshalBinary(b []byte) error {
 	var res SAPProfile
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res
@@ -326,12 +327,12 @@ type SAPProfileVpmemVolume struct {
 }
 
 // Validate validates this s a p profile vpmem volume
-func (m *SAPProfileVpmemVolume) Validate(formats strfmt.Registry) error {
+func (m *SAPProfileVpmemVolume) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this s a p profile vpmem volume based on context it is used
-func (m *SAPProfileVpmemVolume) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *SAPProfileVpmemVolume) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -340,13 +341,13 @@ func (m *SAPProfileVpmemVolume) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SAPProfileVpmemVolume) UnmarshalBinary(b []byte) error {
 	var res SAPProfileVpmemVolume
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -122,7 +123,7 @@ func (m *NetworkReference) Validate(formats strfmt.Registry) error {
 }
 
 func (m *NetworkReference) validateAccessConfig(formats strfmt.Registry) error {
-	if swag.IsZero(m.AccessConfig) { // not required
+	if typeutils.IsZero(m.AccessConfig) { // not required
 		return nil
 	}
 
@@ -172,7 +173,7 @@ func (m *NetworkReference) validateAdvertiseEnum(path, location string, value st
 }
 
 func (m *NetworkReference) validateAdvertise(formats strfmt.Registry) error {
-	if swag.IsZero(m.Advertise) { // not required
+	if typeutils.IsZero(m.Advertise) { // not required
 		return nil
 	}
 
@@ -214,7 +215,7 @@ func (m *NetworkReference) validateArpBroadcastEnum(path, location string, value
 }
 
 func (m *NetworkReference) validateArpBroadcast(formats strfmt.Registry) error {
-	if swag.IsZero(m.ArpBroadcast) { // not required
+	if typeutils.IsZero(m.ArpBroadcast) { // not required
 		return nil
 	}
 
@@ -227,7 +228,7 @@ func (m *NetworkReference) validateArpBroadcast(formats strfmt.Registry) error {
 }
 
 func (m *NetworkReference) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -257,7 +258,7 @@ func (m *NetworkReference) validateHref(formats strfmt.Registry) error {
 }
 
 func (m *NetworkReference) validateMtu(formats strfmt.Registry) error {
-	if swag.IsZero(m.Mtu) { // not required
+	if typeutils.IsZero(m.Mtu) { // not required
 		return nil
 	}
 
@@ -365,7 +366,7 @@ func (m *NetworkReference) ContextValidate(ctx context.Context, formats strfmt.R
 
 func (m *NetworkReference) contextValidateAccessConfig(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.AccessConfig) { // not required
+	if typeutils.IsZero(m.AccessConfig) { // not required
 		return nil
 	}
 
@@ -387,7 +388,7 @@ func (m *NetworkReference) contextValidateAccessConfig(ctx context.Context, form
 
 func (m *NetworkReference) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -412,13 +413,13 @@ func (m *NetworkReference) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkReference) UnmarshalBinary(b []byte) error {
 	var res NetworkReference
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

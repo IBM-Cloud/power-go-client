@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -142,7 +143,7 @@ func (m *ExportImage) validateRegionEnum(path, location string, value string) er
 }
 
 func (m *ExportImage) validateRegion(formats strfmt.Registry) error {
-	if swag.IsZero(m.Region) { // not required
+	if typeutils.IsZero(m.Region) { // not required
 		return nil
 	}
 
@@ -155,7 +156,7 @@ func (m *ExportImage) validateRegion(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this export image based on context it is used
-func (m *ExportImage) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *ExportImage) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -164,13 +165,13 @@ func (m *ExportImage) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *ExportImage) UnmarshalBinary(b []byte) error {
 	var res ExportImage
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

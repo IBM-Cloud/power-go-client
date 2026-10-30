@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVpnconnectionsDeleteReader is a Reader for the PcloudVpnconnectionsDelete structure.
@@ -68,11 +67,9 @@ func NewPcloudVpnconnectionsDeleteAccepted() *PcloudVpnconnectionsDeleteAccepted
 	return &PcloudVpnconnectionsDeleteAccepted{}
 }
 
-/*
-PcloudVpnconnectionsDeleteAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudVpnconnectionsDeleteAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudVpnconnectionsDeleteAccepted struct {
 	Payload *models.JobReference
 }
@@ -138,11 +135,9 @@ func NewPcloudVpnconnectionsDeleteBadRequest() *PcloudVpnconnectionsDeleteBadReq
 	return &PcloudVpnconnectionsDeleteBadRequest{}
 }
 
-/*
-PcloudVpnconnectionsDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVpnconnectionsDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVpnconnectionsDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudVpnconnectionsDeleteUnauthorized() *PcloudVpnconnectionsDeleteUnau
 	return &PcloudVpnconnectionsDeleteUnauthorized{}
 }
 
-/*
-PcloudVpnconnectionsDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVpnconnectionsDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVpnconnectionsDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudVpnconnectionsDeleteForbidden() *PcloudVpnconnectionsDeleteForbidd
 	return &PcloudVpnconnectionsDeleteForbidden{}
 }
 
-/*
-PcloudVpnconnectionsDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVpnconnectionsDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVpnconnectionsDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudVpnconnectionsDeleteNotFound() *PcloudVpnconnectionsDeleteNotFound
 	return &PcloudVpnconnectionsDeleteNotFound{}
 }
 
-/*
-PcloudVpnconnectionsDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVpnconnectionsDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVpnconnectionsDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudVpnconnectionsDeleteInternalServerError() *PcloudVpnconnectionsDel
 	return &PcloudVpnconnectionsDeleteInternalServerError{}
 }
 
-/*
-PcloudVpnconnectionsDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVpnconnectionsDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVpnconnectionsDeleteInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerAuthDeviceCodePostReader is a Reader for the ServiceBrokerAuthDeviceCodePost structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerAuthDeviceCodePostOK() *ServiceBrokerAuthDeviceCodePostOK {
 	return &ServiceBrokerAuthDeviceCodePostOK{}
 }
 
-/*
-ServiceBrokerAuthDeviceCodePostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerAuthDeviceCodePostOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerAuthDeviceCodePostOK struct {
 	Payload *models.DeviceCode
 }
@@ -138,11 +135,9 @@ func NewServiceBrokerAuthDeviceCodePostBadRequest() *ServiceBrokerAuthDeviceCode
 	return &ServiceBrokerAuthDeviceCodePostBadRequest{}
 }
 
-/*
-ServiceBrokerAuthDeviceCodePostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerAuthDeviceCodePostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerAuthDeviceCodePostBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceBrokerAuthDeviceCodePostUnauthorized() *ServiceBrokerAuthDeviceCo
 	return &ServiceBrokerAuthDeviceCodePostUnauthorized{}
 }
 
-/*
-ServiceBrokerAuthDeviceCodePostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerAuthDeviceCodePostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerAuthDeviceCodePostUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceBrokerAuthDeviceCodePostForbidden() *ServiceBrokerAuthDeviceCodeP
 	return &ServiceBrokerAuthDeviceCodePostForbidden{}
 }
 
-/*
-ServiceBrokerAuthDeviceCodePostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerAuthDeviceCodePostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerAuthDeviceCodePostForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceBrokerAuthDeviceCodePostNotFound() *ServiceBrokerAuthDeviceCodePo
 	return &ServiceBrokerAuthDeviceCodePostNotFound{}
 }
 
-/*
-ServiceBrokerAuthDeviceCodePostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerAuthDeviceCodePostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerAuthDeviceCodePostNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceBrokerAuthDeviceCodePostInternalServerError() *ServiceBrokerAuthD
 	return &ServiceBrokerAuthDeviceCodePostInternalServerError{}
 }
 
-/*
-ServiceBrokerAuthDeviceCodePostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerAuthDeviceCodePostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerAuthDeviceCodePostInternalServerError struct {
 	Payload *models.Error
 }

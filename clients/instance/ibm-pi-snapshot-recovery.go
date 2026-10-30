@@ -28,9 +28,9 @@ func NewIBMPISnapshotRecoveryClient(ctx context.Context, sess *ibmpisession.IBMP
 // Get gets the snapshot recovery site details for the current workspace location
 func (f *IBMPISnapshotRecoveryClient) Get() (*models.SnapshotRecoveryLocation, error) {
 	params := p_cloud_snapshot_recovery.NewPcloudLocationsSnapshotrecoveryGetParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut).
+		WithTimeout(helpers.PIGetTimeOut).
 		WithCloudInstanceID(f.cloudInstanceID)
-	resp, err := f.session.Power.PCloudSnapshotRecovery.PcloudLocationsSnapshotrecoveryGet(params, f.session.AuthInfo(f.cloudInstanceID))
+	resp, err := f.session.Power.PCloudSnapshotRecovery.PcloudLocationsSnapshotrecoveryGetContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get PI Snapshot Recovery location: %w", err))
 	}
@@ -43,8 +43,8 @@ func (f *IBMPISnapshotRecoveryClient) Get() (*models.SnapshotRecoveryLocation, e
 // GetAll gets all snapshot recovery locations supported by Power Virtual Server
 func (f *IBMPISnapshotRecoveryClient) GetAll() (*models.SnapshotRecoveryLocations, error) {
 	params := p_cloud_snapshot_recovery.NewPcloudLocationsSnapshotrecoveryGetallParams().
-		WithContext(f.ctx).WithTimeout(helpers.PIGetTimeOut)
-	resp, err := f.session.Power.PCloudSnapshotRecovery.PcloudLocationsSnapshotrecoveryGetall(params, f.session.AuthInfo(f.cloudInstanceID))
+		WithTimeout(helpers.PIGetTimeOut)
+	resp, err := f.session.Power.PCloudSnapshotRecovery.PcloudLocationsSnapshotrecoveryGetallContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
 	if err != nil {
 		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to Get all PI Snapshot Recovery locations: %w", err))
 	}

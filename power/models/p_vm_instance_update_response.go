@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -96,7 +97,7 @@ func (m *PVMInstanceUpdateResponse) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceUpdateResponse) validateDefaultTrustedProfile(formats strfmt.Registry) error {
-	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+	if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 		return nil
 	}
 
@@ -119,7 +120,7 @@ func (m *PVMInstanceUpdateResponse) validateDefaultTrustedProfile(formats strfmt
 }
 
 func (m *PVMInstanceUpdateResponse) validateMetadataService(formats strfmt.Registry) error {
-	if swag.IsZero(m.MetadataService) { // not required
+	if typeutils.IsZero(m.MetadataService) { // not required
 		return nil
 	}
 
@@ -142,7 +143,7 @@ func (m *PVMInstanceUpdateResponse) validateMetadataService(formats strfmt.Regis
 }
 
 func (m *PVMInstanceUpdateResponse) validatePinPolicy(formats strfmt.Registry) error {
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -195,7 +196,7 @@ func (m *PVMInstanceUpdateResponse) validateProcTypeEnum(path, location string, 
 }
 
 func (m *PVMInstanceUpdateResponse) validateProcType(formats strfmt.Registry) error {
-	if swag.IsZero(m.ProcType) { // not required
+	if typeutils.IsZero(m.ProcType) { // not required
 		return nil
 	}
 
@@ -208,7 +209,7 @@ func (m *PVMInstanceUpdateResponse) validateProcType(formats strfmt.Registry) er
 }
 
 func (m *PVMInstanceUpdateResponse) validateVirtualCores(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualCores) { // not required
+	if typeutils.IsZero(m.VirtualCores) { // not required
 		return nil
 	}
 
@@ -260,7 +261,7 @@ func (m *PVMInstanceUpdateResponse) contextValidateDefaultTrustedProfile(ctx con
 
 	if m.DefaultTrustedProfile != nil {
 
-		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 			return nil
 		}
 
@@ -285,7 +286,7 @@ func (m *PVMInstanceUpdateResponse) contextValidateMetadataService(ctx context.C
 
 	if m.MetadataService != nil {
 
-		if swag.IsZero(m.MetadataService) { // not required
+		if typeutils.IsZero(m.MetadataService) { // not required
 			return nil
 		}
 
@@ -308,7 +309,7 @@ func (m *PVMInstanceUpdateResponse) contextValidateMetadataService(ctx context.C
 
 func (m *PVMInstanceUpdateResponse) contextValidatePinPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -332,7 +333,7 @@ func (m *PVMInstanceUpdateResponse) contextValidateVirtualCores(ctx context.Cont
 
 	if m.VirtualCores != nil {
 
-		if swag.IsZero(m.VirtualCores) { // not required
+		if typeutils.IsZero(m.VirtualCores) { // not required
 			return nil
 		}
 
@@ -358,13 +359,13 @@ func (m *PVMInstanceUpdateResponse) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceUpdateResponse) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceUpdateResponse
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

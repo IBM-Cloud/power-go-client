@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // ServiceInstanceSchemaObject service instance schema object
@@ -42,7 +43,7 @@ func (m *ServiceInstanceSchemaObject) Validate(formats strfmt.Registry) error {
 }
 
 func (m *ServiceInstanceSchemaObject) validateCreate(formats strfmt.Registry) error {
-	if swag.IsZero(m.Create) { // not required
+	if typeutils.IsZero(m.Create) { // not required
 		return nil
 	}
 
@@ -65,7 +66,7 @@ func (m *ServiceInstanceSchemaObject) validateCreate(formats strfmt.Registry) er
 }
 
 func (m *ServiceInstanceSchemaObject) validateUpdate(formats strfmt.Registry) error {
-	if swag.IsZero(m.Update) { // not required
+	if typeutils.IsZero(m.Update) { // not required
 		return nil
 	}
 
@@ -109,7 +110,7 @@ func (m *ServiceInstanceSchemaObject) contextValidateCreate(ctx context.Context,
 
 	if m.Create != nil {
 
-		if swag.IsZero(m.Create) { // not required
+		if typeutils.IsZero(m.Create) { // not required
 			return nil
 		}
 
@@ -134,7 +135,7 @@ func (m *ServiceInstanceSchemaObject) contextValidateUpdate(ctx context.Context,
 
 	if m.Update != nil {
 
-		if swag.IsZero(m.Update) { // not required
+		if typeutils.IsZero(m.Update) { // not required
 			return nil
 		}
 
@@ -160,13 +161,13 @@ func (m *ServiceInstanceSchemaObject) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *ServiceInstanceSchemaObject) UnmarshalBinary(b []byte) error {
 	var res ServiceInstanceSchemaObject
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

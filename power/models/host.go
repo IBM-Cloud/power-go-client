@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // Host Host description
@@ -74,7 +75,7 @@ func (m *Host) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Host) validateCapacity(formats strfmt.Registry) error {
-	if swag.IsZero(m.Capacity) { // not required
+	if typeutils.IsZero(m.Capacity) { // not required
 		return nil
 	}
 
@@ -97,7 +98,7 @@ func (m *Host) validateCapacity(formats strfmt.Registry) error {
 }
 
 func (m *Host) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -118,7 +119,7 @@ func (m *Host) validateCrn(formats strfmt.Registry) error {
 }
 
 func (m *Host) validateHostGroup(formats strfmt.Registry) error {
-	if swag.IsZero(m.HostGroup) { // not required
+	if typeutils.IsZero(m.HostGroup) { // not required
 		return nil
 	}
 
@@ -141,7 +142,7 @@ func (m *Host) validateHostGroup(formats strfmt.Registry) error {
 }
 
 func (m *Host) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -191,7 +192,7 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 
 	if m.Capacity != nil {
 
-		if swag.IsZero(m.Capacity) { // not required
+		if typeutils.IsZero(m.Capacity) { // not required
 			return nil
 		}
 
@@ -214,7 +215,7 @@ func (m *Host) contextValidateCapacity(ctx context.Context, formats strfmt.Regis
 
 func (m *Host) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -238,7 +239,7 @@ func (m *Host) contextValidateHostGroup(ctx context.Context, formats strfmt.Regi
 
 	if m.HostGroup != nil {
 
-		if swag.IsZero(m.HostGroup) { // not required
+		if typeutils.IsZero(m.HostGroup) { // not required
 			return nil
 		}
 
@@ -282,13 +283,13 @@ func (m *Host) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Host) UnmarshalBinary(b []byte) error {
 	var res Host
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

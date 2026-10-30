@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudStoragecapacityTypesGetReader is a Reader for the PcloudStoragecapacityTypesGet structure.
@@ -68,11 +67,9 @@ func NewPcloudStoragecapacityTypesGetOK() *PcloudStoragecapacityTypesGetOK {
 	return &PcloudStoragecapacityTypesGetOK{}
 }
 
-/*
-PcloudStoragecapacityTypesGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudStoragecapacityTypesGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudStoragecapacityTypesGetOK struct {
 	Payload *models.StorageTypeCapacity
 }
@@ -138,11 +135,9 @@ func NewPcloudStoragecapacityTypesGetBadRequest() *PcloudStoragecapacityTypesGet
 	return &PcloudStoragecapacityTypesGetBadRequest{}
 }
 
-/*
-PcloudStoragecapacityTypesGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudStoragecapacityTypesGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudStoragecapacityTypesGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudStoragecapacityTypesGetUnauthorized() *PcloudStoragecapacityTypesG
 	return &PcloudStoragecapacityTypesGetUnauthorized{}
 }
 
-/*
-PcloudStoragecapacityTypesGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudStoragecapacityTypesGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudStoragecapacityTypesGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudStoragecapacityTypesGetForbidden() *PcloudStoragecapacityTypesGetF
 	return &PcloudStoragecapacityTypesGetForbidden{}
 }
 
-/*
-PcloudStoragecapacityTypesGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudStoragecapacityTypesGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudStoragecapacityTypesGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudStoragecapacityTypesGetNotFound() *PcloudStoragecapacityTypesGetNo
 	return &PcloudStoragecapacityTypesGetNotFound{}
 }
 
-/*
-PcloudStoragecapacityTypesGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudStoragecapacityTypesGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudStoragecapacityTypesGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudStoragecapacityTypesGetInternalServerError() *PcloudStoragecapacit
 	return &PcloudStoragecapacityTypesGetInternalServerError{}
 }
 
-/*
-PcloudStoragecapacityTypesGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudStoragecapacityTypesGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudStoragecapacityTypesGetInternalServerError struct {
 	Payload *models.Error
 }

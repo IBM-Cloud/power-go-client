@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBindingUnbindingReader is a Reader for the ServiceBindingUnbinding structure.
@@ -74,11 +73,9 @@ func NewServiceBindingUnbindingOK() *ServiceBindingUnbindingOK {
 	return &ServiceBindingUnbindingOK{}
 }
 
-/*
-ServiceBindingUnbindingOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBindingUnbindingOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBindingUnbindingOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewServiceBindingUnbindingAccepted() *ServiceBindingUnbindingAccepted {
 	return &ServiceBindingUnbindingAccepted{}
 }
 
-/*
-ServiceBindingUnbindingAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// ServiceBindingUnbindingAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type ServiceBindingUnbindingAccepted struct {
 	Payload *models.AsyncOperation
 }
@@ -212,11 +207,9 @@ func NewServiceBindingUnbindingBadRequest() *ServiceBindingUnbindingBadRequest {
 	return &ServiceBindingUnbindingBadRequest{}
 }
 
-/*
-ServiceBindingUnbindingBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBindingUnbindingBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBindingUnbindingBadRequest struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewServiceBindingUnbindingUnauthorized() *ServiceBindingUnbindingUnauthoriz
 	return &ServiceBindingUnbindingUnauthorized{}
 }
 
-/*
-ServiceBindingUnbindingUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBindingUnbindingUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBindingUnbindingUnauthorized struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewServiceBindingUnbindingForbidden() *ServiceBindingUnbindingForbidden {
 	return &ServiceBindingUnbindingForbidden{}
 }
 
-/*
-ServiceBindingUnbindingForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBindingUnbindingForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBindingUnbindingForbidden struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewServiceBindingUnbindingNotFound() *ServiceBindingUnbindingNotFound {
 	return &ServiceBindingUnbindingNotFound{}
 }
 
-/*
-ServiceBindingUnbindingNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBindingUnbindingNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBindingUnbindingNotFound struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewServiceBindingUnbindingGone() *ServiceBindingUnbindingGone {
 	return &ServiceBindingUnbindingGone{}
 }
 
-/*
-ServiceBindingUnbindingGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// ServiceBindingUnbindingGone describes a response with status code 410, with default header values.
+//
+// Gone
 type ServiceBindingUnbindingGone struct {
 	Payload *models.Error
 }

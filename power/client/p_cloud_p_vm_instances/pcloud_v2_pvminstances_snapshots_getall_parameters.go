@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudV2PvminstancesSnapshotsGetallParams() *PcloudV2PvminstancesSnapshotsGetallParams {
-	return &PcloudV2PvminstancesSnapshotsGetallParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudV2PvminstancesSnapshotsGetallParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudV2PvminstancesSnapshotsGetallParamsWithTimeout creates a new PcloudV2PvminstancesSnapshotsGetallParams object
 // with the ability to set a timeout on a request.
 func NewPcloudV2PvminstancesSnapshotsGetallParamsWithTimeout(timeout time.Duration) *PcloudV2PvminstancesSnapshotsGetallParams {
 	return &PcloudV2PvminstancesSnapshotsGetallParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudV2PvminstancesSnapshotsGetallParamsWithContext creates a new PcloudV2PvminstancesSnapshotsGetallParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2PvminstancesSnapshotsGetallParams].
 func NewPcloudV2PvminstancesSnapshotsGetallParamsWithContext(ctx context.Context) *PcloudV2PvminstancesSnapshotsGetallParams {
 	return &PcloudV2PvminstancesSnapshotsGetallParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -58,21 +62,19 @@ PcloudV2PvminstancesSnapshotsGetallParams contains all the parameters to send to
 */
 type PcloudV2PvminstancesSnapshotsGetallParams struct {
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	/* PvmInstanceID.
-
-	   PCloud PVM Instance ID
-	*/
+	// PvmInstanceID.
+	//
+	// PCloud PVM Instance ID
 	PvmInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud v2 pvminstances snapshots getall params (not the query body).
@@ -90,65 +92,68 @@ func (o *PcloudV2PvminstancesSnapshotsGetallParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud v2 pvminstances snapshots getall params
+// WithTimeout adds the timeout to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) WithTimeout(timeout time.Duration) *PcloudV2PvminstancesSnapshotsGetallParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud v2 pvminstances snapshots getall params
+// SetTimeout adds the timeout to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud v2 pvminstances snapshots getall params
+// WithContext adds the context to the pcloud v2 pvminstances snapshots getall params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2PvminstancesSnapshotsGetallParams].
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) WithContext(ctx context.Context) *PcloudV2PvminstancesSnapshotsGetallParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud v2 pvminstances snapshots getall params
+// SetContext adds the context to the pcloud v2 pvminstances snapshots getall params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudV2PvminstancesSnapshotsGetallParams].
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots getall params
+// WithHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) WithHTTPClient(client *http.Client) *PcloudV2PvminstancesSnapshotsGetallParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots getall params
+// SetHTTPClient adds the HTTPClient to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud v2 pvminstances snapshots getall params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) WithCloudInstanceID(cloudInstanceID string) *PcloudV2PvminstancesSnapshotsGetallParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud v2 pvminstances snapshots getall params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WithPvmInstanceID adds the pvmInstanceID to the pcloud v2 pvminstances snapshots getall params
+// WithPvmInstanceID adds the pvmInstanceID to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) WithPvmInstanceID(pvmInstanceID string) *PcloudV2PvminstancesSnapshotsGetallParams {
 	o.SetPvmInstanceID(pvmInstanceID)
 	return o
 }
 
-// SetPvmInstanceID adds the pvmInstanceId to the pcloud v2 pvminstances snapshots getall params
+// SetPvmInstanceID adds the pvmInstanceId to the pcloud v2 pvminstances snapshots getall params.
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) SetPvmInstanceID(pvmInstanceID string) {
 	o.PvmInstanceID = pvmInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudV2PvminstancesSnapshotsGetallParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error
