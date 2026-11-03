@@ -51,6 +51,12 @@ func (o *PcloudCloudinstancesSnapshotsDeleteReader) ReadResponse(response runtim
 			return nil, err
 		}
 		return nil, result
+	case 409:
+		result := NewPcloudCloudinstancesSnapshotsDeleteConflict()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 410:
 		result := NewPcloudCloudinstancesSnapshotsDeleteGone()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -395,6 +401,74 @@ func (o *PcloudCloudinstancesSnapshotsDeleteNotFound) GetPayload() *models.Error
 }
 
 func (o *PcloudCloudinstancesSnapshotsDeleteNotFound) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudinstancesSnapshotsDeleteConflict creates a PcloudCloudinstancesSnapshotsDeleteConflict with default headers values
+func NewPcloudCloudinstancesSnapshotsDeleteConflict() *PcloudCloudinstancesSnapshotsDeleteConflict {
+	return &PcloudCloudinstancesSnapshotsDeleteConflict{}
+}
+
+// PcloudCloudinstancesSnapshotsDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
+type PcloudCloudinstancesSnapshotsDeleteConflict struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud cloudinstances snapshots delete conflict response has a 2xx status code
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud cloudinstances snapshots delete conflict response has a 3xx status code
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud cloudinstances snapshots delete conflict response has a 4xx status code
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud cloudinstances snapshots delete conflict response has a 5xx status code
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud cloudinstances snapshots delete conflict response a status code equal to that given
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) IsCode(code int) bool {
+	return code == 409
+}
+
+// Code gets the status code for the pcloud cloudinstances snapshots delete conflict response
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) Code() int {
+	return 409
+}
+
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsDeleteConflict %s", 409, payload)
+}
+
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[DELETE /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}][%d] pcloudCloudinstancesSnapshotsDeleteConflict %s", 409, payload)
+}
+
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudCloudinstancesSnapshotsDeleteConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 

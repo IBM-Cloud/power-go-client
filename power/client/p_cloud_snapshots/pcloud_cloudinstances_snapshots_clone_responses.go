@@ -57,6 +57,12 @@ func (o *PcloudCloudinstancesSnapshotsCloneReader) ReadResponse(response runtime
 			return nil, err
 		}
 		return nil, result
+	case 422:
+		result := NewPcloudCloudinstancesSnapshotsCloneUnprocessableEntity()
+		if err := result.readResponse(response, consumer, o.formats); err != nil {
+			return nil, err
+		}
+		return nil, result
 	case 500:
 		result := NewPcloudCloudinstancesSnapshotsCloneInternalServerError()
 		if err := result.readResponse(response, consumer, o.formats); err != nil {
@@ -471,6 +477,74 @@ func (o *PcloudCloudinstancesSnapshotsCloneConflict) GetPayload() *models.Error 
 }
 
 func (o *PcloudCloudinstancesSnapshotsCloneConflict) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
+
+	o.Payload = new(models.Error)
+
+	// response payload
+	if err := consumer.Consume(response.Body(), o.Payload); err != nil && !stderrors.Is(err, io.EOF) {
+		return err
+	}
+
+	return nil
+}
+
+// NewPcloudCloudinstancesSnapshotsCloneUnprocessableEntity creates a PcloudCloudinstancesSnapshotsCloneUnprocessableEntity with default headers values
+func NewPcloudCloudinstancesSnapshotsCloneUnprocessableEntity() *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity {
+	return &PcloudCloudinstancesSnapshotsCloneUnprocessableEntity{}
+}
+
+// PcloudCloudinstancesSnapshotsCloneUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
+type PcloudCloudinstancesSnapshotsCloneUnprocessableEntity struct {
+	Payload *models.Error
+}
+
+// IsSuccess returns true when this pcloud cloudinstances snapshots clone unprocessable entity response has a 2xx status code
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) IsSuccess() bool {
+	return false
+}
+
+// IsRedirect returns true when this pcloud cloudinstances snapshots clone unprocessable entity response has a 3xx status code
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) IsRedirect() bool {
+	return false
+}
+
+// IsClientError returns true when this pcloud cloudinstances snapshots clone unprocessable entity response has a 4xx status code
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) IsClientError() bool {
+	return true
+}
+
+// IsServerError returns true when this pcloud cloudinstances snapshots clone unprocessable entity response has a 5xx status code
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) IsServerError() bool {
+	return false
+}
+
+// IsCode returns true when this pcloud cloudinstances snapshots clone unprocessable entity response a status code equal to that given
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) IsCode(code int) bool {
+	return code == 422
+}
+
+// Code gets the status code for the pcloud cloudinstances snapshots clone unprocessable entity response
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) Code() int {
+	return 422
+}
+
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) Error() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}/clone][%d] pcloudCloudinstancesSnapshotsCloneUnprocessableEntity %s", 422, payload)
+}
+
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) String() string {
+	payload, _ := json.Marshal(o.Payload)
+	return fmt.Sprintf("[POST /pcloud/v1/cloud-instances/{cloud_instance_id}/snapshots/{snapshot_id}/clone][%d] pcloudCloudinstancesSnapshotsCloneUnprocessableEntity %s", 422, payload)
+}
+
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) GetPayload() *models.Error {
+	return o.Payload
+}
+
+func (o *PcloudCloudinstancesSnapshotsCloneUnprocessableEntity) readResponse(response runtime.ClientResponse, consumer runtime.Consumer, formats strfmt.Registry) error {
 
 	o.Payload = new(models.Error)
 
