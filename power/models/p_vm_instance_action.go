@@ -5,6 +5,7 @@ package models
 import (
 	"context"
 	"encoding/json"
+	stderrors "errors"
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
@@ -23,18 +24,8 @@ type PVMInstanceAction struct {
 	// Enum: ["dhcp-ip-sync","dumprestart","hard-reboot","immediate-shutdown","reset-state","soft-reboot","start","stop"]
 	Action *string `json:"action"`
 
-	// CHAP authentication username for iSCSI D-mode IPL; only applicable when action is 'start'; co-required with chap_password.
-	// Max Length: 32
-	// Min Length: 1
-	// Pattern: ^[\x00-\x7F]{1,32}$
-	ChapName string `json:"chapName,omitempty"`
-
-	// CHAP authentication secret/password for iSCSI D-mode IPL; only applicable when action is 'start'; co-required with chapName.
-	// Max Length: 32
-	// Min Length: 12
-	// Pattern: ^[\x00-\x7F]{12,32}$
-	// Format: password
-	ChapPassword strfmt.Password `json:"chap_password,omitempty"`
+	// net boot
+	NetBoot *StartNetbootConfig `json:"netBoot,omitempty"`
 }
 
 // Validate validates this p VM instance action
@@ -45,11 +36,7 @@ func (m *PVMInstanceAction) Validate(formats strfmt.Registry) error {
 		res = append(res, err)
 	}
 
-	if err := m.validateChapName(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if err := m.validateChapPassword(formats); err != nil {
+	if err := m.validateNetBoot(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -120,52 +107,65 @@ func (m *PVMInstanceAction) validateAction(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *PVMInstanceAction) validateChapName(formats strfmt.Registry) error {
-	if typeutils.IsZero(m.ChapName) { // not required
+func (m *PVMInstanceAction) validateNetBoot(formats strfmt.Registry) error {
+	if typeutils.IsZero(m.NetBoot) { // not required
 		return nil
 	}
 
-	if err := validate.MinLength("chapName", "body", m.ChapName, 1); err != nil {
-		return err
-	}
+	if m.NetBoot != nil {
+		if err := m.NetBoot.Validate(formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("netBoot")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("netBoot")
+			}
 
-	if err := validate.MaxLength("chapName", "body", m.ChapName, 32); err != nil {
-		return err
-	}
-
-	if err := validate.Pattern("chapName", "body", m.ChapName, `^[\x00-\x7F]{1,32}$`); err != nil {
-		return err
+			return err
+		}
 	}
 
 	return nil
 }
 
-func (m *PVMInstanceAction) validateChapPassword(formats strfmt.Registry) error {
-	if typeutils.IsZero(m.ChapPassword) { // not required
-		return nil
+// ContextValidate validate this p VM instance action based on the context it is used
+func (m *PVMInstanceAction) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+	var res []error
+
+	if err := m.contextValidateNetBoot(ctx, formats); err != nil {
+		res = append(res, err)
 	}
 
-	if err := validate.MinLength("chap_password", "body", m.ChapPassword.String(), 12); err != nil {
-		return err
+	if len(res) > 0 {
+		return errors.CompositeValidationError(res...)
 	}
-
-	if err := validate.MaxLength("chap_password", "body", m.ChapPassword.String(), 32); err != nil {
-		return err
-	}
-
-	if err := validate.Pattern("chap_password", "body", m.ChapPassword.String(), `^[\x00-\x7F]{12,32}$`); err != nil {
-		return err
-	}
-
-	if err := validate.FormatOf("chap_password", "body", "password", m.ChapPassword.String(), formats); err != nil {
-		return err
-	}
-
 	return nil
 }
 
-// ContextValidate validates this p VM instance action based on context it is used
-func (m *PVMInstanceAction) ContextValidate(_ context.Context, _ strfmt.Registry) error {
+func (m *PVMInstanceAction) contextValidateNetBoot(ctx context.Context, formats strfmt.Registry) error {
+
+	if m.NetBoot != nil {
+
+		if typeutils.IsZero(m.NetBoot) { // not required
+			return nil
+		}
+
+		if err := m.NetBoot.ContextValidate(ctx, formats); err != nil {
+			ve := new(errors.Validation)
+			if stderrors.As(err, &ve) {
+				return ve.ValidateName("netBoot")
+			}
+			ce := new(errors.CompositeError)
+			if stderrors.As(err, &ce) {
+				return ce.ValidateName("netBoot")
+			}
+
+			return err
+		}
+	}
+
 	return nil
 }
 
