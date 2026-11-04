@@ -55,6 +55,9 @@ type PVMInstanceCreate struct {
 	// (deprecated - replaced by pinPolicy) Indicates if the server is allowed to migrate between hosts
 	Migratable *bool `json:"migratable,omitempty"`
 
+	// The pvm instance network attachments.
+	NetworkAttachments []*PVMInstanceAddNetworkAttachment `json:"networkAttachments"`
+
 	// (deprecated - replaced by networks) List of Network IDs
 	NetworkIDs []string `json:"networkIDs"`
 
@@ -175,6 +178,10 @@ func (m *PVMInstanceCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateMetadataService(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNetworkAttachments(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -338,6 +345,36 @@ func (m *PVMInstanceCreate) validateMetadataService(formats strfmt.Registry) err
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceCreate) validateNetworkAttachments(formats strfmt.Registry) error {
+	if typeutils.IsZero(m.NetworkAttachments) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NetworkAttachments); i++ {
+		if typeutils.IsZero(m.NetworkAttachments[i]) { // not required
+			continue
+		}
+
+		if m.NetworkAttachments[i] != nil {
+			if err := m.NetworkAttachments[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -890,6 +927,10 @@ func (m *PVMInstanceCreate) ContextValidate(ctx context.Context, formats strfmt.
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworkAttachments(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNetworks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -998,6 +1039,35 @@ func (m *PVMInstanceCreate) contextValidateMetadataService(ctx context.Context, 
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstanceCreate) contextValidateNetworkAttachments(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NetworkAttachments); i++ {
+
+		if m.NetworkAttachments[i] != nil {
+
+			if typeutils.IsZero(m.NetworkAttachments[i]) { // not required
+				return nil
+			}
+
+			if err := m.NetworkAttachments[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil

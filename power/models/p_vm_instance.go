@@ -93,11 +93,14 @@ type PVMInstance struct {
 	// net boot
 	NetBoot *PVMInstanceNetbootConfig `json:"netBoot,omitempty"`
 
+	// The PVM instance network attachments
+	NetworkAttachments []*PVMInstanceNetworkAttachment `json:"networkAttachments,omitempty"`
+
 	// (deprecated - replaced by networks) List of Network IDs
 	// Required: true
 	NetworkIDs []string `json:"networkIDs"`
 
-	// The pvm instance networks information
+	// The PVM instance networks information
 	Networks []*PVMInstanceNetwork `json:"networks"`
 
 	// OS system information (usually version and build)
@@ -250,6 +253,10 @@ func (m *PVMInstance) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateNetBoot(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNetworkAttachments(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -554,6 +561,36 @@ func (m *PVMInstance) validateNetBoot(formats strfmt.Registry) error {
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) validateNetworkAttachments(formats strfmt.Registry) error {
+	if typeutils.IsZero(m.NetworkAttachments) { // not required
+		return nil
+	}
+
+	for i := 0; i < len(m.NetworkAttachments); i++ {
+		if typeutils.IsZero(m.NetworkAttachments[i]) { // not required
+			continue
+		}
+
+		if m.NetworkAttachments[i] != nil {
+			if err := m.NetworkAttachments[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil
@@ -935,6 +972,10 @@ func (m *PVMInstance) ContextValidate(ctx context.Context, formats strfmt.Regist
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworkAttachments(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNetworks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -1169,6 +1210,35 @@ func (m *PVMInstance) contextValidateNetBoot(ctx context.Context, formats strfmt
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *PVMInstance) contextValidateNetworkAttachments(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NetworkAttachments); i++ {
+
+		if m.NetworkAttachments[i] != nil {
+
+			if typeutils.IsZero(m.NetworkAttachments[i]) { // not required
+				return nil
+			}
+
+			if err := m.NetworkAttachments[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil

@@ -17,12 +17,12 @@ import (
 // swagger:model PVMInstanceAddNetwork
 type PVMInstanceAddNetwork struct {
 
-	// Bandwidth in Gbps for the external network interface. Valid range is 1 to 100. Only valid when externalNetworkInterfaceCRN is specified.
+	// TO BE REMOVED once network attachment IS IMPLEMENTED. Bandwidth in Gbps for the external network interface. Valid range is 1 to 100. Only valid when externalNetworkInterfaceCRN is specified.
 	// Maximum: 100
 	// Minimum: 1
 	ExternalNetworkInterfaceBandwidth int64 `json:"externalNetworkInterfaceBandwidth,omitempty"`
 
-	// CRN of the VPC Virtual Network Interface to attach. Required if networkID is not specified. Cannot be combined with networkID.
+	// TO BE REMOVED once network attachment IS IMPLEMENTED. CRN of the VPC Virtual Network Interface to attach. Required if networkID is not specified. Cannot be combined with networkID.
 	ExternalNetworkInterfaceCRN string `json:"externalNetworkInterfaceCRN,omitempty"`
 
 	// The requested ip address of this network interface. Only valid when networkID is specified.
