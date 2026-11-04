@@ -104,6 +104,36 @@ type ClientService interface {
 	// PcloudPvminstancesGetallContext get all the pvm instances for this cloud instance.
 	PcloudPvminstancesGetallContext(ctx context.Context, params *PcloudPvminstancesGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesGetallOK, error)
 
+	// PcloudPvminstancesNetworkAttachmentsDelete remove the network attachment from a p VM instance.
+	PcloudPvminstancesNetworkAttachmentsDelete(params *PcloudPvminstancesNetworkAttachmentsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsDeleteOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsDeleteContext remove the network attachment from a p VM instance.
+	PcloudPvminstancesNetworkAttachmentsDeleteContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsDeleteOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsGet get a p VM instance s network attachment information.
+	PcloudPvminstancesNetworkAttachmentsGet(params *PcloudPvminstancesNetworkAttachmentsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsGetContext get a p VM instance s network attachment information.
+	PcloudPvminstancesNetworkAttachmentsGetContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsGetall get all network attachments for this p VM instance.
+	PcloudPvminstancesNetworkAttachmentsGetall(params *PcloudPvminstancesNetworkAttachmentsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetallOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsGetallContext get all network attachments for this p VM instance.
+	PcloudPvminstancesNetworkAttachmentsGetallContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetallOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsPost perform network attachment.
+	PcloudPvminstancesNetworkAttachmentsPost(params *PcloudPvminstancesNetworkAttachmentsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPostCreated, error)
+
+	// PcloudPvminstancesNetworkAttachmentsPostContext perform network attachment.
+	PcloudPvminstancesNetworkAttachmentsPostContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPostCreated, error)
+
+	// PcloudPvminstancesNetworkAttachmentsPut update a p VM instance s network attachment.
+	PcloudPvminstancesNetworkAttachmentsPut(params *PcloudPvminstancesNetworkAttachmentsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPutOK, error)
+
+	// PcloudPvminstancesNetworkAttachmentsPutContext update a p VM instance s network attachment.
+	PcloudPvminstancesNetworkAttachmentsPutContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPutOK, error)
+
 	// PcloudPvminstancesNetworksDelete remove all address of network from a p VM instance.
 	PcloudPvminstancesNetworksDelete(params *PcloudPvminstancesNetworksDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworksDeleteOK, error)
 
@@ -818,6 +848,381 @@ func (a *Client) PcloudPvminstancesGetallContext(ctx context.Context, params *Pc
 	//
 	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
 	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+// PcloudPvminstancesNetworkAttachmentsDelete removes the network attachment from a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworkAttachmentsDeleteContext] instead.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsDelete(params *PcloudPvminstancesNetworkAttachmentsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsDeleteOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworkAttachmentsDeleteContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworkAttachmentsDeleteContext removes the network attachment from a p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 120 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworkAttachmentsDeleteParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsDeleteContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsDeleteParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsDeleteOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesNetworkAttachmentsDeleteParams()
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.network-attachments.delete",
+		Method:             "DELETE",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/network-attachments/{network_attachment_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesNetworkAttachmentsDeleteReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Client:             params.HTTPClient,
+	}
+
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.SubmitContext(ctx, op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesNetworkAttachmentsDeleteOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.network-attachments.delete: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+// PcloudPvminstancesNetworkAttachmentsGet gets a p VM instance s network attachment information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworkAttachmentsGetContext] instead.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsGet(params *PcloudPvminstancesNetworkAttachmentsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworkAttachmentsGetContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworkAttachmentsGetContext gets a p VM instance s network attachment information.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworkAttachmentsGetParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsGetContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsGetParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesNetworkAttachmentsGetParams()
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.network-attachments.get",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/network-attachments/{network_attachment_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesNetworkAttachmentsGetReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Client:             params.HTTPClient,
+	}
+
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.SubmitContext(ctx, op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesNetworkAttachmentsGetOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.network-attachments.get: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+// PcloudPvminstancesNetworkAttachmentsGetall gets all network attachments for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworkAttachmentsGetallContext] instead.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsGetall(params *PcloudPvminstancesNetworkAttachmentsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetallOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworkAttachmentsGetallContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworkAttachmentsGetallContext gets all network attachments for this p VM instance.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 1000 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworkAttachmentsGetallParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsGetallContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsGetallParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsGetallOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesNetworkAttachmentsGetallParams()
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.network-attachments.getall",
+		Method:             "GET",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/network-attachments",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesNetworkAttachmentsGetallReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Client:             params.HTTPClient,
+	}
+
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.SubmitContext(ctx, op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesNetworkAttachmentsGetallOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.network-attachments.getall: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+// PcloudPvminstancesNetworkAttachmentsPost performs network attachment.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworkAttachmentsPostContext] instead.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsPost(params *PcloudPvminstancesNetworkAttachmentsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPostCreated, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworkAttachmentsPostContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworkAttachmentsPostContext performs network attachment.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworkAttachmentsPostParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsPostContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsPostParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPostCreated, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesNetworkAttachmentsPostParams()
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.network-attachments.post",
+		Method:             "POST",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/network-attachments",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesNetworkAttachmentsPostReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Client:             params.HTTPClient,
+	}
+
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.SubmitContext(ctx, op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesNetworkAttachmentsPostCreated)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.network-attachments.post: API contract not enforced by server. Client expected to get an error, but got: %T", result)
+	panic(msg)
+}
+
+// PcloudPvminstancesNetworkAttachmentsPut updates a p VM instance s network attachment.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// This method does not support injected context.
+// However, timeout and opentracing contexts are honored whenever enabled.
+//
+// If you need to pass a specific context, use [Client.PcloudPvminstancesNetworkAttachmentsPutContext] instead.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsPut(params *PcloudPvminstancesNetworkAttachmentsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPutOK, error) {
+	var ctx context.Context
+	if params != nil && params.inner.ctx != nil {
+		ctx = params.inner.ctx
+	} else {
+		ctx = context.Background()
+	}
+
+	return a.PcloudPvminstancesNetworkAttachmentsPutContext(ctx, params, authInfo, opts...)
+}
+
+// PcloudPvminstancesNetworkAttachmentsPutContext updates a p VM instance s network attachment.
+//
+// This endpoint is subject to rate-limiting policies to ensure platform stability.
+// Rate Limit: 150 requests per 60 seconds (subject to overall rate limit)
+// Scope: Tracked by user session (bearer token)
+// Pacing & Recovery: If requests temporarily exceed the allowance, further requests will be rejected for up to 300 seconds.
+// .
+//
+// Do not use the deprecated [PcloudPvminstancesNetworkAttachmentsPutParams.Context] with this method: it would be ignored.
+func (a *Client) PcloudPvminstancesNetworkAttachmentsPutContext(ctx context.Context, params *PcloudPvminstancesNetworkAttachmentsPutParams, authInfo runtime.ClientAuthInfoWriter, opts ...ClientOption) (*PcloudPvminstancesNetworkAttachmentsPutOK, error) {
+	// NOTE: parameters are not validated before sending
+	if params == nil {
+		params = NewPcloudPvminstancesNetworkAttachmentsPutParams()
+	}
+
+	op := &runtime.ClientOperation{
+		ID:                 "pcloud.pvminstances.network-attachments.put",
+		Method:             "PUT",
+		PathPattern:        "/pcloud/v1/cloud-instances/{cloud_instance_id}/pvm-instances/{pvm_instance_id}/network-attachments/{network_attachment_id}",
+		ProducesMediaTypes: []string{"application/json"},
+		ConsumesMediaTypes: []string{"application/json"},
+		Schemes:            []string{"http"},
+		Params:             params,
+		Reader:             &PcloudPvminstancesNetworkAttachmentsPutReader{formats: a.formats},
+		AuthInfo:           authInfo,
+		Client:             params.HTTPClient,
+	}
+
+	for _, opt := range opts {
+		opt(op)
+	}
+
+	result, err := a.transport.SubmitContext(ctx, op)
+	if err != nil {
+		return nil, err
+	}
+
+	// only one success response has to be checked
+	success, ok := result.(*PcloudPvminstancesNetworkAttachmentsPutOK)
+	if ok {
+		return success, nil
+	}
+
+	// unexpected success response.
+
+	// no default response is defined.
+	//
+	// safeguard: normally, in the absence of a default response, unknown success responses return an error above: so this is a codegen issue
+	msg := fmt.Sprintf("unexpected success response for pcloud.pvminstances.network-attachments.put: API contract not enforced by server. Client expected to get an error, but got: %T", result)
 	panic(msg)
 }
 

@@ -49,8 +49,10 @@ type SAPCreate struct {
 	// Required: true
 	Name *string `json:"name"`
 
-	// The pvm instance networks information
-	// Required: true
+	// The PVM instance network attachments
+	NetworkAttachments []*PVMInstanceAddNetworkAttachment `json:"networkAttachments"`
+
+	// The PVM instance networks information
 	Networks []*PVMInstanceAddNetwork `json:"networks"`
 
 	// pin policy
@@ -134,6 +136,10 @@ func (m *SAPCreate) Validate(formats strfmt.Registry) error {
 	}
 
 	if err := m.validateName(formats); err != nil {
+		res = append(res, err)
+	}
+
+	if err := m.validateNetworkAttachments(formats); err != nil {
 		res = append(res, err)
 	}
 
@@ -285,10 +291,39 @@ func (m *SAPCreate) validateName(formats strfmt.Registry) error {
 	return nil
 }
 
-func (m *SAPCreate) validateNetworks(formats strfmt.Registry) error {
+func (m *SAPCreate) validateNetworkAttachments(formats strfmt.Registry) error {
+	if typeutils.IsZero(m.NetworkAttachments) { // not required
+		return nil
+	}
 
-	if err := validate.Required("networks", "body", m.Networks); err != nil {
-		return err
+	for i := 0; i < len(m.NetworkAttachments); i++ {
+		if typeutils.IsZero(m.NetworkAttachments[i]) { // not required
+			continue
+		}
+
+		if m.NetworkAttachments[i] != nil {
+			if err := m.NetworkAttachments[i].Validate(formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
+	}
+
+	return nil
+}
+
+func (m *SAPCreate) validateNetworks(formats strfmt.Registry) error {
+	if typeutils.IsZero(m.Networks) { // not required
+		return nil
 	}
 
 	for i := 0; i < len(m.Networks); i++ {
@@ -534,6 +569,10 @@ func (m *SAPCreate) ContextValidate(ctx context.Context, formats strfmt.Registry
 		res = append(res, err)
 	}
 
+	if err := m.contextValidateNetworkAttachments(ctx, formats); err != nil {
+		res = append(res, err)
+	}
+
 	if err := m.contextValidateNetworks(ctx, formats); err != nil {
 		res = append(res, err)
 	}
@@ -655,6 +694,35 @@ func (m *SAPCreate) contextValidateMetadataService(ctx context.Context, formats 
 
 			return err
 		}
+	}
+
+	return nil
+}
+
+func (m *SAPCreate) contextValidateNetworkAttachments(ctx context.Context, formats strfmt.Registry) error {
+
+	for i := 0; i < len(m.NetworkAttachments); i++ {
+
+		if m.NetworkAttachments[i] != nil {
+
+			if typeutils.IsZero(m.NetworkAttachments[i]) { // not required
+				return nil
+			}
+
+			if err := m.NetworkAttachments[i].ContextValidate(ctx, formats); err != nil {
+				ve := new(errors.Validation)
+				if stderrors.As(err, &ve) {
+					return ve.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+				ce := new(errors.CompositeError)
+				if stderrors.As(err, &ce) {
+					return ce.ValidateName("networkAttachments" + "." + strconv.Itoa(i))
+				}
+
+				return err
+			}
+		}
+
 	}
 
 	return nil
