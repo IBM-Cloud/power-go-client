@@ -325,3 +325,77 @@ func (f *IBMPIInstanceClient) Unshelve(id string, body *models.PVMInstanceUnshel
 	}
 	return nil
 }
+
+// CreateNetworkAttachment attaches a VPC Virtual Network Interface to an Instance
+func (f *IBMPIInstanceClient) CreateNetworkAttachment(id string, body *models.PVMInstanceAddNetworkAttachment) (*models.PVMInstanceNetworkAttachment, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworkAttachmentsPostParams().
+		WithTimeout(helpers.PICreateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesNetworkAttachmentsPostContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to create network attachment for the pvminstanceid %s: %w", id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to create network attachment for the pvminstanceid %s", id)
+	}
+	return resp.Payload, nil
+}
+
+// GetNetworkAttachment returns a specific network attachment on an Instance
+func (f *IBMPIInstanceClient) GetNetworkAttachment(id, networkAttachmentID string) (*models.PVMInstanceNetworkAttachment, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworkAttachmentsGetParams().
+		WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithNetworkAttachmentID(networkAttachmentID)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesNetworkAttachmentsGetContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get network attachment %s for the pvminstanceid %s: %w", networkAttachmentID, id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get network attachment %s for the pvminstanceid %s", networkAttachmentID, id)
+	}
+	return resp.Payload, nil
+}
+
+// GetAllNetworkAttachments returns all network attachments on an Instance
+func (f *IBMPIInstanceClient) GetAllNetworkAttachments(id string) (*models.PVMInstanceNetworkAttachments, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworkAttachmentsGetallParams().
+		WithTimeout(helpers.PIGetTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesNetworkAttachmentsGetallContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to get network attachments for the pvminstanceid %s: %w", id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to get network attachments for the pvminstanceid %s", id)
+	}
+	return resp.Payload, nil
+}
+
+// UpdateNetworkAttachment updates a network attachment on an Instance
+func (f *IBMPIInstanceClient) UpdateNetworkAttachment(id, networkAttachmentID string, body *models.PVMInstanceUpdateNetworkAttachment) (*models.PVMInstanceNetworkAttachment, error) {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworkAttachmentsPutParams().
+		WithTimeout(helpers.PIUpdateTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithNetworkAttachmentID(networkAttachmentID).
+		WithBody(body)
+	resp, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesNetworkAttachmentsPutContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return nil, ibmpisession.SDKFailWithAPIError(err, fmt.Errorf("failed to update network attachment %s for the pvminstanceid %s: %w", networkAttachmentID, id, err))
+	}
+	if resp == nil || resp.Payload == nil {
+		return nil, fmt.Errorf("failed to update network attachment %s for the pvminstanceid %s", networkAttachmentID, id)
+	}
+	return resp.Payload, nil
+}
+
+// DeleteNetworkAttachment removes a network attachment from an Instance
+func (f *IBMPIInstanceClient) DeleteNetworkAttachment(id, networkAttachmentID string) error {
+	params := p_cloud_p_vm_instances.NewPcloudPvminstancesNetworkAttachmentsDeleteParams().
+		WithTimeout(helpers.PIDeleteTimeOut).
+		WithCloudInstanceID(f.cloudInstanceID).WithPvmInstanceID(id).WithNetworkAttachmentID(networkAttachmentID)
+	_, err := f.session.Power.PCloudpVMInstances.PcloudPvminstancesNetworkAttachmentsDeleteContext(f.ctx, params, f.session.AuthInfo(f.cloudInstanceID))
+	if err != nil {
+		return fmt.Errorf("failed to delete network attachment %s for the pvminstanceid %s: %w", networkAttachmentID, id, err)
+	}
+	return nil
+}
