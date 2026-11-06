@@ -33,7 +33,7 @@ type NetworkReference struct {
 	// crn
 	Crn CRN `json:"crn,omitempty"`
 
-	// DHCP Enabled Network
+	// (deprecated) DHCP Enabled Network
 	DhcpManaged bool `json:"dhcpManaged,omitempty"`
 
 	// DHCP Enabled Network

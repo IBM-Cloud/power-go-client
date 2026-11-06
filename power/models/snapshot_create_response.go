@@ -18,11 +18,11 @@ import (
 // swagger:model SnapshotCreateResponse
 type SnapshotCreateResponse struct {
 
+	// ID of the asynchronous job created to track the progress of the snapshot operation
+	AsyncJobID string `json:"asyncJobID,omitempty"`
+
 	// crn
 	Crn CRN `json:"crn,omitempty"`
-
-	// ID of the job created to track the progress of the snapshot operation
-	JobID string `json:"jobID,omitempty"`
 
 	// ID of the PVM instance snapshot
 	// Required: true
