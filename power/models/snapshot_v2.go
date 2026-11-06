@@ -25,6 +25,9 @@ type SnapshotV2 struct {
 	// The aggregated storage for the instance snapshot for each storage tier
 	AggregatedSnapshotUsage map[string]float64 `json:"aggregatedSnapshotUsage,omitempty"`
 
+	// ID of the asynchronous job created to track the progress of the snapshot operation
+	AsyncJobID string `json:"asyncJobID,omitempty"`
+
 	// Date when the instance snapshot completed. This will represent the date when in-place and zonal instance snapshots complete.  For a zonal instance snapshot with a remote peer instance snapshot, this will represent when both instance snapshots have completed.
 	// Format: date-time
 	CompletionDate *strfmt.DateTime `json:"completionDate,omitempty"`
@@ -42,9 +45,6 @@ type SnapshotV2 struct {
 
 	// Description of the PVM instance snapshot with a maximum of 255 characters allowed.
 	Description string `json:"description,omitempty"`
-
-	// ID of the job created to track the progress of the snapshot operation
-	JobID string `json:"jobID,omitempty"`
 
 	// Last Update Date
 	// Format: date-time

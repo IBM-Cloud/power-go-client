@@ -18,11 +18,11 @@ import (
 // swagger:model CloneSnapshotResponse
 type CloneSnapshotResponse struct {
 
+	// ID of the asynchronous job created to track progress of clone operation
+	AsyncJobID string `json:"asyncJobID,omitempty"`
+
 	// List of cloned volumes
 	ClonedVolumes []*ClonedVolumeSnapshot `json:"clonedVolumes"`
-
-	// ID of the job created to track progress of clone operation
-	JobID string `json:"jobID,omitempty"`
 }
 
 // Validate validates this clone snapshot response
