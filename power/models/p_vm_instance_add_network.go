@@ -5,25 +5,14 @@ package models
 import (
 	"context"
 
-	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
 	"github.com/go-openapi/swag/jsonutils"
-	"github.com/go-openapi/swag/typeutils"
-	"github.com/go-openapi/validate"
 )
 
 // PVMInstanceAddNetwork p VM instance add network
 //
 // swagger:model PVMInstanceAddNetwork
 type PVMInstanceAddNetwork struct {
-
-	// TO BE REMOVED once network attachment IS IMPLEMENTED. Bandwidth in Gbps for the external network interface. Valid range is 1 to 100. Only valid when externalNetworkInterfaceCRN is specified.
-	// Maximum: 100
-	// Minimum: 1
-	ExternalNetworkInterfaceBandwidth int64 `json:"externalNetworkInterfaceBandwidth,omitempty"`
-
-	// TO BE REMOVED once network attachment IS IMPLEMENTED. CRN of the VPC Virtual Network Interface to attach. Required if networkID is not specified. Cannot be combined with networkID.
-	ExternalNetworkInterfaceCRN string `json:"externalNetworkInterfaceCRN,omitempty"`
 
 	// The requested ip address of this network interface. Only valid when networkID is specified.
 	IPAddress string `json:"ipAddress,omitempty"`
@@ -36,32 +25,7 @@ type PVMInstanceAddNetwork struct {
 }
 
 // Validate validates this p VM instance add network
-func (m *PVMInstanceAddNetwork) Validate(formats strfmt.Registry) error {
-	var res []error
-
-	if err := m.validateExternalNetworkInterfaceBandwidth(formats); err != nil {
-		res = append(res, err)
-	}
-
-	if len(res) > 0 {
-		return errors.CompositeValidationError(res...)
-	}
-	return nil
-}
-
-func (m *PVMInstanceAddNetwork) validateExternalNetworkInterfaceBandwidth(formats strfmt.Registry) error {
-	if typeutils.IsZero(m.ExternalNetworkInterfaceBandwidth) { // not required
-		return nil
-	}
-
-	if err := validate.MinimumInt("externalNetworkInterfaceBandwidth", "body", m.ExternalNetworkInterfaceBandwidth, 1, false); err != nil {
-		return err
-	}
-
-	if err := validate.MaximumInt("externalNetworkInterfaceBandwidth", "body", m.ExternalNetworkInterfaceBandwidth, 100, false); err != nil {
-		return err
-	}
-
+func (m *PVMInstanceAddNetwork) Validate(_ strfmt.Registry) error {
 	return nil
 }
 

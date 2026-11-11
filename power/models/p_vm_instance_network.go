@@ -17,12 +17,6 @@ type PVMInstanceNetwork struct {
 	// The external ip address (for pub-vlan networks)
 	ExternalIP string `json:"externalIP,omitempty"`
 
-	// TO BE REMOVED once networkAttachment is implemented. Bandwidth in Gbps of the external network interface
-	ExternalNetworkInterfaceBandwidth int64 `json:"externalNetworkInterfaceBandwidth,omitempty"`
-
-	// TO BE REMOVED once networkAttachment is implemented. CRN of the attached VPC Virtual Network Interface
-	ExternalNetworkInterfaceCRN string `json:"externalNetworkInterfaceCRN,omitempty"`
-
 	// Link to PVM Instance Network
 	Href string `json:"href,omitempty"`
 
