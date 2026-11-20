@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // UpdateTrustedProfile update trusted profile
@@ -38,7 +39,7 @@ func (m *UpdateTrustedProfile) Validate(formats strfmt.Registry) error {
 }
 
 func (m *UpdateTrustedProfile) validateTarget(formats strfmt.Registry) error {
-	if swag.IsZero(m.Target) { // not required
+	if typeutils.IsZero(m.Target) { // not required
 		return nil
 	}
 
@@ -78,7 +79,7 @@ func (m *UpdateTrustedProfile) contextValidateTarget(ctx context.Context, format
 
 	if m.Target != nil {
 
-		if swag.IsZero(m.Target) { // not required
+		if typeutils.IsZero(m.Target) { // not required
 			return nil
 		}
 
@@ -104,13 +105,13 @@ func (m *UpdateTrustedProfile) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *UpdateTrustedProfile) UnmarshalBinary(b []byte) error {
 	var res UpdateTrustedProfile
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

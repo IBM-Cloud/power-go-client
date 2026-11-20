@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewInternalV1PowernsNetworksGetParams() *InternalV1PowernsNetworksGetParams {
-	return &InternalV1PowernsNetworksGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewInternalV1PowernsNetworksGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewInternalV1PowernsNetworksGetParamsWithTimeout creates a new InternalV1PowernsNetworksGetParams object
 // with the ability to set a timeout on a request.
 func NewInternalV1PowernsNetworksGetParamsWithTimeout(timeout time.Duration) *InternalV1PowernsNetworksGetParams {
 	return &InternalV1PowernsNetworksGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewInternalV1PowernsNetworksGetParamsWithContext creates a new InternalV1PowernsNetworksGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PowernsNetworksGetParams].
 func NewInternalV1PowernsNetworksGetParamsWithContext(ctx context.Context) *InternalV1PowernsNetworksGetParams {
 	return &InternalV1PowernsNetworksGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -57,9 +61,9 @@ InternalV1PowernsNetworksGetParams contains all the parameters to send to the AP
 	Typically these are written to a http.Request.
 */
 type InternalV1PowernsNetworksGetParams struct {
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the internal v1 powerns networks get params (not the query body).
@@ -77,43 +81,46 @@ func (o *InternalV1PowernsNetworksGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the internal v1 powerns networks get params
+// WithTimeout adds the timeout to the internal v1 powerns networks get params.
 func (o *InternalV1PowernsNetworksGetParams) WithTimeout(timeout time.Duration) *InternalV1PowernsNetworksGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the internal v1 powerns networks get params
+// SetTimeout adds the timeout to the internal v1 powerns networks get params.
 func (o *InternalV1PowernsNetworksGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the internal v1 powerns networks get params
+// WithContext adds the context to the internal v1 powerns networks get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PowernsNetworksGetParams].
 func (o *InternalV1PowernsNetworksGetParams) WithContext(ctx context.Context) *InternalV1PowernsNetworksGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the internal v1 powerns networks get params
+// SetContext adds the context to the internal v1 powerns networks get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PowernsNetworksGetParams].
 func (o *InternalV1PowernsNetworksGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the internal v1 powerns networks get params
+// WithHTTPClient adds the HTTPClient to the internal v1 powerns networks get params.
 func (o *InternalV1PowernsNetworksGetParams) WithHTTPClient(client *http.Client) *InternalV1PowernsNetworksGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the internal v1 powerns networks get params
+// SetHTTPClient adds the HTTPClient to the internal v1 powerns networks get params.
 func (o *InternalV1PowernsNetworksGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *InternalV1PowernsNetworksGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

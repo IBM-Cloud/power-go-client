@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudTasksDeleteReader is a Reader for the PcloudTasksDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudTasksDeleteOK() *PcloudTasksDeleteOK {
 	return &PcloudTasksDeleteOK{}
 }
 
-/*
-PcloudTasksDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudTasksDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudTasksDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudTasksDeleteBadRequest() *PcloudTasksDeleteBadRequest {
 	return &PcloudTasksDeleteBadRequest{}
 }
 
-/*
-PcloudTasksDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudTasksDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudTasksDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudTasksDeleteUnauthorized() *PcloudTasksDeleteUnauthorized {
 	return &PcloudTasksDeleteUnauthorized{}
 }
 
-/*
-PcloudTasksDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudTasksDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudTasksDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudTasksDeleteForbidden() *PcloudTasksDeleteForbidden {
 	return &PcloudTasksDeleteForbidden{}
 }
 
-/*
-PcloudTasksDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudTasksDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudTasksDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudTasksDeleteNotFound() *PcloudTasksDeleteNotFound {
 	return &PcloudTasksDeleteNotFound{}
 }
 
-/*
-PcloudTasksDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudTasksDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudTasksDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudTasksDeleteGone() *PcloudTasksDeleteGone {
 	return &PcloudTasksDeleteGone{}
 }
 
-/*
-PcloudTasksDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// PcloudTasksDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type PcloudTasksDeleteGone struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudTasksDeleteInternalServerError() *PcloudTasksDeleteInternalServerE
 	return &PcloudTasksDeleteInternalServerError{}
 }
 
-/*
-PcloudTasksDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudTasksDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudTasksDeleteInternalServerError struct {
 	Payload *models.Error
 }

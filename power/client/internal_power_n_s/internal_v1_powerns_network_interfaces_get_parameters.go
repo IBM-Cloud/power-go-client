@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewInternalV1PowernsNetworkInterfacesGetParams() *InternalV1PowernsNetworkInterfacesGetParams {
-	return &InternalV1PowernsNetworkInterfacesGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewInternalV1PowernsNetworkInterfacesGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewInternalV1PowernsNetworkInterfacesGetParamsWithTimeout creates a new InternalV1PowernsNetworkInterfacesGetParams object
 // with the ability to set a timeout on a request.
 func NewInternalV1PowernsNetworkInterfacesGetParamsWithTimeout(timeout time.Duration) *InternalV1PowernsNetworkInterfacesGetParams {
 	return &InternalV1PowernsNetworkInterfacesGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewInternalV1PowernsNetworkInterfacesGetParamsWithContext creates a new InternalV1PowernsNetworkInterfacesGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PowernsNetworkInterfacesGetParams].
 func NewInternalV1PowernsNetworkInterfacesGetParamsWithContext(ctx context.Context) *InternalV1PowernsNetworkInterfacesGetParams {
 	return &InternalV1PowernsNetworkInterfacesGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -57,9 +61,9 @@ InternalV1PowernsNetworkInterfacesGetParams contains all the parameters to send 
 	Typically these are written to a http.Request.
 */
 type InternalV1PowernsNetworkInterfacesGetParams struct {
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the internal v1 powerns network interfaces get params (not the query body).
@@ -77,43 +81,46 @@ func (o *InternalV1PowernsNetworkInterfacesGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the internal v1 powerns network interfaces get params
+// WithTimeout adds the timeout to the internal v1 powerns network interfaces get params.
 func (o *InternalV1PowernsNetworkInterfacesGetParams) WithTimeout(timeout time.Duration) *InternalV1PowernsNetworkInterfacesGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the internal v1 powerns network interfaces get params
+// SetTimeout adds the timeout to the internal v1 powerns network interfaces get params.
 func (o *InternalV1PowernsNetworkInterfacesGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the internal v1 powerns network interfaces get params
+// WithContext adds the context to the internal v1 powerns network interfaces get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PowernsNetworkInterfacesGetParams].
 func (o *InternalV1PowernsNetworkInterfacesGetParams) WithContext(ctx context.Context) *InternalV1PowernsNetworkInterfacesGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the internal v1 powerns network interfaces get params
+// SetContext adds the context to the internal v1 powerns network interfaces get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PowernsNetworkInterfacesGetParams].
 func (o *InternalV1PowernsNetworkInterfacesGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the internal v1 powerns network interfaces get params
+// WithHTTPClient adds the HTTPClient to the internal v1 powerns network interfaces get params.
 func (o *InternalV1PowernsNetworkInterfacesGetParams) WithHTTPClient(client *http.Client) *InternalV1PowernsNetworkInterfacesGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the internal v1 powerns network interfaces get params
+// SetHTTPClient adds the HTTPClient to the internal v1 powerns network interfaces get params.
 func (o *InternalV1PowernsNetworkInterfacesGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *InternalV1PowernsNetworkInterfacesGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

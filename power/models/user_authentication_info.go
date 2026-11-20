@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -98,7 +99,7 @@ func (m *UserAuthenticationInfo) validateAccountID(formats strfmt.Registry) erro
 }
 
 func (m *UserAuthenticationInfo) validateCapabilities(formats strfmt.Registry) error {
-	if swag.IsZero(m.Capabilities) { // not required
+	if typeutils.IsZero(m.Capabilities) { // not required
 		return nil
 	}
 
@@ -121,7 +122,7 @@ func (m *UserAuthenticationInfo) validateCapabilities(formats strfmt.Registry) e
 }
 
 func (m *UserAuthenticationInfo) validateCrnAccess(formats strfmt.Registry) error {
-	if swag.IsZero(m.CrnAccess) { // not required
+	if typeutils.IsZero(m.CrnAccess) { // not required
 		return nil
 	}
 
@@ -218,7 +219,7 @@ func (m *UserAuthenticationInfo) ContextValidate(ctx context.Context, formats st
 
 func (m *UserAuthenticationInfo) contextValidateCapabilities(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Capabilities) { // not required
+	if typeutils.IsZero(m.Capabilities) { // not required
 		return nil
 	}
 
@@ -240,7 +241,7 @@ func (m *UserAuthenticationInfo) contextValidateCapabilities(ctx context.Context
 
 func (m *UserAuthenticationInfo) contextValidateCrnAccess(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.CrnAccess) { // not required
+	if typeutils.IsZero(m.CrnAccess) { // not required
 		return nil
 	}
 
@@ -286,13 +287,13 @@ func (m *UserAuthenticationInfo) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *UserAuthenticationInfo) UnmarshalBinary(b []byte) error {
 	var res UserAuthenticationInfo
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

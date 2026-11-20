@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesVolumesFlashCopyMappingsGetReader is a Reader for the PcloudCloudinstancesVolumesFlashCopyMappingsGet structure.
@@ -74,11 +73,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetOK() *PcloudCloudinstance
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetOK{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetOK struct {
 	Payload models.FlashCopyMappings
 }
@@ -142,11 +139,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest() *PcloudCloud
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized() *PcloudClo
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden() *PcloudCloudi
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound() *PcloudCloudin
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests() *Pcloud
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetTooManyRequests struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError() *Pc
 	return &PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesVolumesFlashCopyMappingsGetInternalServerError struct {
 	Payload *models.Error
 }

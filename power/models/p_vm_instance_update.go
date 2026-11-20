@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -115,7 +116,7 @@ func (m *PVMInstanceUpdate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceUpdate) validateCloudInitialization(formats strfmt.Registry) error {
-	if swag.IsZero(m.CloudInitialization) { // not required
+	if typeutils.IsZero(m.CloudInitialization) { // not required
 		return nil
 	}
 
@@ -138,7 +139,7 @@ func (m *PVMInstanceUpdate) validateCloudInitialization(formats strfmt.Registry)
 }
 
 func (m *PVMInstanceUpdate) validateDefaultTrustedProfile(formats strfmt.Registry) error {
-	if swag.IsZero(m.DefaultTrustedProfile) { // not required
+	if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 		return nil
 	}
 
@@ -161,7 +162,7 @@ func (m *PVMInstanceUpdate) validateDefaultTrustedProfile(formats strfmt.Registr
 }
 
 func (m *PVMInstanceUpdate) validateMetadataService(formats strfmt.Registry) error {
-	if swag.IsZero(m.MetadataService) { // not required
+	if typeutils.IsZero(m.MetadataService) { // not required
 		return nil
 	}
 
@@ -184,7 +185,7 @@ func (m *PVMInstanceUpdate) validateMetadataService(formats strfmt.Registry) err
 }
 
 func (m *PVMInstanceUpdate) validatePinPolicy(formats strfmt.Registry) error {
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -237,7 +238,7 @@ func (m *PVMInstanceUpdate) validateProcTypeEnum(path, location string, value st
 }
 
 func (m *PVMInstanceUpdate) validateProcType(formats strfmt.Registry) error {
-	if swag.IsZero(m.ProcType) { // not required
+	if typeutils.IsZero(m.ProcType) { // not required
 		return nil
 	}
 
@@ -282,7 +283,7 @@ func (m *PVMInstanceUpdate) validateSapHANAAffinityActionEnum(path, location str
 }
 
 func (m *PVMInstanceUpdate) validateSapHANAAffinityAction(formats strfmt.Registry) error {
-	if swag.IsZero(m.SapHANAAffinityAction) { // not required
+	if typeutils.IsZero(m.SapHANAAffinityAction) { // not required
 		return nil
 	}
 
@@ -295,7 +296,7 @@ func (m *PVMInstanceUpdate) validateSapHANAAffinityAction(formats strfmt.Registr
 }
 
 func (m *PVMInstanceUpdate) validateSoftwareLicenses(formats strfmt.Registry) error {
-	if swag.IsZero(m.SoftwareLicenses) { // not required
+	if typeutils.IsZero(m.SoftwareLicenses) { // not required
 		return nil
 	}
 
@@ -318,7 +319,7 @@ func (m *PVMInstanceUpdate) validateSoftwareLicenses(formats strfmt.Registry) er
 }
 
 func (m *PVMInstanceUpdate) validateVirtualCores(formats strfmt.Registry) error {
-	if swag.IsZero(m.VirtualCores) { // not required
+	if typeutils.IsZero(m.VirtualCores) { // not required
 		return nil
 	}
 
@@ -378,7 +379,7 @@ func (m *PVMInstanceUpdate) contextValidateCloudInitialization(ctx context.Conte
 
 	if m.CloudInitialization != nil {
 
-		if swag.IsZero(m.CloudInitialization) { // not required
+		if typeutils.IsZero(m.CloudInitialization) { // not required
 			return nil
 		}
 
@@ -403,7 +404,7 @@ func (m *PVMInstanceUpdate) contextValidateDefaultTrustedProfile(ctx context.Con
 
 	if m.DefaultTrustedProfile != nil {
 
-		if swag.IsZero(m.DefaultTrustedProfile) { // not required
+		if typeutils.IsZero(m.DefaultTrustedProfile) { // not required
 			return nil
 		}
 
@@ -428,7 +429,7 @@ func (m *PVMInstanceUpdate) contextValidateMetadataService(ctx context.Context, 
 
 	if m.MetadataService != nil {
 
-		if swag.IsZero(m.MetadataService) { // not required
+		if typeutils.IsZero(m.MetadataService) { // not required
 			return nil
 		}
 
@@ -451,7 +452,7 @@ func (m *PVMInstanceUpdate) contextValidateMetadataService(ctx context.Context, 
 
 func (m *PVMInstanceUpdate) contextValidatePinPolicy(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.PinPolicy) { // not required
+	if typeutils.IsZero(m.PinPolicy) { // not required
 		return nil
 	}
 
@@ -475,7 +476,7 @@ func (m *PVMInstanceUpdate) contextValidateSoftwareLicenses(ctx context.Context,
 
 	if m.SoftwareLicenses != nil {
 
-		if swag.IsZero(m.SoftwareLicenses) { // not required
+		if typeutils.IsZero(m.SoftwareLicenses) { // not required
 			return nil
 		}
 
@@ -500,7 +501,7 @@ func (m *PVMInstanceUpdate) contextValidateVirtualCores(ctx context.Context, for
 
 	if m.VirtualCores != nil {
 
-		if swag.IsZero(m.VirtualCores) { // not required
+		if typeutils.IsZero(m.VirtualCores) { // not required
 			return nil
 		}
 
@@ -526,13 +527,13 @@ func (m *PVMInstanceUpdate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceUpdate) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceUpdate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

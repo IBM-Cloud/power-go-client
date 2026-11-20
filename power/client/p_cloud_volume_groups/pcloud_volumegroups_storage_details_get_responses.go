@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVolumegroupsStorageDetailsGetReader is a Reader for the PcloudVolumegroupsStorageDetailsGet structure.
@@ -74,11 +73,9 @@ func NewPcloudVolumegroupsStorageDetailsGetOK() *PcloudVolumegroupsStorageDetail
 	return &PcloudVolumegroupsStorageDetailsGetOK{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudVolumegroupsStorageDetailsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudVolumegroupsStorageDetailsGetOK struct {
 	Payload *models.VolumeGroupStorageDetails
 }
@@ -144,11 +141,9 @@ func NewPcloudVolumegroupsStorageDetailsGetBadRequest() *PcloudVolumegroupsStora
 	return &PcloudVolumegroupsStorageDetailsGetBadRequest{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVolumegroupsStorageDetailsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVolumegroupsStorageDetailsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudVolumegroupsStorageDetailsGetUnauthorized() *PcloudVolumegroupsSto
 	return &PcloudVolumegroupsStorageDetailsGetUnauthorized{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVolumegroupsStorageDetailsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVolumegroupsStorageDetailsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudVolumegroupsStorageDetailsGetForbidden() *PcloudVolumegroupsStorag
 	return &PcloudVolumegroupsStorageDetailsGetForbidden{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVolumegroupsStorageDetailsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVolumegroupsStorageDetailsGetForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudVolumegroupsStorageDetailsGetNotFound() *PcloudVolumegroupsStorage
 	return &PcloudVolumegroupsStorageDetailsGetNotFound{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVolumegroupsStorageDetailsGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVolumegroupsStorageDetailsGetNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudVolumegroupsStorageDetailsGetTooManyRequests() *PcloudVolumegroups
 	return &PcloudVolumegroupsStorageDetailsGetTooManyRequests{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetTooManyRequests describes a response with status code 429, with default header values.
-
-Too Many Requests
-*/
+// PcloudVolumegroupsStorageDetailsGetTooManyRequests describes a response with status code 429, with default header values.
+//
+// Too Many Requests
 type PcloudVolumegroupsStorageDetailsGetTooManyRequests struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudVolumegroupsStorageDetailsGetInternalServerError() *PcloudVolumegr
 	return &PcloudVolumegroupsStorageDetailsGetInternalServerError{}
 }
 
-/*
-PcloudVolumegroupsStorageDetailsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVolumegroupsStorageDetailsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVolumegroupsStorageDetailsGetInternalServerError struct {
 	Payload *models.Error
 }

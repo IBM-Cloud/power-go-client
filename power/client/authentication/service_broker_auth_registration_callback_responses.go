@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerAuthRegistrationCallbackReader is a Reader for the ServiceBrokerAuthRegistrationCallback structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerAuthRegistrationCallbackOK() *ServiceBrokerAuthRegistration
 	return &ServiceBrokerAuthRegistrationCallbackOK{}
 }
 
-/*
-ServiceBrokerAuthRegistrationCallbackOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerAuthRegistrationCallbackOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerAuthRegistrationCallbackOK struct {
 	Payload *models.AccessToken
 }
@@ -138,11 +135,9 @@ func NewServiceBrokerAuthRegistrationCallbackBadRequest() *ServiceBrokerAuthRegi
 	return &ServiceBrokerAuthRegistrationCallbackBadRequest{}
 }
 
-/*
-ServiceBrokerAuthRegistrationCallbackBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerAuthRegistrationCallbackBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerAuthRegistrationCallbackBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceBrokerAuthRegistrationCallbackUnauthorized() *ServiceBrokerAuthRe
 	return &ServiceBrokerAuthRegistrationCallbackUnauthorized{}
 }
 
-/*
-ServiceBrokerAuthRegistrationCallbackUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerAuthRegistrationCallbackUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerAuthRegistrationCallbackUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceBrokerAuthRegistrationCallbackForbidden() *ServiceBrokerAuthRegis
 	return &ServiceBrokerAuthRegistrationCallbackForbidden{}
 }
 
-/*
-ServiceBrokerAuthRegistrationCallbackForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerAuthRegistrationCallbackForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerAuthRegistrationCallbackForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceBrokerAuthRegistrationCallbackNotFound() *ServiceBrokerAuthRegist
 	return &ServiceBrokerAuthRegistrationCallbackNotFound{}
 }
 
-/*
-ServiceBrokerAuthRegistrationCallbackNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerAuthRegistrationCallbackNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerAuthRegistrationCallbackNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceBrokerAuthRegistrationCallbackInternalServerError() *ServiceBroke
 	return &ServiceBrokerAuthRegistrationCallbackInternalServerError{}
 }
 
-/*
-ServiceBrokerAuthRegistrationCallbackInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerAuthRegistrationCallbackInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerAuthRegistrationCallbackInternalServerError struct {
 	Payload *models.Error
 }

@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -57,7 +58,7 @@ func (m *HostGroup) Validate(formats strfmt.Registry) error {
 }
 
 func (m *HostGroup) validateCreationDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreationDate) { // not required
+	if typeutils.IsZero(m.CreationDate) { // not required
 		return nil
 	}
 
@@ -69,7 +70,7 @@ func (m *HostGroup) validateCreationDate(formats strfmt.Registry) error {
 }
 
 func (m *HostGroup) validateHosts(formats strfmt.Registry) error {
-	if swag.IsZero(m.Hosts) { // not required
+	if typeutils.IsZero(m.Hosts) { // not required
 		return nil
 	}
 
@@ -111,7 +112,7 @@ func (m *HostGroup) contextValidateHosts(ctx context.Context, formats strfmt.Reg
 
 	for i := 0; i < len(m.Hosts); i++ {
 
-		if swag.IsZero(m.Hosts[i]) { // not required
+		if typeutils.IsZero(m.Hosts[i]) { // not required
 			return nil
 		}
 
@@ -138,13 +139,13 @@ func (m *HostGroup) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *HostGroup) UnmarshalBinary(b []byte) error {
 	var res HostGroup
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

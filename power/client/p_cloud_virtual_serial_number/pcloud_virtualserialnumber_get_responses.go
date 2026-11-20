@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVirtualserialnumberGetReader is a Reader for the PcloudVirtualserialnumberGet structure.
@@ -68,11 +67,9 @@ func NewPcloudVirtualserialnumberGetOK() *PcloudVirtualserialnumberGetOK {
 	return &PcloudVirtualserialnumberGetOK{}
 }
 
-/*
-PcloudVirtualserialnumberGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudVirtualserialnumberGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudVirtualserialnumberGetOK struct {
 	Payload *models.VirtualSerialNumber
 }
@@ -138,11 +135,9 @@ func NewPcloudVirtualserialnumberGetBadRequest() *PcloudVirtualserialnumberGetBa
 	return &PcloudVirtualserialnumberGetBadRequest{}
 }
 
-/*
-PcloudVirtualserialnumberGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVirtualserialnumberGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVirtualserialnumberGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudVirtualserialnumberGetUnauthorized() *PcloudVirtualserialnumberGet
 	return &PcloudVirtualserialnumberGetUnauthorized{}
 }
 
-/*
-PcloudVirtualserialnumberGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVirtualserialnumberGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVirtualserialnumberGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudVirtualserialnumberGetForbidden() *PcloudVirtualserialnumberGetFor
 	return &PcloudVirtualserialnumberGetForbidden{}
 }
 
-/*
-PcloudVirtualserialnumberGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVirtualserialnumberGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVirtualserialnumberGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudVirtualserialnumberGetNotFound() *PcloudVirtualserialnumberGetNotF
 	return &PcloudVirtualserialnumberGetNotFound{}
 }
 
-/*
-PcloudVirtualserialnumberGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVirtualserialnumberGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVirtualserialnumberGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudVirtualserialnumberGetInternalServerError() *PcloudVirtualserialnu
 	return &PcloudVirtualserialnumberGetInternalServerError{}
 }
 
-/*
-PcloudVirtualserialnumberGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVirtualserialnumberGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVirtualserialnumberGetInternalServerError struct {
 	Payload *models.Error
 }

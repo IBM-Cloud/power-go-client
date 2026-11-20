@@ -7,7 +7,7 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -62,7 +62,7 @@ func (m *CloudConnectionGRETunnelCreate) validateDestIPAddress(formats strfmt.Re
 }
 
 // ContextValidate validates this cloud connection g r e tunnel create based on context it is used
-func (m *CloudConnectionGRETunnelCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *CloudConnectionGRETunnelCreate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -71,13 +71,13 @@ func (m *CloudConnectionGRETunnelCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloudConnectionGRETunnelCreate) UnmarshalBinary(b []byte) error {
 	var res CloudConnectionGRETunnelCreate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

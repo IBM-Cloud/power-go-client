@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1NetworksNetworkInterfacesDeleteReader is a Reader for the V1NetworksNetworkInterfacesDelete structure.
@@ -80,11 +79,9 @@ func NewV1NetworksNetworkInterfacesDeleteOK() *V1NetworksNetworkInterfacesDelete
 	return &V1NetworksNetworkInterfacesDeleteOK{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1NetworksNetworkInterfacesDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1NetworksNetworkInterfacesDeleteOK struct {
 	Payload models.Object
 }
@@ -148,11 +145,9 @@ func NewV1NetworksNetworkInterfacesDeleteBadRequest() *V1NetworksNetworkInterfac
 	return &V1NetworksNetworkInterfacesDeleteBadRequest{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1NetworksNetworkInterfacesDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1NetworksNetworkInterfacesDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -218,11 +213,9 @@ func NewV1NetworksNetworkInterfacesDeleteUnauthorized() *V1NetworksNetworkInterf
 	return &V1NetworksNetworkInterfacesDeleteUnauthorized{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1NetworksNetworkInterfacesDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1NetworksNetworkInterfacesDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -288,11 +281,9 @@ func NewV1NetworksNetworkInterfacesDeleteForbidden() *V1NetworksNetworkInterface
 	return &V1NetworksNetworkInterfacesDeleteForbidden{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1NetworksNetworkInterfacesDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1NetworksNetworkInterfacesDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -358,11 +349,9 @@ func NewV1NetworksNetworkInterfacesDeleteNotFound() *V1NetworksNetworkInterfaces
 	return &V1NetworksNetworkInterfacesDeleteNotFound{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1NetworksNetworkInterfacesDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1NetworksNetworkInterfacesDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -428,11 +417,9 @@ func NewV1NetworksNetworkInterfacesDeleteConflict() *V1NetworksNetworkInterfaces
 	return &V1NetworksNetworkInterfacesDeleteConflict{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1NetworksNetworkInterfacesDeleteConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1NetworksNetworkInterfacesDeleteConflict struct {
 	Payload *models.Error
 }
@@ -498,11 +485,9 @@ func NewV1NetworksNetworkInterfacesDeleteGone() *V1NetworksNetworkInterfacesDele
 	return &V1NetworksNetworkInterfacesDeleteGone{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// V1NetworksNetworkInterfacesDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type V1NetworksNetworkInterfacesDeleteGone struct {
 	Payload *models.Error
 }
@@ -568,11 +553,9 @@ func NewV1NetworksNetworkInterfacesDeleteInternalServerError() *V1NetworksNetwor
 	return &V1NetworksNetworkInterfacesDeleteInternalServerError{}
 }
 
-/*
-V1NetworksNetworkInterfacesDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1NetworksNetworkInterfacesDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1NetworksNetworkInterfacesDeleteInternalServerError struct {
 	Payload *models.Error
 }

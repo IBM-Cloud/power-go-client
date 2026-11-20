@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // CloudConnectionEndpointClassic cloud connection endpoint classic
@@ -38,7 +39,7 @@ func (m *CloudConnectionEndpointClassic) Validate(formats strfmt.Registry) error
 }
 
 func (m *CloudConnectionEndpointClassic) validateGre(formats strfmt.Registry) error {
-	if swag.IsZero(m.Gre) { // not required
+	if typeutils.IsZero(m.Gre) { // not required
 		return nil
 	}
 
@@ -78,7 +79,7 @@ func (m *CloudConnectionEndpointClassic) contextValidateGre(ctx context.Context,
 
 	if m.Gre != nil {
 
-		if swag.IsZero(m.Gre) { // not required
+		if typeutils.IsZero(m.Gre) { // not required
 			return nil
 		}
 
@@ -104,13 +105,13 @@ func (m *CloudConnectionEndpointClassic) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *CloudConnectionEndpointClassic) UnmarshalBinary(b []byte) error {
 	var res CloudConnectionEndpointClassic
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

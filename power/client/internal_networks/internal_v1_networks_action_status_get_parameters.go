@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewInternalV1NetworksActionStatusGetParams creates a new InternalV1NetworksActionStatusGetParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewInternalV1NetworksActionStatusGetParams() *InternalV1NetworksActionStatusGetParams {
-	return &InternalV1NetworksActionStatusGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewInternalV1NetworksActionStatusGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewInternalV1NetworksActionStatusGetParamsWithTimeout creates a new InternalV1NetworksActionStatusGetParams object
 // with the ability to set a timeout on a request.
 func NewInternalV1NetworksActionStatusGetParamsWithTimeout(timeout time.Duration) *InternalV1NetworksActionStatusGetParams {
 	return &InternalV1NetworksActionStatusGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewInternalV1NetworksActionStatusGetParamsWithContext creates a new InternalV1NetworksActionStatusGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1NetworksActionStatusGetParams].
 func NewInternalV1NetworksActionStatusGetParamsWithContext(ctx context.Context) *InternalV1NetworksActionStatusGetParams {
 	return &InternalV1NetworksActionStatusGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,21 +63,19 @@ InternalV1NetworksActionStatusGetParams contains all the parameters to send to t
 */
 type InternalV1NetworksActionStatusGetParams struct {
 
-	/* CRN.
-
-	   the CRN of the workspace
-	*/
+	// CRN.
+	//
+	// the CRN of the workspace
 	CRN string
 
-	/* Body.
-
-	   Parameters for network action service
-	*/
+	// Body.
+	//
+	// Parameters for network action service
 	Body models.InternalNetworkResourceStatusArray
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the internal v1 networks action status get params (not the query body).
@@ -92,65 +93,68 @@ func (o *InternalV1NetworksActionStatusGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the internal v1 networks action status get params
+// WithTimeout adds the timeout to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) WithTimeout(timeout time.Duration) *InternalV1NetworksActionStatusGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the internal v1 networks action status get params
+// SetTimeout adds the timeout to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the internal v1 networks action status get params
+// WithContext adds the context to the internal v1 networks action status get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1NetworksActionStatusGetParams].
 func (o *InternalV1NetworksActionStatusGetParams) WithContext(ctx context.Context) *InternalV1NetworksActionStatusGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the internal v1 networks action status get params
+// SetContext adds the context to the internal v1 networks action status get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1NetworksActionStatusGetParams].
 func (o *InternalV1NetworksActionStatusGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the internal v1 networks action status get params
+// WithHTTPClient adds the HTTPClient to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) WithHTTPClient(client *http.Client) *InternalV1NetworksActionStatusGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the internal v1 networks action status get params
+// SetHTTPClient adds the HTTPClient to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithCRN adds the cRN to the internal v1 networks action status get params
+// WithCRN adds the cRN to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) WithCRN(cRN string) *InternalV1NetworksActionStatusGetParams {
 	o.SetCRN(cRN)
 	return o
 }
 
-// SetCRN adds the cRN to the internal v1 networks action status get params
+// SetCRN adds the cRN to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) SetCRN(cRN string) {
 	o.CRN = cRN
 }
 
-// WithBody adds the body to the internal v1 networks action status get params
+// WithBody adds the body to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) WithBody(body models.InternalNetworkResourceStatusArray) *InternalV1NetworksActionStatusGetParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the internal v1 networks action status get params
+// SetBody adds the body to the internal v1 networks action status get params.
 func (o *InternalV1NetworksActionStatusGetParams) SetBody(body models.InternalNetworkResourceStatusArray) {
 	o.Body = body
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *InternalV1NetworksActionStatusGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

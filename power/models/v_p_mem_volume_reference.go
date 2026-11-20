@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -120,7 +121,7 @@ func (m *VPMemVolumeReference) validateCreationDate(formats strfmt.Registry) err
 }
 
 func (m *VPMemVolumeReference) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -186,7 +187,7 @@ func (m *VPMemVolumeReference) validateStatus(formats strfmt.Registry) error {
 }
 
 func (m *VPMemVolumeReference) validateUpdatedDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.UpdatedDate) { // not required
+	if typeutils.IsZero(m.UpdatedDate) { // not required
 		return nil
 	}
 
@@ -222,7 +223,7 @@ func (m *VPMemVolumeReference) ContextValidate(ctx context.Context, formats strf
 
 func (m *VPMemVolumeReference) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -247,13 +248,13 @@ func (m *VPMemVolumeReference) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *VPMemVolumeReference) UnmarshalBinary(b []byte) error {
 	var res VPMemVolumeReference
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

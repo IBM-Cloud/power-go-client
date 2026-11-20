@@ -6,7 +6,7 @@ import (
 	"context"
 
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
 )
 
 // PnsNetworkInterface pns network interface
@@ -22,12 +22,12 @@ type PnsNetworkInterface struct {
 }
 
 // Validate validates this pns network interface
-func (m *PnsNetworkInterface) Validate(formats strfmt.Registry) error {
+func (m *PnsNetworkInterface) Validate(_ strfmt.Registry) error {
 	return nil
 }
 
 // ContextValidate validates this pns network interface based on context it is used
-func (m *PnsNetworkInterface) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *PnsNetworkInterface) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -36,13 +36,13 @@ func (m *PnsNetworkInterface) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PnsNetworkInterface) UnmarshalBinary(b []byte) error {
 	var res PnsNetworkInterface
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

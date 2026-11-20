@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudVpnconnectionsNetworksPutReader is a Reader for the PcloudVpnconnectionsNetworksPut structure.
@@ -74,11 +73,9 @@ func NewPcloudVpnconnectionsNetworksPutAccepted() *PcloudVpnconnectionsNetworksP
 	return &PcloudVpnconnectionsNetworksPutAccepted{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudVpnconnectionsNetworksPutAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudVpnconnectionsNetworksPutAccepted struct {
 	Payload *models.JobReference
 }
@@ -144,11 +141,9 @@ func NewPcloudVpnconnectionsNetworksPutBadRequest() *PcloudVpnconnectionsNetwork
 	return &PcloudVpnconnectionsNetworksPutBadRequest{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudVpnconnectionsNetworksPutBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudVpnconnectionsNetworksPutBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudVpnconnectionsNetworksPutUnauthorized() *PcloudVpnconnectionsNetwo
 	return &PcloudVpnconnectionsNetworksPutUnauthorized{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudVpnconnectionsNetworksPutUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudVpnconnectionsNetworksPutUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudVpnconnectionsNetworksPutForbidden() *PcloudVpnconnectionsNetworks
 	return &PcloudVpnconnectionsNetworksPutForbidden{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudVpnconnectionsNetworksPutForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudVpnconnectionsNetworksPutForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudVpnconnectionsNetworksPutNotFound() *PcloudVpnconnectionsNetworksP
 	return &PcloudVpnconnectionsNetworksPutNotFound{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudVpnconnectionsNetworksPutNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudVpnconnectionsNetworksPutNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudVpnconnectionsNetworksPutUnprocessableEntity() *PcloudVpnconnectio
 	return &PcloudVpnconnectionsNetworksPutUnprocessableEntity{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudVpnconnectionsNetworksPutUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudVpnconnectionsNetworksPutUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudVpnconnectionsNetworksPutInternalServerError() *PcloudVpnconnectio
 	return &PcloudVpnconnectionsNetworksPutInternalServerError{}
 }
 
-/*
-PcloudVpnconnectionsNetworksPutInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudVpnconnectionsNetworksPutInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudVpnconnectionsNetworksPutInternalServerError struct {
 	Payload *models.Error
 }

@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudinstancesImagesDeleteReader is a Reader for the PcloudCloudinstancesImagesDelete structure.
@@ -74,11 +73,9 @@ func NewPcloudCloudinstancesImagesDeleteOK() *PcloudCloudinstancesImagesDeleteOK
 	return &PcloudCloudinstancesImagesDeleteOK{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudinstancesImagesDeleteOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudinstancesImagesDeleteOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewPcloudCloudinstancesImagesDeleteBadRequest() *PcloudCloudinstancesImages
 	return &PcloudCloudinstancesImagesDeleteBadRequest{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudinstancesImagesDeleteBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudinstancesImagesDeleteBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewPcloudCloudinstancesImagesDeleteUnauthorized() *PcloudCloudinstancesImag
 	return &PcloudCloudinstancesImagesDeleteUnauthorized{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudinstancesImagesDeleteUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudinstancesImagesDeleteUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewPcloudCloudinstancesImagesDeleteForbidden() *PcloudCloudinstancesImagesD
 	return &PcloudCloudinstancesImagesDeleteForbidden{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudinstancesImagesDeleteForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudinstancesImagesDeleteForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewPcloudCloudinstancesImagesDeleteNotFound() *PcloudCloudinstancesImagesDe
 	return &PcloudCloudinstancesImagesDeleteNotFound{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudinstancesImagesDeleteNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudinstancesImagesDeleteNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewPcloudCloudinstancesImagesDeleteGone() *PcloudCloudinstancesImagesDelete
 	return &PcloudCloudinstancesImagesDeleteGone{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// PcloudCloudinstancesImagesDeleteGone describes a response with status code 410, with default header values.
+//
+// Gone
 type PcloudCloudinstancesImagesDeleteGone struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewPcloudCloudinstancesImagesDeleteInternalServerError() *PcloudCloudinstan
 	return &PcloudCloudinstancesImagesDeleteInternalServerError{}
 }
 
-/*
-PcloudCloudinstancesImagesDeleteInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudinstancesImagesDeleteInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudinstancesImagesDeleteInternalServerError struct {
 	Payload *models.Error
 }

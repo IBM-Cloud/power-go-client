@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1HostGroupsGetReader is a Reader for the V1HostGroupsGet structure.
@@ -68,11 +67,9 @@ func NewV1HostGroupsGetOK() *V1HostGroupsGetOK {
 	return &V1HostGroupsGetOK{}
 }
 
-/*
-V1HostGroupsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1HostGroupsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1HostGroupsGetOK struct {
 	Payload models.HostGroupList
 }
@@ -136,11 +133,9 @@ func NewV1HostGroupsGetBadRequest() *V1HostGroupsGetBadRequest {
 	return &V1HostGroupsGetBadRequest{}
 }
 
-/*
-V1HostGroupsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1HostGroupsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1HostGroupsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewV1HostGroupsGetUnauthorized() *V1HostGroupsGetUnauthorized {
 	return &V1HostGroupsGetUnauthorized{}
 }
 
-/*
-V1HostGroupsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1HostGroupsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1HostGroupsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewV1HostGroupsGetForbidden() *V1HostGroupsGetForbidden {
 	return &V1HostGroupsGetForbidden{}
 }
 
-/*
-V1HostGroupsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1HostGroupsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1HostGroupsGetForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewV1HostGroupsGetInternalServerError() *V1HostGroupsGetInternalServerError
 	return &V1HostGroupsGetInternalServerError{}
 }
 
-/*
-V1HostGroupsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1HostGroupsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1HostGroupsGetInternalServerError struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewV1HostGroupsGetGatewayTimeout() *V1HostGroupsGetGatewayTimeout {
 	return &V1HostGroupsGetGatewayTimeout{}
 }
 
-/*
-V1HostGroupsGetGatewayTimeout describes a response with status code 504, with default header values.
-
-Gateway Timeout. Request is still processing and taking longer than expected.
-*/
+// V1HostGroupsGetGatewayTimeout describes a response with status code 504, with default header values.
+//
+// Gateway Timeout. Request is still processing and taking longer than expected.
 type V1HostGroupsGetGatewayTimeout struct {
 	Payload *models.Error
 }

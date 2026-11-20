@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudV2PvminstancesGetallReader is a Reader for the PcloudV2PvminstancesGetall structure.
@@ -74,11 +73,9 @@ func NewPcloudV2PvminstancesGetallOK() *PcloudV2PvminstancesGetallOK {
 	return &PcloudV2PvminstancesGetallOK{}
 }
 
-/*
-PcloudV2PvminstancesGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudV2PvminstancesGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudV2PvminstancesGetallOK struct {
 	Payload *models.PVMInstancesV2
 }
@@ -144,11 +141,9 @@ func NewPcloudV2PvminstancesGetallBadRequest() *PcloudV2PvminstancesGetallBadReq
 	return &PcloudV2PvminstancesGetallBadRequest{}
 }
 
-/*
-PcloudV2PvminstancesGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudV2PvminstancesGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudV2PvminstancesGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudV2PvminstancesGetallUnauthorized() *PcloudV2PvminstancesGetallUnau
 	return &PcloudV2PvminstancesGetallUnauthorized{}
 }
 
-/*
-PcloudV2PvminstancesGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudV2PvminstancesGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudV2PvminstancesGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudV2PvminstancesGetallForbidden() *PcloudV2PvminstancesGetallForbidd
 	return &PcloudV2PvminstancesGetallForbidden{}
 }
 
-/*
-PcloudV2PvminstancesGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudV2PvminstancesGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudV2PvminstancesGetallForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudV2PvminstancesGetallNotFound() *PcloudV2PvminstancesGetallNotFound
 	return &PcloudV2PvminstancesGetallNotFound{}
 }
 
-/*
-PcloudV2PvminstancesGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudV2PvminstancesGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudV2PvminstancesGetallNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudV2PvminstancesGetallRequestTimeout() *PcloudV2PvminstancesGetallRe
 	return &PcloudV2PvminstancesGetallRequestTimeout{}
 }
 
-/*
-PcloudV2PvminstancesGetallRequestTimeout describes a response with status code 408, with default header values.
-
-Request Timeout
-*/
+// PcloudV2PvminstancesGetallRequestTimeout describes a response with status code 408, with default header values.
+//
+// Request Timeout
 type PcloudV2PvminstancesGetallRequestTimeout struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudV2PvminstancesGetallInternalServerError() *PcloudV2PvminstancesGet
 	return &PcloudV2PvminstancesGetallInternalServerError{}
 }
 
-/*
-PcloudV2PvminstancesGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudV2PvminstancesGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudV2PvminstancesGetallInternalServerError struct {
 	Payload *models.Error
 }

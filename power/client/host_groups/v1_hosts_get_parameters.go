@@ -11,7 +11,7 @@ import (
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/conv"
 )
 
 // NewV1HostsGetParams creates a new V1HostsGetParams object,
@@ -21,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewV1HostsGetParams() *V1HostsGetParams {
-	return &V1HostsGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewV1HostsGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewV1HostsGetParamsWithTimeout creates a new V1HostsGetParams object
 // with the ability to set a timeout on a request.
 func NewV1HostsGetParamsWithTimeout(timeout time.Duration) *V1HostsGetParams {
 	return &V1HostsGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewV1HostsGetParamsWithContext creates a new V1HostsGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [V1HostsGetParams].
 func NewV1HostsGetParamsWithContext(ctx context.Context) *V1HostsGetParams {
 	return &V1HostsGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -62,9 +66,9 @@ type V1HostsGetParams struct {
 	// HostReference.
 	HostReference *bool
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the v1 hosts get params (not the query body).
@@ -82,54 +86,57 @@ func (o *V1HostsGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the v1 hosts get params
+// WithTimeout adds the timeout to the v1 hosts get params.
 func (o *V1HostsGetParams) WithTimeout(timeout time.Duration) *V1HostsGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the v1 hosts get params
+// SetTimeout adds the timeout to the v1 hosts get params.
 func (o *V1HostsGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the v1 hosts get params
+// WithContext adds the context to the v1 hosts get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [V1HostsGetParams].
 func (o *V1HostsGetParams) WithContext(ctx context.Context) *V1HostsGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the v1 hosts get params
+// SetContext adds the context to the v1 hosts get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [V1HostsGetParams].
 func (o *V1HostsGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the v1 hosts get params
+// WithHTTPClient adds the HTTPClient to the v1 hosts get params.
 func (o *V1HostsGetParams) WithHTTPClient(client *http.Client) *V1HostsGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the v1 hosts get params
+// SetHTTPClient adds the HTTPClient to the v1 hosts get params.
 func (o *V1HostsGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithHostReference adds the hostReference to the v1 hosts get params
+// WithHostReference adds the hostReference to the v1 hosts get params.
 func (o *V1HostsGetParams) WithHostReference(hostReference *bool) *V1HostsGetParams {
 	o.SetHostReference(hostReference)
 	return o
 }
 
-// SetHostReference adds the hostReference to the v1 hosts get params
+// SetHostReference adds the hostReference to the v1 hosts get params.
 func (o *V1HostsGetParams) SetHostReference(hostReference *bool) {
 	o.HostReference = hostReference
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *V1HostsGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error
@@ -142,7 +149,7 @@ func (o *V1HostsGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Re
 		if o.HostReference != nil {
 			qrHostReference = *o.HostReference
 		}
-		qHostReference := swag.FormatBool(qrHostReference)
+		qHostReference := conv.FormatBool(qrHostReference)
 		if qHostReference != "" {
 
 			if err := r.SetQueryParam("host_reference", qHostReference); err != nil {

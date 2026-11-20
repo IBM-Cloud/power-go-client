@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudCloudconnectionsPostReader is a Reader for the PcloudCloudconnectionsPost structure.
@@ -116,11 +115,9 @@ func NewPcloudCloudconnectionsPostOK() *PcloudCloudconnectionsPostOK {
 	return &PcloudCloudconnectionsPostOK{}
 }
 
-/*
-PcloudCloudconnectionsPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudCloudconnectionsPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudCloudconnectionsPostOK struct {
 	Payload *models.CloudConnection
 }
@@ -186,11 +183,9 @@ func NewPcloudCloudconnectionsPostCreated() *PcloudCloudconnectionsPostCreated {
 	return &PcloudCloudconnectionsPostCreated{}
 }
 
-/*
-PcloudCloudconnectionsPostCreated describes a response with status code 201, with default header values.
-
-Created
-*/
+// PcloudCloudconnectionsPostCreated describes a response with status code 201, with default header values.
+//
+// Created
 type PcloudCloudconnectionsPostCreated struct {
 	Payload *models.CloudConnection
 }
@@ -256,11 +251,9 @@ func NewPcloudCloudconnectionsPostAccepted() *PcloudCloudconnectionsPostAccepted
 	return &PcloudCloudconnectionsPostAccepted{}
 }
 
-/*
-PcloudCloudconnectionsPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudCloudconnectionsPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudCloudconnectionsPostAccepted struct {
 	Payload *models.CloudConnectionCreateResponse
 }
@@ -326,11 +319,9 @@ func NewPcloudCloudconnectionsPostBadRequest() *PcloudCloudconnectionsPostBadReq
 	return &PcloudCloudconnectionsPostBadRequest{}
 }
 
-/*
-PcloudCloudconnectionsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudCloudconnectionsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudCloudconnectionsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -396,11 +387,9 @@ func NewPcloudCloudconnectionsPostUnauthorized() *PcloudCloudconnectionsPostUnau
 	return &PcloudCloudconnectionsPostUnauthorized{}
 }
 
-/*
-PcloudCloudconnectionsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudCloudconnectionsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudCloudconnectionsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -466,11 +455,9 @@ func NewPcloudCloudconnectionsPostForbidden() *PcloudCloudconnectionsPostForbidd
 	return &PcloudCloudconnectionsPostForbidden{}
 }
 
-/*
-PcloudCloudconnectionsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudCloudconnectionsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudCloudconnectionsPostForbidden struct {
 	Payload *models.Error
 }
@@ -536,11 +523,9 @@ func NewPcloudCloudconnectionsPostNotFound() *PcloudCloudconnectionsPostNotFound
 	return &PcloudCloudconnectionsPostNotFound{}
 }
 
-/*
-PcloudCloudconnectionsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudCloudconnectionsPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudCloudconnectionsPostNotFound struct {
 	Payload *models.Error
 }
@@ -606,11 +591,9 @@ func NewPcloudCloudconnectionsPostMethodNotAllowed() *PcloudCloudconnectionsPost
 	return &PcloudCloudconnectionsPostMethodNotAllowed{}
 }
 
-/*
-PcloudCloudconnectionsPostMethodNotAllowed describes a response with status code 405, with default header values.
-
-Method Not Allowed
-*/
+// PcloudCloudconnectionsPostMethodNotAllowed describes a response with status code 405, with default header values.
+//
+// Method Not Allowed
 type PcloudCloudconnectionsPostMethodNotAllowed struct {
 	Payload *models.Error
 }
@@ -676,11 +659,9 @@ func NewPcloudCloudconnectionsPostRequestTimeout() *PcloudCloudconnectionsPostRe
 	return &PcloudCloudconnectionsPostRequestTimeout{}
 }
 
-/*
-PcloudCloudconnectionsPostRequestTimeout describes a response with status code 408, with default header values.
-
-Request Timeout
-*/
+// PcloudCloudconnectionsPostRequestTimeout describes a response with status code 408, with default header values.
+//
+// Request Timeout
 type PcloudCloudconnectionsPostRequestTimeout struct {
 	Payload *models.Error
 }
@@ -746,11 +727,9 @@ func NewPcloudCloudconnectionsPostConflict() *PcloudCloudconnectionsPostConflict
 	return &PcloudCloudconnectionsPostConflict{}
 }
 
-/*
-PcloudCloudconnectionsPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudCloudconnectionsPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudCloudconnectionsPostConflict struct {
 	Payload *models.Error
 }
@@ -816,11 +795,9 @@ func NewPcloudCloudconnectionsPostUnprocessableEntity() *PcloudCloudconnectionsP
 	return &PcloudCloudconnectionsPostUnprocessableEntity{}
 }
 
-/*
-PcloudCloudconnectionsPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudCloudconnectionsPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudCloudconnectionsPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -886,11 +863,9 @@ func NewPcloudCloudconnectionsPostInternalServerError() *PcloudCloudconnectionsP
 	return &PcloudCloudconnectionsPostInternalServerError{}
 }
 
-/*
-PcloudCloudconnectionsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudCloudconnectionsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudCloudconnectionsPostInternalServerError struct {
 	Payload *models.Error
 }
@@ -956,11 +931,9 @@ func NewPcloudCloudconnectionsPostServiceUnavailable() *PcloudCloudconnectionsPo
 	return &PcloudCloudconnectionsPostServiceUnavailable{}
 }
 
-/*
-PcloudCloudconnectionsPostServiceUnavailable describes a response with status code 503, with default header values.
-
-Service Unavailable
-*/
+// PcloudCloudconnectionsPostServiceUnavailable describes a response with status code 503, with default header values.
+//
+// Service Unavailable
 type PcloudCloudconnectionsPostServiceUnavailable struct {
 	Payload *models.Error
 }
@@ -1026,11 +999,9 @@ func NewPcloudCloudconnectionsPostGatewayTimeout() *PcloudCloudconnectionsPostGa
 	return &PcloudCloudconnectionsPostGatewayTimeout{}
 }
 
-/*
-PcloudCloudconnectionsPostGatewayTimeout describes a response with status code 504, with default header values.
-
-Gateway Timeout
-*/
+// PcloudCloudconnectionsPostGatewayTimeout describes a response with status code 504, with default header values.
+//
+// Gateway Timeout
 type PcloudCloudconnectionsPostGatewayTimeout struct {
 	Payload *models.Error
 }

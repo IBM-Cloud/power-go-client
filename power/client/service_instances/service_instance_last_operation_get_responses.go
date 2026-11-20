@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceInstanceLastOperationGetReader is a Reader for the ServiceInstanceLastOperationGet structure.
@@ -68,11 +67,9 @@ func NewServiceInstanceLastOperationGetOK() *ServiceInstanceLastOperationGetOK {
 	return &ServiceInstanceLastOperationGetOK{}
 }
 
-/*
-ServiceInstanceLastOperationGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceInstanceLastOperationGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceInstanceLastOperationGetOK struct {
 	Payload *models.LastOperationResource
 }
@@ -138,11 +135,9 @@ func NewServiceInstanceLastOperationGetBadRequest() *ServiceInstanceLastOperatio
 	return &ServiceInstanceLastOperationGetBadRequest{}
 }
 
-/*
-ServiceInstanceLastOperationGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceInstanceLastOperationGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceInstanceLastOperationGetBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceInstanceLastOperationGetUnauthorized() *ServiceInstanceLastOperat
 	return &ServiceInstanceLastOperationGetUnauthorized{}
 }
 
-/*
-ServiceInstanceLastOperationGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceInstanceLastOperationGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceInstanceLastOperationGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceInstanceLastOperationGetForbidden() *ServiceInstanceLastOperation
 	return &ServiceInstanceLastOperationGetForbidden{}
 }
 
-/*
-ServiceInstanceLastOperationGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceInstanceLastOperationGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceInstanceLastOperationGetForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceInstanceLastOperationGetNotFound() *ServiceInstanceLastOperationG
 	return &ServiceInstanceLastOperationGetNotFound{}
 }
 
-/*
-ServiceInstanceLastOperationGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceInstanceLastOperationGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceInstanceLastOperationGetNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceInstanceLastOperationGetGone() *ServiceInstanceLastOperationGetGo
 	return &ServiceInstanceLastOperationGetGone{}
 }
 
-/*
-ServiceInstanceLastOperationGetGone describes a response with status code 410, with default header values.
-
-Gone
-*/
+// ServiceInstanceLastOperationGetGone describes a response with status code 410, with default header values.
+//
+// Gone
 type ServiceInstanceLastOperationGetGone struct {
 	Payload *models.Error
 }

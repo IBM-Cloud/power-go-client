@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerHardwareplatformsGetReader is a Reader for the ServiceBrokerHardwareplatformsGet structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerHardwareplatformsGetOK() *ServiceBrokerHardwareplatformsGet
 	return &ServiceBrokerHardwareplatformsGetOK{}
 }
 
-/*
-ServiceBrokerHardwareplatformsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerHardwareplatformsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerHardwareplatformsGetOK struct {
 	Payload models.HardwarePlatforms
 }
@@ -136,11 +133,9 @@ func NewServiceBrokerHardwareplatformsGetBadRequest() *ServiceBrokerHardwareplat
 	return &ServiceBrokerHardwareplatformsGetBadRequest{}
 }
 
-/*
-ServiceBrokerHardwareplatformsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerHardwareplatformsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerHardwareplatformsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -206,11 +201,9 @@ func NewServiceBrokerHardwareplatformsGetUnauthorized() *ServiceBrokerHardwarepl
 	return &ServiceBrokerHardwareplatformsGetUnauthorized{}
 }
 
-/*
-ServiceBrokerHardwareplatformsGetUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerHardwareplatformsGetUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerHardwareplatformsGetUnauthorized struct {
 	Payload *models.Error
 }
@@ -276,11 +269,9 @@ func NewServiceBrokerHardwareplatformsGetForbidden() *ServiceBrokerHardwareplatf
 	return &ServiceBrokerHardwareplatformsGetForbidden{}
 }
 
-/*
-ServiceBrokerHardwareplatformsGetForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerHardwareplatformsGetForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerHardwareplatformsGetForbidden struct {
 	Payload *models.Error
 }
@@ -346,11 +337,9 @@ func NewServiceBrokerHardwareplatformsGetNotFound() *ServiceBrokerHardwareplatfo
 	return &ServiceBrokerHardwareplatformsGetNotFound{}
 }
 
-/*
-ServiceBrokerHardwareplatformsGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerHardwareplatformsGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerHardwareplatformsGetNotFound struct {
 	Payload *models.Error
 }
@@ -416,11 +405,9 @@ func NewServiceBrokerHardwareplatformsGetInternalServerError() *ServiceBrokerHar
 	return &ServiceBrokerHardwareplatformsGetInternalServerError{}
 }
 
-/*
-ServiceBrokerHardwareplatformsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerHardwareplatformsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerHardwareplatformsGetInternalServerError struct {
 	Payload *models.Error
 }

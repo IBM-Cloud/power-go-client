@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // InternalPowerNSStatus internal power n s status
@@ -58,7 +59,7 @@ func (m *InternalPowerNSStatus) Validate(formats strfmt.Registry) error {
 }
 
 func (m *InternalPowerNSStatus) validateCapabilities(formats strfmt.Registry) error {
-	if swag.IsZero(m.Capabilities) { // not required
+	if typeutils.IsZero(m.Capabilities) { // not required
 		return nil
 	}
 
@@ -81,7 +82,7 @@ func (m *InternalPowerNSStatus) validateCapabilities(formats strfmt.Registry) er
 }
 
 func (m *InternalPowerNSStatus) validateNetworks(formats strfmt.Registry) error {
-	if swag.IsZero(m.Networks) { // not required
+	if typeutils.IsZero(m.Networks) { // not required
 		return nil
 	}
 
@@ -125,7 +126,7 @@ func (m *InternalPowerNSStatus) contextValidateCapabilities(ctx context.Context,
 
 	if m.Capabilities != nil {
 
-		if swag.IsZero(m.Capabilities) { // not required
+		if typeutils.IsZero(m.Capabilities) { // not required
 			return nil
 		}
 
@@ -148,7 +149,7 @@ func (m *InternalPowerNSStatus) contextValidateCapabilities(ctx context.Context,
 
 func (m *InternalPowerNSStatus) contextValidateNetworks(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Networks) { // not required
+	if typeutils.IsZero(m.Networks) { // not required
 		return nil
 	}
 
@@ -173,13 +174,13 @@ func (m *InternalPowerNSStatus) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *InternalPowerNSStatus) UnmarshalBinary(b []byte) error {
 	var res InternalPowerNSStatus
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

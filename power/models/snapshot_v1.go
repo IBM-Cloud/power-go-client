@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -92,7 +93,7 @@ func (m *SnapshotV1) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV1) validateCreationDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.CreationDate) { // not required
+	if typeutils.IsZero(m.CreationDate) { // not required
 		return nil
 	}
 
@@ -104,7 +105,7 @@ func (m *SnapshotV1) validateCreationDate(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV1) validateCrn(formats strfmt.Registry) error {
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -161,7 +162,7 @@ func (m *SnapshotV1) validateStatus(formats strfmt.Registry) error {
 }
 
 func (m *SnapshotV1) validateUpdatedDate(formats strfmt.Registry) error {
-	if swag.IsZero(m.UpdatedDate) { // not required
+	if typeutils.IsZero(m.UpdatedDate) { // not required
 		return nil
 	}
 
@@ -197,7 +198,7 @@ func (m *SnapshotV1) ContextValidate(ctx context.Context, formats strfmt.Registr
 
 func (m *SnapshotV1) contextValidateCrn(ctx context.Context, formats strfmt.Registry) error {
 
-	if swag.IsZero(m.Crn) { // not required
+	if typeutils.IsZero(m.Crn) { // not required
 		return nil
 	}
 
@@ -222,13 +223,13 @@ func (m *SnapshotV1) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SnapshotV1) UnmarshalBinary(b []byte) error {
 	var res SnapshotV1
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

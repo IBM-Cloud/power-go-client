@@ -10,7 +10,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -319,7 +320,7 @@ func (m *NetworkPeer) validateExportRouteFilters(formats strfmt.Registry) error 
 	}
 
 	for i := 0; i < len(m.ExportRouteFilters); i++ {
-		if swag.IsZero(m.ExportRouteFilters[i]) { // not required
+		if typeutils.IsZero(m.ExportRouteFilters[i]) { // not required
 			continue
 		}
 
@@ -377,7 +378,7 @@ func (m *NetworkPeer) validateImportRouteFilters(formats strfmt.Registry) error 
 	}
 
 	for i := 0; i < len(m.ImportRouteFilters); i++ {
-		if swag.IsZero(m.ImportRouteFilters[i]) { // not required
+		if typeutils.IsZero(m.ImportRouteFilters[i]) { // not required
 			continue
 		}
 
@@ -553,7 +554,7 @@ func (m *NetworkPeer) contextValidateExportRouteFilters(ctx context.Context, for
 
 		if m.ExportRouteFilters[i] != nil {
 
-			if swag.IsZero(m.ExportRouteFilters[i]) { // not required
+			if typeutils.IsZero(m.ExportRouteFilters[i]) { // not required
 				return nil
 			}
 
@@ -582,7 +583,7 @@ func (m *NetworkPeer) contextValidateImportRouteFilters(ctx context.Context, for
 
 		if m.ImportRouteFilters[i] != nil {
 
-			if swag.IsZero(m.ImportRouteFilters[i]) { // not required
+			if typeutils.IsZero(m.ImportRouteFilters[i]) { // not required
 				return nil
 			}
 
@@ -610,13 +611,13 @@ func (m *NetworkPeer) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *NetworkPeer) UnmarshalBinary(b []byte) error {
 	var res NetworkPeer
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

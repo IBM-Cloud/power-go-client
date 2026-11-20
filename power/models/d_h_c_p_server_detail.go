@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -70,12 +71,12 @@ func (m *DHCPServerDetail) validateID(formats strfmt.Registry) error {
 }
 
 func (m *DHCPServerDetail) validateLeases(formats strfmt.Registry) error {
-	if swag.IsZero(m.Leases) { // not required
+	if typeutils.IsZero(m.Leases) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Leases); i++ {
-		if swag.IsZero(m.Leases[i]) { // not required
+		if typeutils.IsZero(m.Leases[i]) { // not required
 			continue
 		}
 
@@ -156,7 +157,7 @@ func (m *DHCPServerDetail) contextValidateLeases(ctx context.Context, formats st
 
 		if m.Leases[i] != nil {
 
-			if swag.IsZero(m.Leases[i]) { // not required
+			if typeutils.IsZero(m.Leases[i]) { // not required
 				return nil
 			}
 
@@ -205,13 +206,13 @@ func (m *DHCPServerDetail) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *DHCPServerDetail) UnmarshalBinary(b []byte) error {
 	var res DHCPServerDetail
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

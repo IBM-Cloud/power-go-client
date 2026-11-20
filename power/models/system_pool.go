@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // SystemPool Hardware platform detailing its limits and statistics
@@ -80,7 +81,7 @@ func (m *SystemPool) Validate(formats strfmt.Registry) error {
 }
 
 func (m *SystemPool) validateCapacity(formats strfmt.Registry) error {
-	if swag.IsZero(m.Capacity) { // not required
+	if typeutils.IsZero(m.Capacity) { // not required
 		return nil
 	}
 
@@ -103,7 +104,7 @@ func (m *SystemPool) validateCapacity(formats strfmt.Registry) error {
 }
 
 func (m *SystemPool) validateMaxAvailable(formats strfmt.Registry) error {
-	if swag.IsZero(m.MaxAvailable) { // not required
+	if typeutils.IsZero(m.MaxAvailable) { // not required
 		return nil
 	}
 
@@ -126,7 +127,7 @@ func (m *SystemPool) validateMaxAvailable(formats strfmt.Registry) error {
 }
 
 func (m *SystemPool) validateMaxCoresAvailable(formats strfmt.Registry) error {
-	if swag.IsZero(m.MaxCoresAvailable) { // not required
+	if typeutils.IsZero(m.MaxCoresAvailable) { // not required
 		return nil
 	}
 
@@ -149,7 +150,7 @@ func (m *SystemPool) validateMaxCoresAvailable(formats strfmt.Registry) error {
 }
 
 func (m *SystemPool) validateMaxMemoryAvailable(formats strfmt.Registry) error {
-	if swag.IsZero(m.MaxMemoryAvailable) { // not required
+	if typeutils.IsZero(m.MaxMemoryAvailable) { // not required
 		return nil
 	}
 
@@ -172,7 +173,7 @@ func (m *SystemPool) validateMaxMemoryAvailable(formats strfmt.Registry) error {
 }
 
 func (m *SystemPool) validateSharedCoreRatio(formats strfmt.Registry) error {
-	if swag.IsZero(m.SharedCoreRatio) { // not required
+	if typeutils.IsZero(m.SharedCoreRatio) { // not required
 		return nil
 	}
 
@@ -195,12 +196,12 @@ func (m *SystemPool) validateSharedCoreRatio(formats strfmt.Registry) error {
 }
 
 func (m *SystemPool) validateSystems(formats strfmt.Registry) error {
-	if swag.IsZero(m.Systems) { // not required
+	if typeutils.IsZero(m.Systems) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.Systems); i++ {
-		if swag.IsZero(m.Systems[i]) { // not required
+		if typeutils.IsZero(m.Systems[i]) { // not required
 			continue
 		}
 
@@ -262,7 +263,7 @@ func (m *SystemPool) contextValidateCapacity(ctx context.Context, formats strfmt
 
 	if m.Capacity != nil {
 
-		if swag.IsZero(m.Capacity) { // not required
+		if typeutils.IsZero(m.Capacity) { // not required
 			return nil
 		}
 
@@ -287,7 +288,7 @@ func (m *SystemPool) contextValidateMaxAvailable(ctx context.Context, formats st
 
 	if m.MaxAvailable != nil {
 
-		if swag.IsZero(m.MaxAvailable) { // not required
+		if typeutils.IsZero(m.MaxAvailable) { // not required
 			return nil
 		}
 
@@ -312,7 +313,7 @@ func (m *SystemPool) contextValidateMaxCoresAvailable(ctx context.Context, forma
 
 	if m.MaxCoresAvailable != nil {
 
-		if swag.IsZero(m.MaxCoresAvailable) { // not required
+		if typeutils.IsZero(m.MaxCoresAvailable) { // not required
 			return nil
 		}
 
@@ -337,7 +338,7 @@ func (m *SystemPool) contextValidateMaxMemoryAvailable(ctx context.Context, form
 
 	if m.MaxMemoryAvailable != nil {
 
-		if swag.IsZero(m.MaxMemoryAvailable) { // not required
+		if typeutils.IsZero(m.MaxMemoryAvailable) { // not required
 			return nil
 		}
 
@@ -362,7 +363,7 @@ func (m *SystemPool) contextValidateSharedCoreRatio(ctx context.Context, formats
 
 	if m.SharedCoreRatio != nil {
 
-		if swag.IsZero(m.SharedCoreRatio) { // not required
+		if typeutils.IsZero(m.SharedCoreRatio) { // not required
 			return nil
 		}
 
@@ -389,7 +390,7 @@ func (m *SystemPool) contextValidateSystems(ctx context.Context, formats strfmt.
 
 		if m.Systems[i] != nil {
 
-			if swag.IsZero(m.Systems[i]) { // not required
+			if typeutils.IsZero(m.Systems[i]) { // not required
 				return nil
 			}
 
@@ -417,13 +418,13 @@ func (m *SystemPool) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *SystemPool) UnmarshalBinary(b []byte) error {
 	var res SystemPool
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

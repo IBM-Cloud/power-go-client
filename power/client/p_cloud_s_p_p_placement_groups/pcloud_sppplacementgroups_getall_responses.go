@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSppplacementgroupsGetallReader is a Reader for the PcloudSppplacementgroupsGetall structure.
@@ -68,11 +67,9 @@ func NewPcloudSppplacementgroupsGetallOK() *PcloudSppplacementgroupsGetallOK {
 	return &PcloudSppplacementgroupsGetallOK{}
 }
 
-/*
-PcloudSppplacementgroupsGetallOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// PcloudSppplacementgroupsGetallOK describes a response with status code 200, with default header values.
+//
+// OK
 type PcloudSppplacementgroupsGetallOK struct {
 	Payload *models.SPPPlacementGroups
 }
@@ -138,11 +135,9 @@ func NewPcloudSppplacementgroupsGetallBadRequest() *PcloudSppplacementgroupsGeta
 	return &PcloudSppplacementgroupsGetallBadRequest{}
 }
 
-/*
-PcloudSppplacementgroupsGetallBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSppplacementgroupsGetallBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSppplacementgroupsGetallBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewPcloudSppplacementgroupsGetallUnauthorized() *PcloudSppplacementgroupsGe
 	return &PcloudSppplacementgroupsGetallUnauthorized{}
 }
 
-/*
-PcloudSppplacementgroupsGetallUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSppplacementgroupsGetallUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSppplacementgroupsGetallUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewPcloudSppplacementgroupsGetallForbidden() *PcloudSppplacementgroupsGetal
 	return &PcloudSppplacementgroupsGetallForbidden{}
 }
 
-/*
-PcloudSppplacementgroupsGetallForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSppplacementgroupsGetallForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSppplacementgroupsGetallForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewPcloudSppplacementgroupsGetallNotFound() *PcloudSppplacementgroupsGetall
 	return &PcloudSppplacementgroupsGetallNotFound{}
 }
 
-/*
-PcloudSppplacementgroupsGetallNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSppplacementgroupsGetallNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSppplacementgroupsGetallNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewPcloudSppplacementgroupsGetallInternalServerError() *PcloudSppplacementg
 	return &PcloudSppplacementgroupsGetallInternalServerError{}
 }
 
-/*
-PcloudSppplacementgroupsGetallInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSppplacementgroupsGetallInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSppplacementgroupsGetallInternalServerError struct {
 	Payload *models.Error
 }

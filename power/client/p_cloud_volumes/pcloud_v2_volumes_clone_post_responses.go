@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudV2VolumesClonePostReader is a Reader for the PcloudV2VolumesClonePost structure.
@@ -74,11 +73,9 @@ func NewPcloudV2VolumesClonePostAccepted() *PcloudV2VolumesClonePostAccepted {
 	return &PcloudV2VolumesClonePostAccepted{}
 }
 
-/*
-PcloudV2VolumesClonePostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudV2VolumesClonePostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudV2VolumesClonePostAccepted struct {
 	Payload *models.CloneTaskReference
 }
@@ -144,11 +141,9 @@ func NewPcloudV2VolumesClonePostBadRequest() *PcloudV2VolumesClonePostBadRequest
 	return &PcloudV2VolumesClonePostBadRequest{}
 }
 
-/*
-PcloudV2VolumesClonePostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudV2VolumesClonePostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudV2VolumesClonePostBadRequest struct {
 	Payload *models.Error
 }
@@ -214,11 +209,9 @@ func NewPcloudV2VolumesClonePostUnauthorized() *PcloudV2VolumesClonePostUnauthor
 	return &PcloudV2VolumesClonePostUnauthorized{}
 }
 
-/*
-PcloudV2VolumesClonePostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudV2VolumesClonePostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudV2VolumesClonePostUnauthorized struct {
 	Payload *models.Error
 }
@@ -284,11 +277,9 @@ func NewPcloudV2VolumesClonePostForbidden() *PcloudV2VolumesClonePostForbidden {
 	return &PcloudV2VolumesClonePostForbidden{}
 }
 
-/*
-PcloudV2VolumesClonePostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudV2VolumesClonePostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudV2VolumesClonePostForbidden struct {
 	Payload *models.Error
 }
@@ -354,11 +345,9 @@ func NewPcloudV2VolumesClonePostNotFound() *PcloudV2VolumesClonePostNotFound {
 	return &PcloudV2VolumesClonePostNotFound{}
 }
 
-/*
-PcloudV2VolumesClonePostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudV2VolumesClonePostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudV2VolumesClonePostNotFound struct {
 	Payload *models.Error
 }
@@ -424,11 +413,9 @@ func NewPcloudV2VolumesClonePostConflict() *PcloudV2VolumesClonePostConflict {
 	return &PcloudV2VolumesClonePostConflict{}
 }
 
-/*
-PcloudV2VolumesClonePostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudV2VolumesClonePostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudV2VolumesClonePostConflict struct {
 	Payload *models.Error
 }
@@ -494,11 +481,9 @@ func NewPcloudV2VolumesClonePostInternalServerError() *PcloudV2VolumesClonePostI
 	return &PcloudV2VolumesClonePostInternalServerError{}
 }
 
-/*
-PcloudV2VolumesClonePostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudV2VolumesClonePostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudV2VolumesClonePostInternalServerError struct {
 	Payload *models.Error
 }

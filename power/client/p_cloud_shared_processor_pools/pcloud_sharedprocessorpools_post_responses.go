@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // PcloudSharedprocessorpoolsPostReader is a Reader for the PcloudSharedprocessorpoolsPost structure.
@@ -80,11 +79,9 @@ func NewPcloudSharedprocessorpoolsPostAccepted() *PcloudSharedprocessorpoolsPost
 	return &PcloudSharedprocessorpoolsPostAccepted{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostAccepted describes a response with status code 202, with default header values.
-
-Accepted
-*/
+// PcloudSharedprocessorpoolsPostAccepted describes a response with status code 202, with default header values.
+//
+// Accepted
 type PcloudSharedprocessorpoolsPostAccepted struct {
 	Payload *models.SharedProcessorPool
 }
@@ -150,11 +147,9 @@ func NewPcloudSharedprocessorpoolsPostBadRequest() *PcloudSharedprocessorpoolsPo
 	return &PcloudSharedprocessorpoolsPostBadRequest{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// PcloudSharedprocessorpoolsPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type PcloudSharedprocessorpoolsPostBadRequest struct {
 	Payload *models.Error
 }
@@ -220,11 +215,9 @@ func NewPcloudSharedprocessorpoolsPostUnauthorized() *PcloudSharedprocessorpools
 	return &PcloudSharedprocessorpoolsPostUnauthorized{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// PcloudSharedprocessorpoolsPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type PcloudSharedprocessorpoolsPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -290,11 +283,9 @@ func NewPcloudSharedprocessorpoolsPostForbidden() *PcloudSharedprocessorpoolsPos
 	return &PcloudSharedprocessorpoolsPostForbidden{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// PcloudSharedprocessorpoolsPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type PcloudSharedprocessorpoolsPostForbidden struct {
 	Payload *models.Error
 }
@@ -360,11 +351,9 @@ func NewPcloudSharedprocessorpoolsPostNotFound() *PcloudSharedprocessorpoolsPost
 	return &PcloudSharedprocessorpoolsPostNotFound{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// PcloudSharedprocessorpoolsPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type PcloudSharedprocessorpoolsPostNotFound struct {
 	Payload *models.Error
 }
@@ -430,11 +419,9 @@ func NewPcloudSharedprocessorpoolsPostConflict() *PcloudSharedprocessorpoolsPost
 	return &PcloudSharedprocessorpoolsPostConflict{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// PcloudSharedprocessorpoolsPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type PcloudSharedprocessorpoolsPostConflict struct {
 	Payload *models.Error
 }
@@ -500,11 +487,9 @@ func NewPcloudSharedprocessorpoolsPostUnprocessableEntity() *PcloudSharedprocess
 	return &PcloudSharedprocessorpoolsPostUnprocessableEntity{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostUnprocessableEntity describes a response with status code 422, with default header values.
-
-Unprocessable Entity
-*/
+// PcloudSharedprocessorpoolsPostUnprocessableEntity describes a response with status code 422, with default header values.
+//
+// Unprocessable Entity
 type PcloudSharedprocessorpoolsPostUnprocessableEntity struct {
 	Payload *models.Error
 }
@@ -570,11 +555,9 @@ func NewPcloudSharedprocessorpoolsPostInternalServerError() *PcloudSharedprocess
 	return &PcloudSharedprocessorpoolsPostInternalServerError{}
 }
 
-/*
-PcloudSharedprocessorpoolsPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// PcloudSharedprocessorpoolsPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type PcloudSharedprocessorpoolsPostInternalServerError struct {
 	Payload *models.Error
 }

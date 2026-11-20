@@ -20,24 +20,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewInternalV1PrometheusMetricsGetParams() *InternalV1PrometheusMetricsGetParams {
-	return &InternalV1PrometheusMetricsGetParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewInternalV1PrometheusMetricsGetParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewInternalV1PrometheusMetricsGetParamsWithTimeout creates a new InternalV1PrometheusMetricsGetParams object
 // with the ability to set a timeout on a request.
 func NewInternalV1PrometheusMetricsGetParamsWithTimeout(timeout time.Duration) *InternalV1PrometheusMetricsGetParams {
 	return &InternalV1PrometheusMetricsGetParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewInternalV1PrometheusMetricsGetParamsWithContext creates a new InternalV1PrometheusMetricsGetParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PrometheusMetricsGetParams].
 func NewInternalV1PrometheusMetricsGetParamsWithContext(ctx context.Context) *InternalV1PrometheusMetricsGetParams {
 	return &InternalV1PrometheusMetricsGetParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -57,9 +61,9 @@ InternalV1PrometheusMetricsGetParams contains all the parameters to send to the 
 	Typically these are written to a http.Request.
 */
 type InternalV1PrometheusMetricsGetParams struct {
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the internal v1 prometheus metrics get params (not the query body).
@@ -77,43 +81,46 @@ func (o *InternalV1PrometheusMetricsGetParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the internal v1 prometheus metrics get params
+// WithTimeout adds the timeout to the internal v1 prometheus metrics get params.
 func (o *InternalV1PrometheusMetricsGetParams) WithTimeout(timeout time.Duration) *InternalV1PrometheusMetricsGetParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the internal v1 prometheus metrics get params
+// SetTimeout adds the timeout to the internal v1 prometheus metrics get params.
 func (o *InternalV1PrometheusMetricsGetParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the internal v1 prometheus metrics get params
+// WithContext adds the context to the internal v1 prometheus metrics get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PrometheusMetricsGetParams].
 func (o *InternalV1PrometheusMetricsGetParams) WithContext(ctx context.Context) *InternalV1PrometheusMetricsGetParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the internal v1 prometheus metrics get params
+// SetContext adds the context to the internal v1 prometheus metrics get params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [InternalV1PrometheusMetricsGetParams].
 func (o *InternalV1PrometheusMetricsGetParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the internal v1 prometheus metrics get params
+// WithHTTPClient adds the HTTPClient to the internal v1 prometheus metrics get params.
 func (o *InternalV1PrometheusMetricsGetParams) WithHTTPClient(client *http.Client) *InternalV1PrometheusMetricsGetParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the internal v1 prometheus metrics get params
+// SetHTTPClient adds the HTTPClient to the internal v1 prometheus metrics get params.
 func (o *InternalV1PrometheusMetricsGetParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *InternalV1PrometheusMetricsGetParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

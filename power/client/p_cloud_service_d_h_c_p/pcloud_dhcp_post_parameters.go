@@ -7,12 +7,11 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/runtime"
 	cr "github.com/go-openapi/runtime/client"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // NewPcloudDhcpPostParams creates a new PcloudDhcpPostParams object,
@@ -22,24 +21,28 @@ import (
 //
 // To enforce default values in parameter, use SetDefaults or WithDefaults.
 func NewPcloudDhcpPostParams() *PcloudDhcpPostParams {
-	return &PcloudDhcpPostParams{
-		timeout: cr.DefaultTimeout,
-	}
+	return NewPcloudDhcpPostParamsWithTimeout(cr.DefaultTimeout)
 }
 
 // NewPcloudDhcpPostParamsWithTimeout creates a new PcloudDhcpPostParams object
 // with the ability to set a timeout on a request.
 func NewPcloudDhcpPostParamsWithTimeout(timeout time.Duration) *PcloudDhcpPostParams {
 	return &PcloudDhcpPostParams{
-		timeout: timeout,
+		inner: innerParams{
+			timeout: timeout,
+		},
 	}
 }
 
 // NewPcloudDhcpPostParamsWithContext creates a new PcloudDhcpPostParams object
 // with the ability to set a context for a request.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudDhcpPostParams].
 func NewPcloudDhcpPostParamsWithContext(ctx context.Context) *PcloudDhcpPostParams {
 	return &PcloudDhcpPostParams{
-		Context: ctx,
+		inner: innerParams{
+			ctx: ctx,
+		},
 	}
 }
 
@@ -60,21 +63,19 @@ PcloudDhcpPostParams contains all the parameters to send to the API endpoint
 */
 type PcloudDhcpPostParams struct {
 
-	/* Body.
-
-	   Parameters used during creation of DHCP service
-	*/
+	// Body.
+	//
+	// Parameters used during creation of DHCP service
 	Body *models.DHCPServerCreate
 
-	/* CloudInstanceID.
-
-	   Cloud Instance ID of a PCloud Instance
-	*/
+	// CloudInstanceID.
+	//
+	// Cloud Instance ID of a PCloud Instance
 	CloudInstanceID string
 
-	timeout    time.Duration
-	Context    context.Context
 	HTTPClient *http.Client
+
+	inner innerParams
 }
 
 // WithDefaults hydrates default values in the pcloud dhcp post params (not the query body).
@@ -92,65 +93,68 @@ func (o *PcloudDhcpPostParams) SetDefaults() {
 	// no default values defined for this parameter
 }
 
-// WithTimeout adds the timeout to the pcloud dhcp post params
+// WithTimeout adds the timeout to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) WithTimeout(timeout time.Duration) *PcloudDhcpPostParams {
 	o.SetTimeout(timeout)
 	return o
 }
 
-// SetTimeout adds the timeout to the pcloud dhcp post params
+// SetTimeout adds the timeout to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) SetTimeout(timeout time.Duration) {
-	o.timeout = timeout
+	o.inner.timeout = timeout
 }
 
-// WithContext adds the context to the pcloud dhcp post params
+// WithContext adds the context to the pcloud dhcp post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudDhcpPostParams].
 func (o *PcloudDhcpPostParams) WithContext(ctx context.Context) *PcloudDhcpPostParams {
 	o.SetContext(ctx)
 	return o
 }
 
-// SetContext adds the context to the pcloud dhcp post params
+// SetContext adds the context to the pcloud dhcp post params.
+//
+// Deprecated: use the operation call with context to pass the context instead of [PcloudDhcpPostParams].
 func (o *PcloudDhcpPostParams) SetContext(ctx context.Context) {
-	o.Context = ctx
+	o.inner.ctx = ctx
 }
 
-// WithHTTPClient adds the HTTPClient to the pcloud dhcp post params
+// WithHTTPClient adds the HTTPClient to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) WithHTTPClient(client *http.Client) *PcloudDhcpPostParams {
 	o.SetHTTPClient(client)
 	return o
 }
 
-// SetHTTPClient adds the HTTPClient to the pcloud dhcp post params
+// SetHTTPClient adds the HTTPClient to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) SetHTTPClient(client *http.Client) {
 	o.HTTPClient = client
 }
 
-// WithBody adds the body to the pcloud dhcp post params
+// WithBody adds the body to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) WithBody(body *models.DHCPServerCreate) *PcloudDhcpPostParams {
 	o.SetBody(body)
 	return o
 }
 
-// SetBody adds the body to the pcloud dhcp post params
+// SetBody adds the body to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) SetBody(body *models.DHCPServerCreate) {
 	o.Body = body
 }
 
-// WithCloudInstanceID adds the cloudInstanceID to the pcloud dhcp post params
+// WithCloudInstanceID adds the cloudInstanceID to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) WithCloudInstanceID(cloudInstanceID string) *PcloudDhcpPostParams {
 	o.SetCloudInstanceID(cloudInstanceID)
 	return o
 }
 
-// SetCloudInstanceID adds the cloudInstanceId to the pcloud dhcp post params
+// SetCloudInstanceID adds the cloudInstanceId to the pcloud dhcp post params.
 func (o *PcloudDhcpPostParams) SetCloudInstanceID(cloudInstanceID string) {
 	o.CloudInstanceID = cloudInstanceID
 }
 
-// WriteToRequest writes these params to a swagger request
+// WriteToRequest writes these params to a [runtime.ClientRequest].
 func (o *PcloudDhcpPostParams) WriteToRequest(r runtime.ClientRequest, reg strfmt.Registry) error {
-
-	if err := r.SetTimeout(o.timeout); err != nil {
+	if err := r.SetTimeout(o.inner.timeout); err != nil {
 		return err
 	}
 	var res []error

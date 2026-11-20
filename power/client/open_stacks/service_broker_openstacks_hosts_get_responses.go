@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerOpenstacksHostsGetReader is a Reader for the ServiceBrokerOpenstacksHostsGet structure.
@@ -56,11 +55,9 @@ func NewServiceBrokerOpenstacksHostsGetOK() *ServiceBrokerOpenstacksHostsGetOK {
 	return &ServiceBrokerOpenstacksHostsGetOK{}
 }
 
-/*
-ServiceBrokerOpenstacksHostsGetOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerOpenstacksHostsGetOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerOpenstacksHostsGetOK struct {
 	Payload *models.HostInfo
 }
@@ -126,11 +123,9 @@ func NewServiceBrokerOpenstacksHostsGetBadRequest() *ServiceBrokerOpenstacksHost
 	return &ServiceBrokerOpenstacksHostsGetBadRequest{}
 }
 
-/*
-ServiceBrokerOpenstacksHostsGetBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerOpenstacksHostsGetBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerOpenstacksHostsGetBadRequest struct {
 	Payload *models.Error
 }
@@ -196,11 +191,9 @@ func NewServiceBrokerOpenstacksHostsGetNotFound() *ServiceBrokerOpenstacksHostsG
 	return &ServiceBrokerOpenstacksHostsGetNotFound{}
 }
 
-/*
-ServiceBrokerOpenstacksHostsGetNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerOpenstacksHostsGetNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerOpenstacksHostsGetNotFound struct {
 	Payload *models.Error
 }
@@ -266,11 +259,9 @@ func NewServiceBrokerOpenstacksHostsGetInternalServerError() *ServiceBrokerOpens
 	return &ServiceBrokerOpenstacksHostsGetInternalServerError{}
 }
 
-/*
-ServiceBrokerOpenstacksHostsGetInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerOpenstacksHostsGetInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerOpenstacksHostsGetInternalServerError struct {
 	Payload *models.Error
 }

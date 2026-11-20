@@ -8,7 +8,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // Thresholds storage threshold settings
@@ -63,7 +64,7 @@ func (m *Thresholds) Validate(formats strfmt.Registry) error {
 }
 
 func (m *Thresholds) validateCapacity(formats strfmt.Registry) error {
-	if swag.IsZero(m.Capacity) { // not required
+	if typeutils.IsZero(m.Capacity) { // not required
 		return nil
 	}
 
@@ -86,7 +87,7 @@ func (m *Thresholds) validateCapacity(formats strfmt.Registry) error {
 }
 
 func (m *Thresholds) validateOvercommit(formats strfmt.Registry) error {
-	if swag.IsZero(m.Overcommit) { // not required
+	if typeutils.IsZero(m.Overcommit) { // not required
 		return nil
 	}
 
@@ -109,7 +110,7 @@ func (m *Thresholds) validateOvercommit(formats strfmt.Registry) error {
 }
 
 func (m *Thresholds) validatePhysicalCapacity(formats strfmt.Registry) error {
-	if swag.IsZero(m.PhysicalCapacity) { // not required
+	if typeutils.IsZero(m.PhysicalCapacity) { // not required
 		return nil
 	}
 
@@ -132,7 +133,7 @@ func (m *Thresholds) validatePhysicalCapacity(formats strfmt.Registry) error {
 }
 
 func (m *Thresholds) validateVdiskCapacity(formats strfmt.Registry) error {
-	if swag.IsZero(m.VdiskCapacity) { // not required
+	if typeutils.IsZero(m.VdiskCapacity) { // not required
 		return nil
 	}
 
@@ -155,7 +156,7 @@ func (m *Thresholds) validateVdiskCapacity(formats strfmt.Registry) error {
 }
 
 func (m *Thresholds) validateVdiskLimit(formats strfmt.Registry) error {
-	if swag.IsZero(m.VdiskLimit) { // not required
+	if typeutils.IsZero(m.VdiskLimit) { // not required
 		return nil
 	}
 
@@ -211,7 +212,7 @@ func (m *Thresholds) contextValidateCapacity(ctx context.Context, formats strfmt
 
 	if m.Capacity != nil {
 
-		if swag.IsZero(m.Capacity) { // not required
+		if typeutils.IsZero(m.Capacity) { // not required
 			return nil
 		}
 
@@ -236,7 +237,7 @@ func (m *Thresholds) contextValidateOvercommit(ctx context.Context, formats strf
 
 	if m.Overcommit != nil {
 
-		if swag.IsZero(m.Overcommit) { // not required
+		if typeutils.IsZero(m.Overcommit) { // not required
 			return nil
 		}
 
@@ -261,7 +262,7 @@ func (m *Thresholds) contextValidatePhysicalCapacity(ctx context.Context, format
 
 	if m.PhysicalCapacity != nil {
 
-		if swag.IsZero(m.PhysicalCapacity) { // not required
+		if typeutils.IsZero(m.PhysicalCapacity) { // not required
 			return nil
 		}
 
@@ -286,7 +287,7 @@ func (m *Thresholds) contextValidateVdiskCapacity(ctx context.Context, formats s
 
 	if m.VdiskCapacity != nil {
 
-		if swag.IsZero(m.VdiskCapacity) { // not required
+		if typeutils.IsZero(m.VdiskCapacity) { // not required
 			return nil
 		}
 
@@ -311,7 +312,7 @@ func (m *Thresholds) contextValidateVdiskLimit(ctx context.Context, formats strf
 
 	if m.VdiskLimit != nil {
 
-		if swag.IsZero(m.VdiskLimit) { // not required
+		if typeutils.IsZero(m.VdiskLimit) { // not required
 			return nil
 		}
 
@@ -337,13 +338,13 @@ func (m *Thresholds) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *Thresholds) UnmarshalBinary(b []byte) error {
 	var res Thresholds
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

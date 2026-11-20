@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // ServiceBrokerAuthInfoUserReader is a Reader for the ServiceBrokerAuthInfoUser structure.
@@ -68,11 +67,9 @@ func NewServiceBrokerAuthInfoUserOK() *ServiceBrokerAuthInfoUserOK {
 	return &ServiceBrokerAuthInfoUserOK{}
 }
 
-/*
-ServiceBrokerAuthInfoUserOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// ServiceBrokerAuthInfoUserOK describes a response with status code 200, with default header values.
+//
+// OK
 type ServiceBrokerAuthInfoUserOK struct {
 	Payload *models.UserInfo
 }
@@ -138,11 +135,9 @@ func NewServiceBrokerAuthInfoUserBadRequest() *ServiceBrokerAuthInfoUserBadReque
 	return &ServiceBrokerAuthInfoUserBadRequest{}
 }
 
-/*
-ServiceBrokerAuthInfoUserBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// ServiceBrokerAuthInfoUserBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type ServiceBrokerAuthInfoUserBadRequest struct {
 	Payload *models.Error
 }
@@ -208,11 +203,9 @@ func NewServiceBrokerAuthInfoUserUnauthorized() *ServiceBrokerAuthInfoUserUnauth
 	return &ServiceBrokerAuthInfoUserUnauthorized{}
 }
 
-/*
-ServiceBrokerAuthInfoUserUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// ServiceBrokerAuthInfoUserUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type ServiceBrokerAuthInfoUserUnauthorized struct {
 	Payload *models.Error
 }
@@ -278,11 +271,9 @@ func NewServiceBrokerAuthInfoUserForbidden() *ServiceBrokerAuthInfoUserForbidden
 	return &ServiceBrokerAuthInfoUserForbidden{}
 }
 
-/*
-ServiceBrokerAuthInfoUserForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// ServiceBrokerAuthInfoUserForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type ServiceBrokerAuthInfoUserForbidden struct {
 	Payload *models.Error
 }
@@ -348,11 +339,9 @@ func NewServiceBrokerAuthInfoUserNotFound() *ServiceBrokerAuthInfoUserNotFound {
 	return &ServiceBrokerAuthInfoUserNotFound{}
 }
 
-/*
-ServiceBrokerAuthInfoUserNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// ServiceBrokerAuthInfoUserNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type ServiceBrokerAuthInfoUserNotFound struct {
 	Payload *models.Error
 }
@@ -418,11 +407,9 @@ func NewServiceBrokerAuthInfoUserInternalServerError() *ServiceBrokerAuthInfoUse
 	return &ServiceBrokerAuthInfoUserInternalServerError{}
 }
 
-/*
-ServiceBrokerAuthInfoUserInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// ServiceBrokerAuthInfoUserInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type ServiceBrokerAuthInfoUserInternalServerError struct {
 	Payload *models.Error
 }

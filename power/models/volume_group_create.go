@@ -7,7 +7,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -51,7 +52,7 @@ func (m *VolumeGroupCreate) Validate(formats strfmt.Registry) error {
 }
 
 func (m *VolumeGroupCreate) validateName(formats strfmt.Registry) error {
-	if swag.IsZero(m.Name) { // not required
+	if typeutils.IsZero(m.Name) { // not required
 		return nil
 	}
 
@@ -76,7 +77,7 @@ func (m *VolumeGroupCreate) validateVolumeIDs(formats strfmt.Registry) error {
 }
 
 // ContextValidate validates this volume group create based on context it is used
-func (m *VolumeGroupCreate) ContextValidate(ctx context.Context, formats strfmt.Registry) error {
+func (m *VolumeGroupCreate) ContextValidate(_ context.Context, _ strfmt.Registry) error {
 	return nil
 }
 
@@ -85,13 +86,13 @@ func (m *VolumeGroupCreate) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *VolumeGroupCreate) UnmarshalBinary(b []byte) error {
 	var res VolumeGroupCreate
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

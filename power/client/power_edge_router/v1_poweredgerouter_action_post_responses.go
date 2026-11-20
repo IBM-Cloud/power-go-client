@@ -8,10 +8,9 @@ import (
 	"fmt"
 	"io"
 
+	"github.com/IBM-Cloud/power-go-client/power/models"
 	"github.com/go-openapi/runtime"
 	"github.com/go-openapi/strfmt"
-
-	"github.com/IBM-Cloud/power-go-client/power/models"
 )
 
 // V1PoweredgerouterActionPostReader is a Reader for the V1PoweredgerouterActionPost structure.
@@ -74,11 +73,9 @@ func NewV1PoweredgerouterActionPostOK() *V1PoweredgerouterActionPostOK {
 	return &V1PoweredgerouterActionPostOK{}
 }
 
-/*
-V1PoweredgerouterActionPostOK describes a response with status code 200, with default header values.
-
-OK
-*/
+// V1PoweredgerouterActionPostOK describes a response with status code 200, with default header values.
+//
+// OK
 type V1PoweredgerouterActionPostOK struct {
 	Payload models.Object
 }
@@ -142,11 +139,9 @@ func NewV1PoweredgerouterActionPostBadRequest() *V1PoweredgerouterActionPostBadR
 	return &V1PoweredgerouterActionPostBadRequest{}
 }
 
-/*
-V1PoweredgerouterActionPostBadRequest describes a response with status code 400, with default header values.
-
-Bad Request
-*/
+// V1PoweredgerouterActionPostBadRequest describes a response with status code 400, with default header values.
+//
+// Bad Request
 type V1PoweredgerouterActionPostBadRequest struct {
 	Payload *models.Error
 }
@@ -212,11 +207,9 @@ func NewV1PoweredgerouterActionPostUnauthorized() *V1PoweredgerouterActionPostUn
 	return &V1PoweredgerouterActionPostUnauthorized{}
 }
 
-/*
-V1PoweredgerouterActionPostUnauthorized describes a response with status code 401, with default header values.
-
-Unauthorized
-*/
+// V1PoweredgerouterActionPostUnauthorized describes a response with status code 401, with default header values.
+//
+// Unauthorized
 type V1PoweredgerouterActionPostUnauthorized struct {
 	Payload *models.Error
 }
@@ -282,11 +275,9 @@ func NewV1PoweredgerouterActionPostForbidden() *V1PoweredgerouterActionPostForbi
 	return &V1PoweredgerouterActionPostForbidden{}
 }
 
-/*
-V1PoweredgerouterActionPostForbidden describes a response with status code 403, with default header values.
-
-Forbidden
-*/
+// V1PoweredgerouterActionPostForbidden describes a response with status code 403, with default header values.
+//
+// Forbidden
 type V1PoweredgerouterActionPostForbidden struct {
 	Payload *models.Error
 }
@@ -352,11 +343,9 @@ func NewV1PoweredgerouterActionPostNotFound() *V1PoweredgerouterActionPostNotFou
 	return &V1PoweredgerouterActionPostNotFound{}
 }
 
-/*
-V1PoweredgerouterActionPostNotFound describes a response with status code 404, with default header values.
-
-Not Found
-*/
+// V1PoweredgerouterActionPostNotFound describes a response with status code 404, with default header values.
+//
+// Not Found
 type V1PoweredgerouterActionPostNotFound struct {
 	Payload *models.Error
 }
@@ -422,11 +411,9 @@ func NewV1PoweredgerouterActionPostConflict() *V1PoweredgerouterActionPostConfli
 	return &V1PoweredgerouterActionPostConflict{}
 }
 
-/*
-V1PoweredgerouterActionPostConflict describes a response with status code 409, with default header values.
-
-Conflict
-*/
+// V1PoweredgerouterActionPostConflict describes a response with status code 409, with default header values.
+//
+// Conflict
 type V1PoweredgerouterActionPostConflict struct {
 	Payload *models.Error
 }
@@ -492,11 +479,9 @@ func NewV1PoweredgerouterActionPostInternalServerError() *V1PoweredgerouterActio
 	return &V1PoweredgerouterActionPostInternalServerError{}
 }
 
-/*
-V1PoweredgerouterActionPostInternalServerError describes a response with status code 500, with default header values.
-
-Internal Server Error
-*/
+// V1PoweredgerouterActionPostInternalServerError describes a response with status code 500, with default header values.
+//
+// Internal Server Error
 type V1PoweredgerouterActionPostInternalServerError struct {
 	Payload *models.Error
 }

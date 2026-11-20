@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 )
 
 // PVMInstanceConfiguration p VM instance configuration
@@ -60,7 +61,7 @@ func (m *PVMInstanceConfiguration) Validate(formats strfmt.Registry) error {
 }
 
 func (m *PVMInstanceConfiguration) validateConsoleLanguage(formats strfmt.Registry) error {
-	if swag.IsZero(m.ConsoleLanguage) { // not required
+	if typeutils.IsZero(m.ConsoleLanguage) { // not required
 		return nil
 	}
 
@@ -83,7 +84,7 @@ func (m *PVMInstanceConfiguration) validateConsoleLanguage(formats strfmt.Regist
 }
 
 func (m *PVMInstanceConfiguration) validateSapProfile(formats strfmt.Registry) error {
-	if swag.IsZero(m.SapProfile) { // not required
+	if typeutils.IsZero(m.SapProfile) { // not required
 		return nil
 	}
 
@@ -106,7 +107,7 @@ func (m *PVMInstanceConfiguration) validateSapProfile(formats strfmt.Registry) e
 }
 
 func (m *PVMInstanceConfiguration) validateSoftwareLicenses(formats strfmt.Registry) error {
-	if swag.IsZero(m.SoftwareLicenses) { // not required
+	if typeutils.IsZero(m.SoftwareLicenses) { // not required
 		return nil
 	}
 
@@ -129,14 +130,14 @@ func (m *PVMInstanceConfiguration) validateSoftwareLicenses(formats strfmt.Regis
 }
 
 func (m *PVMInstanceConfiguration) validateSystemReferenceCodes(formats strfmt.Registry) error {
-	if swag.IsZero(m.SystemReferenceCodes) { // not required
+	if typeutils.IsZero(m.SystemReferenceCodes) { // not required
 		return nil
 	}
 
 	for i := 0; i < len(m.SystemReferenceCodes); i++ {
 
 		for ii := 0; ii < len(m.SystemReferenceCodes[i]); ii++ {
-			if swag.IsZero(m.SystemReferenceCodes[i][ii]) { // not required
+			if typeutils.IsZero(m.SystemReferenceCodes[i][ii]) { // not required
 				continue
 			}
 
@@ -192,7 +193,7 @@ func (m *PVMInstanceConfiguration) contextValidateConsoleLanguage(ctx context.Co
 
 	if m.ConsoleLanguage != nil {
 
-		if swag.IsZero(m.ConsoleLanguage) { // not required
+		if typeutils.IsZero(m.ConsoleLanguage) { // not required
 			return nil
 		}
 
@@ -217,7 +218,7 @@ func (m *PVMInstanceConfiguration) contextValidateSapProfile(ctx context.Context
 
 	if m.SapProfile != nil {
 
-		if swag.IsZero(m.SapProfile) { // not required
+		if typeutils.IsZero(m.SapProfile) { // not required
 			return nil
 		}
 
@@ -242,7 +243,7 @@ func (m *PVMInstanceConfiguration) contextValidateSoftwareLicenses(ctx context.C
 
 	if m.SoftwareLicenses != nil {
 
-		if swag.IsZero(m.SoftwareLicenses) { // not required
+		if typeutils.IsZero(m.SoftwareLicenses) { // not required
 			return nil
 		}
 
@@ -271,7 +272,7 @@ func (m *PVMInstanceConfiguration) contextValidateSystemReferenceCodes(ctx conte
 
 			if m.SystemReferenceCodes[i][ii] != nil {
 
-				if swag.IsZero(m.SystemReferenceCodes[i][ii]) { // not required
+				if typeutils.IsZero(m.SystemReferenceCodes[i][ii]) { // not required
 					return nil
 				}
 
@@ -301,13 +302,13 @@ func (m *PVMInstanceConfiguration) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceConfiguration) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceConfiguration
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res

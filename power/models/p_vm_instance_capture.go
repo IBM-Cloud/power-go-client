@@ -9,7 +9,8 @@ import (
 
 	"github.com/go-openapi/errors"
 	"github.com/go-openapi/strfmt"
-	"github.com/go-openapi/swag"
+	"github.com/go-openapi/swag/jsonutils"
+	"github.com/go-openapi/swag/typeutils"
 	"github.com/go-openapi/validate"
 )
 
@@ -44,6 +45,9 @@ type PVMInstanceCapture struct {
 
 	// Cloud Storage Secret key
 	CloudStorageSecretKey string `json:"cloudStorageSecretKey,omitempty"`
+
+	// S3 compatible endpoint URL
+	Endpoint string `json:"endpoint,omitempty"`
 
 	// user tags
 	UserTags Tags `json:"userTags,omitempty"`
@@ -127,7 +131,7 @@ func (m *PVMInstanceCapture) validateCaptureName(formats strfmt.Registry) error 
 }
 
 func (m *PVMInstanceCapture) validateUserTags(formats strfmt.Registry) error {
-	if swag.IsZero(m.UserTags) { // not required
+	if typeutils.IsZero(m.UserTags) { // not required
 		return nil
 	}
 
@@ -184,13 +188,13 @@ func (m *PVMInstanceCapture) MarshalBinary() ([]byte, error) {
 	if m == nil {
 		return nil, nil
 	}
-	return swag.WriteJSON(m)
+	return jsonutils.WriteJSON(m)
 }
 
 // UnmarshalBinary interface implementation
 func (m *PVMInstanceCapture) UnmarshalBinary(b []byte) error {
 	var res PVMInstanceCapture
-	if err := swag.ReadJSON(b, &res); err != nil {
+	if err := jsonutils.ReadJSON(b, &res); err != nil {
 		return err
 	}
 	*m = res
